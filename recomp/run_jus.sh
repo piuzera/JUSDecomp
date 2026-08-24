@@ -85,9 +85,10 @@ case "$MODE" in
     #
     # Same-router friend battle (via Wiimmfi): tunnel the NATNEG peer frames
     # between the two runners with --wfc-peer-host <other-PC-LAN-IP> on BOTH
-    # machines (allow inbound UDP 27610-27625). The lobby/matchmaking still
-    # goes through Wiimmfi; only the peer match frames are relayed, exactly
-    # like a real DS NATNEG direct hop.
+    # machines. The first peer frame pops the standard Windows "Allow access"
+    # firewall alert for inbound UDP 27610-27625 — click it (no manual port
+    # rules). The lobby/matchmaking still goes through Wiimmfi; only the peer
+    # match frames are relayed, exactly like a real DS NATNEG direct hop.
     #   A: recomp/run_jus.sh online --instance-index 0 --wfc-peer-host <B-IP> --player-name "A"
     #   B: recomp/run_jus.sh online --instance-index 1 --wfc-peer-host <A-IP> --player-name "B"
     #

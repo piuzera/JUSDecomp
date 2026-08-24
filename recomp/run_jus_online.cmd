@@ -37,7 +37,9 @@ rem   - PC B's FIRST launch auto-generates a distinct console MAC
 rem     (tools\ndsrecomp\bios\generated-identity.bin is excluded from the PC-B
 rem     zip) and a fresh WFC profile (recomp\jus.fwstate re-seeds).
 rem   - Firewall: allow the runner outbound (UDP 53 + TCP to the Wiimmfi/Kaeru
-rem     service). For same-router play also allow inbound UDP 27610-27625.
+rem     service). For same-router play, the first peer frame pops the standard
+rem     Windows "Allow access" security alert for inbound UDP 27610-27625 —
+rem     just click it (no manual port rules needed).
 cd /D "%~dp0.."
 if not exist rom\jus.nds (
   echo ERROR: rom\jus.nds not found. Place your legal Jump Ultimate Stars dump here.
