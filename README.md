@@ -131,6 +131,31 @@ are untouched); its payloads are rebuilt locally from your own patched ROM
 at `rom\jus-en.nds`, never committed. See
 [`recomp/mods/english-translation/README.md`](recomp/mods/english-translation/README.md).
 
+## External tools
+
+Third-party projects that integrate with this recompilation. These are
+independent works; they are not bundled here and are maintained by their own
+authors.
+
+### JUS Deck Builder
+
+[JUS Deck Builder](https://github.com/piuzera/jus-deck-builder) — a deck editor
+for Jump Ultimate Stars with **live deck injection** into the running game. It
+is built specifically for this recompilation: it connects to the `nds_runner.exe`
+launched via [`recomp/play_import100.cmd`](recomp/play_import100.cmd) through the
+game's JSON-lines debug server (a local Node sidecar bridging HTTP to TCP), so
+decks you build can be written straight into game RAM while you play.
+
+- **Desktop app** (Tauri, Windows): bundles the deck-builder UI and the
+  injection bridge in a single executable — no separate processes to run.
+- **Deck editing**: build decks on a koma grid with leader selection, koma link
+  arrows, and support/help validation, backed by all 890 komas.
+- **Live injection**: append a new deck or replace an existing slot, unlock all
+  komas, and pre-select the deck for player 1 — all against the live game.
+- **Koma id mapping**: the builder's own koma numbering is translated to the
+  game's `koma.bin` ids at injection time, cross-validated against this repo's
+  ground truth [`data/koma_db.csv`](data/koma_db.csv).
+
 ## Repository layout
 
 ```
