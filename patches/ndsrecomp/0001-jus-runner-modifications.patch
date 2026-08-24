@@ -217,7 +217,7 @@ index d5d7fec..f6077c2 100644
          uint64_t cpu = json_u64(line, "cpu", 9);
          uint32_t addr = (uint32_t)json_u64(line, "addr", 0);
 diff --git a/runner/src/frontend.cpp b/runner/src/frontend.cpp
-index 8b5947d..2deb816 100644
+index 8b5947d..8bd6fd8 100644
 --- a/runner/src/frontend.cpp
 +++ b/runner/src/frontend.cpp
 @@ -12,6 +12,7 @@
@@ -269,7 +269,115 @@ index 8b5947d..2deb816 100644
  MphPadBindingSet make_mph_pad_bindings(
      const NdsMphPrimeControlBindings& source) {
      MphPadBindingSet set{};
-@@ -982,6 +1017,31 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -508,26 +543,91 @@ void SDLCALL audio_callback(void* userdata, Uint8* stream, int len) {
+         queue->underruns.fetch_add(1, std::memory_order_relaxed);
+ }
+ 
++// KEYINPUT/EXTKEYIN are active-low. The default layout follows the common DS
++// emulator convention: Z/X = A/B, A/S = Y/X, Q/W = L/R; it can be overridden
++// per DS button via [[input.keyboard]] (see nds_apply_keyboard_bindings).
++struct KeyRule {
++    SDL_Scancode key;
++    uint16_t bit;
++};
++
++static std::vector<KeyRule> default_key_rules() {
++    return {
++        {SDL_SCANCODE_Z, 1u << 0},          // A
++        {SDL_SCANCODE_X, 1u << 1},          // B
++        {SDL_SCANCODE_BACKSPACE, 1u << 2},  // Select
++        {SDL_SCANCODE_RETURN, 1u << 3},     // Start
++        {SDL_SCANCODE_RIGHT, 1u << 4},
++        {SDL_SCANCODE_LEFT, 1u << 5},
++        {SDL_SCANCODE_UP, 1u << 6},
++        {SDL_SCANCODE_DOWN, 1u << 7},
++        {SDL_SCANCODE_W, 1u << 8},          // R
++        {SDL_SCANCODE_Q, 1u << 9},          // L
++        {SDL_SCANCODE_S, 1u << 10},         // X
++        {SDL_SCANCODE_A, 1u << 11},         // Y
++    };
++}
++
++static std::vector<KeyRule> g_key_rules = default_key_rules();
++
+ uint16_t key_bit(SDL_Scancode key) {
+-    // KEYINPUT/EXTKEYIN are active-low. This layout follows the common DS
+-    // emulator convention: Z/X = A/B, A/S = Y/X, Q/W = L/R.
+-    switch (key) {
+-        case SDL_SCANCODE_Z:         return 1u << 0;  // A
+-        case SDL_SCANCODE_X:         return 1u << 1;  // B
+-        case SDL_SCANCODE_BACKSPACE: return 1u << 2;  // Select
+-        case SDL_SCANCODE_RETURN:    return 1u << 3;  // Start
+-        case SDL_SCANCODE_RIGHT:     return 1u << 4;
+-        case SDL_SCANCODE_LEFT:      return 1u << 5;
+-        case SDL_SCANCODE_UP:        return 1u << 6;
+-        case SDL_SCANCODE_DOWN:      return 1u << 7;
+-        case SDL_SCANCODE_W:         return 1u << 8;  // R
+-        case SDL_SCANCODE_Q:         return 1u << 9;  // L
+-        case SDL_SCANCODE_S:         return 1u << 10; // X
+-        case SDL_SCANCODE_A:         return 1u << 11; // Y
+-        default:                     return 0;
++    for (const KeyRule& rule : g_key_rules)
++        if (rule.key == key) return rule.bit;
++    return 0;
++}
++
++}  // namespace (reopened below — nds_apply_keyboard_bindings is declared in
++// frontend.h and must have external linkage)
++
++void nds_apply_keyboard_bindings(
++    const std::vector<NdsKeyboardBinding>& bindings) {
++    static const std::pair<const char*, uint16_t> kButtons[] = {
++        {"a", 1u << 0},      {"b", 1u << 1},      {"select", 1u << 2},
++        {"start", 1u << 3},  {"right", 1u << 4},  {"left", 1u << 5},
++        {"up", 1u << 6},     {"down", 1u << 7},   {"r", 1u << 8},
++        {"l", 1u << 9},      {"x", 1u << 10},     {"y", 1u << 11},
++    };
++    std::vector<KeyRule> rules = default_key_rules();
++    for (const NdsKeyboardBinding& binding : bindings) {
++        std::string button = binding_name_lower(binding.button);
++        uint16_t bit = 0;
++        for (const auto& p : kButtons) {
++            if (button == p.first) {
++                bit = p.second;
++                break;
++            }
++        }
++        if (bit == 0) {
++            std::fprintf(stderr, "[input] unknown DS button name '%s' "
++                                 "(expected a b select start right left up "
++                                 "down r l x y) — skipped\n",
++                         binding.button.c_str());
++            continue;
++        }
++        SDL_Scancode key = scancode_from_binding_name(binding.key);
++        if (key == SDL_SCANCODE_UNKNOWN) {
++            std::fprintf(stderr, "[input] unknown key name '%s' for button "
++                                 "'%s' — skipped\n",
++                         binding.key.c_str(), binding.button.c_str());
++            continue;
++        }
++        // The custom key fully owns this DS button: drop the default rule
++        // for the button, and drop any other rule already using this key so
++        // one host key can never press two DS buttons.
++        rules.erase(std::remove_if(rules.begin(), rules.end(),
++                                   [&](const KeyRule& r) {
++                                       return r.bit == bit || r.key == key;
++                                   }),
++                    rules.end());
++        rules.push_back({key, bit});
++        std::fprintf(stderr, "[input] keyboard: '%s' -> DS %s\n",
++                     binding.key.c_str(), binding.button.c_str());
+     }
++    g_key_rules = std::move(rules);
+ }
+ 
++namespace {
++
+ uint16_t controller_bit(SDL_GameControllerButton button) {
+     switch (button) {
+         case SDL_CONTROLLER_BUTTON_A:             return 1u << 0;
+@@ -982,6 +1082,31 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          std::fprintf(stderr, "[sdl] init failed: %s\n", SDL_GetError());
          return 1;
      }
@@ -301,7 +409,7 @@ index 8b5947d..2deb816 100644
      if (SDL_SetThreadPriority(SDL_THREAD_PRIORITY_HIGH) != 0)
          std::fprintf(stderr, "[sdl] thread priority unchanged: %s\n",
                       SDL_GetError());
-@@ -1187,6 +1247,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1187,6 +1312,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
      bool mph_pad_trigger_left_held = false;
      bool mph_pad_trigger_right_held = false;
      uint64_t mph_pad_aim_writes = 0;
@@ -316,7 +424,7 @@ index 8b5947d..2deb816 100644
      auto mph_prime_active = [&]() {
          return mph_prime_controls_available &&
                 (relative_mouse.captured() || mph_prime_pad_engaged);
-@@ -1818,6 +1886,42 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1818,6 +1951,42 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                      mph_pad_aim_rem_y -= static_cast<float>(mph_pad_frame_y);
                  }
              }
@@ -359,7 +467,7 @@ index 8b5947d..2deb816 100644
          } else {
              if (stick_pressed != 0) {
                  stick_pressed = 0;
-@@ -1837,6 +1941,7 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1837,6 +2006,7 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                  mph_prime_pad_engaged = false;
                  if (!relative_mouse.captured()) nds_set_touch(0, 0, false);
              }
@@ -367,7 +475,7 @@ index 8b5947d..2deb816 100644
          }
  
          const bool mph_prime_is_active = mph_prime_active();
-@@ -1886,6 +1991,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1886,6 +2056,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
              relative_delta_x = 0;
              relative_delta_y = 0;
          }
@@ -383,7 +491,7 @@ index 8b5947d..2deb816 100644
              if (mph_touch_sequence.active()) {
                  mph_touch_sequence.tick();
 diff --git a/runner/src/frontend.h b/runner/src/frontend.h
-index c1d5755..4ba90b8 100644
+index c1d5755..43fca56 100644
 --- a/runner/src/frontend.h
 +++ b/runner/src/frontend.h
 @@ -2,6 +2,7 @@
@@ -394,7 +502,7 @@ index c1d5755..4ba90b8 100644
  
  #include "cartridge_config.h"
  
-@@ -152,6 +153,50 @@ struct NdsMphPrimeControlBindings {
+@@ -152,6 +153,63 @@ struct NdsMphPrimeControlBindings {
  // own dual-stick adaptation of its keyboard/mouse scheme.
  NdsMphPrimeControlBindings nds_default_mph_pad_bindings();
  
@@ -442,10 +550,23 @@ index c1d5755..4ba90b8 100644
 +    std::string file;
 +};
 +
++// Host-key binding for a DS button, from `[[input.keyboard]]` config tables.
++// `button` is one of: a b select start right left up down r l x y (case
++// insensitive). `key` is an SDL scancode name ("Z", "Up", "Return",
++// "Left Shift", ...). Bindings REPLACE the built-in key for that DS button
++// (the default layout follows the common DS emulator convention: Z/X = A/B,
++// A/S = Y/X, Q/W = L/R, arrows, Backspace/Return = Select/Start); buttons
++// left unbound keep their defaults. Applied once at startup via
++// nds_apply_keyboard_bindings().
++struct NdsKeyboardBinding {
++    std::string button;
++    std::string key;
++};
++
  struct NdsFrontendOptions {
      // Optional exact cartridge identity from [game]. When present, every
      // title-owned setting in this config is rejected for any other ROM.
-@@ -242,6 +287,15 @@ struct NdsFrontendOptions {
+@@ -242,8 +300,26 @@ struct NdsFrontendOptions {
      NdsCartridgeSaveConfig cartridge_save{};
      NdsNetworkOptions network{};
      NdsLocalWirelessOptions local_wireless{};
@@ -458,11 +579,22 @@ index c1d5755..4ba90b8 100644
 +    // ROM overlay mods (see NdsModOverlay above). Applied after config load
 +    // and before boot; the ROM image itself is never modified.
 +    std::vector<NdsModOverlay> mod_overlays;
++    // Keyboard bindings (see NdsKeyboardBinding above), from game.toml
++    // `[[input.keyboard]]` tables.
++    std::vector<NdsKeyboardBinding> keyboard_bindings;
  };
  
++// Rebuilds the key_bit() keyboard table from the defaults plus the given
++// bindings (unknown button/key names are logged to stderr and skipped).
++// Must be called before the input loop starts; safe to call repeatedly.
++void nds_apply_keyboard_bindings(
++    const std::vector<NdsKeyboardBinding>& bindings);
++
  // Parse [display] settings from a game TOML. Missing [display] is valid.
+ // Returns false for an unreadable file or an invalid recognized value.
+ bool nds_load_frontend_config(const std::string& path,
 diff --git a/runner/src/frontend_config.cpp b/runner/src/frontend_config.cpp
-index 0607a25..3b5d63f 100644
+index 0607a25..2e2ae51 100644
 --- a/runner/src/frontend_config.cpp
 +++ b/runner/src/frontend_config.cpp
 @@ -4,6 +4,8 @@
@@ -524,7 +656,7 @@ index 0607a25..3b5d63f 100644
  bool nds_parse_cartridge_save_type(const std::string& value,
                                     NdsCartridgeSaveType* out) {
      if (!out) return false;
-@@ -757,6 +802,96 @@ bool nds_load_frontend_config(const std::string& path,
+@@ -757,6 +802,125 @@ bool nds_load_frontend_config(const std::string& path,
                  }
              }
          }
@@ -616,6 +748,35 @@ index 0607a25..3b5d63f 100644
 +            overlay.offset = static_cast<uint32_t>(*offset);
 +            overlay.file = *file;
 +            options->mod_overlays.push_back(std::move(overlay));
++        }
++    }
++
++    // ── Keyboard bindings, e.g.:
++    //   [[input.keyboard]]
++    //   button = "a"
++    //   key = "J"
++    // Rebinds one host key (SDL scancode name) to one DS button; unlisted
++    // buttons keep the built-in defaults. Names are validated at apply time
++    // (nds_apply_keyboard_bindings) so typos are logged, not fatal.
++    if (const toml::array* keys = root["input"]["keyboard"].as_array()) {
++        for (const auto& entry : *keys) {
++            const toml::table* kb = entry.as_table();
++            if (!kb) {
++                if (error) *error = "input.keyboard entries must be tables";
++                return false;
++            }
++            const auto button = (*kb)["button"].value<std::string>();
++            const auto key = (*kb)["key"].value<std::string>();
++            if (!button || !key) {
++                if (error)
++                    *error = "input.keyboard entries require button (string) "
++                             "and key (string)";
++                return false;
++            }
++            NdsKeyboardBinding binding;
++            binding.button = *button;
++            binding.key = *key;
++            options->keyboard_bindings.push_back(std::move(binding));
 +        }
 +    }
 +
@@ -836,7 +997,7 @@ index de668c9..9b5afef 100644
  void     nds_io_write(uint32_t addr, uint32_t value, uint32_t width);
  void     nds_io_reset();
 diff --git a/runner/src/main.cpp b/runner/src/main.cpp
-index a5b2e32..00ae90c 100644
+index a5b2e32..75a4210 100644
 --- a/runner/src/main.cpp
 +++ b/runner/src/main.cpp
 @@ -471,6 +471,20 @@ int main(int argc, char** argv) {
@@ -870,7 +1031,7 @@ index a5b2e32..00ae90c 100644
                  "[--startup-mode preserve|manual|automatic] "
                  "[--boot lle|direct] "
                  "[--generated-firmware] [--identity-mac AA:BB:CC:DD:EE:FF] "
-@@ -615,6 +632,25 @@ int main(int argc, char** argv) {
+@@ -615,6 +632,30 @@ int main(int argc, char** argv) {
              return 2;
          }
      }
@@ -893,10 +1054,15 @@ index a5b2e32..00ae90c 100644
 +                     overlay.offset, data.size(), overlay.file.c_str());
 +        nds_register_mod_overlay(overlay.offset, std::move(data));
 +    }
++
++    // Keyboard bindings ([[input.keyboard]]): rebind host keys to DS buttons
++    // before the input loop starts. Defaults follow the common DS emulator
++    // convention; unknown names are logged and skipped (see frontend.h).
++    nds_apply_keyboard_bindings(frontend_options.keyboard_bindings);
      if (const char* value = std::getenv("NDS_SCREEN_LAYOUT")) {
          if (!nds_parse_screen_layout(value,
                                       &frontend_options.screen_layout)) {
-@@ -1389,7 +1425,10 @@ int main(int argc, char** argv) {
+@@ -1389,7 +1430,10 @@ int main(int argc, char** argv) {
                             cli_live_overlay_cache.c_str(),
                             rom_sha1.c_str());
      mph_mouse_aim_policy =

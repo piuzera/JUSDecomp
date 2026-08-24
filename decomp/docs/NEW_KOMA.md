@@ -1,5 +1,10 @@
 # Adding a New Koma — Bare Minimum POC (2026-08-23)
 
+> **Note (2026-08-24):** the `recomp/mods/koma-890-jodio/` example pack built
+> from this research was retired from the shipped build (the release now
+> bundles `english-translation` only). This document and the tooling
+> (`tools/scripts/koma_append.py`, `dtx4_mod.py`) preserve the full recipe.
+
 **Status: COMPLETE, owner-validated in-game.** A "new" 1-tile help koma with a
 custom name and a reused effect was created by repurposing the hidden
 placeholder **koma id 870 (Ａコマ)**, entirely via runtime RAM injection —

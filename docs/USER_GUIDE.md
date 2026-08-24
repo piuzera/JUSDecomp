@@ -25,10 +25,15 @@ only the **stock, unmodified** dump (64 MB, sha1
 
 - The game uses DS buttons + touch. Your gamepad is mapped automatically for
   most devices.
-- **Wrong buttons?** Open **Settings → Configure controller...** and follow
-  the on-screen prompts. Press **Skip** to leave any button unassigned — only
-  the buttons you actually set are mapped. Your mapping is saved and reused
+- **Wrong buttons?** Open **Settings → Configure controller...** and follow the
+  on-screen prompts. Press **Skip** to leave any button unassigned — only the
+  buttons you actually set are mapped. Your mapping is saved and reused
   every session.
+- **Playing on keyboard?** Defaults: Z/X = A/B, A/S = Y/X, Q/W = L/R, arrow
+  keys = D-pad, Backspace/Enter = Select/Start, mouse = touch. To change
+  them, open **Settings → Map keyboard...** and press the key you want for
+  each DS button (**Esc** keeps the default for that button). Only the
+  buttons you remap change; everything else keeps the defaults.
 - Touchscreen: move the mouse and click to tap (in the default window), or
   use the right stick in separate-screen mode.
 - Save progress is automatic, exactly like the original cartridge.
@@ -36,8 +41,9 @@ only the **stock, unmodified** dump (64 MB, sha1
 ## 3. Mods
 
 Settings → **Mods** lists the bundled mods. Tick a mod to enable it (takes
-effect on the next launch). Example bundled mod: **Koma 890 — Jodio**, which
-adds a brand-new koma with custom art to the deck builder.
+effect on the next launch). The bundled mod is **English Translation**, a
+faithful reproduction of the community English patch that layers over your
+Japanese ROM at runtime.
 
 Mods never modify your ROM. The game reads the original file and the mod
 layers on top at runtime.
@@ -55,7 +61,20 @@ layers on top at runtime.
   save in use lives outside the app's folders, it is only detached — never
   deleted.
 
-## 5. Troubleshooting
+## 5. Known issues
+
+These are known v0.1.0 limitations we are working on — none of them block
+progress (your save is always safe):
+
+- **FPS drops during the video intro.** The compressed intro movie is not
+  yet full speed on every machine. Gameplay after the intro runs at full
+  speed.
+- **FPS drops on the deck builder.** The deck editor's heavy 2D compositing
+  can dip below full speed.
+- **Minor visual bugs on some levels.** Scrolling background elements can
+  render buggy (split or misaligned layers) on certain stages.
+
+## 6. Troubleshooting
 
 | Problem | Solution |
 |---|---|
@@ -67,7 +86,7 @@ layers on top at runtime.
 | Game runs slowly | Close other GPU-heavy apps and keep the window size modest. |
 | Black screen / graphics errors | Update your GPU driver. |
 
-## 6. FAQ
+## 7. FAQ
 
 **Is this legal?** JUSDecomp contains only original code and documentation.
 You must supply the game yourself from a cartridge you own.

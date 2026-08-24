@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
 """
-apply_overlays_check.py — pre-flight the [[mods.overlays]] config.
-Mimics the runner's gamecard-read overlay application: copy the stock ROM
-and overwrite each [offset, offset+len(file)) range with the overlay file,
-then assert the artifacts the game will actually see (NitroFS FAT sizes,
-koma.bin record 890, komatxt.bin entry 890, the koma.aar member art).
+apply_overlays_check.py — generic pre-flight for the [[mods.overlays]] config.
+
+Mimics the runner's gamecard-read overlay application: copy the stock ROM and
+overwrite each [offset, offset+len(file)) range with the overlay file, then
+assert:
+
+  1. every overlay file exists and was applied,
+  2. nothing outside the overlay ranges changed,
+  3. every overlay range is either an 8-byte FAT entry, inside a stock FAT
+     extent (in-place replacement/growth/shrink), or in the trailing free
+     space after the last stock extent (relocation),
+  4. the effective FAT still resolves sane extents.
+
+For per-mod semantic verification (e.g. the english-translation pack), run
+tools/scripts/eng_verify.py instead.
 """
 from __future__ import annotations
 
@@ -48,6 +58,7 @@ def apply_overlays(rom: bytearray) -> list[tuple[int, int, str]]:
             assert offset is not None
             rom[offset:offset + len(data)] = data
             applied.append((offset, len(data), rel))
+            in_overlay = False
     return applied
 
 
@@ -59,76 +70,10 @@ def main() -> int:
     for off, n, rel in applied:
         print(f"  0x{off:07X} +{n:6d}  {rel}")
 
-    fat_off = struct.unpack_from("<I", rom, 0x48)[0]
+    # ── 1. all overlay files existed (read_bytes would have thrown) ────────
+    # (assertion by construction)
 
-    def fat_entry(fid):
-        s, e = struct.unpack_from("<II", rom, fat_off + fid * 8)
-        return s, e
-
-    # ── koma.bin: 891 records; 890 = Jodio; 871 = category lever ──────────
-    s66, e66 = fat_entry(66)
-    koma = rom[s66:e66]
-    n = len(koma) // 12
-    assert n == 891, f"koma.bin records={n}"
-    img = struct.unpack_from("<H", koma, 890 * 12)[0]
-    assert img == 0x0367, f"record 890 ImageID=0x{img:04X}"
-    assert koma[890 * 12 + 4] == 42, f"record 890 ntbl={koma[890 * 12 + 4]}"
-    assert koma[890 * 12 + 5] == 1, f"record 890 namenum={koma[890 * 12 + 5]}"
-    assert struct.unpack_from("<H", koma, 871 * 12)[0] == 0x0366, \
-        f"record 871 ImageID=0x{struct.unpack_from('<H', koma, 871 * 12)[0]:04X}"
-    assert koma[871 * 12 + 4] == 14, f"record 871 ntbl={koma[871 * 12 + 4]}"
-    assert koma[871 * 12 + 5] == 0, f"record 871 namenum={koma[871 * 12 + 5]}"
-    print(f"koma.bin: FAT66 0x{s66:X}..0x{e66:X} {n} records; "
-          f"record 890 ImageID=0x{img:04X} ntbl=42 namenum=1 (tile = dt_01); "
-          f"record 871 ImageID=0x0366 ntbl=14 (category lever)")
-
-    # ── komatxt.bin: 891 entries; 871 + 890 = full-width JODIO ────────────
-    s67, e67 = fat_entry(67)
-    komatxt = rom[s67:e67]
-    count = struct.unpack_from("<I", komatxt, 0)[0] // 12
-    assert count == 891, f"komatxt count={count}"
-    jodio = "ＪＯＤＩＯ".encode("shift_jis")
-
-    def name_of(entry_id: int) -> bytes:
-        rel = struct.unpack_from("<I", komatxt, entry_id * 12)[0]
-        off = entry_id * 12 + rel
-        return komatxt[off:off + 16].split(b"\x00")[0]
-
-    assert name_of(871) == jodio, name_of(871).hex()
-    assert name_of(890) == jodio, name_of(890).hex()
-    # entry metadata stays stock-flavored (871 its own, 890 = 870's)
-    u1 = struct.unpack_from("<I", komatxt, 871 * 12 + 4)[0]
-    u2 = struct.unpack_from("<I", komatxt, 871 * 12 + 8)[0]
-    assert (u1, u2) == (0x00485122, 0x00000135), f"871 unk {u1:X}/{u2:X}"
-    u1 = struct.unpack_from("<I", komatxt, 890 * 12 + 4)[0]
-    u2 = struct.unpack_from("<I", komatxt, 890 * 12 + 8)[0]
-    assert (u1, u2) == (0x00150247, 0x00000134), f"890 unk {u1:X}/{u2:X}"
-    assert name_of(870) == b"\x82\x60\x83\x52\x83\x7d", \
-        f"870 name changed: {name_of(870).hex()}"
-    assert name_of(872) == b"\x82\x62\x83\x52\x83\x7d", \
-        f"872 name changed: {name_of(872).hex()}"
-    print(f"komatxt.bin: FAT67 0x{s67:X}..0x{e67:X} {count} entries; "
-          f"871 + 890 = \"{jodio.decode('shift_jis')}\", 870/872 intact")
-
-    # ── koma.aar member dt_01.dtx: owner's art; dt_20 = STOCK ─────────────
-    off01 = 0x2BBBA18
-    dtx = rom[off01:off01 + 1244]
-    assert dtx[:4] == b"DSTX" and dtx[5] == 0x04, "dt_01.dtx not DTX4"
-    dtx_rels = [rel for _, _, rel in applied if rel.endswith("koma/dt_01.dtx")]
-    assert dtx_rels, "no overlay for koma/dt_01.dtx in the config"
-    modded = (ROOT / dtx_rels[0]).read_bytes()
-    assert dtx == modded, "dt_01 overlay not applied"
-    print(f"dt_01.dtx @ 0x{off01:X}: DTX4 ok (owner's PNG art)")
-    # the battle empty-slot template dt_20 must stay STOCK
-    off20 = 0x2BC7540
-    assert rom[off20:off20 + 1244] == stock[off20:off20 + 1244], \
-        "dt_20.dtx modified (empty-slot template must stay stock)"
-    print(f"dt_20.dtx @ 0x{off20:X} untouched (stock empty-slot template)")
-    # archive index itself untouched
-    assert rom[0x2AEFE00:0x2AEFE04] == b"ALAR"
-    print("koma.aar header intact at 0x2AEFE00")
-
-    # ── stock regions untouched outside overlays ──────────────────────────
+    # ── 2. nothing changed outside the overlay ranges ──────────────────────
     ranges = [(off, off + n) for off, n, _ in applied]
     changed_outside = 0
     for i in range(len(rom)):
@@ -138,6 +83,49 @@ def main() -> int:
             changed_outside += 1
     print(f"changed bytes OUTSIDE overlay ranges: {changed_outside}")
     assert changed_outside == 0, "unexpected modification outside overlays"
+
+    # ── 3. overlay range hygiene ───────────────────────────────────────────
+    fat_off = struct.unpack_from("<I", rom, 0x48)[0]
+    fat_size = struct.unpack_from("<I", rom, 0x4C)[0]
+    n_entries = fat_size // 8
+    fat_entry_ranges = {fat_off + i * 8: fat_off + i * 8 + 8
+                        for i in range(n_entries)}
+    extents = sorted((s, e) for s, e in
+                     (struct.unpack_from("<II", stock, fat_off + i * 8)
+                      for i in range(n_entries)) if e > s)
+    by_start = {s: e for s, e in extents}
+    starts = sorted(by_start)
+    free_start = max(e for _s, e in extents)
+    problems = 0
+    for off, n, rel in applied:
+        hi = off + n
+        if off in fat_entry_ranges and n == 8:
+            kind = "FAT entry"
+        elif off in by_start:
+            idx = starts.index(off)
+            nxt = starts[idx + 1] if idx + 1 < len(starts) else free_start
+            assert hi <= nxt, f"{rel}: in-place growth overruns next extent"
+            kind = "in-place"
+        elif off >= free_start and hi <= len(stock):
+            kind = "relocated"
+        else:
+            print(f"[FAIL] {rel} at 0x{off:X}..0x{hi:X} violates overlay rules")
+            problems += 1
+            continue
+        print(f"  kind: {kind:9s} 0x{off:07X}..0x{hi:X} {rel}")
+    assert problems == 0
+
+    # ── 4. effective FAT sanity ────────────────────────────────────────────
+    bad = 0
+    for i in range(n_entries):
+        s, e = struct.unpack_from("<II", rom, fat_off + i * 8)
+        if s == 0 and e == 0:
+            continue
+        if not (0 < s < e <= len(rom)):
+            print(f"[FAIL] FAT entry {i} insane: 0x{s:X}..0x{e:X}")
+            bad += 1
+    assert bad == 0, "effective FAT has insane entries"
+
     print("ALL CHECKS PASSED")
     return 0
 

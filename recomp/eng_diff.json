@@ -1,0 +1,1673 @@
+{
+ "stock": {
+  "path": "C:\\JUS Decomp\\rom\\jus.nds",
+  "size": 67108864,
+  "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+  "title": "JUS",
+  "code": "AJUJ"
+ },
+ "english": {
+  "path": "C:\\JUS Decomp\\rom\\jus-en.nds",
+  "size": 65943448,
+  "sha1": "11b13210490c983ba79544a706b7e8a3379f8504",
+  "title": "JUS",
+  "code": "AJUJ"
+ },
+ "header": {
+  "differing_fields": [
+   {
+    "field": "ARM7 ROM offset",
+    "offset": "0x30",
+    "size": 4,
+    "stock": "00002100",
+    "english": "00d40a00",
+    "stock_repr": "0x00210000 (2162688)",
+    "english_repr": "0x000AD400 (709632)"
+   },
+   {
+    "field": "FNT offset",
+    "offset": "0x40",
+    "size": 4,
+    "stock": "00882300",
+    "english": "005c0d00",
+    "stock_repr": "0x00238800 (2328576)",
+    "english_repr": "0x000D5C00 (875520)"
+   },
+   {
+    "field": "FAT offset",
+    "offset": "0x48",
+    "size": 4,
+    "stock": "00a02300",
+    "english": "00740d00",
+    "stock_repr": "0x0023A000 (2334720)",
+    "english_repr": "0x000D7400 (881664)"
+   },
+   {
+    "field": "ARM9 overlay table offset",
+    "offset": "0x50",
+    "size": 4,
+    "stock": "00d20a00",
+    "english": "70d10a00",
+    "stock_repr": "0x000AD200 (709120)",
+    "english_repr": "0x000AD170 (708976)"
+   },
+   {
+    "field": "ROM control: async. prefetch? (0x2000 block)",
+    "offset": "0x60",
+    "size": 4,
+    "stock": "17604100",
+    "english": "00605800",
+    "stock_repr": "0x00416017 (4284439)",
+    "english_repr": "0x00586000 (5791744)"
+   },
+   {
+    "field": "Banner offset",
+    "offset": "0x68",
+    "size": 4,
+    "stock": "00ae2300",
+    "english": "00820d00",
+    "stock_repr": "0x0023AE00 (2338304)",
+    "english_repr": "0x000D8200 (885248)"
+   },
+   {
+    "field": "Secure CRC16",
+    "offset": "0x6C",
+    "size": 4,
+    "stock": "41601e05",
+    "english": "204a1e05",
+    "stock_repr": "0x051E6041 (85876801)",
+    "english_repr": "0x051E4A20 (85871136)"
+   },
+   {
+    "field": "ARM7 autoload start address",
+    "offset": "0x80",
+    "size": 4,
+    "stock": "98d3ee03",
+    "english": "9837ee03",
+    "stock_repr": "0x03EED398 (65983384)",
+    "english_repr": "0x03EE3798 (65943448)"
+   }
+  ],
+  "same": false
+ },
+ "arm9": {
+  "stock": {
+   "rom_offset": "0x4000",
+   "size_raw": 692568,
+   "entry": "0x02000800",
+   "ram": "0x02000000",
+   "lz77_compressed": false,
+   "size_decoded": 692568
+  },
+  "english": {
+   "rom_offset": "0x4000",
+   "size_raw": 692568,
+   "entry": "0x02000800",
+   "ram": "0x02000000",
+   "lz77_compressed": false,
+   "size_decoded": 692568
+  },
+  "same_entry_and_ram": true,
+  "content_equal_decoded": true
+ },
+ "arm7": {
+  "stock": {
+   "rom_offset": "0x210000",
+   "size_raw": 165552,
+   "entry": "0x02380000",
+   "ram": "0x02380000",
+   "lz77_compressed": false,
+   "size_decoded": 165552
+  },
+  "english": {
+   "rom_offset": "0xAD400",
+   "size_raw": 165552,
+   "entry": "0x02380000",
+   "ram": "0x02380000",
+   "lz77_compressed": false,
+   "size_decoded": 165552
+  },
+  "same_entry_and_ram": true,
+  "content_equal_decoded": true
+ },
+ "overlay_table": {
+  "stock": {
+   "offset": 709120,
+   "size": 448,
+   "entries": 14
+  },
+  "english": {
+   "offset": 708976,
+   "size": 448,
+   "entries": 14
+  },
+  "table_bytes_equal": false,
+  "overlays": [
+   {
+    "id": 0,
+    "file_id": {
+     "stock": 0,
+     "english": 0
+    },
+    "ram_addr": {
+     "stock": "0x0214CD20",
+     "english": "0x0214CD20",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      709632,
+      795392
+     ],
+     "english": [
+      887808,
+      973568
+     ]
+    },
+    "size": {
+     "stock": 85760,
+     "english": 85760
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 1,
+    "file_id": {
+     "stock": 1,
+     "english": 1
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      795648,
+      931104
+     ],
+     "english": [
+      973824,
+      1109280
+     ]
+    },
+    "size": {
+     "stock": 135456,
+     "english": 135456
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 2,
+    "file_id": {
+     "stock": 2,
+     "english": 2
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      931328,
+      996480
+     ],
+     "english": [
+      1109504,
+      1174656
+     ]
+    },
+    "size": {
+     "stock": 65152,
+     "english": 65152
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 3,
+    "file_id": {
+     "stock": 3,
+     "english": 3
+    },
+    "ram_addr": {
+     "stock": "0x0214CD20",
+     "english": "0x0214CD20",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      996864,
+      1070336
+     ],
+     "english": [
+      1175040,
+      1248512
+     ]
+    },
+    "size": {
+     "stock": 73472,
+     "english": 73472
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 4,
+    "file_id": {
+     "stock": 4,
+     "english": 4
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1070592,
+      1156800
+     ],
+     "english": [
+      1248768,
+      1334976
+     ]
+    },
+    "size": {
+     "stock": 86208,
+     "english": 86208
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 5,
+    "file_id": {
+     "stock": 5,
+     "english": 5
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1157120,
+      1310048
+     ],
+     "english": [
+      1335296,
+      1488224
+     ]
+    },
+    "size": {
+     "stock": 152928,
+     "english": 152928
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 6,
+    "file_id": {
+     "stock": 6,
+     "english": 6
+    },
+    "ram_addr": {
+     "stock": "0x0214CD20",
+     "english": "0x0214CD20",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1310208,
+      1464896
+     ],
+     "english": [
+      1488384,
+      1643072
+     ]
+    },
+    "size": {
+     "stock": 154688,
+     "english": 154688
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 7,
+    "file_id": {
+     "stock": 7,
+     "english": 7
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1465344,
+      1588160
+     ],
+     "english": [
+      1643520,
+      1766336
+     ]
+    },
+    "size": {
+     "stock": 122816,
+     "english": 122816
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 8,
+    "file_id": {
+     "stock": 8,
+     "english": 8
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1588224,
+      1716384
+     ],
+     "english": [
+      1766400,
+      1894560
+     ]
+    },
+    "size": {
+     "stock": 128160,
+     "english": 128160
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 9,
+    "file_id": {
+     "stock": 9,
+     "english": 9
+    },
+    "ram_addr": {
+     "stock": "0x0214CD20",
+     "english": "0x0214CD20",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1716736,
+      1716768
+     ],
+     "english": [
+      1894912,
+      1894944
+     ]
+    },
+    "size": {
+     "stock": 32,
+     "english": 32
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 10,
+    "file_id": {
+     "stock": 10,
+     "english": 10
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1717248,
+      1932512
+     ],
+     "english": [
+      1895424,
+      2110688
+     ]
+    },
+    "size": {
+     "stock": 215264,
+     "english": 215264
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 11,
+    "file_id": {
+     "stock": 11,
+     "english": 11
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1932800,
+      1994240
+     ],
+     "english": [
+      2110976,
+      2172416
+     ]
+    },
+    "size": {
+     "stock": 61440,
+     "english": 61440
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 12,
+    "file_id": {
+     "stock": 12,
+     "english": 12
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      1994240,
+      2162016
+     ],
+     "english": [
+      2172416,
+      2340192
+     ]
+    },
+    "size": {
+     "stock": 167776,
+     "english": 167776
+    },
+    "content_equal": true,
+    "status": "identical"
+   },
+   {
+    "id": 13,
+    "file_id": {
+     "stock": 13,
+     "english": 13
+    },
+    "ram_addr": {
+     "stock": "0x00000000",
+     "english": "0x00000000",
+     "same": true
+    },
+    "extent": {
+     "stock": [
+      2162176,
+      2162208
+     ],
+     "english": [
+      2340352,
+      2340384
+     ]
+    },
+    "size": {
+     "stock": 32,
+     "english": 32
+    },
+    "content_equal": true,
+    "status": "identical"
+   }
+  ],
+  "new_overlay_ids": []
+ },
+ "fnt": {
+  "stock": {
+   "offset": 2328576,
+   "size": 5813,
+   "files": 379
+  },
+  "english": {
+   "offset": 875520,
+   "size": 5813,
+   "files": 379
+  },
+  "paths_identical": true
+ },
+ "fat": {
+  "stock": {
+   "offset": 2334720,
+   "size": 3144,
+   "entries": 393
+  },
+  "english": {
+   "offset": 881664,
+   "size": 3144,
+   "entries": 393
+  }
+ },
+ "banner": {
+  "stock": {
+   "offset": 2338304,
+   "size": 2112
+  },
+  "english": {
+   "offset": 885248,
+   "size": 2112
+  },
+  "content_equal": true
+ },
+ "files": {
+  "changed": [
+   {
+    "path": "Common/win_c00.dig",
+    "file_id": {
+     "stock": 338,
+     "english": 25
+    },
+    "extent": {
+     "stock": [
+      6643712,
+      6649356
+     ],
+     "english": [
+      4534272,
+      4539916
+     ]
+    },
+    "size": {
+     "stock": 5644,
+     "english": 5644
+    },
+    "delta": 0,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "battle/tutorial0.bin",
+    "file_id": {
+     "stock": 42,
+     "english": 61
+    },
+    "extent": {
+     "stock": [
+      7516160,
+      7519841
+     ],
+     "english": [
+      7516160,
+      7521058
+     ]
+    },
+    "size": {
+     "stock": 3681,
+     "english": 4898
+    },
+    "delta": 1217,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "battle/tutorial1.bin",
+    "file_id": {
+     "stock": 43,
+     "english": 62
+    },
+    "extent": {
+     "stock": [
+      7520256,
+      7522564
+     ],
+     "english": [
+      7521280,
+      7524312
+     ]
+    },
+    "size": {
+     "stock": 2308,
+     "english": 3032
+    },
+    "delta": 724,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "battle/tutorial2.bin",
+    "file_id": {
+     "stock": 44,
+     "english": 63
+    },
+    "extent": {
+     "stock": [
+      7522816,
+      7527604
+     ],
+     "english": [
+      7524352,
+      7530015
+     ]
+    },
+    "size": {
+     "stock": 4788,
+     "english": 5663
+    },
+    "delta": 875,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "battle/tutorial3.bin",
+    "file_id": {
+     "stock": 45,
+     "english": 64
+    },
+    "extent": {
+     "stock": [
+      7527936,
+      7531164
+     ],
+     "english": [
+      7530496,
+      7534486
+     ]
+    },
+    "size": {
+     "stock": 3228,
+     "english": 3990
+    },
+    "delta": 762,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "battle/tutorial4.bin",
+    "file_id": {
+     "stock": 46,
+     "english": 65
+    },
+    "extent": {
+     "stock": [
+      7531520,
+      7533176
+     ],
+     "english": [
+      7534592,
+      7536411
+     ]
+    },
+    "size": {
+     "stock": 1656,
+     "english": 1819
+    },
+    "delta": 163,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "battle/tutorial5.bin",
+    "file_id": {
+     "stock": 47,
+     "english": 66
+    },
+    "extent": {
+     "stock": [
+      7533568,
+      7537254
+     ],
+     "english": [
+      7536640,
+      7540851
+     ]
+    },
+    "size": {
+     "stock": 3686,
+     "english": 4211
+    },
+    "delta": 525,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/InfoDeck.aar",
+    "file_id": {
+     "stock": 63,
+     "english": 70
+    },
+    "extent": {
+     "stock": [
+      7561216,
+      8131304
+     ],
+     "english": [
+      7564800,
+      8213708
+     ]
+    },
+    "size": {
+     "stock": 570088,
+     "english": 648908
+    },
+    "delta": 78820,
+    "relocated": true,
+    "status": "changed",
+    "category": "archive (ALAR3: sprites/graphics/members)"
+   },
+   {
+    "path": "bin/ability_t.bin",
+    "file_id": {
+     "stock": 52,
+     "english": 72
+    },
+    "extent": {
+     "stock": [
+      8132096,
+      8135884
+     ],
+     "english": [
+      8214528,
+      8218517
+     ]
+    },
+    "size": {
+     "stock": 3788,
+     "english": 3989
+    },
+    "delta": 201,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/bgm.bin",
+    "file_id": {
+     "stock": 53,
+     "english": 73
+    },
+    "extent": {
+     "stock": [
+      8136192,
+      8139419
+     ],
+     "english": [
+      8218624,
+      8221361
+     ]
+    },
+    "size": {
+     "stock": 3227,
+     "english": 2737
+    },
+    "delta": -490,
+    "relocated": true,
+    "status": "changed",
+    "category": "audio"
+   },
+   {
+    "path": "bin/chr_b_t.bin",
+    "file_id": {
+     "stock": 55,
+     "english": 75
+    },
+    "extent": {
+     "stock": [
+      8144384,
+      8209131
+     ],
+     "english": [
+      8226304,
+      8288745
+     ]
+    },
+    "size": {
+     "stock": 64747,
+     "english": 62441
+    },
+    "delta": -2306,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/chr_s_t.bin",
+    "file_id": {
+     "stock": 57,
+     "english": 77
+    },
+    "extent": {
+     "stock": [
+      8213504,
+      8260016
+     ],
+     "english": [
+      8292864,
+      8337393
+     ]
+    },
+    "size": {
+     "stock": 46512,
+     "english": 44529
+    },
+    "delta": -1983,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/clearlst.bin",
+    "file_id": {
+     "stock": 59,
+     "english": 79
+    },
+    "extent": {
+     "stock": [
+      8261120,
+      8264752
+     ],
+     "english": [
+      8338432,
+      8341947
+     ]
+    },
+    "size": {
+     "stock": 3632,
+     "english": 3515
+    },
+    "delta": -117,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/commwin.bin",
+    "file_id": {
+     "stock": 60,
+     "english": 80
+    },
+    "extent": {
+     "stock": [
+      8265216,
+      8276111
+     ],
+     "english": [
+      8342016,
+      8353656
+     ]
+    },
+    "size": {
+     "stock": 10895,
+     "english": 11640
+    },
+    "delta": 745,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/demo.bin",
+    "file_id": {
+     "stock": 61,
+     "english": 81
+    },
+    "extent": {
+     "stock": [
+      8276480,
+      8278602
+     ],
+     "english": [
+      8353792,
+      8355671
+     ]
+    },
+    "size": {
+     "stock": 2122,
+     "english": 1879
+    },
+    "delta": -243,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/infoname.bin",
+    "file_id": {
+     "stock": 64,
+     "english": 83
+    },
+    "extent": {
+     "stock": [
+      8279552,
+      8280076
+     ],
+     "english": [
+      8356352,
+      8356943
+     ]
+    },
+    "size": {
+     "stock": 524,
+     "english": 591
+    },
+    "delta": 67,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/komatxt.bin",
+    "file_id": {
+     "stock": 67,
+     "english": 86
+    },
+    "extent": {
+     "stock": [
+      8386048,
+      8399410
+     ],
+     "english": [
+      8462848,
+      8479504
+     ]
+    },
+    "size": {
+     "stock": 13362,
+     "english": 16656
+    },
+    "delta": 3294,
+    "relocated": true,
+    "status": "changed",
+    "category": "text / string table"
+   },
+   {
+    "path": "bin/location.bin",
+    "file_id": {
+     "stock": 69,
+     "english": 88
+    },
+    "extent": {
+     "stock": [
+      8401920,
+      8403455
+     ],
+     "english": [
+      8481792,
+      8484135
+     ]
+    },
+    "size": {
+     "stock": 1535,
+     "english": 2343
+    },
+    "delta": 808,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/piece.bin",
+    "file_id": {
+     "stock": 70,
+     "english": 89
+    },
+    "extent": {
+     "stock": [
+      8403456,
+      8438639
+     ],
+     "english": [
+      8484352,
+      8513364
+     ]
+    },
+    "size": {
+     "stock": 35183,
+     "english": 29012
+    },
+    "delta": -6171,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/rulemess.bin",
+    "file_id": {
+     "stock": 72,
+     "english": 91
+    },
+    "extent": {
+     "stock": [
+      8440320,
+      8442002
+     ],
+     "english": [
+      8515072,
+      8516389
+     ]
+    },
+    "size": {
+     "stock": 1682,
+     "english": 1317
+    },
+    "delta": -365,
+    "relocated": true,
+    "status": "changed",
+    "category": "text / string table"
+   },
+   {
+    "path": "bin/stage.bin",
+    "file_id": {
+     "stock": 74,
+     "english": 93
+    },
+    "extent": {
+     "stock": [
+      8442880,
+      8443640
+     ],
+     "english": [
+      8517120,
+      8517817
+     ]
+    },
+    "size": {
+     "stock": 760,
+     "english": 697
+    },
+    "delta": -63,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "bin/title.bin",
+    "file_id": {
+     "stock": 76,
+     "english": 95
+    },
+    "extent": {
+     "stock": [
+      8444416,
+      8445328
+     ],
+     "english": [
+      8518656,
+      8519428
+     ]
+    },
+    "size": {
+     "stock": 912,
+     "english": 772
+    },
+    "delta": -140,
+    "relocated": true,
+    "status": "changed",
+    "category": "graphics"
+   },
+   {
+    "path": "deckmake/deckmake.aar",
+    "file_id": {
+     "stock": 352,
+     "english": 354
+    },
+    "extent": {
+     "stock": [
+      28094976,
+      28153661
+     ],
+     "english": [
+      28169216,
+      28227185
+     ]
+    },
+    "size": {
+     "stock": 58685,
+     "english": 57969
+    },
+    "delta": -716,
+    "relocated": true,
+    "status": "changed",
+    "category": "archive (ALAR3: sprites/graphics/members)"
+   },
+   {
+    "path": "deckmake/tutorial.bin",
+    "file_id": {
+     "stock": 353,
+     "english": 355
+    },
+    "extent": {
+     "stock": [
+      28153856,
+      28166479
+     ],
+     "english": [
+      28227584,
+      28241624
+     ]
+    },
+    "size": {
+     "stock": 12623,
+     "english": 14040
+    },
+    "delta": 1417,
+    "relocated": true,
+    "status": "changed",
+    "category": "binary data"
+   },
+   {
+    "path": "font/js8font.aft",
+    "file_id": {
+     "stock": 365,
+     "english": 367
+    },
+    "extent": {
+     "stock": [
+      40960512,
+      40978312
+     ],
+     "english": [
+      41035776,
+      41049224
+     ]
+    },
+    "size": {
+     "stock": 17800,
+     "english": 13448
+    },
+    "delta": -4352,
+    "relocated": true,
+    "status": "changed",
+    "category": "font / width table"
+   },
+   {
+    "path": "font/jskfont.aft",
+    "file_id": {
+     "stock": 366,
+     "english": 368
+    },
+    "extent": {
+     "stock": [
+      40978432,
+      41210100
+     ],
+     "english": [
+      41049600,
+      41170164
+     ]
+    },
+    "size": {
+     "stock": 231668,
+     "english": 120564
+    },
+    "delta": -111104,
+    "relocated": true,
+    "status": "changed",
+    "category": "font / width table"
+   },
+   {
+    "path": "jgalaxy/jgalaxy.aar",
+    "file_id": {
+     "stock": 376,
+     "english": 376
+    },
+    "extent": {
+     "stock": [
+      42202624,
+      43298709
+     ],
+     "english": [
+      42162688,
+      43258773
+     ]
+    },
+    "size": {
+     "stock": 1096085,
+     "english": 1096085
+    },
+    "delta": 0,
+    "relocated": true,
+    "status": "changed",
+    "category": "archive (ALAR3: sprites/graphics/members)"
+   },
+   {
+    "path": "koma/koma.aar",
+    "file_id": {
+     "stock": 379,
+     "english": 379
+    },
+    "extent": {
+     "stock": [
+      45022720,
+      47872140
+     ],
+     "english": [
+      44982784,
+      47832204
+     ]
+    },
+    "size": {
+     "stock": 2849420,
+     "english": 2849420
+    },
+    "delta": 0,
+    "relocated": true,
+    "status": "changed",
+    "category": "archive (ALAR3: sprites/graphics/members)"
+   }
+  ],
+  "identical": [
+   "ChildRom/JSS2Child.srl",
+   "ChildRom/icon.char",
+   "ChildRom/icon.plt",
+   "Common/antenna.aar",
+   "Common/antenna_wifi.aar",
+   "Common/button.aar",
+   "Commu/challenge_3d.aar",
+   "Commu/com_bg.ncl",
+   "Commu/commu_pack.aar",
+   "Commu/error_2d.aar",
+   "JArena/JArena.aar",
+   "JArena/arena_bg.ncl",
+   "battle/ChrWin.aar",
+   "battle/deck00.atm",
+   "battle/deck00.dig",
+   "battle/deck10.atm",
+   "battle/deck11.atm",
+   "battle/deck12.atm",
+   "battle/deck13.atm",
+   "battle/deck_obj.aar",
+   "battle/get.aar",
+   "battle/hand.aar",
+   "battle/ko.aar",
+   "battle/marker_b.aar",
+   "battle/marker_t.aar",
+   "battle/pause.aar",
+   "battle/rank.aar",
+   "battle/set.aar",
+   "battle/status_icon.aar",
+   "battle/symbol00.aar",
+   "battle/symbol01.aar",
+   "battle/symbol02.aar",
+   "battle/symbol03.aar",
+   "battle/symbol04.aar",
+   "battle/symbol05.aar",
+   "battle/symbol06.aar",
+   "battle/symbol07.aar",
+   "battle/symbol08.aar",
+   "battle/symbol09.aar",
+   "battle/symbol10.aar"
+  ],
+  "moved_only": [
+   "Common/chr/chr.aar",
+   "Common/loading.aar",
+   "Common/title_icon_2d.aar",
+   "Common/title_icon_3d.aar",
+   "Common/voice_icon.aar",
+   "Common/win_c00.atm",
+   "battle/tutorial_a.aar",
+   "battle/tutorial_b.aar",
+   "battle/win_bt00.aar",
+   "bin/ability.bin",
+   "bin/chr_b.bin",
+   "bin/chr_s.bin",
+   "bin/clear.bin",
+   "bin/exadd.bin",
+   "bin/jpower.bin",
+   "bin/koma.bin",
+   "bin/kshape.bin",
+   "bin/pname.bin",
+   "bin/secret.bin",
+   "bin/state.bin",
+   "chr/ChrArc.aar",
+   "chr/ChrBin.aar",
+   "chr/bb_b_01_4c.aar",
+   "chr/bb_b_01_5c.aar",
+   "chr/bb_b_01_6c.aar",
+   "chr/bb_b_01c.aar",
+   "chr/bb_b_02_4c.aar",
+   "chr/bb_b_02_5c.aar",
+   "chr/bb_b_02_6c.aar",
+   "chr/bb_b_02c.aar",
+   "chr/bb_b_03_7c.aar",
+   "chr/bb_b_03c.aar",
+   "chr/bb_b_04_7c.aar",
+   "chr/bb_b_04c.aar",
+   "chr/bc_b_01_4c.aar",
+   "chr/bc_b_01_5c.aar",
+   "chr/bc_b_01c.aar",
+   "chr/bc_b_02_4c.aar",
+   "chr/bc_b_02_5c.aar",
+   "chr/bc_b_02c.aar",
+   "chr/bl_b_01_4c.aar",
+   "chr/bl_b_01_5c.aar",
+   "chr/bl_b_01_6c.aar",
+   "chr/bl_b_01c.aar",
+   "chr/bl_b_02_7c.aar",
+   "chr/bl_b_02_8c.aar",
+   "chr/bl_b_02c.aar",
+   "chr/bl_b_03_4c.aar",
+   "chr/bl_b_03_5c.aar",
+   "chr/bl_b_03_6c.aar",
+   "chr/bl_b_03c.aar",
+   "chr/bl_b_04_4c.aar",
+   "chr/bl_b_04_5c.aar",
+   "chr/bl_b_04_6c.aar",
+   "chr/bl_b_04c.aar",
+   "chr/bl_b_05_4c.aar",
+   "chr/bl_b_05_5c.aar",
+   "chr/bl_b_05_6c.aar",
+   "chr/bl_b_05c.aar",
+   "chr/bu_b_01_4c.aar",
+   "chr/bu_b_01_5c.aar",
+   "chr/bu_b_01_6c.aar",
+   "chr/bu_b_01c.aar",
+   "chr/db_b_01_4c.aar",
+   "chr/db_b_01_5c.aar",
+   "chr/db_b_01c.aar",
+   "chr/db_b_02_6c.aar",
+   "chr/db_b_02_7c.aar",
+   "chr/db_b_02c.aar",
+   "chr/db_b_03_4c.aar",
+   "chr/db_b_03c.aar",
+   "chr/db_b_04_5c.aar",
+   "chr/db_b_04_6c.aar",
+   "chr/db_b_04c.aar",
+   "chr/db_b_05_4c.aar",
+   "chr/db_b_05c.aar",
+   "chr/db_b_06_5c.aar",
+   "chr/db_b_06c.aar",
+   "chr/db_b_07_4c.aar",
+   "chr/db_b_07c.aar",
+   "chr/db_b_08_5c.aar",
+   "chr/db_b_08c.aar",
+   "chr/db_b_09_4c.aar",
+   "chr/db_b_09_5c.aar",
+   "chr/db_b_09c.aar",
+   "chr/db_b_10_6c.aar",
+   "chr/db_b_10c.aar",
+   "chr/db_b_11_6c.aar",
+   "chr/db_b_11c.aar",
+   "chr/db_b_12_8c.aar",
+   "chr/db_b_12c.aar",
+   "chr/dg_b_01_4c.aar",
+   "chr/dg_b_01_5c.aar",
+   "chr/dg_b_01_6c.aar",
+   "chr/dg_b_01c.aar",
+   "chr/dg_b_02_4c.aar",
+   "chr/dg_b_02_5c.aar",
+   "chr/dg_b_02c.aar",
+   "chr/ds_b_01_4c.aar",
+   "chr/ds_b_01_5c.aar",
+   "chr/ds_b_01_6c.aar",
+   "chr/ds_b_01_7c.aar",
+   "chr/ds_b_01c.aar",
+   "chr/ds_b_02_4c.aar",
+   "chr/ds_b_02_5c.aar",
+   "chr/ds_b_02_6c.aar",
+   "chr/ds_b_02_7c.aar",
+   "chr/ds_b_02c.aar",
+   "chr/ds_b_03_8c.aar",
+   "chr/ds_b_03c.aar",
+   "chr/dt_b_01_4c.aar",
+   "chr/dt_b_01c.aar",
+   "chr/dt_b_02_4c.aar",
+   "chr/dt_b_02c.aar",
+   "chr/dt_b_03_4c.aar",
+   "chr/dt_b_03c.aar",
+   "chr/dt_b_04_4c.aar",
+   "chr/dt_b_04c.aar",
+   "chr/gt_b_01_4c.aar",
+   "chr/gt_b_01_5c.aar",
+   "chr/gt_b_01_6c.aar",
+   "chr/gt_b_01_7c.aar",
+   "chr/gt_b_01c.aar",
+   "chr/gt_b_02_4c.aar",
+   "chr/gt_b_02_5c.aar",
+   "chr/gt_b_02_6c.aar",
+   "chr/gt_b_02c.aar",
+   "chr/hh_b_01_4c.aar",
+   "chr/hh_b_01_5c.aar",
+   "chr/hh_b_01_6c.aar",
+   "chr/hh_b_01c.aar",
+   "chr/hh_b_02_4c.aar",
+   "chr/hh_b_02_5c.aar",
+   "chr/hh_b_02c.aar",
+   "chr/hk_b_01_4c.aar",
+   "chr/hk_b_01_5c.aar",
+   "chr/hk_b_01_6c.aar",
+   "chr/hk_b_01_7c.aar",
+   "chr/hk_b_01_8c.aar",
+   "chr/hk_b_01c.aar",
+   "chr/hk_b_02_6c.aar",
+   "chr/hk_b_02_7c.aar",
+   "chr/hk_b_02_8c.aar",
+   "chr/hk_b_02c.aar",
+   "chr/hs_b_01_4c.aar",
+   "chr/hs_b_01_5c.aar",
+   "chr/hs_b_01_6c.aar",
+   "chr/hs_b_01c.aar",
+   "chr/jj_b_01_4c.aar",
+   "chr/jj_b_01_5c.aar",
+   "chr/jj_b_01_6c.aar",
+   "chr/jj_b_01c.aar",
+   "chr/jj_b_02_4c.aar",
+   "chr/jj_b_02_5c.aar",
+   "chr/jj_b_02_6c.aar",
+   "chr/jj_b_02c.aar",
+   "chr/kk_b_01_4c.aar",
+   "chr/kk_b_01_5c.aar",
+   "chr/kk_b_01_6c.aar",
+   "chr/kk_b_01_7c.aar",
+   "chr/kk_b_01c.aar",
+   "chr/kn_b_01_4c.aar",
+   "chr/kn_b_01_5c.aar",
+   "chr/kn_b_01_6c.aar",
+   "chr/kn_b_01_7c.aar",
+   "chr/kn_b_01_8c.aar",
+   "chr/kn_b_01c.aar",
+   "chr/mr_b_01_4c.aar",
+   "chr/mr_b_01_5c.aar",
+   "chr/mr_b_01_6c.aar",
+   "chr/mr_b_01_7c.aar",
+   "chr/mr_b_01c.aar",
+   "chr/na_b_01_4c.aar",
+   "chr/na_b_01_5c.aar",
+   "chr/na_b_01_6c.aar",
+   "chr/na_b_01c.aar",
+   "chr/na_b_02_7c.aar",
+   "chr/na_b_02_8c.aar",
+   "chr/na_b_02c.aar",
+   "chr/na_b_03_4c.aar",
+   "chr/na_b_03_5c.aar",
+   "chr/na_b_03_6c.aar",
+   "chr/na_b_03c.aar",
+   "chr/na_b_04_4c.aar",
+   "chr/na_b_04_5c.aar",
+   "chr/na_b_04_6c.aar",
+   "chr/na_b_04c.aar",
+   "chr/na_b_05_7c.aar",
+   "chr/na_b_05_8c.aar",
+   "chr/na_b_05c.aar",
+   "chr/nk_b_01_4c.aar",
+   "chr/nk_b_01_5c.aar",
+   "chr/nk_b_01c.aar",
+   "chr/nn_b_01_4c.aar",
+   "chr/nn_b_01_5c.aar",
+   "chr/nn_b_01c.aar",
+   "chr/oj_b_01_8c.aar",
+   "chr/oj_b_01c.aar",
+   "chr/oj_b_02_4c.aar",
+   "chr/oj_b_02_5c.aar",
+   "chr/oj_b_02_6c.aar",
+   "chr/oj_b_02c.aar",
+   "chr/op_b_01_4c.aar",
+   "chr/op_b_01_5c.aar",
+   "chr/op_b_01_6c.aar",
+   "chr/op_b_01c.aar",
+   "chr/op_b_02_4c.aar",
+   "chr/op_b_02_5c.aar",
+   "chr/op_b_02_6c.aar",
+   "chr/op_b_02c.aar",
+   "chr/op_b_03_4c.aar",
+   "chr/op_b_03_5c.aar",
+   "chr/op_b_03_6c.aar",
+   "chr/op_b_03c.aar",
+   "chr/op_b_04_4c.aar",
+   "chr/op_b_04_5c.aar",
+   "chr/op_b_04c.aar",
+   "chr/op_b_05_4c.aar",
+   "chr/op_b_05_5c.aar",
+   "chr/op_b_05_6c.aar",
+   "chr/op_b_05c.aar",
+   "chr/op_b_06_4c.aar",
+   "chr/op_b_06_5c.aar",
+   "chr/op_b_06c.aar",
+   "chr/op_b_07_7c.aar",
+   "chr/op_b_07_8c.aar",
+   "chr/op_b_07c.aar",
+   "chr/op_b_08_6c.aar",
+   "chr/op_b_08c.aar",
+   "chr/pj_b_01_4c.aar",
+   "chr/pj_b_01_5c.aar",
+   "chr/pj_b_01_6c.aar",
+   "chr/pj_b_01c.aar",
+   "chr/rk_b_01_4c.aar",
+   "chr/rk_b_01_5c.aar",
+   "chr/rk_b_01_6c.aar",
+   "chr/rk_b_01c.aar",
+   "chr/sk_b_01_4c.aar",
+   "chr/sk_b_01_5c.aar",
+   "chr/sk_b_01c.aar",
+   "chr/sk_b_02_6c.aar",
+   "chr/sk_b_02c.aar",
+   "chr/sk_b_03_4c.aar",
+   "chr/sk_b_03_5c.aar",
+   "chr/sk_b_03c.aar",
+   "chr/ss_b_01_4c.aar",
+   "chr/ss_b_01_5c.aar",
+   "chr/ss_b_01_6c.aar",
+   "chr/ss_b_01_7c.aar",
+   "chr/ss_b_01c.aar",
+   "chr/ss_b_02_8c.aar",
+   "chr/ss_b_02c.aar",
+   "chr/tr_b_01_4c.aar",
+   "chr/tr_b_01_5c.aar",
+   "chr/tr_b_01_6c.aar",
+   "chr/tr_b_01c.aar",
+   "chr/yh_b_01_4c.aar",
+   "chr/yh_b_01_5c.aar",
+   "chr/yh_b_01_6c.aar",
+   "chr/yh_b_01c.aar",
+   "chr/yh_b_02_4c.aar",
+   "chr/yh_b_02_5c.aar",
+   "chr/yh_b_02c.aar",
+   "chr/yh_b_03_4c.aar",
+   "chr/yh_b_03_5c.aar",
+   "chr/yh_b_03c.aar",
+   "chr/yo_b_01_4c.aar",
+   "chr/yo_b_01_5c.aar",
+   "chr/yo_b_01_6c.aar",
+   "chr/yo_b_01c.aar",
+   "copyright/ganbari.atm",
+   "copyright/ganbari.dig",
+   "copyright/nintendo.atm",
+   "copyright/nintendo.dig",
+   "database/comic/comic.aar",
+   "database/database.aar",
+   "deck/Deck.aar",
+   "deckcheck/deckcheck.aar",
+   "deckselect/deck_base.atm",
+   "deckselect/deck_base.dig",
+   "deckselect/deckselect.aar",
+   "demo/demo.aar",
+   "dwc/utility.bin",
+   "efc/comm_a.aar",
+   "efc/comm_b.aar",
+   "efc/comm_c.aar",
+   "efc/comm_g.aar",
+   "ending/ending.aar",
+   "font/DSFont.aft",
+   "font/jskfont_q.aft",
+   "info/bg.atm",
+   "info/bg.dig",
+   "info/chr/chr.aar",
+   "info/info.aar",
+   "input/input.aar",
+   "item/item.aar",
+   "jpower/jpower.aar",
+   "jquiz/jquiz_pack.aar",
+   "opening/PassMark.bin",
+   "opening/opening.aar",
+   "opening/opening.vx",
+   "opening/pattern.bin",
+   "option/option.aar",
+   "result/result.aar",
+   "ruleselect/ruleselect.aar",
+   "sound/JS2_sound.sdat",
+   "stage/stage.aar",
+   "stageselect/stageselect.aar",
+   "title/title.aar",
+   "topmenu/topmenu.aar",
+   "vscall/vscall.aar"
+  ],
+  "only_in_stock": [],
+  "only_in_english": [],
+  "counts": {
+   "changed": 28,
+   "identical": 40,
+   "moved_only": 311,
+   "only_in_stock": 0,
+   "only_in_english": 0
+  }
+ },
+ "raw_diff_blocks": {
+  "block_size": 65536,
+  "ranges": [
+   {
+    "start": "0x0",
+    "end": "0x10000",
+    "bytes": 65536
+   },
+   {
+    "start": "0xA0000",
+    "end": "0x240000",
+    "bytes": 1703936
+   },
+   {
+    "start": "0x440000",
+    "end": "0x660000",
+    "bytes": 2228224
+   },
+   {
+    "start": "0x720000",
+    "end": "0x4000000",
+    "bytes": 59637760
+   }
+  ],
+  "coalesced_region_count": 4,
+  "total_bytes_differing_or_moved": 63635456,
+  "stock_longer_by": 1165416
+ }
+}

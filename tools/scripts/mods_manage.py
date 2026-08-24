@@ -209,6 +209,10 @@ def cmd_compose(args) -> int:
     blocks: list[str] = []
     total = 0
     included: list[str] = []
+    # Shared relocation cursor: packs whose payloads outgrow their in-place
+    # slack are relocated into the ROM's trailing free space; threading the
+    # cursor across packs keeps their relocated extents collision-free.
+    reloc_state: dict = {}
     for mod in iter_mods():
         if not mod.enabled:
             continue
@@ -217,7 +221,8 @@ def cmd_compose(args) -> int:
         if not mod.built_payloads():
             print(f"[!] {mod.id}: nothing to overlay (empty files/) — skipped")
             continue
-        overlays, notes = resolve_mod_files(rom_bytes, mod.files_dir)
+        overlays, notes = resolve_mod_files(rom_bytes, mod.files_dir,
+                                            reloc_state)
         if not overlays:
             print(f"[!] {mod.id}: no overlays resolved — skipped")
             continue

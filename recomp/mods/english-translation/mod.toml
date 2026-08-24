@@ -1,0 +1,22 @@
+# Mod pack manifest — see decomp/docs/MODS.md for the full reference.
+[manifest]
+id = "english-translation"
+name = "English Translation"
+version = "1.0.0"
+author = "JUS Decomp contributors (mod-form repackaging of the community English patch)"
+description = """
+Faithful, standalone reproduction of the Jump Ultimate Stars English fan
+translation as a runtime mod: the stock Japanese ROM is never modified.
+Replaces exactly the 28 NitroFS files the patch changes — text/string
+tables (komatxt, chr_b_t/chr_s_t, piece, rulemess, tutorials, ...), the
+font width tables (font/js8font.aft, font/jskfont.aft), and the
+InfoDeck / koma / jgalaxy / deckmake graphics archives. arm9, arm7, all
+14 overlays and the banner are byte-identical in the patched ROM, so no
+code patches are needed. Payloads that outgrow their in-place slack
+(e.g. InfoDeck.aar +78,820 B) are relocated into the ROM's trailing
+free space with FAT-entry overlays (see tools/scripts/mods_build.py).
+Payloads are rebuilt locally from your own rom/jus-en.nds via build.py;
+no game data is committed to the repository.
+"""
+# enabled = false to keep the pack installed but out of the composed config.
+enabled = true

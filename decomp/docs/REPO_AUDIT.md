@@ -39,7 +39,7 @@ public repo starts with one clean initial commit + tag `v0.1.0`.
 | `recomp/game.toml` | Base runner config (sha1 gate, eeprom save) | Required |
 | `recomp/game-mod.toml` | Mod base template (no overlays) | Compose base |
 | `recomp/apply_overlays_check.py` | Overlay pre-flight verifier | Generic CI-style check for mods |
-| `recomp/mods/koma-890-jodio/{mod.toml,src/custom01.png,build.py,README.md}` | Example mod pack | Source-only; payloads rebuilt from user's own extract (verified byte-identical to the validated mod) |
+| `recomp/mods/english-translation/{mod.toml,build.py,README.md}` | Bundled mod pack (English translation) | Source-only; payloads rebuilt from the user's own `rom/jus-en.nds` per `recomp/eng_diff.json` (metadata manifest) |
 | `patches/ndsrecomp/0001-*.patch` + README | Local runner modifications | **Required for a clean clone to work** (EEPROM save model, overlays, taps, debug server) |
 | `INSTRUCTIONS.md` | Project charter/methodology | Public contribution context; no personal data |
 | `README.md`, `CHANGELOG.md`, `LICENSE` | Release docs (MIT) | Standard public-repo files |

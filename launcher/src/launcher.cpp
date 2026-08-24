@@ -38,7 +38,7 @@
 // Constants
 // ---------------------------------------------------------------------------
 static const char*  APP_NAME       = "JUSDecomp";
-static const char*  APP_VERSION    = "0.2.0";
+static const char*  APP_VERSION    = "0.1.0";
 static const char*  STOCK_SHA1     = "ba58e20ee60eb81c33dcd4934a21271baa9f954a";
 static const long long STOCK_SIZE  = 0x4000000LL; // 64 MiB
 
@@ -50,10 +50,13 @@ enum {
     IDC_MODLIST = 200, IDC_LAYOUT_COMBO,
     IDC_SAVE_LABEL, IDC_IMPORT_SAVE, IDC_DELETE_SAVE,
     IDC_CTRL_LIST, IDC_CTRL_CONFIGURE, IDC_CTRL_RESET,
+    IDC_KB_CONFIGURE,
     IDC_OK, IDC_CANCEL,
     // capture dialog
     IDC_CAP_DEVICE = 300, IDC_CAP_START, IDC_CAP_SKIP, IDC_CAP_STATE,
     IDC_CAP_DONE,
+    // keyboard capture dialog
+    IDC_KB_STATE = 320, IDC_KB_SKIP, IDC_KB_RESET, IDC_KB_DONE,
     // rom progress
     IDC_PROG_TEXT = 400, IDC_PROG_BAR
 };
@@ -170,6 +173,10 @@ struct Settings {
     std::string display_layout = "stacked";
     std::string save_path;   // empty -> default under user dir
     std::vector<std::string> controller_mappings; // SDL2 mapping strings
+    // Keyboard bindings as "button:key" pairs ("a:J"); button is a DS button
+    // (a b select start right left up down r l x y), key is an SDL scancode
+    // name. Emitted to the run config as [[input.keyboard]] tables.
+    std::vector<std::string> keyboard_mappings;
 };
 
 struct Overlay { std::string offset; std::string file; };
@@ -200,6 +207,9 @@ static void load_settings() {
         for (const jz::Value& v : root.get_arr("controller_mappings"))
             if (v.t == jz::Value::Str)
                 g_settings.controller_mappings.push_back(v.s);
+        for (const jz::Value& v : root.get_arr("keyboard_mappings"))
+            if (v.t == jz::Value::Str)
+                g_settings.keyboard_mappings.push_back(v.s);
     } catch (const std::exception& e) {
         log_line("settings.json unreadable (%s) — starting with defaults", e.what());
     }
@@ -218,6 +228,10 @@ static void save_settings() {
     for (const auto& m : g_settings.controller_mappings)
         maps.a.push_back(jz::Value(m));
     root.o["controller_mappings"] = maps;
+    jz::Value kb = jz::Value::arr();
+    for (const auto& m : g_settings.keyboard_mappings)
+        kb.a.push_back(jz::Value(m));
+    root.o["keyboard_mappings"] = kb;
     ensure_dir(user_dir());
     write_text_file(g_settings_path(), root.dump(2));
     log_line("settings saved");
@@ -367,6 +381,17 @@ static std::string compose_run_config() {
             out += "offset = " + ov.offset + "\n";
             out += "file = \"" + ov.file + "\"\n";
         }
+    }
+    // user keyboard bindings ("button:key"); unlisted buttons keep the
+    // runner's built-in DS-emulator-convention defaults
+    for (const auto& m : g_settings.keyboard_mappings) {
+        size_t colon = m.find(':');
+        if (colon == std::string::npos || colon == 0 ||
+            colon + 1 >= m.size())
+            continue;
+        out += "\n[[input.keyboard]]\n";
+        out += "button = \"" + m.substr(0, colon) + "\"\n";
+        out += "key = \"" + m.substr(colon + 1) + "\"\n";
     }
     return out;
 }
@@ -1024,6 +1049,193 @@ static void open_capture_dialog(HWND parent) {
                     GetModuleHandleW(nullptr), nullptr);
 }
 
+// keyboard capture dialog ---------------------------------------------------
+// Walks the 12 DS buttons, capturing one host key each (Esc skips a button,
+// leaving the built-in default). Results are stored as "button:key" pairs in
+// settings.json and emitted to the run config as [[input.keyboard]] tables;
+// the runner applies them at startup (frontend.cpp key_bit remap).
+static const struct { const char* id; const wchar_t* label; } kKbButtons[] = {
+    {"a", L"A"}, {"b", L"B"}, {"select", L"Select"}, {"start", L"Start"},
+    {"right", L"Right"}, {"left", L"Left"}, {"up", L"Up"}, {"down", L"Down"},
+    {"r", L"R (right shoulder)"}, {"l", L"L (left shoulder)"},
+    {"x", L"X"}, {"y", L"Y"},
+};
+
+struct KbState {
+    int step = 0;
+    bool active = false;
+    std::string keys[12];
+};
+static KbState g_kb;
+static HWND g_kb_dlg = nullptr;
+
+// Win32 virtual-key -> SDL scancode name (what the runner parses).
+static std::string vk_to_sdl_key_name(WPARAM vk) {
+    if (vk >= 'A' && vk <= 'Z') return std::string(1, (char)vk);
+    if (vk >= '0' && vk <= '9') return std::string(1, (char)vk);
+    if (vk >= VK_NUMPAD0 && vk <= VK_NUMPAD9)
+        return "Keypad " + std::to_string((int)(vk - VK_NUMPAD0));
+    if (vk >= VK_F1 && vk <= VK_F12)
+        return "F" + std::to_string((int)(vk - VK_F1 + 1));
+    switch (vk) {
+        case VK_UP: return "Up";
+        case VK_DOWN: return "Down";
+        case VK_LEFT: return "Left";
+        case VK_RIGHT: return "Right";
+        case VK_RETURN: return "Return";
+        case VK_BACK: return "Backspace";
+        case VK_SPACE: return "Space";
+        case VK_TAB: return "Tab";
+        case VK_LSHIFT: return "Left Shift";
+        case VK_RSHIFT: return "Right Shift";
+        case VK_LCONTROL: return "Left Ctrl";
+        case VK_RCONTROL: return "Right Ctrl";
+        case VK_LMENU: return "Left Alt";
+        case VK_RMENU: return "Right Alt";
+        case VK_INSERT: return "Insert";
+        case VK_DELETE: return "Delete";
+        case VK_HOME: return "Home";
+        case VK_END: return "End";
+        case VK_PRIOR: return "PageUp";
+        case VK_NEXT: return "PageDown";
+        case VK_OEM_COMMA: return ",";
+        case VK_OEM_PERIOD: return ".";
+        case VK_OEM_MINUS: return "-";
+        case VK_OEM_PLUS: return "=";
+        case VK_OEM_1: return ";";
+        case VK_OEM_2: return "/";
+        case VK_OEM_3: return "`";
+        case VK_OEM_4: return "[";
+        case VK_OEM_5: return "\\";
+        case VK_OEM_6: return "]";
+        case VK_OEM_7: return "'";
+        default: return "";
+    }
+}
+
+static std::wstring kb_prompt(int step) {
+    if (step >= 12)
+        return L"Keyboard mapping saved! Close this window.";
+    return std::wstring(L"Press the key for [") + kKbButtons[step].label +
+           L"]\n(Esc = skip and keep the default for this button)";
+}
+
+static void kb_finish(HWND dlg) {
+    g_kb.active = false;
+    g_settings.keyboard_mappings.clear();
+    for (int i = 0; i < 12; i++) {
+        if (!g_kb.keys[i].empty())
+            g_settings.keyboard_mappings.push_back(
+                std::string(kKbButtons[i].id) + ":" + g_kb.keys[i]);
+    }
+    save_settings();
+    SetWindowTextW(GetDlgItem(dlg, IDC_KB_STATE),
+                   L"Keyboard mapping saved! Close this window.");
+}
+
+static void kb_advance(HWND dlg) {
+    g_kb.step++;
+    if (g_kb.step >= 12) {
+        kb_finish(dlg);
+        return;
+    }
+    SetWindowTextW(GetDlgItem(dlg, IDC_KB_STATE), kb_prompt(g_kb.step).c_str());
+}
+
+static LRESULT CALLBACK kb_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
+    switch (msg) {
+        case WM_CREATE: {
+            g_kb_dlg = hwnd;
+            HWND st = CreateWindowExW(
+                0, L"STATIC",
+                L"Map the keyboard: 12 buttons, one key each.",
+                WS_CHILD | WS_VISIBLE, 20, 15, 430, 40, hwnd,
+                (HMENU)IDC_KB_STATE, GetModuleHandleW(nullptr), nullptr);
+            SendMessageW(st, WM_SETFONT, (WPARAM)g_font, TRUE);
+            CreateWindowExW(0, L"BUTTON", L"Skip (Esc)",
+                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 340, 60,
+                            110, 24, hwnd, (HMENU)IDC_KB_SKIP,
+                            GetModuleHandleW(nullptr), nullptr);
+            CreateWindowExW(0, L"BUTTON", L"Reset to defaults",
+                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 20, 110,
+                            140, 24, hwnd, (HMENU)IDC_KB_RESET,
+                            GetModuleHandleW(nullptr), nullptr);
+            CreateWindowExW(0, L"BUTTON", L"Close",
+                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 360, 110,
+                            90, 24, hwnd, (HMENU)IDC_KB_DONE,
+                            GetModuleHandleW(nullptr), nullptr);
+            EnumChildWindows(hwnd, [](HWND c, LPARAM) {
+                SendMessageW(c, WM_SETFONT, (WPARAM)g_font, TRUE);
+                return TRUE;
+            }, 0);
+            g_kb = KbState{};
+            g_kb.active = true;
+            SetFocus(hwnd);
+            SetWindowTextW(GetDlgItem(hwnd, IDC_KB_STATE),
+                           kb_prompt(0).c_str());
+            break;
+        }
+        case WM_ACTIVATE:
+            if (g_kb.active && wp != WA_INACTIVE) SetFocus(hwnd);
+            break;
+        case WM_KEYDOWN:
+            if (!g_kb.active) break;
+            if (wp == VK_ESCAPE) {
+                kb_advance(hwnd);  // skip: keep the built-in default
+                break;
+            }
+            {
+                std::string name = vk_to_sdl_key_name(wp);
+                if (name.empty()) {
+                    SetWindowTextW(GetDlgItem(hwnd, IDC_KB_STATE),
+                                   L"That key can't be mapped — try another. "
+                                   L"(Esc = skip)");
+                    break;
+                }
+                g_kb.keys[g_kb.step] = name;
+                kb_advance(hwnd);
+            }
+            break;
+        case WM_COMMAND:
+            switch (LOWORD(wp)) {
+                case IDC_KB_SKIP:
+                    if (g_kb.active) kb_advance(hwnd);
+                    break;
+                case IDC_KB_RESET:
+                    g_settings.keyboard_mappings.clear();
+                    save_settings();
+                    g_kb.active = false;
+                    SetWindowTextW(GetDlgItem(hwnd, IDC_KB_STATE),
+                                   L"Keyboard defaults restored "
+                                   L"(Z/X = A/B, A/S = Y/X, Q/W = L/R, "
+                                   L"arrows, Backspace/Return = "
+                                   L"Select/Start).");
+                    break;
+                case IDC_KB_DONE:
+                    if (g_kb.active) kb_finish(hwnd);
+                    DestroyWindow(hwnd);
+                    break;
+            }
+            break;
+        case WM_CLOSE:
+            if (g_kb.active) kb_finish(hwnd);
+            DestroyWindow(hwnd);
+            break;
+        case WM_DESTROY:
+            g_kb_dlg = nullptr;
+            break;
+    }
+    return DefWindowProcW(hwnd, msg, wp, lp);
+}
+
+static void open_keyboard_dialog(HWND parent) {
+    if (g_kb_dlg) { SetForegroundWindow(g_kb_dlg); return; }
+    CreateWindowExW(0, L"JUSKbWnd", L"Keyboard setup",
+                    WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE,
+                    CW_USEDEFAULT, CW_USEDEFAULT, 480, 180, parent, nullptr,
+                    GetModuleHandleW(nullptr), nullptr);
+}
+
 // settings window ----------------------------------------------------------
 static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
     switch (msg) {
@@ -1090,6 +1302,15 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
                             150, 24, hwnd, (HMENU)IDC_CTRL_CONFIGURE,
                             GetModuleHandleW(nullptr), nullptr);
 
+            // keyboard
+            CreateWindowExW(0, L"STATIC", L"Keyboard", WS_CHILD | WS_VISIBLE,
+                            380, 120, 150, 18, hwnd, nullptr,
+                            GetModuleHandleW(nullptr), nullptr);
+            CreateWindowExW(0, L"BUTTON", L"Map keyboard...",
+                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 380, 140,
+                            150, 24, hwnd, (HMENU)IDC_KB_CONFIGURE,
+                            GetModuleHandleW(nullptr), nullptr);
+
             // save data
             CreateWindowExW(0, L"STATIC", L"Save data", WS_CHILD | WS_VISIBLE,
                             20, 200, 150, 18, hwnd, nullptr,
@@ -1131,6 +1352,9 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
                     break;
                 case IDC_CTRL_CONFIGURE:
                     open_capture_dialog(hwnd);
+                    break;
+                case IDC_KB_CONFIGURE:
+                    open_keyboard_dialog(hwnd);
                     break;
                 case IDC_IMPORT_SAVE:
                     import_save(hwnd);
@@ -1261,6 +1485,10 @@ static void register_classes(HINSTANCE inst) {
 
     wc.lpfnWndProc = capture_proc;
     wc.lpszClassName = L"JUSCaptureWnd";
+    RegisterClassW(&wc);
+
+    wc.lpfnWndProc = kb_proc;
+    wc.lpszClassName = L"JUSKbWnd";
     RegisterClassW(&wc);
 }
 

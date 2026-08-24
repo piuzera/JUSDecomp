@@ -10,10 +10,12 @@ ARM9/ARM7 banks, overlay promotion, melonDS-derived 3D/Wi-Fi, SDL host. The
 repository itself contains no game assets — you bring your own legally dumped
 ROM (sha1-gated).
 
-> **Status: v0.1.0** — playable proof-of-concept: full intro, in-game saves,
-> deck injection, arcade-stick input, and a working runtime mod system.
-> A beginner-friendly launcher (`launcher/`, release 0.2.0) is in development.
-> See [`decomp/docs/TODO.md`](decomp/docs/TODO.md) for scope and open items.
+> **Status: v0.1.0 (first public build)** — full game playable natively:
+> in-game saves, deck injection, arcade-stick + keyboard input (remappable in
+> the launcher), a beginner-friendly launcher, and a working runtime mod
+> system whose flagship pack is a faithful **English Translation** of the
+> game. See [`decomp/docs/TODO.md`](decomp/docs/TODO.md) for scope and open
+> items.
 
 ---
 
@@ -30,6 +32,17 @@ executable**:
    app (Settings), with everything saved between sessions.
 
 Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
+
+### Known issues (v0.1.0)
+
+- **FPS drops during the video intro** — the compressed intro movie is not
+  yet full speed on every machine; gameplay after the intro runs at full
+  speed.
+- **FPS drops on the deck builder** — the deck editor's heavy 2D compositing
+  can dip below full speed.
+- **Minor visual glitches on some stages** — scrolling background layers can
+  render buggy (split/misaligned elements) on certain levels.
+
 Everything below this point is for developers.
 
 ---
@@ -103,17 +116,20 @@ The stock ROM is never patched. Mod packs in [`recomp/mods/`](recomp/mods/)
 are turned into runtime overlay configs that shadow gamecard reads:
 
 ```cmd
-py tools\scripts\mods_manage.py list                       :: installed packs
-py tools\scripts\mods_manage.py enable  koma-890-jodio     :: example pack (default)
-py tools\scripts\mods_manage.py build   koma-890-jodio     :: build payloads from YOUR extract
-py tools\scripts\mods_manage.py compose                    :: write game-mod.generated.toml
-recomp\play_mod.cmd                                        :: play stock ROM + mods
+py tools\scripts\mods_manage.py list                        :: installed packs
+py tools\scripts\mods_manage.py enable  english-translation :: the bundled pack
+py tools\scripts\mods_manage.py build   english-translation :: needs rom\jus-en.nds (yours)
+py tools\scripts\mods_manage.py compose                     :: write game-mod.generated.toml
+recomp\play_mod.cmd                                         :: play stock ROM + mods
 ```
 
 Full documentation: [`decomp/docs/MODS.md`](decomp/docs/MODS.md)
 (pack format, manifest reference, build hooks, overlay rules, creating your
-own mods). The example pack `koma-890-jodio` adds a brand-new koma with
-custom art; see [`recomp/mods/koma-890-jodio/README.md`](recomp/mods/koma-890-jodio/README.md).
+own mods). The bundled pack **english-translation** reproduces the community
+English patch exactly (28 NitroFS files; no code changes — arm9/arm7/overlays
+are untouched); its payloads are rebuilt locally from your own patched ROM
+at `rom\jus-en.nds`, never committed. See
+[`recomp/mods/english-translation/README.md`](recomp/mods/english-translation/README.md).
 
 ## Repository layout
 

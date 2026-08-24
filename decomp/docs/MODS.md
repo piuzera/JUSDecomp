@@ -35,11 +35,11 @@ the stock ROM.
 py tools\scripts\mods_manage.py list
 
 :: 3. enable/disable a pack
-py tools\scripts\mods_manage.py enable  koma-890-jodio
-py tools\scripts\mods_manage.py disable koma-890-jodio
+py tools\scripts\mods_manage.py enable  english-translation
+py tools\scripts\mods_manage.py disable english-translation
 
 :: 4. build payloads from your extract + the pack's sources
-py tools\scripts\mods_manage.py build koma-890-jodio
+py tools\scripts\mods_manage.py build english-translation
 
 :: 5. compose the runtime config (enabled packs only)
 py tools\scripts\mods_manage.py compose
@@ -85,8 +85,9 @@ If present, `mods_manage.py build` executes `build(ctx)` with:
 | `ctx.rom` / `ctx.repo` | `rom/jus.nds` / repo root |
 | `ctx.run(cmd)` | run a subprocess from the repo root, checked |
 
-The hook may `import koma_append`, `import dtx4_mod`, etc. directly.
-Example: [`../../recomp/mods/koma-890-jodio/build.py`](../../recomp/mods/koma-890-jodio/build.py).
+The hook may `import koma_append`, `import dtx4_mod`, `import eng_diff`, etc.
+directly.
+Example: [`../../recomp/mods/english-translation/build.py`](../../recomp/mods/english-translation/build.py).
 
 Packs **without** `build.py` are "plain replacement" packs: their payloads are
 hand-made files placed directly under `files/` (e.g. a translation's text
@@ -97,6 +98,11 @@ binaries exported by your own tooling).
 - **NitroFS file replacement with growth** — a `files/bin/foo.bin` payload may
   be any size up to the slack before the next FAT extent; the resolver emits
   an extra FAT-entry overlay (`_fat_<id>.bin`) so the game sees the new size.
+  If the growth exceeds the slack, the resolver **relocates** the payload into
+  the ROM's trailing free space (the padding after the last FAT extent on
+  stock dumps) and repoints the FAT entry there — same mechanism, no manual
+  step. The relocation cursor is shared across packs during `compose`, so
+  relocated extents never collide.
 - **Archive-internal members must keep their size** — a
   `files/<dir>/<name>.aar/<member>` payload replaces the ALAR3 member
   byte-for-byte at its resolved ROM offset. Growth inside an archive requires
@@ -110,7 +116,7 @@ binaries exported by your own tooling).
 
 ```cmd
 mkdir recomp\mods\my-mod
-copy recomp\mods\koma-890-jodio\mod.toml recomp\mods\my-mod\mod.toml
+copy recomp\mods\english-translation\mod.toml recomp\mods\my-mod\mod.toml
 :: edit id/name/description; keep enabled = false while developing
 ```
 
@@ -146,7 +152,7 @@ resolver.
 |---|---|
 | `rom/jus.nds not found` | Copy your legally dumped ROM to `rom/jus.nds` |
 | `original content not found in ROM` | Your ROM differs from the stock dump (sha1 gate) or `extract/` is missing |
-| `growth exceeds slack` | Shrink the payload or relocate content (see `NEW_KOMA.md` §9) |
+| `growth exceeds slack` | Now handled automatically by relocation into the trailing free space; it only fails if that space is exhausted (shrink the payload or drop other packs) |
 | `archive members must keep the same size` | Rebuild the archive instead of growing a member |
 | `no 'enabled = ...' line` | The pack's `mod.toml` lacks the line the manager toggles |
 | `no payloads and no build.py` | Add `files/` content or a `build.py` hook |
@@ -155,7 +161,8 @@ resolver.
 
 - Windows/runner only (no zip distribution yet — packs are directories;
   zip install is a known follow-up, see `TODO.md`).
-- Growth is bounded by NitroFS slack; growing many files needs
+- Growth beyond in-place slack is served by relocation into the trailing
+  free space (see §4); growing beyond *that* (hundreds of MB) would need
   `tools/scripts/nitrofs_grow.py` (advanced).
 - Mods load at gamecard-read time; RAM-only patches (per-screen injections)
   are out of scope for packs today.
