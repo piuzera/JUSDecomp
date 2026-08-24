@@ -113,6 +113,7 @@ build/
 target/
 build-mingw/
 dist/
+launcher/build/
 *.o
 *.elf
 *.bin.tmp

@@ -12,7 +12,25 @@ ROM (sha1-gated).
 
 > **Status: v0.1.0** — playable proof-of-concept: full intro, in-game saves,
 > deck injection, arcade-stick input, and a working runtime mod system.
+> A beginner-friendly launcher (`launcher/`, release 0.2.0) is in development.
 > See [`decomp/docs/TODO.md`](decomp/docs/TODO.md) for scope and open items.
+
+---
+
+## For players (no programming required)
+
+The launcher release turns the project into a **single self-contained
+executable**:
+
+1. Download the `JUSDecomp` release folder (or build it with
+   `py tools/scripts/package_release.py`).
+2. Run `JUSDecomp.exe`, pick your own legally dumped ROM in the file dialog —
+   it is verified automatically.
+3. Play. Mods toggle on/off and controller buttons are configured inside the
+   app (Settings), with everything saved between sessions.
+
+Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
+Everything below this point is for developers.
 
 ---
 

@@ -4,6 +4,22 @@ All notable changes to this project are documented here. Version numbers track
 the public releases; internal research milestones before v0.1.0 are summarized
 below from the project's working history.
 
+## Unreleased (0.2.0 in development)
+
+- **Beginner-friendly launcher** (`launcher/`): a single GUI executable that
+  wraps the runner — ROM selection via file dialog with automatic SHA-1
+  verification and friendly error messages, one-click Play, in-app settings.
+- **In-app mod management**: bundled mod packs ship prebuilt; Settings → Mods
+  toggles them on/off, persisted across sessions.
+- **In-app controller setup**: guided button-capture dialog (SDL2) writes
+  device mappings to the SDL gamecontroller database automatically.
+- **Settings persistence** in `%APPDATA%\JUSDecomp\settings.json`
+  (portable mode supported), save-file import/delete, session logging.
+- **Packaging**: `tools/scripts/package_release.py` assembles the
+  self-contained `dist/JUSDecomp/` bundle (launcher + runner + DLLs + bios +
+  prebuilt mods + player guide).
+- `docs/USER_GUIDE.md` player guide; README "For players" section.
+
 ## 0.1.0 — 2026-08-24 (first public release)
 
 First public release: repository cleaned for GitHub publishing, MIT license,
