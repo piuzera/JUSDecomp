@@ -1,0 +1,267 @@
+[19:07:04] connected; phase=wait argv=['wait', '--sec', '20']
+[19:07:04] ping: {'pong': True}
+[19:07:24] slept 20.0s
+[19:07:24] connected; phase=shot argv=['shot', '--tag', 's1-early']
+[19:07:24] screenshot savebug-shot-s1-early-A.png (256x192, mean=255.0)
+[19:07:24] screenshot savebug-shot-s1-early-B.png (256x192, mean=255.0)
+[19:07:24] cart_save_info: {'size': 65536, 'dirty': 0}
+[19:07:46] connected; phase=wait argv=['wait', '--sec', '45']
+[19:07:46] ping: {'pong': True}
+[19:08:31] slept 45.0s
+[19:08:31] connected; phase=shot argv=['shot', '--tag', 's1-mid']
+[19:08:31] screenshot savebug-shot-s1-mid-A.png (256x192, mean=255.0)
+[19:08:31] screenshot savebug-shot-s1-mid-B.png (256x192, mean=255.0)
+[19:08:31] cart_save_info: {'size': 65536, 'dirty': 0}
+[19:09:30] connected; phase=runrounds argv=['runrounds', '--count', '2000']
+[19:09:30] run_rounds(2000): {'rounds': 2000, 'cycles': [238081, 119042], 'counts': {'vblank9': 0, 'vblank7': 0, 'ipcsync_w': 0, 'fifo9to7': 0, 'fifo7to9': 0, 'dma_done': 0, 'timer_ovf': 0, 'spi_w': 0, 'irq9': 0, 'irq7': 0, 'soundbias_w': 0, 'soundbias_first': 0, 'soundbias_last': 0, 'insn9': 87083, 'insn7': 16232, 'cyc9': 238081, 'cyc7': 119042}}
+[19:09:30] connected; phase=cycles argv=['cycles']
+[19:09:30] event_counts: {'vblank9': 0, 'vblank7': 0, 'ipcsync_w': 0, 'fifo9to7': 0, 'fifo7to9': 0, 'dma_done': 0, 'timer_ovf': 0, 'spi_w': 0, 'irq9': 0, 'irq7': 0, 'soundbias_w': 0, 'soundbias_first': 0, 'soundbias_last': 0, 'insn9': 87083, 'insn7': 16232, 'cyc9': 238081, 'cyc7': 119042}
+[19:11:48] connected; phase=frames argv=['frames', '--n', '120', '--tag', 's1-f120']
+[19:12:03] frames: now 120 vblanks; save={'size': 65536, 'dirty': 0} irq9=848 ipc=158
+[19:12:03] screenshot savebug-shot-s1-f120-A.png (256x192, mean=242.4)
+[19:12:03] screenshot savebug-shot-s1-f120-B.png (256x192, mean=245.4)
+[19:12:27] connected; phase=scanram argv=['scanram']
+[19:12:27] JSSGXu in ARM9 RAM at: ['0x2072a50', '0x209244c', '0x20aedc1', '0x21de761', '0x21de861', '0x21e1861', '0x21e1961', '0x21e1a61', '0x21e1b61', '0x21e1c61', '0x21e1d61', '0x21e1e61', '0x21e1f61', '0x21e2061', '0x21e2161', '0x21e2261', '0x21e2361', '0x21e2461', '0x21e2561', '0x21e2661', '0x21e2761', '0x21e2861', '0x21e2961', '0x21e2a61', '0x21e2b61', '0x21e2c61', '0x21e2d61', '0x21e2e61', '0x21e2f61', '0x21e3061', '0x21e3161', '0x21e3261', '0x21e3361', '0x21e3461', '0x21e3561', '0x21e3661', '0x21e3761', '0x21e3861', '0x21e3961', '0x21e3a61', '0x21e3b61', '0x21e3c61', '0x21e3d61', '0x21e3e61', '0x21e3f61', '0x21e4061', '0x21e4161', '0x21e4261', '0x21e4361', '0x21e4461', '0x21e4561', '0x21e4661', '0x21e4761', '0x21e4861', '0x21e4961', '0x21e4a61', '0x21e4b61', '0x21e4c61', '0x21e4d61', '0x21e4e61', '0x21e4f61', '0x21e5061', '0x21e5161', '0x21e5261', '0x21e5361', '0x21e5461', '0x21e5561', '0x21e5661', '0x21e5761', '0x21e5861', '0x21e5961', '0x21e5a61', '0x21e5b61', '0x21e5ce1', '0x21e5de1', '0x21e5ee1', '0x21e5fe1', '0x21e60e1', '0x21e61e1', '0x21e62e1', '0x21e63e1', '0x21e64e1', '0x21e65e1', '0x21e66e1', '0x21e67e1', '0x21e68e1', '0x21e69e1', '0x21e6ae1', '0x21e6be1', '0x21e6ce1', '0x21e6de1', '0x21e6ee1', '0x21e6fe1', '0x21e70e1', '0x21e71e1', '0x21e72e1', '0x21e73e1', '0x21e74e1', '0x21e75e1', '0x21e76e1', '0x21e77e1', '0x21e78e1', '0x21e79e1', '0x21e7ae1', '0x21e7be1', '0x21e7ce1', '0x21e7de1', '0x21e7ee1', '0x21e7fe1', '0x21e80e1', '0x21e81e1', '0x21e82e1', '0x21e83e1', '0x21e84e1', '0x21e85e1', '0x21e86e1', '0x21e87e1', '0x21e88e1', '0x21e89e1', '0x21e8ae1', '0x21e8be1', '0x21e8ce1', '0x21e8de1', '0x21e8ee1', '0x21e8fe1', '0x21e90e1', '0x21e91e1', '0x21e92e1', '0x21e93e1', '0x21e94e1', '0x21e95e1', '0x21e96e1', '0x21e97e1', '0x21e98e1', '0x21e99e1', '0x21e9ae1', '0x21e9be1', '0x21e9ce1', '0x21e9de1', '0x21e9ee1', '0x21e9fe1', '0x21ea0e1', '0x21ea1e1', '0x21ea2e1', '0x21ea3e1', '0x21ea4e1', '0x21ea5e1', '0x21ea6e1', '0x21ea7e1', '0x21ea8e1', '0x21ea9e1', '0x21eaae1', '0x21eabe1', '0x21eace1', '0x21eade1', '0x21eaee1', '0x21eafe1', '0x21eb0e1', '0x21eb1e1', '0x21eb2e1', '0x21eb3e1', '0x21eb4e1', '0x21eb5e1', '0x21eb6e1', '0x21eb7e1', '0x21eb8e1', '0x21eb9e1', '0x21ebae1', '0x21ebbe1', '0x21ebce1', '0x21ebde1', '0x21ebee1', '0x21ebfe1', '0x21ec0e1', '0x21ec1e1', '0x21ec2e1', '0x21ec3e1', '0x21ec4e1', '0x21ec5e1', '0x21ec6e1', '0x21ec7e1', '0x21ec8e1', '0x21ec9e1', '0x21ecae1', '0x21ecbe1', '0x21ecce1', '0x21ecde1', '0x21ecee1', '0x21ecfe1', '0x21ed0e1']
+[19:12:27] import HMAC signature at RAM 0x20aedd1
+[19:12:27] import HMAC signature at RAM 0x21de671
+[19:12:27] import HMAC signature at RAM 0x21de771
+[19:12:27] import HMAC signature at RAM 0x21e1871
+[19:12:27] import HMAC signature at RAM 0x21e1971
+[19:12:27] import HMAC signature at RAM 0x21e1a71
+[19:12:27] import HMAC signature at RAM 0x21e1b71
+[19:12:27] import HMAC signature at RAM 0x21e1c71
+[19:12:27] import HMAC signature at RAM 0x21e1d71
+[19:12:27] import HMAC signature at RAM 0x21e1e71
+[19:12:27] import HMAC signature at RAM 0x21e1f71
+[19:12:27] import HMAC signature at RAM 0x21e2071
+[19:12:27] import HMAC signature at RAM 0x21e2171
+[19:12:27] import HMAC signature at RAM 0x21e2271
+[19:12:27] import HMAC signature at RAM 0x21e2371
+[19:12:27] import HMAC signature at RAM 0x21e2471
+[19:12:27] import HMAC signature at RAM 0x21e2571
+[19:12:27] import HMAC signature at RAM 0x21e2671
+[19:12:27] import HMAC signature at RAM 0x21e2771
+[19:12:27] import HMAC signature at RAM 0x21e2871
+[19:12:27] import HMAC signature at RAM 0x21e2971
+[19:12:27] import HMAC signature at RAM 0x21e2a71
+[19:12:27] import HMAC signature at RAM 0x21e2b71
+[19:12:27] import HMAC signature at RAM 0x21e2c71
+[19:12:27] import HMAC signature at RAM 0x21e2d71
+[19:12:27] import HMAC signature at RAM 0x21e2e71
+[19:12:27] import HMAC signature at RAM 0x21e2f71
+[19:12:27] import HMAC signature at RAM 0x21e3071
+[19:12:27] import HMAC signature at RAM 0x21e3171
+[19:12:27] import HMAC signature at RAM 0x21e3271
+[19:12:27] import HMAC signature at RAM 0x21e3371
+[19:12:27] import HMAC signature at RAM 0x21e3471
+[19:12:27] import HMAC signature at RAM 0x21e3571
+[19:12:27] import HMAC signature at RAM 0x21e3671
+[19:12:27] import HMAC signature at RAM 0x21e3771
+[19:12:27] import HMAC signature at RAM 0x21e3871
+[19:12:27] import HMAC signature at RAM 0x21e3971
+[19:12:27] import HMAC signature at RAM 0x21e3a71
+[19:12:27] import HMAC signature at RAM 0x21e3b71
+[19:12:27] import HMAC signature at RAM 0x21e3c71
+[19:12:27] import HMAC signature at RAM 0x21e3d71
+[19:12:27] import HMAC signature at RAM 0x21e3e71
+[19:12:27] import HMAC signature at RAM 0x21e3f71
+[19:12:27] import HMAC signature at RAM 0x21e4071
+[19:12:27] import HMAC signature at RAM 0x21e4171
+[19:12:27] import HMAC signature at RAM 0x21e4271
+[19:12:27] import HMAC signature at RAM 0x21e4371
+[19:12:27] import HMAC signature at RAM 0x21e4471
+[19:12:27] import HMAC signature at RAM 0x21e4571
+[19:12:27] import HMAC signature at RAM 0x21e4671
+[19:12:27] import HMAC signature at RAM 0x21e4771
+[19:12:27] import HMAC signature at RAM 0x21e4871
+[19:12:27] import HMAC signature at RAM 0x21e4971
+[19:12:27] import HMAC signature at RAM 0x21e4a71
+[19:12:27] import HMAC signature at RAM 0x21e4b71
+[19:12:27] import HMAC signature at RAM 0x21e4c71
+[19:12:27] import HMAC signature at RAM 0x21e4d71
+[19:12:27] import HMAC signature at RAM 0x21e4e71
+[19:12:27] import HMAC signature at RAM 0x21e4f71
+[19:12:27] import HMAC signature at RAM 0x21e5071
+[19:12:27] import HMAC signature at RAM 0x21e5171
+[19:12:27] import HMAC signature at RAM 0x21e5271
+[19:12:27] import HMAC signature at RAM 0x21e5371
+[19:12:27] import HMAC signature at RAM 0x21e5471
+[19:12:27] import HMAC signature at RAM 0x21e5571
+[19:12:27] import HMAC signature at RAM 0x21e5671
+[19:12:27] import HMAC signature at RAM 0x21e5771
+[19:12:27] import HMAC signature at RAM 0x21e5871
+[19:12:27] import HMAC signature at RAM 0x21e5971
+[19:12:27] import HMAC signature at RAM 0x21e5a71
+[19:12:27] import HMAC signature at RAM 0x21e5b71
+[19:12:27] import HMAC signature at RAM 0x21e5bf1
+[19:12:27] import HMAC signature at RAM 0x21e5cf1
+[19:12:27] import HMAC signature at RAM 0x21e5df1
+[19:12:27] import HMAC signature at RAM 0x21e5ef1
+[19:12:27] import HMAC signature at RAM 0x21e5ff1
+[19:12:27] import HMAC signature at RAM 0x21e60f1
+[19:12:27] import HMAC signature at RAM 0x21e61f1
+[19:12:27] import HMAC signature at RAM 0x21e62f1
+[19:12:27] import HMAC signature at RAM 0x21e63f1
+[19:12:27] import HMAC signature at RAM 0x21e64f1
+[19:12:27] import HMAC signature at RAM 0x21e65f1
+[19:12:27] import HMAC signature at RAM 0x21e66f1
+[19:12:27] import HMAC signature at RAM 0x21e67f1
+[19:12:27] import HMAC signature at RAM 0x21e68f1
+[19:12:27] import HMAC signature at RAM 0x21e69f1
+[19:12:27] import HMAC signature at RAM 0x21e6af1
+[19:12:27] import HMAC signature at RAM 0x21e6bf1
+[19:12:27] import HMAC signature at RAM 0x21e6cf1
+[19:12:27] import HMAC signature at RAM 0x21e6df1
+[19:12:27] import HMAC signature at RAM 0x21e6ef1
+[19:12:27] import HMAC signature at RAM 0x21e6ff1
+[19:12:27] import HMAC signature at RAM 0x21e70f1
+[19:12:27] import HMAC signature at RAM 0x21e71f1
+[19:12:27] import HMAC signature at RAM 0x21e72f1
+[19:12:27] import HMAC signature at RAM 0x21e73f1
+[19:12:27] import HMAC signature at RAM 0x21e74f1
+[19:12:27] import HMAC signature at RAM 0x21e75f1
+[19:12:27] import HMAC signature at RAM 0x21e76f1
+[19:12:27] import HMAC signature at RAM 0x21e77f1
+[19:12:27] import HMAC signature at RAM 0x21e78f1
+[19:12:27] import HMAC signature at RAM 0x21e79f1
+[19:12:27] import HMAC signature at RAM 0x21e7af1
+[19:12:27] import HMAC signature at RAM 0x21e7bf1
+[19:12:27] import HMAC signature at RAM 0x21e7cf1
+[19:12:27] import HMAC signature at RAM 0x21e7df1
+[19:12:27] import HMAC signature at RAM 0x21e7ef1
+[19:12:27] import HMAC signature at RAM 0x21e7ff1
+[19:12:27] import HMAC signature at RAM 0x21e80f1
+[19:12:27] import HMAC signature at RAM 0x21e81f1
+[19:12:27] import HMAC signature at RAM 0x21e82f1
+[19:12:27] import HMAC signature at RAM 0x21e83f1
+[19:12:27] import HMAC signature at RAM 0x21e84f1
+[19:12:27] import HMAC signature at RAM 0x21e85f1
+[19:12:27] import HMAC signature at RAM 0x21e86f1
+[19:12:27] import HMAC signature at RAM 0x21e87f1
+[19:12:27] import HMAC signature at RAM 0x21e88f1
+[19:12:27] import HMAC signature at RAM 0x21e89f1
+[19:12:27] import HMAC signature at RAM 0x21e8af1
+[19:12:27] import HMAC signature at RAM 0x21e8bf1
+[19:12:27] import HMAC signature at RAM 0x21e8cf1
+[19:12:27] import HMAC signature at RAM 0x21e8df1
+[19:12:27] import HMAC signature at RAM 0x21e8ef1
+[19:12:27] import HMAC signature at RAM 0x21e8ff1
+[19:12:27] import HMAC signature at RAM 0x21e90f1
+[19:12:27] import HMAC signature at RAM 0x21e91f1
+[19:12:27] import HMAC signature at RAM 0x21e92f1
+[19:12:27] import HMAC signature at RAM 0x21e93f1
+[19:12:27] import HMAC signature at RAM 0x21e94f1
+[19:12:27] import HMAC signature at RAM 0x21e95f1
+[19:12:27] import HMAC signature at RAM 0x21e96f1
+[19:12:27] import HMAC signature at RAM 0x21e97f1
+[19:12:27] import HMAC signature at RAM 0x21e98f1
+[19:12:27] import HMAC signature at RAM 0x21e99f1
+[19:12:27] import HMAC signature at RAM 0x21e9af1
+[19:12:27] import HMAC signature at RAM 0x21e9bf1
+[19:12:27] import HMAC signature at RAM 0x21e9cf1
+[19:12:27] import HMAC signature at RAM 0x21e9df1
+[19:12:27] import HMAC signature at RAM 0x21e9ef1
+[19:12:27] import HMAC signature at RAM 0x21e9ff1
+[19:12:27] import HMAC signature at RAM 0x21ea0f1
+[19:12:27] import HMAC signature at RAM 0x21ea1f1
+[19:12:27] import HMAC signature at RAM 0x21ea2f1
+[19:12:27] import HMAC signature at RAM 0x21ea3f1
+[19:12:27] import HMAC signature at RAM 0x21ea4f1
+[19:12:27] import HMAC signature at RAM 0x21ea5f1
+[19:12:27] import HMAC signature at RAM 0x21ea6f1
+[19:12:27] import HMAC signature at RAM 0x21ea7f1
+[19:12:27] import HMAC signature at RAM 0x21ea8f1
+[19:12:27] import HMAC signature at RAM 0x21ea9f1
+[19:12:27] import HMAC signature at RAM 0x21eaaf1
+[19:12:27] import HMAC signature at RAM 0x21eabf1
+[19:12:27] import HMAC signature at RAM 0x21eacf1
+[19:12:27] import HMAC signature at RAM 0x21eadf1
+[19:12:27] import HMAC signature at RAM 0x21eaef1
+[19:12:27] import HMAC signature at RAM 0x21eaff1
+[19:12:27] import HMAC signature at RAM 0x21eb0f1
+[19:12:27] import HMAC signature at RAM 0x21eb1f1
+[19:12:27] import HMAC signature at RAM 0x21eb2f1
+[19:12:27] import HMAC signature at RAM 0x21eb3f1
+[19:12:27] import HMAC signature at RAM 0x21eb4f1
+[19:12:27] import HMAC signature at RAM 0x21eb5f1
+[19:12:27] import HMAC signature at RAM 0x21eb6f1
+[19:12:27] import HMAC signature at RAM 0x21eb7f1
+[19:12:27] import HMAC signature at RAM 0x21eb8f1
+[19:12:27] import HMAC signature at RAM 0x21eb9f1
+[19:12:27] import HMAC signature at RAM 0x21ebaf1
+[19:12:27] import HMAC signature at RAM 0x21ebbf1
+[19:12:27] import HMAC signature at RAM 0x21ebcf1
+[19:12:27] import HMAC signature at RAM 0x21ebdf1
+[19:12:27] import HMAC signature at RAM 0x21ebef1
+[19:12:27] import HMAC signature at RAM 0x21ebff1
+[19:12:27] import HMAC signature at RAM 0x21ec0f1
+[19:12:27] import HMAC signature at RAM 0x21ec1f1
+[19:12:27] import HMAC signature at RAM 0x21ec2f1
+[19:12:27] import HMAC signature at RAM 0x21ec3f1
+[19:12:27] import HMAC signature at RAM 0x21ec4f1
+[19:12:27] import HMAC signature at RAM 0x21ec5f1
+[19:12:27] import HMAC signature at RAM 0x21ec6f1
+[19:12:27] import HMAC signature at RAM 0x21ec7f1
+[19:12:27] import HMAC signature at RAM 0x21ec8f1
+[19:12:27] import HMAC signature at RAM 0x21ec9f1
+[19:12:27] import HMAC signature at RAM 0x21ecaf1
+[19:12:27] import HMAC signature at RAM 0x21ecbf1
+[19:12:27] import HMAC signature at RAM 0x21eccf1
+[19:12:27] import HMAC signature at RAM 0x21ecdf1
+[19:12:27] import HMAC signature at RAM 0x21ecef1
+[19:12:27] import HMAC signature at RAM 0x21ecff1
+[19:12:27] import HMAC signature at RAM 0x21ed0f1
+[19:12:27] RAM scan blob saved (4194304 bytes)
+[19:13:25] connected; phase=mem argv=['mem', '--addr', '0x020AED80', '--len', '0x100']
+[19:13:25] 020AED80  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AED90  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEDA0  00 00 00 00 e4 ec 0a 02 04 00 00 00 00 00 00 00
+[19:13:25] 020AEDB0  00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEDC0  00 4a 53 53 47 58 75 00 00 40 00 00 00 45 0f 00
+[19:13:25] 020AEDD0  00 b4 32 66 71 fa c6 cf 97 00 00 00 00 00 00 00
+[19:13:25] 020AEDE0  00 00 00 00 00 00 00 00 00 00 00 00 00 4a 55 4a
+[19:13:25] 020AEDF0  41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEE00  00 00 00 00 00 e4 a6 17 38 00 00 00 00 00 00 00
+[19:13:25] 020AEE10  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEE20  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEE30  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEE40  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEE50  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEE60  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 020AEE70  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] connected; phase=mem argv=['mem', '--addr', '0x02092420', '--len', '0xC0']
+[19:13:25] 02092420  30 7f 30 7f 05 06 07 08 09 0a 0b 0c 1b 1c 1d 1e
+[19:13:25] 02092430  00 01 02 00 01 01 03 03 05 05 06 08 08 00 00 00
+[19:13:25] 02092440  00 01 00 01 02 02 06 02 03 03 07 03 4a 53 53 47
+[19:13:25] 02092450  58 75 00 00 83 66 83 62 83 4c 00 00 00 00 00 00
+[19:13:25] 02092460  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 02092470  00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f
+[19:13:25] 02092480  10 11 12 13 14 15 16 17 18 19 1a 1b 1c 1d 1e 1f
+[19:13:25] 02092490  20 21 22 23 24 25 26 27 28 29 2a 00 00 00 00 01
+[19:13:25] 020924A0  02 03 04 05 00 00 00 00 00 00 00 00 20 00 00 00
+[19:13:25] 020924B0  2c e9 09 02 00 c1 05 00 d4 ef 09 02 00 c2 05 00
+[19:13:25] 020924C0  3c e9 09 02 00 c3 05 00 54 e9 09 02 00 c4 05 00
+[19:13:25] 020924D0  74 e9 09 02 00 c5 05 00 54 f0 09 02 00 c6 05 00
+[19:13:25] connected; phase=mem argv=['mem', '--addr', '0x021DE700', '--len', '0x120']
+[19:13:25] 021DE700  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE710  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE720  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE730  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE740  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE750  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE760  00 4a 53 53 47 58 75 00 00 40 00 00 00 45 0f 00
+[19:13:25] 021DE770  00 b4 32 66 71 fa c6 cf 97 00 00 00 00 00 00 00
+[19:13:25] 021DE780  00 00 00 00 00 00 00 00 00 00 00 00 00 4a 55 4a
+[19:13:25] 021DE790  41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE7A0  00 00 00 00 00 e4 a6 17 38 00 00 00 00 00 00 00
+[19:13:25] 021DE7B0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE7C0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE7D0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE7E0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE7F0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE800  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:13:25] 021DE810  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[19:29:19] connected; phase=exit argv=['exit']
+[19:29:19] frontend_exit: {'requested': 0}
+[20:27:20] screenshot savebug-shot-b8zero-A.png (256x192, mean=255.0)
+[20:27:20] screenshot savebug-shot-b8zero-B.png (256x192, mean=255.0)

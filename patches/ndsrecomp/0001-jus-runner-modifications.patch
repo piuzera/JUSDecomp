@@ -1,0 +1,1052 @@
+diff --git a/recompiler/armv4t/interpreter.cpp b/recompiler/armv4t/interpreter.cpp
+index 84e613d..092c4b4 100644
+--- a/recompiler/armv4t/interpreter.cpp
++++ b/recompiler/armv4t/interpreter.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include "interpreter.h"
+ 
++#include <bit>
+ #include <cstdint>
+ 
+ #include "pipeline_semantics.h"
+@@ -783,7 +784,7 @@ Interpreter::Result Interpreter::step(CPUState& cpu, Bus& bus, const Instr& i,
+         case IrOp::LDM: case IrOp::STM: {
+             uint32_t base = cpu.R[i.block.rn];
+             uint16_t list = i.block.reg_list;
+-            int n = __builtin_popcount(list);
++            int n = std::popcount(list);
+             if (n == 0) {
+                 uint32_t addr;
+                 if (i.block.add) {
+diff --git a/runner/CMakeLists.txt b/runner/CMakeLists.txt
+index 81c98af..5e51f2d 100644
+--- a/runner/CMakeLists.txt
++++ b/runner/CMakeLists.txt
+@@ -156,6 +156,12 @@ target_include_directories(nds_banks PRIVATE
+     ${CMAKE_CURRENT_SOURCE_DIR}/../recompiler/armv4t
+     ${NDS_SM64DS_BANK_DIR}
+     ${TITLE_GROUP_DIRS})
++if(MSVC)
++    # MSVC: suppress C4101 (unreferenced local) / C4189 (initialized but unused).
++    set(GENERATED_TU_WARN_OPTS "/wd4101;/wd4189")
++else()
++    set(GENERATED_TU_WARN_OPTS "-Wno-unused-variable;-Wno-unused-but-set-variable")
++endif()
+ set_source_files_properties(
+     ${GEN}/arm9_bios.c ${GEN}/arm9_bios_dispatch.c
+     ${GEN}/arm7_bios.c ${GEN}/arm7_bios_dispatch.c
+@@ -165,7 +171,7 @@ set_source_files_properties(
+     ${FW_BANK_DISPATCH}
+     ${SM64DS_BANK_SOURCES}
+     ${TITLE_BANK_SOURCES}
+-    PROPERTIES COMPILE_OPTIONS "-Wno-unused-variable;-Wno-unused-but-set-variable")
++    PROPERTIES COMPILE_OPTIONS "${GENERATED_TU_WARN_OPTS}")
+ if(SM64DS_BANK_SOURCES AND NOT MSVC)
+     # Game banks are on the hot path (the ARM7 runtime-RAM bank carries the
+     # sound engine); boot correctness is gate-proven (G1/G2/G3), so compile
+@@ -511,6 +517,10 @@ if(NDS_ENABLE_COMPUTE_RENDERER)
+     endif()
+ endif()
+ target_link_libraries(nds_runner PRIVATE nds_banks nds_support nds_armv4t slirp)
++if(WIN32)
++    # windows.h min/max macros break std::max/std::min/std::numeric_limits.
++    target_compile_definitions(nds_runner PRIVATE NOMINMAX)
++endif()
+ if(NDS_BOOTSTRAP_FIRMWARE)
+     target_compile_definitions(nds_runner PRIVATE NDS_BOOTSTRAP_FIRMWARE=1)
+ elseif(EXISTS "${GEN}/fw_arm9_calibration_save_dispatch.c")
+diff --git a/runner/src/bus.cpp b/runner/src/bus.cpp
+index 57c9a47..f7897af 100644
+--- a/runner/src/bus.cpp
++++ b/runner/src/bus.cpp
+@@ -748,6 +748,17 @@ uint8_t bus_debug_read8(int cpu, uint32_t addr) {
+     return v;
+ }
+ 
++// Debug-server write path. Mirrors bus_debug_read8 but routes through the
++// guest write machinery (bus_write_u8_slow) so RAM writes acquire correct
++// write provenance (note_ram_write) and the always-on bus ring sees them —
++// never a raw host poke. Used by the deck-injection tooling.
++void bus_debug_write8(int cpu, uint32_t addr, uint8_t val) {
++    NdsCpu old = g_nds_active;
++    g_nds_active = (cpu == 7) ? NDS_ARM7 : NDS_ARM9;
++    bus_write_u8_slow(addr, val);
++    g_nds_active = old;
++}
++
+ uint32_t bus_debug_watch_copy(BusWatchEvent* out, uint32_t max_entries) {
+     if (!out || max_entries == 0) return 0;
+     uint32_t count = g_watch_count;
+diff --git a/runner/src/cart_backup.cpp b/runner/src/cart_backup.cpp
+index f893433..9388099 100644
+--- a/runner/src/cart_backup.cpp
++++ b/runner/src/cart_backup.cpp
+@@ -96,19 +96,46 @@ uint8_t eeprom_tiny_spi_write(NdsCartBackup& chip, uint8_t val, uint32_t pos,
+ uint8_t flash_spi_write(NdsCartBackup& chip, uint8_t val, uint32_t pos,
+                         bool last) {
+     const uint32_t mask = static_cast<uint32_t>(chip.sram.size()) - 1u;
++    // Flash chips address with 2 bytes up to 64 KiB and 3 bytes above it.
++    // The previous fixed `pos <= 3` consumed 3 address bytes for every size,
++    // so a 64 KiB chip receiving the driver's 2-byte-address program folded
++    // the first data byte into the address (e.g. `02 00 00 4A …` landed at
++    // 0x004A instead of 0x0000), corrupting every written save image.
++    const uint32_t addrsize = chip.sram.size() > 65536u ? 3u : 2u;
+     switch (chip.cmd) {
++        // EXPERIMENTAL (2026-08-21): JEDEC ID was previously stubbed to
++        // 0xFF ("no chip present") for every save type. Some save drivers
++        // probe this before trusting existing backup content; returning a
++        // real-looking ID here (loosely matching the ST-family response the
++        // firmware SPI flash already uses, see io.cpp case 0x9F) is a
++        // hypothesis fix being tested against a save-import symptom (see
++        // decomp/docs/NDSRECOMP.md). NOT yet confirmed against real
++        // hardware or melonDS's own cart-backup JEDEC modelling -- revert
++        // if it does not resolve the symptom.
++        case 0x9F: {
++            uint8_t result = 0xFFu;
++            if (pos == 1u) result = 0x20u;
++            else if (pos == 2u) result = 0x40u;
++            else if (pos == 3u) result = 0x12u;
++            return result;
++        }
+         case 0x05:
+             return chip.status;
+         case 0x02:
+         case 0x0A:
+-            if (pos <= 3) {
++            if (pos <= addrsize) {
+                 chip.addr = (chip.addr << 8) | val;
+             } else {
+                 if (chip.status & 0x02u) {
+                     uint8_t& destination = chip.sram[chip.addr & mask];
+-                    // Match melonDS's currently modelled distinction between
+-                    // page-program (0x02) and page-write (0x0A).
+-                    const uint8_t programmed = chip.cmd == 0x02 ? 0u : val;
++                    // Hardware flash programming can only clear bits (1->0):
++                    // a byte-program (0x02) ANDs the data into the cell while
++                    // a page-write (0x0A) stores it (melonDS models the same
++                    // distinction). The previous 0x02->0x00 behaviour zeroed
++                    // every byte-programmed cell and made JUS's read-back
++                    // save verification fail ("Save failed" in-game).
++                    const uint8_t programmed =
++                        chip.cmd == 0x02 ? (destination & val) : val;
+                     if (destination != programmed) {
+                         destination = programmed;
+                         chip.dirty = true;
+@@ -120,23 +147,23 @@ uint8_t flash_spi_write(NdsCartBackup& chip, uint8_t val, uint32_t pos,
+             return 0;
+         case 0x03:
+         case 0x0B:
+-            if (pos <= 3) {
++            if (pos <= addrsize) {
+                 chip.addr = (chip.addr << 8) | val;
+                 return 0;
+             }
+-            if (chip.cmd == 0x0B && pos == 4) return 0;
++            if (chip.cmd == 0x0B && pos == addrsize + 1u) return 0;
+             return chip.sram[chip.addr++ & mask];
+-        case 0x9F:
+-            return 0xFF;
+         case 0xD8:
+         case 0xDB: {
+-            if (pos <= 3) chip.addr = (chip.addr << 8) | val;
+-            if (pos == 3 && (chip.status & 0x02u)) {
++            if (pos <= addrsize) chip.addr = (chip.addr << 8) | val;
++            if (pos == addrsize && (chip.status & 0x02u)) {
+                 const uint32_t length = chip.cmd == 0xD8 ? 0x10000u : 0x100u;
++                // Flash erase raises every bit to 1 (0xFF); the previous
++                // 0x00 fill inverted erase semantics and corrupted sectors.
+                 for (uint32_t i = 0; i < length; ++i) {
+                     uint8_t& destination = chip.sram[(chip.addr + i) & mask];
+-                    if (destination != 0u) {
+-                        destination = 0u;
++                    if (destination != 0xFFu) {
++                        destination = 0xFFu;
+                         chip.dirty = true;
+                     }
+                 }
+diff --git a/runner/src/debug_server.cpp b/runner/src/debug_server.cpp
+index d5d7fec..f6077c2 100644
+--- a/runner/src/debug_server.cpp
++++ b/runner/src/debug_server.cpp
+@@ -403,6 +403,11 @@ std::string handle(const std::string& line) {
+         return "{\"ok\":true}";
+     }
+ 
++    if (cmd == "resume") {
++        scheduler_resume_break_halts();
++        return "{\"resumed\":true}";
++    }
++
+     if (cmd == "regs") {
+         uint64_t cpu = json_u64(line, "cpu", 9);
+         const ArmCpuState& c = scheduler_cpu_state(cpu == 7 ? 1 : 0);
+@@ -1266,6 +1271,10 @@ std::string handle(const std::string& line) {
+         uint64_t max_rounds = json_u64(line, "max_rounds", 50000000);
+         if (!pc) return "{\"error\":\"pc must be nonzero\"}";
+         if (max_rounds > 100000000u) max_rounds = 100000000u;
++        // Resume past any previous break-pc stop, otherwise the loop below
++        // never enters (the halted CPU fails the terminal-halt check) and a
++        // stale halt at the same PC would be reported as a fresh hit.
++        scheduler_resume_break_halts();
+         g_runtime_break_pc = pc;
+         uint64_t rounds = 0;
+         while (!scheduler_cpu_terminal_halted(0) &&
+@@ -1425,6 +1434,23 @@ std::string handle(const std::string& line) {
+         return "{\"hex\":\"" + hex + "\"}";
+     }
+ 
++    if (cmd == "write_mem") {
++        uint64_t cpu = json_u64(line, "cpu", 9);
++        uint32_t addr = (uint32_t)json_u64(line, "addr", 0);
++        std::vector<uint8_t> data;
++        if (!parse_hex_bytes(json_str(line, "hex"), data))
++            return "{\"error\":\"invalid hex\"}";
++        if (data.empty())
++            return "{\"error\":\"empty hex\"}";
++        if (data.size() > 0x100000u)
++            return "{\"error\":\"payload too large\"}";
++        for (size_t i = 0; i < data.size(); ++i)
++            bus_debug_write8(cpu == 7 ? 7 : 9, addr + (uint32_t)i, data[i]);
++        char buf[64];
++        std::snprintf(buf, sizeof(buf), "{\"written\":%u}", (uint32_t)data.size());
++        return buf;
++    }
++
+     if (cmd == "read_io") {
+         uint64_t cpu = json_u64(line, "cpu", 9);
+         uint32_t addr = (uint32_t)json_u64(line, "addr", 0);
+diff --git a/runner/src/frontend.cpp b/runner/src/frontend.cpp
+index 8b5947d..2deb816 100644
+--- a/runner/src/frontend.cpp
++++ b/runner/src/frontend.cpp
+@@ -12,6 +12,7 @@
+ #include <initializer_list>
+ #include <limits>
+ #include <string>
++#include <vector>
+ 
+ #include "debug_server.h"
+ #include "gpu2d.h"
+@@ -306,6 +307,40 @@ MphPadBinding parse_mph_pad_binding(const std::string& value,
+     return {};
+ }
+ 
++// ── Generic pad-button -> touchscreen-tap runtime (title-agnostic) ─────
++// Unlike MPH Prime Controls, this has no ROM allowlist and no relative-
++// mouse gate: it is always active whenever a controller is connected.
++// Motivating case: JUS's L/R battle assist-summon shortcuts cover only 2
++// support koma; extra arcade-stick buttons can each synthesize a tap at a
++// player-calibrated coordinate for a 3rd/4th support panel, entirely from
++// game.toml/CLI config -- no game-code patch required.
++struct PadTapRuntimeState {
++    NdsPadTapAction action;
++    MphPadBinding binding;
++    bool held = false;  // edge-detect state; covers buttons and triggers
++};
++
++std::vector<PadTapRuntimeState> make_pad_tap_runtime(
++    const std::vector<NdsPadTapAction>& actions) {
++    std::vector<PadTapRuntimeState> runtime;
++    runtime.reserve(actions.size());
++    for (const NdsPadTapAction& action : actions) {
++        bool recognized = true;
++        const MphPadBinding binding =
++            parse_mph_pad_binding(action.button, &recognized);
++        if (!recognized || binding.kind == MphPadInputKind::None) {
++            std::fprintf(stderr,
++                "[sdl] invalid controls.taps button \"%s\" (tap at %u,%u "
++                "ignored)\n",
++                action.button.c_str(), static_cast<unsigned>(action.x),
++                static_cast<unsigned>(action.y));
++            continue;
++        }
++        runtime.push_back(PadTapRuntimeState{action, binding, false});
++    }
++    return runtime;
++}
++
+ MphPadBindingSet make_mph_pad_bindings(
+     const NdsMphPrimeControlBindings& source) {
+     MphPadBindingSet set{};
+@@ -982,6 +1017,31 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         std::fprintf(stderr, "[sdl] init failed: %s\n", SDL_GetError());
+         return 1;
+     }
++    // Custom controller mappings (arcade sticks / boards SDL's built-in DB
++    // mismaps). NDS_GAMECONTROLLERDB overrides; otherwise tries the
++    // repo-root path (correct when launched via run_jus.sh, which cd's
++    // there first) then recomp/tools/ (where the remap tool writes when
++    // double-clicked from Explorer, which sets CWD to its own folder).
++    // Generate one with recomp/run_remap.sh -- see
++    // decomp/docs/NDSRECOMP.md "Controller remapping".
++    {
++        const char* env_path = std::getenv("NDS_GAMECONTROLLERDB");
++        std::string db_path = (env_path && *env_path) ? env_path : "";
++        if (db_path.empty()) {
++            db_path = "recomp/gamecontrollerdb.txt";
++            if (SDL_RWops* probe = SDL_RWFromFile(db_path.c_str(), "rb")) {
++                SDL_RWclose(probe);
++            } else {
++                db_path = "recomp/tools/gamecontrollerdb.txt";
++            }
++        }
++        const int added = SDL_GameControllerAddMappingsFromFile(db_path.c_str());
++        if (added > 0) {
++            std::fprintf(stderr,
++                "[sdl] loaded %d custom controller mapping(s) from %s\n",
++                added, db_path.c_str());
++        }
++    }
+     if (SDL_SetThreadPriority(SDL_THREAD_PRIORITY_HIGH) != 0)
+         std::fprintf(stderr, "[sdl] thread priority unchanged: %s\n",
+                      SDL_GetError());
+@@ -1187,6 +1247,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+     bool mph_pad_trigger_left_held = false;
+     bool mph_pad_trigger_right_held = false;
+     uint64_t mph_pad_aim_writes = 0;
++    // ── Generic pad-tap runtime (title-agnostic, always active) ──────────
++    std::vector<PadTapRuntimeState> pad_taps =
++        make_pad_tap_runtime(options.pad_taps);
++    MphTouchSequence pad_tap_sequence{};
++    if (!pad_taps.empty()) {
++        std::fprintf(stderr,
++            "[sdl] %zu pad-tap binding(s) configured\n", pad_taps.size());
++    }
+     auto mph_prime_active = [&]() {
+         return mph_prime_controls_available &&
+                (relative_mouse.captured() || mph_prime_pad_engaged);
+@@ -1818,6 +1886,42 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+                     mph_pad_aim_rem_y -= static_cast<float>(mph_pad_frame_y);
+                 }
+             }
++            // Generic pad-tap edge-detection (independent of Prime
++            // Controls). Only one tap sequence plays at a time; a press
++            // while a tap/release is already in flight is dropped rather
++            // than queued, matching an arcade stick's expectation of a
++            // discrete, immediate action per press.
++            for (PadTapRuntimeState& tap : pad_taps) {
++                bool down = false;
++                switch (tap.binding.kind) {
++                    case MphPadInputKind::Button:
++                        down = SDL_GameControllerGetButton(
++                            controller, tap.binding.button) != 0;
++                        break;
++                    case MphPadInputKind::TriggerLeft:
++                        down = SDL_GameControllerGetAxis(
++                            controller,
++                            SDL_CONTROLLER_AXIS_TRIGGERLEFT) > 9830;
++                        break;
++                    case MphPadInputKind::TriggerRight:
++                        down = SDL_GameControllerGetAxis(
++                            controller,
++                            SDL_CONTROLLER_AXIS_TRIGGERRIGHT) > 9830;
++                        break;
++                    default:
++                        break;
++                }
++                if (down && !tap.held && !pad_tap_sequence.active()) {
++                    const MphTouchStep up{0, 0, false, 2};
++                    pad_tap_sequence.start({
++                        up,
++                        {tap.action.x, tap.action.y, true,
++                         tap.action.tap_frames},
++                        {0, 0, false, tap.action.release_frames},
++                    });
++                }
++                tap.held = down;
++            }
+         } else {
+             if (stick_pressed != 0) {
+                 stick_pressed = 0;
+@@ -1837,6 +1941,7 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+                 mph_prime_pad_engaged = false;
+                 if (!relative_mouse.captured()) nds_set_touch(0, 0, false);
+             }
++            for (PadTapRuntimeState& tap : pad_taps) tap.held = false;
+         }
+ 
+         const bool mph_prime_is_active = mph_prime_active();
+@@ -1886,6 +1991,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+             relative_delta_x = 0;
+             relative_delta_y = 0;
+         }
++        // Generic pad-tap sequence playback. Skipped while an MPH Prime
++        // Controls touch sequence is in flight so the two synthetic-touch
++        // systems never fight over the same frame's touch registers (in
++        // practice they are mutually exclusive per-title: Prime Controls
++        // is MPH-only, pad taps are the JUS assist-shortcut use case).
++        if (pad_tap_sequence.active() && !mph_touch_sequence.active()) {
++            pad_tap_sequence.tick();
++        }
+         if (mph_prime_is_active) {
+             if (mph_touch_sequence.active()) {
+                 mph_touch_sequence.tick();
+diff --git a/runner/src/frontend.h b/runner/src/frontend.h
+index c1d5755..4ba90b8 100644
+--- a/runner/src/frontend.h
++++ b/runner/src/frontend.h
+@@ -2,6 +2,7 @@
+ 
+ #include <cstdint>
+ #include <string>
++#include <vector>
+ 
+ #include "cartridge_config.h"
+ 
+@@ -152,6 +153,50 @@ struct NdsMphPrimeControlBindings {
+ // own dual-stick adaptation of its keyboard/mouse scheme.
+ NdsMphPrimeControlBindings nds_default_mph_pad_bindings();
+ 
++// A single configurable "pad button -> touchscreen tap" binding, generic
++// and title-agnostic (unlike the MPH-specific Prime Controls scheme above,
++// this requires no Prime Controls gate, no direct-aim ROM allowlist, and no
++// title-owned touch-sequence choreography). Motivating case: JUS's battle
++// L/R assist-summon shortcuts only cover 2 of a deck's support koma; an
++// arcade stick has spare buttons that can each synthesize a tap at a
++// player-chosen (x, y) on the touchscreen \-- e.g. the 3rd/4th support
++// panel icon \-- without any game-code patch. Because deck composition
++// varies per player, the coordinates are NOT baked into this binary; they
++// are supplied via game.toml `[[controls.taps]]` or repeated `--pad-tap`
++// CLI flags, so each player calibrates against their own deck layout.
++// `button` accepts the same names as controls.prime.pad_bindings ("Pad A",
++// "Pad LB", "Pad LT", "Pad Up", ...). x/y are DS touchscreen pixel
++// coordinates (0..255, 0..191). tap_frames/release_frames control how long
++// the synthesized touch is held down and how long it is released before
++// the binding can retrigger, mirroring the internal MPH tap engine's
++// timing (default 2 frames each -- enough for the ARM7 touchscreen poll to
++// observe a discrete tap).
++struct NdsPadTapAction {
++    std::string button;
++    uint16_t x = 0;
++    uint16_t y = 0;
++    uint8_t tap_frames = 2;
++    uint8_t release_frames = 2;
++};
++
++// Parses "button:x:y[:tap_frames:release_frames]", e.g. "Pad LB:40:150" or
++// "Pad RT:210:150:3:3". Returns false (leaving *out untouched) on a
++// malformed spec (wrong field count, unparseable integers, coordinates out
++// of 0..255/0..191, or frame counts of 0). Button name validity itself is
++// checked later against the SDL binding table, not here, so an unknown
++// button name still passes this parse and is reported at bind time.
++bool nds_parse_pad_tap_action(const std::string& spec, NdsPadTapAction* out);
++
++// ROM overlay mod (Riivolution-style runtime file replacement). `file` is a
++// host path whose bytes shadow the ROM range starting at `offset` for every
++// gamecard read. NitroFS data and FAT reads both go through the gamecard
++// path, so growth is expressed as an overlay over the FAT entry too.
++// Populated from game.toml `[[mods.overlays]]` (offset = hex-ish int64).
++struct NdsModOverlay {
++    uint32_t offset = 0;
++    std::string file;
++};
++
+ struct NdsFrontendOptions {
+     // Optional exact cartridge identity from [game]. When present, every
+     // title-owned setting in this config is rejected for any other ROM.
+@@ -242,6 +287,15 @@ struct NdsFrontendOptions {
+     NdsCartridgeSaveConfig cartridge_save{};
+     NdsNetworkOptions network{};
+     NdsLocalWirelessOptions local_wireless{};
++    // Generic, title-agnostic pad-button -> touchscreen-tap bindings (see
++    // NdsPadTapAction above). Populated from game.toml `[[controls.taps]]`
++    // and/or repeated `--pad-tap` CLI flags; CLI entries are appended after
++    // config entries. Unlike Prime Controls, always active whenever a
++    // controller is connected -- no ROM allowlist, no relative-mouse gate.
++    std::vector<NdsPadTapAction> pad_taps;
++    // ROM overlay mods (see NdsModOverlay above). Applied after config load
++    // and before boot; the ROM image itself is never modified.
++    std::vector<NdsModOverlay> mod_overlays;
+ };
+ 
+ // Parse [display] settings from a game TOML. Missing [display] is valid.
+diff --git a/runner/src/frontend_config.cpp b/runner/src/frontend_config.cpp
+index 0607a25..3b5d63f 100644
+--- a/runner/src/frontend_config.cpp
++++ b/runner/src/frontend_config.cpp
+@@ -4,6 +4,8 @@
+ #include <cctype>
+ #include <exception>
+ #include <cstdlib>
++#include <string>
++#include <vector>
+ 
+ #include "toml.hpp"
+ 
+@@ -227,6 +229,49 @@ bool nds_set_mph_prime_pad_binding(NdsFrontendOptions* options,
+     return true;
+ }
+ 
++bool nds_parse_pad_tap_action(const std::string& spec, NdsPadTapAction* out) {
++    if (!out || spec.empty()) return false;
++    std::vector<std::string> fields;
++    size_t start = 0;
++    while (start <= spec.size()) {
++        const size_t colon = spec.find(':', start);
++        if (colon == std::string::npos) {
++            fields.push_back(spec.substr(start));
++            break;
++        }
++        fields.push_back(spec.substr(start, colon - start));
++        start = colon + 1;
++    }
++    if (fields.size() != 3 && fields.size() != 5) return false;
++    for (const std::string& f : fields) {
++        if (f.empty()) return false;
++    }
++    auto parse_uint = [](const std::string& s, long min_v, long max_v,
++                         long* value) {
++        char* end = nullptr;
++        const long parsed = std::strtol(s.c_str(), &end, 10);
++        if (!end || *end != '\0' || parsed < min_v || parsed > max_v)
++            return false;
++        *value = parsed;
++        return true;
++    };
++    long x = 0, y = 0, tap_frames = 2, release_frames = 2;
++    if (!parse_uint(fields[1], 0, 255, &x)) return false;
++    if (!parse_uint(fields[2], 0, 191, &y)) return false;
++    if (fields.size() == 5) {
++        if (!parse_uint(fields[3], 1, 255, &tap_frames)) return false;
++        if (!parse_uint(fields[4], 1, 255, &release_frames)) return false;
++    }
++    NdsPadTapAction action{};
++    action.button = fields[0];
++    action.x = static_cast<uint16_t>(x);
++    action.y = static_cast<uint16_t>(y);
++    action.tap_frames = static_cast<uint8_t>(tap_frames);
++    action.release_frames = static_cast<uint8_t>(release_frames);
++    *out = action;
++    return true;
++}
++
+ bool nds_parse_cartridge_save_type(const std::string& value,
+                                    NdsCartridgeSaveType* out) {
+     if (!out) return false;
+@@ -757,6 +802,96 @@ bool nds_load_frontend_config(const std::string& path,
+                 }
+             }
+         }
++        // Generic pad-tap bindings, e.g.:
++        //   [[controls.taps]]
++        //   button = "Pad LB"
++        //   x = 40
++        //   y = 150
++        //   tap_frames = 2       # optional, default 2
++        //   release_frames = 2  # optional, default 2
++        // Independent of controls.prime -- no Prime Controls gate, no
++        // direct-aim ROM allowlist. See NdsPadTapAction in frontend.h.
++        if (const toml::array* taps = (*controls)["taps"].as_array()) {
++            for (const auto& entry : *taps) {
++                const toml::table* tap = entry.as_table();
++                if (!tap) {
++                    if (error)
++                        *error = "controls.taps entries must be tables";
++                    return false;
++                }
++                const auto button = (*tap)["button"].value<std::string>();
++                const auto x = (*tap)["x"].value<int64_t>();
++                const auto y = (*tap)["y"].value<int64_t>();
++                if (!button || !x || !y || *x < 0 || *x > 255 || *y < 0 ||
++                    *y > 191) {
++                    if (error) {
++                        *error =
++                            "controls.taps entries require button (string), "
++                            "x (0..255), y (0..191)";
++                    }
++                    return false;
++                }
++                NdsPadTapAction action{};
++                action.button = *button;
++                action.x = static_cast<uint16_t>(*x);
++                action.y = static_cast<uint16_t>(*y);
++                if (const auto tap_frames =
++                        (*tap)["tap_frames"].value<int64_t>()) {
++                    if (*tap_frames < 1 || *tap_frames > 255) {
++                        if (error) {
++                            *error =
++                                "controls.taps.tap_frames must be 1..255";
++                        }
++                        return false;
++                    }
++                    action.tap_frames = static_cast<uint8_t>(*tap_frames);
++                }
++                if (const auto release_frames =
++                        (*tap)["release_frames"].value<int64_t>()) {
++                    if (*release_frames < 1 || *release_frames > 255) {
++                        if (error) {
++                            *error =
++                                "controls.taps.release_frames must be "
++                                "1..255";
++                        }
++                        return false;
++                    }
++                    action.release_frames =
++                        static_cast<uint8_t>(*release_frames);
++                }
++                options->pad_taps.push_back(action);
++            }
++        }
+     }
++
++    // ── ROM overlay mods, e.g.:
++    //   [[mods.overlays]]
++    //   offset = 0x7FCC00
++    //   file = "mods/koma.bin"
++    // Each overlay shadows the ROM bytes [offset, offset + file size) for
++    // every gamecard read; the ROM image itself is untouched. Offsets are
++    // produced by tools/scripts/mods_build.py (path -> offset resolution).
++    if (const toml::array* overlays = root["mods"]["overlays"].as_array()) {
++        for (const auto& entry : *overlays) {
++            const toml::table* ov = entry.as_table();
++            if (!ov) {
++                if (error) *error = "mods.overlays entries must be tables";
++                return false;
++            }
++            const auto offset = (*ov)["offset"].value<int64_t>();
++            const auto file = (*ov)["file"].value<std::string>();
++            if (!offset || !file) {
++                if (error)
++                    *error = "mods.overlays entries require offset (int64) "
++                             "and file (string)";
++                return false;
++            }
++            NdsModOverlay overlay;
++            overlay.offset = static_cast<uint32_t>(*offset);
++            overlay.file = *file;
++            options->mod_overlays.push_back(std::move(overlay));
++        }
++    }
++
+     return true;
+ }
+diff --git a/runner/src/io.cpp b/runner/src/io.cpp
+index 7bb99d7..ef84ea7 100644
+--- a/runner/src/io.cpp
++++ b/runner/src/io.cpp
+@@ -6,6 +6,7 @@
+ #include <algorithm>
+ #include <cstdint>
+ #include <cstdio>
++#include <cstdlib>
+ #include <cstring>
+ #include <ctime>
+ #include <vector>
+@@ -24,8 +25,17 @@
+ // keep calling the unchanged runtime_should_yield ABI.
+ extern "C" void runtime_request_yield_poll(void);
+ 
++// Last guest instruction PC per CPU (defined in bus.cpp); consumed by the
++// AUXSPI debug trace to attribute backup-chip traffic to the driving code.
++extern uint32_t g_last_code_pc[2];
++
+ uint32_t g_nds_irq_pending_cache[2] = {0, 0};
+ 
++// ROM overlay mods (see io.h): file-scope state shared by the gamecard
++// read path (inside the anonymous namespace below) and the external
++// registration function defined after the namespace.
++static std::vector<std::pair<uint32_t, std::vector<uint8_t>>> g_mod_overlays;
++
+ namespace {
+ 
+ // ── IPCSYNC (0x04000180) — the cross-core handshake ─────────────────────
+@@ -248,12 +258,28 @@ void key1_decode_command(const uint8_t encrypted[8], uint8_t decoded[8]) {
+     store_le32(decoded + 4, byte_swap32(block[0]));
+ }
+ 
++// ── ROM overlay mods (see io.h) ────────────────────────────────────────────
++// State lives at file scope above; the registration function is defined
++// after the anonymous namespace so it keeps external linkage.
++
+ void card_copy_rom(uint32_t address, uint32_t length, uint32_t destination) {
+     if (address >= g_card_rom.size() || destination >= g_card_response.size()) return;
+     const size_t available = std::min<size_t>(length, g_card_rom.size() - address);
+     const size_t room = g_card_response.size() - destination;
++    const size_t copied = std::min(available, room);
+     std::memcpy(g_card_response.data() + destination,
+-                g_card_rom.data() + address, std::min(available, room));
++                g_card_rom.data() + address, copied);
++    // Overlay mods: replace the ROM bytes for any overlapping range.
++    for (const auto& [ov_off, ov_data] : g_mod_overlays) {
++        const uint32_t ov_end = ov_off + static_cast<uint32_t>(ov_data.size());
++        if (ov_off >= address + copied || ov_end <= address) continue;
++        const size_t src = (address >= ov_off) ? (address - ov_off) : 0;
++        const size_t dst = (ov_off >= address) ? (ov_off - address) : 0;
++        if (dst >= room) continue;
++        const size_t n = std::min(ov_data.size() - src, room - dst);
++        std::memcpy(g_card_response.data() + destination + dst,
++                    ov_data.data() + src, n);
++    }
+ }
+ 
+ void card_fill_chip_id() {
+@@ -316,7 +342,19 @@ void card_prepare_response() {
+     }
+ 
+     if (g_card_command[0] == 0xB8u) {
+-        card_fill_chip_id();
++        // Normal-mode "get chip ID" re-read. The NitroSDK card-backup
++        // identify path (JUS ARM7 driver op4 stores this word at ctx+8)
++        // may expect 0 ("no cardbus backup medium") on SPI-flash-only
++        // carts. NDS_CARD_B8_ID (hex u32) overrides the response for
++        // A/B testing that hypothesis; unset keeps chip-id behavior.
++        static const char* const b8_override = std::getenv("NDS_CARD_B8_ID");
++        if (b8_override && *b8_override) {
++            const uint32_t id = std::strtoul(b8_override, nullptr, 16);
++            for (uint32_t pos = 0; pos + 4u <= g_card_response.size(); pos += 4u)
++                store_le32(g_card_response.data() + pos, id);
++        } else {
++            card_fill_chip_id();
++        }
+     } else if (g_card_command[0] == 0xB7u && !g_card_rom.empty()) {
+         uint32_t address = load_be32(g_card_command + 1u);
+         address &= static_cast<uint32_t>(g_card_rom.size() - 1u);
+@@ -619,6 +657,12 @@ inline void brk_check() {
+ 
+ }  // namespace
+ 
++// ROM overlay mods (see io.h). Defined at global scope so main.cpp can
++// register overlays before boot; the state lives at file scope (top of TU).
++void nds_register_mod_overlay(uint32_t offset, std::vector<uint8_t> data) {
++    g_mod_overlays.push_back({offset, std::move(data)});
++}
++
+ // Retired-insn ordinals + per-insn slow-path gate (see io.h). Defined at
+ // global scope — extern "C" symbols the generated banks bump directly.
+ // Armed at startup because g_runtime_deep_trace defaults on;
+@@ -1652,6 +1696,55 @@ void io_mem_write(uint32_t addr, uint32_t value, uint32_t width) {
+ 
+ int active() { return (g_nds_active == NDS_ARM9) ? 0 : 1; }
+ 
++// ── AUXSPI debug trace (NDS_TRACE_AUXSPI=1) ──────────────────────────────
++// Logs every AUXSPI data-port transfer byte together with the driving CPU's
++// last guest PC (bus.cpp g_last_code_pc), the latched chip command, the
++// internal address and the byte the guest will read back. Diagnostic aid for
++// save-import validation issues; off unless the env var is set.
++
++bool auxspi_trace_enabled() {
++    static const bool enabled = std::getenv("NDS_TRACE_AUXSPI") != nullptr;
++    return enabled;
++}
++
++void auxspi_dump_sram_head(const char* when) {
++    if (!auxspi_trace_enabled()) return;
++    std::fprintf(stderr, "[auxspi] sram[0..0x1F] %s:", when);
++    for (uint32_t i = 0; i < 0x20u && i < g_cart_backup.sram.size(); ++i)
++        std::fprintf(stderr, " %02X", g_cart_backup.sram[i]);
++    std::fprintf(stderr, "\n");
++}
++
++void auxspi_trace_write(uint32_t val, uint32_t pos, uint32_t result,
++                        bool islast, bool busy_dropped) {
++    if (!auxspi_trace_enabled()) return;
++    static bool first = true;
++    if (first) {
++        first = false;
++        auxspi_dump_sram_head("first AUXSPI write");
++    }
++    const int cpu = active();
++    std::fprintf(stderr,
++                 "[auxspi] cpu%d pc=0x%08X cyc=%llu W pos=%u val=0x%02X "
++                 "cmd=0x%02X addr=0x%05X -> 0x%02X%s%s\n",
++                 cpu == 0 ? 9 : 7, g_last_code_pc[cpu],
++                 (unsigned long long)(cpu == 0 ? (g_runtime_cycles >> 1)
++                                               : g_runtime_cycles),
++                 pos, val, g_cart_backup.cmd, g_cart_backup.addr, result,
++                 islast ? " last" : "", busy_dropped ? " DROPPED" : "");
++}
++
++void auxspi_trace_read(uint32_t result, bool busy) {
++    if (!auxspi_trace_enabled()) return;
++    const int cpu = active();
++    std::fprintf(stderr,
++                 "[auxspi] cpu%d pc=0x%08X cyc=%llu R -> 0x%02X%s\n",
++                 cpu == 0 ? 9 : 7, g_last_code_pc[cpu],
++                 (unsigned long long)(cpu == 0 ? (g_runtime_cycles >> 1)
++                                               : g_runtime_cycles),
++                 result, busy ? " (busy)" : "");
++}
++
+ // The AUXSPI backup-chip protocol itself lives in cart_backup.cpp so it can be
+ // pinned by cart_backup_test; this only adds the write-through to disk.
+ uint8_t cart_sram_spi_write(uint8_t val, uint32_t pos, bool last) {
+@@ -1689,7 +1782,10 @@ void auxspi_write_cnt(uint16_t val) {
+ void auxspi_write_data(uint8_t val) {
+     if (!(g_auxspicnt & 0x8000u)) return;
+     if (!(g_auxspicnt & 0x2000u)) return;
+-    if (g_auxspicnt & 0x0080u) return;    // busy: the write is dropped
++    if (g_auxspicnt & 0x0080u) {          // busy: the write is dropped
++        auxspi_trace_write(val, g_auxspi_pos, 0u, false, true);
++        return;
++    }
+     g_auxspicnt |= 0x0080u;
+     const bool hold = (g_auxspicnt & 0x0040u) != 0;
+     bool islast = false;
+@@ -1705,6 +1801,7 @@ void auxspi_write_data(uint8_t val) {
+         ++g_auxspi_pos;
+     }
+     g_auxspi_data = cart_spi_write(val, g_auxspi_pos, islast);
++    auxspi_trace_write(val, g_auxspi_pos, g_auxspi_data, islast, false);
+     // One bit per SPI clock, 8 bits per byte: 8*(8<<speed) system cycles,
+     // based at the writing CPU's live timestamp (melonDS ScheduleEvent).
+     const uint32_t delay = 8u * (8u << (g_auxspicnt & 3u));
+@@ -1716,8 +1813,10 @@ void auxspi_write_data(uint8_t val) {
+ uint8_t auxspi_read_data() {
+     if (!(g_auxspicnt & 0x8000u)) return 0;
+     if (!(g_auxspicnt & 0x2000u)) return 0;
+-    if (g_auxspicnt & 0x0080u) return 0;
+-    return g_auxspi_data;
++    const bool busy = (g_auxspicnt & 0x0080u) != 0;
++    const uint8_t result = busy ? 0u : g_auxspi_data;
++    auxspi_trace_read(result, busy);
++    return result;
+ }
+ 
+ uint16_t ipcsync_read(int cpu) {
+@@ -1940,6 +2039,7 @@ bool nds_io_load_cartridge(const uint8_t* rom, uint32_t rom_size,
+                                  "[save] loaded %zu bytes from %s\n",
+                                  g_cart_backup.sram.size(),
+                                  g_cart_save_path.c_str());
++                    auxspi_dump_sram_head("after load");
+                     break;
+                 case NdsBatterySaveLoadResult::Missing:
+                     std::fprintf(stderr,
+diff --git a/runner/src/io.h b/runner/src/io.h
+index de668c9..9b5afef 100644
+--- a/runner/src/io.h
++++ b/runner/src/io.h
+@@ -8,9 +8,18 @@
+ #pragma once
+ 
+ #include <cstdint>
++#include <vector>
+ 
+ #include "cartridge_config.h"
+ 
++// ── ROM overlay mods ───────────────────────────────────────────────────────
++// Riivolution-style runtime file replacement: each overlay serves bytes from
++// a host file for gamecard reads touching [offset, offset + data.size()).
++// NitroFS data AND its FAT both flow through the gamecard read path, so file
++// growth is supported by overlaying the FAT entry as well. Registration must
++// happen before the guest boots (data is consulted per card block transfer).
++void nds_register_mod_overlay(uint32_t offset, std::vector<uint8_t> data);
++
+ uint32_t nds_io_read(uint32_t addr, uint32_t width);
+ void     nds_io_write(uint32_t addr, uint32_t value, uint32_t width);
+ void     nds_io_reset();
+diff --git a/runner/src/main.cpp b/runner/src/main.cpp
+index a5b2e32..00ae90c 100644
+--- a/runner/src/main.cpp
++++ b/runner/src/main.cpp
+@@ -471,6 +471,20 @@ int main(int argc, char** argv) {
+                     a.c_str());
+                 return 2;
+             }
++        } else if (a == "--pad-tap" && i + 1 < argc) {
++            // Generic, title-agnostic pad-button -> touchscreen-tap binding.
++            // Repeatable. Format: "button:x:y[:tap_frames:release_frames]",
++            // e.g. --pad-tap "Pad LB:40:150". See NdsPadTapAction (frontend.h).
++            NdsPadTapAction action{};
++            if (!nds_parse_pad_tap_action(argv[++i], &action)) {
++                std::fprintf(stderr,
++                    "invalid --pad-tap \"%s\" (expected "
++                    "button:x:y[:tap_frames:release_frames], x=0..255, "
++                    "y=0..191)\n",
++                    argv[i]);
++                return 2;
++            }
++            frontend_options.pad_taps.push_back(action);
+         } else if (a == "--startup-mode" && i + 1 < argc) {
+             cli_startup_mode = argv[++i];
+         } else if (a == "--boot" && i + 1 < argc) {
+@@ -564,6 +578,9 @@ int main(int argc, char** argv) {
+                 "[--mph-pad-aim-sensitivity 10..400] "
+                 "[--mph-bind-<action> <key-or-mouse>] "
+                 "[--mph-pad-bind-<action> <pad-button|None>] "
++                "[--pad-tap button:x:y[:tap_frames:release_frames]] "
++                "(repeatable; generic pad-button -> touchscreen-tap, "
++                "e.g. --pad-tap \"Pad LB:40:150\") "
+                 "[--startup-mode preserve|manual|automatic] "
+                 "[--boot lle|direct] "
+                 "[--generated-firmware] [--identity-mac AA:BB:CC:DD:EE:FF] "
+@@ -615,6 +632,25 @@ int main(int argc, char** argv) {
+             return 2;
+         }
+     }
++
++    // ROM overlay mods ([[mods.overlays]]): load each host file and register
++    // it to shadow the ROM range [offset, offset + size). The ROM image and
++    // its hash gates are untouched. Paths are relative to the working
++    // directory (launchers cd to the title folder).
++    for (const NdsModOverlay& overlay : frontend_options.mod_overlays) {
++        std::ifstream file(overlay.file, std::ios::binary);
++        if (!file) {
++            std::fprintf(stderr,
++                         "[mods] overlay file not found: %s\n",
++                         overlay.file.c_str());
++            return 2;
++        }
++        std::vector<uint8_t> data((std::istreambuf_iterator<char>(file)),
++                                  std::istreambuf_iterator<char>());
++        std::fprintf(stderr, "[mods] overlay 0x%08X + %zu bytes from %s\n",
++                     overlay.offset, data.size(), overlay.file.c_str());
++        nds_register_mod_overlay(overlay.offset, std::move(data));
++    }
+     if (const char* value = std::getenv("NDS_SCREEN_LAYOUT")) {
+         if (!nds_parse_screen_layout(value,
+                                      &frontend_options.screen_layout)) {
+@@ -1389,7 +1425,10 @@ int main(int argc, char** argv) {
+                            cli_live_overlay_cache.c_str(),
+                            rom_sha1.c_str());
+     mph_mouse_aim_policy =
+-        rom_sha1 == "90164d1ac127ee5f9815ea4ae7de798c7b5fc629" &&
++        (rom_sha1 == "90164d1ac127ee5f9815ea4ae7de798c7b5fc629" ||
++         // JUS (AJUJ rev 0): enable the Prime Controls virtual-stylus layer
++         // for this title too (gamepad right-stick aim + bindable touch).
++         rom_sha1 == "ba58e20ee60eb81c33dcd4934a21271baa9f954a") &&
+         frontend_options.relative_mouse_touch;
+     frontend_options.relative_mouse_direct_aim = mph_mouse_aim_policy;
+     frontend_options.mph_prime_controls =
+diff --git a/runner/src/runtime_arm.cpp b/runner/src/runtime_arm.cpp
+index 2fd6932..936277e 100644
+--- a/runner/src/runtime_arm.cpp
++++ b/runner/src/runtime_arm.cpp
+@@ -11,6 +11,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <bit>
+ #include <cstddef>
+ #if defined(NDS_PROFILE_HLE_HEAT)
+ #include <chrono>
+@@ -1053,7 +1054,7 @@ extern "C" uint32_t arm_shift_ror(uint32_t v, uint32_t n, int sc) {
+ 
+ // CLZ helper (ARMv5).
+ extern "C" uint32_t runtime_clz(uint32_t v) {
+-    return v ? static_cast<uint32_t>(__builtin_clz(v)) : 32u;
++    return v ? static_cast<uint32_t>(std::countl_zero(v)) : 32u;
+ }
+ // ARM7TDMI early-termination multiply timing. ARM9 uses its separate static
+ // numI combine, so this runtime value is ignored on that path.
+diff --git a/runner/src/scheduler.cpp b/runner/src/scheduler.cpp
+index ee7c613..6744c0a 100644
+--- a/runner/src/scheduler.cpp
++++ b/runner/src/scheduler.cpp
+@@ -415,6 +415,19 @@ void scheduler_terminal_halt_all(const char* reason) {
+     g_slot[1].reason = reason;
+ }
+ 
++void scheduler_resume_break_halts() {
++    // Only "break pc" halts are debugger stops; everything else is a real
++    // machine halt and must stay down. nds_slice_begin() clears the runtime
++    // g_nds_terminal flag, so clearing the slot halt is sufficient to resume.
++    for (int c = 0; c < 2; ++c) {
++        if (g_slot[c].halted && g_slot[c].reason &&
++            std::strcmp(g_slot[c].reason, "break pc") == 0) {
++            g_slot[c].halted = false;
++            g_slot[c].reason = nullptr;
++        }
++    }
++}
++
+ void scheduler_profile_reset() {
+     g_profile = NdsSchedulerProfile{};
+     g_profile_rounds = 0;
+diff --git a/runner/src/scheduler.h b/runner/src/scheduler.h
+index b1956aa..fcff416 100644
+--- a/runner/src/scheduler.h
++++ b/runner/src/scheduler.h
+@@ -69,6 +69,11 @@ void scheduler_run_round();
+ // outside CPU dispatch. Unlike nds_halt(), this survives the next slice setup.
+ void scheduler_terminal_halt_all(const char* reason);
+ 
++// Debugger resume: clear terminal halts that were caused by a break-pc stop
++// so a subsequent run command can continue past the breakpoint. Halts with
++// any other reason (power off, dispatch miss, slice guard, …) are kept.
++void scheduler_resume_break_halts();
++
+ // Inspect a CPU's saved state after a run (for reporting).
+ const struct ArmCpuState& scheduler_cpu_state(int cpu);
+ uint64_t scheduler_cpu_cycles(int cpu);
+diff --git a/runner/src/state.h b/runner/src/state.h
+index 0c4fe89..9e0c1e1 100644
+--- a/runner/src/state.h
++++ b/runner/src/state.h
+@@ -84,6 +84,7 @@ struct BusRegion {
+ };
+ bool bus_get_region(const char* name, BusRegion* out);
+ uint8_t bus_debug_read8(int cpu, uint32_t addr);
++void bus_debug_write8(int cpu, uint32_t addr, uint8_t val);
+ // ARM7-owned hardware bus masters (currently the SPU fetch/capture engines)
+ // access memory outside a guest instruction. These helpers select the ARM7
+ // memory view for the duration of the transfer and still feed the always-on
+diff --git a/runner/tests/cart_backup_test.cpp b/runner/tests/cart_backup_test.cpp
+index fc9cc65..8b2e969 100644
+--- a/runner/tests/cart_backup_test.cpp
++++ b/runner/tests/cart_backup_test.cpp
+@@ -114,17 +114,18 @@ void test_status_poll_between_wren_and_write() {
+ void test_flash_program_versus_write_and_erase() {
+     NdsCartBackup chip = make_chip(NdsCartridgeSaveType::Flash, 262144u);
+ 
+-    // Page write (0x0A) stores the byte; page program (0x02) zeroes it, which
+-    // is what melonDS currently models.
++    // Page write (0x0A) stores the byte. Byte program (0x02) follows real
++    // flash physics: programming can only clear bits (1->0), so the stored
++    // value becomes old & data (melonDS models the same): 0x5A & 0x0F = 0x0A.
+     write_enable(chip);
+     page_write(chip, 0x40u, {0x5Au});
+     check(read_byte(chip, 0x40u) == 0x5Au, "page write stores the value");
+ 
+     write_enable(chip);
+-    transfer(chip, {0x02u, 0x00u, 0x00u, 0x40u, 0x5Au});
+-    check(read_byte(chip, 0x40u) == 0x00u, "page program zeroes the byte");
++    transfer(chip, {0x02u, 0x00u, 0x00u, 0x40u, 0x0Fu});
++    check(read_byte(chip, 0x40u) == 0x0Au, "byte program ANDs the value");
+ 
+-    // Page erase (0xDB) clears 0x100 bytes, and only when enabled.
++    // Page erase (0xDB) raises 0x100 bytes to 0xFF, and only when enabled.
+     write_enable(chip);
+     page_write(chip, 0x800u, {0x11u});
+     check(read_byte(chip, 0x800u) == 0x11u, "byte staged for erase");
+@@ -132,7 +133,7 @@ void test_flash_program_versus_write_and_erase() {
+     check(read_byte(chip, 0x800u) == 0x11u, "erase without WREN is ignored");
+     write_enable(chip);
+     transfer(chip, {0xDBu, 0x00u, 0x08u, 0x00u});
+-    check(read_byte(chip, 0x800u) == 0x00u, "page erase clears the byte");
++    check(read_byte(chip, 0x800u) == 0xFFu, "page erase raises the byte to 0xFF");
+ }
+ 
+ void test_eeprom_write_survives_separate_wren_transfer() {
+diff --git a/runner/vendor/melonds/GPU3D.cpp b/runner/vendor/melonds/GPU3D.cpp
+index b1885db..94eab06 100644
+--- a/runner/vendor/melonds/GPU3D.cpp
++++ b/runner/vendor/melonds/GPU3D.cpp
+@@ -2360,7 +2360,11 @@ void GPU3D::ExecuteCommand() noexcept
+                     break;
+ 
+                 default:
++#if defined(_MSC_VER)
++                    __assume(0);
++#else
+                     __builtin_unreachable();
++#endif
+                 }
+             }
+         }
+diff --git a/runner/vendor/melonds/GPU3D_Compute.cpp b/runner/vendor/melonds/GPU3D_Compute.cpp
+index c4e8a30..e244a5c 100644
+--- a/runner/vendor/melonds/GPU3D_Compute.cpp
++++ b/runner/vendor/melonds/GPU3D_Compute.cpp
+@@ -167,7 +167,11 @@ void ComputeRenderer::ShaderCompileStep(int& current, int& count)
+         CompileShader(ShaderFinalPass[7], ComputeRendererShaders::FinalPass, {"FinalPass", "AntiAliasing", "EdgeMarking", "Fog"});
+         return;
+     default:
++#if defined(_MSC_VER)
++        __assume(0);
++#else
+         __builtin_unreachable();
++#endif
+         return;
+     }
+ }

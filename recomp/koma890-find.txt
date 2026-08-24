@@ -1,0 +1,3 @@
+needle 826e82658277 (6 bytes): 0 hit(s): []
+needle 82608352837d (6 bytes): 4 hit(s): ['0x021E876A', '0x022FACCA', '0x02387A62', '0x02387A82']
+needle 660301002a14020300000130 (12 bytes): 1 hit(s): ['0x021E2BD8']

@@ -1,0 +1,891 @@
+﻿id,name_jp,name_en,series,series_en,ntbl,namenum,type,tiles,nature,variant,image_id,shape_group,shape_element,shape,koma_unk
+0,セナ,Sena,sena;sena1,es,Eyeshield 21,1,0,help,1,Neutral (なし),1K,0,0,0,#..../...../...../.....,1;2;3;1;48
+1,セナ,Sena,sena,es,Eyeshield 21,1,1,support,2,Knowledge (知),2K (T2),1,1,1,#..../#..../...../.....,1;1;117;2;48
+2,セナ,Sena,sena,es,Eyeshield 21,1,2,support,3,Knowledge (知),3K (T3),2,2,2,##.../.#.../...../.....,1;1;117;1;48
+3,ヒル魔,Hiruma,hiruma,es,Eyeshield 21,1,3,help,1,Neutral (なし),1K,3,0,0,#..../...../...../.....,2;2;47;1;48
+4,ヒル魔,Hiruma,hiruma,es,Eyeshield 21,1,4,support,2,Knowledge (知),2K (T2),4,1,1,#..../#..../...../.....,2;1;118;2;48
+5,ヒル魔,Hiruma,hiruma,es,Eyeshield 21,1,5,support,3,Knowledge (知),3K (T6),5,2,5,##.../#..../...../.....,2;1;118;2;48
+6,栗田,Kurita,kurita,es,Eyeshield 21,1,6,help,1,Neutral (なし),1K,6,0,0,#..../...../...../.....,3;2;6;1;48
+7,栗田,Kurita,kurita,es,Eyeshield 21,1,7,support,2,Power (力),2K (T1),7,1,0,##.../...../...../.....,3;1;119;2;48
+8,栗田,Kurita,kurita,es,Eyeshield 21,1,8,support,3,Power (力),3K (T3),8,2,2,##.../.#.../...../.....,3;1;119;1;48
+9,モン太,Monta,monta,es,Eyeshield 21,1,9,help,1,Neutral (なし),1K,9,0,0,#..../...../...../.....,4;2;38;1;48
+10,モン太,Monta,monta,es,Eyeshield 21,1,10,support,2,Power (力),2K (T1),10,1,0,##.../...../...../.....,4;1;121;1;48
+11,モン太,Monta,monta,es,Eyeshield 21,1,11,support,3,Power (力),3K (T2),11,2,1,#..../#..../#..../.....,4;1;121;2;48
+12,ムサシ,Musashi,musashi,es,Eyeshield 21,1,12,help,1,Neutral (なし),1K,12,0,0,#..../...../...../.....,5;2;14;1;48
+13,ムサシ,Musashi,musashi,es,Eyeshield 21,1,13,support,2,Power (力),2K (T1),13,1,0,##.../...../...../.....,5;1;120;2;48
+14,ムサシ,Musashi,musashi,es,Eyeshield 21,1,14,support,3,Power (力),3K (T6),14,2,5,##.../#..../...../.....,5;1;120;1;48
+15,ハァハァ３兄弟,Ha-Ha Brothers,ha-ha-brothers,es,Eyeshield 21,1,15,help,1,Neutral (なし),1K,15,0,0,#..../...../...../.....,6;2;41;1;48
+16,ハァハァ３兄弟,Ha-Ha Brothers,ha-ha-brothers,es,Eyeshield 21,1,16,support,2,Laughter (笑),2K (T1),16,1,0,##.../...../...../.....,6;1;122;1;48
+17,ハァハァ３兄弟,Ha-Ha Brothers,ha-ha-brothers,es,Eyeshield 21,1,17,support,3,Power (力),3K (T1),17,2,0,###../...../...../.....,6;1;122;2;48
+18,進清十郎,Shin,shin,es,Eyeshield 21,1,18,help,1,Neutral (なし),1K,18,0,0,#..../...../...../.....,7;2;5;1;48
+19,進清十郎,Shin,shin,es,Eyeshield 21,1,19,support,2,Power (力),2K (T1),19,1,0,##.../...../...../.....,7;1;123;2;48
+20,進清十郎,Shin,shin,es,Eyeshield 21,1,20,support,3,Power (力),3K (T2),20,2,1,#..../#..../#..../.....,7;1;123;1;48
+21,デビルバット,Devil Bat,devil-bat,es,Eyeshield 21,1,21,help,1,Neutral (なし),1K,21,0,0,#..../...../...../.....,8;2;1;1;48
+22,デビルバット,Devil Bat,devil-bat,es,Eyeshield 21,1,22,support,3,Laughter (笑),3K (T1),22,2,0,###../...../...../.....,8;1;124;2;48
+23,ケルベロス,Cerberus,cerberus,es,Eyeshield 21,1,23,help,1,Neutral (なし),1K,23,0,0,#..../...../...../.....,9;2;42;1;48
+24,ケルベロス,Cerberus,cerberus,es,Eyeshield 21,1,24,support,3,Laughter (笑),3K (T2),24,2,1,#..../#..../#..../.....,9;1;125;3;48
+25,まもり,Mamori,mamori,es,Eyeshield 21,1,25,help,1,Neutral (なし),1K,25,0,0,#..../...../...../.....,10;2;8;1;49
+26,鈴音,Suzuna,suzuna,es,Eyeshield 21,1,26,help,1,Neutral (なし),1K,26,0,0,#..../...../...../.....,11;2;44;1;49
+27,小結,Komusubi,komusubi,es,Eyeshield 21,1,27,help,1,Neutral (なし),1K,27,0,0,#..../...../...../.....,12;2;6;1;48
+28,桜庭,Sakuraba,sakuraba,es,Eyeshield 21,1,28,help,1,Neutral (なし),1K,28,0,0,#..../...../...../.....,13;2;39;1;48
+29,瀧,Taki,taki,es,Eyeshield 21,1,29,help,1,Neutral (なし),1K,29,0,0,#..../...../...../.....,14;2;48;1;48
+30,どぶろく先生,Doburoku-Sensei,doburoku-sensei,es,Eyeshield 21,1,30,help,1,Neutral (なし),1K,30,0,0,#..../...../...../.....,15;2;46;1;48
+31,雪光,Yukimitsu,yukimitsu,es,Eyeshield 21,1,31,help,1,Neutral (なし),1K,31,0,0,#..../...../...../.....,16;2;35;1;48
+32,石丸,Ishimaru,ishimaru,es,Eyeshield 21,1,32,help,1,Neutral (なし),1K,32,0,0,#..../...../...../.....,17;2;40;1;48
+33,伊織,Iori,iori,is,I S,2,0,help,1,Neutral (なし),1K,33,0,0,#..../...../...../.....,18;2;52;1;49
+34,伊織,Iori,iori,is,I S,2,1,support,2,Laughter (笑),2K (T1),34,1,0,##.../...../...../.....,18;1;178;2;49
+35,伊織,Iori,iori,is,I S,2,2,support,3,Laughter (笑),3K (T2),35,2,1,#..../#..../#..../.....,18;1;178;1;49
+36,いつき,Itsuki,itsuki,is,I S,2,3,help,1,Neutral (なし),1K,36,0,0,#..../...../...../.....,19;2;48;1;49
+37,いつき,Itsuki,itsuki,is,I S,2,4,support,2,Laughter (笑),2K (T1),37,1,0,##.../...../...../.....,19;1;179;1;49
+38,いつき,Itsuki,itsuki,is,I S,2,5,support,3,Laughter (笑),3K (T2),38,2,1,#..../#..../#..../.....,19;1;179;1;49
+39,一貴,Ichitaka,ichitaka,is,I S,2,6,help,1,Neutral (なし),1K,39,0,0,#..../...../...../.....,20;2;42;1;48
+40,磯崎泉,Izumi,izumi,is,I S,2,7,help,1,Neutral (なし),1K,40,0,0,#..../...../...../.....,21;2;22;1;49
+41,東城,Aya,toujou;aya,ig,Ichigo 100%,3,0,help,1,Neutral (なし),1K,41,0,0,#..../...../...../.....,22;2;52;1;49
+42,東城,Aya,toujou;aya,ig,Ichigo 100%,3,1,support,2,Laughter (笑),2K (T1),42,1,0,##.../...../...../.....,22;1;136;1;49
+43,東城,Aya,toujou;aya,ig,Ichigo 100%,3,2,support,3,Laughter (笑),3K (T4),43,2,3,.#.../##.../...../.....,22;1;136;3;49
+44,西野,Tsukasa,satsuki;tsukasa,ig,Ichigo 100%,3,3,help,1,Neutral (なし),1K,44,0,0,#..../...../...../.....,23;2;18;1;49
+45,西野,Tsukasa,satsuki;tsukasa,ig,Ichigo 100%,3,4,support,2,Laughter (笑),2K (T1),45,1,0,##.../...../...../.....,23;1;137;1;49
+46,西野,Tsukasa,satsuki;tsukasa,ig,Ichigo 100%,3,5,support,3,Laughter (笑),3K (T2),46,2,1,#..../#..../#..../.....,23;1;137;1;49
+47,さつき,Satsuki,satsuki,ig,Ichigo 100%,3,6,help,1,Neutral (なし),1K,47,0,0,#..../...../...../.....,24;2;48;1;49
+48,さつき,Satsuki,satsuki,ig,Ichigo 100%,3,7,support,2,Laughter (笑),2K (T2),48,1,1,#..../#..../...../.....,24;1;138;1;49
+49,さつき,Satsuki,satsuki,ig,Ichigo 100%,3,8,support,3,Laughter (笑),3K (T2),49,2,1,#..../#..../#..../.....,24;1;138;1;49
+50,唯,Yui,yui,ig,Ichigo 100%,3,9,help,1,Neutral (なし),1K,50,0,0,#..../...../...../.....,25;2;45;1;49
+51,唯,Yui,yui,ig,Ichigo 100%,3,10,support,2,Laughter (笑),2K (T1),51,1,0,##.../...../...../.....,25;1;139;1;49
+52,唯,Yui,yui,ig,Ichigo 100%,3,11,support,3,Laughter (笑),3K (T6),52,2,5,##.../#..../...../.....,25;1;139;1;49
+53,美鈴,Misuzu,misuzu,ig,Ichigo 100%,3,12,help,1,Neutral (なし),1K,53,0,0,#..../...../...../.....,26;2;22;1;49
+54,真中,Manaka,manaka,ig,Ichigo 100%,3,13,help,1,Neutral (なし),1K,54,0,0,#..../...../...../.....,27;2;42;1;48
+55,外村,Hiroshi,hiroshi,ig,Ichigo 100%,3,14,help,1,Neutral (なし),1K,55,0,0,#..../...../...../.....,28;2;47;1;48
+56,ツナ／リボーン,Tsuna,tsuna,tr,Katekyo Hitman Reborn!,4,0,help,1,Neutral (なし),1K,56,0,0,#..../...../...../.....,29;2;46;1;48
+57,ツナ／リボーン,Tsuna,tsuna,tr,Katekyo Hitman Reborn!,4,1,support,2,Laughter (笑),2K (T1),57,1,0,##.../...../...../.....,29;1;92;1;48
+58,ツナ／リボーン,Tsuna,tsuna,tr,Katekyo Hitman Reborn!,4,2,support,3,Laughter (笑),3K (T3),58,2,2,##.../.#.../...../.....,29;1;92;1;48
+59,ツナ／リボーン,Tsuna,tsuna,tr,Katekyo Hitman Reborn!,4,3,battle,4,Laughter (笑),4K (T1),59,3,0,##.../##.../...../.....,29;0;54;1;48
+60,ツナ／リボーン,Tsuna,tsuna,tr,Katekyo Hitman Reborn!,4,4,battle,5,Laughter (笑),5K (T3),60,4,2,###../.##../...../.....,29;0;54;5;48
+61,ツナ／リボーン,Tsuna,tsuna,tr,Katekyo Hitman Reborn!,4,5,battle,6,Laughter (笑),6K (T2),61,5,1,##.../##.../##.../.....,29;0;54;4;48
+62,ツナ／リボーン,Tsuna,tsuna,tr,Katekyo Hitman Reborn!,4,6,battle,6,Power (力),6K (T1),62,5,0,###../###../...../.....,29;0;54;5;0
+63,ランボ,Lambo,lambo,tr,Katekyo Hitman Reborn!,4,7,help,1,Neutral (なし),1K,63,0,0,#..../...../...../.....,30;2;25;1;48
+64,ランボ,Lambo,lambo,tr,Katekyo Hitman Reborn!,4,8,support,2,Laughter (笑),2K (T1),64,1,0,##.../...../...../.....,30;1;93;1;48
+65,ランボ,Lambo,lambo,tr,Katekyo Hitman Reborn!,4,9,support,3,Power (力),3K (T5),65,2,4,#..../##.../...../.....,30;1;93;1;48
+66,山本,Yamamoto,yamamoto,tr,Katekyo Hitman Reborn!,4,10,help,1,Neutral (なし),1K,66,0,0,#..../...../...../.....,31;2;10;1;48
+67,山本,Yamamoto,yamamoto,tr,Katekyo Hitman Reborn!,4,11,support,2,Power (力),2K (T1),67,1,0,##.../...../...../.....,31;1;96;1;48
+68,山本,Yamamoto,yamamoto,tr,Katekyo Hitman Reborn!,4,12,support,3,Power (力),3K (T5),68,2,4,#..../##.../...../.....,31;1;96;1;48
+69,獄寺,Gokudera,gokudera,tr,Katekyo Hitman Reborn!,4,13,help,1,Neutral (なし),1K,69,0,0,#..../...../...../.....,32;2;38;1;48
+70,獄寺,Gokudera,gokudera,tr,Katekyo Hitman Reborn!,4,14,support,2,Power (力),2K (T1),70,1,0,##.../...../...../.....,32;1;94;1;48
+71,獄寺,Gokudera,gokudera,tr,Katekyo Hitman Reborn!,4,15,support,3,Power (力),3K (T6),71,2,5,##.../#..../...../.....,32;1;94;1;48
+72,ビアンキ,Bianchi,bianchi,tr,Katekyo Hitman Reborn!,4,16,help,1,Neutral (なし),1K,72,0,0,#..../...../...../.....,33;2;18;1;49
+73,ビアンキ,Bianchi,bianchi,tr,Katekyo Hitman Reborn!,4,17,support,2,Laughter (笑),2K (T1),73,1,0,##.../...../...../.....,33;1;95;2;49
+74,ビアンキ,Bianchi,bianchi,tr,Katekyo Hitman Reborn!,4,18,support,3,Laughter (笑),3K (T6),74,2,5,##.../#..../...../.....,33;1;95;1;49
+75,イーピン,I-Pin,i-pin,tr,Katekyo Hitman Reborn!,4,19,help,1,Neutral (なし),1K,75,0,0,#..../...../...../.....,34;2;41;1;49
+76,イーピン,I-Pin,i-pin,tr,Katekyo Hitman Reborn!,4,20,support,2,Laughter (笑),2K (T2),76,1,1,#..../#..../...../.....,34;1;97;2;49
+77,イーピン,I-Pin,i-pin,tr,Katekyo Hitman Reborn!,4,21,support,3,Laughter (笑),3K (T2),77,2,1,#..../#..../#..../.....,34;1;97;2;49
+78,ヒバリ,Hibari,hibari,tr,Katekyo Hitman Reborn!,4,22,help,1,Neutral (なし),1K,78,0,0,#..../...../...../.....,35;2;44;1;48
+79,ヒバリ,Hibari,hibari,tr,Katekyo Hitman Reborn!,4,23,support,2,Power (力),2K (T1),79,1,0,##.../...../...../.....,35;1;98;2;48
+80,ヒバリ,Hibari,hibari,tr,Katekyo Hitman Reborn!,4,24,support,3,Power (力),3K (T3),80,2,2,##.../.#.../...../.....,35;1;98;2;48
+81,京子,Kyoko,kyoko,tr,Katekyo Hitman Reborn!,4,25,help,1,Neutral (なし),1K,81,0,0,#..../...../...../.....,36;2;52;1;49
+82,ハル,Haru,haru,tr,Katekyo Hitman Reborn!,4,26,help,1,Neutral (なし),1K,82,0,0,#..../...../...../.....,37;2;28;1;49
+83,レオン,Leon,leon,tr,Katekyo Hitman Reborn!,4,27,help,1,Neutral (なし),1K,83,0,0,#..../...../...../.....,38;2;54;1;48
+84,大空翼,Tsubasa,tsubasa,ct,Captain Tsubasa,5,0,help,1,Neutral (なし),1K,84,0,0,#..../...../...../.....,39;2;3;1;48
+85,大空翼,Tsubasa,tsubasa,ct,Captain Tsubasa,5,1,support,2,Knowledge (知),2K (T1),85,1,0,##.../...../...../.....,39;1;169;2;48
+86,ゴールデンコンビ,Golden Combination,golden-combination,ct,Captain Tsubasa,5,2,support,3,Knowledge (知),3K (T3),86,2,2,##.../.#.../...../.....,39;1;169;2;48
+87,若林源三,Genzo,genzo,ct,Captain Tsubasa,5,3,help,1,Neutral (なし),1K,87,0,0,#..../...../...../.....,40;2;4;1;48
+88,若林源三,Genzo,genzo,ct,Captain Tsubasa,5,4,support,2,Power (力),2K (T2),88,1,1,#..../#..../...../.....,40;1;170;2;48
+89,若林源三,Genzo,genzo,ct,Captain Tsubasa,5,5,support,3,Power (力),3K (T6),89,2,5,##.../#..../...../.....,40;1;170;1;48
+90,日向小次郎,Hyuga,hyuga,ct,Captain Tsubasa,5,6,help,1,Neutral (なし),1K,90,0,0,#..../...../...../.....,41;2;38;1;48
+91,日向小次郎,Hyuga,hyuga,ct,Captain Tsubasa,5,7,support,2,Power (力),2K (T1),91,1,0,##.../...../...../.....,41;1;171;1;48
+92,日向小次郎,Hyuga,hyuga,ct,Captain Tsubasa,5,8,support,3,Power (力),3K (T3),92,2,2,##.../.#.../...../.....,41;1;171;2;48
+93,ロベルト本郷,Roberto Hongo,roberto-hongo,ct,Captain Tsubasa,5,9,help,1,Neutral (なし),1K,93,0,0,#..../...../...../.....,42;2;4;1;48
+94,中沢早苗,Sanae,sanae,ct,Captain Tsubasa,5,10,help,1,Neutral (なし),1K,94,0,0,#..../...../...../.....,43;2;22;1;49
+95,銀さん,Gintoki,gintoki,gt,Gintama,6,0,help,1,Neutral (なし),1K,95,0,0,#..../...../...../.....,44;2;5;1;48
+96,銀さん,Gintoki,gintoki,gt,Gintama,6,1,support,2,Laughter (笑),2K (T2),96,1,1,#..../#..../...../.....,44;1;84;1;48
+97,銀さん,Gintoki,gintoki,gt,Gintama,6,2,support,3,Laughter (笑),3K (T1),97,2,0,###../...../...../.....,44;1;84;2;48
+98,銀さん,Gintoki,gintoki,gt,Gintama,6,3,battle,4,Laughter (笑),4K (T1),98,3,0,##.../##.../...../.....,44;0;52;1;48
+99,銀さん,Gintoki,gintoki,gt,Gintama,6,4,battle,5,Laughter (笑),5K (T4),99,4,3,.##../###../...../.....,44;0;52;4;48
+100,銀さん,Gintoki,gintoki,gt,Gintama,6,5,battle,6,Laughter (笑),6K (T7),100,5,6,.###./###../...../.....,44;0;52;1;48
+101,銀さん,Gintoki,gintoki,gt,Gintama,6,6,battle,6,Power (力),6K (T1),101,5,0,###../###../...../.....,44;0;52;2;0
+102,銀さん,Gintoki,gintoki,gt,Gintama,6,7,battle,7,Laughter (笑),7K (T8),102,6,8,#..../###../###../.....,44;0;52;2;48
+103,神楽,Kagura,kagura,gt,Gintama,6,8,help,1,Neutral (なし),1K,103,0,0,#..../...../...../.....,45;2;42;1;49
+104,神楽,Kagura,kagura,gt,Gintama,6,9,support,2,Laughter (笑),2K (T1),104,1,0,##.../...../...../.....,45;1;85;1;49
+105,神楽,Kagura,kagura,gt,Gintama,6,10,support,3,Laughter (笑),3K (T1),105,2,0,###../...../...../.....,45;1;85;2;49
+106,神楽,Kagura,kagura,gt,Gintama,6,11,battle,4,Laughter (笑),4K (T7),106,3,6,##.../#..../#..../.....,45;0;53;3;49
+107,神楽,Kagura,kagura,gt,Gintama,6,12,battle,5,Laughter (笑),5K (T2),107,4,1,###../##.../...../.....,45;0;53;4;49
+108,神楽,Kagura,kagura,gt,Gintama,6,13,battle,6,Laughter (笑),6K (T1),108,5,0,###../###../...../.....,45;0;53;5;49
+109,神楽,Kagura,kagura,gt,Gintama,6,14,battle,6,Power (力),6K (T8),109,5,7,##.../###../.#.../.....,45;0;53;2;1
+110,新八,Shinpachi,shinpachi,gt,Gintama,6,15,help,1,Neutral (なし),1K,110,0,0,#..../...../...../.....,46;2;15;1;48
+111,新八,Shinpachi,shinpachi,gt,Gintama,6,16,support,2,Laughter (笑),2K (T1),111,1,0,##.../...../...../.....,46;1;86;1;48
+112,新八,Shinpachi,shinpachi,gt,Gintama,6,17,support,3,Laughter (笑),3K (T2),112,2,1,#..../#..../#..../.....,46;1;86;3;48
+113,ヅラ,Zura,zura,gt,Gintama,6,18,help,1,Neutral (なし),1K,113,0,0,#..../...../...../.....,47;2;28;1;48
+114,ヅラ,Zura,zura,gt,Gintama,6,19,support,2,Laughter (笑),2K (T2),114,1,1,#..../#..../...../.....,47;1;87;2;48
+115,ヅラ／エリザベス,Zura / Elizabeth,zura-elizabeth,gt,Gintama,6,20,support,3,Laughter (笑),3K (T3),115,2,2,##.../.#.../...../.....,47;1;87;1;48
+116,さっちゃん,Sa-chan,sa-chan,gt,Gintama,6,21,help,1,Neutral (なし),1K,116,0,0,#..../...../...../.....,48;2;22;1;49
+117,さっちゃん,Sa-chan,sa-chan,gt,Gintama,6,22,support,2,Laughter (笑),2K (T1),117,1,0,##.../...../...../.....,48;1;88;2;49
+118,さっちゃん,Sa-chan,sa-chan,gt,Gintama,6,23,support,3,Laughter (笑),3K (T3),118,2,2,##.../.#.../...../.....,48;1;88;2;49
+119,近藤,Kondo,kondo,gt,Gintama,6,24,help,1,Neutral (なし),1K,119,0,0,#..../...../...../.....,49;2;46;1;48
+120,近藤,Kondo,kondo,gt,Gintama,6,25,support,2,Laughter (笑),2K (T1),120,1,0,##.../...../...../.....,49;1;89;2;48
+121,近藤,Kondo,kondo,gt,Gintama,6,26,support,3,Laughter (笑),3K (T3),121,2,2,##.../.#.../...../.....,49;1;89;1;48
+122,土方,Hijikata,hijikata,gt,Gintama,6,27,help,1,Neutral (なし),1K,122,0,0,#..../...../...../.....,50;2;38;1;48
+123,土方,Hijikata,hijikata,gt,Gintama,6,28,support,2,Laughter (笑),2K (T1),123,1,0,##.../...../...../.....,50;1;90;2;48
+124,土方,Hijikata,hijikata,gt,Gintama,6,29,support,3,Laughter (笑),3K (T6),124,2,5,##.../#..../...../.....,50;1;90;3;48
+125,沖田,Okita,okita,gt,Gintama,6,30,help,1,Neutral (なし),1K,125,0,0,#..../...../...../.....,51;2;40;1;48
+126,沖田,Okita,okita,gt,Gintama,6,31,support,2,Laughter (笑),2K (T1),126,1,0,##.../...../...../.....,51;1;91;2;48
+127,沖田,Okita,okita,gt,Gintama,6,32,support,3,Laughter (笑),3K (T1),127,2,0,###../...../...../.....,51;1;91;2;48
+128,お登勢,Otose,otose,gt,Gintama,6,33,help,1,Neutral (なし),1K,128,0,0,#..../...../...../.....,52;2;41;1;49
+129,お妙,Otae,otae,gt,Gintama,6,34,help,1,Neutral (なし),1K,129,0,0,#..../...../...../.....,53;2;52;1;49
+130,長谷川,Hasegawa,hasegawa,gt,Gintama,6,35,help,1,Neutral (なし),1K,130,0,0,#..../...../...../.....,54;2;6;1;48
+131,山崎,Yamazaki,yamazaki,gt,Gintama,6,36,help,1,Neutral (なし),1K,131,0,0,#..../...../...../.....,55;2;40;1;48
+132,定春,Sadaharu,sadaharu,gt,Gintama,6,37,help,1,Neutral (なし),1K,132,0,0,#..../...../...../.....,56;2;6;1;48
+133,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,0,help,1,Neutral (なし),1K,133,0,0,#..../...../...../.....,57;2;9;1;48
+134,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,1,support,2,Power (力),2K (T1),134,1,0,##.../...../...../.....,57;1;155;1;48
+135,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,2,support,3,Laughter (笑),3K (T1),135,2,0,###../...../...../.....,57;1;155;2;48
+136,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,3,battle,4,Power (力),4K (T1),136,3,0,##.../##.../...../.....,57;0;65;3;48
+137,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,4,battle,4,Laughter (笑),4K (T8),137,3,7,.##../##.../...../.....,57;0;65;1;32
+138,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,5,battle,5,Power (力),5K (T12),138,4,12,.#.../.#.../###../.....,57;0;65;1;48
+139,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,6,battle,6,Power (力),6K (T2),139,5,1,##.../##.../##.../.....,57;0;65;5;48
+140,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,7,battle,7,Power (力),7K (T2),140,6,1,###../###../..#../.....,57;0;65;2;48
+141,キン肉マン,Muscle Man,kinnikuman;muscle-man,kn,Kinnikuman,7,8,battle,8,Power (力),8K (T2),141,7,1,###../###../#.#../.....,57;0;65;4;48
+142,テリーマン,Terry Man,terryman;terry-man,kn,Kinnikuman,7,9,help,1,Neutral (なし),1K,142,0,0,#..../...../...../.....,58;2;47;1;48
+143,テリーマン,Terry Man,terryman;terry-man,kn,Kinnikuman,7,10,support,2,Knowledge (知),2K (T1),143,1,0,##.../...../...../.....,58;1;156;1;48
+144,テリーマン,Terry Man,terryman;terry-man,kn,Kinnikuman,7,11,support,3,Knowledge (知),3K (T1),144,2,0,###../...../...../.....,58;1;156;2;48
+145,ロビンマスク,Robin Mask,robinmask;robin-mask,kn,Kinnikuman,7,12,help,1,Neutral (なし),1K,145,0,0,#..../...../...../.....,59;2;10;1;48
+146,ロビンマスク,Robin Mask,robinmask;robin-mask,kn,Kinnikuman,7,13,support,2,Knowledge (知),2K (T2),146,1,1,#..../#..../...../.....,59;1;157;2;48
+147,ロビンマスク,Robin Mask,robinmask;robin-mask,kn,Kinnikuman,7,14,support,3,Knowledge (知),3K (T2),147,2,1,#..../#..../#..../.....,59;1;157;3;48
+148,ウォーズマン,Wars Man,wars-man,kn,Kinnikuman,7,15,help,1,Neutral (なし),1K,148,0,0,#..../...../...../.....,60;2;30;1;48
+149,ウォーズマン,Wars Man,wars-man,kn,Kinnikuman,7,16,support,2,Knowledge (知),2K (T1),149,1,0,##.../...../...../.....,60;1;158;2;48
+150,ウォーズマン,Wars Man,wars-man,kn,Kinnikuman,7,17,support,3,Knowledge (知),3K (T1),150,2,0,###../...../...../.....,60;1;158;2;48
+151,ラーメンマン,Ramen Man,ramen-man,kn,Kinnikuman,7,18,help,1,Neutral (なし),1K,151,0,0,#..../...../...../.....,61;2;39;1;48
+152,モンゴルマン,Mongolia Man,mongolia-man,kn,Kinnikuman,7,19,support,2,Power (力),2K (T1),152,1,0,##.../...../...../.....,61;1;159;2;48
+153,ラーメンマン,Ramen Man,ramen-man,kn,Kinnikuman,7,20,support,3,Power (力),3K (T2),153,2,1,#..../#..../#..../.....,61;1;159;3;48
+154,ブロッケンＪｒ．,Brocken Jr.,brocken-jr,kn,Kinnikuman,7,21,help,1,Neutral (なし),1K,154,0,0,#..../...../...../.....,62;2;29;1;48
+155,ブロッケンＪｒ．,Brocken Jr.,brocken-jr,kn,Kinnikuman,7,22,support,2,Power (力),2K (T1),155,1,0,##.../...../...../.....,62;1;160;2;48
+156,ブロッケンＪｒ．,Brocken Jr.,brocken-jr,kn,Kinnikuman,7,23,support,3,Power (力),3K (T5),156,2,4,#..../##.../...../.....,62;1;160;3;48
+157,バッファローマン,Buffalo Man,buffalo-man,kn,Kinnikuman,7,24,help,1,Neutral (なし),1K,157,0,0,#..../...../...../.....,63;2;44;1;48
+158,バッファローマン,Buffalo Man,buffalo-man,kn,Kinnikuman,7,25,support,2,Power (力),2K (T1),158,1,0,##.../...../...../.....,63;1;161;1;48
+159,バッファローマン,Buffalo Man,buffalo-man,kn,Kinnikuman,7,26,support,3,Power (力),3K (T2),159,2,1,#..../#..../#..../.....,63;1;161;3;48
+160,アシュラマン,Furious Fighter,furious-fighter,kn,Kinnikuman,7,27,help,1,Neutral (なし),1K,160,0,0,#..../...../...../.....,64;2;41;1;48
+161,アシュラマン,Furious Fighter,furious-fighter,kn,Kinnikuman,7,28,support,2,Power (力),2K (T2),161,1,1,#..../#..../...../.....,64;1;162;1;48
+162,アシュラマン,Furious Fighter,furious-fighter,kn,Kinnikuman,7,29,support,3,Power (力),3K (T6),162,2,5,##.../#..../...../.....,64;1;162;1;48
+163,ミートくん,Mito-kun,mito-kun,kn,Kinnikuman,7,30,help,1,Neutral (なし),1K,163,0,0,#..../...../...../.....,65;2;35;1;48
+164,キン肉大王,Super Muscle,super-muscle,kn,Kinnikuman,7,31,help,1,Neutral (なし),1K,164,0,0,#..../...../...../.....,66;2;45;1;48
+165,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,0,help,1,Neutral (なし),1K,165,0,0,#..../...../...../.....,67;2;42;1;48
+166,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,1,support,2,Laughter (笑),2K (T2),166,1,1,#..../#..../...../.....,67;1;75;2;48
+167,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,2,support,3,Laughter (笑),3K (T2),167,2,1,#..../#..../#..../.....,67;1;75;2;48
+168,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,3,battle,4,Laughter (笑),4K (T1),168,3,0,##.../##.../...../.....,67;0;51;4;48
+169,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,4,battle,5,Laughter (笑),5K (T9),169,4,9,#..../##.../##.../.....,67;0;51;3;48
+170,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,5,battle,6,Laughter (笑),6K (T4),170,5,3,#..../##.../###../.....,67;0;51;1;48
+171,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,6,battle,6,Power (力),6K (T9),171,5,8,...#./#####/...../.....,67;0;51;4;0
+172,両さん,Ryotsu,rj;ryotsu,kk,Kochi Kame,8,7,battle,7,Laughter (笑),7K (T9),172,6,9,##.../##.../##.../#....,67;0;51;2;48
+173,大原部長,Chief Ohara,chief-ohara,kk,Kochi Kame,8,8,help,1,Neutral (なし),1K,173,0,0,#..../...../...../.....,68;2;41;1;48
+174,大原部長,Chief Ohara,chief-ohara,kk,Kochi Kame,8,9,support,2,Laughter (笑),2K (T1),174,1,0,##.../...../...../.....,68;1;76;2;48
+175,大原部長,Chief Ohara,chief-ohara,kk,Kochi Kame,8,10,support,3,Laughter (笑),3K (T3),175,2,2,##.../.#.../...../.....,68;1;76;2;48
+176,中川,Nakagawa,nakagawa,kk,Kochi Kame,8,11,help,1,Neutral (なし),1K,176,0,0,#..../...../...../.....,69;2;16;1;48
+177,中川,Nakagawa,nakagawa,kk,Kochi Kame,8,12,support,2,Laughter (笑),2K (T1),177,1,0,##.../...../...../.....,69;1;77;2;48
+178,中川,Nakagawa,nakagawa,kk,Kochi Kame,8,13,support,3,Laughter (笑),3K (T3),178,2,2,##.../.#.../...../.....,69;1;77;1;48
+179,麗子,Reiko,reiko,kk,Kochi Kame,8,14,help,1,Neutral (なし),1K,179,0,0,#..../...../...../.....,70;2;52;1;49
+180,麗子,Reiko,reiko,kk,Kochi Kame,8,15,support,2,Laughter (笑),2K (T1),180,1,0,##.../...../...../.....,70;1;78;1;49
+181,麗子,Reiko,reiko,kk,Kochi Kame,8,16,support,3,Laughter (笑),3K (T5),181,2,4,#..../##.../...../.....,70;1;78;2;49
+182,本田速人,Hayato,hayato,kk,Kochi Kame,8,17,help,1,Neutral (なし),1K,182,0,0,#..../...../...../.....,71;2;33;1;48
+183,本田速人,Hayato,hayato,kk,Kochi Kame,8,18,support,2,Laughter (笑),2K (T2),183,1,1,#..../#..../...../.....,71;1;79;2;48
+184,本田速人,Hayato,hayato,kk,Kochi Kame,8,19,support,3,Laughter (笑),3K (T6),184,2,5,##.../#..../...../.....,71;1;79;1;48
+185,日暮,Higure,higure,kk,Kochi Kame,8,20,help,1,Neutral (なし),1K,185,0,0,#..../...../...../.....,72;2;28;1;48
+186,日暮,Higure,higure,kk,Kochi Kame,8,21,support,2,Laughter (笑),2K (T1),186,1,0,##.../...../...../.....,72;1;80;2;48
+187,日暮,Higure,higure,kk,Kochi Kame,8,22,support,3,Laughter (笑),3K (T4),187,2,3,.#.../##.../...../.....,72;1;80;3;48
+188,ボルボ,Volvo,volvo,kk,Kochi Kame,8,23,help,1,Neutral (なし),1K,188,0,0,#..../...../...../.....,73;2;35;1;48
+189,ボルボ,Volvo,volvo,kk,Kochi Kame,8,24,support,2,Laughter (笑),2K (T2),189,1,1,#..../#..../...../.....,73;1;81;2;48
+190,ボルボ,Volvo,volvo,kk,Kochi Kame,8,25,support,3,Laughter (笑),3K (T4),190,2,3,.#.../##.../...../.....,73;1;81;3;48
+191,左近寺,Ryunnosuke,ryunnosuke,kk,Kochi Kame,8,26,help,1,Neutral (なし),1K,191,0,0,#..../...../...../.....,74;2;40;1;48
+192,左近寺,Ryunnosuke,ryunnosuke,kk,Kochi Kame,8,27,support,2,Laughter (笑),2K (T1),192,1,0,##.../...../...../.....,74;1;82;2;48
+193,左近寺,Ryunnosuke,ryunnosuke,kk,Kochi Kame,8,28,support,3,Laughter (笑),3K (T1),193,2,0,###../...../...../.....,74;1;82;2;48
+194,海パン刑事,Kaipan Deka,kaipan-deka,kk,Kochi Kame,8,29,help,1,Neutral (なし),1K,194,0,0,#..../...../...../.....,75;2;46;1;48
+195,海パン刑事,Kaipan Deka,kaipan-deka,kk,Kochi Kame,8,30,support,2,Laughter (笑),2K (T2),195,1,1,#..../#..../...../.....,75;1;83;2;48
+196,特殊刑事,Special Assembly,special-assembly,kk,Kochi Kame,8,31,support,3,Laughter (笑),3K (T3),196,2,2,##.../.#.../...../.....,75;1;83;3;48
+197,纏,Matoi,matoi,kk,Kochi Kame,8,32,help,1,Neutral (なし),1K,197,0,0,#..../...../...../.....,76;2;18;1;49
+198,マリア,Maria,maria,kk,Kochi Kame,8,33,help,1,Neutral (なし),1K,198,0,0,#..../...../...../.....,77;2;22;1;49
+199,寺井,Terai,terai,kk,Kochi Kame,8,34,help,1,Neutral (なし),1K,199,0,0,#..../...../...../.....,78;2;40;1;48
+200,早矢,Hayashi,hayashi,kk,Kochi Kame,8,35,help,1,Neutral (なし),1K,200,0,0,#..../...../...../.....,79;2;39;1;49
+201,檸檬,Lemon,lemon,kk,Kochi Kame,8,36,help,1,Neutral (なし),1K,201,0,0,#..../...../...../.....,80;2;47;1;49
+202,ハル,Haru,haru,kk,Kochi Kame,8,37,help,1,Neutral (なし),1K,202,0,0,#..../...../...../.....,81;2;48;1;49
+203,コブラ,Cobra,cobra,cb,Space Adventure Cobra,9,0,help,1,Neutral (なし),1K,203,0,0,#..../...../...../.....,82;2;14;1;48
+204,コブラ,Cobra,cobra,cb,Space Adventure Cobra,9,1,support,2,Power (力),2K (T1),204,1,0,##.../...../...../.....,82;1;182;2;48
+205,コブラ,Cobra,cobra,cb,Space Adventure Cobra,9,2,support,3,Power (力),3K (T2),205,2,1,#..../#..../#..../.....,82;1;182;2;48
+206,クリスタルボーイ,Crystal Boy,crystal-boy,cb,Space Adventure Cobra,9,3,help,1,Neutral (なし),1K,206,0,0,#..../...../...../.....,83;2;30;1;48
+207,クリスタルボーイ,Crystal Boy,crystal-boy,cb,Space Adventure Cobra,9,4,support,2,Power (力),2K (T2),207,1,1,#..../#..../...../.....,83;1;183;1;48
+208,クリスタルボーイ,Crystal Boy,crystal-boy,cb,Space Adventure Cobra,9,5,support,3,Power (力),3K (T6),208,2,5,##.../#..../...../.....,83;1;183;1;48
+209,レディ,Lady Armanoid,lady-armanoid,cb,Space Adventure Cobra,9,6,help,1,Neutral (なし),1K,209,0,0,#..../...../...../.....,84;2;22;1;49
+210,レディ,Lady Armanoid,lady-armanoid,cb,Space Adventure Cobra,9,7,support,2,Knowledge (知),2K (T2),210,1,1,#..../#..../...../.....,84;1;184;1;49
+211,レディ,Lady Armanoid,lady-armanoid,cb,Space Adventure Cobra,9,8,support,3,Knowledge (知),3K (T6),211,2,5,##.../#..../...../.....,84;1;184;1;49
+212,江田島平八,Edajima,edajima,oj,Sakigake!! Otokojuku,10,0,help,1,Neutral (なし),1K,212,0,0,#..../...../...../.....,85;2;53;1;48
+213,江田島平八,Edajima,edajima,oj,Sakigake!! Otokojuku,10,1,battle,8,Power (力),8K (T1),213,7,0,##.../##.../##.../##...,85;0;66;5;48
+214,桃,Momotaro,momotaro,oj,Sakigake!! Otokojuku,10,2,help,1,Neutral (なし),1K,214,0,0,#..../...../...../.....,86;2;55;1;48
+215,桃,Momotaro,momotaro,oj,Sakigake!! Otokojuku,10,3,support,2,Power (力),2K (T1),215,1,0,##.../...../...../.....,86;1;164;1;48
+216,桃,Momotaro,momotaro,oj,Sakigake!! Otokojuku,10,4,support,3,Power (力),3K (T3),216,2,2,##.../.#.../...../.....,86;1;164;3;48
+217,桃,Momotaro,momotaro,oj,Sakigake!! Otokojuku,10,5,battle,4,Power (力),4K (T9),217,3,8,#..../##.../#..../.....,86;0;67;3;48
+218,桃,Momotaro,momotaro,oj,Sakigake!! Otokojuku,10,6,battle,5,Power (力),5K (T6),218,4,5,##.../##.../#..../.....,86;0;67;2;48
+219,桃,Momotaro,momotaro,oj,Sakigake!! Otokojuku,10,7,battle,6,Power (力),6K (T2),219,5,1,##.../##.../##.../.....,86;0;67;5;48
+220,桃,Momotaro,momotaro,oj,Sakigake!! Otokojuku,10,8,battle,6,Power (力),6K (T12),220,5,11,###../.##../..#../.....,86;0;67;5;16
+221,大豪院邪鬼,Jaki,jaki,oj,Sakigake!! Otokojuku,10,9,help,1,Neutral (なし),1K,221,0,0,#..../...../...../.....,87;2;43;1;48
+222,大豪院邪鬼,Jaki,jaki,oj,Sakigake!! Otokojuku,10,10,support,2,Power (力),2K (T1),222,1,0,##.../...../...../.....,87;1;165;2;48
+223,大豪院邪鬼,,,oj,,10,11,support,3,,,223,2,1,#..../#..../#..../.....,87;1;165;3;48
+224,伊達,Date,date,oj,Sakigake!! Otokojuku,10,12,help,1,Neutral (なし),1K,224,0,0,#..../...../...../.....,88;2;44;1;48
+225,伊達,Date,date,oj,Sakigake!! Otokojuku,10,13,support,2,Power (力),2K (T2),225,1,1,#..../#..../...../.....,88;1;166;2;48
+226,伊達,,,oj,,10,14,support,3,,,226,2,2,##.../.#.../...../.....,88;1;166;2;48
+227,飛燕,Hien,hien,oj,Sakigake!! Otokojuku,10,15,help,1,Neutral (なし),1K,227,0,0,#..../...../...../.....,89;2;3;1;48
+228,飛燕,Hien,hien,oj,Sakigake!! Otokojuku,10,16,support,2,Knowledge (知),2K (T1),228,1,0,##.../...../...../.....,89;1;167;1;48
+229,飛燕,,,oj,,10,17,support,3,,,229,2,2,##.../.#.../...../.....,89;1;167;2;48
+230,Ｊ,J,j,oj,Sakigake!! Otokojuku,10,18,help,1,Neutral (なし),1K,230,0,0,#..../...../...../.....,90;2;40;1;48
+231,Ｊ,J,j,oj,Sakigake!! Otokojuku,10,19,support,2,Power (力),2K (T1),231,1,0,##.../...../...../.....,90;1;168;1;48
+232,Ｊ,,,oj,,10,20,support,3,,,232,2,1,#..../#..../#..../.....,90;1;168;2;48
+233,富樫,Genji,genji,oj,Sakigake!! Otokojuku,10,21,help,1,Neutral (なし),1K,233,0,0,#..../...../...../.....,91;2;45;1;48
+234,虎丸,Ryuji,ryuji,oj,Sakigake!! Otokojuku,10,22,help,1,Neutral (なし),1K,234,0,0,#..../...../...../.....,92;2;38;1;48
+235,雷電,Raiden,raiden,oj,Sakigake!! Otokojuku,10,23,help,1,Neutral (なし),1K,235,0,0,#..../...../...../.....,93;2;47;1;48
+236,王大人,Wan Taaren,wan-taaren,oj,Sakigake!! Otokojuku,10,24,help,1,Neutral (なし),1K,236,0,0,#..../...../...../.....,94;2;35;1;48
+237,ぬ〜べ〜,Nube,nube,nb,Jigoku Sensei Nube,11,0,help,1,Neutral (なし),1K,237,0,0,#..../...../...../.....,95;2;55;1;48
+238,ぬ〜べ〜,Nube,nube,nb,Jigoku Sensei Nube,11,1,support,2,Power (力),2K (T1),238,1,0,##.../...../...../.....,95;1;180;2;48
+239,ぬ〜べ〜,Nube,nube,nb,Jigoku Sensei Nube,11,2,support,3,Power (力),3K (T1),239,2,0,###../...../...../.....,95;1;180;2;48
+240,ゆきめ,Yukime,yukime,nb,Jigoku Sensei Nube,11,3,help,1,Neutral (なし),1K,240,0,0,#..../...../...../.....,96;2;26;1;49
+241,ゆきめ,Yukime,yukime,nb,Jigoku Sensei Nube,11,4,support,2,Knowledge (知),2K (T1),241,1,0,##.../...../...../.....,96;1;181;2;49
+242,ゆきめ,Yukime,yukime,nb,Jigoku Sensei Nube,11,5,support,3,Knowledge (知),3K (T6),242,2,5,##.../#..../...../.....,96;1;181;1;49
+243,広,Hiro,hiro,nb,Jigoku Sensei Nube,11,6,help,1,Neutral (なし),1K,243,0,0,#..../...../...../.....,97;2;22;1;48
+244,郷子,Kyoko,kyoko,nb,Jigoku Sensei Nube,11,7,help,1,Neutral (なし),1K,244,0,0,#..../...../...../.....,98;2;52;1;49
+245,葉,Yoh,yoh,sk,Shaman King,12,0,help,1,Neutral (なし),1K,245,0,0,#..../...../...../.....,99;2;14;1;48
+246,葉,Yoh,yoh,sk,Shaman King,12,1,support,2,Knowledge (知),2K (T2),246,1,0,##.../...../...../.....,99;1;22;1;48
+247,葉,Yoh,yoh,sk,Shaman King,12,2,support,3,Laughter (笑),3K (T4),247,2,3,.#.../##.../...../.....,99;1;22;2;48
+248,葉,Yoh,yoh,sk,Shaman King,12,3,battle,4,Knowledge (知),4K (T1),248,3,0,##.../##.../...../.....,99;0;25;2;48
+249,葉,Yoh,yoh,sk,Shaman King,12,4,battle,4,Laughter (笑),4K (T10),249,3,9,.#.../###../...../.....,99;0;25;3;32
+250,葉,Yoh,yoh,sk,Shaman King,12,5,battle,5,Knowledge (知),5K (T7),250,4,6,#.#../###../...../.....,99;0;25;5;48
+251,葉（白鵠）,Yoh (White Swan),yoh-white-swan,sk,Shaman King,12,6,battle,6,Knowledge (知),6K (T1),251,5,0,###../###../...../.....,99;0;26;2;48
+252,アンナ,Anna,anna,sk,Shaman King,12,7,help,1,Neutral (なし),1K,252,0,0,#..../...../...../.....,100;2;41;1;49
+253,アンナ,Anna,anna,sk,Shaman King,12,8,support,2,Laughter (笑),2K (T1),253,1,0,##.../...../...../.....,100;1;23;1;49
+254,アンナ,,anna,sk,,12,9,support,3,,,254,2,2,##.../.#.../...../.....,100;1;23;2;49
+255,アンナ,Anna,anna,sk,Shaman King,12,10,battle,4,Knowledge (知),4K (T1),255,3,0,##.../##.../...../.....,100;0;27;2;49
+256,アンナ,Anna,anna,sk,Shaman King,12,11,battle,5,Knowledge (知),5K (T7),256,4,6,#.#../###../...../.....,100;0;27;4;49
+257,アンナ,Anna,anna,sk,Shaman King,12,12,battle,5,Power (力),5K (T3),257,4,2,###../.##../...../.....,100;0;27;2;1
+258,ハオ,Hao,hao,sk,Shaman King,12,13,help,1,Neutral (なし),1K,258,0,0,#..../...../...../.....,101;2;44;1;48
+259,ハオ,Hao,hao,sk,Shaman King,12,14,support,2,Laughter (笑),2K (T2),259,1,1,#..../#..../...../.....,101;1;24;1;48
+260,ハオ,Hao,hao,sk,Shaman King,12,15,support,3,Power (力),3K (T1),260,2,0,###../...../...../.....,101;1;24;1;48
+261,道蓮,Tao Ren,tao-ren,sk,Shaman King,12,16,help,1,Neutral (なし),1K,261,0,0,#..../...../...../.....,102;2;43;1;48
+262,ホロホロ,Horohoro,horohoro,sk,Shaman King,12,17,help,1,Neutral (なし),1K,262,0,0,#..../...../...../.....,103;2;26;1;48
+263,まん太,Manta,manta,sk,Shaman King,12,18,help,1,Neutral (なし),1K,263,0,0,#..../...../...../.....,104;2;22;1;48
+264,阿弥陀丸,Amidamaru,amidamaru,sk,Shaman King,12,19,help,1,Neutral (なし),1K,264,0,0,#..../...../...../.....,105;2;30;1;48
+265,チョコラブ,Chocolove,chocolove,sk,Shaman King,12,20,help,1,Neutral (なし),1K,265,0,0,#..../...../...../.....,106;2;48;1;48
+266,ターちゃん,Ta-chan,ta-chan,tc,Jungle no Ohjata-chan,13,0,help,1,Neutral (なし),1K,266,0,0,#..../...../...../.....,107;2;55;1;48
+267,ターちゃん,Ta-chan,ta-chan,tc,Jungle no Ohjata-chan,13,1,support,2,Power (力),2K (T1),267,1,0,##.../...../...../.....,107;1;175;1;48
+268,ターちゃん,Ta-chan,ta-chan,tc,Jungle no Ohjata-chan,13,2,support,3,Laughter (笑),3K (T4),268,2,3,.#.../##.../...../.....,107;1;175;3;48
+269,ヂェーン,Jane,jane,tc,Jungle no Ohjata-chan,13,3,help,1,Neutral (なし),1K,269,0,0,#..../...../...../.....,108;2;42;1;49
+270,エテ吉,Etekichi,etekichi,tc,Jungle no Ohjata-chan,13,4,help,1,Neutral (なし),1K,270,0,0,#..../...../...../.....,109;2;28;1;48
+271,アナベベ,AnaBebe,anabebe,tc,Jungle no Ohjata-chan,13,5,help,1,Neutral (なし),1K,271,0,0,#..../...../...../.....,110;2;16;1;48
+272,承太郎,Jotaro,jotaro,jj,Jojo's Bizarre Adventure,14,0,help,1,Neutral (なし),1K,272,0,0,#..../...../...../.....,111;2;13;1;48
+273,承太郎,Jotaro,jotaro,jj,Jojo's Bizarre Adventure,14,1,support,2,Power (力),2K (T2),273,1,1,#..../#..../...../.....,111;1;25;2;48
+274,承太郎,Jotaro,jotaro,jj,Jojo's Bizarre Adventure,14,2,support,3,Knowledge (知),3K (T1),274,2,0,###../...../...../.....,111;1;25;3;48
+275,承太郎,Jotaro,jotaro,jj,Jojo's Bizarre Adventure,14,3,battle,4,Power (力),4K (T1),275,3,0,##.../##.../...../.....,111;0;28;4;48
+276,承太郎,,jotaro,jj,,14,4,battle,5,,,276,4,0,##.../##.../.#.../.....,111;0;28;3;48
+277,承太郎,Jotaro,jotaro,jj,Jojo's Bizarre Adventure,14,5,battle,5,Power (力),5K (T1),277,4,9,#..../##.../##.../.....,111;0;28;1;16
+278,承太郎,Jotaro,jotaro,jj,Jojo's Bizarre Adventure,14,6,battle,6,Power (力),6K (T1),278,5,0,###../###../...../.....,111;0;28;2;48
+279,ＤＩＯ,Dio,dio,jj,Jojo's Bizarre Adventure,14,7,help,1,Neutral (なし),1K,279,0,0,#..../...../...../.....,112;2;44;1;48
+280,ＤＩＯ,Dio,dio,jj,Jojo's Bizarre Adventure,14,8,support,2,Knowledge (知),2K (T2),280,1,1,#..../#..../...../.....,112;1;26;2;48
+281,ＤＩＯ,Dio,dio,jj,Jojo's Bizarre Adventure,14,9,support,3,Power (力),3K (T3),281,2,2,##.../.#.../...../.....,112;1;26;2;48
+282,ＤＩＯ,Dio,dio,jj,Jojo's Bizarre Adventure,14,10,battle,4,Power (力),4K (T1),282,3,0,##.../##.../...../.....,112;0;29;4;48
+283,ＤＩＯ,,,jj,,14,11,battle,5,,,283,4,1,###../##.../...../.....,112;0;29;5;48
+284,ＤＩＯ,Dio,dio,jj,Jojo's Bizarre Adventure,14,12,battle,5,Power (力),5K (T2),284,4,3,.##../###../...../.....,112;0;29;1;16
+285,ＤＩＯ,Dio,dio,jj,Jojo's Bizarre Adventure,14,13,battle,6,Power (力),6K (T2),285,5,1,##.../##.../##.../.....,112;0;29;1;48
+286,ジョナサン,Jonathan,jonathan,jj,Jojo's Bizarre Adventure,14,14,help,1,Neutral (なし),1K,286,0,0,#..../...../...../.....,113;2;7;1;48
+287,ジョナサン,Jonathan,jonathan,jj,Jojo's Bizarre Adventure,14,15,support,2,Power (力),2K (T1),287,1,0,##.../...../...../.....,113;1;27;2;48
+288,ジョナサン,Jonathan,jonathan,jj,Jojo's Bizarre Adventure,14,16,support,3,Power (力),3K (T1),288,2,0,###../...../...../.....,113;1;27;1;48
+289,ジョセフ,Joseph,joseph,jj,Jojo's Bizarre Adventure,14,17,help,1,Neutral (なし),1K,289,0,0,#..../...../...../.....,114;2;35;1;48
+290,ジョセフ,Joseph,joseph,jj,Jojo's Bizarre Adventure,14,18,support,2,Knowledge (知),2K (T1),290,1,0,##.../...../...../.....,114;1;28;2;48
+291,ジョセフ,Joseph,joseph,jj,Jojo's Bizarre Adventure,14,19,support,3,Knowledge (知),3K (T3),291,2,2,##.../.#.../...../.....,114;1;28;2;48
+292,仗助,Josuke,josuke,jj,Jojo's Bizarre Adventure,14,20,help,1,Neutral (なし),1K,292,0,0,#..../...../...../.....,115;2;8;1;48
+293,仗助,Josuke,josuke,jj,Jojo's Bizarre Adventure,14,21,support,2,Power (力),2K (T1),293,1,0,##.../...../...../.....,115;1;29;2;48
+294,仗助,Josuke,josuke,jj,Jojo's Bizarre Adventure,14,22,support,3,Power (力),3K (T6),294,2,5,##.../#..../...../.....,115;1;29;1;48
+295,ジョルノ,Giorno,giorno,jj,Jojo's Bizarre Adventure,14,23,help,1,Neutral (なし),1K,295,0,0,#..../...../...../.....,116;2;46;1;48
+296,ジョルノ,Giorno,giorno,jj,Jojo's Bizarre Adventure,14,24,support,2,Knowledge (知),2K (T1),296,1,0,##.../...../...../.....,116;1;30;1;48
+297,ジョルノ,Giorno,giorno,jj,Jojo's Bizarre Adventure,14,25,support,3,Knowledge (知),3K (T4),297,2,3,.#.../##.../...../.....,116;1;30;1;48
+298,徐倫,Jolyne,jolyne,jj,Jojo's Bizarre Adventure,14,26,help,1,Neutral (なし),1K,298,0,0,#..../...../...../.....,117;2;43;1;49
+299,徐倫,Jolyne,jolyne,jj,Jojo's Bizarre Adventure,14,27,support,2,Power (力),2K (T1),299,1,0,##.../...../...../.....,117;1;31;1;49
+300,徐倫,Jolyne,jolyne,jj,Jojo's Bizarre Adventure,14,28,support,3,Power (力),3K (T2),300,2,1,#..../#..../#..../.....,117;1;31;2;49
+301,ジャイロ,Gyro,gyro,jj,Jojo's Bizarre Adventure,14,29,help,1,Neutral (なし),1K,301,0,0,#..../...../...../.....,118;2;53;1;48
+302,ジャイロ,Gyro,gyro,jj,Jojo's Bizarre Adventure,14,30,support,2,Knowledge (知),2K (T2),302,1,1,#..../#..../...../.....,118;1;32;1;48
+303,ジャイロ,Gyro,gyro,jj,Jojo's Bizarre Adventure,14,31,support,3,Knowledge (知),3K (T1),303,2,0,###../...../...../.....,118;1;32;2;48
+304,露伴,Rohan,rohan,jj,Jojo's Bizarre Adventure,14,32,help,1,Neutral (なし),1K,304,0,0,#..../...../...../.....,119;2;34;1;48
+305,ジョニィ,Johnny,johnny,jj,Jojo's Bizarre Adventure,14,33,help,1,Neutral (なし),1K,305,0,0,#..../...../...../.....,120;2;33;1;48
+306,桜木花道,Hanamichi,sakuragi;hanamichi,sd,Slam Dunk!,15,0,help,1,Neutral (なし),1K,306,0,0,#..../...../...../.....,121;2;1;1;48
+307,桜木花道,Hanamichi,sakuragi;hanamichi,sd,Slam Dunk!,15,1,support,2,Power (力),2K (T1),307,1,0,##.../...../...../.....,121;1;126;1;48
+308,桜木花道,Hanamichi,sakuragi;hanamichi,sd,Slam Dunk!,15,2,support,3,Power (力),3K (T6),308,2,5,##.../#..../...../.....,121;1;126;1;48
+309,流川楓,Kaede,rukawa;kaede,sd,Slam Dunk!,15,3,help,1,Neutral (なし),1K,309,0,0,#..../...../...../.....,122;2;3;1;48
+310,流川楓,Kaede,rukawa;kaede,sd,Slam Dunk!,15,4,support,2,Laughter (笑),2K (T1),310,1,0,##.../...../...../.....,122;1;127;2;48
+311,流川楓,Kaede,rukawa;kaede,sd,Slam Dunk!,15,5,support,3,Knowledge (知),3K (T4),311,2,3,.#.../##.../...../.....,122;1;127;1;48
+312,赤木剛憲,Takenori,takenori,sd,Slam Dunk!,15,6,help,1,Neutral (なし),1K,312,0,0,#..../...../...../.....,123;2;53;1;48
+313,赤木剛憲,Takenori,takenori,sd,Slam Dunk!,15,7,support,2,Power (力),2K (T2),313,1,1,#..../#..../...../.....,123;1;128;2;48
+314,赤木剛憲,Takenori,takenori,sd,Slam Dunk!,15,8,support,3,Power (力),3K (T2),314,2,1,#..../#..../#..../.....,123;1;128;2;48
+315,三井寿,Hisashi,hisashi,sd,Slam Dunk!,15,9,help,1,Neutral (なし),1K,315,0,0,#..../...../...../.....,124;2;14;1;48
+316,三井寿,Hisashi,hisashi,sd,Slam Dunk!,15,10,support,2,Knowledge (知),2K (T1),316,1,0,##.../...../...../.....,124;1;129;1;48
+317,三井寿,Hisashi,hisashi,sd,Slam Dunk!,15,11,support,3,Knowledge (知),3K (T5),317,2,4,#..../##.../...../.....,124;1;129;2;48
+318,宮城リョータ,Ryota,ryota,sd,Slam Dunk!,15,12,help,1,Neutral (なし),1K,318,0,0,#..../...../...../.....,125;2;39;1;48
+319,宮城リョータ,Ryota,ryota,sd,Slam Dunk!,15,13,support,2,Knowledge (知),2K (T2),319,1,1,#..../#..../...../.....,125;1;130;1;48
+320,宮城リョータ,Ryota,ryota,sd,Slam Dunk!,15,14,support,3,Knowledge (知),3K (T3),320,2,2,##.../.#.../...../.....,125;1;130;3;48
+321,赤木晴子,Haruko,haruko,sd,Slam Dunk!,15,15,help,1,Neutral (なし),1K,321,0,0,#..../...../...../.....,126;2;52;1;49
+322,安西先生,Anzai-Sensei,anzai-sensei,sd,Slam Dunk!,15,16,help,1,Neutral (なし),1K,322,0,0,#..../...../...../.....,127;2;8;1;48
+323,星矢,Seiya,seiya,ss,Saint Seiya,16,0,help,1,Neutral (なし),1K,323,0,0,#..../...../...../.....,128;2;13;1;48
+324,星矢,Seiya,seiya,ss,Saint Seiya,16,1,support,2,Power (力),2K (T1),324,1,0,##.../...../...../.....,128;1;150;1;48
+325,星矢,Seiya,seiya,ss,Saint Seiya,16,2,support,3,Power (力),3K (T2),325,2,1,#..../#..../#..../.....,128;1;150;1;48
+326,星矢,Seiya,seiya,ss,Saint Seiya,16,3,battle,4,Power (力),4K (T1),326,3,0,##.../##.../...../.....,128;0;63;1;48
+327,星矢,Seiya,seiya,ss,Saint Seiya,16,4,battle,5,Power (力),5K (T3),327,4,2,###../.##../...../.....,128;0;63;2;48
+328,星矢,Seiya,seiya,ss,Saint Seiya,16,5,battle,6,Power (力),6K (T1),328,5,0,###../###../...../.....,128;0;63;3;48
+329,星矢,Seiya,seiya,ss,Saint Seiya,16,6,battle,7,Power (力),7K (T2),329,6,1,###../###../..#../.....,128;0;63;5;48
+330,星矢（黄金聖衣）,Seiya (Gold),seiya-gold,ss,Saint Seiya,16,7,battle,8,Power (力),8K (T1),330,7,0,##.../##.../##.../##...,128;0;64;5;48
+331,紫龍,Shiryu,shiryu,ss,Saint Seiya,16,8,help,1,Neutral (なし),1K,331,0,0,#..../...../...../.....,129;2;10;1;48
+332,紫龍,Shiryu,shiryu,ss,Saint Seiya,16,9,support,2,Power (力),2K (T1),332,1,0,##.../...../...../.....,129;1;151;2;48
+333,紫龍,Shiryu,shiryu,ss,Saint Seiya,16,10,support,3,Power (力),3K (T2),333,2,1,#..../#..../#..../.....,129;1;151;3;48
+334,氷河,Hyoga,hyoga,ss,Saint Seiya,16,11,help,1,Neutral (なし),1K,334,0,0,#..../...../...../.....,130;2;26;1;48
+335,氷河,Hyoga,hyoga,ss,Saint Seiya,16,12,support,2,Power (力),2K (T1),335,1,0,##.../...../...../.....,130;1;152;2;48
+336,氷河,Hyoga,hyoga,ss,Saint Seiya,16,13,support,3,Power (力),3K (T2),336,2,1,#..../#..../#..../.....,130;1;152;1;48
+337,瞬,Shun,shun,ss,Saint Seiya,16,14,help,1,Neutral (なし),1K,337,0,0,#..../...../...../.....,131;2;5;1;48
+338,瞬,Shun,shun,ss,Saint Seiya,16,15,support,2,Knowledge (知),2K (T1),338,1,1,#..../#..../...../.....,131;1;153;1;48
+339,瞬,Shun,shun,ss,Saint Seiya,16,16,support,3,Power (力),3K (T2),339,2,1,#..../#..../#..../.....,131;1;153;2;48
+340,一輝,Ikki,ikki,ss,Saint Seiya,16,17,help,1,Neutral (なし),1K,340,0,0,#..../...../...../.....,132;2;54;1;48
+341,一輝,Ikki,ikki,ss,Saint Seiya,16,18,support,2,Knowledge (知),2K (T1),341,1,0,##.../...../...../.....,132;1;154;1;48
+342,一輝,Ikki,ikki,ss,Saint Seiya,16,19,support,3,Power (力),3K (T1),342,2,0,###../...../...../.....,132;1;154;2;48
+343,アテナ,Athena,athena,ss,Saint Seiya,16,20,help,1,Neutral (なし),1K,343,0,0,#..../...../...../.....,133;2;53;1;49
+344,ムウ,Muu,muu,ss,Saint Seiya,16,21,help,1,Neutral (なし),1K,344,0,0,#..../...../...../.....,134;2;7;1;48
+345,太臓,Taizo,taizo,tz,Taizomote King Saga,17,0,help,1,Neutral (なし),1K,345,0,0,#..../...../...../.....,135;2;45;1;48
+346,太臓,Taizo,taizo,tz,Taizomote King Saga,17,1,support,2,Laughter (笑),2K (T1),346,1,0,##.../...../...../.....,135;1;185;2;48
+347,太臓,Taizo,taizo,tz,Taizomote King Saga,17,2,support,3,Laughter (笑),3K (T5),347,2,4,#..../##.../...../.....,135;1;185;2;48
+348,スピン,Spin,spin,tz,Taizomote King Saga,17,3,help,1,Neutral (なし),1K,348,0,0,#..../...../...../.....,136;2;30;1;49
+349,スピン,Spin,spin,tz,Taizomote King Saga,17,4,support,2,Laughter (笑),2K (T1),349,1,0,##.../...../...../.....,136;1;186;2;49
+350,スピン,Spin,spin,tz,Taizomote King Saga,17,5,support,3,Laughter (笑),3K (T4),350,2,3,.#.../##.../...../.....,136;1;186;1;49
+351,あいす,Aisu,aisu,tz,Taizomote King Saga,17,6,help,1,Neutral (なし),1K,351,0,0,#..../...../...../.....,137;2;26;1;49
+352,リョーマ,Ryoma,ryoma,to,Prince of Tennis,18,0,help,1,Neutral (なし),1K,352,0,0,#..../...../...../.....,138;2;14;1;48
+353,リョーマ,Ryoma,ryoma,to,Prince of Tennis,18,1,support,2,Knowledge (知),2K (T2),353,1,1,#..../#..../...../.....,138;1;108;1;48
+354,リョーマ,Ryoma,ryoma,to,Prince of Tennis,18,2,support,3,Knowledge (知),3K (T4),354,2,3,.#.../##.../...../.....,138;1;108;1;48
+355,手塚,Tezuka,tezuka,to,Prince of Tennis,18,3,help,1,Neutral (なし),1K,355,0,0,#..../...../...../.....,139;2;46;1;48
+356,手塚,Tezuka,tezuka,to,Prince of Tennis,18,4,support,2,Knowledge (知),2K (T2),356,1,1,#..../#..../...../.....,139;1;109;1;48
+357,手塚,Tezuka,tezuka,to,Prince of Tennis,18,5,support,3,Knowledge (知),3K (T6),357,2,5,##.../#..../...../.....,139;1;109;1;48
+358,不二,Fuji,fuji,to,Prince of Tennis,18,6,help,1,Neutral (なし),1K,358,0,0,#..../...../...../.....,140;2;5;1;48
+359,不二,Fuji,fuji,to,Prince of Tennis,18,7,support,2,Knowledge (知),2K (T1),359,1,0,##.../...../...../.....,140;1;110;1;48
+360,不二,Fuji,fuji,to,Prince of Tennis,18,8,support,3,Knowledge (知),3K (T4),360,2,3,.#.../##.../...../.....,140;1;110;1;48
+361,大石／菊丸,Oishi/Eiji,oishi-eiji,to,Prince of Tennis,18,9,help,1,Neutral (なし),1K,361,0,0,#..../...../...../.....,141;2;39;1;48
+362,ゴールデンペア,Golden Pair,golden-pair,to,Prince of Tennis,18,10,support,2,Knowledge (知),2K (T1),362,1,0,##.../...../...../.....,141;1;111;1;48
+363,ゴールデンペア,Golden Pair,golden-pair,to,Prince of Tennis,18,11,support,3,Knowledge (知),3K (T1),363,2,0,###../...../...../.....,141;1;111;2;48
+364,桃城武,Momoshiro,momoshiro,to,Prince of Tennis,18,12,help,1,Neutral (なし),1K,364,0,0,#..../...../...../.....,142;2;15;1;48
+365,桃城武,Momoshiro,momoshiro,to,Prince of Tennis,18,13,support,2,Power (力),2K (T2),365,1,1,#..../#..../...../.....,142;1;112;1;48
+366,桃城武,Momoshiro,momoshiro,to,Prince of Tennis,18,14,support,3,Power (力),3K (T5),366,2,4,#..../##.../...../.....,142;1;112;1;48
+367,海堂,Kaido,kaido,to,Prince of Tennis,18,15,help,1,Neutral (なし),1K,367,0,0,#..../...../...../.....,143;2;29;1;48
+368,海堂,Kaido,kaido,to,Prince of Tennis,18,16,support,2,Power (力),2K (T2),368,1,1,#..../#..../...../.....,143;1;113;1;48
+369,海堂,Kaido,kaido,to,Prince of Tennis,18,17,support,3,Power (力),3K (T4),369,2,3,.#.../##.../...../.....,143;1;113;1;48
+370,河村,Kawamura,kawamura,to,Prince of Tennis,18,18,help,1,Neutral (なし),1K,370,0,0,#..../...../...../.....,144;2;38;1;48
+371,河村,Kawamura,kawamura,to,Prince of Tennis,18,19,support,2,Power (力),2K (T1),371,1,0,##.../...../...../.....,144;1;115;2;48
+372,河村,Kawamura,kawamura,to,Prince of Tennis,18,20,support,3,Power (力),3K (T3),372,2,2,##.../.#.../...../.....,144;1;115;2;48
+373,乾,Inui,inui,to,Prince of Tennis,18,21,help,1,Neutral (なし),1K,373,0,0,#..../...../...../.....,145;2;47;1;48
+374,乾,Inui,inui,to,Prince of Tennis,18,22,support,2,Knowledge (知),2K (T1),374,1,0,##.../...../...../.....,145;1;114;1;48
+375,乾,Inui,inui,to,Prince of Tennis,18,23,support,3,Knowledge (知),3K (T1),375,2,0,###../...../...../.....,145;1;114;2;48
+376,跡部,Atobe,atobe,to,Prince of Tennis,18,24,help,1,Neutral (なし),1K,376,0,0,#..../...../...../.....,146;2;26;1;48
+377,跡部,Atobe,atobe,to,Prince of Tennis,18,25,support,2,Knowledge (知),2K (T1),377,1,0,##.../...../...../.....,146;1;116;2;48
+378,跡部,Atobe,atobe,to,Prince of Tennis,18,26,support,3,Knowledge (知),3K (T2),378,2,1,#..../#..../#..../.....,146;1;116;1;48
+379,アレン,Allen,allen,dg,D.Gray-Man,19,0,help,1,Neutral (なし),1K,379,0,0,#..../...../...../.....,147;2;32;1;48
+380,アレン,Allen,allen,dg,D.Gray-Man,19,1,support,2,Knowledge (知),2K (T1),380,1,0,##.../...../...../.....,147;1;64;1;48
+381,アレン,Allen,allen,dg,D.Gray-Man,19,2,support,3,Knowledge (知),3K (T1),381,2,0,###../...../...../.....,147;1;64;2;48
+382,アレン,Allen,allen,dg,D.Gray-Man,19,3,battle,4,Knowledge (知),4K (T1),382,3,0,##.../##.../...../.....,147;0;45;3;48
+383,アレン,Allen,allen,dg,D.Gray-Man,19,4,battle,5,Knowledge (知),5K (T3),383,4,2,###../.##../...../.....,147;0;45;4;48
+384,アレン,Allen,allen,dg,D.Gray-Man,19,5,battle,6,Knowledge (知),6K (T10),384,5,9,.#.../##.../##.../.#...,147;0;45;1;48
+385,アレン,Allen,allen,dg,D.Gray-Man,19,6,battle,6,Power (力),6K (T11),385,5,10,.#.../###../##.../.....,147;0;45;2;0
+386,リナリー,Lenalee,lenalee,dg,D.Gray-Man,19,7,help,1,Neutral (なし),1K,386,0,0,#..../...../...../.....,148;2;2;1;49
+387,リナリー,Lenalee,lenalee,dg,D.Gray-Man,19,8,support,2,Knowledge (知),2K (T1),387,1,0,##.../...../...../.....,148;1;65;1;49
+388,リナリー,Lenalee,lenalee,dg,D.Gray-Man,19,9,support,3,Knowledge (知),3K (T1),388,2,0,###../...../...../.....,148;1;65;3;49
+389,リナリー,Lenalee,lenalee,dg,D.Gray-Man,19,10,battle,4,Knowledge (知),4K (T1),389,3,0,##.../##.../...../.....,148;0;46;4;49
+390,リナリー,Lenalee,lenalee,dg,D.Gray-Man,19,11,battle,5,Knowledge (知),5K (T4),390,4,3,.##../###../...../.....,148;0;46;4;49
+391,ラビ,Lavi,lavi,dg,D.Gray-Man,19,12,help,1,Neutral (なし),1K,391,0,0,#..../...../...../.....,149;2;40;1;48
+392,ラビ,Lavi,lavi,dg,D.Gray-Man,19,13,support,2,Power (力),2K (T1),392,1,0,##.../...../...../.....,149;1;67;1;48
+393,ラビ,Lavi,lavi,dg,D.Gray-Man,19,14,support,3,Power (力),3K (T1),393,2,0,###../...../...../.....,149;1;67;3;48
+394,神田,Kanda,kanda,dg,D.Gray-Man,19,15,help,1,Neutral (なし),1K,394,0,0,#..../...../...../.....,150;2;10;1;48
+395,神田,Kanda,kanda,dg,D.Gray-Man,19,16,support,2,Power (力),2K (T1),395,1,0,##.../...../...../.....,150;1;66;2;48
+396,神田,Kanda,kanda,dg,D.Gray-Man,19,17,support,3,Power (力),3K (T1),396,2,0,###../...../...../.....,150;1;66;3;48
+397,クロウリー,Crowly,crowly,dg,D.Gray-Man,19,18,help,1,Neutral (なし),1K,397,0,0,#..../...../...../.....,151;2;29;1;48
+398,クロウリー,Crowly,crowly,dg,D.Gray-Man,19,19,support,2,Power (力),2K (T1),398,1,0,##.../...../...../.....,151;1;68;2;48
+399,クロウリー,Crowly,crowly,dg,D.Gray-Man,19,20,support,3,Power (力),3K (T2),399,2,1,#..../#..../#..../.....,151;1;68;1;48
+400,リーバー,River,river,dg,D.Gray-Man,19,21,help,1,Neutral (なし),1K,400,0,0,#..../...../...../.....,152;2;35;1;48
+401,コムイ,Komui,komui,dg,D.Gray-Man,19,22,help,1,Neutral (なし),1K,401,0,0,#..../...../...../.....,153;2;47;1;48
+402,ミランダ,Miranda,miranda,dg,D.Gray-Man,19,23,help,1,Neutral (なし),1K,402,0,0,#..../...../...../.....,154;2;22;1;49
+403,クロス元帥,General Cross,general-cross,dg,D.Gray-Man,19,24,help,1,Neutral (なし),1K,403,0,0,#..../...../...../.....,155;2;44;1;48
+404,ライト／リューク,Raito/Ryuk,light;raito-ryuk,dn,Death Note,20,0,help,1,Neutral (なし),1K,404,0,0,#..../...../...../.....,156;2;47;1;48
+405,ライト／リューク,Raito/Ryuk,light;raito-ryuk,dn,Death Note,20,1,support,2,Knowledge (知),2K (T1),405,1,0,##.../...../...../.....,156;1;131;1;48
+406,ライト／リューク,Raito/Ryuk,light;raito-ryuk,dn,Death Note,20,2,support,3,Knowledge (知),3K (T5),406,2,4,#..../##.../...../.....,156;1;131;1;48
+407,Ｌ,L,l,dn,Death Note,20,3,help,1,Neutral (なし),1K,407,0,0,#..../...../...../.....,157;2;5;1;48
+408,Ｌ,L,l,dn,Death Note,20,4,support,2,Knowledge (知),2K (T1),408,1,0,##.../...../...../.....,157;1;132;1;48
+409,Ｌ,L,l,dn,Death Note,20,5,support,3,Knowledge (知),3K (T6),409,2,5,##.../#..../...../.....,157;1;132;1;48
+410,ミサ,Misa,misa,dn,Death Note,20,6,help,1,Neutral (なし),1K,410,0,0,#..../...../...../.....,158;2;22;1;49
+411,ミサ,Misa,misa,dn,Death Note,20,7,support,2,Knowledge (知),2K (T1),411,1,0,##.../...../...../.....,158;1;133;2;49
+412,ミサ,Misa,misa,dn,Death Note,20,8,support,3,Knowledge (知),3K (T6),412,2,5,##.../#..../...../.....,158;1;133;1;49
+413,ニア,Near,near,dn,Death Note,20,9,help,1,Neutral (なし),1K,413,0,0,#..../...../...../.....,159;2;5;1;48
+414,ニア,Near,near,dn,Death Note,20,10,support,2,Knowledge (知),2K (T1),414,1,0,##.../...../...../.....,159;1;134;2;48
+415,ニア,Near,near,dn,Death Note,20,11,support,3,Knowledge (知),3K (T6),415,2,5,##.../#..../...../.....,159;1;134;1;48
+416,メロ,Mello,mello,dn,Death Note,20,12,help,1,Neutral (なし),1K,416,0,0,#..../...../...../.....,160;2;41;1;48
+417,メロ,Mello,mello,dn,Death Note,20,13,support,2,Knowledge (知),2K (T1),417,1,0,##.../...../...../.....,160;1;135;2;48
+418,メロ,Mello,mello,dn,Death Note,20,14,support,3,Knowledge (知),3K (T6),418,2,5,##.../#..../...../.....,160;1;135;1;48
+419,アラレ,Arale,arale,ds,Dr.Slump,21,0,help,1,Neutral (なし),1K,419,0,0,#..../...../...../.....,161;2;30;1;49
+420,アラレ,Arale,arale,ds,Dr.Slump,21,1,support,2,Knowledge (知),2K (T1),420,1,0,##.../...../...../.....,161;1;103;2;49
+421,アラレ,Arale,arale,ds,Dr.Slump,21,2,support,3,Knowledge (知),3K (T1),421,2,0,###../...../...../.....,161;1;103;1;49
+422,アラレ,Arale,arale,ds,Dr.Slump,21,3,battle,4,Laughter (笑),4K (T4),422,3,3,##.../.#.../.#.../.....,161;0;56;4;49
+423,アラレ,Arale,arale,ds,Dr.Slump,21,4,battle,5,Laughter (笑),5K (T4),423,4,3,.##../###../...../.....,161;0;56;1;49
+424,アラレ,Arale,arale,ds,Dr.Slump,21,5,battle,6,Laughter (笑),6K (T6),424,5,5,###../.###./...../.....,161;0;56;6;49
+425,アラレ,Arale,arale,ds,Dr.Slump,21,6,battle,6,Power (力),6K (T1),425,5,0,###../###../...../.....,161;0;56;5;1
+426,アラレ,Arale,arale,ds,Dr.Slump,21,7,battle,7,Laughter (笑),7K (T3),426,6,3,####./###../...../.....,161;0;56;1;49
+427,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,8,help,1,Neutral (なし),1K,427,0,0,#..../...../...../.....,162;2;43;1;48
+428,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,9,support,2,Knowledge (知),2K (T1),428,1,0,##.../...../...../.....,162;1;104;1;48
+429,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,10,support,3,Knowledge (知),3K (T1),429,2,0,###../...../...../.....,162;1;104;2;48
+430,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,11,battle,4,Laughter (笑),4K (T3),430,3,2,#..../#..../#..../#....,162;0;57;4;48
+431,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,12,battle,4,Knowledge (知),4K (T1),431,3,0,##.../##.../...../.....,162;0;57;2;16
+432,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,13,battle,5,Laughter (笑),5K (T11),432,4,11,#####/...../...../.....,162;0;57;3;48
+433,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,14,battle,6,Laughter (笑),6K (T1),433,5,0,###../###../...../.....,162;0;57;5;48
+434,ドクターマシリト,Dr. Mashirito,dr-mashirito,ds,Dr.Slump,21,15,battle,7,Laughter (笑),7K (T6),434,6,6,####./.###./...../.....,162;0;57;6;48
+435,キャラメルマンＪ,CaramelMan J,caramelman-j,ds,Dr.Slump,21,16,battle,8,Laughter (笑),8K (T1),435,7,0,##.../##.../##.../##...,162;0;58;3;48
+436,ガッちゃん,Gatchan,gatchan,ds,Dr.Slump,21,17,help,1,Neutral (なし),1K,436,0,0,#..../...../...../.....,163;2;1;1;48
+437,ガッちゃん,Gatchan,gatchan,ds,Dr.Slump,21,18,support,3,Knowledge (知),3K (T3),437,2,2,##.../.#.../...../.....,163;1;106;2;48
+438,ウンチくん,Poo-kun,poo-kun,ds,Dr.Slump,21,19,help,1,Neutral (なし),1K,438,0,0,#..../...../...../.....,164;2;22;1;48
+439,ウンチくん,Poo-kun,poo-kun,ds,Dr.Slump,21,20,support,3,Knowledge (知),3K (T4),439,2,3,.#.../##.../...../.....,164;1;107;3;48
+440,千兵衛,Senbei,senbei,ds,Dr.Slump,21,21,help,1,Neutral (なし),1K,440,0,0,#..../...../...../.....,165;2;47;1;48
+441,みどり先生,Midori-Sensei,midori-sensei,ds,Dr.Slump,21,22,help,1,Neutral (なし),1K,441,0,0,#..../...../...../.....,166;2;52;1;49
+442,オボッチャマン,Obocchaman,obocchaman,ds,Dr.Slump,21,23,help,1,Neutral (なし),1K,442,0,0,#..../...../...../.....,167;2;30;1;48
+443,ラッキーマン,Lucky Man,lucky-man,tl,Tottemo! Luckyman,22,0,help,1,Neutral (なし),1K,443,0,0,#..../...../...../.....,168;2;16;1;48
+444,ラッキーマン,Lucky Man,lucky-man,tl,Tottemo! Luckyman,22,1,support,2,Laughter (笑),2K (T1),444,1,0,##.../...../...../.....,168;1;188;2;48
+445,ラッキーマン,Lucky Man,lucky-man,tl,Tottemo! Luckyman,22,2,support,3,Laughter (笑),3K (T3),445,2,2,##.../.#.../...../.....,168;1;188;2;48
+446,Ｓスターマン,Superstar Man,superstar-man,tl,Tottemo! Luckyman,22,3,help,1,Neutral (なし),1K,446,0,0,#..../...../...../.....,169;2;48;1;48
+447,Ｓスターマン,Superstar Man,superstar-man,tl,Tottemo! Luckyman,22,4,support,2,Laughter (笑),2K (T2),447,1,1,#..../#..../...../.....,169;1;189;2;48
+448,Ｓスターマン,Superstar Man,superstar-man,tl,Tottemo! Luckyman,22,5,support,3,Laughter (笑),3K (T6),448,2,5,##.../#..../...../.....,169;1;189;1;48
+449,努力マン,Doryoku Man,doryoku-man,tl,Tottemo! Luckyman,22,6,help,1,Neutral (なし),1K,449,0,0,#..../...../...../.....,170;2;27;1;48
+450,悟空,Goku,goku,db,Dragon Ball,23,0,help,1,Neutral (なし),1K,450,0,0,#..../...../...../.....,171;2;7;1;48
+451,悟空,Goku,goku,db,Dragon Ball,23,1,support,2,Power (力),2K (T1),451,1,0,##.../...../...../.....,171;1;0;2;48
+452,悟空,Goku,goku,db,Dragon Ball,23,2,support,3,Power (力),3K (T6),452,2,5,##.../#..../...../.....,171;1;0;1;48
+453,悟空,Goku,goku,db,Dragon Ball,23,3,battle,4,Power (力),4K (T5),453,3,4,###../.#.../...../.....,171;0;0;2;48
+454,悟空,Goku,goku,db,Dragon Ball,23,4,battle,4,Laughter (笑),4K (T2),454,3,1,###../#..../...../.....,171;0;0;2;32
+455,悟空,Goku,goku,db,Dragon Ball,23,5,battle,5,Power (力),5K (T1),455,4,0,##.../##.../.#.../.....,171;0;0;4;48
+456,超サイヤ人悟空,Goku (SSJ),goku-ssj,db,Dragon Ball,23,6,battle,6,Power (力),6K (T2),456,5,1,##.../##.../##.../.....,171;0;1;2;48
+457,超サイヤ人悟空,Goku (SSJ),goku-ssj,db,Dragon Ball,23,7,battle,7,Power (力),7K (T6),457,6,6,####./.###./...../.....,171;0;1;3;48
+458,ベジット,Vegetto,vegetto,db,Dragon Ball,23,8,battle,8,Power (力),8K (T1),458,7,0,##.../##.../##.../##...,171;0;11;2;48
+459,べジータ,Vegeta,vegeta,db,Dragon Ball,23,9,help,1,Neutral (なし),1K,459,0,0,#..../...../...../.....,172;2;43;1;48
+460,べジータ,Vegeta,vegeta,db,Dragon Ball,23,10,support,2,Power (力),2K (T1),460,1,0,##.../...../...../.....,172;1;1;2;48
+461,べジータ,Vegeta,vegeta,db,Dragon Ball,23,11,support,3,Power (力),3K (T5),461,2,4,#..../##.../...../.....,172;1;1;3;48
+462,べジータ,Vegeta,vegeta,db,Dragon Ball,23,12,battle,4,Power (力),4K (T1),462,3,0,##.../##.../...../.....,172;0;2;3;48
+463,超べジータ,Vegeta (SSJ),vegeta-ssj,db,Dragon Ball,23,13,battle,5,Power (力),5K (T2),463,4,1,###../##.../...../.....,172;0;3;5;48
+464,超べジータ,Vegeta (SSJ),vegeta-ssj,db,Dragon Ball,23,14,battle,5,Knowledge (知),5K (T1),464,4,0,##.../##.../.#.../.....,172;0;3;4;16
+465,超べジータ,Vegeta (SSJ),vegeta-ssj,db,Dragon Ball,23,15,battle,6,Power (力),6K (T1),465,5,0,###../###../...../.....,172;0;3;2;48
+466,超サイヤ人悟飯,Gohan (SSJ),gohan-ssj,db,Dragon Ball,23,16,help,1,Neutral (なし),1K,466,0,0,#..../...../...../.....,173;2;41;1;48
+467,超サイヤ人悟飯,Gohan (SSJ),gohan-ssj,db,Dragon Ball,23,17,support,2,Power (力),2K (T1),467,1,0,##.../...../...../.....,173;1;2;1;48
+468,超サイヤ人悟飯,Gohan (SSJ),gohan-ssj,db,Dragon Ball,23,18,support,3,Power (力),3K (T3),468,2,2,##.../.#.../...../.....,173;1;2;1;48
+469,超サイヤ人悟飯,Gohan (SSJ),gohan-ssj,db,Dragon Ball,23,19,battle,4,Power (力),4K (T3),469,3,2,#..../#..../#..../#....,173;0;4;3;48
+470,超サイヤ人２悟飯,Gohan (SSJ2),gohan-ssj2,db,Dragon Ball,23,20,battle,5,Power (力),5K (T3),470,4,2,###../.##../...../.....,173;0;5;2;48
+471,ゴテンクス,Gotenks,gotenks,db,Dragon Ball,23,21,help,1,Neutral (なし),1K,471,0,0,#..../...../...../.....,174;2;48;1;48
+472,ゴテンクス,Gotenks,gotenks,db,Dragon Ball,23,22,support,2,Knowledge (知),2K (T1),472,1,0,##.../...../...../.....,174;1;3;1;48
+473,ゴテンクス,Gotenks,gotenks,db,Dragon Ball,23,23,support,3,Knowledge (知),3K (T3),473,2,2,##.../.#.../...../.....,174;1;3;1;48
+474,ゴテンクス,Gotenks,gotenks,db,Dragon Ball,23,24,battle,4,Knowledge (知),4K (T1),474,3,0,##.../##.../...../.....,174;0;6;3;48
+475,超ゴテンクス,Gotenks (SSJ),gotenks-ssj,db,Dragon Ball,23,25,battle,5,Knowledge (知),5K (T1),475,4,0,##.../##.../.#.../.....,174;0;7;3;48
+476,超ゴテンクス,Gotenks (SSJ),gotenks-ssj,db,Dragon Ball,23,26,battle,5,Power (力),5K (T2),476,4,1,###../##.../...../.....,174;0;7;2;0
+477,ピッコロ,Piccolo,piccolo,db,Dragon Ball,23,27,help,1,Neutral (なし),1K,477,0,0,#..../...../...../.....,175;2;54;1;48
+478,ピッコロ,Piccolo,piccolo,db,Dragon Ball,23,28,support,2,Power (力),2K (T1),478,1,0,##.../...../...../.....,175;1;4;1;48
+479,ピッコロ,Piccolo,piccolo,db,Dragon Ball,23,29,support,3,Power (力),3K (T2),479,2,1,#..../#..../#..../.....,175;1;4;2;48
+480,ピッコロ,Piccolo,piccolo,db,Dragon Ball,23,30,battle,4,Knowledge (知),4K (T4),480,3,3,##.../.#.../.#.../.....,175;0;8;3;48
+481,ピッコロ,Piccolo,piccolo,db,Dragon Ball,23,31,battle,5,Knowledge (知),5K (T1),481,4,0,##.../##.../.#.../.....,175;0;8;4;48
+482,フリーザ,Frieza,frieza,db,Dragon Ball,23,32,help,1,Neutral (なし),1K,482,0,0,#..../...../...../.....,176;2;41;1;48
+483,フリーザ,Frieza,frieza,db,Dragon Ball,23,33,battle,6,Power (力),6K (T2),483,5,1,##.../##.../##.../.....,176;0;9;2;48
+484,魔人ブウ,Majin Buu,buu;majin-buu,db,Dragon Ball,23,34,help,1,Neutral (なし),1K,484,0,0,#..../...../...../.....,177;2;54;1;48
+485,魔人ブウ,Majin Buu,buu;majin-buu,db,Dragon Ball,23,35,battle,6,Power (力),6K (T2),485,5,1,##.../##.../##.../.....,177;0;10;3;48
+486,魔人ブウ,Majin Buu,buu;majin-buu,db,Dragon Ball,23,36,battle,6,Laughter (笑),6K (T1),486,5,0,###../###../...../.....,177;0;10;4;32
+487,クリリン,Krillin,krillin,db,Dragon Ball,23,37,help,1,Neutral (なし),1K,487,0,0,#..../...../...../.....,178;2;46;1;48
+488,クリリン,Krillin,krillin,db,Dragon Ball,23,38,support,2,Knowledge (知),2K (T1),488,1,0,##.../...../...../.....,178;1;7;1;48
+489,クリリン,Krillin,krillin,db,Dragon Ball,23,39,support,3,Knowledge (知),3K (T1),489,2,0,###../...../...../.....,178;1;7;2;48
+490,トランクス,Trunks,trunks,db,Dragon Ball,23,40,help,1,Neutral (なし),1K,490,0,0,#..../...../...../.....,179;2;10;1;48
+491,トランクス,Trunks,trunks,db,Dragon Ball,23,41,support,2,Knowledge (知),2K (T2),491,1,1,#..../#..../...../.....,179;1;8;1;48
+492,トランクス,Trunks,trunks,db,Dragon Ball,23,42,support,3,Knowledge (知),3K (T1),492,2,0,###../...../...../.....,179;1;8;1;48
+493,亀仙人,Master Roshi,master-roshi,db,Dragon Ball,23,43,help,1,Neutral (なし),1K,493,0,0,#..../...../...../.....,180;2;4;1;48
+494,ブルマ,Bulma,bulma,db,Dragon Ball,23,44,help,1,Neutral (なし),1K,494,0,0,#..../...../...../.....,181;2;16;1;49
+495,界王さま,King Kaio,king-kaio,db,Dragon Ball,23,45,help,1,Neutral (なし),1K,495,0,0,#..../...../...../.....,182;2;53;1;48
+496,ミスター・サタン,Mr. Satan,mr-satan,db,Dragon Ball,23,46,help,1,Neutral (なし),1K,496,0,0,#..../...../...../.....,183;2;45;1;48
+497,ナルト,Naruto,naruto,na,Naruto,24,0,help,1,Neutral (なし),1K,497,0,0,#..../...../...../.....,184;2;2;1;48
+498,ナルト,Naruto,naruto,na,Naruto,24,1,support,2,Laughter (笑),2K (T1),498,1,0,##.../...../...../.....,184;1;17;2;48
+499,ナルト,Naruto,naruto,na,Naruto,24,2,support,3,Power (力),3K (T6),499,2,5,##.../#..../...../.....,184;1;17;3;48
+500,ナルト,Naruto,naruto,na,Naruto,24,3,battle,4,Power (力),4K (T3),500,3,2,#..../#..../#..../#....,184;0;20;1;48
+501,ナルト,Naruto,naruto,na,Naruto,24,4,battle,4,Laughter (笑),4K (T1),501,3,0,##.../##.../...../.....,184;0;20;3;32
+502,ナルト,Naruto,naruto,na,Naruto,24,5,battle,5,Power (力),5K (T3),502,4,2,###../.##../...../.....,184;0;20;4;48
+503,ナルト,Naruto,naruto,na,Naruto,24,6,battle,6,Power (力),6K (T1),503,5,0,###../###../...../.....,184;0;20;4;48
+504,ナルト（九尾）,Kyuubi Naruto,kyuubi-naruto,na,Naruto,24,7,battle,7,Power (力),7K (T1),504,6,0,.#.../###../###../.....,184;0;24;6;48
+505,ナルト（九尾）,Kyuubi Naruto,kyuubi-naruto,na,Naruto,24,8,battle,8,Power (力),8K (T3),505,7,2,####./####./...../.....,184;0;24;8;48
+506,サスケ,Sasuke,sasuke,na,Naruto,24,9,help,1,Neutral (なし),1K,506,0,0,#..../...../...../.....,185;2;13;1;48
+507,サスケ,Sasuke,sasuke,na,Naruto,24,10,battle,7,Knowledge (知),7K (T1),507,6,0,.#.../###../###../.....,185;0;21;1;48
+508,サスケ,Sasuke,sasuke,na,Naruto,24,11,battle,8,Knowledge (知),8K (T1),508,7,0,##.../##.../##.../##...,185;0;21;2;48
+509,サスケ,Sasuke,sasuke,na,Naruto,24,12,battle,8,Power (力),8K (T3),509,7,2,####./####./...../.....,185;0;21;3;0
+510,サクラ,Sakura,sakura,na,Naruto,24,13,help,1,Neutral (なし),1K,510,0,0,#..../...../...../.....,186;2;8;1;49
+511,サクラ,Sakura,sakura,na,Naruto,24,14,support,2,Power (力),2K (T1),511,1,0,##.../...../...../.....,186;1;19;2;49
+512,サクラ,Sakura,sakura,na,Naruto,24,15,support,3,Knowledge (知),3K (T3),512,2,2,##.../.#.../...../.....,186;1;19;3;49
+513,サクラ,Sakura,sakura,na,Naruto,24,16,battle,4,Power (力),4K (T3),513,3,2,#..../#..../#..../#....,186;0;22;2;49
+514,サクラ,Sakura,sakura,na,Naruto,24,17,battle,5,Power (力),5K (T4),514,4,3,.##../###../...../.....,186;0;22;5;49
+515,サクラ,Sakura,sakura,na,Naruto,24,18,battle,6,Power (力),6K (T1),515,5,0,###../###../...../.....,186;0;22;3;49
+516,サクラ,Sakura,sakura,na,Naruto,24,19,battle,6,Laughter (笑),6K (T2),516,5,1,##.../##.../##.../.....,186;0;22;1;33
+517,カカシ,Kakashi,kakashi,na,Naruto,24,20,help,1,Neutral (なし),1K,517,0,0,#..../...../...../.....,187;2;13;1;48
+518,カカシ,Kakashi,kakashi,na,Naruto,24,21,support,2,Laughter (笑),2K (T1),518,1,0,##.../...../...../.....,187;1;20;2;48
+519,カカシ,Kakashi,kakashi,na,Naruto,24,22,support,3,Laughter (笑),3K (T2),519,2,1,#..../#..../#..../.....,187;1;20;2;48
+520,カカシ,Kakashi,kakashi,na,Naruto,24,23,battle,4,Knowledge (知),4K (T1),520,3,0,##.../##.../...../.....,187;0;23;2;48
+521,カカシ,Kakashi,kakashi,na,Naruto,24,24,battle,5,Knowledge (知),5K (T4),521,4,3,.##../###../...../.....,187;0;23;4;48
+522,カカシ,Kakashi,kakashi,na,Naruto,24,25,battle,6,Knowledge (知),6K (T1),522,5,0,###../###../...../.....,187;0;23;4;48
+523,カカシ,Kakashi,kakashi,na,Naruto,24,26,battle,6,Laughter (笑),6K (T2),523,5,1,##.../##.../##.../.....,187;0;23;5;32
+524,我愛羅,Gaara,gaara,na,Naruto,24,27,help,1,Neutral (なし),1K,524,0,0,#..../...../...../.....,188;2;4;1;48
+525,我愛羅,Gaara,gaara,na,Naruto,24,28,support,2,Knowledge (知),2K (T1),525,1,0,##.../...../...../.....,188;1;21;2;48
+526,我愛羅,Gaara,gaara,na,Naruto,24,29,support,3,Knowledge (知),3K (T1),526,2,0,###../...../...../.....,188;1;21;2;48
+527,自来也,Jiraiya,jiraiya,na,Naruto,24,30,help,1,Neutral (なし),1K,527,0,0,#..../...../...../.....,189;2;53;1;48
+528,綱手,Tsunade,tsunade,na,Naruto,24,31,help,1,Neutral (なし),1K,528,0,0,#..../...../...../.....,190;2;8;1;49
+529,サイ,Sai,sai,na,Naruto,24,32,help,1,Neutral (なし),1K,529,0,0,#..../...../...../.....,191;2;32;1;48
+530,大蛇丸,Orochimaru,orochimaru,na,Naruto,24,33,help,1,Neutral (なし),1K,530,0,0,#..../...../...../.....,192;2;54;1;48
+531,風助,Fuusuke,fuusuke,nk,Ninku,25,0,help,1,Neutral (なし),1K,531,0,0,#..../...../...../.....,193;2;2;1;48
+532,風助,Fuusuke,fuusuke,nk,Ninku,25,1,support,2,Knowledge (知),2K (T2),532,1,1,#..../#..../...../.....,193;1;187;2;48
+533,風助,Fuusuke,fuusuke,nk,Ninku,25,2,support,3,Knowledge (知),3K (T2),533,2,0,###../...../...../.....,193;1;187;2;48
+534,風助,Fuusuke,fuusuke,nk,Ninku,25,3,battle,4,Knowledge (知),4K (T1),534,3,0,##.../##.../...../.....,193;0;69;3;48
+535,風助,Fuusuke,fuusuke,nk,Ninku,25,4,battle,5,Knowledge (知),5K (T3),535,4,2,###../.##../...../.....,193;0;69;4;48
+536,風助,Fuusuke,fuusuke,nk,Ninku,25,5,battle,5,Laughter (笑),5K (T4),536,4,3,.##../###../...../.....,193;0;69;1;32
+537,ポチ,Pochi,pochi,nk,Ninku,25,6,help,1,Neutral (なし),1K,537,0,0,#..../...../...../.....,194;2;47;1;48
+538,ヒロユキ,Hiroyuki,hiroyuki,nk,Ninku,25,7,help,1,Neutral (なし),1K,538,0,0,#..../...../...../.....,195;2;48;1;48
+539,ゴン,Gon,gon,hh,Hunter X Hunter,26,0,help,1,Neutral (なし),1K,539,0,0,#..../...../...../.....,196;2;55;1;48
+540,ゴン,Gon,gon,hh,Hunter X Hunter,26,1,support,2,Knowledge (知),2K (T1),540,1,0,##.../...../...../.....,196;1;33;2;48
+541,ゴン,Gon,gon,hh,Hunter X Hunter,26,2,support,3,Power (力),3K (T1),541,2,0,###../...../...../.....,196;1;33;3;48
+542,ゴン,Gon,gon,hh,Hunter X Hunter,26,3,battle,4,Power (力),4K (T1),542,3,0,##.../##.../...../.....,196;0;30;4;48
+543,ゴン,Gon,gon,hh,Hunter X Hunter,26,4,battle,5,Power (力),5K (T1),543,4,0,##.../##.../.#.../.....,196;0;30;2;48
+544,ゴン,Gon,gon,hh,Hunter X Hunter,26,5,battle,6,Power (力),6K (T1),544,5,0,###../###../...../.....,196;0;30;2;48
+545,キルア,Killua,killua,hh,Hunter X Hunter,26,6,help,1,Neutral (なし),1K,545,0,0,#..../...../...../.....,197;2;25;1;48
+546,キルア,Killua,killua,hh,Hunter X Hunter,26,7,support,2,Knowledge (知),2K (T1),546,1,0,##.../...../...../.....,197;1;34;1;48
+547,キルア,Killua,killua,hh,Hunter X Hunter,26,8,support,3,Knowledge (知),3K (T6),547,2,5,##.../#..../...../.....,197;1;34;1;48
+548,キルア,Killua,killua,hh,Hunter X Hunter,26,9,battle,4,Knowledge (知),4K (T10),548,3,9,.#.../###../...../.....,197;0;31;3;48
+549,キルア,Killua,killua,hh,Hunter X Hunter,26,10,battle,5,Knowledge (知),5K (T13),549,4,13,##.../###../...../.....,197;0;31;2;48
+550,クラピカ,Kurapika,kurapika,hh,Hunter X Hunter,26,11,help,1,Neutral (なし),1K,550,0,0,#..../...../...../.....,198;2;40;1;48
+551,クラピカ,Kurapika,kurapika,hh,Hunter X Hunter,26,12,support,2,Knowledge (知),2K (T2),551,1,1,#..../#..../...../.....,198;1;35;2;48
+552,クラピカ,Kurapika,kurapika,hh,Hunter X Hunter,26,13,support,3,Knowledge (知),3K (T5),552,2,4,#..../##.../...../.....,198;1;35;1;48
+553,ヒソカ,Hisoka,hisoka,hh,Hunter X Hunter,26,14,help,1,Neutral (なし),1K,553,0,0,#..../...../...../.....,199;2;15;1;48
+554,ヒソカ,Hisoka,hisoka,hh,Hunter X Hunter,26,15,support,2,Knowledge (知),2K (T1),554,1,0,##.../...../...../.....,199;1;37;2;48
+555,ヒソカ,Hisoka,hisoka,hh,Hunter X Hunter,26,16,support,3,Knowledge (知),3K (T2),555,2,1,#..../#..../#..../.....,199;1;37;1;48
+556,クロロ,Kuroro,kuroro,hh,Hunter X Hunter,26,17,help,1,Neutral (なし),1K,556,0,0,#..../...../...../.....,200;2;13;1;48
+557,クロロ,Kuroro,kuroro,hh,Hunter X Hunter,26,18,support,2,Knowledge (知),2K (T1),557,1,0,##.../...../...../.....,200;1;36;1;48
+558,クロロ,Kuroro,kuroro,hh,Hunter X Hunter,26,19,support,3,Knowledge (知),3K (T2),558,2,1,#..../#..../#..../.....,200;1;36;2;48
+559,レオリオ,Leorio,leorio,hh,Hunter X Hunter,26,20,help,1,Neutral (なし),1K,559,0,0,#..../...../...../.....,201;2;8;1;48
+560,ビスケ,Biscuit,biscuit,hh,Hunter X Hunter,26,21,help,1,Neutral (なし),1K,560,0,0,#..../...../...../.....,202;2;4;1;49
+561,ジャガー,Jaguar,jaguar,pj,Pyuuto Fukui Jaguar,27,0,help,1,Neutral (なし),1K,561,0,0,#..../...../...../.....,203;2;34;1;48
+562,ジャガー,Jaguar,jaguar,pj,Pyuuto Fukui Jaguar,27,1,support,2,Laughter (笑),2K (T2),562,1,1,#..../#..../...../.....,203;1;99;2;48
+563,ジャガー,Jaguar,jaguar,pj,Pyuuto Fukui Jaguar,27,2,support,3,Laughter (笑),3K (T6),563,2,5,##.../#..../...../.....,203;1;99;2;48
+564,ジャガー,Jaguar,jaguar,pj,Pyuuto Fukui Jaguar,27,3,battle,4,Laughter (笑),4K (T1),564,3,0,##.../##.../...../.....,203;0;55;3;48
+565,ジャガー,Jaguar,jaguar,pj,Pyuuto Fukui Jaguar,27,4,battle,5,Laughter (笑),5K (T10),565,4,10,##.../.#.../.#.../.#...,203;0;55;2;48
+566,ジャガー,Jaguar,jaguar,pj,Pyuuto Fukui Jaguar,27,5,battle,6,Laughter (笑),6K (T5),566,5,4,.##../.#.../###../.....,203;0;55;1;48
+567,ピヨ彦,Kiyo Hiko,kiyo-hiko,pj,Pyuuto Fukui Jaguar,27,6,help,1,Neutral (なし),1K,567,0,0,#..../...../...../.....,204;2;15;1;48
+568,ピヨ彦,Kiyo Hiko,kiyo-hiko,pj,Pyuuto Fukui Jaguar,27,7,support,2,Laughter (笑),2K (T1),568,1,0,##.../...../...../.....,204;1;100;2;48
+569,ピヨ彦,Kiyo Hiko,kiyo-hiko,pj,Pyuuto Fukui Jaguar,27,8,support,3,Laughter (笑),3K (T6),569,2,5,##.../#..../...../.....,204;1;100;1;48
+570,ハマー,Hammer,hammer,pj,Pyuuto Fukui Jaguar,27,9,help,1,Neutral (なし),1K,570,0,0,#..../...../...../.....,205;2;28;1;48
+571,ハマー,Hammer,hammer,pj,Pyuuto Fukui Jaguar,27,10,support,2,Laughter (笑),2K (T2),571,1,1,#..../#..../...../.....,205;1;101;2;48
+572,ハマー,Hammer,hammer,pj,Pyuuto Fukui Jaguar,27,11,support,3,Laughter (笑),3K (T6),572,2,5,##.../#..../...../.....,205;1;101;1;48
+573,ハミィ,Hamii,hamii,pj,Pyuuto Fukui Jaguar,27,12,help,1,Neutral (なし),1K,573,0,0,#..../...../...../.....,206;2;30;1;48
+574,ハミィ,Hamii,hamii,pj,Pyuuto Fukui Jaguar,27,13,support,2,Laughter (笑),2K (T2),574,1,1,#..../#..../...../.....,206;1;102;3;48
+575,ハミィ,Hamii,hamii,pj,Pyuuto Fukui Jaguar,27,14,support,3,Laughter (笑),3K (T3),575,2,2,##.../.#.../...../.....,206;1;102;2;48
+576,高菜,Takane,takane,pj,Pyuuto Fukui Jaguar,27,15,help,1,Neutral (なし),1K,576,0,0,#..../...../...../.....,207;2;52;1;49
+577,ハメ字郎,Jirou,jirou,pj,Pyuuto Fukui Jaguar,27,16,help,1,Neutral (なし),1K,577,0,0,#..../...../...../.....,208;2;30;1;48
+578,ポギー,Pogii,pogii,pj,Pyuuto Fukui Jaguar,27,17,help,1,Neutral (なし),1K,578,0,0,#..../...../...../.....,209;2;28;1;48
+579,カズキ,Kazuki,kazuki,bu,Busou Renkin,28,0,help,1,Neutral (なし),1K,579,0,0,#..../...../...../.....,210;2;54;1;48
+580,カズキ,Kazuki,kazuki,bu,Busou Renkin,28,1,support,2,Power (力),2K (T1),580,1,1,#..../#..../...../.....,210;1;63;1;48
+581,カズキ,Kazuki,kazuki,bu,Busou Renkin,28,2,support,3,Power (力),3K (T3),581,2,2,##.../.#.../...../.....,210;1;63;2;48
+582,カズキ,Kazuki,kazuki,bu,Busou Renkin,28,3,battle,4,Power (力),4K (T2),582,3,1,###../#..../...../.....,210;0;44;2;48
+583,カズキ,Kazuki,kazuki,bu,Busou Renkin,28,4,battle,5,Power (力),5K (T9),583,4,9,#..../##.../##.../.....,210;0;44;4;48
+584,カズキ,Kazuki,kazuki,bu,Busou Renkin,28,5,battle,6,Power (力),6K (T3),584,5,2,##.../##.../#..../#....,210;0;44;1;48
+585,パピヨン,Papillon,papillon,bu,Busou Renkin,28,6,help,1,Neutral (なし),1K,585,0,0,#..../...../...../.....,211;2;29;1;48
+586,Ｃブラボー,Captain Bravo,captain-bravo,bu,Busou Renkin,28,7,help,1,Neutral (なし),1K,586,0,0,#..../...../...../.....,212;2;4;1;48
+587,斗貴子,Tokiko,tokiko,bu,Busou Renkin,28,8,help,1,Neutral (なし),1K,587,0,0,#..../...../...../.....,213;2;22;1;49
+588,イヴ,Eve,eve,bc,Black Cat,29,0,help,1,Neutral (なし),1K,588,0,0,#..../...../...../.....,214;2;1;1;49
+589,イヴ,Eve,eve,bc,Black Cat,29,1,support,2,Knowledge (知),2K (T1),589,1,0,##.../...../...../.....,214;1;49;2;49
+590,イヴ,Eve,eve,bc,Black Cat,29,2,support,3,Knowledge (知),3K (T3),590,2,2,##.../.#.../...../.....,214;1;49;3;49
+591,イヴ,Eve,eve,bc,Black Cat,29,3,battle,4,Knowledge (知),4K (T1),591,3,0,##.../##.../...../.....,214;0;37;4;49
+592,イヴ,Eve,eve,bc,Black Cat,29,4,battle,5,Knowledge (知),5K (T3),592,4,2,###../.##../...../.....,214;0;37;2;49
+593,トレイン,Train,train,bc,Black Cat,29,5,help,1,Neutral (なし),1K,593,0,0,#..../...../...../.....,215;2;25;1;48
+594,トレイン,Train,train,bc,Black Cat,29,6,support,2,Power (力),2K (T1),594,1,0,##.../...../...../.....,215;1;50;2;48
+595,トレイン,Train,train,bc,Black Cat,29,7,support,3,Power (力),3K (T4),595,2,3,.#.../##.../...../.....,215;1;50;1;48
+596,トレイン,Train,train,bc,Black Cat,29,8,battle,4,Power (力),4K (T8),596,3,10,##.../.##../...../.....,215;0;38;2;48
+597,トレイン,Train,train,bc,Black Cat,29,9,battle,5,Power (力),5K (T1),597,4,0,##.../##.../.#.../.....,215;0;38;2;48
+598,トレイン,Train,train,bc,Black Cat,29,10,battle,5,Knowledge (知),5K (T2),598,4,1,###../##.../...../.....,215;0;38;4;16
+599,スヴェン,Sven,sven,bc,Black Cat,29,11,help,1,Neutral (なし),1K,599,0,0,#..../...../...../.....,216;2;13;1;48
+600,スヴェン,Sven,sven,bc,Black Cat,29,12,support,2,Knowledge (知),2K (T1),600,1,0,##.../...../...../.....,216;1;51;2;48
+601,スヴェン,Sven,sven,bc,Black Cat,29,13,support,3,Knowledge (知),3K (T4),601,2,3,.#.../##.../...../.....,216;1;51;3;48
+602,サヤ,Saya,saya,bc,Black Cat,29,14,help,1,Neutral (なし),1K,602,0,0,#..../...../...../.....,217;2;52;1;49
+603,キョウコ,Kyoko,kyoko,bc,Black Cat,29,15,help,1,Neutral (なし),1K,603,0,0,#..../...../...../.....,218;2;27;1;49
+604,一護,Ichigo,ichigo,bl,Bleach,30,0,help,1,Neutral (なし),1K,604,0,0,#..../...../...../.....,219;2;38;1;48
+605,一護,Ichigo,ichigo,bl,Bleach,30,1,support,2,Laughter (笑),2K (T1),605,1,0,##.../...../...../.....,219;1;52;1;48
+606,一護,Ichigo,ichigo,bl,Bleach,30,2,support,3,Laughter (笑),3K (T6),606,2,5,##.../#..../...../.....,219;1;52;1;48
+607,一護,Ichigo,ichigo,bl,Bleach,30,3,battle,4,Power (力),4K (T1),607,3,0,##.../##.../...../.....,219;0;39;1;48
+608,一護,Ichigo,ichigo,bl,Bleach,30,4,battle,5,Power (力),5K (T2),608,4,1,###../##.../...../.....,219;0;39;4;48
+609,一護,Ichigo,ichigo,bl,Bleach,30,5,battle,6,Power (力),6K (T2),609,5,1,##.../##.../##.../.....,219;0;39;4;48
+610,一護（卍解）,Ichigo (Bankai),ichigo-bankai,bl,Bleach,30,6,battle,7,Power (力),7K (T4),610,6,4,#..../##.../####./.....,219;0;40;1;48
+611,一護（卍解）,Ichigo (Bankai),ichigo-bankai,bl,Bleach,30,7,battle,8,Power (力),8K (T3),611,7,2,####./####./...../.....,219;0;40;1;48
+612,ルキア,Rukia,rukia,bl,Bleach,30,8,help,1,Neutral (なし),1K,612,0,0,#..../...../...../.....,220;2;26;1;49
+613,ルキア,Rukia,rukia,bl,Bleach,30,9,support,2,Knowledge (知),2K (T1),613,1,0,##.../...../...../.....,220;1;53;2;49
+614,ルキア,Rukia,rukia,bl,Bleach,30,10,support,3,Knowledge (知),3K (T3),614,2,2,##.../.#.../...../.....,220;1;53;1;49
+615,ルキア,Rukia,rukia,bl,Bleach,30,11,battle,4,Knowledge (知),4K (T9),615,3,8,#..../##.../#..../.....,220;0;41;2;49
+616,ルキア,Rukia,rukia,bl,Bleach,30,12,battle,5,Knowledge (知),5K (T2),616,4,1,###../##.../...../.....,220;0;41;5;49
+617,ルキア,Rukia,rukia,bl,Bleach,30,13,battle,6,Knowledge (知),6K (T1),617,5,0,###../###../...../.....,220;0;41;2;49
+618,阿散井恋次,Renji,renji,bl,Bleach,30,14,help,1,Neutral (なし),1K,618,0,0,#..../...../...../.....,221;2;38;1;48
+619,阿散井恋次,Renji,renji,bl,Bleach,30,15,support,2,Power (力),2K (T1),619,1,0,##.../...../...../.....,221;1;54;2;48
+620,阿散井恋次,Renji,renji,bl,Bleach,30,16,support,3,Power (力),3K (T1),620,2,0,###../...../...../.....,221;1;54;2;48
+621,阿散井恋次,Renji,renji,bl,Bleach,30,17,battle,4,Power (力),4K (T3),621,3,2,#..../#..../#..../#....,221;0;42;3;48
+622,阿散井恋次,Renji,renji,bl,Bleach,30,18,battle,5,Power (力),5K (T6),622,4,5,##.../##.../#..../.....,221;0;42;3;48
+623,阿散井恋次,Renji,renji,bl,Bleach,30,19,battle,6,Power (力),6K (T2),623,5,1,##.../##.../##.../.....,221;0;42;5;48
+624,日番谷冬獅郎,Hitsugaya,hitsugaya,bl,Bleach,30,20,help,1,Neutral (なし),1K,624,0,0,#..../...../...../.....,222;2;26;1;48
+625,日番谷冬獅郎,Hitsugaya,hitsugaya,bl,Bleach,30,21,support,2,Knowledge (知),2K (T2),625,1,1,#..../#..../...../.....,222;1;55;1;48
+626,日番谷冬獅郎,Hitsugaya,hitsugaya,bl,Bleach,30,22,support,3,Knowledge (知),3K (T1),626,2,0,###../...../...../.....,222;1;55;2;48
+627,日番谷冬獅郎,Hitsugaya,hitsugaya,bl,Bleach,30,23,battle,4,Knowledge (知),4K (T1),627,3,0,##.../##.../...../.....,222;0;43;2;48
+628,日番谷冬獅郎,Hitsugaya,hitsugaya,bl,Bleach,30,24,battle,5,Knowledge (知),5K (T8),628,4,7,.#.../##.../##.../.....,222;0;43;4;48
+629,日番谷冬獅郎,Hitsugaya,hitsugaya,bl,Bleach,30,25,battle,6,Knowledge (知),6K (T1),629,5,0,###../###../...../.....,222;0;43;3;48
+630,石田雨竜,Uryu,uryu,bl,Bleach,30,26,help,1,Neutral (なし),1K,630,0,0,#..../...../...../.....,223;2;39;1;48
+631,石田雨竜,Uryu,uryu,bl,Bleach,30,27,support,2,Knowledge (知),2K (T2),631,1,1,#..../#..../...../.....,223;1;56;1;48
+632,石田雨竜,Uryu,uryu,bl,Bleach,30,28,support,3,Knowledge (知),3K (T6),632,2,5,##.../#..../...../.....,223;1;56;1;48
+633,チャド,Chad,chad,bl,Bleach,30,29,help,1,Neutral (なし),1K,633,0,0,#..../...../...../.....,224;2;6;1;48
+634,チャド,Chad,chad,bl,Bleach,30,30,support,2,Power (力),2K (T1),634,1,0,##.../...../...../.....,224;1;57;2;48
+635,チャド,Chad,chad,bl,Bleach,30,31,support,3,Power (力),3K (T6),635,2,5,##.../#..../...../.....,224;1;57;2;48
+636,井上織姫,Orihime,orihime,bl,Bleach,30,32,help,1,Neutral (なし),1K,636,0,0,#..../...../...../.....,225;2;8;1;49
+637,井上織姫,Orihime,orihime,bl,Bleach,30,33,support,2,Knowledge (知),2K (T1),637,1,0,##.../...../...../.....,225;1;58;1;49
+638,井上織姫,Orihime,orihime,bl,Bleach,30,34,support,3,Knowledge (知),3K (T4),638,2,3,.#.../##.../...../.....,225;1;58;3;49
+639,夜一,Yoruichi,yoruichi,bl,Bleach,30,35,help,1,Neutral (なし),1K,639,0,0,#..../...../...../.....,226;2;3;1;49
+640,夜一,Yoruichi,yoruichi,bl,Bleach,30,36,support,2,Knowledge (知),2K (T1),640,1,0,##.../...../...../.....,226;1;59;2;49
+641,夜一,Yoruichi,yoruichi,bl,Bleach,30,37,support,3,Power (力),3K (T2),641,2,1,#..../#..../#..../.....,226;1;59;1;49
+642,コン,Kon,kon,bl,Bleach,30,38,help,1,Neutral (なし),1K,642,0,0,#..../...../...../.....,227;2;45;1;48
+643,コン,Kon,kon,bl,Bleach,30,39,support,3,Laughter (笑),3K (T4),643,2,3,.#.../##.../...../.....,227;1;60;2;48
+644,朽木白哉,Byakuya,byakuya,bl,Bleach,30,40,help,1,Neutral (なし),1K,644,0,0,#..../...../...../.....,228;2;5;1;48
+645,朽木白哉,Byakuya,byakuya,bl,Bleach,30,41,support,2,Power (力),2K (T2),645,1,1,#..../#..../...../.....,228;1;61;1;48
+646,朽木白哉,Byakuya,byakuya,bl,Bleach,30,42,support,3,Power (力),3K (T2),646,2,1,#..../#..../#..../.....,228;1;61;2;48
+647,藍染惣右介,Aizen,aizen,bl,Bleach,30,43,help,1,Neutral (なし),1K,647,0,0,#..../...../...../.....,229;2;32;1;48
+648,藍染惣右介,Aizen,aizen,bl,Bleach,30,44,support,2,Knowledge (知),2K (T1),648,1,0,##.../...../...../.....,229;1;62;2;48
+649,藍染惣右介,Aizen,aizen,bl,Bleach,30,45,support,3,Knowledge (知),3K (T6),649,2,5,##.../#..../...../.....,229;1;62;2;48
+650,斬月,Zangetsu,zangetsu,bl,Bleach,30,46,help,1,Neutral (なし),1K,650,0,0,#..../...../...../.....,230;2;53;1;48
+651,黒崎一心,Isshin,isshin,bl,Bleach,30,47,help,1,Neutral (なし),1K,651,0,0,#..../...../...../.....,231;2;53;1;48
+652,タツキ,Tatsuki,tatsuki,bl,Bleach,30,48,help,1,Neutral (なし),1K,652,0,0,#..../...../...../.....,232;2;22;1;49
+653,浦原喜助,Urahara,urahara,bl,Bleach,30,49,help,1,Neutral (なし),1K,653,0,0,#..../...../...../.....,233;2;3;1;48
+654,東仙要,Tousen,tousen,bl,Bleach,30,50,help,1,Neutral (なし),1K,654,0,0,#..../...../...../.....,234;2;32;1;48
+655,市丸ギン,Gin Ichimaru,gin-ichimaru,bl,Bleach,30,51,help,1,Neutral (なし),1K,655,0,0,#..../...../...../.....,235;2;40;1;48
+656,太公望,Taikoubou,taikoubou,hs,Houshin Engi,31,0,help,1,Neutral (なし),1K,656,0,0,#..../...../...../.....,236;2;46;1;48
+657,太公望,Taikoubou,taikoubou,hs,Houshin Engi,31,1,support,2,Knowledge (知),2K (T2),657,1,1,#..../#..../...../.....,236;1;172;1;48
+658,太公望,Taikoubou,taikoubou,hs,Houshin Engi,31,2,support,3,Knowledge (知),3K (T6),658,2,5,##.../#..../...../.....,236;1;172;1;48
+659,太公望,Taikoubou,taikoubou,hs,Houshin Engi,31,3,battle,4,Knowledge (知),4K (T3),659,3,2,#..../#..../#..../#....,236;0;68;2;48
+660,太公望,Taikoubou,taikoubou,hs,Houshin Engi,31,4,battle,5,Knowledge (知),5K (T3),660,4,2,###../.##../...../.....,236;0;68;2;48
+661,太公望,Taikoubou,taikoubou,hs,Houshin Engi,31,5,battle,6,Knowledge (知),6K (T1),661,5,0,###../###../...../.....,236;0;68;2;48
+662,太公望,Taikoubou,taikoubou,hs,Houshin Engi,31,6,battle,6,Laughter (笑),6K (T2),662,5,1,##.../##.../##.../.....,236;0;68;3;32
+663,妲己,Dakki,dakki,hs,Houshin Engi,31,7,help,1,Neutral (なし),1K,663,0,0,#..../...../...../.....,237;2;48;1;49
+664,妲己,Dakki,dakki,hs,Houshin Engi,31,8,support,2,Knowledge (知),2K (T1),664,1,0,##.../...../...../.....,237;1;173;1;49
+665,妲己,Dakki,dakki,hs,Houshin Engi,31,9,support,3,Laughter (笑),3K (T3),665,2,2,##.../.#.../...../.....,237;1;173;2;49
+666,王天君,Ou Tenkun,ou-tenkun,hs,Houshin Engi,31,10,help,1,Neutral (なし),1K,666,0,0,#..../...../...../.....,238;2;29;1;48
+667,四不象,Sipuxiang,sipuxiang,hs,Houshin Engi,31,11,help,1,Neutral (なし),1K,667,0,0,#..../...../...../.....,239;2;1;1;48
+668,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,0,help,1,Neutral (なし),1K,668,0,0,#..../...../...../.....,240;2;55;1;48
+669,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,1,support,2,Power (力),2K (T2),669,1,1,#..../#..../...../.....,240;1;146;1;48
+670,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,2,support,3,Power (力),3K (T2),670,2,1,#..../#..../#..../.....,240;1;146;2;48
+671,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,3,battle,4,Power (力),4K (T1),671,3,0,##.../##.../...../.....,240;0;61;3;48
+672,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,4,battle,5,Power (力),5K (T2),672,4,1,###../##.../...../.....,240;0;61;2;48
+673,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,5,battle,6,Power (力),6K (T1),673,5,0,###../###../...../.....,240;0;61;4;48
+674,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,6,battle,7,Power (力),7K (T9),674,6,9,##.../##.../##.../#....,240;0;61;4;48
+675,ケンシロウ,Kenshiro,kenshiro,hk,Hokuto no Ken,32,7,battle,8,Power (力),8K (T4),675,7,3,##.../###../###../.....,240;0;61;2;48
+676,ラオウ,Raoh,raoh,hk,Hokuto no Ken,32,8,help,1,Neutral (なし),1K,676,0,0,#..../...../...../.....,241;2;14;1;48
+677,ラオウ,Raoh,raoh,hk,Hokuto no Ken,32,9,battle,6,Power (力),6K (T1),677,5,0,###../###../...../.....,241;0;62;2;48
+678,ラオウ,Raoh,raoh,hk,Hokuto no Ken,32,10,battle,7,Power (力),7K (T10),678,6,10,##.../##.../##.../.#...,241;0;62;2;48
+679,ラオウ,Raoh,raoh,hk,Hokuto no Ken,32,11,battle,8,Power (力),8K (T1),679,7,0,##.../##.../##.../##...,241;0;62;5;48
+680,トキ,Toki,toki,hk,Hokuto no Ken,32,12,help,1,Neutral (なし),1K,680,0,0,#..../...../...../.....,242;2;5;1;48
+681,トキ,Toki,toki,hk,Hokuto no Ken,32,13,support,2,Knowledge (知),2K (T1),681,1,0,##.../...../...../.....,242;1;148;1;48
+682,トキ,Toki,toki,hk,Hokuto no Ken,32,14,support,3,Knowledge (知),3K (T5),682,2,4,#..../##.../...../.....,242;1;148;2;48
+683,レイ,Rei,rei,hk,Hokuto no Ken,32,15,help,1,Neutral (なし),1K,683,0,0,#..../...../...../.....,243;2;39;1;48
+684,レイ,Rei,rei,hk,Hokuto no Ken,32,16,support,2,Knowledge (知),2K (T1),684,1,0,##.../...../...../.....,243;1;149;2;48
+685,レイ,Rei,rei,hk,Hokuto no Ken,32,17,support,3,Knowledge (知),3K (T1),685,2,0,###../...../...../.....,243;1;149;2;48
+686,ユリア,Yuria,yuria,hk,Hokuto no Ken,32,18,help,1,Neutral (なし),1K,686,0,0,#..../...../...../.....,244;2;22;1;49
+687,バット,Bat,bat,hk,Hokuto no Ken,32,19,help,1,Neutral (なし),1K,687,0,0,#..../...../...../.....,245;2;45;1;48
+688,リン,Lin,lin,hk,Hokuto no Ken,32,20,help,1,Neutral (なし),1K,688,0,0,#..../...../...../.....,246;2;52;1;49
+689,ボーボボ,Bo-bobo,bobobo;bo-bobo,bb,Bobobo-bo Bo-bobo,33,0,help,1,Neutral (なし),1K,689,0,0,#..../...../...../.....,247;2;41;1;48
+690,ボーボボ,Bo-bobo,bobobo;bo-bobo,bb,Bobobo-bo Bo-bobo,33,1,support,2,Laughter (笑),2K (T1),690,1,0,##.../...../...../.....,247;1;69;1;48
+691,ボーボボ,Bo-bobo,bobobo;bo-bobo,bb,Bobobo-bo Bo-bobo,33,2,support,3,Laughter (笑),3K (T6),691,2,5,##.../#..../...../.....,247;1;69;1;48
+692,ボーボボ,Bo-bobo,bobobo;bo-bobo,bb,Bobobo-bo Bo-bobo,33,3,battle,4,Laughter (笑),4K (T5),692,3,4,###../.#.../...../.....,247;0;47;4;48
+693,ボーボボ,Bo-bobo,bobobo;bo-bobo,bb,Bobobo-bo Bo-bobo,33,4,battle,5,Laughter (笑),5K (T5),693,4,4,###../#.#../...../.....,247;0;47;2;48
+694,ボーボボ,Bo-bobo,bobobo;bo-bobo,bb,Bobobo-bo Bo-bobo,33,5,battle,6,Laughter (笑),6K (T12),694,5,11,###../.##../..#../.....,247;0;47;4;48
+695,ボーボボ,Bo-bobo,bobobo;bo-bobo,bb,Bobobo-bo Bo-bobo,33,6,battle,6,Power (力),6K (T2),695,5,1,##.../##.../##.../.....,247;0;47;3;0
+696,真説ボーボボ,Shinsetsu Bo-Bobo,shinsetsu-bo-bobo,bb,Bobobo-bo Bo-bobo,33,7,battle,7,Laughter (笑),7K (T11),696,6,11,###../###../#..../.....,247;0;49;2;48
+697,首領パッチ,Don Patch,donpatchi;don-patch,bb,Bobobo-bo Bo-bobo,33,8,help,1,Neutral (なし),1K,697,0,0,#..../...../...../.....,248;2;48;1;48
+698,首領パッチ,Don Patch,donpatchi;don-patch,bb,Bobobo-bo Bo-bobo,33,9,support,2,Laughter (笑),2K (T2),698,1,1,#..../#..../...../.....,248;1;70;2;48
+699,首領パッチ,Don Patch,donpatchi;don-patch,bb,Bobobo-bo Bo-bobo,33,10,support,3,Laughter (笑),3K (T4),699,2,3,.#.../##.../...../.....,248;1;70;3;48
+700,首領パッチ,Don Patch,donpatchi;don-patch,bb,Bobobo-bo Bo-bobo,33,11,battle,4,Laughter (笑),4K (T1),700,3,0,##.../##.../...../.....,248;0;48;4;48
+701,首領パッチ,Don Patch,donpatchi;don-patch,bb,Bobobo-bo Bo-bobo,33,12,battle,5,Laughter (笑),5K (T3),701,4,2,###../.##../...../.....,248;0;48;4;48
+702,首領パッチ,Don Patch,donpatchi;don-patch,bb,Bobobo-bo Bo-bobo,33,13,battle,6,Laughter (笑),6K (T13),702,5,12,###../.##../.#.../.....,248;0;48;4;48
+703,怒んパッチ,Super Patch,super-patch,bb,Bobobo-bo Bo-bobo,33,14,battle,7,Laughter (笑),7K (T5),703,6,5,###../.##../.##../.....,248;0;50;4;48
+704,天の助,Jelly Jiggler,jelly-jiggler,bb,Bobobo-bo Bo-bobo,33,15,help,1,Neutral (なし),1K,704,0,0,#..../...../...../.....,249;2;6;1;48
+705,天の助,Jelly Jiggler,jelly-jiggler,bb,Bobobo-bo Bo-bobo,33,16,support,2,Laughter (笑),2K (T1),705,1,0,##.../...../...../.....,249;1;71;2;48
+706,天の助,Jelly Jiggler,jelly-jiggler,bb,Bobobo-bo Bo-bobo,33,17,support,3,Laughter (笑),3K (T1),706,2,0,###../...../...../.....,249;1;71;2;48
+707,へっくん,Gasser,gasser,bb,Bobobo-bo Bo-bobo,33,18,help,1,Neutral (なし),1K,707,0,0,#..../...../...../.....,250;2;38;1;48
+708,へっくん,Gasser,gasser,bb,Bobobo-bo Bo-bobo,33,19,support,2,Laughter (笑),2K (T1),708,1,0,##.../...../...../.....,250;1;72;2;48
+709,へっくん,Gasser,gasser,bb,Bobobo-bo Bo-bobo,33,20,support,3,Laughter (笑),3K (T1),709,2,0,###../...../...../.....,250;1;72;2;48
+710,ビュティ,Beauty,beauty,bb,Bobobo-bo Bo-bobo,33,21,help,1,Neutral (なし),1K,710,0,0,#..../...../...../.....,251;2;15;1;49
+711,ビュティ,Beauty,beauty,bb,Bobobo-bo Bo-bobo,33,22,support,2,Laughter (笑),2K (T1),711,1,0,##.../...../...../.....,251;1;73;2;49
+712,ビュティ,Beauty,beauty,bb,Bobobo-bo Bo-bobo,33,23,support,3,Laughter (笑),3K (T6),712,2,5,##.../#..../...../.....,251;1;73;3;49
+713,ガ王,Gaoh,gaoh,bb,Bobobo-bo Bo-bobo,33,24,help,1,Neutral (なし),1K,713,0,0,#..../...../...../.....,252;2;5;1;48
+714,ガ王,Gaoh,gaoh,bb,Bobobo-bo Bo-bobo,33,25,support,2,Laughter (笑),2K (T1),714,1,0,##.../...../...../.....,252;1;74;1;48
+715,ガ王,Gaoh,gaoh,bb,Bobobo-bo Bo-bobo,33,26,support,3,Laughter (笑),3K (T1),715,2,0,###../...../...../.....,252;1;74;2;48
+716,破天荒,Hatenko,hatenko,bb,Bobobo-bo Bo-bobo,33,27,help,1,Neutral (なし),1K,716,0,0,#..../...../...../.....,253;2;31;1;48
+717,ソフトン,Softon,softon,bb,Bobobo-bo Bo-bobo,33,28,help,1,Neutral (なし),1K,717,0,0,#..../...../...../.....,254;2;39;1;48
+718,魚雷ガール,Torpedo Girl,torpedo-girl,bb,Bobobo-bo Bo-bobo,33,29,help,1,Neutral (なし),1K,718,0,0,#..../...../...../.....,255;2;48;1;49
+719,田楽マン,Dengaku Man,dengaku-man,bb,Bobobo-bo Bo-bobo,33,30,help,1,Neutral (なし),1K,719,0,0,#..../...../...../.....,256;2;46;1;48
+720,サービスマン,Service Man,service-man,bb,Bobobo-bo Bo-bobo,33,31,help,1,Neutral (なし),1K,720,0,0,#..../...../...../.....,257;2;43;1;48
+721,コパッチ,Kopachi,kopachi,bb,Bobobo-bo Bo-bobo,33,32,help,1,Neutral (なし),1K,721,0,0,#..../...../...../.....,258;2;41;1;48
+722,ネウロ／弥子,Neuro/Yako,neuro;yako;neuro-yako,nn,Majin Tantei no Gami Neuro,34,0,help,1,Neutral (なし),1K,722,0,0,#..../...../...../.....,259;2;31;1;48
+723,ネウロ／弥子,Neuro/Yako,neuro;yako;neuro-yako,nn,Majin Tantei no Gami Neuro,34,1,support,2,Knowledge (知),2K (T1),723,1,0,##.../...../...../.....,259;1;145;1;48
+724,ネウロ／弥子,Neuro/Yako,neuro;yako;neuro-yako,nn,Majin Tantei no Gami Neuro,34,2,support,3,Knowledge (知),3K (T5),724,2,4,#..../##.../...../.....,259;1;145;2;48
+725,ネウロ／弥子,Neuro/Yako,neuro;yako;neuro-yako,nn,Majin Tantei no Gami Neuro,34,3,battle,4,Knowledge (知),4K (T5),725,3,4,###../.#.../...../.....,259;0;60;2;48
+726,ネウロ／弥子,Neuro/Yako,neuro;yako;neuro-yako,nn,Majin Tantei no Gami Neuro,34,4,battle,4,Power (力),4K (T1),726,3,0,##.../##.../...../.....,259;0;60;4;0
+727,ネウロ／弥子,Neuro/Yako,neuro;yako;neuro-yako,nn,Majin Tantei no Gami Neuro,34,5,battle,5,Knowledge (知),5K (T1),727,4,0,##.../##.../.#.../.....,259;0;60;4;48
+728,あかねちゃん,Akane-chan,akane-chan,nn,Majin Tantei no Gami Neuro,34,6,help,1,Neutral (なし),1K,728,0,0,#..../...../...../.....,260;2;22;1;49
+729,笹塚,Sasazuka,sasazuka,nn,Majin Tantei no Gami Neuro,34,7,help,1,Neutral (なし),1K,729,0,0,#..../...../...../.....,261;2;35;1;48
+730,Ｘ,X,x,nn,Majin Tantei no Gami Neuro,34,8,help,1,Neutral (なし),1K,730,0,0,#..../...../...../.....,262;2;8;1;48
+731,マキバオー,Makibao,makibao,mo,Midori no Makibaou,35,0,help,1,Neutral (なし),1K,731,0,0,#..../...../...../.....,263;2;33;1;48
+732,マキバオー,Makibao,makibao,mo,Midori no Makibaou,35,1,support,2,Laughter (笑),2K (T2),732,1,1,#..../#..../...../.....,263;1;176;2;48
+733,マキバオー,Makibao,makibao,mo,Midori no Makibaou,35,2,support,3,Power (力),3K (T3),733,2,2,##.../.#.../...../.....,263;1;176;3;48
+734,カスケード,Cascade,cascade,mo,Midori no Makibaou,35,3,help,1,Neutral (なし),1K,734,0,0,#..../...../...../.....,264;2;33;1;48
+735,カスケード,Cascade,cascade,mo,Midori no Makibaou,35,4,support,2,Knowledge (知),2K (T2),735,1,1,#..../#..../...../.....,264;1;177;2;48
+736,カスケード,Cascade,cascade,mo,Midori no Makibaou,35,5,support,3,Knowledge (知),3K (T1),736,2,0,###../...../...../.....,264;1;177;1;48
+737,チュウ兵衛,Chuubei,chuubei,mo,Midori no Makibaou,35,6,help,1,Neutral (なし),1K,737,0,0,#..../...../...../.....,265;2;53;1;48
+738,ムヒョ,Muhyo,muhyo,mr,Muhyo to Rouji,36,0,help,1,Neutral (なし),1K,738,0,0,#..../...../...../.....,266;2;14;1;48
+739,ムヒョ,Muhyo,muhyo,mr,Muhyo to Rouji,36,1,support,2,Knowledge (知),2K (T1),739,1,0,##.../...../...../.....,266;1;140;2;48
+740,ムヒョ,Muhyo,muhyo,mr,Muhyo to Rouji,36,2,support,3,Knowledge (知),3K (T2),740,2,1,#..../#..../#..../.....,266;1;140;2;48
+741,ムヒョ,Muhyo,muhyo,mr,Muhyo to Rouji,36,3,battle,4,Knowledge (知),4K (T3),741,3,2,#..../#..../#..../#....,266;0;59;2;48
+742,ムヒョ,Muhyo,muhyo,mr,Muhyo to Rouji,36,4,battle,5,Knowledge (知),5K (T2),742,4,1,###../##.../...../.....,266;0;59;3;48
+743,ムヒョ,Muhyo,muhyo,mr,Muhyo to Rouji,36,5,battle,6,Knowledge (知),6K (T2),743,5,1,##.../##.../##.../.....,266;0;59;6;48
+744,ムヒョ,Muhyo,muhyo,mr,Muhyo to Rouji,36,6,battle,7,Knowledge (知),7K (T7),744,6,7,.###./####./...../.....,266;0;59;2;48
+745,ロージー,Roji,roji,mr,Muhyo to Rouji,36,7,help,1,Neutral (なし),1K,745,0,0,#..../...../...../.....,267;2;5;1;48
+746,ロージー,Roji,roji,mr,Muhyo to Rouji,36,8,support,2,Knowledge (知),2K (T1),746,1,0,##.../...../...../.....,267;1;141;1;48
+747,ロージー,Roji,roji,mr,Muhyo to Rouji,36,9,support,3,Knowledge (知),3K (T6),747,2,5,##.../#..../...../.....,267;1;141;1;48
+748,エンチュー,Enchuu,enchuu,mr,Muhyo to Rouji,36,10,help,1,Neutral (なし),1K,748,0,0,#..../...../...../.....,268;2;43;1;48
+749,エンチュー,Enchuu,enchuu,mr,Muhyo to Rouji,36,11,support,2,Knowledge (知),2K (T1),749,1,0,##.../...../...../.....,268;1;142;2;48
+750,エンチュー,Enchuu,enchuu,mr,Muhyo to Rouji,36,12,support,3,Knowledge (知),3K (T6),750,2,5,##.../#..../...../.....,268;1;142;1;48
+751,ヨイチ,Yoichi,yoichi,mr,Muhyo to Rouji,36,13,help,1,Neutral (なし),1K,751,0,0,#..../...../...../.....,269;2;45;1;48
+752,ヨイチ,Yoichi,yoichi,mr,Muhyo to Rouji,36,14,support,2,Knowledge (知),2K (T1),752,1,0,##.../...../...../.....,269;1;143;1;48
+753,ヨイチ,Yoichi,yoichi,mr,Muhyo to Rouji,36,15,support,3,Knowledge (知),3K (T3),753,2,2,##.../.#.../...../.....,269;1;143;3;48
+754,ビコ,Piko,piko,mr,Muhyo to Rouji,36,16,help,1,Neutral (なし),1K,754,0,0,#..../...../...../.....,270;2;40;1;49
+755,ビコ,Piko,piko,mr,Muhyo to Rouji,36,17,support,2,Knowledge (知),2K (T2),755,1,1,#..../#..../...../.....,270;1;144;1;49
+756,ビコ,Piko,piko,mr,Muhyo to Rouji,36,18,support,3,Knowledge (知),3K (T1),756,2,0,###../...../...../.....,270;1;144;2;49
+757,ナナ,Nana,nana,mr,Muhyo to Rouji,36,19,help,1,Neutral (なし),1K,757,0,0,#..../...../...../.....,271;2;52;1;49
+758,ペイジ,Peiji,peiji,mr,Muhyo to Rouji,36,20,help,1,Neutral (なし),1K,758,0,0,#..../...../...../.....,272;2;4;1;48
+759,遊戯,Yugi,yugi,yo,Yu-gi-oh!,37,0,help,1,Neutral (なし),1K,759,0,0,#..../...../...../.....,273;2;47;1;48
+760,遊戯,Yugi,yugi,yo,Yu-gi-oh!,37,1,support,2,Knowledge (知),2K (T2),760,1,1,#..../#..../...../.....,273;1;42;2;48
+761,遊戯,Yugi,yugi,yo,Yu-gi-oh!,37,2,support,3,Knowledge (知),3K (T3),761,2,2,##.../.#.../...../.....,273;1;42;3;48
+762,遊戯,Yugi,yugi,yo,Yu-gi-oh!,37,3,battle,4,Knowledge (知),4K (T3),762,3,2,#..../#..../#..../#....,273;0;35;3;48
+763,遊戯,Yugi,yugi,yo,Yu-gi-oh!,37,4,battle,5,Knowledge (知),5K (T8),763,4,7,.#.../##.../##.../.....,273;0;35;4;48
+764,遊戯,Yugi,yugi,yo,Yu-gi-oh!,37,5,battle,6,Knowledge (知),6K (T1),764,5,0,###../###../...../.....,273;0;35;5;48
+765,海馬,Kaiba,kaiba,yo,Yu-gi-oh!,37,6,help,1,Neutral (なし),1K,765,0,0,#..../...../...../.....,274;2;44;1;48
+766,海馬,Kaiba,kaiba,yo,Yu-gi-oh!,37,7,support,2,Knowledge (知),2K (T2),766,1,1,#..../#..../...../.....,274;1;43;2;48
+767,海馬,Kaiba,kaiba,yo,Yu-gi-oh!,37,8,support,3,Knowledge (知),3K (T6),767,2,5,##.../#..../...../.....,274;1;43;3;48
+768,城之内,Jounouchi,joey;jounouchi,yo,Yu-gi-oh!,37,9,help,1,Neutral (なし),1K,768,0,0,#..../...../...../.....,275;2;48;1;48
+769,本田,Honda,honda,yo,Yu-gi-oh!,37,10,help,1,Neutral (なし),1K,769,0,0,#..../...../...../.....,276;2;41;1;48
+770,杏子,Anzu,anzu,yo,Yu-gi-oh!,37,11,help,1,Neutral (なし),1K,770,0,0,#..../...../...../.....,277;2;52;1;49
+771,幽助,Yusuke,yusuke,yh,Yu Yu Hakusho,38,0,help,1,Neutral (なし),1K,771,0,0,#..../...../...../.....,278;2;55;1;48
+772,幽助,Yusuke,yusuke,yh,Yu Yu Hakusho,38,1,support,2,Power (力),2K (T1),772,1,0,##.../...../...../.....,278;1;38;1;48
+773,幽助,Yusuke,yusuke,yh,Yu Yu Hakusho,38,2,support,3,Power (力),3K (T1),773,2,0,###../...../...../.....,278;1;38;2;48
+774,幽助,Yusuke,yusuke,yh,Yu Yu Hakusho,38,3,battle,4,Power (力),4K (T5),774,3,4,###../.#.../...../.....,278;0;32;2;48
+775,幽助,Yusuke,yusuke,yh,Yu Yu Hakusho,38,4,battle,5,Power (力),5K (T6),775,4,5,##.../##.../#..../.....,278;0;32;4;48
+776,幽助,Yusuke,yusuke,yh,Yu Yu Hakusho,38,5,battle,6,Power (力),6K (T2),776,5,1,##.../##.../##.../.....,278;0;32;1;48
+777,蔵馬,Kurama,kurama,yh,Yu Yu Hakusho,38,6,help,1,Neutral (なし),1K,777,0,0,#..../...../...../.....,279;2;44;1;48
+778,蔵馬,Kurama,kurama,yh,Yu Yu Hakusho,38,7,support,2,Knowledge (知),2K (T1),778,1,0,##.../...../...../.....,279;1;39;1;48
+779,蔵馬,Kurama,kurama,yh,Yu Yu Hakusho,38,8,support,3,Knowledge (知),3K (T6),779,2,5,##.../#..../...../.....,279;1;39;1;48
+780,蔵馬,Kurama,kurama,yh,Yu Yu Hakusho,38,9,battle,4,Knowledge (知),4K (T1),780,3,0,##.../##.../...../.....,279;0;33;4;48
+781,蔵馬,Kurama,kurama,yh,Yu Yu Hakusho,38,10,battle,5,Knowledge (知),5K (T2),781,4,7,.#.../##.../##.../.....,279;0;33;4;48
+782,飛影,Hiei,hiei,yh,Yu Yu Hakusho,38,11,help,1,Neutral (なし),1K,782,0,0,#..../...../...../.....,280;2;29;1;48
+783,飛影,Hiei,hiei,yh,Yu Yu Hakusho,38,12,support,2,Power (力),2K (T1),783,1,0,##.../...../...../.....,280;1;40;2;48
+784,飛影,Hiei,hiei,yh,Yu Yu Hakusho,38,13,support,3,Power (力),3K (T1),784,2,0,###../...../...../.....,280;1;40;2;48
+785,飛影,Hiei,hiei,yh,Yu Yu Hakusho,38,14,battle,4,Power (力),4K (T1),785,3,0,##.../##.../...../.....,280;0;34;2;48
+786,飛影,Hiei,hiei,yh,Yu Yu Hakusho,38,15,battle,5,Power (力),5K (T2),786,4,1,###../##.../...../.....,280;0;34;4;48
+787,桑原,Kuwabara,kuwabara,yh,Yu Yu Hakusho,38,16,help,1,Neutral (なし),1K,787,0,0,#..../...../...../.....,281;2;38;1;48
+788,桑原,Kuwabara,kuwabara,yh,Yu Yu Hakusho,38,17,support,2,Power (力),2K (T1),788,1,0,##.../...../...../.....,281;1;41;1;48
+789,桑原,Kuwabara,kuwabara,yh,Yu Yu Hakusho,38,18,support,3,Power (力),3K (T5),789,2,4,#..../##.../...../.....,281;1;41;3;48
+790,幻海,Genkai,genkai,yh,Yu Yu Hakusho,38,19,help,1,Neutral (なし),1K,790,0,0,#..../...../...../.....,282;2;4;1;49
+791,ぼたん,Botan,botan,yh,Yu Yu Hakusho,38,20,help,1,Neutral (なし),1K,791,0,0,#..../...../...../.....,283;2;52;1;49
+792,剣心,Kenshin,kenshin,rk,Rurouni Kenshin,39,0,help,1,Neutral (なし),1K,792,0,0,#..../...../...../.....,284;2;3;1;48
+793,剣心,Kenshin,kenshin,rk,Rurouni Kenshin,39,1,support,2,Power (力),2K (T1),793,1,0,##.../...../...../.....,284;1;44;1;48
+794,剣心,Kenshin,kenshin,rk,Rurouni Kenshin,39,2,support,3,Power (力),3K (T2),794,2,1,#..../#..../#..../.....,284;1;44;2;48
+795,剣心,Kenshin,kenshin,rk,Rurouni Kenshin,39,3,battle,4,Power (力),4K (T3),795,3,2,#..../#..../#..../#....,284;0;36;3;48
+796,剣心,Kenshin,kenshin,rk,Rurouni Kenshin,39,4,battle,5,Power (力),5K (T3),796,4,2,###../.##../...../.....,284;0;36;5;48
+797,剣心,Kenshin,kenshin,rk,Rurouni Kenshin,39,5,battle,6,Power (力),6K (T1),797,5,0,###../###../...../.....,284;0;36;2;48
+798,剣心,Kenshin,kenshin,rk,Rurouni Kenshin,39,6,battle,6,Knowledge (知),6K (T14),798,5,13,..#../.##../###../.....,284;0;36;5;16
+799,左之助,Sanosuke,sanosuke,rk,Rurouni Kenshin,39,7,help,1,Neutral (なし),1K,799,0,0,#..../...../...../.....,285;2;38;1;48
+800,左之助,Sanosuke,sanosuke,rk,Rurouni Kenshin,39,8,support,2,Power (力),2K (T2),800,1,1,#..../#..../...../.....,285;1;45;2;48
+801,左之助,Sanosuke,sanosuke,rk,Rurouni Kenshin,39,9,support,3,Power (力),3K (T6),801,2,5,##.../#..../...../.....,285;1;45;1;48
+802,斎藤一,Saito,saito,rk,Rurouni Kenshin,39,10,help,1,Neutral (なし),1K,802,0,0,#..../...../...../.....,286;2;43;1;48
+803,斎藤一,Saito,saito,rk,Rurouni Kenshin,39,11,support,2,Power (力),2K (T2),803,1,1,#..../#..../...../.....,286;1;46;1;48
+804,斎藤一,Saito,saito,rk,Rurouni Kenshin,39,12,support,3,Power (力),3K (T2),804,2,1,#..../#..../#..../.....,286;1;46;2;48
+805,志々雄真実,Shishio,shishio,rk,Rurouni Kenshin,39,13,help,1,Neutral (なし),1K,805,0,0,#..../...../...../.....,287;2;27;1;48
+806,志々雄真実,Shishio,shishio,rk,Rurouni Kenshin,39,14,support,2,Power (力),2K (T2),806,1,1,#..../#..../...../.....,287;1;47;2;48
+807,志々雄真実,Shishio,shishio,rk,Rurouni Kenshin,39,15,support,3,Power (力),3K (T5),807,2,4,#..../##.../...../.....,287;1;47;1;48
+808,弥彦,Yahiko,yahiko,rk,Rurouni Kenshin,39,16,help,1,Neutral (なし),1K,808,0,0,#..../...../...../.....,288;2;10;1;48
+809,弥彦,Yahiko,yahiko,rk,Rurouni Kenshin,39,17,support,2,Power (力),2K (T1),809,1,0,##.../...../...../.....,288;1;48;2;48
+810,弥彦,Yahiko,yahiko,rk,Rurouni Kenshin,39,18,support,3,Power (力),3K (T5),810,2,4,#..../##.../...../.....,288;1;48;2;48
+811,薫,Kaoru,kaoru,rk,Rurouni Kenshin,39,19,help,1,Neutral (なし),1K,811,0,0,#..../...../...../.....,289;2;22;1;49
+812,比古清十郎,Hiko,hiko,rk,Rurouni Kenshin,39,20,help,1,Neutral (なし),1K,812,0,0,#..../...../...../.....,290;2;53;1;48
+813,太尊,Taison,taison,rb,Rokudenashi Blues,40,0,help,1,Neutral (なし),1K,813,0,0,#..../...../...../.....,291;2;41;1;48
+814,太尊,Taison,taison,rb,Rokudenashi Blues,40,1,support,2,Laughter (笑),2K (T1),814,1,0,##.../...../...../.....,291;1;174;2;48
+815,太尊,Taison,taison,rb,Rokudenashi Blues,40,2,support,3,Power (力),3K (T3),815,2,2,##.../.#.../...../.....,291;1;174;2;48
+816,勝嗣,Katsuji,katsuji,rb,Rokudenashi Blues,40,3,help,1,Neutral (なし),1K,816,0,0,#..../...../...../.....,292;2;41;1;48
+817,米示,Yoneji,yoneji,rb,Rokudenashi Blues,40,4,help,1,Neutral (なし),1K,817,0,0,#..../...../...../.....,293;2;40;1;48
+818,千秋,Chiaki,chiaki,rb,Rokudenashi Blues,40,5,help,1,Neutral (なし),1K,818,0,0,#..../...../...../.....,294;2;52;1;49
+819,マサさん,Masa-San,masa-san,rb,Rokudenashi Blues,40,6,help,1,Neutral (なし),1K,819,0,0,#..../...../...../.....,295;2;4;1;48
+820,ルフィ,Luffy,luffy,op,One Piece,41,0,help,1,Neutral (なし),1K,820,0,0,#..../...../...../.....,296;2;9;1;48
+821,ルフィ,Luffy,luffy,op,One Piece,41,1,support,2,Power (力),2K (T1),821,1,0,##.../...../...../.....,296;1;9;1;48
+822,ルフィ,Luffy,luffy,op,One Piece,41,2,support,3,Power (力),3K (T1),822,2,0,###../...../...../.....,296;1;9;2;48
+823,ルフィ,Luffy,luffy;luffy4,op,One Piece,41,3,battle,4,Power (力),4K (T1),823,3,0,##.../##.../...../.....,296;0;12;2;48
+824,ルフィ,Luffy,luffy;luffy5,op,One Piece,41,4,battle,5,Power (力),5K (T4),824,4,3,.##../###../...../.....,296;0;12;4;48
+825,ルフィ,Luffy,luffy,op,One Piece,41,5,battle,6,Power (力),6K (T1),825,5,0,###../###../...../.....,296;0;12;5;48
+826,ルフィ,Luffy,luffy,op,One Piece,41,6,battle,6,Laughter (笑),6K (T2),826,5,1,##.../##.../##.../.....,296;0;12;3;32
+827,ルフィ（ギア２）,Luffy (Gear 2),luffy-gear-2,op,One Piece,41,7,battle,7,Power (力),7K (T12),827,6,12,###../###../.#.../.....,296;0;18;5;48
+828,ルフィ（ギア２）,Luffy (Gear 2),luffy-gear-2,op,One Piece,41,8,battle,8,Power (力),8K (T3),828,7,2,####./####./...../.....,296;0;18;6;48
+829,ゾロ,Zoro,zoro,op,One Piece,41,9,help,1,Neutral (なし),1K,829,0,0,#..../...../...../.....,297;2;10;1;48
+830,ゾロ,Zoro,zoro;zoro2,op,One Piece,41,10,support,2,Power (力),2K (T1),830,1,0,##.../...../...../.....,297;1;10;2;48
+831,ゾロ,Zoro,zoro,op,One Piece,41,11,support,3,Power (力),3K (T6),831,2,5,##.../#..../...../.....,297;1;10;1;48
+832,ゾロ,Zoro,zoro,op,One Piece,41,12,battle,4,Power (力),4K (T6),832,3,5,#..../#..../##.../.....,297;0;13;4;48
+833,ゾロ,Zoro,zoro,op,One Piece,41,13,battle,5,Power (力),5K (T2),833,4,1,###../##.../...../.....,297;0;13;5;48
+834,ゾロ,Zoro,zoro,op,One Piece,41,14,battle,5,Laughter (笑),5K (T1),834,4,0,##.../##.../.#.../.....,297;0;13;4;32
+835,ゾロ,Zoro,zoro,op,One Piece,41,15,battle,6,Power (力),6K (T1),835,5,0,###../###../...../.....,297;0;13;5;48
+836,ナミ,Nami,nami,op,One Piece,41,16,help,1,Neutral (なし),1K,836,0,0,#..../...../...../.....,298;2;42;1;49
+837,ナミ,Nami,nami,op,One Piece,41,17,support,2,Knowledge (知),2K (T1),837,1,0,##.../...../...../.....,298;1;12;1;49
+838,ナミ,Nami,nami,op,One Piece,41,18,support,3,Laughter (笑),3K (T3),838,2,2,##.../.#.../...../.....,298;1;12;2;49
+839,ナミ,Nami,nami,op,One Piece,41,19,battle,4,Knowledge (知),4K (T2),839,3,1,###../#..../...../.....,298;0;15;2;49
+840,ナミ,Nami,nami,op,One Piece,41,20,battle,4,Laughter (笑),4K (T12),840,3,11,####./...../...../.....,298;0;15;4;33
+841,ナミ,Nami,nami,op,One Piece,41,21,battle,5,Knowledge (知),5K (T2),841,4,1,###../##.../...../.....,298;0;15;5;49
+842,ナミ完成版天候棒,Nami (P.C.TACT),nami-p-c-tact,op,One Piece,41,22,battle,6,Knowledge (知),6K (T2),842,5,1,##.../##.../##.../.....,298;0;19;6;49
+843,サンジ,Sanji,sanji,op,One Piece,41,23,help,1,Neutral (なし),1K,843,0,0,#..../...../...../.....,299;2;18;1;48
+844,サンジ,Sanji,sanji,op,One Piece,41,24,support,2,Laughter (笑),2K (T2),844,1,1,#..../#..../...../.....,299;1;11;2;48
+845,サンジ,Sanji,sanji,op,One Piece,41,25,support,3,Power (力),3K (T2),845,2,1,#..../#..../#..../.....,299;1;11;2;48
+846,サンジ,Sanji,sanji,op,One Piece,41,26,battle,4,Power (力),4K (T1),846,3,0,##.../##.../...../.....,299;0;14;4;48
+847,サンジ,Sanji,sanji,op,One Piece,41,27,battle,5,Power (力),5K (T2),847,4,1,###../##.../...../.....,299;0;14;5;48
+848,サンジ,Sanji,sanji,op,One Piece,41,28,battle,5,Laughter (笑),5K (T1),848,4,0,##.../##.../.#.../.....,299;0;14;4;32
+849,サンジ,Sanji,sanji,op,One Piece,41,29,battle,6,Power (力),6K (T1),849,5,0,###../###../...../.....,299;0;14;2;48
+850,ロビン,Robin,robin,op,One Piece,41,30,help,1,Neutral (なし),1K,850,0,0,#..../...../...../.....,300;2;4;1;49
+851,ロビン,Robin,robin,op,One Piece,41,31,support,2,Knowledge (知),2K (T1),851,1,0,##.../...../...../.....,300;1;13;2;49
+852,ロビン,Robin,robin,op,One Piece,41,32,support,3,Knowledge (知),3K (T1),852,2,0,###../...../...../.....,300;1;13;2;49
+853,ロビン,Robin,robin,op,One Piece,41,33,battle,4,Knowledge (知),4K (T5),853,3,4,###../.#.../...../.....,300;0;16;4;49
+854,ロビン,Robin,robin,op,One Piece,41,34,battle,5,Knowledge (知),5K (T3),854,4,2,###../.##../...../.....,300;0;16;4;49
+855,ロビン,Robin,robin,op,One Piece,41,35,battle,6,Knowledge (知),6K (T1),855,5,0,###../###../...../.....,300;0;16;5;49
+856,フランキー,Franky,franky,op,One Piece,41,36,help,1,Neutral (なし),1K,856,0,0,#..../...../...../.....,301;2;10;1;48
+857,フランキー,Franky,franky,op,One Piece,41,37,support,2,Laughter (笑),2K (T2),857,1,1,#..../#..../...../.....,301;1;14;2;48
+858,フランキー,Franky,franky,op,One Piece,41,38,support,3,Laughter (笑),3K (T6),858,2,5,##.../#..../...../.....,301;1;14;1;48
+859,フランキー,Franky,franky,op,One Piece,41,39,battle,4,Laughter (笑),4K (T1),859,3,0,##.../##.../...../.....,301;0;17;2;48
+860,フランキー,Franky,franky,op,One Piece,41,40,battle,5,Laughter (笑),5K (T2),860,4,1,###../##.../...../.....,301;0;17;2;48
+861,フランキー,Franky,franky,op,One Piece,41,41,battle,5,Power (力),5K (T6),861,4,5,##.../##.../#..../.....,301;0;17;3;0
+862,ウソップ,Usopp,usopp,op,One Piece,41,42,help,1,Neutral (なし),1K,862,0,0,#..../...../...../.....,302;2;15;1;48
+863,ウソップ,Usopp,usopp,op,One Piece,41,43,support,2,Laughter (笑),2K (T1),863,1,0,##.../...../...../.....,302;1;15;2;48
+864,そげキング,Sogeking,sogeking,op,One Piece,41,44,support,3,Laughter (笑),3K (T6),864,2,5,##.../#..../...../.....,302;1;15;1;48
+865,チョッパー,Chopper,chopper,op,One Piece,41,45,help,1,Neutral (なし),1K,865,0,0,#..../...../...../.....,303;2;8;1;48
+866,チョッパー,Chopper,chopper,op,One Piece,41,46,support,2,Knowledge (知),2K (T2),866,1,1,#..../#..../...../.....,303;1;16;2;48
+867,チョッパー,Chopper,chopper,op,One Piece,41,47,support,3,Power (力),3K (T1),867,2,0,###../...../...../.....,303;1;16;2;48
+868,シャンクス,Shanks,shanks,op,One Piece,41,48,help,1,Neutral (なし),1K,868,0,0,#..../...../...../.....,304;2;53;1;48
+869,キウイ／モズ,Kiwi/Mozu,kiwi-mozu,op,One Piece,41,49,help,1,Neutral (なし),1K,869,0,0,#..../...../...../.....,305;2;46;1;49
+870,Ａコマ,,,dt,,42,0,help,1,,,870,0,0,#..../...../...../.....,306;2;49;1;50
+871,Ｂコマ,,,dt,,42,1,help,1,,,871,0,0,#..../...../...../.....,307;2;50;1;50
+872,Ｃコマ,,,dt,,42,2,help,1,,,872,0,0,#..../...../...../.....,308;2;51;1;50
+873,コマレッド,,komared,dt,,42,3,help,1,,,873,0,0,#..../...../...../.....,309;2;0;1;50
+874,コマグリーン,,komagreen,dt,,42,4,help,1,,,874,0,0,#..../...../...../.....,310;2;0;1;50
+875,コマイエロー,,komayellow,dt,,42,5,help,1,,,875,0,0,#..../...../...../.....,311;2;0;1;50
+876,コマレッド,,komared,dt,,42,6,battle,4,,,876,3,0,##.../##.../...../.....,309;0;70;1;48
+877,コマグリーン,,komagreen,dt,,42,7,battle,4,,,877,3,0,##.../##.../...../.....,310;0;71;1;48
+878,コマイエロー,,komayellow,dt,,42,8,battle,4,,,878,3,0,##.../##.../...../.....,311;0;72;1;48
+879,コマレッド,,komared,dt,,42,9,support,2,,,879,1,0,##.../...../...../.....,309;1;190;1;48
+880,コマグリーン,,komagreen,dt,,42,10,support,2,,,880,1,0,##.../...../...../.....,310;1;191;1;48
+881,コマイエロー,,komayellow,dt,,42,11,support,2,,,881,1,0,##.../...../...../.....,311;1;192;1;48
+882,フリーザ,,frieza,dt,,42,12,support,2,,,882,1,0,##.../...../...../.....,176;1;5;1;48
+883,魔人ブウ,,buu,dt,,42,13,support,2,,,883,1,0,##.../...../...../.....,177;1;6;1;48
+884,サスケ,,sasuke,dt,,42,14,support,2,,,884,1,0,##.../...../...../.....,185;1;18;1;48
+885,ラオウ,,raoh,dt,,42,15,support,2,,,885,1,0,##.../...../...../.....,241;1;147;1;48
+886,江田島平八,,,dt,,42,16,support,2,,,886,1,0,##.../...../...../.....,85;1;163;1;48
+887,百手太臓（Ｍ）,,,dt,,42,17,battle,4,,,887,3,0,##.../##.../...../.....,135;0;73;1;48
+888,必魂無制限,,,dt,,42,18,help,1,,,888,0,0,#..../...../...../.....,312;2;37;0;66
+889,ドクターマシリト,,,dt,,42,19,support,2,,,889,1,0,##.../...../...../.....,162;1;105;1;48

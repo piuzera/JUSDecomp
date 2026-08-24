@@ -1,0 +1,15 @@
+# Mod pack manifest — see decomp/docs/MODS.md for the full reference.
+[manifest]
+id = "koma-890-jodio"
+name = "Koma 890 — Jodio"
+version = "0.1.0"
+author = "JUS Decomp contributors"
+description = """
+Adds a brand-new unique koma id 890 named "ＪＯＤＩＯ" (JoJo's Bizarre
+Adventure). Koma 890 has its own 48x48 deck-viewer art painted from
+src/custom01.png, lands in the JoJo picker category, and battles fine.
+The stock ROM is never modified: tools/scripts/mods_manage.py compose turns
+this pack into runtime [[mods.overlays]] that shadow gamecard reads.
+"""
+# enabled = false to keep the pack installed but out of the composed config.
+enabled = true

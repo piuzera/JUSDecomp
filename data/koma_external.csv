@@ -1,0 +1,868 @@
+Eyeshield 21,Sena,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Airdash,N/A,PASSIVE: Airdash
+Eyeshield 21,Sena,2 Koma,2K (T2),Support,Knowledge (知),Instant,N/A,N/A,N/A,-1 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -1 SP BAR"
+Eyeshield 21,Sena,3 Koma,3K (T3),Support,Knowledge (知),Instant,N/A,N/A,N/A,-2 SP Bar,N/A,Stop,N/A,N/A,Ground Only,"ON HIT: Stop, -2 SP BARS"
+Eyeshield 21,Hiruma,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Eyeshield 21,Hiruma,2 Koma,2K (T2),Support,Knowledge (知),Fast,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Eyeshield 21,Hiruma,3 Koma,3K (T6),Support,Knowledge (知),Instant,Average,Average,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Eyeshield 21,Kurita,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,No Pushback,N/A,N/A,N/A,N/A,N/A,NO PUSHBACK: Moving Platforms
+Eyeshield 21,Kurita,2 Koma,2K (T1),Support,Power (力),Instant,Average,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Eyeshield 21,Kurita,3 Koma,3K (T3),Support,Power (力),Instant,Low,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 30 DMG MAX
+Eyeshield 21,Monta,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Eyeshield 21,Monta,2 Koma,2K (T1),Support,Power (力),Average,N/A,N/A,N/A,N/A,SPD Up,N/A,N/A,N/A,Ground Only,BUFF: Speed Boost
+Eyeshield 21,Monta,3 Koma,3K (T2),Support,Power (力),Slow,N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,Ground/Air,"DROP: 4 HEAL, 1 ATK BOOST"
+Eyeshield 21,Musashi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,N/A,N/A,ATK UP: Low HP
+Eyeshield 21,Musashi,2 Koma,2K (T1),Support,Power (力),Average,N/A,N/A,N/A,N/A,Toughen,N/A,N/A,N/A,Ground Only,BUFF: Toughen
+Eyeshield 21,Musashi,3 Koma,3K (T6),Support,Power (力),Fast,High,Long,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 51 DMG MAX
+Eyeshield 21,Ha-Ha Brothers,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Combos
+Eyeshield 21,Ha-Ha Brothers,2 Koma,2K (T1),Support,Laughter (笑),Instant,N/A,Short,N/A,-2 SP Bar,N/A,Stop,N/A,N/A,Ground Only,"ON HIT: Stop, -2 SP BARS"
+Eyeshield 21,Ha-Ha Brothers,3 Koma,3K (T1),Support,Power (力),Fast,Average,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Eyeshield 21,Shin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Eyeshield 21,Shin,2 Koma,2K (T1),Support,Power (力),Average,N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,Ground Only,BUFF: Attack Boost
+Eyeshield 21,Shin,3 Koma,3K (T2),Support,Power (力),Instant,High,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 51 DMG MAX
+Eyeshield 21,Devil Bat,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Triple Jump,N/A,PASSIVE: Triple Jump
+Eyeshield 21,Devil Bat,3 Koma,3K (T1),Support,Laughter (笑),Instant,Low,Short,None,Stay (Assist),N/A,N/A,N/A,N/A,Ground Only,STAY: Extra Attacks
+Eyeshield 21,Cerberus,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Destroying Boxes
+Eyeshield 21,Cerberus,3 Koma,3K (T2),Support,Laughter (笑),Instant,Average,Short,Low,Stay (Counter),N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, 38 DMG MAX"
+Eyeshield 21,Mamori,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Eyeshield 21,Suzuna,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Eyeshield 21,Komusubi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,No Pushback,N/A,N/A,N/A,N/A,N/A,NO PUSHBACK: Ground
+Eyeshield 21,Sakuraba,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend Chain Attacks
+Eyeshield 21,Taki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Eyeshield 21,Doburoku-Sensei,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Eyeshield 21,Yukimitsu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,See Invisible Komas,N/A,PASSIVE: See Invisible Komas
+Eyeshield 21,Ishimaru,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+I S,Iori,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+I S,Iori,2 Koma,2K (T1),Support,Laughter (笑),Average,N/A,Short,N/A,-1 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -1/-2 SP BAR (Female/Male)
+I S,Iori,3 Koma,3K (T2),Support,Laughter (笑),Average,N/A,Short,N/A,Heal,ATK Up,N/A,N/A,N/A,Ground Only,ON HIT: Heal/Heal + ATK Up (Female/Male)
+I S,Itsuki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+I S,Itsuki,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Short,N/A,-1 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -1 SP BAR"
+I S,Itsuki,3 Koma,3K (T2),Support,Laughter (笑),Fast,N/A,Short,N/A,-1 SP Bar,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: Paralysis, -1 SP BAR"
+I S,Ichitaka,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Destroying Boxes
+I S,Izumi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Ichigo 100%,Aya,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Ichigo 100%,Aya,2 Koma,2K (T1),Support,Laughter (笑),Instant,N/A,Average,None,-1 SP Bar,N/A,Support Seal,N/A,N/A,Ground Only,"ON HIT: Support Seal, -1 SP BAR"
+Ichigo 100%,Aya,3 Koma,3K (T4),Support,Laughter (笑),Slow,N/A,Fullscreen,N/A,-2 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: Blind, -2 SP BAR"
+Ichigo 100%,Tsukasa,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Glutton,N/A,PASSIVE: More Health from Food
+Ichigo 100%,Tsukasa,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Average,N/A,-1 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: Blind, -1 SP BAR"
+Ichigo 100%,Tsukasa,3 Koma,3K (T2),Support,Laughter (笑),Instant,N/A,Average,N/A,-1 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -1 SP BAR"
+Ichigo 100%,Satsuki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Ichigo 100%,Satsuki,2 Koma,2K (T2),Support,Laughter (笑),Fast,N/A,Fullscreen,N/A,HP Regeneration,N/A,N/A,N/A,N/A,Ground Only,BUFF: Health Regeneration
+Ichigo 100%,Satsuki,3 Koma,3K (T2),Support,Laughter (笑),Instant,N/A,Average,N/A,-2 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, -2 SP BAR"
+Ichigo 100%,Yui,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO Opponents
+Ichigo 100%,Yui,2 Koma,2K (T1),Support,Laughter (笑),Instant,N/A,Average,N/A,N/A,N/A,Auto-run,N/A,N/A,Ground Only,ON HIT: Auto-Run
+Ichigo 100%,Yui,3 Koma,3K (T6),Support,Laughter (笑),Average,N/A,Average,N/A,-1 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, -1 SP BAR"
+Ichigo 100%,Misuzu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Ichigo 100%,Manaka,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Destroying Boxes
+Ichigo 100%,Hiroshi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Katekyo Hitman Reborn!,Tsuna,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Katekyo Hitman Reborn!,Tsuna,2 Koma,2K (T1),Support,Laughter (笑),Fast,Low,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 27 DMG MAX
+Katekyo Hitman Reborn!,Tsuna,3 Koma,3K (T3),Support,Laughter (笑),Average,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Katekyo Hitman Reborn!,Tsuna,4 Koma,4K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Intuition,N/A,"PERK: Auto Guard, Blind Immunity, Special Res"
+Katekyo Hitman Reborn!,Tsuna,5 Koma,5K (T3),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Intuition,N/A,"PERK: Auto Guard, Blind Immunity, Special Res"
+Katekyo Hitman Reborn!,Tsuna,6 Koma,6K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Intuition,N/A,"PERK: Auto Guard, Blind Immunity, Special Res"
+Katekyo Hitman Reborn!,Tsuna,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Intuition,N/A,"PERK: Auto Guard, Blind Immunity, Special Res"
+Katekyo Hitman Reborn!,Lambo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Shock Immunity,N/A,N/A,IMMUNITY: Shock
+Katekyo Hitman Reborn!,Lambo,2 Koma,2K (T1),Support,Laughter (笑),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Katekyo Hitman Reborn!,Lambo,3 Koma,3K (T5),Support,Power (力),Instant,High,Short,Low,N/A,N/A,Shock,N/A,N/A,Ground Only,"STAY: Counter, Shock, 52 DMG MAX"
+Katekyo Hitman Reborn!,Yamamoto,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+Katekyo Hitman Reborn!,Yamamoto,2 Koma,2K (T1),Support,Power (力),Fast,Average,Average,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Katekyo Hitman Reborn!,Yamamoto,3 Koma,3K (T5),Support,Power (力),Fast,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 49 DMG MAX
+Katekyo Hitman Reborn!,Gokudera,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Katekyo Hitman Reborn!,Gokudera,2 Koma,2K (T1),Support,Power (力),Fast,High,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Katekyo Hitman Reborn!,Gokudera,3 Koma,3K (T6),Support,Power (力),Instant,Average,Average,None,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 34 DMG MAX"
+Katekyo Hitman Reborn!,Bianchi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Glutton,N/A,PASSIVE: More Health from Food
+Katekyo Hitman Reborn!,Bianchi,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Average,N/A,-1 SP Bar,N/A,Poison,N/A,N/A,Ground Only,"DEBUFF: Poison, -1 SP BAR"
+Katekyo Hitman Reborn!,Bianchi,3 Koma,3K (T6),Support,Laughter (笑),Fast,N/A,Short,N/A,-2 SP Bar,N/A,Poison,N/A,N/A,Ground Only,"DEBUFF: Poison, -2 SP BAR"
+Katekyo Hitman Reborn!,I-Pin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Combos
+Katekyo Hitman Reborn!,I-Pin,2 Koma,2K (T2),Support,Laughter (笑),Slow,Very High,Long,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 71 DMG MAX
+Katekyo Hitman Reborn!,I-Pin,3 Koma,3K (T2),Support,Laughter (笑),Instant,High,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, 54 DMG MAX"
+Katekyo Hitman Reborn!,Hibari,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Katekyo Hitman Reborn!,Hibari,2 Koma,2K (T1),Support,Power (力),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Katekyo Hitman Reborn!,Hibari,3 Koma,3K (T3),Support,Power (力),Fast,Average,Short,High,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 30 DMG MAX"
+Katekyo Hitman Reborn!,Kyoko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Katekyo Hitman Reborn!,Haru,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Confusion Immunity,N/A,N/A,IMMUNITY: Confusion
+Katekyo Hitman Reborn!,Leon,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,HP Regeneration,N/A,PASSIVE: Health Regeneration
+Captain Tsubasa,Tsubasa,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Airdash,N/A,PASSIVE: Airdash
+Captain Tsubasa,Tsubasa,2 Koma,2K (T1),Support,Knowledge (知),Fast,Low,Fullscreen,None,N/A,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: Speed Down, 24 DMG MAX"
+Captain Tsubasa,Golden Combination,3 Koma,3K (T3),Support,Knowledge (知),Fast,Low,Fullscreen,None,-2 SP Bar,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, 20 DMG MAX"
+Captain Tsubasa,Genzo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+Captain Tsubasa,Genzo,2 Koma,2K (T2),Support,Power (力),Instant,Low,Short,Low,Heal,N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, Heal, 12 DMG MAX"
+Captain Tsubasa,Genzo,3 Koma,3K (T6),Support,Power (力),Average,N/A,Fullscreen,N/A,Heal,Toughen,N/A,N/A,N/A,Ground/Air,"BUFF: Toughen, Heal"
+Captain Tsubasa,Hyuga,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Captain Tsubasa,Hyuga,2 Koma,2K (T1),Support,Power (力),Instant,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Captain Tsubasa,Hyuga,3 Koma,3K (T3),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Captain Tsubasa,Roberto Hongo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Auto Guard,N/A,PASSIVE: Auto Guard
+Captain Tsubasa,Sanae,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Gintama,Gintoki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Gintama,Gintoki,2 Koma,2K (T2),Support,Laughter (笑),Instant,Low,Short,Low,-1 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"STAY: Counter, Battle Seal, -1 SP BAR, 6 DMG MAX"
+Gintama,Gintoki,3 Koma,3K (T1),Support,Laughter (笑),Instant,Average,Average,Very High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 37 DMG MAX
+Gintama,Gintoki,4 Koma,4K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Bushido,N/A,PERK: SP Regeneration during Guard
+Gintama,Gintoki,5 Koma,5K (T4),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Bushido,N/A,PERK: SP Regeneration during Guard
+Gintama,Gintoki,6 Koma,6K (T7),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Bushido,N/A,PERK: SP Regeneration during Guard
+Gintama,Gintoki,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Bushido,N/A,PERK: SP Regeneration during Guard
+Gintama,Gintoki,7 Koma,7K (T8),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Bushido,N/A,PERK: SP Regeneration during Guard
+Gintama,Kagura,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Destroying Boxes
+Gintama,Kagura,2 Koma,2K (T1),Support,Laughter (笑),Instant,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Gintama,Kagura,3 Koma,3K (T1),Support,Laughter (笑),Instant,High,Short,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 55 DMG MAX"
+Gintama,Kagura,4 Koma,4K (T7),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Yato Clan,N/A,PERK: SP UP by Attacking / Destroying Boxes
+Gintama,Kagura,5 Koma,5K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Yato Clan,N/A,PERK: SP UP by Attacking / Destroying Boxes
+Gintama,Kagura,6 Koma,6K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Yato Clan,N/A,PERK: SP UP by Attacking / Destroying Boxes
+Gintama,Kagura,6 Koma,6K (T8),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Yato Clan,N/A,PERK: SP UP by Attacking / Destroying Boxes
+Gintama,Shinpachi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,Comeback,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Gintama,Shinpachi,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Fullscreen,N/A,N/A,Toughen,N/A,N/A,N/A,Ground Only,BUFF: Toughen
+Gintama,Shinpachi,3 Koma,3K (T2),Support,Laughter (笑),Fast,N/A,Average,N/A,-2 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -2 SP BAR"
+Gintama,Zura,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Confusion Immunity,N/A,N/A,IMMUNITY: Confusion
+Gintama,Zura,2 Koma,2K (T2),Support,Laughter (笑),Fast,N/A,Long,None,N/A,N/A,Poison,N/A,N/A,Ground Only,ON HIT: Poison
+Gintama,Zura / Elizabeth,3 Koma,3K (T3),Support,Laughter (笑),Instant,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Gintama,Sa-chan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Gintama,Sa-chan,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Average,None,-2 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -2 SP BAR"
+Gintama,Sa-chan,3 Koma,3K (T3),Support,Laughter (笑),Average,Average,Average,Low,N/A,N/A,Frozen,N/A,N/A,Ground Only,"ON HIT: Frozen, 45 DMG MAX"
+Gintama,Kondo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Gintama,Kondo,2 Koma,2K (T1),Support,Laughter (笑),Average,Average,Average,Low,-1 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -1 SP BAR, 30 DMG MAX"
+Gintama,Kondo,3 Koma,3K (T3),Support,Laughter (笑),Average,N/A,Average,Low,-2 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -2 SP BAR"
+Gintama,Hijikata,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Gintama,Hijikata,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Average,N/A,-1 SP Bar,N/A,Auto-run,N/A,N/A,Ground Only,"ON HIT: Auto Run, -1 SP BAR"
+Gintama,Hijikata,3 Koma,3K (T6),Support,Laughter (笑),Fast,Average,Average,Low,-1 SP Bar,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: -1 SP BAR, 42 DMG MAX"
+Gintama,Okita,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Gintama,Okita,2 Koma,2K (T1),Support,Laughter (笑),Fast,Low,Short,High,N/A,N/A,Burn,N/A,N/A,Ground Only,"ON HIT: Burn, 22 DMG MAX"
+Gintama,Okita,3 Koma,3K (T1),Support,Laughter (笑),Average,High,Average,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 60 DMG MAX
+Gintama,Otose,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Combos
+Gintama,Otae,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: MAX HP Up
+Gintama,Hasegawa,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,No Pushback,N/A,N/A,N/A,N/A,N/A,NO PUSHBACK: Ground
+Gintama,Yamazaki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Gintama,Sadaharu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,NO PUSHBACK: Ground
+Kinnikuman,Muscle Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Physical Attacks,N/A,N/A,RESIST: Physical Attacks
+Kinnikuman,Muscle Man,2 Koma,2K (T1),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Kinnikuman,Muscle Man,3 Koma,3K (T1),Support,Laughter (笑),Fast,N/A,Long,None,-2 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: Blind, -2 SP BAR"
+Kinnikuman,Muscle Man,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burning Strength,N/A,"PERK: ATK Up on Low HP, SP UP Attacking"
+Kinnikuman,Muscle Man,4 Koma,4K (T8),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burning Strength,N/A,"PERK: ATK Up on Low HP, SP UP Attacking"
+Kinnikuman,Muscle Man,5 Koma,5K (T12),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burning Strength,N/A,"PERK: ATK Up on Low HP, SP UP Attacking"
+Kinnikuman,Muscle Man,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burning Strength,N/A,"PERK: ATK Up on Low HP, SP UP Attacking"
+Kinnikuman,Muscle Man,7 Koma,7K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burning Strength,N/A,"PERK: ATK Up on Low HP, SP UP Attacking"
+Kinnikuman,Muscle Man,8 Koma,8K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burning Strength,N/A,"PERK: ATK Up on Low HP, SP UP Attacking"
+Kinnikuman,Terry Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Kinnikuman,Terry Man,2 Koma,2K (T1),Support,Knowledge (知),Instant,N/A,N/A,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,HEAL: Use during Hitstun
+Kinnikuman,Terry Man,3 Koma,3K (T1),Support,Knowledge (知),Instant,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 36 DMG MAX
+Kinnikuman,Robin Mask,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+Kinnikuman,Robin Mask,2 Koma,2K (T2),Support,Knowledge (知),Fast,Low,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 28 DMG MAX
+Kinnikuman,Robin Mask,3 Koma,3K (T2),Support,Knowledge (知),Fast,Average,Average,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 36 DMG MAX"
+Kinnikuman,Wars Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Kinnikuman,Wars Man,2 Koma,2K (T1),Support,Knowledge (知),Fast,Low,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 28 DMG MAX
+Kinnikuman,Wars Man,3 Koma,3K (T1),Support,Knowledge (知),Slow,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Kinnikuman,Ramen Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Combos
+Kinnikuman,Mongolia Man,2 Koma,2K (T1),Support,Power (力),Fast,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Kinnikuman,Ramen Man,3 Koma,3K (T2),Support,Power (力),Fast,Average,Average,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 36 DMG MAX"
+Kinnikuman,Brocken Jr.,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Poison Immunity,N/A,N/A,IMMUNITY: Poison
+Kinnikuman,Brocken Jr.,2 Koma,2K (T1),Support,Power (力),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Kinnikuman,Brocken Jr.,3 Koma,3K (T5),Support,Power (力),Fast,Average,Average,Low,N/A,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: Blind, 38 DMG MAX"
+Kinnikuman,Buffalo Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Kinnikuman,Buffalo Man,2 Koma,2K (T1),Support,Power (力),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Kinnikuman,Buffalo Man,3 Koma,3K (T2),Support,Power (力),Fast,Average,Long,High,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 38 DMG MAX"
+Kinnikuman,Furious Fighter,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Kinnikuman,Furious Fighter,2 Koma,2K (T2),Support,Power (力),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Kinnikuman,Furious Fighter,3 Koma,3K (T6),Support,Power (力),Fast,Average,Long,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 36 DMG MAX"
+Kinnikuman,Mito-kun,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,See Invisible Komas,N/A,PASSIVE: See Invisible Komas
+Kinnikuman,Super Muscle,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO
+Kochi Kame,Ryotsu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Destroying Boxes
+Kochi Kame,Ryotsu,2 Koma,2K (T2),Support,Laughter (笑),Instant,N/A,Average,N/A,-1 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: Blind, -1 SP BAR"
+Kochi Kame,Ryotsu,3 Koma,3K (T2),Support,Laughter (笑),Instant,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 40 DMG MAX
+Kochi Kame,Ryotsu,4 Koma,4K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gluttonous Champion,N/A,PERK: HP UP by eating Food
+Kochi Kame,Ryotsu,5 Koma,5K (T9),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gluttonous Champion,N/A,PERK: HP UP by eating Food
+Kochi Kame,Ryotsu,6 Koma,6K (T4),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gluttonous Champion,N/A,PERK: HP UP by eating Food
+Kochi Kame,Ryotsu,6 Koma,6K (T9),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gluttonous Champion,N/A,PERK: HP UP by eating Food
+Kochi Kame,Ryotsu,7 Koma,7K (T9),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gluttonous Champion,N/A,PERK: HP UP by eating Food
+Kochi Kame,Chief Ohara,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Kochi Kame,Chief Ohara,2 Koma,2K (T1),Support,Laughter (笑),Average,N/A,Short,None,-1 SP Bar,N/A,Auto-run,N/A,N/A,Ground Only,"ON HIT: Auto-Run, -1 SP BAR"
+Kochi Kame,Chief Ohara,3 Koma,3K (T3),Support,Laughter (笑),Instant,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Kochi Kame,Nakagawa,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Coins
+Kochi Kame,Nakagawa,2 Koma,2K (T1),Support,Laughter (笑),Slow,N/A,Short,N/A,Items,N/A,N/A,N/A,N/A,Ground Only,ITEM: Spawn Random Items
+Kochi Kame,Nakagawa,3 Koma,3K (T3),Support,Laughter (笑),Slow,N/A,Short,N/A,Items,N/A,N/A,N/A,N/A,Ground Only,"ITEM: Spawn Coins, Bomb or Nothing"
+Kochi Kame,Reiko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Kochi Kame,Reiko,2 Koma,2K (T1),Support,Laughter (笑),Average,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal
+Kochi Kame,Reiko,3 Koma,3K (T5),Support,Laughter (笑),Fast,Average,Average,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 45 DMG MAX
+Kochi Kame,Hayato,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Speed Down Immunity,N/A,N/A,IMMUNITY: Speed Down
+Kochi Kame,Hayato,2 Koma,2K (T2),Support,Laughter (笑),Average,N/A,Average,None,-3 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, -1/2/3 SP BAR"
+Kochi Kame,Hayato,3 Koma,3K (T6),Support,Laughter (笑),Average,N/A,Long,N/A,-2 SP Bar,N/A,Stop,N/A,N/A,Ground Only,"ON HIT: Stop, -2 SP BARS"
+Kochi Kame,Higure,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Confusion Immunity,N/A,N/A,IMMUNITY: Confusion
+Kochi Kame,Higure,2 Koma,2K (T1),Support,Laughter (笑),Average,N/A,Long,N/A,Items,N/A,Blind / SPD Down,N/A,N/A,Ground Only,ITEM: Blind or SPD Down
+Kochi Kame,Higure,3 Koma,3K (T4),Support,Laughter (笑),Instant,High,Short,High,N/A,N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, 54 DMG MAX"
+Kochi Kame,Volvo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,See Invisible Komas,N/A,PASSIVE: See Invisible Komas
+Kochi Kame,Volvo,2 Koma,2K (T2),Support,Laughter (笑),Average,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal
+Kochi Kame,Volvo,3 Koma,3K (T4),Support,Laughter (笑),Slow,Low,Short,Low,N/A,N/A,Shock,N/A,N/A,Ground Only,"ON HIT: Shock, 28 DMG MAX"
+Kochi Kame,Ryunnosuke,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Kochi Kame,Ryunnosuke,2 Koma,2K (T1),Support,Laughter (笑),Instant,Average,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, 48 DMG MAX"
+Kochi Kame,Ryunnosuke,3 Koma,3K (T1),Support,Laughter (笑),Fast,High,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 57 DMG MAX
+Kochi Kame,Kaipan Deka,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Kochi Kame,Kaipan Deka,2 Koma,2K (T2),Support,Laughter (笑),Average,N/A,Short,N/A,Items,N/A,N/A,N/A,N/A,Ground Only,ITEM: Spawns 4 Bananas
+Kochi Kame,Special Assembly,3 Koma,3K (T3),Support,Laughter (笑),Fast,N/A,Short,N/A,-1 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 1 SP BAR"
+Kochi Kame,Matoi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Glutton,N/A,PASSIVE: More Health from Food
+Kochi Kame,Maria,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Kochi Kame,Terai,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Kochi Kame,Hayashi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Combos
+Kochi Kame,Lemon,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Kochi Kame,Haru,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Space Adventure Cobra,Cobra,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,N/A,N/A,ATK UP: Low HP
+Space Adventure Cobra,Cobra,2 Koma,2K (T1),Support,Power (力),Average,Average,Average,High,Jail,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 30 DMG MAX
+Space Adventure Cobra,Cobra,3 Koma,3K (T2),Support,Power (力),Slow,Very High,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 72 DMG MAX
+Space Adventure Cobra,Crystal Boy,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Space Adventure Cobra,Crystal Boy,2 Koma,2K (T2),Support,Power (力),Fast,Low,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 24 DMG MAX
+Space Adventure Cobra,Crystal Boy,3 Koma,3K (T6),Support,Power (力),Slow,N/A,Short,None,N/A,N/A,Guard Seal,N/A,N/A,Ground Only,ON HIT: Guard Seal
+Space Adventure Cobra,Lady Armanoid,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Space Adventure Cobra,Lady Armanoid,2 Koma,2K (T2),Support,Knowledge (知),Average,N/A,Fullscreen,N/A,N/A,Toughen,N/A,N/A,N/A,Ground Only,BUFF: Toughen
+Space Adventure Cobra,Lady Armanoid,3 Koma,3K (T6),Support,Knowledge (知),Slow,Average,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 45 DMG MAX
+Sakigake!! Otokojuku,Edajima,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Sakigake!! Otokojuku,Edajima,8 Koma,8K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Principal,N/A,"PERK: SP Up on KOs, Less Knockback"
+Sakigake!! Otokojuku,Momotaro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Koma on Field
+Sakigake!! Otokojuku,Momotaro,2 Koma,2K (T1),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, 36 DMG MAX"
+Sakigake!! Otokojuku,Momotaro,3 Koma,3K (T3),Support,Power (力),Instant,High,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, 54 DMG MAX"
+Sakigake!! Otokojuku,Momotaro,4 Koma,4K (T9),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Isao Style,N/A,"PERK: KICK, PUNCH, BLADE Resistance, SP Down No Movement/Attacking"
+Sakigake!! Otokojuku,Momotaro,5 Koma,5K (T6),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Isao Style,N/A,"PERK: KICK, PUNCH, BLADE Resistance, SP Down No Movement/Attacking"
+Sakigake!! Otokojuku,Momotaro,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Isao Style,N/A,"PERK: KICK, PUNCH, BLADE Resistance, SP Down No Movement/Attacking"
+Sakigake!! Otokojuku,Momotaro,6 Koma,6K (T12),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Isao Style,N/A,"PERK: KICK, PUNCH, BLADE Resistance, SP Down No Movement/Attacking"
+Sakigake!! Otokojuku,Jaki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Low HP
+Sakigake!! Otokojuku,Jaki,2 Koma,2K (T1),Support,Power (力),Fast,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Sakigake!! Otokojuku,Jaki,2 Koma,3K (T2),Support,Power (力),Average,High,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 57 DMG MAX
+Sakigake!! Otokojuku,Date,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Sakigake!! Otokojuku,Date,2 Koma,2K (T2),Support,Power (力),Fast,Average,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Sakigake!! Otokojuku,Date,2 Koma,3K (T3),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 45 DMG MAX
+Sakigake!! Otokojuku,Hien,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Airdash,N/A,PASSIVE: Airdash
+Sakigake!! Otokojuku,Hien,2 Koma,2K (T1),Support,Knowledge (知),Instant,Low,Long,Low,N/A,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, 12 DMG MAX"
+Sakigake!! Otokojuku,Hien,2 Koma,3K (T3),Support,Knowledge (知),Fast,Low,Average,Low,N/A,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: Paralysis, 27 DMG MAX"
+Sakigake!! Otokojuku,J,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Sakigake!! Otokojuku,J,2 Koma,2K (T1),Support,Power (力),Average,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 42 DMG MAX
+Sakigake!! Otokojuku,J,2 Koma,3K (T2),Support,Power (力),Fast,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Sakigake!! Otokojuku,Genji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO
+Sakigake!! Otokojuku,Ryuji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Sakigake!! Otokojuku,Raiden,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Sakigake!! Otokojuku,Wan Taaren,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,See Invisible Komas,N/A,PASSIVE: See Invisible Komas
+Jigoku Sensei Nube,Nube,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Koma on Field
+Jigoku Sensei Nube,Nube,2 Koma,2K (T1),Support,Power (力),Fast,N/A,Short,None,N/A,N/A,Paralysis,N/A,N/A,Ground Only,ON HIT: Paralysis
+Jigoku Sensei Nube,Nube,3 Koma,3K (T1),Support,Power (力),Average,Average,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, 48 DMG MAX"
+Jigoku Sensei Nube,Yukime,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Freeze Immunity,N/A,N/A,IMMUNITY: Freeze
+Jigoku Sensei Nube,Yukime,2 Koma,2K (T1),Support,Knowledge (知),Average,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: 33 DMG MAX, Freeze"
+Jigoku Sensei Nube,Yukime,3 Koma,3K (T6),Support,Knowledge (知),Average,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: 42 DMG MAX, Freeze"
+Jigoku Sensei Nube,Hiro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Jigoku Sensei Nube,Kyoko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Shaman King,Yoh,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,N/A,N/A,ATK UP: Low HP
+Shaman King,Yoh,2 Koma,2K (T2),Support,Knowledge (知),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 33 DMG MAX
+Shaman King,Yoh,3 Koma,3K (T4),Support,Laughter (笑),Average,Average,Long,Low,-1 SP Bar,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: Speed Down, -1 SP BAR, 30 DMG MAX"
+Shaman King,Yoh,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Shaman,N/A,"PERK: SP UP from Supporting Friends, No Guard Pushback"
+Shaman King,Yoh,4 Koma,4K (T10),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Shaman,N/A,"PERK: SP UP from Supporting Friends, No Guard Pushback"
+Shaman King,Yoh,5 Koma,5K (T7),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Shaman,N/A,"PERK: SP UP from Supporting Friends, No Guard Pushback"
+Shaman King,Yoh (White Swan),6 Koma,6K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Shaman,N/A,"PERK: SP UP from Supporting Friends, No Guard Pushback"
+Shaman King,Anna,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Shaman King,Anna,2 Koma,2K (T1),Support,Laughter (笑),Fast,Average,Short,Low,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 33 DMG MAX"
+Shaman King,Anna,2 Koma,3K (T3),Support,Laughter (笑),Fast,Average,Short,Average,Guard Break,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: Guard Break, SPD Down, 42 DMG MAX"
+Shaman King,Anna,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Spirit Medium,N/A,"PERK: SP UP on No Movement/Attack, SP UP on Multi-Hits"
+Shaman King,Anna,5 Koma,5K (T7),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Spirit Medium,N/A,"PERK: SP UP on No Movement/Attack, SP UP on Multi-Hits"
+Shaman King,Anna,5 Koma,5K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Spirit Medium,N/A,"PERK: SP UP on No Movement/Attack, SP UP on Multi-Hits"
+Shaman King,Hao,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Shaman King,Hao,2 Koma,2K (T2),Support,Laughter (笑),Instant,N/A,N/A,N/A,Items,N/A,N/A,N/A,N/A,Ground Only,ITEM: Spawns 5 Oranges (Heal)
+Shaman King,Hao,3 Koma,3K (T1),Support,Power (力),Fast,Average,Long,Average,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 30 DMG MAX
+Shaman King,Tao Ren,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attacking/Blocking on Low HP
+Shaman King,Horohoro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Freeze Immunity,N/A,N/A,IMMUNITY: Freeze
+Shaman King,Manta,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Shaman King,Amidamaru,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Shaman King,Chocolove,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Jungle no Ohjata-chan,Ta-chan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Koma on Field
+Jungle no Ohjata-chan,Ta-chan,2 Koma,2K (T1),Support,Power (力),Slow,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal
+Jungle no Ohjata-chan,Ta-chan,3 Koma,3K (T4),Support,Laughter (笑),Instant,Average,Long,High,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 45 DMG MAX
+Jungle no Ohjata-chan,Jane,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Destroying Boxes
+Jungle no Ohjata-chan,Etekichi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Confusion Immunity,N/A,N/A,IMMUNITY: Confusion
+Jungle no Ohjata-chan,AnaBebe,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Coins
+Jojo's Bizarre Adventure,Jotaro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Special Attacks,N/A,N/A,RESIST: Special Attacks
+Jojo's Bizarre Adventure,Jotaro,2 Koma,2K (T2),Support,Power (力),Instant,Average,Average,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Jojo's Bizarre Adventure,Jotaro,3 Koma,3K (T1),Support,Knowledge (知),Fast,Average,Average,Low,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 30 DMG MAX"
+Jojo's Bizarre Adventure,Jotaro,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Star Platinum,N/A,"PERK: Less damage from Specials, No Nature Disadvantage"
+Jojo's Bizarre Adventure,Jotaro,5 Koma,5K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Star Platinum,N/A,"PERK: Less damage from Specials, No Nature Disadvantage"
+Jojo's Bizarre Adventure,Jotaro,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Star Platinum,N/A,"PERK: Less damage from Specials, No Nature Disadvantage"
+Jojo's Bizarre Adventure,Dio,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Jojo's Bizarre Adventure,Dio,2 Koma,2K (T2),Support,Knowledge (知),Fast,Average,Short,Low,N/A,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: Blind, 33 DMG MAX"
+Jojo's Bizarre Adventure,Dio,3 Koma,3K (T3),Support,Power (力),Slow,High,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Jojo's Bizarre Adventure,Dio,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Vampire,N/A,"PERK: HP Regeneration, Judgement Immunity"
+Jojo's Bizarre Adventure,Dio,5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Vampire,N/A,"PERK: HP Regeneration, Judgement Immunity"
+Jojo's Bizarre Adventure,Dio,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Vampire,N/A,"PERK: HP Regeneration, Judgement Immunity"
+Jojo's Bizarre Adventure,Jonathan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Jojo's Bizarre Adventure,Jonathan,2 Koma,2K (T1),Support,Power (力),Fast,Average,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Jojo's Bizarre Adventure,Jonathan,3 Koma,3K (T1),Support,Power (力),Fast,High,Long,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Jojo's Bizarre Adventure,Joseph,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,See Invisible Komas,N/A,PASSIVE: See Invisible Komas
+Jojo's Bizarre Adventure,Joseph,2 Koma,2K (T1),Support,Knowledge (知),Average,N/A,Long,N/A,N/A,N/A,Paralysis,N/A,N/A,Ground Only,ON HIT: Paralysis
+Jojo's Bizarre Adventure,Joseph,3 Koma,3K (T3),Support,Knowledge (知),Fast,High,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Jojo's Bizarre Adventure,Josuke,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Jojo's Bizarre Adventure,Josuke,2 Koma,2K (T1),Support,Power (力),Fast,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal
+Jojo's Bizarre Adventure,Josuke,3 Koma,3K (T6),Support,Power (力),Fast,High,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 51 DMG MAX
+Jojo's Bizarre Adventure,Giorno,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Jojo's Bizarre Adventure,Giorno,2 Koma,2K (T1),Support,Knowledge (知),Fast,Average,Short,Low,N/A,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: SPD Down, 33 DMG MAX"
+Jojo's Bizarre Adventure,Giorno,3 Koma,3K (T4),Support,Knowledge (知),Average,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Jojo's Bizarre Adventure,Jolyne,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attacking/Blocking on Low HP
+Jojo's Bizarre Adventure,Jolyne,2 Koma,2K (T1),Support,Power (力),Fast,N/A,Short,N/A,N/A,N/A,Paralysis,N/A,N/A,Ground Only,ON HIT: Paralysis
+Jojo's Bizarre Adventure,Jolyne,3 Koma,3K (T2),Support,Power (力),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 45 DMG MAX
+Jojo's Bizarre Adventure,Gyro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Jojo's Bizarre Adventure,Gyro,2 Koma,2K (T2),Support,Knowledge (知),Average,Low,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 16 DMG MAX
+Jojo's Bizarre Adventure,Gyro,3 Koma,3K (T1),Support,Knowledge (知),Average,Average,Long,Low,N/A,N/A,Guard Seal,N/A,N/A,Ground Only,"ON HIT: Guard Seal, 42 DMG MAX"
+Jojo's Bizarre Adventure,Rohan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Seal Immunity,N/A,N/A,IMMUNITY: Seal
+Jojo's Bizarre Adventure,Johnny,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Speed Down Immunity,N/A,N/A,IMMUNITY: Speed Down
+Slam Dunk!,Hanamichi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Triple Jump,N/A,PASSIVE: Triple Jump
+Slam Dunk!,Hanamichi,2 Koma,2K (T1),Support,Power (力),Instant,N/A,Short,None,-1 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -1 SP BAR
+Slam Dunk!,Hanamichi,3 Koma,3K (T6),Support,Power (力),Slow,N/A,N/A,N/A,N/A,Deck Power,N/A,N/A,N/A,Ground Only,BUFF: Deck Power
+Slam Dunk!,Kaede,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Airdash,N/A,PASSIVE: Airdash
+Slam Dunk!,Kaede,2 Koma,2K (T1),Support,Laughter (笑),Instant,Low,Long,None,Guard Break,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Guard Break, 7 DMG MAX"
+Slam Dunk!,Kaede,3 Koma,3K (T4),Support,Knowledge (知),Fast,N/A,Long,N/A,-2 SP Bar,N/A,Guard Seal,N/A,N/A,Ground Only,"ON HIT: Guard Seal, -2 SP BAR"
+Slam Dunk!,Takenori,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Slam Dunk!,Takenori,2 Koma,2K (T2),Support,Power (力),Average,N/A,Fullscreen,N/A,N/A,Toughen,N/A,N/A,N/A,Ground Only,BUFF: Toughen
+Slam Dunk!,Takenori,3 Koma,3K (T2),Support,Power (力),Fast,N/A,Long,N/A,N/A,ATK Up,N/A,N/A,N/A,Ground/Air,BUFF: ATK Up
+Slam Dunk!,Hisashi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,N/A,N/A,ATK UP: Low HP
+Slam Dunk!,Hisashi,2 Koma,2K (T1),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,SP Up,N/A,N/A,N/A,N/A,Ground Only,BUFF: +1 SP Bar
+Slam Dunk!,Hisashi,3 Koma,3K (T5),Support,Knowledge (知),Fast,N/A,Fullscreen,N/A,ATK Up,N/A,N/A,N/A,N/A,Ground Only,BUFF: ATK Up
+Slam Dunk!,Ryota,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend Chain Attacks
+Slam Dunk!,Ryota,2 Koma,2K (T2),Support,Knowledge (知),Instant,N/A,Short,N/A,-1 SP Bar,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: SPD Down, -1 SP Bar"
+Slam Dunk!,Ryota,3 Koma,3K (T3),Support,Knowledge (知),Instant,N/A,Short,N/A,Stay (Counter) -2 SP Bar,N/A,Support Seal,N/A,N/A,Ground Only,"STAY: Counter, Support Seal, -2 SP Bar"
+Slam Dunk!,Haruko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Slam Dunk!,Anzai-Sensei,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Saint Seiya,Seiya,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Special Attacks,N/A,N/A,RESIST: Special Attacks
+Saint Seiya,Seiya,2 Koma,2K (T1),Support,Power (力),Fast,N/A,Short,N/A,Heal,N/A,N/A,Status Effects,N/A,Ground Only,ON HIT: Heal and removes Status Effects
+Saint Seiya,Seiya,3 Koma,3K (T2),Support,Power (力),Fast,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 45 DMG MAX
+Saint Seiya,Seiya,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saint,N/A,"PERK: SP Up when attacked, Special Resist"
+Saint Seiya,Seiya,5 Koma,5K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saint,N/A,"PERK: SP Up when attacked, Special Resist"
+Saint Seiya,Seiya,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saint,N/A,"PERK: SP Up when attacked, Special Resist"
+Saint Seiya,Seiya,7 Koma,7K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saint,N/A,"PERK: SP Up when attacked, Special Resist"
+Saint Seiya,Seiya (Gold),8 Koma,8K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saint,N/A,"PERK: SP Up when attacked, Special Resist"
+Saint Seiya,Shiryu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+Saint Seiya,Shiryu,2 Koma,2K (T1),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Saint Seiya,Shiryu,3 Koma,3K (T2),Support,Power (力),Slow,Average,Average,Average,N/A,N/A,Burn,N/A,N/A,Ground Only,"ON HIT: Burn, 48 DMG MAX"
+Saint Seiya,Hyoga,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Freeze Immunity,N/A,N/A,IMMUNITY: Freeze
+Saint Seiya,Hyoga,2 Koma,2K (T1),Support,Power (力),Fast,Low,Short,Low,N/A,N/A,Burn,N/A,N/A,Ground Only,ON HIT: 27 DMG MAX
+Saint Seiya,Hyoga,3 Koma,3K (T2),Support,Power (力),Fast,Average,Short,Low,-2 SP Bar,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: Paralysis, -2 SP BAR, 30 DMG MAX"
+Saint Seiya,Shun,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Saint Seiya,Shun,2 Koma,2K (T1),Support,Knowledge (知),Slow,Average,Long,Low,N/A,N/A,Frozen,N/A,N/A,Ground Only,"ON HIT: Freeze, 48 DMG MAX"
+Saint Seiya,Shun,3 Koma,3K (T2),Support,Power (力),Average,Low,Long,Low,N/A,N/A,Frozen,N/A,N/A,Ground Only,"ON HIT: Freeze, 21 DMG MAX"
+Saint Seiya,Ikki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,HP Regeneration,N/A,PASSIVE: Health Regeneration
+Saint Seiya,Ikki,2 Koma,2K (T1),Support,Knowledge (知),Instant,N/A,Short,None,N/A,N/A,Guard Seal / Stop / Attack Seal,N/A,N/A,Ground Only,"ON HIT: Guard Seal, Stop or Attack Seal"
+Saint Seiya,Ikki,3 Koma,3K (T1),Support,Power (力),Average,High,Short,Very High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Saint Seiya,Athena,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Saint Seiya,Muu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Taizomote King Saga,Taizo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO Opponents
+Taizomote King Saga,Taizo,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Short,None,-2 SP Bar,N/A,Support Seal,N/A,N/A,Ground Only,"ON HIT: Support Seal, -2 SP BAR"
+Taizomote King Saga,Taizo,3 Koma,3K (T5),Support,Laughter (笑),Average,Low,Average,Low,-2 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, -2 SP Bar, 15 DMG MAX"
+Taizomote King Saga,Spin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Taizomote King Saga,Spin,2 Koma,2K (T1),Support,Laughter (笑),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 31 DMG MAX
+Taizomote King Saga,Spin,3 Koma,3K (T4),Support,Laughter (笑),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Taizomote King Saga,Aisu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Freeze Immunity,N/A,N/A,IMMUNITY: Freeze
+Prince of Tennis,Ryoma,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,ATK UP: Low HP
+Prince of Tennis,Ryoma,2 Koma,2K (T2),Support,Knowledge (知),Average,Low,Long,Low,-2 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, Blind, 24 DMG MAX"
+Prince of Tennis,Ryoma,3 Koma,3K (T4),Support,Knowledge (知),Average,Low,Long,Low,-2 SP Bar,N/A,Stop,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, Stop, 24 DMG MAX"
+Prince of Tennis,Tezuka,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Prince of Tennis,Tezuka,2 Koma,2K (T2),Support,Knowledge (知),Average,N/A,Short,Low,-1 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -1 SP BAR
+Prince of Tennis,Tezuka,3 Koma,3K (T6),Support,Knowledge (知),Average,Average,Average,Low,-2 SP Bar,N/A,Stop,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, Stop, 36 DMG MAX"
+Prince of Tennis,Fuji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Prince of Tennis,Fuji,2 Koma,2K (T1),Support,Knowledge (知),Fast,Low,Average,Low,-1 SP Bar,N/A,Guard Seal,N/A,N/A,Ground Only,"ON HIT: -1 SP BAR, Guard Seal, 24 DMG MAX"
+Prince of Tennis,Fuji,3 Koma,3K (T4),Support,Knowledge (知),Average,N/A,Long,N/A,-2 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, Battle Seal"
+Prince of Tennis,Oishi/Eiji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend Chain Attacks
+Prince of Tennis,Golden Pair,2 Koma,2K (T1),Support,Knowledge (知),Average,Low,Long,N/A,-2 SP Bar,SPD Up,N/A,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, SPD Up, 24 DMG MAX"
+Prince of Tennis,Golden Pair,3 Koma,3K (T1),Support,Knowledge (知),Fast,High,Average,Low,-4 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, -4 SP BAR or 51 DMG MAX"
+Prince of Tennis,Momoshiro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Prince of Tennis,Momoshiro,2 Koma,2K (T2),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 45 DMG MAX
+Prince of Tennis,Momoshiro,3 Koma,3K (T5),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 45 DMG MAX"
+Prince of Tennis,Kaido,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Poison Immunity,N/A,N/A,IMMUNITY: Poison
+Prince of Tennis,Kaido,2 Koma,2K (T2),Support,Power (力),Fast,Low,Average,Low,-2 SP Bar,N/A,Poison,N/A,N/A,Ground Only,"ON HIT: -2 SP Bar, Poison, 24 DMG MAX"
+Prince of Tennis,Kaido,3 Koma,3K (T4),Support,Power (力),Average,Average,Average,Low,-2 SP Bar,N/A,Poison,N/A,N/A,Ground Only,"ON HIT: -2 SP BAR, Poison, 36 DMG MAX"
+Prince of Tennis,Kawamura,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Prince of Tennis,Kawamura,2 Koma,2K (T1),Support,Power (力),Slow,N/A,Fullscreen,N/A,N/A,Deck Power,N/A,N/A,N/A,Ground Only,ON HIT: Deck Power
+Prince of Tennis,Kawamura,3 Koma,3K (T3),Support,Power (力),Average,Average,Average,Low,N/A,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: Paralysis, 42 DMG MAX"
+Prince of Tennis,Inui,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Prince of Tennis,Inui,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Short,N/A,N/A,Critical,N/A,N/A,N/A,Ground Only,ON HIT: Critical
+Prince of Tennis,Inui,3 Koma,3K (T1),Support,Knowledge (知),Fast,Average,Average,Low,-2 SP Bar,N/A,Support Seal,N/A,N/A,Ground/Air,"ON HIT: -2 SP BAR, Support Seal, 39 DMG MAX"
+Prince of Tennis,Atobe,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Freeze Immunity,N/A,N/A,IMMUNITY: Freeze
+Prince of Tennis,Atobe,2 Koma,2K (T1),Support,Knowledge (知),Fast,Low,Short,Low,N/A,N/A,Guard Seal,N/A,N/A,Ground/Air,"ON HIT: Guard Seal, 24 DMG MAX"
+Prince of Tennis,Atobe,3 Koma,3K (T2),Support,Knowledge (知),Fast,Average,Long,Low,-1 SP Bar,N/A,Frozen,N/A,N/A,Ground Only,"ON HIT: -1 SP BAR, Freeze"
+D.Gray-Man,Allen,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blind Immunity,N/A,N/A,IMMUNITY: Blind
+D.Gray-Man,Allen,2 Koma,2K (T1),Support,Knowledge (知),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 45 DMG MAX
+D.Gray-Man,Allen,3 Koma,3K (T1),Support,Knowledge (知),Fast,Average,Short,Average,Guard Break,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Guard Break, 48 DMG MAX"
+D.Gray-Man,Allen,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Mana's Curse,N/A,"PERK: See Invisible Komas, Blind Immunity, SP Up on Supports"
+D.Gray-Man,Allen,5 Koma,5K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Mana's Curse,N/A,"PERK: See Invisible Komas, Blind Immunity, SP Up on Supports"
+D.Gray-Man,Allen,6 Koma,6K (T10),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Mana's Curse,N/A,"PERK: See Invisible Komas, Blind Immunity, SP Up on Supports"
+D.Gray-Man,Allen,6 Koma,6K (T11),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Mana's Curse,N/A,"PERK: See Invisible Komas, Blind Immunity, SP Up on Supports"
+D.Gray-Man,Lenalee,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Wall Jump,N/A,PASSIVE: Wall Jump
+D.Gray-Man,Lenalee,2 Koma,2K (T1),Support,Knowledge (知),Instant,N/A,Average,High,Guard Break,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Guard Break
+D.Gray-Man,Lenalee,3 Koma,3K (T1),Support,Knowledge (知),Fast,Average,Short,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+D.Gray-Man,Lenalee,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Dark Boots,N/A,"PERK: Airdash, Triple Jump"
+D.Gray-Man,Lenalee,5 Koma,5K (T4),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Dark Boots,N/A,"PERK: Airdash, Triple Jump"
+D.Gray-Man,Lavi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+D.Gray-Man,Lavi,2 Koma,2K (T1),Support,Power (力),Average,N/A,Average,High,Jail,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Jail
+D.Gray-Man,Lavi,3 Koma,3K (T1),Support,Power (力),Fast,Average,Average,Low,N/A,N/A,Burn,N/A,N/A,Ground Only,"ON HIT: 40 DMG MAX, Burn"
+D.Gray-Man,Kanda,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+D.Gray-Man,Kanda,2 Koma,2K (T1),Support,Power (力),Slow,Average,Long,Average,Guard Break,N/A,N/A,N/A,N/A,Ground/Air,"ON HIT: Guard Break, 36 DMG MAX"
+D.Gray-Man,Kanda,3 Koma,3K (T1),Support,Power (力),Average,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 35 DMG MAX
+D.Gray-Man,Crowly,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Poison Immunity,N/A,N/A,IMMUNITY: Poison
+D.Gray-Man,Crowly,2 Koma,2K (T1),Support,Power (力),Instant,N/A,Short,N/A,N/A,N/A,N/A,Status Effects,N/A,Ground Only,HEAL: Status Effects
+D.Gray-Man,Crowly,3 Koma,3K (T2),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Poison, 48 DMG MAX"
+D.Gray-Man,River,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,See Invisible Komas,N/A,PASSIVE: See Invisible Komas
+D.Gray-Man,Komui,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+D.Gray-Man,Miranda,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+D.Gray-Man,General Cross,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Death Note,Raito/Ryuk,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Death Note,Raito/Ryuk,2 Koma,2K (T1),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,N/A,Judgement,N/A,N/A,Ground Only,ON HIT: Judgement
+Death Note,Raito/Ryuk,3 Koma,3K (T5),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,N/A,Judgement,N/A,N/A,Ground Only,ON HIT: Judgement
+Death Note,L,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Death Note,L,2 Koma,2K (T1),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,ON HIT: Battle Seal
+Death Note,L,3 Koma,3K (T6),Support,Knowledge (知),Instant,N/A,Average,N/A,N/A,N/A,Special Drain,N/A,N/A,Ground Only,ON HIT: Special Drain
+Death Note,Misa,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Death Note,Misa,2 Koma,2K (T1),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,N/A,Judgement,N/A,N/A,Ground Only,ON HIT: Judgement
+Death Note,Misa,3 Koma,3K (T6),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,N/A,Judgement,N/A,N/A,Ground Only,ON HIT: Judgement
+Death Note,Near,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Death Note,Near,2 Koma,2K (T1),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,ATK Up,N/A,N/A,N/A,Ground Only,ON HIT: ATK Up
+Death Note,Near,3 Koma,3K (T6),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,Critical,N/A,N/A,N/A,Ground Only,ON HIT: Critical
+Death Note,Mello,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Death Note,Mello,2 Koma,2K (T1),Support,Knowledge (知),Average,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Death Note,Mello,3 Koma,3K (T6),Support,Knowledge (知),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 49 DMG MAX
+Dr.Slump,Arale,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Dr.Slump,Arale,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Average,N/A,-1 SP Bar,N/A,Support Seal,N/A,N/A,Ground Only,"ON HIT: -1 SP BAR, Support Seal"
+Dr.Slump,Arale,3 Koma,3K (T1),Support,Knowledge (知),Fast,High,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Dr.Slump,Arale,4 Koma,4K (T4),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Android,N/A,"PERK: Judgement Immunity, Weak to Shock"
+Dr.Slump,Arale,5 Koma,5K (T4),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Android,N/A,"PERK: Judgement Immunity, Weak to Shock"
+Dr.Slump,Arale,6 Koma,6K (T6),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Android,N/A,"PERK: Judgement Immunity, Weak to Shock"
+Dr.Slump,Arale,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Android,N/A,"PERK: Judgement Immunity, Weak to Shock"
+Dr.Slump,Arale,7 Koma,7K (T3),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Android,N/A,"PERK: Judgement Immunity, Weak to Shock"
+Dr.Slump,Dr. Mashirito,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Low HP
+Dr.Slump,Dr. Mashirito,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Average,N/A,-2 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -2 SP BAR
+Dr.Slump,Dr. Mashirito,3 Koma,3K (T1),Support,Knowledge (知),Fast,N/A,Average,N/A,N/A,N/A,Paralysis,N/A,N/A,Ground Only, ON HIT: Paralysis
+Dr.Slump,Dr. Mashirito,4 Koma,4K (T3),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Scientific,N/A,PERK: SP Up KO Opponents with Opposing Nature Attacks
+Dr.Slump,Dr. Mashirito,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Scientific,N/A,PERK: SP Up KO Opponents with Opposing Nature Attacks
+Dr.Slump,Dr. Mashirito,5 Koma,5K (T11),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Scientific,N/A,PERK: SP Up KO Opponents with Opposing Nature Attacks
+Dr.Slump,Dr. Mashirito,6 Koma,6K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Scientific,N/A,PERK: SP Up KO Opponents with Opposing Nature Attacks
+Dr.Slump,Dr. Mashirito,7 Koma,7K (T6),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Scientific,N/A,PERK: SP Up KO Opponents with Opposing Nature Attacks
+Dr.Slump,CaramelMan J,8 Koma,8K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Evil Scientist,N/A,"PERK: SP Up on KO Power Nature, Weak to Shock"
+Dr.Slump,Gatchan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Triple Jump,N/A,PASSIVE: Triple Jump
+Dr.Slump,Gatchan,3 Koma,3K (T3),Support,Knowledge (知),Instant,Very High,Short,Low,Stay (Assist),N/A,N/A,N/A,N/A,Ground Only,STAY: 30 DMG PER HIT
+Dr.Slump,Poo-kun,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Dr.Slump,Poo-kun,3 Koma,3K (T4),Support,Knowledge (知),Instant,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Dr.Slump,Senbei,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Dr.Slump,Midori-Sensei,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Dr.Slump,Obocchaman,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Tottemo! Luckyman,Lucky Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Coins
+Tottemo! Luckyman,Lucky Man,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Short,N/A,N/A,N/A,Shock / Poison / Blind,N/A,N/A,Ground Only,"ON HIT: Shock, Poison or Blind"
+Tottemo! Luckyman,Lucky Man,3 Koma,3K (T3),Support,Laughter (笑),Slow,N/A,Short,N/A,N/A,Invencible,N/A,N/A,N/A,Ground Only,ON HIT: Invencible
+Tottemo! Luckyman,Superstar Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Tottemo! Luckyman,Superstar Man,2 Koma,2K (T2),Support,Laughter (笑),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 33 DMG MAX
+Tottemo! Luckyman,Superstar Man,3 Koma,3K (T6),Support,Laughter (笑),Average,N/A,Average,N/A,-2 SP Bar,N/A,Blind,N/A,N/A,Ground/Air,"ON HIT: -2 SP BAR, Blind"
+Tottemo! Luckyman,Doryoku Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burn Immunity,N/A,N/A,IMMUNITY: Burn
+Dragon Ball,Goku,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,Comeback,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Dragon Ball,Goku,2 Koma,2K (T1),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 43 DMG MAX
+Dragon Ball,Goku,3 Koma,3K (T6),Support,Power (力),Slow,Average,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 43 DMG MAX
+Dragon Ball,Goku,4 Koma,4K (T5),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saiyajin,N/A,PERK: MAX HP and MAX SP Up on KO Recover
+Dragon Ball,Goku,4 Koma,4K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saiyajin,N/A,PERK: MAX HP and MAX SP Up on KO Recover
+Dragon Ball,Goku,5 Koma,5K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saiyajin,N/A,PERK: MAX HP and MAX SP Up on KO Recover
+Dragon Ball,Goku (SSJ),6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Goku (SSJ),7 Koma,7K (T6),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Vegetto,8 Koma,8K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Fusion Father,N/A,PERK: SP Up on Block
+Dragon Ball,Vegeta,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attacking/Blocking on Low HP
+Dragon Ball,Vegeta,2 Koma,2K (T1),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Dragon Ball,Vegeta,3 Koma,3K (T5),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 48 DMG MAX
+Dragon Ball,Vegeta,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saiyajin,N/A,PERK: MAX HP and MAX SP Up on KO Recover
+Dragon Ball,Vegeta (SSJ),5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Vegeta (SSJ),5 Koma,5K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Vegeta (SSJ),6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Gohan (SSJ),1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Dragon Ball,Gohan (SSJ),2 Koma,2K (T1),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Dragon Ball,Gohan (SSJ),3 Koma,3K (T3),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 45 DMG MAX
+Dragon Ball,Gohan (SSJ),4 Koma,4K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Gohan (SSJ2),5 Koma,5K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin 2,N/A,"PERK: MAX SP Up on KO Recover, SP Up Receiving Damage"
+Dragon Ball,Gotenks,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Dragon Ball,Gotenks,2 Koma,2K (T1),Support,Knowledge (知),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Dragon Ball,Gotenks,3 Koma,3K (T3),Support,Knowledge (知),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 48 DMG MAX
+Dragon Ball,Gotenks,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Saiyajin,N/A,PERK: MAX HP and MAX SP Up on KO Recover
+Dragon Ball,Gotenks (SSJ),5 Koma,5K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Gotenks (SSJ),5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Super Saiyajin,N/A,"PERK: MAX SP Up on KO Recover, SP Up on Low HP"
+Dragon Ball,Piccolo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,HP Regeneration,N/A,PASSIVE: Health Regeneration
+Dragon Ball,Piccolo,2 Koma,2K (T1),Support,Power (力),Fast,Low,Long,N/A,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 24 DMG MAX"
+Dragon Ball,Piccolo,3 Koma,3K (T2),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 34 DMG MAX
+Dragon Ball,Piccolo,4 Koma,4K (T4),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Namekian,N/A,"PERK: SP Up against Laughter Nature, Health Regeneration"
+Dragon Ball,Piccolo,5 Koma,5K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Namekian,N/A,"PERK: SP Up against Laughter Nature, Health Regeneration"
+Dragon Ball,Frieza,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Dragon Ball,Frieza,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Emperor of Evil,N/A,"PERK: SP Up Receiving Damage, SP Up KO Opponents"
+Dragon Ball,Majin Buu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,HP Regeneration,N/A,PASSIVE: Health Regeneration
+Dragon Ball,Majin Buu,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Majin,N/A,"PERK: Less HP from Food Items, Health Regeneration"
+Dragon Ball,Majin Buu,6 Koma,6K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Majin,N/A,"PERK: Less HP from Food Items, Health Regeneration"
+Dragon Ball,Krillin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Dragon Ball,Krillin,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Short,N/A,-1 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: -1 SP BAR, Blind"
+Dragon Ball,Krillin,3 Koma,3K (T1),Support,Knowledge (知),Average,Average,Average,Low,Guard Break,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Guard Break, 39 DMG MAX"
+Dragon Ball,Trunks,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+Dragon Ball,Trunks,2 Koma,2K (T2),Support,Knowledge (知),Average,Average,Long,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Dragon Ball,Trunks,3 Koma,3K (T1),Support,Knowledge (知),Instant,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 46 DMG MAX
+Dragon Ball,Master Roshi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+Dragon Ball,Bulma,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Coins
+Dragon Ball,King Kaio,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Dragon Ball,Mr. Satan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO Opponents
+Naruto,Naruto,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Wall Jump,N/A,PASSIVE: Wall Jump
+Naruto,Naruto,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Short,N/A,N/A,N/A,Paralysis,N/A,N/A,Ground Only,ON HIT: Paralysis
+Naruto,Naruto,3 Koma,3K (T6),Support,Power (力),Fast,Average,Average,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 45 DMG MAX"
+Naruto,Naruto,4 Koma,4K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Ninja,N/A,"PERK: Wall Jump, ATK Up on Low HP, SP Up after KO"
+Naruto,Naruto,4 Koma,4K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Ninja,N/A,"PERK: Wall Jump, ATK Up on Low HP, SP Up after KO"
+Naruto,Naruto,5 Koma,5K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Ninja,N/A,"PERK: Wall Jump, ATK Up on Low HP, SP Up after KO"
+Naruto,Naruto,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Ninja,N/A,"PERK: Wall Jump, ATK Up on Low HP, SP Up after KO"
+Naruto,Kyuubi Naruto,7 Koma,7K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Kyuubi's Chakra,N/A,"PERK: Auto Guard, HP Regeneration, Airdash"
+Naruto,Kyuubi Naruto,8 Koma,8K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Kyuubi's Chakra,N/A,"PERK: Auto Guard, HP Regeneration, Airdash"
+Naruto,Sasuke,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Special Attacks,N/A,N/A,RESIST: Special Attacks
+Naruto,Sasuke,7 Koma,7K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sharingan,N/A,"PERK: Wall Jump, See Invisible Komas, Special Resist"
+Naruto,Sasuke,8 Koma,8K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sharingan,N/A,"PERK: Wall Jump, See Invisible Komas, Special Resist"
+Naruto,Sasuke,8 Koma,8K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sharingan,N/A,"PERK: Wall Jump, See Invisible Komas, Special Resist"
+Naruto,Sakura,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Naruto,Sakura,2 Koma,2K (T1),Support,Power (力),Fast,Average,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Naruto,Sakura,3 Koma,3K (T3),Support,Knowledge (知),Fast,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal and removes Status Effects
+Naruto,Sakura,4 Koma,4K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Medical Ninja,N/A,"PERK: Wall Jump, Status Resist"
+Naruto,Sakura,5 Koma,5K (T4),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Medical Ninja,N/A,"PERK: Wall Jump, Status Resist"
+Naruto,Sakura,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Medical Ninja,N/A,"PERK: Wall Jump, Status Resist"
+Naruto,Sakura,6 Koma,6K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Medical Ninja,N/A,"PERK: Wall Jump, Status Resist"
+Naruto,Kakashi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Special Attacks,N/A,N/A,RESIST: Special Attacks
+Naruto,Kakashi,2 Koma,2K (T1),Support,Laughter (笑),Instant,Average,Short,Average,Stay (Counter),N/A,N/A,N/A,N/A,Ground Only,COUNTER: 42 DMG MAX
+Naruto,Kakashi,3 Koma,3K (T2),Support,Laughter (笑),Fast,Average,Average,Very High,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 42 DMG MAX"
+Naruto,Kakashi,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sharingan,N/A,"PERK: Wall Jump, See Invisible Komas, Special Resist"
+Naruto,Kakashi,5 Koma,5K (T4),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sharingan,N/A,"PERK: Wall Jump, See Invisible Komas, Special Resist"
+Naruto,Kakashi,6 Koma,6K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sharingan,N/A,"PERK: Wall Jump, See Invisible Komas, Special Resist"
+Naruto,Kakashi,6 Koma,6K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sharingan,N/A,"PERK: Wall Jump, See Invisible Komas, Special Resist"
+Naruto,Gaara,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+Naruto,Gaara,2 Koma,2K (T1),Support,Knowledge (知),Average,Average,Average,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 33 DMG MAX"
+Naruto,Gaara,3 Koma,3K (T1),Support,Knowledge (知),Slow,High,Fullscreen,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 51 DMG MAX"
+Naruto,Jiraiya,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Naruto,Tsunade,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Naruto,Sai,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blind Immunity,N/A,N/A,IMMUNITY: Blind
+Naruto,Orochimaru,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,HP Regeneration,N/A,PASSIVE: Health Regeneration
+Ninku,Fuusuke,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Wall Jump,N/A,PASSIVE: Wall Jump
+Ninku,Fuusuke,2 Koma,2K (T2),Support,Knowledge (知),Fast,Average,Short,Low,-1 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: -1 SP BAR, Confusion"
+Ninku,Fuusuke,3 Koma,3K (T2),Support,Knowledge (知),Instant,Average,Short,Low,Stay (Counter),N/A,SPD Down,N/A,N/A,Ground Only,"STAY: Counter, SPD Down, 48 DMG MAX"
+Ninku,Fuusuke,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Child Ninja,N/A,"PERK: Wall Jump, Airdash"
+Ninku,Fuusuke,5 Koma,5K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Child Ninja,N/A,"PERK: Wall Jump, Airdash"
+Ninku,Fuusuke,5 Koma,5K (T4),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Child Ninja,N/A,"PERK: Wall Jump, Airdash"
+Ninku,Pochi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Ninku,Hiroyuki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Hunter X Hunter,Gon,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Koma on Field
+Hunter X Hunter,Gon,2 Koma,2K (T1),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal
+Hunter X Hunter,Gon,3 Koma,3K (T1),Support,Power (力),Slow,Very High,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 123 DMG MAX
+Hunter X Hunter,Gon,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hunter,N/A,"PERK: SP Up from Destroying Boxes, Less Knockback"
+Hunter X Hunter,Gon,5 Koma,5K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hunter,N/A,"PERK: SP Up from Destroying Boxes, Less Knockback"
+Hunter X Hunter,Gon,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hunter,N/A,"PERK: SP Up from Destroying Boxes, Less Knockback"
+Hunter X Hunter,Killua,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Shock Immunity,N/A,N/A,IMMUNITY: Shock
+Hunter X Hunter,Killua,2 Koma,2K (T1),Support,Knowledge (知),Fast,Average,Short,Low,N/A,N/A,Shock,N/A,N/A,Ground/Air,"ON HIT: Shock, 36 DMG MAX"
+Hunter X Hunter,Killua,3 Koma,3K (T6),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,Random,N/A,N/A,N/A,N/A,Ground Only,"RANDOM: 1 HP Left, Half Up Heal or Full HP Heal"
+Hunter X Hunter,Killua,4 Koma,4K (T10),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Family Matters,N/A,"PERK: Poison Immunity, Shock Immunity, Less SP from J-Coins"
+Hunter X Hunter,Killua,5 Koma,5K (T13),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Family Matters,N/A,"PERK: Poison Immunity, Shock Immunity, Less SP from J-Coins"
+Hunter X Hunter,Kurapika,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Hunter X Hunter,Kurapika,2 Koma,2K (T2),Support,Knowledge (知),Average,Average,Long,Low,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 30 DMG MAX"
+Hunter X Hunter,Kurapika,3 Koma,3K (T5),Support,Knowledge (知),Average,Average,Fullscreen,Low,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 45 DMG MAX"
+Hunter X Hunter,Hisoka,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,Comeback,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Hunter X Hunter,Hisoka,2 Koma,2K (T1),Support,Knowledge (知),Instant,N/A,Short,N/A,Null Nature,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Null Nature
+Hunter X Hunter,Hisoka,3 Koma,3K (T2),Support,Knowledge (知),Instant,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 49 DMG MAX
+Hunter X Hunter,Kuroro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Special Attacks,N/A,N/A,RESIST: Special Attacks
+Hunter X Hunter,Kuroro,2 Koma,2K (T1),Support,Knowledge (知),Fast,Low,Short,Low,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 15 DMG MAX"
+Hunter X Hunter,Kuroro,3 Koma,3K (T2),Support,Knowledge (知),Fast,Average,Short,None,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 32 DMG MAX"
+Hunter X Hunter,Leorio,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Hunter X Hunter,Biscuit,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+Pyuuto Fukui Jaguar,Jaguar,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Seal Immunity,N/A,N/A,IMMUNITY: Seal
+Pyuuto Fukui Jaguar,Jaguar,2 Koma,2K (T2),Support,Laughter (笑),Fast,Average,Long,None,N/A,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: Battle Seal, 30 DMG MAX"
+Pyuuto Fukui Jaguar,Jaguar,3 Koma,3K (T6),Support,Laughter (笑),Instant,High,Short,High,Stay (Counter),N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, 54 DMG MAX"
+Pyuuto Fukui Jaguar,Jaguar,4 Koma,4K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Musician,N/A,"PERK: Confusion Immunity, Paralysis Immunity"
+Pyuuto Fukui Jaguar,Jaguar,5 Koma,5K (T10),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Musician,N/A,"PERK: Confusion Immunity, Paralysis Immunity"
+Pyuuto Fukui Jaguar,Jaguar,6 Koma,6K (T5),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Musician,N/A,"PERK: Confusion Immunity, Paralysis Immunity"
+Pyuuto Fukui Jaguar,Kiyo Hiko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,Comeback,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Pyuuto Fukui Jaguar,Kiyo Hiko,2 Koma,2K (T1),Support,Laughter (笑),Instant,N/A,Fullscreen,N/A,N/A,Critical,N/A,N/A,N/A,Ground Only,BUFF: Enables Critical if used during Special Moves
+Pyuuto Fukui Jaguar,Kiyo Hiko,3 Koma,3K (T6),Support,Laughter (笑),Fast,Average,Average,Low,-1 SP Bar,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, 42 DMG MAX"
+Pyuuto Fukui Jaguar,Hammer,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Confusion Immunity,N/A,N/A,IMMUNITY: Confusion
+Pyuuto Fukui Jaguar,Hammer,2 Koma,2K (T2),Support,Laughter (笑),Average,N/A,Average,None,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -1 SP Bar
+Pyuuto Fukui Jaguar,Hammer,3 Koma,3K (T6),Support,Laughter (笑),Average,High,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Pyuuto Fukui Jaguar,Hamii,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Pyuuto Fukui Jaguar,Hamii,2 Koma,2K (T2),Support,Laughter (笑),Average,N/A,Average,None,Snapback,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: Paralysis, Snapback"
+Pyuuto Fukui Jaguar,Hamii,3 Koma,3K (T3),Support,Laughter (笑),Fast,Average,Long,Average,Jail,N/A,Shock,N/A,N/A,Ground Only,"ON HIT: Jail, Shock, 42 DMG MAX"
+Pyuuto Fukui Jaguar,Takane,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Pyuuto Fukui Jaguar,Jirou,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Judgement Immunity,N/A,N/A,IMMUNITY: Judgement
+Pyuuto Fukui Jaguar,Pogii,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Confusion Immunity,N/A,N/A,IMMUNITY: Confusion
+Busou Renkin,Kazuki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,HP Regeneration,N/A,PASSIVE: Health Regeneration
+Busou Renkin,Kazuki,2 Koma,2K (T1),Support,Power (力),Instant,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 39 DMG MAX
+Busou Renkin,Kazuki,3 Koma,3K (T3),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Busou Renkin,Kazuki,4 Koma,4K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Kakugane,N/A,"PERK: SP Up Attacking, Health Regeneration"
+Busou Renkin,Kazuki,5 Koma,5K (T9),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Kakugane,N/A,"PERK: SP Up Attacking, Health Regeneration"
+Busou Renkin,Kazuki,6 Koma,6K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Kakugane,N/A,"PERK: SP Up Attacking, Health Regeneration"
+Busou Renkin,Papillon,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Poison Immunity,N/A,N/A,IMMUNITY: Poison
+Busou Renkin,Captain Bravo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+Busou Renkin,Tokiko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Black Cat,Eve,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Triple Jump,N/A,PASSIVE: Triple Jump
+Black Cat,Eve,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Fullscreen,N/A,N/A,Toughen,N/A,N/A,N/A,Ground Only, BUFF: Toughen
+Black Cat,Eve,3 Koma,3K (T3),Support,Knowledge (知),Slow,Average,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Black Cat,Eve,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Nanomachine,N/A,"PERK: Health Regeneration, Triple Jump"
+Black Cat,Eve,5 Koma,5K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Nanomachine,N/A,"PERK: Health Regeneration, Triple Jump"
+Black Cat,Train,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Shock Immunity,N/A,N/A,IMMUNITY: Shock
+Black Cat,Train,2 Koma,2K (T1),Support,Power (力),Fast,Low,Average,None,-1 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Blind, 18 DMG MAX"
+Black Cat,Train,3 Koma,3K (T4),Support,Power (力),Fast,Average,Average,None,N/A,N/A,Shock,N/A,N/A,Ground Only,"ON HIT: Shock, 30 DMG MAX"
+Black Cat,Train,4 Koma,4K (T8),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sweeper,N/A,"PERK: Shock Immunity, Wall Jump"
+Black Cat,Train,5 Koma,5K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sweeper,N/A,"PERK: Shock Immunity, Wall Jump"
+Black Cat,Train,5 Koma,5K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sweeper,N/A,"PERK: Shock Immunity, Wall Jump"
+Black Cat,Sven,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Special Attacks,N/A,N/A,RESIST: Special Attacks
+Black Cat,Sven,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Average,None,N/A,N/A,Paralysis,N/A,N/A,Ground Only,ON HIT: Paralysis
+Black Cat,Sven,3 Koma,3K (T4),Support,Knowledge (知),Average,Average,Short,Low,N/A,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: SPD Down, 45 DMG MAX"
+Black Cat,Saya,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Black Cat,Kyoko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burn Immunity,N/A,N/A,IMMUNITY: Burn
+Bleach,Ichigo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Bleach,Ichigo,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Average,None,-1 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Battle Seal"
+Bleach,Ichigo,3 Koma,3K (T6),Support,Laughter (笑),Fast,N/A,Fullscreen,None,N/A,Toughen,N/A,N/A,N/A,Ground Only,BUFF: Toughen
+Bleach,Ichigo,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Zangetsu,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Ichigo,5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Zangetsu,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Ichigo,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Zangetsu,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Ichigo (Bankai),7 Koma,7K (T4),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Tensa Zangetsu,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Ichigo (Bankai),8 Koma,8K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Tensa Zangetsu,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Rukia,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Freeze Immunity,N/A,N/A,IMMUNITY: Freeze
+Bleach,Rukia,2 Koma,2K (T1),Support,Knowledge (知),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 30 DMG MAX
+Bleach,Rukia,3 Koma,3K (T3),Support,Knowledge (知),Fast,N/A,Long,Low,-1 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -1 SP Bar
+Bleach,Rukia,4 Koma,4K (T9),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sode no Shirayuki,N/A,"PERK: Freeze Immunity, Airdash, SP Up with Supports"
+Bleach,Rukia,5 Koma,5K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sode no Shirayuki,N/A,"PERK: Freeze Immunity, Airdash, SP Up with Supports"
+Bleach,Rukia,6 Koma,6K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Sode no Shirayuki,N/A,"PERK: Freeze Immunity, Airdash, SP Up with Supports"
+Bleach,Renji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Bleach,Renji,2 Koma,2K (T1),Support,Power (力),Average,Low,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 24 DMG MAX
+Bleach,Renji,3 Koma,3K (T1),Support,Power (力),Average,High,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Bleach,Renji,4 Koma,4K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Zabimaru,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Renji,5 Koma,5K (T6),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Zabimaru,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Renji,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Zabimaru,N/A,"PERK: Airdash, SP Up while Attacking"
+Bleach,Hitsugaya,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Freeze Immunity,N/A,N/A,IMMUNITY: Freeze
+Bleach,Hitsugaya,2 Koma,2K (T2),Support,Knowledge (知),Fast,Average,Short,Low,N/A,N/A,Frozen,N/A,N/A,Ground Only,"ON HIT: Freeze, 33 DMG MAX"
+Bleach,Hitsugaya,3 Koma,3K (T1),Support,Knowledge (知),Average,Average,Average,Low,N/A,N/A,Frozen,N/A,N/A,Ground Only,"ON HIT: Freeze, 45 DMG MAX"
+Bleach,Hitsugaya,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hyourinmaru,N/A,"PERK: Airdash, Freeze Immunity, Burn Immunity"
+Bleach,Hitsugaya,5 Koma,5K (T8),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hyourinmaru,N/A,"PERK: Airdash, Freeze Immunity, Burn Immunity"
+Bleach,Hitsugaya,6 Koma,6K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hyourinmaru,N/A,"PERK: Airdash, Freeze Immunity, Burn Immunity"
+Bleach,Uryu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend Chain Attacks
+Bleach,Uryu,2 Koma,2K (T2),Support,Knowledge (知),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Bleach,Uryu,3 Koma,3K (T6),Support,Knowledge (知),Average,High,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 52 DMG MAX
+Bleach,Chad,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,No Pushback,N/A,N/A,N/A,N/A,N/A,NO PUSHBACK: Ground
+Bleach,Chad,2 Koma,2K (T1),Support,Power (力),Average,Average,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 42 DMG MAX
+Bleach,Chad,3 Koma,3K (T6),Support,Power (力),Average,High,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 60 DMG MAX
+Bleach,Orihime,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Bleach,Orihime,2 Koma,2K (T1),Support,Knowledge (知),Instant,Average,Short,Low,Stay (Counter),N/A,N/A,N/A,N/A,Ground Only,"STAY: Counter, 30 DMG MAX"
+Bleach,Orihime,3 Koma,3K (T4),Support,Knowledge (知),Average,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,BUFF: Heal All Characters
+Bleach,Yoruichi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Airdash,N/A,PASSIVE: Airdash
+Bleach,Yoruichi,2 Koma,2K (T1),Support,Knowledge (知),Instant,N/A,Short,Very High,Guard Break,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: Guard Break
+Bleach,Yoruichi,3 Koma,3K (T2),Support,Power (力),Slow,High,Short,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 57 DMG MAX
+Bleach,Kon,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO Opponents
+Bleach,Kon,3 Koma,3K (T4),Support,Laughter (笑),Instant,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,STAY: 12 DMG PER HIT
+Bleach,Byakuya,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Bleach,Byakuya,2 Koma,2K (T2),Support,Power (力),Slow,N/A,Fullscreen,None,N/A,N/A,Stop,N/A,N/A,Ground Only,ON HIT: Stop
+Bleach,Byakuya,3 Koma,3K (T2),Support,Power (力),Slow,High,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 52 DMG MAX
+Bleach,Aizen,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blind Immunity,N/A,N/A,IMMUNITY: Blind
+Bleach,Aizen,2 Koma,2K (T1),Support,Knowledge (知),Slow,Average,Fullscreen,None,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 32 DMG MAX
+Bleach,Aizen,3 Koma,3K (T6),Support,Knowledge (知),Fast,N/A,Fullscreen,N/A,N/A,Invisible,N/A,N/A,N/A,Ground Only,BUFF: Invisible
+Bleach,Zangetsu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Bleach,Isshin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Bleach,Tatsuki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Bleach,Urahara,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Airdash,N/A,PASSIVE: Airdash
+Bleach,Tousen,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blind Immunity,N/A,N/A,IMMUNITY: Blind
+Bleach,Gin Ichimaru,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Houshin Engi,Taikoubou,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Houshin Engi,Taikoubou,2 Koma,2K (T2),Support,Knowledge (知),Average,N/A,Short,N/A,N/A,N/A,N/A,Status Effects,N/A,Ground Only,ON HIT: Heal Status Effects
+Houshin Engi,Taikoubou,3 Koma,3K (T6),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,Revive,N/A,N/A,N/A,N/A,Ground/Air,BUFF: Revives All Characters
+Houshin Engi,Taikoubou,4 Koma,4K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,General,N/A,"PERK: SP Up using Supports, SP Up No Movement for 4 Seconds"
+Houshin Engi,Taikoubou,5 Koma,5K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,General,N/A,"PERK: SP Up using Supports, SP Up No Movement for 4 Seconds"
+Houshin Engi,Taikoubou,6 Koma,6K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,General,N/A,"PERK: SP Up using Supports, SP Up No Movement for 4 Seconds"
+Houshin Engi,Taikoubou,6 Koma,6K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,General,N/A,"PERK: SP Up using Supports, SP Up No Movement for 4 Seconds"
+Houshin Engi,Dakki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Houshin Engi,Dakki,2 Koma,2K (T1),Support,Knowledge (知),Fast,Average,Short,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Houshin Engi,Dakki,3 Koma,3K (T3),Support,Laughter (笑),Fast,N/A,Short,None,-1 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Battle Seal"
+Houshin Engi,Ou Tenkun,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Poison Immunity,N/A,N/A,IMMUNITY: Poison
+Houshin Engi,Sipuxiang,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Triple Jump,N/A,PASSIVE: Triple Jump
+Hokuto no Ken,Kenshiro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Koma on Field
+Hokuto no Ken,Kenshiro,2 Koma,2K (T2),Support,Power (力),Instant,Average,Short,Average,N/A,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: SPD Down, 30 DMG MAX"
+Hokuto no Ken,Kenshiro,3 Koma,3K (T2),Support,Power (力),Instant,High,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 50 DMG MAX
+Hokuto no Ken,Kenshiro,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Kenshiro,5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Kenshiro,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Kenshiro,7 Koma,7K (T9),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Kenshiro,8 Koma,8K (T4),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Raoh,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,N/A,N/A,ATK UP: Low HP
+Hokuto no Ken,Raoh,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Raoh,7 Koma,7K (T10),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Raoh,8 Koma,8K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hokuto Shinken,N/A,"PERK: Specials Resist, SP Up while Blocking"
+Hokuto no Ken,Toki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Hokuto no Ken,Toki,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Short,N/A,N/A,Critical,N/A,N/A,N/A,Ground Only,BUFF: Critical
+Hokuto no Ken,Toki,3 Koma,3K (T5),Support,Knowledge (知),Fast,High,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 54 DMG MAX
+Hokuto no Ken,Rei,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend Chain Attacks
+Hokuto no Ken,Rei,2 Koma,2K (T1),Support,Knowledge (知),Fast,Average,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 26 DMG MAX
+Hokuto no Ken,Rei,3 Koma,3K (T1),Support,Knowledge (知),Fast,Average,Short,Average,Guard Break,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 48 DMG MAX
+Hokuto no Ken,Yuria,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Hokuto no Ken,Bat,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO Opponents
+Hokuto no Ken,Lin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Bobobo-bo Bo-bobo,Bo-bobo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Bobobo-bo Bo-bobo,Bo-bobo,2 Koma,2K (T1),Support,Laughter (笑),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 36 DMG MAX
+Bobobo-bo Bo-bobo,Bo-bobo,3 Koma,3K (T6),Support,Laughter (笑),Fast,High,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Bobobo-bo Bo-bobo,Bo-bobo,4 Koma,4K (T5),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Nose Hair Style,N/A,"PERK: ATK Up on Low Health, SP Up on Combos, Weak to Specials"
+Bobobo-bo Bo-bobo,Bo-bobo,5 Koma,5K (T5),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Nose Hair Style,N/A,"PERK: ATK Up on Low Health, SP Up on Combos, Weak to Specials"
+Bobobo-bo Bo-bobo,Bo-bobo,6 Koma,6K (T12),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Nose Hair Style,N/A,"PERK: ATK Up on Low Health, SP Up on Combos, Weak to Specials"
+Bobobo-bo Bo-bobo,Bo-bobo,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Nose Hair Style,N/A,"PERK: ATK Up on Low Health, SP Up on Combos, Weak to Specials"
+Bobobo-bo Bo-bobo,Shinsetsu Bo-Bobo,7 Koma,7K (T11),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Nose Hair Style,N/A,"PERK: ATK Up on Low Health, SP Up on Combos, Weak to Specials"
+Bobobo-bo Bo-bobo,Don Patch,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Bobobo-bo Bo-bobo,Don Patch,2 Koma,2K (T2),Support,Laughter (笑),Fast,N/A,Short,N/A,N/A,N/A,N/A,Status Effects,N/A,Ground Only,ON HIT: Heal Status Effects
+Bobobo-bo Bo-bobo,Don Patch,3 Koma,3K (T4),Support,Laughter (笑),Fast,N/A,Average,Low,-1 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: -1 SP BAR, Confusion"
+Bobobo-bo Bo-bobo,Don Patch,4 Koma,4K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Rock-Candy Wiggin,N/A,"PERK: ATK Up on Low Health, SP Up on Consecutive Specials, Weak to Specials"
+Bobobo-bo Bo-bobo,Don Patch,5 Koma,5K (T3),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Rock-Candy Wiggin,N/A,"PERK: ATK Up on Low Health, SP Up on Consecutive Specials, Weak to Specials"
+Bobobo-bo Bo-bobo,Don Patch,6 Koma,6K (T13),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Rock-Candy Wiggin,N/A,"PERK: ATK Up on Low Health, SP Up on Consecutive Specials, Weak to Specials"
+Bobobo-bo Bo-bobo,Super Patch,7 Koma,7K (T5),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Rock-Candy Wiggin,N/A,"PERK: ATK Up on Low Health, SP Up on Consecutive Specials, Weak to Specials"
+Bobobo-bo Bo-bobo,Jelly Jiggler,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,No Pushback,N/A,N/A,N/A,N/A,N/A,NO PUSHBACK: Ground
+Bobobo-bo Bo-bobo,Jelly Jiggler,2 Koma,2K (T1),Support,Laughter (笑),Instant,N/A,Average,None,-3 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -3 SP Bar
+Bobobo-bo Bo-bobo,Jelly Jiggler,3 Koma,3K (T1),Support,Laughter (笑),Average,Average,Average,None,Jail,N/A,Stop,N/A,N/A,Ground Only,"ON HIT: Jail, Stop, 45 DMG MAX"
+Bobobo-bo Bo-bobo,Gasser,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Bobobo-bo Bo-bobo,Gasser,2 Koma,2K (T1),Support,Laughter (笑),Fast,Average,Average,Low,N/A,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: Confusion, 30 DMG MAX"
+Bobobo-bo Bo-bobo,Gasser,3 Koma,3K (T1),Support,Laughter (笑),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+Bobobo-bo Bo-bobo,Beauty,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,Comeback,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+Bobobo-bo Bo-bobo,Beauty,2 Koma,2K (T1),Support,Laughter (笑),Instant,N/A,Fullscreen,N/A,SP Up,N/A,N/A,N/A,N/A,Ground Only,BUFF: SP Up if used during hitstun
+Bobobo-bo Bo-bobo,Beauty,3 Koma,3K (T6),Support,Laughter (笑),Fast,High,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+Bobobo-bo Bo-bobo,Gaoh,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Bobobo-bo Bo-bobo,Gaoh,2 Koma,2K (T1),Support,Laughter (笑),Instant,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Bobobo-bo Bo-bobo,Gaoh,3 Koma,3K (T1),Support,Laughter (笑),Slow,Average,Fullscreen,Low,N/A,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: Paralysis, 45 DMG MAX"
+Bobobo-bo Bo-bobo,Hatenko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Paralysis Immunity,N/A,N/A,IMMUNITY: Paralysis
+Bobobo-bo Bo-bobo,Softon,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend Chain Attacks
+Bobobo-bo Bo-bobo,Torpedo Girl,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Bobobo-bo Bo-bobo,Dengaku Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports
+Bobobo-bo Bo-bobo,Service Man,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attacking/Blocking on Low HP
+Bobobo-bo Bo-bobo,Kopachi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Majin Tantei no Gami Neuro,Neuro/Yako,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Paralysis Immunity,N/A,N/A,IMMUNITY: Paralysis
+Majin Tantei no Gami Neuro,Neuro/Yako,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Average,None,-1 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Blind"
+Majin Tantei no Gami Neuro,Neuro/Yako,3 Koma,3K (T5),Support,Knowledge (知),Fast,N/A,Short,N/A,N/A,Invisible,N/A,N/A,N/A,Ground Only,ON HIT: Invisible
+Majin Tantei no Gami Neuro,Neuro/Yako,4 Koma,4K (T5),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Devil Detective,N/A,"PERK: Confusion Immunity, Paralysis Immunity, SP Up against Opposing Nature"
+Majin Tantei no Gami Neuro,Neuro/Yako,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Devil Detective,N/A,"PERK: Confusion Immunity, Paralysis Immunity, SP Up against Opposing Nature"
+Majin Tantei no Gami Neuro,Neuro/Yako,5 Koma,5K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Devil Detective,N/A,"PERK: Confusion Immunity, Paralysis Immunity, SP Up against Opposing Nature"
+Majin Tantei no Gami Neuro,Akane-chan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Majin Tantei no Gami Neuro,Sasazuka,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,See Invisible Komas,N/A,PASSIVE: See Invisible Komas
+Majin Tantei no Gami Neuro,X,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+Midori no Makibaou,Makibao,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Speed Down Immunity,N/A,N/A,IMMUNITY: Speed Down
+Midori no Makibaou,Makibao,2 Koma,2K (T2),Support,Laughter (笑),Average,N/A,Average,N/A,-4 SP Bar,N/A,SPD Down,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar per hit, SPD Down"
+Midori no Makibaou,Makibao,3 Koma,3K (T3),Support,Power (力),Fast,High,Long,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 51 DMG MAX
+Midori no Makibaou,Cascade,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Speed Down Immunity,N/A,N/A,IMMUNITY: Speed Down
+Midori no Makibaou,Cascade,2 Koma,2K (T2),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,Heal,SPD Up,N/A,N/A,N/A,Ground Only,"BUFF: Heal, SPD Up"
+Midori no Makibaou,Cascade,3 Koma,3K (T1),Support,Knowledge (知),Fast,Average,Long,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 45 DMG MAX
+Midori no Makibaou,Chuubei,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Muhyo to Rouji,Muhyo,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,ATK Up,N/A,N/A,N/A,N/A,N/A,ATK UP: Low HP
+Muhyo to Rouji,Muhyo,2 Koma,2K (T1),Support,Knowledge (知),Average,N/A,Fullscreen,N/A,N/A,Invisible,N/A,N/A,N/A,Ground Only,BUFF: Invisible
+Muhyo to Rouji,Muhyo,3 Koma,3K (T2),Support,Knowledge (知),Average,N/A,Fullscreen,N/A,N/A,Invencible,N/A,N/A,N/A,Ground Only,BUFF: Invencible
+Muhyo to Rouji,Muhyo,4 Koma,4K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Executioner,N/A,PERK: SP UP against Knowledge Nature
+Muhyo to Rouji,Muhyo,5 Koma,5K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Executioner,N/A,PERK: SP UP against Knowledge Nature
+Muhyo to Rouji,Muhyo,6 Koma,6K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Executioner,N/A,PERK: SP UP against Knowledge Nature
+Muhyo to Rouji,Muhyo,7 Koma,7K (T7),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Executioner,N/A,PERK: SP UP against Knowledge Nature
+Muhyo to Rouji,Roji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Parry
+Muhyo to Rouji,Roji,2 Koma,2K (T1),Support,Knowledge (知),Average,Average,Average,Low,-1 SP Bar,N/A,Stop,N/A,N/A,Ground Only,ON HIT: 33 DMG MAX
+Muhyo to Rouji,Roji,3 Koma,3K (T6),Support,Knowledge (知),Fast,Low,Average,Low,-2 SP Bar,N/A,Support Seal,N/A,N/A,Ground Only,"ON HIT: -2 SP Bar, Support Seal, 11 DMG MAX"
+Muhyo to Rouji,Enchuu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attacking/Blocking on Low HP
+Muhyo to Rouji,Enchuu,2 Koma,2K (T1),Support,Knowledge (知),Fast,Low,Average,Low,Jail,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Jail, 24 DMG MAX"
+Muhyo to Rouji,Enchuu,3 Koma,3K (T6),Support,Knowledge (知),Average,N/A,Short,Low,-2 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -2 SP Bar
+Muhyo to Rouji,Yoichi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: KO Opponents
+Muhyo to Rouji,Yoichi,2 Koma,2K (T1),Support,Knowledge (知),Instant,Low,Long,None,-1 SP Bar,N/A,Stop,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Stop, 33 DMG MAX"
+Muhyo to Rouji,Yoichi,3 Koma,3K (T3),Support,Knowledge (知),Fast,N/A,Fullscreen,N/A,N/A,Toughen,N/A,N/A,N/A,Ground Only,BUFF: Toughen
+Muhyo to Rouji,Piko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Muhyo to Rouji,Piko,2 Koma,2K (T2),Support,Knowledge (知),Slow,N/A,Short,N/A,Items,N/A,N/A,N/A,N/A,Ground Only,ITEMS: Heal or SP Up
+Muhyo to Rouji,Piko,3 Koma,3K (T1),Support,Knowledge (知),Slow,N/A,Short,N/A,SP Up,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 3 SP Bars in exchange for HP
+Muhyo to Rouji,Nana,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Muhyo to Rouji,Peiji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+Yu-gi-oh!,Yugi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend opposing Nature
+Yu-gi-oh!,Yugi,2 Koma,2K (T2),Support,Knowledge (知),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Yu-gi-oh!,Yugi,3 Koma,3K (T3),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,Revive,N/A,N/A,N/A,N/A,Ground Only,BUFF: Revives All Characters
+Yu-gi-oh!,Yugi,4 Koma,4K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Duelist,N/A,"PERK: SP Up against Laughter Nature, SP Up Using Supports, See Invisible Komas"
+Yu-gi-oh!,Yugi,5 Koma,5K (T8),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Duelist,N/A,"PERK: SP Up against Laughter Nature, SP Up Using Supports, See Invisible Komas"
+Yu-gi-oh!,Yugi,6 Koma,6K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Duelist,N/A,"PERK: SP Up against Laughter Nature, SP Up Using Supports, See Invisible Komas"
+Yu-gi-oh!,Kaiba,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Yu-gi-oh!,Kaiba,2 Koma,2K (T2),Support,Knowledge (知),Average,N/A,Average,Low,N/A,N/A,Support Seal,N/A,N/A,Ground Only,ON HIT: Support Seal
+Yu-gi-oh!,Kaiba,3 Koma,3K (T6),Support,Knowledge (知),Average,Very High,Long,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 66 DMG MAX
+Yu-gi-oh!,Jounouchi,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Consecutive Specials
+Yu-gi-oh!,Honda,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Yu-gi-oh!,Anzu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Yu Yu Hakusho,Yusuke,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Koma on Field
+Yu Yu Hakusho,Yusuke,2 Koma,2K (T1),Support,Power (力),Fast,Average,Average,Average,Guard Break,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Guard Break, 33 DMG MAX"
+Yu Yu Hakusho,Yusuke,3 Koma,3K (T1),Support,Power (力),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 49 DMG MAX
+Yu Yu Hakusho,Yusuke,4 Koma,4K (T5),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Spirit Detective,N/A,PERK: SP Up on Low HP
+Yu Yu Hakusho,Yusuke,5 Koma,5K (T6),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Spirit Detective,N/A,PERK: SP Up on Low HP
+Yu Yu Hakusho,Yusuke,6 Koma,6K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Spirit Detective,N/A,PERK: SP Up on Low HP
+Yu Yu Hakusho,Kurama,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Switch/Supports
+Yu Yu Hakusho,Kurama,2 Koma,2K (T1),Support,Knowledge (知),Instant,N/A,Average,None,-1 SP Bar,N/A,Blind,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Blind"
+Yu Yu Hakusho,Kurama,3 Koma,3K (T6),Support,Knowledge (知),Average,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal
+Yu Yu Hakusho,Kurama,4 Koma,4K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Fox Demon,N/A,"PERK: Poison Immunity, Confusion Immunity, SP Up No Switch"
+Yu Yu Hakusho,Kurama,5 Koma,5K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Fox Demon,N/A,"PERK: Poison Immunity, Confusion Immunity, SP Up No Switch"
+Yu Yu Hakusho,Hiei,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Poison Immunity,N/A,N/A,IMMUNITY: Poison
+Yu Yu Hakusho,Hiei,2 Koma,2K (T1),Support,Power (力),Instant,N/A,Average,None,-2 SP Bar,N/A,N/A,N/A,N/A,Ground Only,ON HIT: -2 SP Bar
+Yu Yu Hakusho,Hiei,3 Koma,3K (T1),Support,Power (力),Fast,N/A,Short,None,-2 SP Bar,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: -2 SP Bar, Paralysis"
+Yu Yu Hakusho,Hiei,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Evil Eye,N/A,"PERK: Blind Immunity, See Invisible Komas, SP Up No Switch"
+Yu Yu Hakusho,Hiei,5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Evil Eye,N/A,"PERK: Blind Immunity, See Invisible Komas, SP Up No Switch"
+Yu Yu Hakusho,Kuwabara,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Yu Yu Hakusho,Kuwabara,2 Koma,2K (T1),Support,Power (力),Fast,Average,Short,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 33 DMG MAX
+Yu Yu Hakusho,Kuwabara,3 Koma,3K (T5),Support,Power (力),Slow,Average,Fullscreen,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 45 DMG MAX
+Yu Yu Hakusho,Genkai,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+Yu Yu Hakusho,Botan,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Rurouni Kenshin,Kenshin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Airdash,N/A,PASSIVE: Airdash
+Rurouni Kenshin,Kenshin,2 Koma,2K (T1),Support,Power (力),Fast,N/A,Short,None,-1 SP Bar,N/A,Paralysis,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Paralysis"
+Rurouni Kenshin,Kenshin,3 Koma,3K (T2),Support,Power (力),Fast,Average,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 43 DMG MAX
+Rurouni Kenshin,Kenshin,4 Koma,4K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hiten Mitsurugi,N/A,"PERK: Triple Jump, Wall Jump"
+Rurouni Kenshin,Kenshin,5 Koma,5K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hiten Mitsurugi,N/A,"PERK: Triple Jump, Wall Jump"
+Rurouni Kenshin,Kenshin,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hiten Mitsurugi,N/A,"PERK: Triple Jump, Wall Jump"
+Rurouni Kenshin,Kenshin,6 Koma,6K (T14),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hiten Mitsurugi,N/A,"PERK: Triple Jump, Wall Jump"
+Rurouni Kenshin,Sanosuke,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Characters
+Rurouni Kenshin,Sanosuke,2 Koma,2K (T2),Support,Power (力),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 36 DMG MAX
+Rurouni Kenshin,Sanosuke,3 Koma,3K (T6),Support,Power (力),Average,High,Average,Average,Guard Break,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Guard Break, 57 DMG MAX"
+Rurouni Kenshin,Saito,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attacking/Blocking on Low HP
+Rurouni Kenshin,Saito,2 Koma,2K (T2),Support,Power (力),Fast,Average,Long,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 35 DMG MAX
+Rurouni Kenshin,Saito,3 Koma,3K (T2),Support,Power (力),Fast,High,Average,Average,Guard Break,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Guard Break, 54 DMG MAX"
+Rurouni Kenshin,Shishio,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Burn Immunity,N/A,N/A,IMMUNITY: Burn
+Rurouni Kenshin,Shishio,2 Koma,2K (T2),Support,Power (力),Fast,Average,Average,Low,Jail,N/A,Burn,N/A,N/A,Ground Only,"ON HIT: Jail, Burn, 42 DMG MAX"
+Rurouni Kenshin,Shishio,3 Koma,3K (T5),Support,Power (力),Average,High,Average,Average,N/A,N/A,Burn,N/A,N/A,Ground Only,"ON HIT: Burn, 54 DMG MAX"
+Rurouni Kenshin,Yahiko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+Rurouni Kenshin,Yahiko,2 Koma,2K (T1),Support,Power (力),Average,Low,Long,Low,-1 SP Bar,N/A,N/A,N/A,N/A,Ground/Air,"ON HIT: -1 SP Bar, 27 DMG MAX"
+Rurouni Kenshin,Yahiko,3 Koma,3K (T5),Support,Power (力),Instant,Average,Short,Low,Stay (Counter),N/A,Battle Seal,N/A,N/A,Ground Only,"STAY: Counter, Battle Seal, 42 DMG MAX"
+Rurouni Kenshin,Kaoru,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,GUARD Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Guard UP
+Rurouni Kenshin,Hiko,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+Rokudenashi Blues,Taison,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Rokudenashi Blues,Taison,2 Koma,2K (T1),Support,Laughter (笑),Fast,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 39 DMG MAX
+Rokudenashi Blues,Taison,3 Koma,3K (T3),Support,Power (力),Fast,Average,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 49 DMG MAX
+Rokudenashi Blues,Katsuji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Multi-Hits
+Rokudenashi Blues,Yoneji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: No Movement/Attacking
+Rokudenashi Blues,Chiaki,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max HP UP
+Rokudenashi Blues,Masa-San,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+One Piece,Luffy,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Physical Attacks,N/A,N/A,RESIST: Physical Attacks
+One Piece,Luffy,2 Koma,2K (T1),Support,Power (力),Average,Average,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground/Air,ON HIT: 37 DMG MAX
+One Piece,Luffy,3 Koma,3K (T1),Support,Power (力),Fast,High,Long,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+One Piece,Luffy,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gum Gum Fruit,N/A,"PERK: Shock Immunity, Physical Resist, Weak to Blades"
+One Piece,Luffy,5 Koma,5K (T4),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gum Gum Fruit,N/A,"PERK: Shock Immunity, Physical Resist, Weak to Blades"
+One Piece,Luffy,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gum Gum Fruit,N/A,"PERK: Shock Immunity, Physical Resist, Weak to Blades"
+One Piece,Luffy,6 Koma,6K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gum Gum Fruit,N/A,"PERK: Shock Immunity, Physical Resist, Weak to Blades"
+One Piece,Luffy (Gear 2),7 Koma,7K (T12),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gum Gum Fruit,N/A,"PERK: Shock Immunity, Physical Resist, Weak to Blades"
+One Piece,Luffy (Gear 2),8 Koma,8K (T3),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Gum Gum Fruit,N/A,"PERK: Shock Immunity, Physical Resist, Weak to Blades"
+One Piece,Zoro,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+One Piece,Zoro,2 Koma,2K (T1),Support,Power (力),Instant,Average,Short,Low,Stay (Counter),N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Counter, 42 DMG MAX"
+One Piece,Zoro,3 Koma,3K (T6),Support,Power (力),Fast,High,Long,High,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+One Piece,Zoro,4 Koma,4K (T6),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,3 Sword Style,N/A,"PERK: Burn Immunity, Weak to Fire, SP Up on Block"
+One Piece,Zoro,5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,3 Sword Style,N/A,"PERK: Burn Immunity, Weak to Fire, SP Up on Block"
+One Piece,Zoro,5 Koma,5K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,3 Sword Style,N/A,"PERK: Burn Immunity, Weak to Fire, SP Up on Block"
+One Piece,Zoro,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,3 Sword Style,N/A,"PERK: Burn Immunity, Weak to Fire, SP Up on Block"
+One Piece,Nami,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Destroying Boxes
+One Piece,Nami,2 Koma,2K (T1),Support,Knowledge (知),Fast,N/A,Average,None,-2 SP Bar,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: -2 Sp Bar (Enemy), +2 Sp Bar (Player)"
+One Piece,Nami,3 Koma,3K (T3),Support,Laughter (笑),Fast,N/A,Short,Low,-2 SP Bar,N/A,Battle Seal,N/A,N/A,Ground Only,"ON HIT: -2 Sp Bar, Battle Seal"
+One Piece,Nami,4 Koma,4K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Pirate Thief,N/A,"PERK: Airdash, SP Up on Destroying Boxes, SP Up from Coins"
+One Piece,Nami,4 Koma,4K (T12),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Pirate Thief,N/A,"PERK: Airdash, SP Up on Destroying Boxes, SP Up from Coins"
+One Piece,Nami,5 Koma,5K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Pirate Thief,N/A,"PERK: Airdash, SP Up on Destroying Boxes, SP Up from Coins"
+One Piece,Nami (P.C.TACT),6 Koma,6K (T2),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Pirate Thief,N/A,"PERK: Airdash, SP Up on Destroying Boxes, SP Up from Coins"
+One Piece,Sanji,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Glutton,N/A,PASSIVE: More Health from Food
+One Piece,Sanji,2 Koma,2K (T2),Support,Laughter (笑),Instant,N/A,Short,N/A,Heal,N/A,N/A,N/A,N/A,Ground Only,ON HIT: Heal
+One Piece,Sanji,3 Koma,3K (T2),Support,Power (力),Instant,Average,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 48 DMG MAX
+One Piece,Sanji,4 Koma,4K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,First Class Chef,N/A,"PERK: SP Up from Kicks, More HP from Food"
+One Piece,Sanji,5 Koma,5K (T2),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,First Class Chef,N/A,"PERK: SP Up from Kicks, More HP from Food"
+One Piece,Sanji,5 Koma,5K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,First Class Chef,N/A,"PERK: SP Up from Kicks, More HP from Food"
+One Piece,Sanji,6 Koma,6K (T1),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,First Class Chef,N/A,"PERK: SP Up from Kicks, More HP from Food"
+One Piece,Robin,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASSIVE: Auto Guard
+One Piece,Robin,2 Koma,2K (T1),Support,Knowledge (知),Slow,N/A,Fullscreen,N/A,N/A,N/A,Blind,N/A,N/A,Ground Only,ON HIT: Blind
+One Piece,Robin,3 Koma,3K (T1),Support,Knowledge (知),Fast,Very High,Average,Low,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 60 DMG MAX
+One Piece,Robin,4 Koma,4K (T5),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hana Hana Fruit,N/A,"PERK: Auto Guard, SP Up against Laughter Nature"
+One Piece,Robin,5 Koma,5K (T3),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hana Hana Fruit,N/A,"PERK: Auto Guard, SP Up against Laughter Nature"
+One Piece,Robin,6 Koma,6K (T1),Battle,Knowledge (知),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Hana Hana Fruit,N/A,"PERK: Auto Guard, SP Up against Laughter Nature"
+One Piece,Franky,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Blades,N/A,N/A,RESIST: Blades
+One Piece,Franky,2 Koma,2K (T2),Support,Laughter (笑),Slow,Average,Average,Low,Snapback,N/A,N/A,N/A,N/A,Ground Only,"ON HIT: Snapback, 45 DMG MAX"
+One Piece,Franky,3 Koma,3K (T6),Support,Laughter (笑),Slow,Very High,Short,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 75 DMG MAX
+One Piece,Franky,4 Koma,4K (T1),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Cyborg,N/A,"PERK: Blade Resist, Weak to Shock, SP Up Receiving Damage"
+One Piece,Franky,5 Koma,5K (T2),Battle,Laughter (笑),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Cyborg,N/A,"PERK: Blade Resist, Weak to Shock, SP Up Receiving Damage"
+One Piece,Franky,5 Koma,5K (T6),Battle,Power (力),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,Cyborg,N/A,"PERK: Blade Resist, Weak to Shock, SP Up Receiving Damage"
+One Piece,Usopp,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max HP Up,N/A,N/A,N/A,Comeback,N/A,ATTRIBUTE: MAX HP Up on KO Recover
+One Piece,Usopp,2 Koma,2K (T1),Support,Laughter (笑),Fast,N/A,Short,Low,-1 SP Bar,N/A,Confusion,N/A,N/A,Ground Only,"ON HIT: -1 SP Bar, Confusion"
+One Piece,Sogeking,3 Koma,3K (T6),Support,Laughter (笑),Slow,High,Long,Average,N/A,N/A,Burn,N/A,N/A,Ground Only,"ON HIT: Burn, 57 DMG MAX"
+One Piece,Chopper,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,N/A,N/A,N/A,Status Effects,N/A,N/A,RESIST: Status Effects
+One Piece,Chopper,2 Koma,2K (T2),Support,Knowledge (知),Average,N/A,Short,N/A,Heal,N/A,N/A,Status Effects,N/A,Ground Only,ON HIT: Heal HP and Status Effects
+One Piece,Chopper,3 Koma,3K (T1),Support,Power (力),Average,High,Average,Average,N/A,N/A,N/A,N/A,N/A,Ground Only,ON HIT: 54 DMG MAX
+One Piece,Shanks,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,Max SP Up,N/A,N/A,N/A,N/A,N/A,ATTRIBUTE: Max SP UP
+One Piece,Kiwi/Mozu,1 Koma,1K,Help,Neutral (なし),N/A,N/A,N/A,N/A,SP Up,N/A,N/A,N/A,N/A,N/A,SP UP: Attack/Defend against Supports

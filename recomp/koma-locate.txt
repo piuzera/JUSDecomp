@@ -1,0 +1,12 @@
+ctx @ 0x0214BD80 = 0x021DE8E0
+runtime koma table: base=0x021E0220  bound=890
+record 870: live [66 03 32 01 2a 00 02 31 00 00 01 32]  offline [66 03 32 01 2a 00 02 31 00 00 01 32]  MATCH
+
+[*] locating runtime komatxt...
+[*] scanning for komatxt anchor (40 bytes at blob+0x33DE): 82 60 83 52 83 7d 00 82 61 83 52 83 7d 00 82 62 83 52 83 7d 00 83 52 83 7d 83 8c 83 62 83 68 00 83 52 83 7d 83 4f 83 8a
+[*] scanned to 0x023FFFE8 (32 chunks) ...
+[*] 2 anchor hit(s): ['0x021E873E', '0x022FACBE']
+  candidate: blob=0x021E5360 table=0x021E29A8 entry870=00 08 00 00 00 01 20 00 00 10 00 00 [rebased? ]
+  candidate: blob=0x022F78E0 table=0x022F4F28 entry870=04 00 00 00 00 00 01 00 00 00 00 00 [rebased? ]
+[!] no exact pointer-table match — pointers may be rebased at load; using first candidate (name-string rewrite does not touch pointers)
+runtime name string @ 0x021E873E: 82 60 83 52 83 7d 00  = 'Ａコマ'

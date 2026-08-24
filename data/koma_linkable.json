@@ -1,0 +1,2788 @@
+{
+ "game": "Jump Ultimate Stars",
+ "generated_by": "tools/scripts/link_solve.py",
+ "direction_enum": {
+  "1": "down",
+  "2": "left",
+  "3": "up",
+  "4": "right"
+ },
+ "confidence": {
+  "mode": "any",
+  "strict_hits": 464,
+  "total": 464,
+  "anchor": "Sena@(0,0) nibble4 -> right toward Luffy@(0,1) (2026-08-22 live)"
+ },
+ "stats": {
+  "decks": 294,
+  "overlap_decks": 1,
+  "linked_obs": 464
+ },
+ "linkable_corpus": [
+  0,
+  3,
+  6,
+  9,
+  12,
+  15,
+  21,
+  25,
+  26,
+  27,
+  29,
+  31,
+  33,
+  41,
+  56,
+  63,
+  75,
+  81,
+  82,
+  83,
+  84,
+  87,
+  90,
+  93,
+  94,
+  95,
+  116,
+  122,
+  125,
+  128,
+  129,
+  131,
+  133,
+  142,
+  145,
+  148,
+  151,
+  154,
+  160,
+  163,
+  164,
+  165,
+  176,
+  179,
+  182,
+  185,
+  191,
+  197,
+  198,
+  199,
+  201,
+  209,
+  212,
+  214,
+  227,
+  230,
+  233,
+  234,
+  235,
+  244,
+  245,
+  252,
+  258,
+  262,
+  263,
+  264,
+  265,
+  266,
+  269,
+  270,
+  271,
+  286,
+  289,
+  295,
+  304,
+  305,
+  318,
+  321,
+  322,
+  323,
+  331,
+  334,
+  337,
+  340,
+  344,
+  345,
+  351,
+  352,
+  355,
+  358,
+  361,
+  364,
+  367,
+  373,
+  386,
+  394,
+  400,
+  401,
+  402,
+  403,
+  407,
+  410,
+  416,
+  419,
+  436,
+  440,
+  441,
+  442,
+  443,
+  449,
+  450,
+  459,
+  466,
+  471,
+  477,
+  482,
+  484,
+  487,
+  490,
+  493,
+  494,
+  496,
+  497,
+  506,
+  510,
+  517,
+  527,
+  528,
+  529,
+  530,
+  539,
+  559,
+  560,
+  561,
+  573,
+  576,
+  577,
+  585,
+  586,
+  587,
+  588,
+  593,
+  599,
+  602,
+  603,
+  604,
+  612,
+  618,
+  633,
+  636,
+  639,
+  642,
+  644,
+  653,
+  655,
+  663,
+  666,
+  667,
+  668,
+  680,
+  683,
+  686,
+  687,
+  688,
+  689,
+  704,
+  707,
+  710,
+  713,
+  716,
+  717,
+  718,
+  719,
+  720,
+  721,
+  722,
+  728,
+  729,
+  730,
+  731,
+  738,
+  745,
+  751,
+  754,
+  757,
+  758,
+  765,
+  768,
+  769,
+  770,
+  771,
+  790,
+  791,
+  792,
+  799,
+  802,
+  811,
+  813,
+  816,
+  817,
+  818,
+  819,
+  820,
+  829,
+  836,
+  850,
+  856,
+  862,
+  865,
+  869,
+  888
+ ],
+ "linkable": [
+  0,
+  3,
+  6,
+  9,
+  12,
+  15,
+  21,
+  25,
+  26,
+  27,
+  29,
+  31,
+  33,
+  41,
+  56,
+  63,
+  75,
+  81,
+  82,
+  83,
+  84,
+  87,
+  90,
+  93,
+  94,
+  95,
+  116,
+  122,
+  125,
+  128,
+  129,
+  131,
+  133,
+  142,
+  145,
+  148,
+  151,
+  154,
+  160,
+  163,
+  164,
+  165,
+  176,
+  179,
+  182,
+  185,
+  191,
+  197,
+  198,
+  199,
+  201,
+  209,
+  212,
+  214,
+  227,
+  230,
+  233,
+  234,
+  235,
+  244,
+  245,
+  252,
+  258,
+  262,
+  263,
+  264,
+  265,
+  266,
+  269,
+  270,
+  271,
+  286,
+  289,
+  295,
+  304,
+  305,
+  318,
+  321,
+  322,
+  323,
+  331,
+  334,
+  337,
+  340,
+  344,
+  345,
+  351,
+  352,
+  355,
+  358,
+  361,
+  364,
+  367,
+  373,
+  386,
+  394,
+  400,
+  401,
+  402,
+  403,
+  407,
+  410,
+  416,
+  419,
+  436,
+  440,
+  441,
+  442,
+  443,
+  449,
+  450,
+  459,
+  466,
+  471,
+  477,
+  482,
+  484,
+  487,
+  490,
+  493,
+  494,
+  496,
+  497,
+  506,
+  510,
+  517,
+  527,
+  528,
+  529,
+  530,
+  539,
+  559,
+  560,
+  561,
+  573,
+  576,
+  577,
+  585,
+  586,
+  587,
+  588,
+  593,
+  599,
+  602,
+  603,
+  604,
+  612,
+  618,
+  633,
+  636,
+  639,
+  642,
+  644,
+  653,
+  655,
+  663,
+  666,
+  667,
+  668,
+  680,
+  683,
+  686,
+  687,
+  688,
+  689,
+  704,
+  707,
+  710,
+  713,
+  716,
+  717,
+  718,
+  719,
+  720,
+  721,
+  722,
+  728,
+  729,
+  730,
+  731,
+  738,
+  745,
+  751,
+  754,
+  757,
+  758,
+  765,
+  768,
+  769,
+  770,
+  771,
+  790,
+  791,
+  792,
+  799,
+  802,
+  811,
+  813,
+  816,
+  817,
+  818,
+  819,
+  820,
+  829,
+  836,
+  850,
+  856,
+  862,
+  865,
+  869,
+  888
+ ],
+ "standalone_1k": [
+  32,
+  72,
+  110,
+  157,
+  301,
+  343,
+  495,
+  650,
+  651,
+  737,
+  812,
+  868,
+  870,
+  871,
+  872
+ ],
+ "unknown_1k": [
+  18,
+  23,
+  28,
+  30,
+  36,
+  39,
+  40,
+  44,
+  47,
+  50,
+  53,
+  54,
+  55,
+  66,
+  69,
+  78,
+  103,
+  113,
+  119,
+  130,
+  132,
+  173,
+  188,
+  194,
+  200,
+  202,
+  203,
+  206,
+  221,
+  224,
+  236,
+  237,
+  240,
+  243,
+  261,
+  272,
+  279,
+  292,
+  298,
+  306,
+  309,
+  312,
+  315,
+  348,
+  370,
+  376,
+  379,
+  391,
+  397,
+  404,
+  413,
+  427,
+  438,
+  446,
+  524,
+  531,
+  537,
+  538,
+  545,
+  550,
+  553,
+  556,
+  567,
+  570,
+  578,
+  579,
+  624,
+  630,
+  647,
+  652,
+  654,
+  656,
+  676,
+  697,
+  734,
+  748,
+  759,
+  777,
+  782,
+  787,
+  805,
+  808,
+  843,
+  873,
+  874,
+  875
+ ],
+ "classes": {
+  "A_link_optional": [
+   75,
+   154,
+   160,
+   163,
+   164,
+   165,
+   212,
+   322,
+   527,
+   539,
+   668,
+   836,
+   850,
+   869
+  ],
+  "B_linked_only_observed": [
+   0,
+   3,
+   6,
+   9,
+   12,
+   15,
+   21,
+   25,
+   26,
+   27,
+   29,
+   31,
+   33,
+   41,
+   56,
+   63,
+   81,
+   82,
+   83,
+   84,
+   87,
+   90,
+   93,
+   94,
+   95,
+   116,
+   122,
+   125,
+   128,
+   129,
+   131,
+   133,
+   142,
+   145,
+   148,
+   151,
+   176,
+   179,
+   182,
+   185,
+   191,
+   197,
+   198,
+   199,
+   201,
+   209,
+   214,
+   227,
+   230,
+   233,
+   234,
+   235,
+   244,
+   245,
+   252,
+   258,
+   262,
+   263,
+   264,
+   265,
+   266,
+   269,
+   270,
+   271,
+   286,
+   289,
+   295,
+   304,
+   305,
+   318,
+   321,
+   323,
+   331,
+   334,
+   337,
+   340,
+   344,
+   345,
+   351,
+   352,
+   355,
+   358,
+   361,
+   364,
+   367,
+   373,
+   386,
+   394,
+   400,
+   401,
+   402,
+   403,
+   407,
+   410,
+   416,
+   419,
+   436,
+   440,
+   441,
+   442,
+   443,
+   449,
+   450,
+   459,
+   466,
+   471,
+   477,
+   482,
+   484,
+   487,
+   490,
+   493,
+   494,
+   496,
+   497,
+   506,
+   510,
+   517,
+   528,
+   529,
+   530,
+   559,
+   560,
+   561,
+   573,
+   576,
+   577,
+   585,
+   586,
+   587,
+   588,
+   593,
+   599,
+   602,
+   603,
+   604,
+   612,
+   618,
+   633,
+   636,
+   639,
+   642,
+   644,
+   653,
+   655,
+   663,
+   666,
+   667,
+   680,
+   683,
+   686,
+   687,
+   688,
+   689,
+   704,
+   707,
+   710,
+   713,
+   716,
+   717,
+   718,
+   719,
+   720,
+   721,
+   722,
+   728,
+   729,
+   730,
+   731,
+   738,
+   745,
+   751,
+   754,
+   757,
+   758,
+   765,
+   768,
+   769,
+   770,
+   771,
+   790,
+   791,
+   792,
+   799,
+   802,
+   811,
+   813,
+   816,
+   817,
+   818,
+   819,
+   820,
+   829,
+   856,
+   862,
+   865,
+   888
+  ],
+  "C_unlinked_only_observed": [
+   32,
+   72,
+   110,
+   157,
+   301,
+   343,
+   495,
+   650,
+   651,
+   737,
+   812,
+   868,
+   870,
+   871,
+   872
+  ],
+  "D_never_in_corpus": [
+   18,
+   23,
+   28,
+   30,
+   36,
+   39,
+   40,
+   44,
+   47,
+   50,
+   53,
+   54,
+   55,
+   66,
+   69,
+   78,
+   103,
+   113,
+   119,
+   130,
+   132,
+   173,
+   188,
+   194,
+   200,
+   202,
+   203,
+   206,
+   221,
+   224,
+   236,
+   237,
+   240,
+   243,
+   261,
+   272,
+   279,
+   292,
+   298,
+   306,
+   309,
+   312,
+   315,
+   348,
+   370,
+   376,
+   379,
+   391,
+   397,
+   404,
+   413,
+   427,
+   438,
+   446,
+   524,
+   531,
+   537,
+   538,
+   545,
+   550,
+   553,
+   556,
+   567,
+   570,
+   578,
+   579,
+   624,
+   630,
+   647,
+   652,
+   654,
+   656,
+   676,
+   697,
+   734,
+   748,
+   759,
+   777,
+   782,
+   787,
+   805,
+   808,
+   843,
+   873,
+   874,
+   875
+  ]
+ },
+ "discriminator": [
+  15,
+  "unk",
+  2,
+  52,
+  true,
+  {
+   "linked": 15
+  }
+ ],
+ "per_id_linked": {
+  "0": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "セナ",
+   "name_en": "Sena"
+  },
+  "3": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ヒル魔",
+   "name_en": "Hiruma"
+  },
+  "6": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "栗田",
+   "name_en": "Kurita"
+  },
+  "9": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "モン太",
+   "name_en": "Monta"
+  },
+  "12": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ムサシ",
+   "name_en": "Musashi"
+  },
+  "15": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ハァハァ３兄弟",
+   "name_en": "Ha-Ha Brothers"
+  },
+  "21": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "デビルバット",
+   "name_en": "Devil Bat"
+  },
+  "25": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "まもり",
+   "name_en": "Mamori"
+  },
+  "26": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "鈴音",
+   "name_en": "Suzuna"
+  },
+  "27": {
+   "nibbles": {
+    "3": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "小結",
+   "name_en": "Komusubi"
+  },
+  "29": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "瀧",
+   "name_en": "Taki"
+  },
+  "31": {
+   "nibbles": {
+    "3": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "雪光",
+   "name_en": "Yukimitsu"
+  },
+  "33": {
+   "nibbles": {
+    "2": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "伊織",
+   "name_en": "Iori"
+  },
+  "41": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "東城",
+   "name_en": "Aya"
+  },
+  "56": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ツナ／リボーン",
+   "name_en": "Tsuna"
+  },
+  "63": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ランボ",
+   "name_en": "Lambo"
+  },
+  "75": {
+   "nibbles": {
+    "4": 3
+   },
+   "unlinked_obs": 1,
+   "name_jp": "イーピン",
+   "name_en": "I-Pin"
+  },
+  "81": {
+   "nibbles": {
+    "3": 1,
+    "2": 2,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "京子",
+   "name_en": "Kyoko"
+  },
+  "82": {
+   "nibbles": {
+    "3": 2,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ハル",
+   "name_en": "Haru"
+  },
+  "83": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "レオン",
+   "name_en": "Leon"
+  },
+  "84": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "大空翼",
+   "name_en": "Tsubasa"
+  },
+  "87": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "若林源三",
+   "name_en": "Genzo"
+  },
+  "90": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "日向小次郎",
+   "name_en": "Hyuga"
+  },
+  "93": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ロベルト本郷",
+   "name_en": "Roberto Hongo"
+  },
+  "94": {
+   "nibbles": {
+    "3": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "中沢早苗",
+   "name_en": "Sanae"
+  },
+  "95": {
+   "nibbles": {
+    "4": 1,
+    "3": 1,
+    "2": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "銀さん",
+   "name_en": "Gintoki"
+  },
+  "116": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "さっちゃん",
+   "name_en": "Sa-chan"
+  },
+  "122": {
+   "nibbles": {
+    "2": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "土方",
+   "name_en": "Hijikata"
+  },
+  "125": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "沖田",
+   "name_en": "Okita"
+  },
+  "128": {
+   "nibbles": {
+    "1": 2,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "お登勢",
+   "name_en": "Otose"
+  },
+  "129": {
+   "nibbles": {
+    "2": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "お妙",
+   "name_en": "Otae"
+  },
+  "131": {
+   "nibbles": {
+    "1": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "山崎",
+   "name_en": "Yamazaki"
+  },
+  "133": {
+   "nibbles": {
+    "2": 1,
+    "3": 1,
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "キン肉マン",
+   "name_en": "Muscle Man"
+  },
+  "142": {
+   "nibbles": {
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "テリーマン",
+   "name_en": "Terry Man"
+  },
+  "145": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ロビンマスク",
+   "name_en": "Robin Mask"
+  },
+  "148": {
+   "nibbles": {
+    "1": 1,
+    "4": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ウォーズマン",
+   "name_en": "Wars Man"
+  },
+  "151": {
+   "nibbles": {
+    "3": 2,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ラーメンマン",
+   "name_en": "Ramen Man"
+  },
+  "154": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "ブロッケンＪｒ．",
+   "name_en": "Brocken Jr."
+  },
+  "160": {
+   "nibbles": {
+    "4": 2,
+    "2": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "アシュラマン",
+   "name_en": "Furious Fighter"
+  },
+  "163": {
+   "nibbles": {
+    "3": 1,
+    "2": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "ミートくん",
+   "name_en": "Mito-kun"
+  },
+  "164": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "キン肉大王",
+   "name_en": "Super Muscle"
+  },
+  "165": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 2,
+   "name_jp": "両さん",
+   "name_en": "Ryotsu"
+  },
+  "176": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "中川",
+   "name_en": "Nakagawa"
+  },
+  "179": {
+   "nibbles": {
+    "2": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "麗子",
+   "name_en": "Reiko"
+  },
+  "182": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "本田速人",
+   "name_en": "Hayato"
+  },
+  "185": {
+   "nibbles": {
+    "4": 1,
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "日暮",
+   "name_en": "Higure"
+  },
+  "191": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "左近寺",
+   "name_en": "Ryunnosuke"
+  },
+  "197": {
+   "nibbles": {
+    "2": 2,
+    "4": 2,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "纏",
+   "name_en": "Matoi"
+  },
+  "198": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "マリア",
+   "name_en": "Maria"
+  },
+  "199": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "寺井",
+   "name_en": "Terai"
+  },
+  "201": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "檸檬",
+   "name_en": "Lemon"
+  },
+  "209": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "レディ",
+   "name_en": "Lady Armanoid"
+  },
+  "212": {
+   "nibbles": {
+    "3": 1,
+    "4": 1
+   },
+   "unlinked_obs": 6,
+   "name_jp": "江田島平八",
+   "name_en": "Edajima"
+  },
+  "214": {
+   "nibbles": {
+    "4": 2,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "桃",
+   "name_en": "Momotaro"
+  },
+  "227": {
+   "nibbles": {
+    "4": 2,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "飛燕",
+   "name_en": "Hien"
+  },
+  "230": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "Ｊ",
+   "name_en": "J"
+  },
+  "233": {
+   "nibbles": {
+    "3": 1,
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "富樫",
+   "name_en": "Genji"
+  },
+  "234": {
+   "nibbles": {
+    "4": 1,
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "虎丸",
+   "name_en": "Ryuji"
+  },
+  "235": {
+   "nibbles": {
+    "1": 1,
+    "4": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "雷電",
+   "name_en": "Raiden"
+  },
+  "244": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "郷子",
+   "name_en": "Kyoko"
+  },
+  "245": {
+   "nibbles": {
+    "1": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "葉",
+   "name_en": "Yoh"
+  },
+  "252": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "アンナ",
+   "name_en": "Anna"
+  },
+  "258": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ハオ",
+   "name_en": "Hao"
+  },
+  "262": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ホロホロ",
+   "name_en": "Horohoro"
+  },
+  "263": {
+   "nibbles": {
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "まん太",
+   "name_en": "Manta"
+  },
+  "264": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "阿弥陀丸",
+   "name_en": "Amidamaru"
+  },
+  "265": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "チョコラブ",
+   "name_en": "Chocolove"
+  },
+  "266": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ターちゃん",
+   "name_en": "Ta-chan"
+  },
+  "269": {
+   "nibbles": {
+    "3": 1,
+    "2": 2,
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ヂェーン",
+   "name_en": "Jane"
+  },
+  "270": {
+   "nibbles": {
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "エテ吉",
+   "name_en": "Etekichi"
+  },
+  "271": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "アナベベ",
+   "name_en": "AnaBebe"
+  },
+  "286": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ジョナサン",
+   "name_en": "Jonathan"
+  },
+  "289": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ジョセフ",
+   "name_en": "Joseph"
+  },
+  "295": {
+   "nibbles": {
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ジョルノ",
+   "name_en": "Giorno"
+  },
+  "304": {
+   "nibbles": {
+    "3": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "露伴",
+   "name_en": "Rohan"
+  },
+  "305": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ジョニィ",
+   "name_en": "Johnny"
+  },
+  "318": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "宮城リョータ",
+   "name_en": "Ryota"
+  },
+  "321": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "赤木晴子",
+   "name_en": "Haruko"
+  },
+  "322": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "安西先生",
+   "name_en": "Anzai-Sensei"
+  },
+  "323": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "星矢",
+   "name_en": "Seiya"
+  },
+  "331": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "紫龍",
+   "name_en": "Shiryu"
+  },
+  "334": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "氷河",
+   "name_en": "Hyoga"
+  },
+  "337": {
+   "nibbles": {
+    "3": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "瞬",
+   "name_en": "Shun"
+  },
+  "340": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "一輝",
+   "name_en": "Ikki"
+  },
+  "344": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ムウ",
+   "name_en": "Muu"
+  },
+  "345": {
+   "nibbles": {
+    "1": 1,
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "太臓",
+   "name_en": "Taizo"
+  },
+  "351": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "あいす",
+   "name_en": "Aisu"
+  },
+  "352": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "リョーマ",
+   "name_en": "Ryoma"
+  },
+  "355": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "手塚",
+   "name_en": "Tezuka"
+  },
+  "358": {
+   "nibbles": {
+    "3": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "不二",
+   "name_en": "Fuji"
+  },
+  "361": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "大石／菊丸",
+   "name_en": "Oishi/Eiji"
+  },
+  "364": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "桃城武",
+   "name_en": "Momoshiro"
+  },
+  "367": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "海堂",
+   "name_en": "Kaido"
+  },
+  "373": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "乾",
+   "name_en": "Inui"
+  },
+  "386": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "リナリー",
+   "name_en": "Lenalee"
+  },
+  "394": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "神田",
+   "name_en": "Kanda"
+  },
+  "400": {
+   "nibbles": {
+    "1": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "リーバー",
+   "name_en": "River"
+  },
+  "401": {
+   "nibbles": {
+    "3": 2,
+    "1": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "コムイ",
+   "name_en": "Komui"
+  },
+  "402": {
+   "nibbles": {
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ミランダ",
+   "name_en": "Miranda"
+  },
+  "403": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "クロス元帥",
+   "name_en": "General Cross"
+  },
+  "407": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "Ｌ",
+   "name_en": "L"
+  },
+  "410": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ミサ",
+   "name_en": "Misa"
+  },
+  "416": {
+   "nibbles": {
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "メロ",
+   "name_en": "Mello"
+  },
+  "419": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "アラレ",
+   "name_en": "Arale"
+  },
+  "436": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ガッちゃん",
+   "name_en": "Gatchan"
+  },
+  "440": {
+   "nibbles": {
+    "4": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "千兵衛",
+   "name_en": "Senbei"
+  },
+  "441": {
+   "nibbles": {
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "みどり先生",
+   "name_en": "Midori-Sensei"
+  },
+  "442": {
+   "nibbles": {
+    "2": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "オボッチャマン",
+   "name_en": "Obocchaman"
+  },
+  "443": {
+   "nibbles": {
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ラッキーマン",
+   "name_en": "Lucky Man"
+  },
+  "449": {
+   "nibbles": {
+    "2": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "努力マン",
+   "name_en": "Doryoku Man"
+  },
+  "450": {
+   "nibbles": {
+    "4": 3,
+    "2": 2,
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "悟空",
+   "name_en": "Goku"
+  },
+  "459": {
+   "nibbles": {
+    "2": 2,
+    "4": 2,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "べジータ",
+   "name_en": "Vegeta"
+  },
+  "466": {
+   "nibbles": {
+    "3": 2,
+    "2": 2,
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "超サイヤ人悟飯",
+   "name_en": "Gohan (SSJ)"
+  },
+  "471": {
+   "nibbles": {
+    "1": 1,
+    "4": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ゴテンクス",
+   "name_en": "Gotenks"
+  },
+  "477": {
+   "nibbles": {
+    "3": 1,
+    "1": 3,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ピッコロ",
+   "name_en": "Piccolo"
+  },
+  "482": {
+   "nibbles": {
+    "1": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "フリーザ",
+   "name_en": "Frieza"
+  },
+  "484": {
+   "nibbles": {
+    "1": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "魔人ブウ",
+   "name_en": "Majin Buu"
+  },
+  "487": {
+   "nibbles": {
+    "2": 2,
+    "4": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "クリリン",
+   "name_en": "Krillin"
+  },
+  "490": {
+   "nibbles": {
+    "4": 1,
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "トランクス",
+   "name_en": "Trunks"
+  },
+  "493": {
+   "nibbles": {
+    "1": 1,
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "亀仙人",
+   "name_en": "Master Roshi"
+  },
+  "494": {
+   "nibbles": {
+    "2": 1,
+    "3": 1,
+    "1": 1,
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ブルマ",
+   "name_en": "Bulma"
+  },
+  "496": {
+   "nibbles": {
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ミスター・サタン",
+   "name_en": "Mr. Satan"
+  },
+  "497": {
+   "nibbles": {
+    "3": 1,
+    "4": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ナルト",
+   "name_en": "Naruto"
+  },
+  "506": {
+   "nibbles": {
+    "1": 1,
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "サスケ",
+   "name_en": "Sasuke"
+  },
+  "510": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "サクラ",
+   "name_en": "Sakura"
+  },
+  "517": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "カカシ",
+   "name_en": "Kakashi"
+  },
+  "527": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 4,
+   "name_jp": "自来也",
+   "name_en": "Jiraiya"
+  },
+  "528": {
+   "nibbles": {
+    "4": 2,
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "綱手",
+   "name_en": "Tsunade"
+  },
+  "529": {
+   "nibbles": {
+    "4": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "サイ",
+   "name_en": "Sai"
+  },
+  "530": {
+   "nibbles": {
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "大蛇丸",
+   "name_en": "Orochimaru"
+  },
+  "539": {
+   "nibbles": {
+    "3": 2
+   },
+   "unlinked_obs": 1,
+   "name_jp": "ゴン",
+   "name_en": "Gon"
+  },
+  "559": {
+   "nibbles": {
+    "3": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "レオリオ",
+   "name_en": "Leorio"
+  },
+  "560": {
+   "nibbles": {
+    "2": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ビスケ",
+   "name_en": "Biscuit"
+  },
+  "561": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ジャガー",
+   "name_en": "Jaguar"
+  },
+  "573": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ハミィ",
+   "name_en": "Hamii"
+  },
+  "576": {
+   "nibbles": {
+    "2": 1,
+    "4": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "高菜",
+   "name_en": "Takane"
+  },
+  "577": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ハメ字郎",
+   "name_en": "Jirou"
+  },
+  "585": {
+   "nibbles": {
+    "3": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "パピヨン",
+   "name_en": "Papillon"
+  },
+  "586": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "Ｃブラボー",
+   "name_en": "Captain Bravo"
+  },
+  "587": {
+   "nibbles": {
+    "2": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "斗貴子",
+   "name_en": "Tokiko"
+  },
+  "588": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "イヴ",
+   "name_en": "Eve"
+  },
+  "593": {
+   "nibbles": {
+    "1": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "トレイン",
+   "name_en": "Train"
+  },
+  "599": {
+   "nibbles": {
+    "1": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "スヴェン",
+   "name_en": "Sven"
+  },
+  "602": {
+   "nibbles": {
+    "3": 2,
+    "1": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "サヤ",
+   "name_en": "Saya"
+  },
+  "603": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "キョウコ",
+   "name_en": "Kyoko"
+  },
+  "604": {
+   "nibbles": {
+    "3": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "一護",
+   "name_en": "Ichigo"
+  },
+  "612": {
+   "nibbles": {
+    "4": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ルキア",
+   "name_en": "Rukia"
+  },
+  "618": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "阿散井恋次",
+   "name_en": "Renji"
+  },
+  "633": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "チャド",
+   "name_en": "Chad"
+  },
+  "636": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "井上織姫",
+   "name_en": "Orihime"
+  },
+  "639": {
+   "nibbles": {
+    "1": 2,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "夜一",
+   "name_en": "Yoruichi"
+  },
+  "642": {
+   "nibbles": {
+    "1": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "コン",
+   "name_en": "Kon"
+  },
+  "644": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "朽木白哉",
+   "name_en": "Byakuya"
+  },
+  "653": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "浦原喜助",
+   "name_en": "Urahara"
+  },
+  "655": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "市丸ギン",
+   "name_en": "Gin Ichimaru"
+  },
+  "663": {
+   "nibbles": {
+    "1": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "妲己",
+   "name_en": "Dakki"
+  },
+  "666": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "王天君",
+   "name_en": "Ou Tenkun"
+  },
+  "667": {
+   "nibbles": {
+    "4": 2,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "四不象",
+   "name_en": "Sipuxiang"
+  },
+  "668": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 2,
+   "name_jp": "ケンシロウ",
+   "name_en": "Kenshiro"
+  },
+  "680": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "トキ",
+   "name_en": "Toki"
+  },
+  "683": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "レイ",
+   "name_en": "Rei"
+  },
+  "686": {
+   "nibbles": {
+    "1": 2,
+    "4": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ユリア",
+   "name_en": "Yuria"
+  },
+  "687": {
+   "nibbles": {
+    "1": 1,
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "バット",
+   "name_en": "Bat"
+  },
+  "688": {
+   "nibbles": {
+    "1": 2,
+    "3": 1,
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "リン",
+   "name_en": "Lin"
+  },
+  "689": {
+   "nibbles": {
+    "1": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ボーボボ",
+   "name_en": "Bo-bobo"
+  },
+  "704": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "天の助",
+   "name_en": "Jelly Jiggler"
+  },
+  "707": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "へっくん",
+   "name_en": "Gasser"
+  },
+  "710": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ビュティ",
+   "name_en": "Beauty"
+  },
+  "713": {
+   "nibbles": {
+    "4": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ガ王",
+   "name_en": "Gaoh"
+  },
+  "716": {
+   "nibbles": {
+    "3": 2,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "破天荒",
+   "name_en": "Hatenko"
+  },
+  "717": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ソフトン",
+   "name_en": "Softon"
+  },
+  "718": {
+   "nibbles": {
+    "3": 3,
+    "1": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "魚雷ガール",
+   "name_en": "Torpedo Girl"
+  },
+  "719": {
+   "nibbles": {
+    "3": 2,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "田楽マン",
+   "name_en": "Dengaku Man"
+  },
+  "720": {
+   "nibbles": {
+    "4": 1,
+    "2": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "サービスマン",
+   "name_en": "Service Man"
+  },
+  "721": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "コパッチ",
+   "name_en": "Kopachi"
+  },
+  "722": {
+   "nibbles": {
+    "3": 2,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ネウロ／弥子",
+   "name_en": "Neuro/Yako"
+  },
+  "728": {
+   "nibbles": {
+    "4": 2,
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "あかねちゃん",
+   "name_en": "Akane-chan"
+  },
+  "729": {
+   "nibbles": {
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "笹塚",
+   "name_en": "Sasazuka"
+  },
+  "730": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "Ｘ",
+   "name_en": "X"
+  },
+  "731": {
+   "nibbles": {
+    "2": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "マキバオー",
+   "name_en": "Makibao"
+  },
+  "738": {
+   "nibbles": {
+    "3": 3,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ムヒョ",
+   "name_en": "Muhyo"
+  },
+  "745": {
+   "nibbles": {
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ロージー",
+   "name_en": "Roji"
+  },
+  "751": {
+   "nibbles": {
+    "2": 1,
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ヨイチ",
+   "name_en": "Yoichi"
+  },
+  "754": {
+   "nibbles": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ビコ",
+   "name_en": "Piko"
+  },
+  "757": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ナナ",
+   "name_en": "Nana"
+  },
+  "758": {
+   "nibbles": {
+    "2": 1,
+    "1": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ペイジ",
+   "name_en": "Peiji"
+  },
+  "765": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "海馬",
+   "name_en": "Kaiba"
+  },
+  "768": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "城之内",
+   "name_en": "Jounouchi"
+  },
+  "769": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "本田",
+   "name_en": "Honda"
+  },
+  "770": {
+   "nibbles": {
+    "4": 4
+   },
+   "unlinked_obs": 0,
+   "name_jp": "杏子",
+   "name_en": "Anzu"
+  },
+  "771": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "幽助",
+   "name_en": "Yusuke"
+  },
+  "790": {
+   "nibbles": {
+    "4": 1,
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "幻海",
+   "name_en": "Genkai"
+  },
+  "791": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ぼたん",
+   "name_en": "Botan"
+  },
+  "792": {
+   "nibbles": {
+    "4": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "剣心",
+   "name_en": "Kenshin"
+  },
+  "799": {
+   "nibbles": {
+    "4": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "左之助",
+   "name_en": "Sanosuke"
+  },
+  "802": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "斎藤一",
+   "name_en": "Saito"
+  },
+  "811": {
+   "nibbles": {
+    "4": 3,
+    "3": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "薫",
+   "name_en": "Kaoru"
+  },
+  "813": {
+   "nibbles": {
+    "4": 2,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "太尊",
+   "name_en": "Taison"
+  },
+  "816": {
+   "nibbles": {
+    "2": 2,
+    "4": 3
+   },
+   "unlinked_obs": 0,
+   "name_jp": "勝嗣",
+   "name_en": "Katsuji"
+  },
+  "817": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "米示",
+   "name_en": "Yoneji"
+  },
+  "818": {
+   "nibbles": {
+    "4": 1,
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "千秋",
+   "name_en": "Chiaki"
+  },
+  "819": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "マサさん",
+   "name_en": "Masa-San"
+  },
+  "820": {
+   "nibbles": {
+    "4": 3,
+    "1": 1,
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ルフィ",
+   "name_en": "Luffy"
+  },
+  "829": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ゾロ",
+   "name_en": "Zoro"
+  },
+  "836": {
+   "nibbles": {
+    "2": 2,
+    "4": 1,
+    "1": 1,
+    "3": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "ナミ",
+   "name_en": "Nami"
+  },
+  "850": {
+   "nibbles": {
+    "4": 1,
+    "2": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "ロビン",
+   "name_en": "Robin"
+  },
+  "856": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "フランキー",
+   "name_en": "Franky"
+  },
+  "862": {
+   "nibbles": {
+    "4": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "ウソップ",
+   "name_en": "Usopp"
+  },
+  "865": {
+   "nibbles": {
+    "3": 1
+   },
+   "unlinked_obs": 0,
+   "name_jp": "チョッパー",
+   "name_en": "Chopper"
+  },
+  "869": {
+   "nibbles": {
+    "2": 1
+   },
+   "unlinked_obs": 1,
+   "name_jp": "キウイ／モズ",
+   "name_en": "Kiwi/Mozu"
+  },
+  "888": {
+   "nibbles": {
+    "4": 15,
+    "3": 11,
+    "2": 8,
+    "1": 2
+   },
+   "unlinked_obs": 0,
+   "name_jp": "必魂無制限",
+   "name_en": null
+  }
+ },
+ "per_id_standalone": {
+  "32": {
+   "name_jp": "石丸",
+   "name_en": "Ishimaru",
+   "battle_adjacent_obs": 0,
+   "not_adjacent_obs": 1
+  },
+  "72": {
+   "name_jp": "ビアンキ",
+   "name_en": "Bianchi",
+   "battle_adjacent_obs": 0,
+   "not_adjacent_obs": 1
+  },
+  "110": {
+   "name_jp": "新八",
+   "name_en": "Shinpachi",
+   "battle_adjacent_obs": 0,
+   "not_adjacent_obs": 1
+  },
+  "157": {
+   "name_jp": "バッファローマン",
+   "name_en": "Buffalo Man",
+   "battle_adjacent_obs": 0,
+   "not_adjacent_obs": 1
+  },
+  "301": {
+   "name_jp": "ジャイロ",
+   "name_en": "Gyro",
+   "battle_adjacent_obs": 1,
+   "not_adjacent_obs": 1
+  },
+  "343": {
+   "name_jp": "アテナ",
+   "name_en": "Athena",
+   "battle_adjacent_obs": 7,
+   "not_adjacent_obs": 2
+  },
+  "495": {
+   "name_jp": "界王さま",
+   "name_en": "King Kaio",
+   "battle_adjacent_obs": 3,
+   "not_adjacent_obs": 1
+  },
+  "650": {
+   "name_jp": "斬月",
+   "name_en": "Zangetsu",
+   "battle_adjacent_obs": 1,
+   "not_adjacent_obs": 0
+  },
+  "651": {
+   "name_jp": "黒崎一心",
+   "name_en": "Isshin",
+   "battle_adjacent_obs": 1,
+   "not_adjacent_obs": 0
+  },
+  "737": {
+   "name_jp": "チュウ兵衛",
+   "name_en": "Chuubei",
+   "battle_adjacent_obs": 1,
+   "not_adjacent_obs": 1
+  },
+  "812": {
+   "name_jp": "比古清十郎",
+   "name_en": "Hiko",
+   "battle_adjacent_obs": 2,
+   "not_adjacent_obs": 7
+  },
+  "868": {
+   "name_jp": "シャンクス",
+   "name_en": "Shanks",
+   "battle_adjacent_obs": 5,
+   "not_adjacent_obs": 5
+  },
+  "870": {
+   "name_jp": "Ａコマ",
+   "name_en": null,
+   "battle_adjacent_obs": 1,
+   "not_adjacent_obs": 0
+  },
+  "871": {
+   "name_jp": "Ｂコマ",
+   "name_en": null,
+   "battle_adjacent_obs": 1,
+   "not_adjacent_obs": 1
+  },
+  "872": {
+   "name_jp": "Ｃコマ",
+   "name_en": null,
+   "battle_adjacent_obs": 0,
+   "not_adjacent_obs": 1
+  }
+ },
+ "notes": [
+  "nibble values 1-4 = link direction enum; see direction_enum.",
+  "linkable = observed linked in presets OR matching the discriminator pattern; standalone = matches the non-link discriminator pattern; unknown = no evidence either way.",
+  "Adjacency rule: the cell in the direction the arrow points must be occupied by the linked battle koma."
+ ]
+}

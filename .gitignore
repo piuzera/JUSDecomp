@@ -1,0 +1,141 @@
+# =============================================================================
+# JUS Decomp — .gitignore
+#
+# Legal policy: original Nintendo/Bandai game data and ROM-derived binaries are
+# NEVER committed. Users must provide their own legally dumped copy of the game.
+# Only original code, docs, scripts, configs, and RE-derived metadata live here.
+# =============================================================================
+
+# ------------------------------------------------------------------
+# Original game data (never commit)
+# ------------------------------------------------------------------
+rom/
+extract/
+*.nds
+*.sav
+
+# ------------------------------------------------------------------
+# Proprietary / external tools and toolchains (acquire separately)
+# ------------------------------------------------------------------
+# ds-decomp CLI (binary) — see decomp/docs/PROJECT.md
+tools/dsd/
+# Metrowerks CodeWarrior toolchain — see decomp/docs/NITROSDK.md
+tools/mwccarm/
+# JUSToolkit reference clone — re-clone from https://github.com/priverop/JUSToolkit
+tools/JUSToolkit/
+# ndsrecomp runtime/compiler + SM64DS title template — see decomp/docs/NDSRECOMP.md
+# and patches/ for our local modifications
+tools/ndsrecomp/
+tools/supermario64dsrecomp/
+# Local SDL2 runtime bundle
+tools/sdl2/
+sdl2.zip
+
+# ------------------------------------------------------------------
+# ROM-derived banks, extractions, and rebuilt mod payloads
+# (always regenerated from the user's own extract/ + mod sources)
+# ------------------------------------------------------------------
+recomp/generated/
+recomp/live-cache/
+recomp/tools/
+recomp/koma_890/
+recomp/koma_aar/
+recomp/dtx_export/
+recomp/dtx_export_es/
+*.bin
+*.dtx
+*.aar
+
+# Mod payloads (materialized by tools/scripts/mods_manage.py)
+recomp/mods/bin/
+recomp/mods/koma/
+recomp/mods/_fat_*.bin
+recomp/mods/*/out/
+recomp/mods/*/files/
+recomp/game-mod.generated.toml
+# Legacy single-tree overlay output (superseded by mods_manage.py compose)
+recomp/mods.toml
+
+# ------------------------------------------------------------------
+# Runtime / session artifacts
+# ------------------------------------------------------------------
+recomp/*.log
+recomp/ladder-*
+recomp/jus-play-coverage-*.json
+recomp/jus-trace-coverage-*.json
+recomp/jus_fresh_test-coverage-*.json
+jus-coverage-*.json
+recomp/probe-*.json
+recomp/probe-*.log
+recomp/b8-events.json
+recomp/ownsave-analysis.json
+recomp/vram-bands.json
+recomp/*.shots/
+recomp/savebug-shot-*.png
+recomp/koma-shot-*.png
+recomp/roundtrip_*.png
+recomp/koma_870_art.png
+recomp/koma_art_test.png
+
+# One-off analysis outputs / dumps
+recomp/an*.txt
+recomp/cc*.txt
+recomp/analyze-*-out.txt
+recomp/arm9-card-cluster-disasm.txt
+recomp/chrb.dump.txt
+recomp/chrs.dump.txt
+recomp/corpus_flags.txt
+recomp/deck_live.txt
+recomp/driver_disasm.txt
+recomp/flags_*.txt
+recomp/infoname*.txt
+recomp/koma-patch*.txt
+recomp/komatxt.dump.txt
+recomp/ntbl_*.txt
+recomp/pname.dump.txt
+recomp/preset_*.txt
+recomp/ram-*.txt
+recomp/rt_err.txt
+recomp/save_islands.txt
+recomp/save_layout_report.txt
+recomp/savebug_compare.txt
+recomp/savebug_ram_diff.txt
+
+# ------------------------------------------------------------------
+# Internal working docs (agent handoffs; knowledge persists in decomp/docs/)
+# ------------------------------------------------------------------
+plans/
+
+# ------------------------------------------------------------------
+# Build artifacts
+# ------------------------------------------------------------------
+build/
+target/
+build-mingw/
+dist/
+*.o
+*.elf
+*.bin.tmp
+*.tmp
+*.exe
+*.dll
+
+# ------------------------------------------------------------------
+# Python
+# ------------------------------------------------------------------
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# ------------------------------------------------------------------
+# IDE / OS metadata
+# ------------------------------------------------------------------
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/

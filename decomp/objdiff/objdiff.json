@@ -1,0 +1,159 @@
+{
+  "min_version": "2.3.2",
+  "target_dir": "../../build",
+  "base_dir": "../../build/delinks",
+  "build_base": true,
+  "build_target": false,
+  "watch_patterns": [
+    "*.c",
+    "*.cp",
+    "*.cpp",
+    "*.cxx",
+    "*.h",
+    "*.hp",
+    "*.hpp",
+    "*.hxx",
+    "*.py",
+    "*.yml",
+    "*.yaml",
+    "*.txt",
+    "*.json"
+  ],
+  "units": [
+    {
+      "name": "_dsd_gap@main_5",
+      "target_path": "../../build/delinks/_dsd_gap@main_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov000_4",
+      "target_path": "../../build/delinks/_dsd_gap@ov000_4.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov001_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov001_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov002_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov002_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov003_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov003_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov004_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov004_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov005_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov005_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov006_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov006_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov007_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov007_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov008_3",
+      "target_path": "../../build/delinks/_dsd_gap@ov008_3.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov010_3",
+      "target_path": "../../build/delinks/_dsd_gap@ov010_3.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov011_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov011_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@ov012_5",
+      "target_path": "../../build/delinks/_dsd_gap@ov012_5.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@itcm_0",
+      "target_path": "../../build/delinks/_dsd_gap@itcm_0.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "_dsd_gap@dtcm_1",
+      "target_path": "../../build/delinks/_dsd_gap@dtcm_1.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    }
+  ]
+}

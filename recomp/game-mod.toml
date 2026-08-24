@@ -1,0 +1,28 @@
+# game-mod.toml — base config template for modded runs of the recomp runner.
+#
+# Do NOT hand-edit [[mods.overlays]] entries here. Run:
+#
+#     py tools/scripts/mods_manage.py compose
+#
+# to generate recomp/game-mod.generated.toml (this base config plus the
+# resolved overlays of every enabled pack under recomp/mods/).
+# recomp/play_mod.cmd prefers the generated config automatically.
+# The stock ROM is never modified; overlays shadow gamecard reads at runtime.
+# See decomp/docs/MODS.md and decomp/docs/NEW_KOMA.md §10.
+
+[game]
+sha1 = "ba58e20ee60eb81c33dcd4934a21271baa9f954a"
+
+[display]
+screen_layout = "stacked"
+adaptive_widescreen = "none"
+
+[system]
+startup_mode = "automatic"
+
+[cartridge]
+# The 64 KiB backup chip is an EEPROM: the runner's default flash model
+# AND-programs bytes and silently corrupts re-saves (see
+# decomp/docs/SAVEBUG-SESSION3.md). Keep save_type = "eeprom".
+save_type = "eeprom"
+save_size = 65536
