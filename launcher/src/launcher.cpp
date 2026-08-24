@@ -47,12 +47,13 @@ enum {
     IDC_ROM_LABEL = 100, IDC_ROM_STATUS, IDC_PLAY, IDC_CHANGE_ROM,
     IDC_SETTINGS, IDC_GUIDE, IDC_OPEN_LOG,
     // settings dialog
-    IDC_MODLIST = 200, IDC_LAYOUT_COMBO, IDC_WIDESCREEN_COMBO,
+    IDC_MODLIST = 200, IDC_LAYOUT_COMBO,
     IDC_SAVE_LABEL, IDC_IMPORT_SAVE, IDC_DELETE_SAVE,
     IDC_CTRL_LIST, IDC_CTRL_CONFIGURE, IDC_CTRL_RESET,
     IDC_OK, IDC_CANCEL,
     // capture dialog
-    IDC_CAP_DEVICE = 300, IDC_CAP_START, IDC_CAP_STATE, IDC_CAP_DONE,
+    IDC_CAP_DEVICE = 300, IDC_CAP_START, IDC_CAP_SKIP, IDC_CAP_STATE,
+    IDC_CAP_DONE,
     // rom progress
     IDC_PROG_TEXT = 400, IDC_PROG_BAR
 };
@@ -167,7 +168,6 @@ struct Settings {
     std::string rom_path;
     std::vector<std::string> mods_enabled;
     std::string display_layout = "stacked";
-    std::string adaptive_widescreen = "none";
     std::string save_path;   // empty -> default under user dir
     std::vector<std::string> controller_mappings; // SDL2 mapping strings
 };
@@ -194,8 +194,6 @@ static void load_settings() {
         jz::Value root = jz::Value::parse(text);
         g_settings.rom_path = root.get_str("rom_path");
         g_settings.display_layout = root.get_str("display_layout", "stacked");
-        g_settings.adaptive_widescreen =
-            root.get_str("adaptive_widescreen", "none");
         g_settings.save_path = root.get_str("save_path");
         for (const jz::Value& v : root.get_arr("mods_enabled"))
             if (v.t == jz::Value::Str) g_settings.mods_enabled.push_back(v.s);
@@ -212,7 +210,6 @@ static void save_settings() {
     root.o["version"] = jz::Value((long long)1);
     root.o["rom_path"] = jz::Value(g_settings.rom_path);
     root.o["display_layout"] = jz::Value(g_settings.display_layout);
-    root.o["adaptive_widescreen"] = jz::Value(g_settings.adaptive_widescreen);
     root.o["save_path"] = jz::Value(g_settings.save_path);
     jz::Value mods = jz::Value::arr();
     for (const auto& m : g_settings.mods_enabled) mods.a.push_back(jz::Value(m));
@@ -358,7 +355,7 @@ static std::string compose_run_config() {
     out += "sha1 = \"" + std::string(STOCK_SHA1) + "\"\n\n";
     out += "[display]\n";
     out += "screen_layout = \"" + g_settings.display_layout + "\"\n";
-    out += "adaptive_widescreen = \"" + g_settings.adaptive_widescreen + "\"\n\n";
+    out += "adaptive_widescreen = \"none\"\n\n";
     out += "[system]\nstartup_mode = \"automatic\"\n\n";
     out += "[cartridge]\nsave_type = \"eeprom\"\nsave_size = 65536\n";
     for (const auto& mod : g_mods) {
@@ -604,9 +601,6 @@ static void settings_apply(HWND dlg) {
     int layout = (int)SendMessageW(GetDlgItem(dlg, IDC_LAYOUT_COMBO),
                                    CB_GETCURSEL, 0, 0);
     g_settings.display_layout = layout == 0 ? "stacked" : "separate";
-    int ws = (int)SendMessageW(GetDlgItem(dlg, IDC_WIDESCREEN_COMBO),
-                               CB_GETCURSEL, 0, 0);
-    g_settings.adaptive_widescreen = ws == 0 ? "none" : "auto";
     save_settings();
     write_merged_controller_db();
 }
@@ -628,8 +622,11 @@ static void import_save(HWND parent) {
                     g_settings.save_path = w2u(p);
                     CoTaskMemFree(p);
                     save_settings();
-                    show_info(parent, L"Save file selected. It will be used from now "
-                                      L"on. Manage it from Settings → Save data.");
+                    show_info(parent, L"Save file selected and will be used from "
+                                      L"now on.\n\nNote: importing saves is "
+                                      L"experimental — the game may still show the "
+                                      L"first-boot sequence even with a valid save "
+                                      L"(a known issue we are investigating).");
                 }
                 item->Release();
             }
@@ -716,20 +713,35 @@ static void cap_advance(HWND dlg) {
     g_cap.waiting_release = true;
     if (g_cap.step == CapStep::Done) {
         // build mapping string
+        // Emit only the buttons that were actually captured (skipped steps
+        // stay unassigned and are omitted from the mapping string).
         std::string m = g_cap.guid + "," + g_cap.name + ",";
-        m += "a:" + g_cap.a + ",b:" + g_cap.b + ",x:" + g_cap.x + ",y:" + g_cap.y + ",";
-        m += "back:" + g_cap.back + ",start:" + g_cap.start + ",";
-        m += "leftshoulder:" + g_cap.lb + ",rightshoulder:" + g_cap.rb + ",";
-        m += "lefttrigger:" + g_cap.lt + ",righttrigger:" + g_cap.rt + ",";
-        m += "dpup:" + g_cap.dpu + ",dpdown:" + g_cap.dpd + ",dpleft:" + g_cap.dpl +
-             ",dpright:" + g_cap.dpr + ",";
-        m += "leftx:" + g_cap.lsx + ",lefty:" + g_cap.lsy + ",rightx:" + g_cap.rsx +
-             ",righty:" + g_cap.rsy + ",platform:Windows,";
+        const std::pair<const char*, const std::string*> fields[] = {
+            {"a", &g_cap.a}, {"b", &g_cap.b}, {"x", &g_cap.x}, {"y", &g_cap.y},
+            {"back", &g_cap.back}, {"start", &g_cap.start},
+            {"leftshoulder", &g_cap.lb}, {"rightshoulder", &g_cap.rb},
+            {"lefttrigger", &g_cap.lt}, {"righttrigger", &g_cap.rt},
+            {"dpup", &g_cap.dpu}, {"dpdown", &g_cap.dpd},
+            {"dpleft", &g_cap.dpl}, {"dpright", &g_cap.dpr},
+            {"leftx", &g_cap.lsx}, {"lefty", &g_cap.lsy},
+            {"rightx", &g_cap.rsx}, {"righty", &g_cap.rsy},
+        };
+        for (const auto& f : fields)
+            if (!f.second->empty()) {
+                m += f.first;
+                m += ":";
+                m += *f.second;
+                m += ",";
+            }
+        m += "platform:Windows,";
         g_cap.map_str = m;
         g_settings.controller_mappings.push_back(m);
         save_settings();
-        SetWindowTextW(GetDlgItem(dlg, IDC_CAP_STATE),
-                       L"Mapping saved! Close this window.");
+        std::wstring done = L"Mapping saved! Close this window.";
+        if (g_cap.a.empty() || g_cap.b.empty())
+            done += L"\n\nNote: some buttons were left unassigned — you can "
+                    L"reconfigure any time.";
+        SetWindowTextW(GetDlgItem(dlg, IDC_CAP_STATE), done.c_str());
         return;
     }
     SetWindowTextW(GetDlgItem(dlg, IDC_CAP_STATE), step_label(g_cap.step));
@@ -895,9 +907,14 @@ static LRESULT CALLBACK capture_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) 
                             WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 340, 14, 110,
                             24, hwnd, (HMENU)IDC_CAP_START,
                             GetModuleHandleW(nullptr), nullptr);
+            CreateWindowExW(0, L"BUTTON", L"Skip",
+                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 340, 44, 110,
+                            24, hwnd, (HMENU)IDC_CAP_SKIP,
+                            GetModuleHandleW(nullptr), nullptr);
             HWND st = CreateWindowExW(0, L"STATIC",
-                                      L"Select your device and press Start.",
-                                      WS_CHILD | WS_VISIBLE, 20, 60, 430, 24,
+                                      L"Select your device and press Start. "
+                                      L"Skip leaves the current button unassigned.",
+                                      WS_CHILD | WS_VISIBLE, 20, 60, 430, 40,
                                       hwnd, (HMENU)IDC_CAP_STATE,
                                       GetModuleHandleW(nullptr), nullptr);
             SendMessageW(st, WM_SETFONT, (WPARAM)g_font, TRUE);
@@ -943,6 +960,10 @@ static LRESULT CALLBACK capture_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) 
                     EnableWindow(GetDlgItem(hwnd, IDC_CAP_START), FALSE);
                     break;
                 }
+                case IDC_CAP_SKIP:
+                    if (g_cap.joy && g_cap.step != CapStep::Done)
+                        cap_advance(hwnd);
+                    break;
                 case IDC_CAP_DONE:
                     DestroyWindow(hwnd);
                     break;
@@ -1022,25 +1043,12 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
             SendMessageW(layout, CB_SETCURSEL,
                          g_settings.display_layout == "separate" ? 1 : 0, 0);
 
-            CreateWindowExW(0, L"STATIC", L"Widescreen", WS_CHILD | WS_VISIBLE,
-                            380, 65, 150, 18, hwnd, nullptr,
-                            GetModuleHandleW(nullptr), nullptr);
-            HWND ws = CreateWindowExW(0, L"COMBOBOX", L"",
-                                      WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST,
-                                      380, 85, 140, 120, hwnd,
-                                      (HMENU)IDC_WIDESCREEN_COMBO,
-                                      GetModuleHandleW(nullptr), nullptr);
-            SendMessageW(ws, CB_ADDSTRING, 0, (LPARAM)L"Original (none)");
-            SendMessageW(ws, CB_ADDSTRING, 0, (LPARAM)L"Automatic");
-            SendMessageW(ws, CB_SETCURSEL,
-                         g_settings.adaptive_widescreen == "auto" ? 1 : 0, 0);
-
             // controllers
             CreateWindowExW(0, L"STATIC", L"Controller", WS_CHILD | WS_VISIBLE,
-                            380, 125, 150, 18, hwnd, nullptr,
+                            380, 65, 150, 18, hwnd, nullptr,
                             GetModuleHandleW(nullptr), nullptr);
             CreateWindowExW(0, L"BUTTON", L"Configure controller...",
-                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 380, 145,
+                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 380, 85,
                             150, 24, hwnd, (HMENU)IDC_CTRL_CONFIGURE,
                             GetModuleHandleW(nullptr), nullptr);
 

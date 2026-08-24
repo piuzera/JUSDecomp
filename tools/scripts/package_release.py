@@ -119,6 +119,14 @@ def main() -> int:
                     help="create portable.txt so settings live next to the exe")
     args = ap.parse_args()
 
+    # Preserve the user's portable-mode data (settings/saves) across repacks.
+    backup_user = DIST / ".." / ".data-user-backup"
+    if (DIST / "data-user").is_dir():
+        if backup_user.exists():
+            shutil.rmtree(backup_user)
+        shutil.move(str(DIST / "data-user"), str(backup_user))
+    had_portable = (DIST / "portable.txt").is_file()
+
     if DIST.exists():
         shutil.rmtree(DIST)
     (DIST / "app" / "bios").mkdir(parents=True, exist_ok=True)
@@ -172,10 +180,13 @@ def main() -> int:
     if (ROOT / "CHANGELOG.md").is_file():
         shutil.copy2(ROOT / "CHANGELOG.md", DIST / "docs" / "CHANGELOG.txt")
 
-    if args.portable:
+    if args.portable or had_portable:
         (DIST / "portable.txt").write_text(
             "Portable mode: settings are stored next to this executable.\n",
             encoding="utf-8")
+
+    if backup_user.is_dir():
+        shutil.move(str(backup_user), str(DIST / "data-user"))
 
     print(f"\nBundle ready at {DIST}")
     return 0

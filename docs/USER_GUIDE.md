@@ -26,7 +26,9 @@ only the **stock, unmodified** dump (64 MB, sha1
 - The game uses DS buttons + touch. Your gamepad is mapped automatically for
   most devices.
 - **Wrong buttons?** Open **Settings → Configure controller...** and follow
-  the on-screen prompts. Your mapping is saved and reused every session.
+  the on-screen prompts. Press **Skip** to leave any button unassigned — only
+  the buttons you actually set are mapped. Your mapping is saved and reused
+  every session.
 - Touchscreen: move the mouse and click to tap (in the default window), or
   use the right stick in separate-screen mode.
 - Save progress is automatic, exactly like the original cartridge.
@@ -45,7 +47,9 @@ layers on top at runtime.
 - Your save lives in `%APPDATA%\JUSDecomp\jus-play.sav` (portable mode:
   next to the executable).
 - **Import save file...** lets you continue an existing `.sav` from an
-  emulator or cartridge backup.
+  emulator or cartridge backup. *Experimental:* the game may still show the
+  first-boot sequence even with a valid imported save — a known issue we are
+  investigating.
 - **Delete save (fresh start)** erases all in-game progress.
 
 ## 5. Troubleshooting
@@ -55,8 +59,9 @@ layers on top at runtime.
 | "This is not an unmodified Jump Ultimate Stars dump" | Use a clean dump of the game you own (see §1). |
 | "This looks like a trimmed or modified ROM" | Trimming tools strip the ROM; re-dump without trimming. |
 | The game stopped unexpectedly | Your progress is safe. Click **Open log** on the main window and share `launcher.log` + `game.log` when asking for help. |
-| Controller buttons are wrong | Settings → Configure controller... and follow the prompts. |
-| Game runs slowly | Enable Settings → Display → Adaptive widescreen "Original", close other GPU apps. |
+| Controller buttons are wrong | Settings → Configure controller... and follow the prompts (press **Skip** for anything you don't use). |
+| I imported a 100% save but the intro still plays | Known issue: imported saves aren't recognized as non-blank yet. The file is loaded correctly; a fix is being investigated. |
+| Game runs slowly | Close other GPU-heavy apps and keep the window size modest. |
 | Black screen / graphics errors | Update your GPU driver. |
 
 ## 6. FAQ
