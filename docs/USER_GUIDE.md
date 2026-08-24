@@ -46,11 +46,14 @@ layers on top at runtime.
 
 - Your save lives in `%APPDATA%\JUSDecomp\jus-play.sav` (portable mode:
   next to the executable).
-- **Import save file...** lets you continue an existing `.sav` from an
-  emulator or cartridge backup. *Experimental:* the game may still show the
-  first-boot sequence even with a valid imported save — a known issue we are
-  investigating.
-- **Delete save (fresh start)** erases all in-game progress.
+- **Import save file...** copies an existing `.sav` (from an emulator or a
+  cartridge backup) into the app's own working save. Your original file is
+  never modified, referenced, or deleted. *Experimental:* the game may still
+  show the first-boot sequence even with a valid imported save — a known
+  issue we are investigating.
+- **Delete save (fresh start)** erases the app's own working save. If the
+  save in use lives outside the app's folders, it is only detached — never
+  deleted.
 
 ## 5. Troubleshooting
 

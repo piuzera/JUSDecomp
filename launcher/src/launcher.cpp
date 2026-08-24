@@ -614,19 +614,46 @@ static void import_save(HWND parent) {
         COMDLG_FILTERSPEC specs[] = {{L"Save file (*.sav)", L"*.sav"},
                                      {L"All files (*.*)", L"*.*"}};
         dlg->SetFileTypes(2, specs);
+        dlg->SetTitle(L"Choose a save file to import");
         if (SUCCEEDED(dlg->Show(parent))) {
             IShellItem* item = nullptr;
             if (SUCCEEDED(dlg->GetResult(&item))) {
                 PWSTR p = nullptr;
                 if (SUCCEEDED(item->GetDisplayName(SIGDN_FILESYSPATH, &p))) {
-                    g_settings.save_path = w2u(p);
+                    std::wstring src = p;
                     CoTaskMemFree(p);
-                    save_settings();
-                    show_info(parent, L"Save file selected and will be used from "
-                                      L"now on.\n\nNote: importing saves is "
-                                      L"experimental — the game may still show the "
-                                      L"first-boot sequence even with a valid save "
-                                      L"(a known issue we are investigating).");
+
+                    // The original file is NEVER referenced or modified: we
+                    // validate it, then copy it in as the app's working save.
+                    WIN32_FILE_ATTRIBUTE_DATA fa;
+                    if (!GetFileAttributesExW(src.c_str(), GetFileExInfoStandard,
+                                              &fa) ||
+                        fa.nFileSizeHigh != 0 || fa.nFileSizeLow != 65536) {
+                        show_error(parent, L"That file is not a Jump Ultimate "
+                                           L"Stars save (expected a 64 KiB .sav "
+                                           L"file).");
+                    } else if (MessageBoxW(parent,
+                                L"Replace the app's current save with this "
+                                L"file?\n\nA copy is made inside the app; the "
+                                L"original file is never modified or deleted.",
+                                L"Import save",
+                                MB_YESNO | MB_ICONQUESTION) == IDYES) {
+                        ensure_dir(user_dir());
+                        if (CopyFileW(src.c_str(), default_save_path().c_str(),
+                                      FALSE)) {
+                            g_settings.save_path.clear();
+                            save_settings();
+                            show_info(parent,
+                                      L"Save imported — a copy is now the app's "
+                                      L"working save.\n\nNote: importing saves "
+                                      L"is experimental — the game may still "
+                                      L"show the first-boot sequence even with "
+                                      L"a valid save (a known issue we are "
+                                      L"investigating).");
+                        } else {
+                            show_error(parent, L"The save could not be copied.");
+                        }
+                    }
                 }
                 item->Release();
             }
@@ -637,15 +664,26 @@ static void import_save(HWND parent) {
 }
 
 static void delete_save(HWND parent) {
-    std::wstring sp = g_settings.save_path.empty() ? default_save_path()
-                                                   : u2w(g_settings.save_path);
-    if (MessageBoxW(parent,
-                    L"Delete the save file?\n\nThis resets all in-game "
-                    L"progress and cannot be undone.",
-                    L"Delete save", MB_YESNO | MB_ICONWARNING) == IDYES) {
-        if (GetFileAttributesW(sp.c_str()) != INVALID_FILE_ATTRIBUTES) {
-            DeleteFileW(sp.c_str());
-        }
+    // SAFETY: only files inside the app's own directories may ever be
+    // deleted. Anything else (e.g. an imported original on another disk)
+    // is merely detached — never deleted.
+    std::wstring active = g_settings.save_path.empty() ? default_save_path()
+                                                       : u2w(g_settings.save_path);
+    bool ours = active.rfind(user_dir(), 0) == 0 || active.rfind(app_dir(), 0) == 0;
+    std::wstring msg = L"Delete the app's save file?\n\n"
+                       L"This resets all in-game progress and cannot be undone.";
+    if (!ours)
+        msg += L"\n\nThe save file currently in use is outside this app's "
+               L"folders — it will only be detached, NOT deleted from disk.";
+    if (MessageBoxW(parent, msg.c_str(), L"Delete save",
+                    MB_YESNO | MB_ICONWARNING) == IDYES) {
+        if (ours && GetFileAttributesW(active.c_str()) != INVALID_FILE_ATTRIBUTES)
+            DeleteFileW(active.c_str());
+        // also clear the default working save so the next run is truly fresh
+        std::wstring work = default_save_path();
+        if (work != active &&
+            GetFileAttributesW(work.c_str()) != INVALID_FILE_ATTRIBUTES)
+            DeleteFileW(work.c_str());
         g_settings.save_path.clear();
         save_settings();
         show_info(parent, L"Save file deleted. The game will start fresh next time.");

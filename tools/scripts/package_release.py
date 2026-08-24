@@ -120,15 +120,24 @@ def main() -> int:
     args = ap.parse_args()
 
     # Preserve the user's portable-mode data (settings/saves) across repacks.
+    # Copy (not move) so a locked file (e.g. in-game save while playing) is
+    # survivable, and restore afterwards without destroying fresh content.
     backup_user = DIST / ".." / ".data-user-backup"
     if (DIST / "data-user").is_dir():
         if backup_user.exists():
             shutil.rmtree(backup_user)
-        shutil.move(str(DIST / "data-user"), str(backup_user))
+        shutil.copytree(DIST / "data-user", backup_user)
     had_portable = (DIST / "portable.txt").is_file()
 
+    def _rename_locked_aside(func, path, exc):
+        # A running JUSDecomp.exe cannot be deleted, but it CAN be renamed.
+        try:
+            os.rename(path, path + ".old")
+        except OSError:
+            pass  # leave it; still locked (cleaned up on a later run)
+
     if DIST.exists():
-        shutil.rmtree(DIST)
+        shutil.rmtree(DIST, onexc=_rename_locked_aside)
     (DIST / "app" / "bios").mkdir(parents=True, exist_ok=True)
     (DIST / "data").mkdir(parents=True, exist_ok=True)
     (DIST / "docs").mkdir(parents=True, exist_ok=True)
@@ -186,7 +195,16 @@ def main() -> int:
             encoding="utf-8")
 
     if backup_user.is_dir():
-        shutil.move(str(backup_user), str(DIST / "data-user"))
+        shutil.copytree(backup_user, DIST / "data-user", dirs_exist_ok=True)
+        shutil.rmtree(backup_user, ignore_errors=True)
+
+    # leftovers from a previous in-place repack while the app was running
+    for old in DIST.rglob("*.old"):
+        try:
+            os.remove(old)
+        except OSError:
+            print(f"[note] {old} is locked (app running?) — it will be "
+                  f"cleaned up on a later run")
 
     print(f"\nBundle ready at {DIST}")
     return 0
