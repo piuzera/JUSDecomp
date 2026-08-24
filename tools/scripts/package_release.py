@@ -132,12 +132,22 @@ def main() -> int:
     def _rename_locked_aside(func, path, exc):
         # A running JUSDecomp.exe cannot be deleted, but it CAN be renamed.
         try:
-            os.rename(path, path + ".old")
+            p = os.fspath(path)
+            os.rename(p, p + ".old")
         except OSError:
             pass  # leave it; still locked (cleaned up on a later run)
 
     if DIST.exists():
-        shutil.rmtree(DIST, onexc=_rename_locked_aside)
+        # Never remove DIST itself: it may be some process's working
+        # directory (e.g. a terminal cd'd into it). Clear the children only.
+        for child in DIST.iterdir():
+            if child.is_dir() and not child.is_symlink():
+                shutil.rmtree(child, onexc=_rename_locked_aside)
+            else:
+                try:
+                    child.unlink()
+                except OSError:
+                    _rename_locked_aside(None, child, None)
     (DIST / "app" / "bios").mkdir(parents=True, exist_ok=True)
     (DIST / "data").mkdir(parents=True, exist_ok=True)
     (DIST / "docs").mkdir(parents=True, exist_ok=True)
