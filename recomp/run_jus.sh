@@ -15,6 +15,10 @@
 #   instance A: recomp/run_jus.sh interactive   (--instance-index 0 default)
 #   instance B: add --instance-index 1 --local-wireless on --local-wireless-port 11404
 #   (wire both instances with matching port; see ndsrecomp README "local wireless")
+#
+# Wiimmfi online play (experimental bring-up): use the `online` mode below.
+#   machine A: recomp/run_jus.sh online --instance-index 0 --player-name "PlayerA"
+#   machine B: recomp/run_jus.sh online --instance-index 1 --player-name "PlayerB"
 set -e
 SCRIPT_DIR="${0%/*}"
 cd "${SCRIPT_DIR}/.."
@@ -68,12 +72,42 @@ case "$MODE" in
       --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" \
       --live-overlay-cache recomp/live-cache "${@:2}"
     ;;
+  online)
+    # Wiimmfi online play (experimental bring-up — see decomp/docs/NDSRECOMP.md
+    # "Wiimmfi bring-up"). --network on attaches the libslirp NAT backend;
+    # --wfc on + --wfc-provider wiimmfi redirect the guest's DNS to the
+    # Kaeru/Wiimmfi service (178.62.43.212, no-ROM-patch stock-DS route).
+    # --firmware-state-path persists the in-game WFC profile + connection
+    # settings between sessions (it is seeded from the generated firmware, so
+    # the per-install identity MAC carries through).
+    #
+    # Two-PC same-LAN test:
+    #   machine A: recomp/run_jus.sh online --instance-index 0 --player-name "PlayerA"
+    #   machine B: recomp/run_jus.sh online --instance-index 1 --player-name "PlayerB"
+    #   Distinct --instance-index values also keep the Slirp guest LAN
+    #   endpoints apart (10.64.0.0/24 vs 10.64.1.0/24).
+    #
+    # Distinct friend codes require distinct console MACs. Each fresh install
+    # generates its own tools/ndsrecomp/bios/generated-identity.bin, BUT if
+    # machine B's project folder was COPIED from machine A that file is copied
+    # too — delete it on machine B (it regenerates with a new MAC on next
+    # launch) or pass a unique --identity-mac. NOTE: --identity-mac cannot be
+    # combined with --firmware-state-path (the runner refuses), so prefer
+    # deleting the identity file on B.
+    exec "$RUNNER" "$BIOS" --interactive --rom rom/jus.nds \
+      --config recomp/game.toml --startup-mode automatic \
+      --freebios --generated-firmware --boot direct \
+      --save-path recomp/jus.sav \
+      --firmware-state-path recomp/jus.fwstate \
+      --network on --wfc on --wfc-provider wiimmfi \
+      "${@:2}"
+    ;;
   smoke)
     exec "$RUNNER" "$BIOS" "${2:-200000000}" --rom rom/jus.nds \
       --freebios --generated-firmware --boot direct --no-save "${@:3}"
     ;;
   *)
-    echo "usage: $0 interactive|smoke [cycles] [extra runner flags]" >&2
+    echo "usage: $0 interactive|stick|live|online|smoke [cycles] [extra runner flags]" >&2
     exit 2
     ;;
 esac
