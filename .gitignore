@@ -76,6 +76,9 @@ recomp/koma-shot-*.png
 recomp/roundtrip_*.png
 recomp/koma_870_art.png
 recomp/koma_art_test.png
+recomp/*.cap
+recomp/*.pcap
+recomp/*.pcap.txt
 
 # One-off analysis outputs / dumps
 recomp/an*.txt

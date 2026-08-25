@@ -528,3 +528,64 @@ test next:
    save identity; it was not conclusively tested this session (the earlier
    overseas attempt was blocked by the shared-save friend-code collision,
    not by transport).
+
+### Session 3 (2026-08-25) — provider A/B, peer-unicast fix, and the 2P harness
+
+**External-tool assessment (WfcPatcher / WiiLink-Patcher-GUI / wfc-server).**
+Reviewed for the Wiimmfi quest:
+
+- **WfcPatcher** (AdmiralCurtiss): binary-patches the ROM's embedded WFC
+  server URLs. **Not used.** The runner already redirects to Kaeru/Wiimmfi
+  via the DHCP DNS rewrite at the Slirp layer (proven: connection tests +
+  room joins pass on multiple machines), and patching the ROM would change
+  its SHA-1, breaking the `[game].sha1` gate and requiring regeneration of
+  all four JUS banks for zero functional gain. Its residual value is RE
+  reference: where WFC URLs live in DS binaries and the DWC
+  login → GameSpy → NATNEG flow it documents.
+- **WiiLink-Patcher-GUI**: patches **Wii** games to WiiLink channels; wrong
+  platform (Wii, not DS) — not applicable.
+- **wfc.wiilink24.com + WiiLink24/wfc-server**: a real, DS-capable WFC
+  service and its open-source server. WiiLink's own developer page confirms
+  the architecture this project already uses: "this game (and all DS games)
+  only requires a change in DNS settings to work. No additional patches are
+  needed" (the patches on that page are Wii Gecko codes). A new **`wiilink`**
+  provider (DS DNS primary `167.235.229.36`, secondary `1.1.1.1`) was added
+  to [`wfc_provider.cpp`](../tools/ndsrecomp/runner/src/net/wfc_provider.cpp)
+  for A/B testing against the existing `kaeru`/`wiimmfi` route. The runner's
+  `local`/`local-oracle` providers already target a locally-hosted server.
+
+**Peer-unicast fix (broadcast-vs-unicast hypothesis).** Implemented and
+built on branch `wiimmfi-80430-local-oracle`: `LocalWfcPeerBridge` now
+rewrites the Ethernet destination of relayed peer frames to the receiving
+guest's own MAC (unicast-to-self) instead of broadcast. New flag
+`--wfc-peer-unicast on|off` (default **on**; `off` = the pre-fix broadcast
+behavior MKDS tolerated), mirrored as `network.wfc.peer_unicast` in
+game.toml. Verified: clean rebuild, `wfc_provider_test` passes, headless
+smokes pass for both instances with `wiilink`/`wiimmfi` providers,
+`--wfc-peer-unicast` both ways, and `--net-capture-out`; the capture is
+taken at the backend boundary so the rewritten dst is visible in the pcap.
+
+**2P same-machine harness.** New launcher
+[`recomp/run_jus_2p.cmd`](../recomp/run_jus_2p.cmd): two interactive
+instances (indices 0/1, debug ports 19842/19843, distinct fresh saves +
+firmware-state, loopback peer relay on 27610/27611, `--net-capture-out` on
+both). Provider and peer-unicast are A/B-able via environment variables
+(`PROVIDER`, `PEER_UNICAST`, `PLAYER_A/B`, `SAVE_A/B`, `FW_A/B`, `CAP_A/B`).
+This reproduces the Session-2 same-network scenario on a single machine.
+
+**Local-server status.** The dwc-docker rig from
+`tools/ndsrecomp/docs/local-wfc-server.md` needs Docker, which is **not
+installed** on this machine (WSL2 Ubuntu is present; no Docker, no Rust).
+Until Docker or a native `wfc-server` deployment exists, the same-machine
+repro runs against a public provider (`wiimmfi`/`wiilink`); the local
+server matters only for server-side observability of the stalled handshake
+and for keeping iteration off volunteer-run infrastructure.
+
+**Next steps.** (1) Drive `run_jus_2p.cmd` with `PEER_UNICAST=on` and see
+whether the friend battle completes past 80430; decode both captures with
+`tools/ndsrecomp/tools/net_capture_tool.py` + Wireshark if it still stalls.
+(2) A/B `PROVIDER=wiilink` vs `wiimmfi` on the same harness. (3) Stand up a
+local server (verify `wfc-server`'s LICENSE per project policy first; WSL2
+is the likely host) for server-side logs of the match-completion step. (4)
+melonDS oracle cross-check (two instances over its WFC backend). (5)
+world-wide friend battle with distinct fresh saves per machine.

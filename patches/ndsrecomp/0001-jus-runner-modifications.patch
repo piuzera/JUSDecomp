@@ -491,7 +491,7 @@ index 8b5947d..8bd6fd8 100644
              if (mph_touch_sequence.active()) {
                  mph_touch_sequence.tick();
 diff --git a/runner/src/frontend.h b/runner/src/frontend.h
-index c1d5755..43fca56 100644
+index c1d5755..332dcf0 100644
 --- a/runner/src/frontend.h
 +++ b/runner/src/frontend.h
 @@ -2,6 +2,7 @@
@@ -502,7 +502,16 @@ index c1d5755..43fca56 100644
  
  #include "cartridge_config.h"
  
-@@ -152,6 +153,63 @@ struct NdsMphPrimeControlBindings {
+@@ -100,6 +101,8 @@ struct NdsNetworkOptions {
+     std::string pcap_adapter;       // backend == "pcap": empty = auto-select
+     bool wfc_enabled = false;
+     NdsWfcProvider wfc_provider{};
++    bool wfc_peer_unicast = true;   // relay peer-frame delivery: unicast-to-
++                                     // self (JUS 80430 fix) vs broadcast
+ 
+     // ---- Wiimmfi M8: capture/replay at the Ethernet backend boundary ----
+     std::string capture_out;       // --net-capture-out; empty = no live
+@@ -152,6 +155,63 @@ struct NdsMphPrimeControlBindings {
  // own dual-stick adaptation of its keyboard/mouse scheme.
  NdsMphPrimeControlBindings nds_default_mph_pad_bindings();
  
@@ -566,7 +575,7 @@ index c1d5755..43fca56 100644
  struct NdsFrontendOptions {
      // Optional exact cartridge identity from [game]. When present, every
      // title-owned setting in this config is rejected for any other ROM.
-@@ -242,8 +300,26 @@ struct NdsFrontendOptions {
+@@ -242,8 +302,26 @@ struct NdsFrontendOptions {
      NdsCartridgeSaveConfig cartridge_save{};
      NdsNetworkOptions network{};
      NdsLocalWirelessOptions local_wireless{};
@@ -594,7 +603,7 @@ index c1d5755..43fca56 100644
  // Returns false for an unreadable file or an invalid recognized value.
  bool nds_load_frontend_config(const std::string& path,
 diff --git a/runner/src/frontend_config.cpp b/runner/src/frontend_config.cpp
-index 0607a25..2e2ae51 100644
+index 0607a25..31a8426 100644
 --- a/runner/src/frontend_config.cpp
 +++ b/runner/src/frontend_config.cpp
 @@ -4,6 +4,8 @@
@@ -656,7 +665,17 @@ index 0607a25..2e2ae51 100644
  bool nds_parse_cartridge_save_type(const std::string& value,
                                     NdsCartridgeSaveType* out) {
      if (!out) return false;
-@@ -757,6 +802,125 @@ bool nds_load_frontend_config(const std::string& path,
+@@ -664,6 +709,9 @@ bool nds_load_frontend_config(const std::string& path,
+             if (const auto value = (*wfc)["provider"].value<std::string>()) {
+                 options->network.wfc_provider.name = *value;
+             }
++            if (const auto value = (*wfc)["peer_unicast"].value<bool>()) {
++                options->network.wfc_peer_unicast = *value;
++            }
+             if (const auto value = (*wfc)["dns_server"].value<std::string>()) {
+                 uint32_t probe = 0;
+                 if (!nds_parse_ipv4(*value, &probe)) {
+@@ -757,6 +805,125 @@ bool nds_load_frontend_config(const std::string& path,
                  }
              }
          }
@@ -997,10 +1016,19 @@ index de668c9..9b5afef 100644
  void     nds_io_write(uint32_t addr, uint32_t value, uint32_t width);
  void     nds_io_reset();
 diff --git a/runner/src/main.cpp b/runner/src/main.cpp
-index a5b2e32..75a4210 100644
+index a5b2e32..6888307 100644
 --- a/runner/src/main.cpp
 +++ b/runner/src/main.cpp
-@@ -471,6 +471,20 @@ int main(int argc, char** argv) {
+@@ -359,6 +359,8 @@ int main(int argc, char** argv) {
+     std::string cli_wfc_provider;
+     std::string cli_local_wireless_enabled;
+     std::string cli_local_wireless_base_port;
++    std::string cli_wfc_peer_host;
++    std::string cli_wfc_peer_unicast;
+     // Wiimmfi M8: capture/replay at the Ethernet backend boundary.
+     std::string cli_net_capture_out;
+     std::string cli_net_capture_in;
+@@ -471,6 +473,20 @@ int main(int argc, char** argv) {
                      a.c_str());
                  return 2;
              }
@@ -1021,7 +1049,18 @@ index a5b2e32..75a4210 100644
          } else if (a == "--startup-mode" && i + 1 < argc) {
              cli_startup_mode = argv[++i];
          } else if (a == "--boot" && i + 1 < argc) {
-@@ -564,6 +578,9 @@ int main(int argc, char** argv) {
+@@ -510,6 +526,10 @@ int main(int argc, char** argv) {
+             cli_local_wireless_enabled = argv[++i];
+         } else if (a == "--local-wireless-port" && i + 1 < argc) {
+             cli_local_wireless_base_port = argv[++i];
++        } else if (a == "--wfc-peer-host" && i + 1 < argc) {
++            cli_wfc_peer_host = argv[++i];
++        } else if (a == "--wfc-peer-unicast" && i + 1 < argc) {
++            cli_wfc_peer_unicast = argv[++i];
+         } else if (a == "--net-capture-out" && i + 1 < argc) {
+             cli_net_capture_out = argv[++i];
+         } else if (a == "--net-capture-in" && i + 1 < argc) {
+@@ -564,6 +584,9 @@ int main(int argc, char** argv) {
                  "[--mph-pad-aim-sensitivity 10..400] "
                  "[--mph-bind-<action> <key-or-mouse>] "
                  "[--mph-pad-bind-<action> <pad-button|None>] "
@@ -1031,7 +1070,18 @@ index a5b2e32..75a4210 100644
                  "[--startup-mode preserve|manual|automatic] "
                  "[--boot lle|direct] "
                  "[--generated-firmware] [--identity-mac AA:BB:CC:DD:EE:FF] "
-@@ -615,6 +632,30 @@ int main(int argc, char** argv) {
+@@ -576,7 +599,9 @@ int main(int argc, char** argv) {
+                 "[--network on|off] [--network-backend slirp|replay|pcap] "
+                 "[--pcap-adapter NAME] "
+                 "[--wfc on|off] "
+-                "[--wfc-provider kaeru|wiimmfi|wiimmfi-direct|local|<ipv4>] "
++                "[--wfc-provider kaeru|wiimmfi|wiimmfi-direct|wiilink|local|"
++                "local-oracle|<ipv4>] "
++                "[--wfc-peer-host <ipv4>] [--wfc-peer-unicast on|off] "
+                 "[--local-wireless on|off] [--local-wireless-port 1024..65520] "
+                 "[--net-capture-out FILE] [--net-capture-in FILE] "
+                 "[--net-capture-raw] [--net-capture-no-pcap] "
+@@ -615,6 +640,30 @@ int main(int argc, char** argv) {
              return 2;
          }
      }
@@ -1062,7 +1112,42 @@ index a5b2e32..75a4210 100644
      if (const char* value = std::getenv("NDS_SCREEN_LAYOUT")) {
          if (!nds_parse_screen_layout(value,
                                       &frontend_options.screen_layout)) {
-@@ -1389,7 +1430,10 @@ int main(int argc, char** argv) {
+@@ -925,6 +974,25 @@ int main(int argc, char** argv) {
+             return 2;
+         }
+     }
++    uint32_t wfc_peer_host_ipv4 = 0;
++    if (!cli_wfc_peer_host.empty()) {
++        if (!nds_parse_ipv4(cli_wfc_peer_host, &wfc_peer_host_ipv4)) {
++            std::fprintf(stderr,
++                "invalid --wfc-peer-host (expected a dotted-quad IPv4 "
++                "address)\n");
++            return 2;
++        }
++        std::fprintf(stderr,
++            "[network] WFC peer relay host: %s (same-network NATNEG "
++            "tunnel target)\n", cli_wfc_peer_host.c_str());
++    }
++    bool wfc_peer_unicast = true;
++    if (!cli_wfc_peer_unicast.empty() &&
++        !nds_parse_on_off(cli_wfc_peer_unicast, &wfc_peer_unicast)) {
++        std::fprintf(stderr,
++            "invalid --wfc-peer-unicast (expected on or off)\n");
++        return 2;
++    }
+     // Wiimmfi M8: transfer the capture/replay CLI flags into
+     // frontend_options (no parsing needed beyond what the arg loop already
+     // did -- these are plain strings/bools, unlike backend/on-off, which
+@@ -953,6 +1021,8 @@ int main(int argc, char** argv) {
+         frontend_options.instance_index;
+     resolved_network.local_wireless_base_port =
+         frontend_options.local_wireless.base_port;
++    resolved_network.wfc_peer_host = wfc_peer_host_ipv4;
++    resolved_network.wfc_peer_unicast = wfc_peer_unicast;
+ 
+     // Resolve the user-facing backend name to the bridge enum. Replay is
+     // always available; pcap is available only in builds that opt into the
+@@ -1389,7 +1459,10 @@ int main(int argc, char** argv) {
                             cli_live_overlay_cache.c_str(),
                             rom_sha1.c_str());
      mph_mouse_aim_policy =
@@ -1074,6 +1159,23 @@ index a5b2e32..75a4210 100644
          frontend_options.relative_mouse_touch;
      frontend_options.relative_mouse_direct_aim = mph_mouse_aim_policy;
      frontend_options.mph_prime_controls =
+diff --git a/runner/src/net/wfc_provider.cpp b/runner/src/net/wfc_provider.cpp
+index b3ac5f2..ca6d257 100644
+--- a/runner/src/net/wfc_provider.cpp
++++ b/runner/src/net/wfc_provider.cpp
+@@ -31,6 +31,12 @@ const NdsWfcProviderInfo kNdsWfcProviders[] = {
+     // Raw official Wiimmfi DNS endpoint. Kept for diagnostics and future
+     // patched-client compatibility; not the stock-DS route.
+     {"wiimmfi-direct", "95.217.77.181"},
++    // WiiLink24's public WFC service (wfc.wiilink24.com). Like Kaeru, this
++    // is a DNS-only route for unpatched DS/DSi clients -- their own
++    // developer docs state DS games need only a DNS change, no ROM patch.
++    // Primary DNS from the service's DS instructions (167.235.229.36);
++    // secondary is 1.1.1.1 (unused by the runner's single-endpoint model).
++    {"wiilink", "167.235.229.36"},
+     // Guest-visible Slirp host alias. Packets sent here are translated by
+     // libslirp to host loopback, so the local dwc-docker/wfc_dns.py stack can
+     // stay bound to 127.0.0.1 without handing the guest its own loopback.
 diff --git a/runner/src/runtime_arm.cpp b/runner/src/runtime_arm.cpp
 index 2fd6932..936277e 100644
 --- a/runner/src/runtime_arm.cpp
@@ -1147,6 +1249,255 @@ index 0c4fe89..9e0c1e1 100644
  // ARM7-owned hardware bus masters (currently the SPU fetch/capture engines)
  // access memory outside a guest instruction. These helpers select the ARM7
  // memory view for the duration of the transfer and still feed the always-on
+diff --git a/runner/src/wifi_net.cpp b/runner/src/wifi_net.cpp
+index 5c803ae..6bdf303 100644
+--- a/runner/src/wifi_net.cpp
++++ b/runner/src/wifi_net.cpp
+@@ -658,6 +658,15 @@ void WriteLe64(std::vector<uint8_t>* out, uint64_t value) {
+     WriteLe32(out, static_cast<uint32_t>(value >> 32u));
+ }
+ 
++// Formats a host-byte-order IPv4 as dotted quad (for [wfc_peer] logs).
++std::string Ipv4HostOrderToString(uint32_t ip) {
++    char buf[16];
++    std::snprintf(buf, sizeof(buf), "%u.%u.%u.%u",
++                  (ip >> 24u) & 0xFFu, (ip >> 16u) & 0xFFu,
++                  (ip >> 8u) & 0xFFu, ip & 0xFFu);
++    return std::string(buf);
++}
++
+ struct LocalMpFrame {
+     uint32_t sender = 0;
+     uint32_t type = 0;
+@@ -948,9 +957,12 @@ private:
+ 
+ class LocalWfcPeerBridge {
+ public:
+-    void Configure(uint32_t instance) {
++    void Configure(uint32_t instance, uint32_t peer_host_ipv4,
++                   bool peer_unicast) {
+         enabled_ = instance < kMaxInstances;
+         instance_ = instance;
++        peer_host_ = peer_host_ipv4;  // host byte order; 0 = loopback mode
++        unicast_ = peer_unicast;
+     }
+ 
+     void Begin() {
+@@ -971,14 +983,19 @@ public:
+                  sizeof(reset_enabled), nullptr, 0, &bytes_returned,
+                  nullptr, nullptr);
+ 
++        // LAN mode (--wfc-peer-host set): bind 0.0.0.0 so the peer machine
++        // can reach this relay. Same-machine mode keeps the loopback bind.
++        const uint32_t bind_ip =
++            (peer_host_ != 0u) ? INADDR_ANY : INADDR_LOOPBACK;
+         sockaddr_in addr{};
+         addr.sin_family = AF_INET;
+-        addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
++        addr.sin_addr.s_addr = htonl(bind_ip);
+         addr.sin_port = htons(static_cast<uint16_t>(kBasePort + instance_));
+         if (::bind(socket_, reinterpret_cast<sockaddr*>(&addr),
+                    sizeof(addr)) == SOCKET_ERROR) {
+             melonDS::Platform::Log(melonDS::Platform::Error,
+-                "[wfc_peer] bind 127.0.0.1:%u failed: %d\n",
++                "[wfc_peer] bind %s:%u failed: %d\n",
++                (peer_host_ != 0u) ? "0.0.0.0" : "127.0.0.1",
+                 static_cast<unsigned>(kBasePort + instance_),
+                 WSAGetLastError());
+             CloseSocket();
+@@ -994,12 +1011,26 @@ public:
+         }
+ 
+         melonDS::Platform::Log(melonDS::Platform::Info,
+-            "[wfc_peer] enabled instance=%u port=%u\n",
++            "[wfc_peer] enabled instance=%u port=%u peer=%s\n",
+             static_cast<unsigned>(instance_),
+-            static_cast<unsigned>(kBasePort + instance_));
++            static_cast<unsigned>(kBasePort + instance_),
++            (peer_host_ != 0u)
++                ? Ipv4HostOrderToString(peer_host_).c_str()
++                : "loopback");
++        if (peer_host_ != 0u) {
++            // LAN mode binds 0.0.0.0, which is a firewalled listen: Windows
++            // shows the standard "Windows Security Alert - Allow access"
++            // dialog the first time a peer frame arrives. Tell the player
++            // what to click instead of asking them to add a port manually.
++            melonDS::Platform::Log(melonDS::Platform::Info,
++                "[wfc_peer] Windows may now show a firewall alert for this "
++                "app (inbound UDP %u) - click 'Allow access' to enable "
++                "same-network play\n",
++                static_cast<unsigned>(kBasePort + instance_));
++        }
+ #else
+         melonDS::Platform::Log(melonDS::Platform::Warn,
+-            "[wfc_peer] localhost UDP transport is currently Windows-only\n");
++            "[wfc_peer] UDP peer relay is currently Windows-only\n");
+ #endif
+     }
+ 
+@@ -1031,26 +1062,49 @@ public:
+ 
+         sockaddr_in peer{};
+         peer.sin_family = AF_INET;
+-        peer.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
++        peer.sin_addr.s_addr =
++            (peer_host_ != 0u) ? htonl(peer_host_) : htonl(INADDR_LOOPBACK);
+         peer.sin_port = htons(static_cast<uint16_t>(kBasePort + target));
+-        if (::sendto(socket_, reinterpret_cast<const char*>(datagram.data()),
+-                     static_cast<int>(datagram.size()), 0,
+-                     reinterpret_cast<sockaddr*>(&peer),
+-                     sizeof(peer)) == SOCKET_ERROR) {
++        const int send_rc = ::sendto(
++            socket_, reinterpret_cast<const char*>(datagram.data()),
++            static_cast<int>(datagram.size()), 0,
++            reinterpret_cast<sockaddr*>(&peer), sizeof(peer));
++        if (send_rc == SOCKET_ERROR) {
+             if (send_error_log_counter_ < 8u) {
+                 ++send_error_log_counter_;
+                 melonDS::Platform::Log(melonDS::Platform::Warn,
+-                    "[wfc_peer] sendto 127.0.0.1:%u failed: %d\n",
++                    "[wfc_peer] sendto %s:%u failed: %d\n",
++                    (peer_host_ != 0u)
++                        ? Ipv4HostOrderToString(peer_host_).c_str()
++                        : "127.0.0.1",
+                     static_cast<unsigned>(kBasePort + target),
+                     WSAGetLastError());
+             }
++        } else {
++            // Rate-limited per-frame telemetry: the console log shows whether
++            // peer frames actually cross the relay host-to-host.
++            if (forward_log_counter_ < 8u ||
++                (forward_log_counter_ % 64u) == 0u) {
++                melonDS::Platform::Log(melonDS::Platform::Info,
++                    "[wfc_peer] forwarded %d-byte peer frame -> %s:%u "
++                    "(total %u)\n",
++                    len,
++                    (peer_host_ != 0u)
++                        ? Ipv4HostOrderToString(peer_host_).c_str()
++                        : "127.0.0.1",
++                    static_cast<unsigned>(kBasePort + target),
++                    forward_log_counter_ + 1u);
++            }
++            ++forward_log_counter_;
+         }
+ #endif
+         return true;
+     }
+ 
+     void DrainTo(BoundedPacketQueue* rx_queue,
+-                 std::atomic<uint32_t>* rx_drop_counter) {
++                 std::atomic<uint32_t>* rx_drop_counter,
++                 const std::array<uint8_t, 6>& guest_mac,
++                 bool guest_mac_known) {
+ #ifdef _WIN32
+         if (!enabled_ || socket_ == INVALID_SOCKET || !rx_queue) return;
+         for (;;) {
+@@ -1078,6 +1132,26 @@ public:
+ 
+             std::vector<uint8_t> packet(datagram + kHeaderBytes,
+                                         datagram + kHeaderBytes + len);
++            // JUS 80430 fix (broadcast-vs-unicast): the forward side stamped
++            // a broadcast Ethernet destination because the sender routed its
++            // frame to the local gateway/AP MAC, which the receiving WifiAP
++            // would otherwise filter. MKDS tolerated broadcast; JUS's DWC
++            // match-completion appears to require a unicast frame addressed
++            // to the receiving console itself. When enabled and the guest's
++            // own MAC is known, rewrite the Ethernet destination to it.
++            if (unicast_ && guest_mac_known && packet.size() >= 14u) {
++                std::memcpy(packet.data(), guest_mac.data(), 6u);
++            }
++            // Rate-limited per-frame telemetry (mirror of the forward side).
++            if (receive_log_counter_ < 8u ||
++                (receive_log_counter_ % 64u) == 0u) {
++                melonDS::Platform::Log(melonDS::Platform::Info,
++                    "[wfc_peer] received %u-byte peer frame from sender %u "
++                    "(total %u)%s\n",
++                    len, sender, receive_log_counter_ + 1u,
++                    (unicast_ && guest_mac_known) ? " (unicast)" : "");
++            }
++            ++receive_log_counter_;
+             if (!rx_queue->TryPush(std::move(packet)) && rx_drop_counter) {
+                 rx_drop_counter->fetch_add(1, std::memory_order_relaxed);
+             }
+@@ -1085,6 +1159,8 @@ public:
+ #else
+         (void)rx_queue;
+         (void)rx_drop_counter;
++        (void)guest_mac;
++        (void)guest_mac_known;
+ #endif
+     }
+ 
+@@ -1123,6 +1199,10 @@ private:
+ 
+     bool enabled_ = false;
+     uint32_t instance_ = 0;
++    uint32_t peer_host_ = 0;  // host byte order; 0 = loopback mode
++    bool unicast_ = true;     // deliver relayed peer frames unicast-to-self
++    uint32_t forward_log_counter_ = 0;   // rate-limited telemetry
++    uint32_t receive_log_counter_ = 0;   // rate-limited telemetry
+     uint32_t send_error_log_counter_ = 0;
+ #ifdef _WIN32
+     SOCKET socket_ = INVALID_SOCKET;
+@@ -1320,8 +1400,17 @@ void WifiWorkerThreadMain(WifiBridgeState* state) {
+             state->slirp_driver->PollHostSockets();
+         else if (state->live_driver)
+             state->live_driver->RecvCheck();
++        std::array<uint8_t, 6> relay_guest_mac{};
++        bool relay_guest_mac_known = false;
++        {
++            std::lock_guard<std::mutex> lock(state->guest_mac_mutex);
++            relay_guest_mac = state->guest_mac;
++            relay_guest_mac_known = state->guest_mac_known;
++        }
+         state->local_wfc_peer.DrainTo(&state->rx_queue,
+-                                      &state->rx_dropped_since_last_report);
++                                      &state->rx_dropped_since_last_report,
++                                      relay_guest_mac,
++                                      relay_guest_mac_known);
+ 
+         std::unique_lock<std::mutex> lock(state->wake_mutex);
+         state->wake_cv.wait_for(
+@@ -1604,7 +1693,9 @@ melonDS::Wifi* nds_wifi3d_attach() {
+         g_network_config.local_wireless_instance,
+         g_network_config.local_wireless_base_port);
+     g_bridge->local_wfc_peer.Configure(
+-        g_network_config.slirp_virtual_network_instance);
++        g_network_config.slirp_virtual_network_instance,
++        g_network_config.wfc_peer_host,
++        g_network_config.wfc_peer_unicast);
+     if (g_network_config.local_wireless_enabled) {
+         melonDS::Platform::Log(melonDS::Platform::Info,
+             "[local_mp] configured instance=%u base_port=%u\n",
+diff --git a/runner/src/wifi_net.h b/runner/src/wifi_net.h
+index 9255ada..7cb5738 100644
+--- a/runner/src/wifi_net.h
++++ b/runner/src/wifi_net.h
+@@ -115,6 +115,24 @@ struct NdsWifiNetworkConfig {
+     bool local_wireless_enabled = false;
+     uint32_t local_wireless_instance = 0;
+     uint16_t local_wireless_base_port = 26710;
++
++    // WFC peer relay (Wiimmfi same-network fix): when nonzero, this IPv4
++    // (host byte order) names the OTHER runner process's host address for
++    // the WFC NATNEG peer-frame relay (LocalWfcPeerBridge in wifi_net.cpp).
++    // Frames the guest addresses to a peer console's slirp-private 10.64.x.y
++    // endpoint are tunnelled host-to-host over UDP (base 27610 + instance),
++    // so two machines behind the same router can complete Wiimmfi NAT
++    // negotiation while the lobby/matchmaking itself still goes through the
++    // Wiimmfi service. 0 (the default) = loopback, preserving the historical
++    // same-machine two-instance behavior.
++    uint32_t wfc_peer_host = 0;
++    // WFC peer relay delivery mode (JUS 80430 fix, broadcast-vs-unicast):
++    // the relay rewrites each tunnelled peer frame's Ethernet destination.
++    // true = unicast-to-self (the receiving guest's own MAC), which MKDS
++    // tolerated either way but JUS's DWC match-completion appears to
++    // require; false = broadcast (ff:ff:ff:ff:ff:ff), the pre-fix behavior
++    // that MKDS accepted. Default true; A/B via --wfc-peer-unicast on|off.
++    bool wfc_peer_unicast = true;
+ };
+ 
+ // Wiimmfi M8: query surface for a --network-backend replay run's outcome.
 diff --git a/runner/tests/cart_backup_test.cpp b/runner/tests/cart_backup_test.cpp
 index fc9cc65..8b2e969 100644
 --- a/runner/tests/cart_backup_test.cpp
@@ -1184,6 +1535,22 @@ index fc9cc65..8b2e969 100644
  }
  
  void test_eeprom_write_survives_separate_wren_transfer() {
+diff --git a/runner/tests/wfc_provider_test.cpp b/runner/tests/wfc_provider_test.cpp
+index 7f166e3..a5db02e 100644
+--- a/runner/tests/wfc_provider_test.cpp
++++ b/runner/tests/wfc_provider_test.cpp
+@@ -19,9 +19,11 @@ int main() {
+     if (!require(provider_is("kaeru", "178.62.43.212")) ||
+         !require(provider_is("wiimmfi", "178.62.43.212")) ||
+         !require(provider_is("wiimmfi-direct", "95.217.77.181")) ||
++        !require(provider_is("wiilink", "167.235.229.36")) ||
+         !require(provider_is("local", "10.64.0.1")) ||
+         !require(provider_is("local-oracle", "10.64.0.1")) ||
+         !require(provider_is("WIIMMFI", "178.62.43.212")) ||
++        !require(provider_is("WIILINK", "167.235.229.36")) ||
+         !require(nds_wfc_provider_lookup("unknown") == nullptr)) {
+         return 1;
+     }
 diff --git a/runner/vendor/melonds/GPU3D.cpp b/runner/vendor/melonds/GPU3D.cpp
 index b1885db..94eab06 100644
 --- a/runner/vendor/melonds/GPU3D.cpp

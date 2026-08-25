@@ -29,7 +29,15 @@ git apply ../../patches/ndsrecomp/0001-jus-runner-modifications.patch
   buttons synthesize stylus taps for 3rd/4th support-panel summons.
 - **Debug-server extensions** (`write_mem` etc.) used by `tools/scripts/deck_*`
   and the save-debug tooling.
-- Test adjustments for the save-model fixes.
+- **`wiilink` WFC provider** — WiiLink24's public DS-capable service (DNS
+  `167.235.229.36`) added to the provider table for A/B testing against the
+  Kaeru/Wiimmfi route (their dev docs confirm DS games need only a DNS
+  change, no ROM patch).
+- **WFC peer-relay unicast delivery** (`--wfc-peer-unicast on|off`, default
+  on) — relayed NATNEG peer frames are rewritten to the receiving guest's own
+  MAC (unicast-to-self) instead of broadcast, testing the JUS 80430
+  match-completion hypothesis (MKDS tolerated broadcast; JUS appears not to).
+- Test adjustments for the save-model fixes + the new provider entry.
 
 ## Regenerating the patch
 
