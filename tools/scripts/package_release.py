@@ -154,10 +154,21 @@ def main() -> int:
 
     check_rom()
 
-    # 1. launcher
+    # 1. launcher + its runtime DLLs. JUSDecomp.exe dynamically imports
+    # SDL2.dll and (until static-linked) libwinpthread-1.dll. They MUST sit
+    # next to the exe in the bundle root: Windows never searches the app/
+    # subdirectory, and a clean machine without MSYS2 on PATH would otherwise
+    # resolve a wrong-architecture copy from System32/PATH -> 0xc000007b
+    # (STATUS_INVALID_IMAGE_FORMAT). libgcc/libstdc++ are static-linked into
+    # the launcher but are bundled too for safety.
     launcher_exe = build_launcher()
     shutil.copy2(launcher_exe, DIST / "JUSDecomp.exe")
-    print("launcher built + copied")
+    for dll in ["SDL2.dll", "libwinpthread-1.dll", "libgcc_s_seh-1.dll",
+                "libstdc++-6.dll"]:
+        src = MSYS / "bin" / dll
+        if src.is_file():
+            shutil.copy2(src, DIST / dll)
+    print("launcher built + copied (with runtime DLLs next to the exe)")
 
     # 2. runner + DLLs (mingw runtime deps + SDL2)
     runner = ROOT / "tools" / "ndsrecomp" / "runner" / "build-mingw" / "nds_runner.exe"

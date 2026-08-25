@@ -38,7 +38,7 @@
 // Constants
 // ---------------------------------------------------------------------------
 static const char*  APP_NAME       = "JUSDecomp";
-static const char*  APP_VERSION    = "0.1.0";
+static const char*  APP_VERSION    = "0.1.1";
 static const char*  STOCK_SHA1     = "ba58e20ee60eb81c33dcd4934a21271baa9f954a";
 static const long long STOCK_SIZE  = 0x4000000LL; // 64 MiB
 

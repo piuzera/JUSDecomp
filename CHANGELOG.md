@@ -4,6 +4,30 @@ All notable changes to this project are documented here. Version numbers track
 the public releases; internal research milestones before v0.1.0 are summarized
 below from the project's working history.
 
+## 0.1.1 — 2026-08-25 (hotfix)
+
+Fixes the `0xc000007b` (STATUS_INVALID_IMAGE_FORMAT) startup crash reported on
+clean machines when running the public release's `JUSDecomp.exe`.
+
+- **Root cause**: the release packager only bundled the launcher's runtime
+  DLLs (`SDL2.dll`, `libwinpthread-1.dll`) inside `app/` for the runner, not
+  next to `JUSDecomp.exe` at the bundle root. Windows never searches the
+  `app/` subdirectory, so on machines without MSYS2 on PATH the 64-bit
+  launcher fell back to a wrong-architecture `SDL2.dll` from System32/PATH →
+  `0xc000007b`. It only worked on the build machine because `ucrt64\bin` was
+  reachable there.
+- **Packaging fix** (`tools/scripts/package_release.py`): the launcher step
+  now copies `SDL2.dll`, `libwinpthread-1.dll`, `libgcc_s_seh-1.dll`, and
+  `libstdc++-6.dll` next to `JUSDecomp.exe` at the bundle root.
+- **Launcher hardening** (`launcher/CMakeLists.txt`): `libstdc++` and
+  `libwinpthread` are now statically linked (via
+  `-Wl,-Bstatic -lstdc++ -lwinpthread -Wl,-Bdynamic` in the library list —
+  after the objects, since static `libstdc++` itself imports pthread
+  primitives). The shipped launcher's only non-system runtime dependency is
+  now `SDL2.dll`, which ships alongside it.
+- The runner bundle in `app/` was already internally consistent and is
+  unchanged.
+
 ## 0.1.0 — 2026-08-24 (first public release)
 
 First public release: repository cleaned for GitHub publishing, MIT license,
