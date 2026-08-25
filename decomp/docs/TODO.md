@@ -153,6 +153,26 @@ generated + runner built (mingw) + **headless smoke boot passed** (dual-CPU,
 - [ ] Longer-term hygiene: fold `prepare_jus.py` + bank generation + runner
   build into one CMake project (supermario64dsrecomp model) once stable.
 
+## Online play (2026-08-25) — working; one open issue
+
+- [x] **WiFi Battle online (Wiimmfi/Kaeru) — DONE, validated.** Room created +
+  joined with distinct friend codes (same machine) and a cross-network match
+  (PC ↔ laptop on a 5G hotspot). The peer-unicast WFC relay fix resolved
+  error 80430; a `wiilink` provider (DNS 167.235.229.36) was added for A/B.
+  See `decomp/docs/NDSRECOMP.md` Session 3.
+- [ ] **OPEN: friend code refreshes on relaunch (2026-08-25, owner-reported).**
+  After closing and reopening JUSDecomp the friend code is regenerated;
+  going online shows a UID-mismatch warning and prompts an update (which
+  lets you play again, but friends must be re-added). The friend-code UID
+  derives from the NDS console + the save's Gamecart identity (bank header
+  `0x10`); on relaunch the runner must present the same stored identity so
+  the code persists. Investigate why the identity changes across launches —
+  firmware-state persistence (`--firmware-state-path`), generated-identity
+  regeneration, or a save re-claim on boot.
+- [ ] Also open from the online bring-up: online fps drop (60 → ~35, both
+  machines); same-network `--wfc-peer-host` re-run; local `wfc-server`
+  oracle for server-side logs.
+
 ## Track B carryovers (still needed under Track C)
 
 - [x] **Deck injection (Track C, 2026-08-22) — DONE, owner-validated.** Runtime deck
@@ -292,7 +312,7 @@ generated + runner built (mingw) + **headless smoke boot passed** (dual-CPU,
 - Byte-exact Track A matching of any function (kept only as an occasional
   reference-checking tool for tricky calculations).
 - All non-Luffy-family characters, all non-battle/non-deck-build screens (title, quiz,
-  J-Galaxy, Jump Arena, comics, database, WFC online, Download Play, tutorials,
+  J-Galaxy, Jump Arena, comics, database, Download Play, tutorials,
   demo/ending, credits).
 - Touch-screen UI of any kind (deck building and battle HUD are both stick-only, custom).
 - ARM7 analysis (audio driver etc.) — revisit only if audio porting requires it.

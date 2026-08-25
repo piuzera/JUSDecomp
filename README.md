@@ -39,6 +39,10 @@ Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
 - **FPS drops during online play** — online WiFi Battle runs at roughly
   **35 fps** instead of the offline 60 fps (observed on both machines).
   Being investigated.
+- **Friend code refreshes on relaunch** — closing and reopening the app
+  regenerates the friend code; going online then shows a UID-mismatch
+  warning and prompts an update (which lets you play again, but friends
+  must be re-added). Being investigated.
 - **FPS drops during the video intro** — the compressed intro movie is not
   yet full speed on every machine; gameplay after the intro runs at full
   speed.
