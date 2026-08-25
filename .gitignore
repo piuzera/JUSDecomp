@@ -140,3 +140,14 @@ Thumbs.db
 desktop.ini
 ehthumbs.db
 $RECYCLE.BIN/
+
+# ------------------------------------------------------------------
+# Wiimmfi online packaging + per-console WFC state (never commit)
+# ------------------------------------------------------------------
+# Staging copy produced by recomp/make_pc_b_zip.ps1 when rebuilding the PC-B
+# distribution zip (large; regenerated every run).
+recomp/pcb-staging/
+# Per-console firmware state (WFC profile/connection settings) and save
+# backups -- machine-specific, never shared.
+*.fwstate
+*.bak-*
