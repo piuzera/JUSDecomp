@@ -4,6 +4,34 @@ All notable changes to this project are documented here. Version numbers track
 the public releases; internal research milestones before v0.1.0 are summarized
 below from the project's working history.
 
+## 0.2.0 — 2026-08-25 (online play)
+
+**Online WiFi Battle over the public Wiimmfi/Kaeru service** — a major
+milestone: Jump! Ultimate Stars now plays online, world-wide and on the same
+network, through the recompiled runner (no ROM patch; DNS-only redirect).
+
+- **Peer-unicast WFC relay fix**: relayed Wiimmfi NATNEG peer frames are now
+  delivered unicast-to-self (the receiving console's MAC) instead of
+  broadcast, resolving the match-completion timeout (error 80430) that
+  previously blocked friend battles. `--wfc-peer-unicast on|off` (default
+  on).
+- **Validated** (2026-08-25): room created + joined with distinct friend
+  codes on one machine, and a successful match between two different
+  networks (this PC and a laptop on a 5G hotspot — no relay).
+- **`wiilink` WFC provider** added (`--wfc-provider wiilink`, DNS
+  `167.235.229.36`) for A/B testing against the default Kaeru/Wiimmfi
+  route.
+- **Launcher**: Settings gains **Online mode (Wiimmfi)** and a **player
+  name** field (persisted in settings.json); Play passes
+  `--network on --wfc on --wfc-provider wiimmfi --player-name ...` to the
+  runner.
+- **Launchers**: `recomp/run_jus_online.cmd` (single machine) and
+  `recomp/run_jus_2p.cmd` (two instances on one machine).
+- **Docs**: `recomp/ONLINE_TEST.md` online test guide; NDSRECOMP.md Session 3
+  write-up (friend-code identity mechanism, validation evidence).
+- **Known issue**: online play runs at ~35 fps instead of the offline 60 fps
+  on both machines; being investigated.
+
 ## 0.1.1 — 2026-08-25 (hotfix)
 
 Fixes the `0xc000007b` (STATUS_INVALID_IMAGE_FORMAT) startup crash reported on

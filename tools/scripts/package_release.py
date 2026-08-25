@@ -209,6 +209,9 @@ def main() -> int:
     shutil.copy2(ROOT / "LICENSE", DIST / "docs" / "LICENSE.txt")
     if (ROOT / "CHANGELOG.md").is_file():
         shutil.copy2(ROOT / "CHANGELOG.md", DIST / "docs" / "CHANGELOG.txt")
+    online_guide = ROOT / "recomp" / "ONLINE_TEST.md"
+    if online_guide.is_file():
+        shutil.copy2(online_guide, DIST / "docs" / "ONLINE_TEST.txt")
 
     if args.portable or had_portable:
         (DIST / "portable.txt").write_text(

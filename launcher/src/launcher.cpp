@@ -38,7 +38,7 @@
 // Constants
 // ---------------------------------------------------------------------------
 static const char*  APP_NAME       = "JUSDecomp";
-static const char*  APP_VERSION    = "0.1.1";
+static const char*  APP_VERSION    = "0.2.0";
 static const char*  STOCK_SHA1     = "ba58e20ee60eb81c33dcd4934a21271baa9f954a";
 static const long long STOCK_SIZE  = 0x4000000LL; // 64 MiB
 
@@ -51,6 +51,7 @@ enum {
     IDC_SAVE_LABEL, IDC_IMPORT_SAVE, IDC_DELETE_SAVE,
     IDC_CTRL_LIST, IDC_CTRL_CONFIGURE, IDC_CTRL_RESET,
     IDC_KB_CONFIGURE,
+    IDC_PLAYERNAME, IDC_ONLINE_CHK,
     IDC_OK, IDC_CANCEL,
     // capture dialog
     IDC_CAP_DEVICE = 300, IDC_CAP_START, IDC_CAP_SKIP, IDC_CAP_STATE,
@@ -172,6 +173,8 @@ struct Settings {
     std::vector<std::string> mods_enabled;
     std::string display_layout = "stacked";
     std::string save_path;   // empty -> default under user dir
+    std::string player_name;  // online player name (--player-name)
+    bool online_mode = false; // launch with the Wiimmfi online flags
     std::vector<std::string> controller_mappings; // SDL2 mapping strings
     // Keyboard bindings as "button:key" pairs ("a:J"); button is a DS button
     // (a b select start right left up down r l x y), key is an SDL scancode
@@ -202,6 +205,8 @@ static void load_settings() {
         g_settings.rom_path = root.get_str("rom_path");
         g_settings.display_layout = root.get_str("display_layout", "stacked");
         g_settings.save_path = root.get_str("save_path");
+        g_settings.player_name = root.get_str("player_name");
+        g_settings.online_mode = root.get_bool("online_mode", false);
         for (const jz::Value& v : root.get_arr("mods_enabled"))
             if (v.t == jz::Value::Str) g_settings.mods_enabled.push_back(v.s);
         for (const jz::Value& v : root.get_arr("controller_mappings"))
@@ -221,6 +226,8 @@ static void save_settings() {
     root.o["rom_path"] = jz::Value(g_settings.rom_path);
     root.o["display_layout"] = jz::Value(g_settings.display_layout);
     root.o["save_path"] = jz::Value(g_settings.save_path);
+    root.o["player_name"] = jz::Value(g_settings.player_name);
+    root.o["online_mode"] = jz::Value(g_settings.online_mode);
     jz::Value mods = jz::Value::arr();
     for (const auto& m : g_settings.mods_enabled) mods.a.push_back(jz::Value(m));
     root.o["mods_enabled"] = mods;
@@ -453,6 +460,13 @@ static void launch_game(HWND parent) {
         L"--config \"" + g_run_config_path() + L"\" "
         L"--startup-mode automatic --freebios --generated-firmware --boot direct "
         L"--save-path \"" + save_path + L"\"";
+    if (g_settings.online_mode) {
+        cmdline += L" --network on --wfc on --wfc-provider wiimmfi";
+        if (!g_settings.player_name.empty())
+            cmdline += L" --player-name \"" + u2w(g_settings.player_name) + L"\"";
+        log_line("online mode enabled (player '%s')",
+                 g_settings.player_name.c_str());
+    }
 
     log_line("launch: %s", w2u(cmdline).c_str());
 
@@ -626,6 +640,13 @@ static void settings_apply(HWND dlg) {
     int layout = (int)SendMessageW(GetDlgItem(dlg, IDC_LAYOUT_COMBO),
                                    CB_GETCURSEL, 0, 0);
     g_settings.display_layout = layout == 0 ? "stacked" : "separate";
+    // online
+    wchar_t namebuf[128] = {};
+    GetWindowTextW(GetDlgItem(dlg, IDC_PLAYERNAME), namebuf, 128);
+    g_settings.player_name = w2u(namebuf);
+    g_settings.online_mode =
+        SendMessageW(GetDlgItem(dlg, IDC_ONLINE_CHK), BM_GETCHECK, 0, 0) ==
+        BST_CHECKED;
     save_settings();
     write_merged_controller_db();
 }
@@ -1310,6 +1331,27 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
                             WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 380, 140,
                             150, 24, hwnd, (HMENU)IDC_KB_CONFIGURE,
                             GetModuleHandleW(nullptr), nullptr);
+
+            // online (Wiimmfi)
+            CreateWindowExW(0, L"STATIC", L"Player name (online)",
+                            WS_CHILD | WS_VISIBLE, 380, 172, 150, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND pname = CreateWindowExW(WS_EX_CLIENTEDGE, L"EDIT", L"",
+                                         WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL,
+                                         380, 192, 150, 22, hwnd,
+                                         (HMENU)IDC_PLAYERNAME,
+                                         GetModuleHandleW(nullptr), nullptr);
+            if (!g_settings.player_name.empty())
+                SetWindowTextW(pname, u2w(g_settings.player_name).c_str());
+            HWND online = CreateWindowExW(0, L"BUTTON",
+                                          L"Online mode (Wiimmfi)",
+                                          WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,
+                                          380, 219, 150, 20, hwnd,
+                                          (HMENU)IDC_ONLINE_CHK,
+                                          GetModuleHandleW(nullptr), nullptr);
+            SendMessageW(online, BM_SETCHECK,
+                         g_settings.online_mode ? BST_CHECKED : BST_UNCHECKED,
+                         0);
 
             // save data
             CreateWindowExW(0, L"STATIC", L"Save data", WS_CHILD | WS_VISIBLE,

@@ -61,11 +61,32 @@ layers on top at runtime.
   save in use lives outside the app's folders, it is only detached — never
   deleted.
 
-## 5. Known issues
+## 5. Online play (Wiimmfi)
 
-These are known v0.1.0 limitations we are working on — none of them block
+Jump! Ultimate Stars' **WiFi Battle** works online through the public
+**Wiimmfi/Kaeru** service — the runner redirects the game's DNS, so no ROM
+patching is needed.
+
+- Open **Settings**, tick **Online mode (Wiimmfi)**, and type your **player
+  name** — then click Play.
+- You need an Internet connection; allow the app through the firewall
+  (outbound UDP 53 + TCP to the WFC service).
+- In-game: **WiFi Battle → connection test**, then **profile
+  registration** to claim your friend code. Each machine's console identity
+  produces its own friend code.
+- Same router? Two players can also battle on one network (peer frames are
+  tunnelled host-to-host; see `ONLINE_TEST.txt` in this folder).
+- **Note**: online play currently runs at ~35 fps instead of the offline
+  60 fps — a known issue (below) we are investigating.
+
+## 6. Known issues
+
+These are known v0.2.0 limitations we are working on — none of them block
 progress (your save is always safe):
 
+- **FPS drops during online play.** Online WiFi Battle runs at roughly 35
+  fps instead of the offline 60 fps (observed on both machines). Being
+  investigated.
 - **FPS drops during the video intro.** The compressed intro movie is not
   yet full speed on every machine. Gameplay after the intro runs at full
   speed.
@@ -74,7 +95,7 @@ progress (your save is always safe):
 - **Minor visual bugs on some levels.** Scrolling background elements can
   render buggy (split or misaligned layers) on certain stages.
 
-## 6. Troubleshooting
+## 7. Troubleshooting
 
 | Problem | Solution |
 |---|---|
@@ -86,7 +107,7 @@ progress (your save is always safe):
 | Game runs slowly | Close other GPU-heavy apps and keep the window size modest. |
 | Black screen / graphics errors | Update your GPU driver. |
 
-## 7. FAQ
+## 8. FAQ
 
 **Is this legal?** JUSDecomp contains only original code and documentation.
 You must supply the game yourself from a cartridge you own.
@@ -94,8 +115,10 @@ You must supply the game yourself from a cartridge you own.
 **Why is there no installer?** The portable folder works from anywhere
 (USB stick included). An installer version is planned.
 
-**Does online play work?** Wi-Fi services were discontinued by Nintendo;
-local 2-player is being worked on.
+**Does online play work?** Yes — **WiFi Battle** works online through the
+public Wiimmfi service. Open Settings → **Online mode (Wiimmfi)**, type your
+player name, and Play. Online play currently runs at ~35 fps (vs 60 offline);
+we are working on that.
 
 **Where are my settings?** `%APPDATA%\JUSDecomp\settings.json` — delete it
 to reset everything.

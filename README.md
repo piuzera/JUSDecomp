@@ -10,12 +10,13 @@ ARM9/ARM7 banks, overlay promotion, melonDS-derived 3D/Wi-Fi, SDL host. The
 repository itself contains no game assets — you bring your own legally dumped
 ROM (sha1-gated).
 
-> **Status: v0.1.0 (first public build)** — full game playable natively:
-> in-game saves, deck injection, arcade-stick + keyboard input (remappable in
-> the launcher), a beginner-friendly launcher, and a working runtime mod
-> system whose flagship pack is a faithful **English Translation** of the
-> game. See [`decomp/docs/TODO.md`](decomp/docs/TODO.md) for scope and open
-> items.
+> **Status: v0.2.0** — full game playable natively, including **online WiFi
+> Battle over the public Wiimmfi service** (world-wide and same-network
+> friend battles). In-game saves, deck injection, arcade-stick + keyboard
+> input (remappable in the launcher), a beginner-friendly launcher, and a
+> working runtime mod system whose flagship pack is a faithful **English
+> Translation** of the game. See [`decomp/docs/TODO.md`](decomp/docs/TODO.md)
+> for scope and open items.
 
 ---
 
@@ -33,8 +34,11 @@ executable**:
 
 Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
 
-### Known issues (v0.1.0)
+### Known issues (v0.2.0)
 
+- **FPS drops during online play** — online WiFi Battle runs at roughly
+  **35 fps** instead of the offline 60 fps (observed on both machines).
+  Being investigated.
 - **FPS drops during the video intro** — the compressed intro movie is not
   yet full speed on every machine; gameplay after the intro runs at full
   speed.
@@ -42,6 +46,24 @@ Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
   can dip below full speed.
 - **Minor visual glitches on some stages** — scrolling background layers can
   render buggy (split/misaligned elements) on certain levels.
+
+### Online play (Wiimmfi)
+
+Jump! Ultimate Stars' **WiFi Battle** works online through the public
+**Wiimmfi/Kaeru** service — no ROM patching, just the runner's built-in DNS
+redirect.
+
+- **Launcher**: open **Settings**, tick **Online mode (Wiimmfi)**, and type
+  your **player name** — then hit Play. (Or run
+  `recomp\run_jus_online.cmd --instance-index 0 --player-name YourName`.)
+- Each player needs an Internet connection and the runner allowed outbound
+  (UDP 53 + TCP to the WFC service). For two players behind the **same
+  router**, both machines also pass `--wfc-peer-host <other-PC-LAN-IP>` and
+  allow inbound UDP 27610–27625.
+- In-game: complete **WiFi Battle → connection test**, then **profile
+  registration** to claim your friend code. Friend codes derive from each
+  console's identity, so every machine gets its own.
+- Full guide: [`recomp/ONLINE_TEST.md`](recomp/ONLINE_TEST.md).
 
 Everything below this point is for developers.
 
