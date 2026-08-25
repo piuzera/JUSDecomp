@@ -54,9 +54,7 @@ layers on top at runtime.
   next to the executable).
 - **Import save file...** copies an existing `.sav` (from an emulator or a
   cartridge backup) into the app's own working save. Your original file is
-  never modified, referenced, or deleted. *Experimental:* the game may still
-  show the first-boot sequence even with a valid imported save — a known
-  issue we are investigating.
+  never modified, referenced, or deleted.
 - **Delete save (fresh start)** erases the app's own working save. If the
   save in use lives outside the app's folders, it is only detached — never
   deleted.
@@ -101,7 +99,6 @@ progress (your save is always safe):
 | "This looks like a trimmed or modified ROM" | Trimming tools strip the ROM; re-dump without trimming. |
 | The game stopped unexpectedly | Your progress is safe. Click **Open log** on the main window and share `launcher.log` + `game.log` when asking for help. |
 | Controller buttons are wrong | Settings → Configure controller... and follow the prompts (press **Skip** for anything you don't use). |
-| I imported a 100% save but the intro still plays | Known issue: imported saves aren't recognized as non-blank yet. The file is loaded correctly; a fix is being investigated. |
 | Game runs slowly | Close other GPU-heavy apps and keep the window size modest. |
 | Black screen / graphics errors | Update your GPU driver. |
 

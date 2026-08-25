@@ -25,8 +25,10 @@ ROM (sha1-gated).
 The launcher release turns the project into a **single self-contained
 executable**:
 
-1. Download the `JUSDecomp` release folder (or build it with
-   `py tools/scripts/package_release.py`).
+1. Download the latest release — **v0.2.1** — from the
+   [Releases page](https://github.com/piuzera/JUSDecomp/releases)
+   (`JUSDecomp-0.2.1.zip`), or build it with
+   `py tools/scripts/package_release.py`.
 2. Run `JUSDecomp.exe`, pick your own legally dumped ROM in the file dialog —
    it is verified automatically.
 3. Play. Mods toggle on/off and controller buttons are configured inside the
@@ -224,14 +226,12 @@ for the full publish/ignore policy.
 | [`decomp/docs/FILE_FORMATS.md`](decomp/docs/FILE_FORMATS.md) / [`DECK_FORMAT.md`](decomp/docs/DECK_FORMAT.md) | NitroFS + proprietary formats |
 | [`decomp/docs/NEW_KOMA.md`](decomp/docs/NEW_KOMA.md) | Koma table / art / overlay mod research |
 | [`decomp/docs/KOMA_DATABASE.md`](decomp/docs/KOMA_DATABASE.md) | All 890 komas |
-| [`decomp/docs/SAVEBUG.md`](decomp/docs/SAVEBUG.md) | Save-chip bug hunt sessions |
+| [`decomp/docs/SAVEBUG.md`](decomp/docs/SAVEBUG.md) | Save-chip reverse engineering (resolved) |
 | [`decomp/docs/REPO_AUDIT.md`](decomp/docs/REPO_AUDIT.md) | Public-repo publishing policy |
 
-## Known limitations (v0.1.0)
+## Known limitations (v0.2.1)
 
 - Windows-only runner; interactive play needs a gamepad or keyboard.
-- Open bug: importing an existing 100% save is not always recognized as
-  non-blank (see [`decomp/docs/SAVEBUG.md`](decomp/docs/SAVEBUG.md)).
 - Mods are directory-based packs (no zip distribution yet); payload growth is
   bounded by NitroFS slack.
 
