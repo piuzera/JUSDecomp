@@ -65,6 +65,7 @@ recomp/jus-play-coverage-*.json
 recomp/jus-trace-coverage-*.json
 recomp/jus_fresh_test-coverage-*.json
 jus-coverage-*.json
+recomp/jus-2p-*-coverage-*.json
 recomp/probe-*.json
 recomp/probe-*.log
 recomp/b8-events.json

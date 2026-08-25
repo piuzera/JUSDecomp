@@ -589,3 +589,45 @@ local server (verify `wfc-server`'s LICENSE per project policy first; WSL2
 is the likely host) for server-side logs of the match-completion step. (4)
 melonDS oracle cross-check (two instances over its WFC backend). (5)
 world-wide friend battle with distinct fresh saves per machine.
+
+### Session 3 RESULT (2026-08-25) — same-machine online play WORKS 🎉
+
+**User-confirmed.** Two interactive instances on one machine via
+[`recomp/run_jus_2p.cmd`](../recomp/run_jus_2p.cmd) completed a WiFi Battle:
+**distinct friend codes on both, a room was created on A and joined from B,
+no 80430.** The peer-unicast relay fix (default `PEER_UNICAST=on`) resolves
+the Session-2 match-completion blocker; the room/join and match now work
+through the public Kaeru/Wiimmfi route on `--wfc-provider wiimmfi`.
+
+**Why the friend codes were distinct (confirmed empirically).**
+- The friend-code UID is derived from **NDS (the live console MAC) + Gamecart
+  identity** — the owner's statement, now backed by save forensics:
+  - Instance A (seeded from `recomp/jus.sav`, identity `b4326671fac6cf97`)
+    completed WiFi Battle → profile registration, which **rewrote its save
+    identity to `fb73772369de4074`** — the game claims the save with the
+    console-derived UID.
+  - Instance B (seeded from `recomp/jus-100-save.sav`, a never-online save,
+    same `0x10` identity `b4326671fac6cf97` at the byte level) presented a
+    **different** friend code anyway, because the live NDS component differs
+    per instance (`--instance-index` → distinct MACs).
+- **Implication for the release**: two machines with distinct generated
+  firmware identities (`generated-identity.bin` is NOT shipped in the PC-B
+  zip, so PC B generates its own) get distinct friend codes even with the
+  same shipped save. Each machine should still run WiFi Battle → profile
+  registration so its save is claimed by its own console.
+- **A failed experiment to note**: patching the save's `0x10` identity bytes
+  directly (`recomp/patch_2p_save.py`, since removed from the launcher)
+  **corrupted the save** — the game re-initialized it (identity zeroed).
+  Do NOT hand-patch the save identity; distinct MACs + registration are the
+  correct mechanism.
+
+**Correct 2P recipe (validated).** A = `recomp/jus.sav` (100%, full decks);
+B = `recomp/jus-100-save.sav` (never-online). Both via
+`run_jus_2p.cmd` (index 0/1, ports 19842/19843, loopback peer relay,
+captures on both). Register each window, then friend battle.
+
+**Still ahead.** (1) Two PCs on the same network via `--wfc-peer-host
+<LAN-IP>` on both (inbound UDP 27610–27625). (2) World-wide test (distinct
+machines/saves, no relay). (3) `PROVIDER=wiilink` A/B against WiiLink24's
+service (DNS `167.235.229.36`). (4) Optional local `wfc-server` oracle for
+server-side logs.

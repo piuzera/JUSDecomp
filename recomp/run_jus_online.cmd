@@ -16,15 +16,17 @@ rem     --wfc-peer-host tunnels the Wiimmfi NATNEG peer frames between the two
 rem     runner processes host-to-host; the lobby/matchmaking still goes through
 rem     Wiimmfi. Each machine must allow INBOUND UDP ports 27610-27625.
 rem
-rem   FRESH SAVE (REQUIRED for a distinct friend code): every player must use
-rem   their OWN save path. JUS ties its WFC identity/friend code to the game
-rem   save, so two machines booting the same 100% save present the SAME friend
-rem   code and cannot see/match each other. A machine that completes WFC
-rem   profile registration re-claims its own save. To start fresh:
+rem   FRIEND CODES (validated 2026-08-25): the friend-code UID is derived from
+rem   the NDS console (live MAC, distinct per machine/instance) PLUS the
+rem   Gamecart save identity. Two consoles with distinct generated identities
+rem   therefore get distinct friend codes EVEN with the same never-online save
+rem   (the shipped recomp\jus.sav). Still, complete WiFi Battle -> profile
+rem   registration on each machine so the save is claimed by that console
+rem   (registration rewrites the save's console identity -- verified).
+rem   If a save has already been claimed by another console, use a fresh one:
 rem     run_jus_online.cmd --instance-index 0 --player-name YourName ^
 rem                         --save-path recomp\jus-fresh.sav ^
 rem                         --firmware-state-path recomp\jus-fresh.fwstate
-rem     then play first boot and complete WiFi Battle -> profile registration.
 rem
 rem No MSYS2 required: the runtime DLLs (libgcc_s_seh-1.dll, libstdc++-6.dll,
 rem libwinpthread-1.dll, SDL2.dll) ship next to nds_runner.exe.
