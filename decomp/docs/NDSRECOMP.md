@@ -626,8 +626,15 @@ B = `recomp/jus-100-save.sav` (never-online). Both via
 `run_jus_2p.cmd` (index 0/1, ports 19842/19843, loopback peer relay,
 captures on both). Register each window, then friend battle.
 
-**Still ahead.** (1) Two PCs on the same network via `--wfc-peer-host
-<LAN-IP>` on both (inbound UDP 27610–27625). (2) World-wide test (distinct
-machines/saves, no relay). (3) `PROVIDER=wiilink` A/B against WiiLink24's
-service (DNS `167.235.229.36`). (4) Optional local `wfc-server` oracle for
-server-side logs.
+**Cross-network validation (2026-08-25, user-confirmed).** A second machine
+(a laptop on a 5G hotspot — a completely different network, no relay) ran the
+same PC-B package and matched successfully with this machine's instance.
+This validates the **world-wide path**: Wiimmfi NATNEG punches through two
+different routers/NATs via the public route through Slirp, exactly as
+designed. **The online bring-up is complete.**
+
+**Remaining (optional / nice-to-have).** (1) The same-network
+`--wfc-peer-host` relay path was built and transport-proven in Session 2 but
+not re-run in Session 3; it remains available for same-router play. (2)
+`PROVIDER=wiilink` A/B against WiiLink24's service (DNS `167.235.229.36`).
+(3) Optional local `wfc-server` oracle for server-side logs.
