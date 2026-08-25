@@ -474,3 +474,57 @@ it is now LAN-capable:
 - Status: runner wiring + connection tests verified; **the first successful
   friend battle is pending interactive execution** (world-wide test first,
   then the same-router relay test).
+
+### Session 2 (2026-08-25) — relay transport PROVEN; 80430 is game-level
+
+**What was proven.** With `--wfc-peer-host <other-LAN-IP>` on **both**
+machines (distinct `--instance-index` 0/1), the NATNEG peer frames that
+previously vanished into the unroutable slirp-private `10.64.x.y` addresses
+are now tunnelled host-to-host and delivered into **both** games. Evidence:
+
+- Both consoles log relay telemetry (added 2026-08-25, rate-limited, in
+  `LocalWfcPeerBridge`): `[wfc_peer] forwarded N-byte peer frame ->
+  <peer>:2761x` and `[wfc_peer] received N-byte peer frame from sender 0/1`.
+- A's net ring (`net_ring_dump` filter `udp_packet`) shows **direction 1**
+  frames from B's guest MAC (`0009bf25ac84`) at `10.64.1.16` arriving into
+  A's guest, and **direction 0** frames leaving A's guest to `10.64.1.16` —
+  a complete bidirectional peer exchange (e.g. ports 59163↔65002, payloads
+  3/39/71 bytes). A's guest is sending, receiving, and exchanging peer data.
+- The room/join flow works through Wiimmfi on both (DNS for
+  `jumpsstars2ds.*.gs.nintendowifi.net` + GameSpy 27900).
+
+**Remaining blocker.** Host presses start → both screens sit on "connecting
+to opponent" → timeout **error 80430**, even though peer frames flow both
+ways and are delivered at guest level. The transport is no longer the
+problem; the failure is in the game's own match handshake (JUS's DWC
+match-completion code running through the recompiled banks). Hypotheses to
+test next:
+
+1. **Broadcast delivery (strongest).** The relay delivers inbound frames as
+   broadcast Ethernet (dst `ff:ff:ff:ff:ff:ff` — `LocalWfcPeerBridge`
+   rewrites dst because the sender routed the frame to the AP MAC, which the
+   receiving WifiAP would filter). MKDS tolerated broadcast; **JUS's DWC may
+   require unicast-to-self frames** to accept peer match data. Test: on the
+   receive side, rewrite dst to the guest's own MAC instead of broadcast.
+2. **Recomp bug** in the JUS DWC match-completion function (never reaches
+   the "ready" state). Once a capture shows the exact stalled step, RE the
+   corresponding ov010/ov011 DWC function.
+3. **Timing** (less likely): relay adds host-to-host hops; a per-step
+   deadline could abort despite sustained traffic.
+
+**Next steps for the next session.**
+
+1. Capture the peer exchange on both machines (`--net-capture-out
+   recomp/peer-test.cap`), decode the 3/39/71-byte peer frames, and find
+   where the handshake stalls (which side stops, which packet type is
+   missing).
+2. Test hypothesis 1: deliver relayed frames as **unicast to the guest's own
+   MAC** instead of broadcast; check if the match completes.
+3. Oracle cross-check: run the same ROM + two JUS instances in the melonDS
+   oracle over its own WFC backend — does the match complete there? That
+   isolates recomp-vs-emulator.
+4. World-wide (different networks) is still expected to work **without** the
+   relay (public-path NATNEG through slirp) once each player has a distinct
+   save identity; it was not conclusively tested this session (the earlier
+   overseas attempt was blocked by the shared-save friend-code collision,
+   not by transport).
