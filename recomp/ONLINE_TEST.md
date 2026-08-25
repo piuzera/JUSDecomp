@@ -1,12 +1,33 @@
-# JUS Online Test Guide (tentative release, 2026-08-25)
+# JUS Online Test Guide (release 0.2.1, 2026-08-25)
 
 Jump! Ultimate Stars **WiFi Battle (WiFiバトル)** online bring-up — validated
 same-machine on 2026-08-25: **distinct friend codes, room created + joined,
-no error 80430**. This package is for the two-PC and overseas validation
-passes.
+no error 80430**. Online play runs at ~60 fps. This package is for the
+two-PC and overseas validation passes.
 
 ## What changed in this build (vs the previous PC-B zip)
 
+- **Online FPS fix (2026-08-25): live-overlay promotion is now ON in the
+  online launchers AND the GUI launcher.** Root cause of the 60 → ~35 fps
+  drop: the WFC/DWC network stack (ARM9 ov008/ov010 + ARM7 wifi driver) runs
+  RAM-resident on the Tier-3 interpreter until promoted, and the online
+  launchers never enabled promotion (offline `live` mode did — hence clean
+  offline battles). `run_jus_online.cmd` / `run_jus.sh online` now
+  auto-promote into the shared `recomp\live-cache`; `run_jus_2p.cmd` uses
+  per-instance caches (`live-cache-2p-a/-b`) so two same-machine runners
+  don't race. The `.cmd` launchers also prepend `C:\msys64\ucrt64\bin` to
+  PATH (the shard compiler needs `gcc`) and use a 20 s auto-cooldown.
+  **Owner-validated 2026-08-25:** first fixed session 35 → ~45 fps; a
+  warm-cache second session holds ~50–60 fps in the online lobby/battle
+  (ARM7 wifi driver + ARM9 WFC pages promoted to native; cache persists
+  across sessions and improves cumulatively).
+- **GUI launcher (0.2.1):** the beginner-friendly `JUSDecomp.exe` now also
+  enables live-overlay promotion in online mode, persists the WFC profile
+  (`--firmware-state-path` under the user dir) so friend codes survive
+  relaunches, and defaults **Online mode (Wiimmfi)** to on. The release
+  bundle ships a **pre-seeded** `app/live-cache` (every ROM overlay page
+  compiled to native by `tools/scripts/live_preseed.py` at package time), so
+  players boot fully native with no in-session convergence wait.
 - **Peer-unicast relay fix** (`--wfc-peer-unicast on`, default): relayed Wiimmfi
   NATNEG peer frames are delivered unicast-to-self (the receiving console's
   MAC) instead of broadcast. This resolves the Session-2 match-completion

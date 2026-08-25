@@ -43,6 +43,16 @@ rem Evidence: recomp\cap-2p-a.pcap / recomp\cap-2p-b.pcap (+ .txt JSON ring via
 rem --net-ring-dump if wanted), plus the [wfc_peer] forwarded/received lines in
 rem each console. Peer frames should flow both ways on the loopback relay.
 rem
+rem LIVE OVERLAY PROMOTION (2026-08-25, online fps fix): the WFC/DWC network
+rem stack (ARM9 ov008/ov010 + ARM7 wifi driver) is RAM-resident and runs on
+rem the Tier-3 interpreter until promoted; that is what halved online fps
+rem (60 -> ~35 on both machines). Both instances below now enable the same
+rem auto-promotion as run_jus.sh "live", with a 15s activation delay. Each
+rem instance gets its OWN cache dir (live-cache-2p-a/-b): two same-machine
+rem runners compiling into one cache would race on live-index.json / the
+rem gcc DLL outputs. The solo online launcher (run_jus_online.cmd) and
+rem run_jus.sh live share recomp\live-cache instead.
+rem
 rem Requirements: same as run_jus_online.cmd (runner built in build-mingw,
 rem recomp\generated banks, rom\jus.nds, the runtime DLLs next to nds_runner.exe).
 setlocal
@@ -92,15 +102,21 @@ if not exist "%SAVE_B%" (
   )
 )
 
+rem Live-overlay shard compilation spawns `--gcc gcc` for every promotion
+rem batch; the runner inherits THIS shell's PATH, so gcc must be resolvable
+rem here (run_jus.sh works only because MSYS bash already has it). Prepend
+rem the known MSYS2 ucrt64 gcc bin dir if present (no-op elsewhere).
+if exist "C:\msys64\ucrt64\bin\gcc.exe" set "PATH=C:\msys64\ucrt64\bin;%PATH%"
+
 echo [2P] provider=%PROVIDER%  peer-unicast=%PEER_UNICAST%
 echo [2P] A: instance 0  save=%SAVE_A%  fwstate=%FW_A%  cap=%CAP_A%  port=19842
 echo [2P] B: instance 1  save=%SAVE_B%  fwstate=%FW_B%  cap=%CAP_B%  port=19843
 echo [2P] 100%% SAVES SEEDED (full decks). Do WiFi Battle profile registration
 echo       on EACH window so the two friend codes end up distinct.
 
-start "JUS 2P - A (host)" tools\ndsrecomp\runner\build-mingw\nds_runner.exe tools\ndsrecomp\bios --interactive --rom rom\jus.nds --config recomp\game.toml --startup-mode automatic --freebios --generated-firmware --boot direct --port 19842 --instance-index 0 --player-name "%PLAYER_A%" --save-path %SAVE_A% --firmware-state-path %FW_A% --network on --wfc on --wfc-provider %PROVIDER% --wfc-peer-unicast %PEER_UNICAST% --net-capture-out %CAP_A% %*
+start "JUS 2P - A (host)" tools\ndsrecomp\runner\build-mingw\nds_runner.exe tools\ndsrecomp\bios --interactive --rom rom\jus.nds --config recomp\game.toml --startup-mode automatic --freebios --generated-firmware --boot direct --port 19842 --instance-index 0 --player-name "%PLAYER_A%" --save-path %SAVE_A% --firmware-state-path %FW_A% --network on --wfc on --wfc-provider %PROVIDER% --wfc-peer-unicast %PEER_UNICAST% --net-capture-out %CAP_A% --live-overlay-enable --live-overlay-auto --live-overlay-activation-delay-ms 15000 --live-overlay-auto-delay-ms 15000 --live-overlay-auto-cooldown-ms 20000 --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" --live-overlay-cache recomp\live-cache-2p-a %*
 
-start "JUS 2P - B (join)" tools\ndsrecomp\runner\build-mingw\nds_runner.exe tools\ndsrecomp\bios --interactive --rom rom\jus.nds --config recomp\game.toml --startup-mode automatic --freebios --generated-firmware --boot direct --port 19843 --instance-index 1 --player-name "%PLAYER_B%" --save-path %SAVE_B% --firmware-state-path %FW_B% --network on --wfc on --wfc-provider %PROVIDER% --wfc-peer-unicast %PEER_UNICAST% --net-capture-out %CAP_B% %*
+start "JUS 2P - B (join)" tools\ndsrecomp\runner\build-mingw\nds_runner.exe tools\ndsrecomp\bios --interactive --rom rom\jus.nds --config recomp\game.toml --startup-mode automatic --freebios --generated-firmware --boot direct --port 19843 --instance-index 1 --player-name "%PLAYER_B%" --save-path %SAVE_B% --firmware-state-path %FW_B% --network on --wfc on --wfc-provider %PROVIDER% --wfc-peer-unicast %PEER_UNICAST% --net-capture-out %CAP_B% --live-overlay-enable --live-overlay-auto --live-overlay-activation-delay-ms 15000 --live-overlay-auto-delay-ms 15000 --live-overlay-auto-cooldown-ms 20000 --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" --live-overlay-cache recomp\live-cache-2p-b %*
 
 echo [2P] Both instances launched. Drive WiFi Battle on each window:
 echo       connection test, register profile, then Friend Battle (host on A).

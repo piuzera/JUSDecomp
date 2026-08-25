@@ -38,7 +38,7 @@
 // Constants
 // ---------------------------------------------------------------------------
 static const char*  APP_NAME       = "JUSDecomp";
-static const char*  APP_VERSION    = "0.2.0";
+static const char*  APP_VERSION    = "0.2.1";
 static const char*  STOCK_SHA1     = "ba58e20ee60eb81c33dcd4934a21271baa9f954a";
 static const long long STOCK_SIZE  = 0x4000000LL; // 64 MiB
 
@@ -174,7 +174,7 @@ struct Settings {
     std::string display_layout = "stacked";
     std::string save_path;   // empty -> default under user dir
     std::string player_name;  // online player name (--player-name)
-    bool online_mode = false; // launch with the Wiimmfi online flags
+    bool online_mode = true;  // launch with the Wiimmfi online flags (default on)
     std::vector<std::string> controller_mappings; // SDL2 mapping strings
     // Keyboard bindings as "button:key" pairs ("a:J"); button is a DS button
     // (a b select start right left up down r l x y), key is an SDL scancode
@@ -206,7 +206,7 @@ static void load_settings() {
         g_settings.display_layout = root.get_str("display_layout", "stacked");
         g_settings.save_path = root.get_str("save_path");
         g_settings.player_name = root.get_str("player_name");
-        g_settings.online_mode = root.get_bool("online_mode", false);
+        g_settings.online_mode = root.get_bool("online_mode", true);
         for (const jz::Value& v : root.get_arr("mods_enabled"))
             if (v.t == jz::Value::Str) g_settings.mods_enabled.push_back(v.s);
         for (const jz::Value& v : root.get_arr("controller_mappings"))
@@ -464,8 +464,28 @@ static void launch_game(HWND parent) {
         cmdline += L" --network on --wfc on --wfc-provider wiimmfi";
         if (!g_settings.player_name.empty())
             cmdline += L" --player-name \"" + u2w(g_settings.player_name) + L"\"";
-        log_line("online mode enabled (player '%s')",
-                 g_settings.player_name.c_str());
+        // Persist the WFC profile (friend code / connection settings) under the
+        // user dir so the friend code survives relaunches. The runner seeds it
+        // on first launch and rewrites it as the profile is registered.
+        std::wstring fwstate = user_dir() + L"\\jus.fwstate";
+        cmdline += L" --firmware-state-path \"" + fwstate + L"\"";
+        // Online-FPS fix (0.2.1): the WFC/DWC stack (ARM9 ov008/ov010 + ARM7
+        // wifi driver) is RAM-resident and runs on the Tier-3 interpreter until
+        // live-overlay promotion. Without these flags online play halves the
+        // framerate (60 -> ~35). The shipped bundle's live cache is pre-seeded
+        // with every overlay page compiled to native (see package_release.py),
+        // so the runner boots fully native and only needs to load the DLLs from
+        // disk -- no in-session compiler is required. 15s activation delay (the
+        // 90s interactive default is too late for the online flow).
+        std::wstring live_cache = app_dir() + L"\\app\\live-cache";
+        cmdline += L" --live-overlay-enable --live-overlay-auto"
+                   L" --live-overlay-activation-delay-ms 15000"
+                   L" --live-overlay-auto-delay-ms 15000"
+                   L" --live-overlay-auto-cooldown-ms 20000"
+                   L" --live-overlay-cache \"" + live_cache + L"\"";
+        log_line("online mode enabled (player '%s', fwstate '%s', live-cache '%s')",
+                 g_settings.player_name.c_str(), w2u(fwstate).c_str(),
+                 w2u(live_cache).c_str());
     }
 
     log_line("launch: %s", w2u(cmdline).c_str());

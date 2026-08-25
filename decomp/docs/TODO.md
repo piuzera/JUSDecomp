@@ -169,9 +169,41 @@ generated + runner built (mingw) + **headless smoke boot passed** (dual-CPU,
   the code persists. Investigate why the identity changes across launches —
   firmware-state persistence (`--firmware-state-path`), generated-identity
   regeneration, or a save re-claim on boot.
-- [ ] Also open from the online bring-up: online fps drop (60 → ~35, both
-  machines); same-network `--wfc-peer-host` re-run; local `wfc-server`
-  oracle for server-side logs.
+- [x] **Online fps drop (60 → ~35) — ROOT-CAUSED + launcher fix (2026-08-25).**
+  Live-probed via the debug server (`recomp/online_perf_probe.py`, runner
+  launched with `NDS_PROFILE_SCHED=1`): the WiFi **device model is NOT the
+  cost** (`wifi_ns` stayed ~0.03 ms/1000 rounds). The drop is the guest
+  WFC/DWC stack executing on the **Tier-3 interpreter**: in the lobby phase
+  ARM9 scheduler time ×2.7 with dispatch cache-hit halved (9%→4.5%) and
+  Tier-3 ARM9 insns at 300–410 M/s; in the battle phase periodic ~25× ARM7
+  bursts (wifi driver/DWC). Cause: the online launchers never enabled
+  live-overlay promotion (offline `live` mode did — hence clean offline
+  battles). Fix: `run_jus_online.cmd`, `run_jus_2p.cmd` (per-instance
+  caches `live-cache-2p-a/-b`) and `run_jus.sh online` now pass
+  `--live-overlay-enable --live-overlay-auto` (+15 s activation delay;
+  90 s interactive default too late for the online flow) and now also
+  `--live-overlay-auto-cooldown-ms 20000`. Two further blockers fixed:
+  the rebuilt `build-mingw` runner was missing its runtime DLLs (restored
+  from `pcb-staging`), and shard compilation failed because `gcc` was not
+  on PATH for `.cmd` launches (launchers prepend `C:\msys64\ucrt64\bin`).
+  **Owner-validated (2 sessions): fps 35 → ~45 on the first fixed session,
+  → ~50–60 on the warm-cache second session.** ARM7 wifi driver + ARM9
+  main-RAM fully native (cache-hit 1%→~70%, Tier-3 ARM7 insns 100M+→~3M);
+  the overlay-region (ov008/ov010) banks churn but are cached per-content
+  and converge across sessions (details: `NDSRECOMP.md` Session 4).
+  Follow-up if more headroom is wanted: pre-seed the cache by rehearsing
+  the online flow offline, or compile overlay banks on overlay-load.
+- [x] **Offline live-overlay pre-seed (2026-08-25) — `tools/scripts/live_preseed.py`.**
+  Compiles ALL ROM overlay pages (ROM overlay table + FAT + dsd symbol
+  entry points) into the live caches offline, so sessions boot with every
+  overlay native — no in-session convergence tax, no overlay-swap bank
+  rejection. **Full run: 328 pages / 328 DLLs / 0 failed**, all overlays,
+  all region-A/B variants, seeded into live-cache (413 DLLs) +
+  live-cache-2p-a/-b (624/616). **Owner-validated: online play now ~60 fps
+  almost all the time.** Remaining cosmetic issue: occasional sub-second
+  micro-stutters — documented + next-session plan in `ONLINE_FPS.md`.
+- [ ] Still open from the online bring-up: same-network `--wfc-peer-host`
+  re-run; local `wfc-server` oracle for server-side logs.
 
 ## Track B carryovers (still needed under Track C)
 

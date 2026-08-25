@@ -638,3 +638,109 @@ designed. **The online bring-up is complete.**
 not re-run in Session 3; it remains available for same-router play. (2)
 `PROVIDER=wiilink` A/B against WiiLink24's service (DNS `167.235.229.36`).
 (3) Optional local `wfc-server` oracle for server-side logs.
+
+### Session 4 (2026-08-25) — online FPS drop root-caused + fixed
+
+**Symptom (owner-reported):** online FPS halves (60 → ~35) on both machines,
+only during online play; offline battles are clean.
+
+**Method.** New tooling: [`recomp/online_perf_probe.py`](../recomp/online_perf_probe.py)
+(polls the debug server's `frontend_stats` / `profile` / `static_coverage` /
+`dispatch_stats` and diffs per window → CSV) +
+[`recomp/analyze_perf.py`](../recomp/analyze_perf.py) (timeline view).
+Session run: `run_jus_2p.cmd` with `NDS_PROFILE_SCHED=1` (arms the scheduler
+profiler — `profile`→sched arm9/arm7/wifi ms-per-1000-rounds), probes on
+ports 19842/19843, owner drove the full online flow into a battle.
+Incidental launch blocker found+fixed first: the freshly rebuilt
+`build-mingw\nds_runner.exe` was missing its runtime DLLs
+(`SDL2.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`
+— exit code `0xC0000139`); restored from the known-good
+`recomp/pcb-staging` copy.
+
+**Evidence (both instances, identical pattern).**
+- **WFC lobby/matchmaking phase, sustained ~34–35 fps:** ARM9 scheduler
+  time ×2.7 (1.2 → 3.1–3.4 ms/1000 rounds), dispatch cache-hit halved
+  (9% → 4.5%), Tier-3 ARM9 insns 300–410 M/s, emu time 8 → 28 ms/frame.
+- **Online battle phase, ~38–45 fps:** ARM9 back to ~1.3, but periodic
+  ~25× ARM7 bursts (arm7_ns 0.6 → 14–15 ms/1000 rounds) on both machines
+  — the ARM7 wifi driver/DWC TX-RX.
+- **Ruled out:** the melonDS WiFi **device model** (`wifi_ns` stayed
+  ~0.02–0.13 ms/1000 rounds throughout); pcap capture (worker thread);
+  host contention (single instance per machine showed it too).
+
+**Diagnosis.** The guest WFC/DWC network stack — ARM9 ov008 (WFC online) +
+ov010 (comm services) + the ARM7 wifi driver — is RAM-resident overlay/WRAM
+code that runs on the **Tier-3 interpreter** until live-overlay promotes it.
+`run_jus.sh live` (the validated offline path) always promoted it; the three
+online launchers passed **no** live-overlay flags, so online play never
+promoted the hot pages. That is the whole difference between "offline
+battles clean" and "online halves the framerate".
+
+**Fix (2026-08-25).** All three online launchers now enable the same
+auto-promotion as `live` mode, with a 15 s activation delay (the 90 s
+`--interactive` default in `main.cpp` is too late for the online flow):
+- [`recomp/run_jus_online.cmd`](../recomp/run_jus_online.cmd): shared cache
+  `recomp\live-cache` (same one solo `live` mode warms).
+- [`recomp/run_jus_2p.cmd`](../recomp/run_jus_2p.cmd): **per-instance
+  caches** `recomp\live-cache-2p-a/-b` — two same-machine runners compiling
+  into one cache would race on `live-index.json` / the gcc DLL outputs.
+- [`recomp/run_jus.sh`](../recomp/run_jus.sh) `online`: shared cache.
+
+**Expected behavior after the fix.** The first online session pays
+interpreted cost for ~15 s + one compile cycle per hot page (background
+worker; watch `[live-overlay] compiling/published` on stderr), then the
+banks hot-swap in and FPS should recover mid-session; subsequent sessions
+start warm from the persistent cache.
+
+**Validation (2026-08-25, owner-run, two sessions).** Session 1 (first
+fixed launch): **fps 35 → ~45**, ARM7 wifi driver fully promoted
+(`037f8000–03804000` banks on both instances, `rejects7:0`, Tier-3 ARM7
+insns down ~10×, cache-hit 1% → 32% on B), ARM9 WFC-lobby cost gone
+(arm9_ns 3.2 → ~1.5, cache-hit 4.5% → ~11%). Session 2 (warm cache, same
+launchers + `--live-overlay-auto-cooldown-ms 20000`): **fps ~50–60
+(owner-confirmed), ARM7 cache-hit 68–72%, ARM9 27–34%, Tier-3 ARM7 insns
+down to ~2–4 M/s** — the cross-session cache convergence works. Two
+blockers were found and fixed along the way: (1) the freshly rebuilt
+`build-mingw\nds_runner.exe` was missing its runtime DLLs (`SDL2.dll` +
+MinGW runtimes; restored from the known-good `pcb-staging` copy); (2) the
+shard compile failed with `FileNotFoundError: gcc` because
+`compile_live_shards.py --gcc gcc` needs gcc on PATH and a plain `.cmd`
+doesn't have it — both `.cmd` launchers now prepend
+`C:\msys64\ucrt64\bin` when present.
+
+**Residual (minor dips remaining).** The last interpreter holdout is the
+**ARM9 overlay region** (ov008/ov010 WFC code at
+`0x0214CD20+`/`0x02172A60`): region-A/B pages are churned by overlay
+swaps, so live-overlay's compile-and-validate cycle misses stable windows
+(a compiled overlay bank is rejected while a different overlay is resident
+at the same address — B showed `mismatch_rejects_arm9 ≈ 330k` on the
+`nds_live_arm9_02152000` bank, which is inside ov008). Convergence is
+**cross-session**: each session caches more per-content overlay banks, and
+a warm-cache session loads them without compiling (session 2 = 78–85 banks
+loaded at startup vs 12–24 on a cold session).
+
+**Offline pre-seed (2026-08-25) — [`tools/scripts/live_preseed.py`](../tools/scripts/live_preseed.py).**
+Removes the convergence tax entirely: it parses the ROM's ARM9 overlay
+table + FAT, takes each overlay's full 4096-byte RAM pages, derives
+function entry points from the dsd symbol tables
+(`decomp/arm9/overlays/<ov>/symbols.txt`), synthesizes the schema-3 tier-3
+coverage manifest, and runs `compile_live_shards.py` once into a staging
+cache (`recomp/live-cache-preseed`), then copies the DLLs into every live
+cache (the runner discovers banks by scanning the cache dir —
+`rescan_cache` — so DLLs on disk are all it needs, and running instances
+pick them up on their next rescan). Usage:
+`python tools/scripts/live_preseed.py` (all overlays; `--overlays 8,10`
+for a subset, `--dry-run` to list pages). Re-runs dedupe via the staging
+index. **Full run (2026-08-25): 328 pages / 328 DLLs / 0 failed** across
+all 14 overlays and every region-A/B content variant, copied into all
+three caches (live-cache 413 DLLs total, 2p-a 624, 2p-b 616). The
+recompiler's finder expands each page's dsd entry set into a full
+dependency closure (e.g. 80 entries → 403 functions on page
+`0x02159000`). Effect: sessions boot with every overlay page native and
+running instances pick the banks up on their next cache rescan; the
+online interpreter tax is gone from the first minute.
+
+**Final result (owner-validated 2026-08-25): online play now runs ~60 fps
+almost all the time.** One cosmetic issue remains — occasional sub-second
+micro-stutters — documented with a next-session investigation plan in
+[`ONLINE_FPS.md`](ONLINE_FPS.md).

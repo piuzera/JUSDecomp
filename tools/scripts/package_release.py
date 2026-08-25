@@ -113,6 +113,39 @@ def collect_mods() -> None:
     print(f"bundled {len(mods)} mod pack(s)")
 
 
+def preseed_live_cache() -> None:
+    """Pre-compile every ROM overlay page to native and seed the bundle's
+    live-overlay cache (app/live-cache). This is what makes the shipped bundle
+    boot fully native for online play: the WFC/DWC stack (ARM9 ov008/ov010 +
+    ARM7 wifi driver) is RAM-resident and runs on the Tier-3 interpreter until
+    live-overlay promotion. Pre-seeding means players never pay the in-session
+    convergence tax and the runner never needs a compiler at runtime (the
+    bundle does not ship the ndsrecomp toolchain).
+
+    Uses tools/scripts/live_preseed.py against the verified stock ROM. The
+    produced DLLs are copied into the bundle cache; the runner discovers them
+    by scanning the cache directory (live_overlay.cpp rescan_cache)."""
+    sys.path.insert(0, str(ROOT / "tools" / "scripts"))
+    import live_preseed
+
+    cache = DIST / "app" / "live-cache"
+    cache.mkdir(parents=True, exist_ok=True)
+    print(f"[preseed] compiling all overlay pages -> {cache}")
+    rc = live_preseed.main([
+        "--rom", str(ROOT / "rom" / "jus.nds"),
+        "--caches", str(cache),
+        "--stage", str(ROOT / "recomp" / "live-cache-preseed"),
+        "--ndsrecomp-root", str(ROOT / "tools" / "ndsrecomp"),
+        "--runner-build", str(ROOT / "tools" / "ndsrecomp" / "runner" / "build-mingw"),
+        "--recompiler", str(ROOT / "tools" / "ndsrecomp" / "recompiler" / "build"
+                            / "nds_recompile.exe"),
+    ])
+    if rc != 0:
+        raise SystemExit(f"[!] live-overlay pre-seed failed (exit {rc})")
+    n = len(list((cache / "gcc").glob("*.dll"))) if (cache / "gcc").is_dir() else 0
+    print(f"[preseed] bundle live-cache seeded with {n} native DLLs")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--portable", action="store_true",
@@ -181,6 +214,10 @@ def main() -> int:
         if src.is_file():
             shutil.copy2(src, DIST / "app" / dll)
     print("runner + DLLs copied")
+
+    # 2b. Pre-seed the bundle's live-overlay cache so online play boots fully
+    # native (no in-session convergence tax, no runtime compiler needed).
+    preseed_live_cache()
 
     # 3. FreeBIOS/firmware (the runner's first positional arg directory)
     bios_src = ROOT / "tools" / "ndsrecomp" / "bios"

@@ -4,6 +4,36 @@ All notable changes to this project are documented here. Version numbers track
 the public releases; internal research milestones before v0.1.0 are summarized
 below from the project's working history.
 
+## 0.2.1 — 2026-08-25 (online FPS fix)
+
+Fixes the online WiFi Battle framerate drop (60 → ~35 fps) that shipped in
+0.2.0. Online play now runs at ~60 fps almost all the time.
+
+- **Root cause**: the drop was not the emulated WiFi hardware — it was the
+  guest WFC/DWC network stack (ARM9 overlays ov008/ov010 + the ARM7 wifi
+  driver) running on the Tier-3 interpreter because the online launchers
+  never enabled live-overlay promotion (offline `live` mode did — hence
+  clean offline battles). Full write-up:
+  [`decomp/docs/ONLINE_FPS.md`](decomp/docs/ONLINE_FPS.md).
+- **GUI launcher now enables live-overlay promotion in online mode.** The
+  launcher (the primary player entry point) previously passed only the
+  network flags, so players using it still got ~35 fps. It now passes
+  `--live-overlay-enable --live-overlay-auto` with a 15 s activation delay
+  and a 20 s auto-cooldown, pointing at the bundle's pre-seeded
+  `app/live-cache`.
+- **Offline pre-seed integrated into the release package.** The packager
+  now runs `tools/scripts/live_preseed.py` to compile every ROM overlay page
+  to native ahead of time, so the shipped bundle boots fully native — no
+  in-session convergence wait, no runtime compiler needed.
+- **WFC profile persistence.** The launcher now passes
+  `--firmware-state-path` under the user dir, so the friend code / WFC
+  profile persists across relaunches.
+- **Online mode on by default.** The launcher's **Online mode (Wiimmfi)**
+  setting now defaults to enabled, so players get the fixed online path out
+  of the box (just type a player name).
+- **Known issue**: occasional sub-second micro-stutters during online play
+  remain (documented + next-session plan in `decomp/docs/ONLINE_FPS.md`).
+
 ## 0.2.0 — 2026-08-25 (online play)
 
 **Online WiFi Battle over the public Wiimmfi/Kaeru service** — a major

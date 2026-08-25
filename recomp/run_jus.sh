@@ -99,12 +99,27 @@ case "$MODE" in
     # --save-path recomp/jus-fresh.sav --firmware-state-path
     # recomp/jus-fresh.fwstate) and complete WiFi Battle -> profile
     # registration so the save is claimed by their machine.
+    #
+    # LIVE OVERLAY PROMOTION (2026-08-25, online fps fix): the WFC/DWC stack
+    # (ARM9 ov008/ov010 + ARM7 wifi driver) is RAM-resident and runs on the
+    # Tier-3 interpreter until promoted -- without these flags online play
+    # halved the framerate (60 -> ~35). Same auto-promotion as "live" mode,
+    # 15s activation delay (the 90s interactive default is too late for the
+    # online flow). NOTE for two same-machine instances: give each runner its
+    # own --live-overlay-cache dir (see run_jus_2p.cmd) so concurrent shard
+    # compiles don't race on live-index.json.
     exec "$RUNNER" "$BIOS" --interactive --rom rom/jus.nds \
       --config recomp/game.toml --startup-mode automatic \
       --freebios --generated-firmware --boot direct \
       --save-path recomp/jus.sav \
       --firmware-state-path recomp/jus.fwstate \
       --network on --wfc on --wfc-provider wiimmfi \
+      --live-overlay-enable --live-overlay-auto \
+      --live-overlay-activation-delay-ms 15000 \
+      --live-overlay-auto-delay-ms 15000 \
+      --live-overlay-auto-cooldown-ms 20000 \
+      --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" \
+      --live-overlay-cache recomp/live-cache \
       "${@:2}"
     ;;
   smoke)

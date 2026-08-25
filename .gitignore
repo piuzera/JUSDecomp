@@ -37,6 +37,9 @@ sdl2.zip
 # ------------------------------------------------------------------
 recomp/generated/
 recomp/live-cache/
+recomp/live-cache-2p-a/
+recomp/live-cache-2p-b/
+recomp/live-cache-preseed/
 recomp/tools/
 recomp/koma_890/
 recomp/koma_aar/
@@ -61,6 +64,10 @@ recomp/mods.toml
 # ------------------------------------------------------------------
 recomp/*.log
 recomp/ladder-*
+recomp/perf-*.csv
+recomp/preseed-*.txt
+recomp/runner-*-all.txt
+recomp/runner-*-err.txt
 recomp/jus-play-coverage-*.json
 recomp/jus-trace-coverage-*.json
 recomp/jus_fresh_test-coverage-*.json

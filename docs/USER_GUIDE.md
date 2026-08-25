@@ -65,10 +65,10 @@ layers on top at runtime.
 
 Jump! Ultimate Stars' **WiFi Battle** works online through the public
 **Wiimmfi/Kaeru** service — the runner redirects the game's DNS, so no ROM
-patching is needed.
+patching is needed. Online play runs at ~60 fps.
 
-- Open **Settings**, tick **Online mode (Wiimmfi)**, and type your **player
-  name** — then click Play.
+- **Online mode (Wiimmfi)** is on by default — just open **Settings**, type
+  your **player name**, and click Play.
 - You need an Internet connection; allow the app through the firewall
   (outbound UDP 53 + TCP to the WFC service).
 - In-game: **WiFi Battle → connection test**, then **profile
@@ -76,17 +76,15 @@ patching is needed.
   produces its own friend code.
 - Same router? Two players can also battle on one network (peer frames are
   tunnelled host-to-host; see `ONLINE_TEST.txt` in this folder).
-- **Note**: online play currently runs at ~35 fps instead of the offline
-  60 fps — a known issue (below) we are investigating.
 
 ## 6. Known issues
 
-These are known v0.2.0 limitations we are working on — none of them block
+These are known v0.2.1 limitations we are working on — none of them block
 progress (your save is always safe):
 
-- **FPS drops during online play.** Online WiFi Battle runs at roughly 35
-  fps instead of the offline 60 fps (observed on both machines). Being
-  investigated.
+- **Occasional micro-stutters during online play.** Online WiFi Battle now
+  runs at ~60 fps almost all the time (the old 60 → ~35 fps drop is fixed),
+  but rare sub-second micro-stutters can still occur. Being investigated.
 - **FPS drops during the video intro.** The compressed intro movie is not
   yet full speed on every machine. Gameplay after the intro runs at full
   speed.
@@ -116,9 +114,8 @@ You must supply the game yourself from a cartridge you own.
 (USB stick included). An installer version is planned.
 
 **Does online play work?** Yes — **WiFi Battle** works online through the
-public Wiimmfi service. Open Settings → **Online mode (Wiimmfi)**, type your
-player name, and Play. Online play currently runs at ~35 fps (vs 60 offline);
-we are working on that.
+public Wiimmfi service. **Online mode (Wiimmfi)** is on by default — open
+Settings, type your player name, and Play. Online play runs at ~60 fps.
 
 **Where are my settings?** `%APPDATA%\JUSDecomp\settings.json` — delete it
 to reset everything.

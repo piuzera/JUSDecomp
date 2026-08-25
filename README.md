@@ -10,13 +10,13 @@ ARM9/ARM7 banks, overlay promotion, melonDS-derived 3D/Wi-Fi, SDL host. The
 repository itself contains no game assets — you bring your own legally dumped
 ROM (sha1-gated).
 
-> **Status: v0.2.0** — full game playable natively, including **online WiFi
+> **Status: v0.2.1** — full game playable natively, including **online WiFi
 > Battle over the public Wiimmfi service** (world-wide and same-network
-> friend battles). In-game saves, deck injection, arcade-stick + keyboard
-> input (remappable in the launcher), a beginner-friendly launcher, and a
-> working runtime mod system whose flagship pack is a faithful **English
-> Translation** of the game. See [`decomp/docs/TODO.md`](decomp/docs/TODO.md)
-> for scope and open items.
+> friend battles) at ~60 fps. In-game saves, deck injection, arcade-stick +
+> keyboard input (remappable in the launcher), a beginner-friendly launcher,
+> and a working runtime mod system whose flagship pack is a faithful
+> **English Translation** of the game. See
+> [`decomp/docs/TODO.md`](decomp/docs/TODO.md) for scope and open items.
 
 ---
 
@@ -34,11 +34,11 @@ executable**:
 
 Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
 
-### Known issues (v0.2.0)
+### Known issues (v0.2.1)
 
-- **FPS drops during online play** — online WiFi Battle runs at roughly
-  **35 fps** instead of the offline 60 fps (observed on both machines).
-  Being investigated.
+- **Occasional micro-stutters during online play** — online WiFi Battle now
+  runs at ~60 fps almost all the time (the old 60 → ~35 fps drop is fixed),
+  but rare sub-second micro-stutters can still occur. Being investigated.
 - **Friend code refreshes on relaunch** — closing and reopening the app
   regenerates the friend code; going online then shows a UID-mismatch
   warning and prompts an update (which lets you play again, but friends
@@ -55,10 +55,12 @@ Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
 
 Jump! Ultimate Stars' **WiFi Battle** works online through the public
 **Wiimmfi/Kaeru** service — no ROM patching, just the runner's built-in DNS
-redirect.
+redirect. Online play runs at ~60 fps (the WFC/DWC network stack is
+pre-compiled to native and auto-promoted; see
+[`decomp/docs/ONLINE_FPS.md`](decomp/docs/ONLINE_FPS.md)).
 
-- **Launcher**: open **Settings**, tick **Online mode (Wiimmfi)**, and type
-  your **player name** — then hit Play. (Or run
+- **Launcher**: **Online mode (Wiimmfi)** is on by default — just type your
+  **player name** in Settings and hit Play. (Or run
   `recomp\run_jus_online.cmd --instance-index 0 --player-name YourName`.)
 - Each player needs an Internet connection and the runner allowed outbound
   (UDP 53 + TCP to the WFC service). For two players behind the **same

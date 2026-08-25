@@ -31,6 +31,19 @@ rem
 rem No MSYS2 required: the runtime DLLs (libgcc_s_seh-1.dll, libstdc++-6.dll,
 rem libwinpthread-1.dll, SDL2.dll) ship next to nds_runner.exe.
 rem
+rem LIVE OVERLAY PROMOTION (2026-08-25, online fps fix): the WFC/DWC network
+rem stack (ARM9 ov008/ov010 + the ARM7 wifi driver) is RAM-resident code that
+rem runs on the Tier-3 interpreter until promoted. Offline "live" mode always
+rem promoted it (60 fps battles); the online launchers did not, which is why
+rem online play halved the framerate (60 -> ~35, measured: ARM9 phase time x2.7
+rem and dispatch cache-hit halved in the lobby, 25x ARM7 bursts in battle).
+rem The flags below turn on the same auto-promotion, with a 15s activation
+rem delay (the 90s interactive default is too late for the online flow), so
+rem the hot WFC pages recompile to native DLLs mid-session and the cache
+rem (recomp\live-cache) warms cumulatively across sessions. First online
+rem session after this change still pays interpreted cost until the banks
+rem compile+swap; later sessions start warm.
+rem
 rem Requirements:
 rem   - The folder must be at C:\JUS Decomp (the runner's recomp\generated bank
 rem     path is baked in at build time).
@@ -47,4 +60,9 @@ if not exist rom\jus.nds (
   echo ERROR: rom\jus.nds not found. Place your legal Jump Ultimate Stars dump here.
   exit /b 1
 )
-tools\ndsrecomp\runner\build-mingw\nds_runner.exe tools\ndsrecomp\bios --interactive --rom rom\jus.nds --config recomp\game.toml --startup-mode automatic --freebios --generated-firmware --boot direct --save-path recomp\jus.sav --firmware-state-path recomp\jus.fwstate --network on --wfc on --wfc-provider wiimmfi %*
+rem Live-overlay shard compilation spawns `--gcc gcc` for every promotion
+rem batch and the runner inherits THIS shell's PATH. run_jus.sh works only
+rem because MSYS bash already has gcc; a plain .cmd does not. Prepend the
+rem known MSYS2 ucrt64 gcc bin dir if present (no-op elsewhere).
+if exist "C:\msys64\ucrt64\bin\gcc.exe" set "PATH=C:\msys64\ucrt64\bin;%PATH%"
+tools\ndsrecomp\runner\build-mingw\nds_runner.exe tools\ndsrecomp\bios --interactive --rom rom\jus.nds --config recomp\game.toml --startup-mode automatic --freebios --generated-firmware --boot direct --save-path recomp\jus.sav --firmware-state-path recomp\jus.fwstate --network on --wfc on --wfc-provider wiimmfi --live-overlay-enable --live-overlay-auto --live-overlay-activation-delay-ms 15000 --live-overlay-auto-delay-ms 15000 --live-overlay-auto-cooldown-ms 20000 --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" --live-overlay-cache recomp\live-cache %*
