@@ -4,6 +4,29 @@ All notable changes to this project are documented here. Version numbers track
 the public releases; internal research milestones before v0.1.0 are summarized
 below from the project's working history.
 
+## 0.2.2 — 2026-08-29 (intro crash hotfix)
+
+Fixes a silent crash-to-desktop a few seconds into the video intro on some
+integrated-GPU machines (e.g. AMD Ryzen APUs with Vega graphics on current
+Adrenalin drivers). The auto-selected OpenGL 4.3 compute renderer hit a
+driver error (`GL_INVALID_VALUE 0x0501`) on its frame readback and the
+runner shut the session down. Now a runtime compute failure automatically
+demotes to the faithful threaded software renderer and the game keeps
+playing (only the accelerated 3D path is skipped for the rest of the
+session). Players can also force the software path from boot by setting the
+`NDS_3D_RENDERER=soft` environment variable.
+
+- **Root cause**: `ComputeRenderer::PrepareCaptureFrame()`'s
+  `glGetTexImage` readback raised `GL_INVALID_VALUE` on specific AMD
+  iGPU/driver combinations mid-intro, and `compute_readback_failed()`
+  responded by terminal-halting both CPUs (a clean, dialog-less exit — hence
+  "crashes to desktop without logs").
+- **Fix**: `compute_readback_failed()` now swaps in the soft renderer
+  (`nds_gpu3d_restore_soft_renderer()`) instead of halting the machine; the
+  frontend and exit path treat a recovered (demoted) failure as a normal
+  session. Framework diff lives in
+  [`patches/ndsrecomp/0001-jus-runner-modifications.patch`](patches/ndsrecomp/0001-jus-runner-modifications.patch).
+
 ## 0.2.1 — 2026-08-25 (online FPS fix)
 
 Fixes the online WiFi Battle framerate drop (60 → ~35 fps) that shipped in

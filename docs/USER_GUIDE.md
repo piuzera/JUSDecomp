@@ -77,15 +77,19 @@ patching is needed. Online play runs at ~60 fps.
 
 ## 6. Known issues
 
-These are known v0.2.1 limitations we are working on — none of them block
+These are known v0.2.2 limitations we are working on — none of them block
 progress (your save is always safe):
 
 - **Occasional micro-stutters during online play.** Online WiFi Battle now
   runs at ~60 fps almost all the time (the old 60 → ~35 fps drop is fixed),
   but rare sub-second micro-stutters can still occur. Being investigated.
 - **FPS drops during the video intro.** The compressed intro movie is not
-  yet full speed on every machine. Gameplay after the intro runs at full
-  speed.
+   yet full speed on every machine. Gameplay after the intro runs at full
+   speed.
+- **Fixed in v0.2.2: crash during the intro on some integrated-GPU
+   machines.** If the accelerated renderer hits a driver error, the app now
+   automatically falls back to the software renderer and keeps playing
+   instead of closing.
 - **FPS drops on the deck builder.** The deck editor's heavy 2D compositing
   can dip below full speed.
 - **Minor visual bugs on some levels.** Scrolling background elements can
@@ -101,6 +105,7 @@ progress (your save is always safe):
 | Controller buttons are wrong | Settings → Configure controller... and follow the prompts (press **Skip** for anything you don't use). |
 | Game runs slowly | Close other GPU-heavy apps and keep the window size modest. |
 | Black screen / graphics errors | Update your GPU driver. |
+| The game closes by itself during the intro (integrated graphics) | Fixed in v0.2.2 — the app now falls back to the software renderer automatically. If it still happens, update your GPU driver and share `launcher.log` + `game.log`. |
 
 ## 8. FAQ
 
