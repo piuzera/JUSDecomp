@@ -2256,25 +2256,35 @@ index c4e8a30..e244a5c 100644
      }
  }
 diff --git i/tools/compile_live_shards.py w/tools/compile_live_shards.py
-index 547b8bd..a82bd25 100644
+index 547b8bd..e3856de 100644
 --- i/tools/compile_live_shards.py
 +++ w/tools/compile_live_shards.py
-@@ -44,7 +44,13 @@ def run(command: list[str]) -> subprocess.CompletedProcess:
+@@ -44,7 +44,23 @@ def run(command: list[str]) -> subprocess.CompletedProcess:
      return subprocess.run(command, text=True)
  
  
 -def find_import_lib(runner_build: Path) -> Path:
-+def find_import_lib(runner_build: Path) -> Path | None:
++def gcc_targets_windows(gcc) -> bool:
++    # The bank library flavor follows the COMPILER TARGET, not the host OS:
++    # a mingw cross-gcc driven from Linux must produce PE DLLs linked against
++    # the runner's import library, exactly like a native MSYS2 build.
++    machine = subprocess.check_output(
++        [str(gcc), "-dumpmachine"], text=True).strip()
++    return "w64" in machine or os.name == "nt"
++
++
++def find_import_lib(runner_build: Path,
++                    windows_target: bool = False) -> Path | None:
 +    # PE/COFF live libraries must link the executable's generated import
 +    # library. ELF shared objects intentionally leave runtime ABI symbols
 +    # unresolved; nds_runner exports them with ENABLE_EXPORTS/-rdynamic and
 +    # dlopen resolves them from the main program.
-+    if os.name != "nt":
++    if not windows_target:
 +        return None
      for name in (
              "libnds_runner.dll.a", "nds_runner.exe.a",
              "libnds_runner.exe.a"):
-@@ -279,10 +285,10 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+@@ -279,10 +295,10 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
              print(f"capture {key}: previously rejected unsupported opcode",
                    flush=True)
              return "skipped", None
@@ -2289,7 +2299,7 @@ index 547b8bd..a82bd25 100644
  
      cpu_name = "arm9" if cpu == 9 else "arm7"
      bank = f"nds_live_{cpu_name}_{addr:08x}"
-@@ -329,10 +335,11 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+@@ -329,10 +345,11 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
          print(f"capture {key}: generated body contains an unsupported opcode; "
                "kept in Tier 3", flush=True)
          return "skipped", None
@@ -2299,13 +2309,13 @@ index 547b8bd..a82bd25 100644
 -    if not dll.is_file():
 +    library_dir = args.cache / "gcc"
 +    library_dir.mkdir(parents=True, exist_ok=True)
-+    suffix = ".dll" if os.name == "nt" else ".so"
++    suffix = ".dll" if args.windows_target else ".so"
 +    library = library_dir / f"{bank}_{candidate_id}{suffix}"
 +    if not library.is_file():
          wrapper = src_dir / f"{bank}_live.c"
          write_wrapper(wrapper, bank, candidate_id, page_sha1,
                        args.rom_sha1, cpu)
-@@ -340,22 +347,25 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+@@ -340,22 +357,25 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
          sources = [*bank_sources, wrapper]
          if len(bank_sources) < 2 or not all(path.is_file() for path in sources):
              raise RuntimeError(f"generated source set is incomplete for {bank}")
@@ -2322,7 +2332,7 @@ index 547b8bd..a82bd25 100644
              *[str(path) for path in sources],
 -            str(args.runner_import_lib),
          ]
-+        if os.name == "nt":
++        if args.windows_target:
 +            gcc.extend(["-Wl,--enable-auto-import",
 +                        str(args.runner_import_lib)])
 +        else:
@@ -2335,7 +2345,7 @@ index 547b8bd..a82bd25 100644
  
      index.setdefault("captures", {})[key] = {
          "candidate_id": candidate_id,
-@@ -365,11 +375,14 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+@@ -365,11 +385,14 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
          "page": f"0x{addr:08X}",
          "page_sha1": page_sha1,
          "entries": len(entries),
@@ -2353,7 +2363,18 @@ index 547b8bd..a82bd25 100644
  
  
  def main() -> int:
-@@ -448,7 +461,8 @@ def main() -> int:
+@@ -408,7 +431,9 @@ def main() -> int:
+         raise SystemExit(f"recompiler does not exist: {args.recompiler}")
+     args.cache.mkdir(parents=True, exist_ok=True)
+     args.index = args.cache / "live-index.json"
+-    args.runner_import_lib = find_import_lib(args.runner_build)
++    args.windows_target = gcc_targets_windows(args.gcc)
++    args.runner_import_lib = find_import_lib(args.runner_build,
++                                             args.windows_target)
+     args.provider_id = provider_identity(args)
+ 
+     manifest = load_json(args.manifest)
+@@ -448,7 +473,8 @@ def main() -> int:
                              args.provider_id)
          indexed = index.get("captures", {}).get(key)
          if indexed and (indexed.get("status") == "unsupported" or

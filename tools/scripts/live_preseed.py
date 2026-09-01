@@ -270,8 +270,11 @@ def main(argv: list[str] | None = None) -> int:
     # Copy produced native libraries into every target cache. The runner only
     # needs these files on disk (rescan_cache scans the cache directory); the
     # live index stays per-cache and only affects future compile dedupe.
-    suffix = "*.so" if linux else "*.dll"
-    produced = sorted((args.stage / "gcc").glob(suffix))
+    # Copy ONLY the flavor this run's bank compiler targets (the staging dir
+    # may also hold banks from a run for the other platform).
+    want_dll = "w64" in subprocess.check_output(
+        [args.gcc, "-dumpmachine"], text=True).strip() or sys.platform == "win32"
+    produced = sorted(args.stage.glob("gcc/*.dll" if want_dll else "gcc/*.so"))
     print(f"staging produced {len(produced)} native libraries")
     for cache in args.caches:
         target = cache / "gcc"
@@ -282,6 +285,7 @@ def main(argv: list[str] | None = None) -> int:
             if not dest.is_file():
                 shutil.copy2(library, dest)
                 copied += 1
+        suffix = "*.dll" if want_dll else "*.so"
         print(f"{cache}: +{copied} libraries "
               f"(total {len(list(target.glob(suffix)))})")
     return 0

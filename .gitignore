@@ -163,3 +163,4 @@ recomp/pcb-staging/
 # backups -- machine-specific, never shared.
 *.fwstate
 *.bak-*
+launcher/build-cross/
