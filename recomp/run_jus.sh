@@ -2,8 +2,9 @@
 # run_jus.sh — launch the JUS recomp runner (Track C).
 #
 # Prereqs (one-time, see decomp/docs/NDSRECOMP.md):
-#   - MSYS2 mingw-w64 toolchain + SDL2 (pacman) installed
-#   - tools/ndsrecomp cloned; runner built in tools/ndsrecomp/runner/build-mingw
+#   - Linux: run tools/scripts/build_linux.sh (CMake, Ninja, GCC, SDL2)
+#   - Windows: MSYS2 mingw-w64 toolchain + SDL2 (pacman)
+#   - tools/ndsrecomp cloned and patched
 #   - recomp/generated/* banks + tools/ndsrecomp/generated/* bios banks present
 #     (regenerate with tools/scripts/prepare_jus.py + nds_recompile if needed)
 #
@@ -22,9 +23,31 @@
 set -e
 SCRIPT_DIR="${0%/*}"
 cd "${SCRIPT_DIR}/.."
-export PATH="/usr/bin:/c/msys64/ucrt64/bin:$PATH"
-RUNNER="tools/ndsrecomp/runner/build-mingw/nds_runner.exe"
+if [[ "$(uname -s)" == Linux* ]]; then
+  RUNNER_BUILD="tools/ndsrecomp/runner/build-linux"
+  RUNNER="$RUNNER_BUILD/nds_runner"
+  RECOMPILER="tools/ndsrecomp/recompiler/build-linux/nds_recompile"
+  PYTHON="${PYTHON:-python3}"
+  LIVE_COMPILER="$PYTHON tools/ndsrecomp/tools/compile_live_shards.py --ndsrecomp-root tools/ndsrecomp --runner-build $RUNNER_BUILD --recompiler $RECOMPILER --gcc gcc"
+else
+  export PATH="/usr/bin:/c/msys64/ucrt64/bin:$PATH"
+  RUNNER_BUILD="tools/ndsrecomp/runner/build-mingw"
+  RUNNER="$RUNNER_BUILD/nds_runner.exe"
+  RECOMPILER="tools/ndsrecomp/recompiler/build/nds_recompile.exe"
+  PYTHON="${PYTHON:-py}"
+  LIVE_COMPILER="$PYTHON tools\\ndsrecomp\\tools\\compile_live_shards.py --ndsrecomp-root tools\\ndsrecomp --runner-build tools\\ndsrecomp\\runner\\build-mingw --recompiler tools\\ndsrecomp\\recompiler\\build\\nds_recompile.exe --gcc gcc"
+fi
 BIOS="tools/ndsrecomp/bios"
+
+if [[ ! -x "$RUNNER" ]]; then
+  echo "ERROR: Linux/Windows runner not found: $RUNNER" >&2
+  echo "Build it first (Linux: tools/scripts/build_linux.sh)." >&2
+  exit 1
+fi
+if [[ ! -f rom/jus.nds ]]; then
+  echo "ERROR: rom/jus.nds not found. Add your own legal JUS dump." >&2
+  exit 1
+fi
 
 MODE="${1:-interactive}"
 case "$MODE" in
@@ -52,7 +75,7 @@ case "$MODE" in
       --freebios --generated-firmware --boot direct \
       --save-path recomp/jus.sav \
       --live-overlay-enable --live-overlay-auto \
-      --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" \
+      --live-overlay-command "$LIVE_COMPILER" \
       --live-overlay-cache recomp/live-cache \
       --screen-layout separate \
       --mph-prime-controls on --relative-mouse-touch on \
@@ -62,14 +85,15 @@ case "$MODE" in
     ;;
   live)
     # Interactive + live overlay auto-promotion: hot Tier-3 pages (overlays,
-    # ARM7 WRAM) are recompiled to DLLs in the background and hot-swapped in.
+    # ARM7 WRAM) are recompiled to native libraries in the background and
+    # hot-swapped in (.so on Linux, DLL on Windows).
     # Cache persists across runs (recomp/live-cache) — fps improves cumulatively.
     exec "$RUNNER" "$BIOS" --interactive --rom rom/jus.nds \
       --config recomp/game.toml --startup-mode automatic \
       --freebios --generated-firmware --boot direct \
       --save-path recomp/jus.sav \
       --live-overlay-enable --live-overlay-auto \
-      --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" \
+      --live-overlay-command "$LIVE_COMPILER" \
       --live-overlay-cache recomp/live-cache "${@:2}"
     ;;
   online)
@@ -85,10 +109,10 @@ case "$MODE" in
     #
     # Same-router friend battle (via Wiimmfi): tunnel the NATNEG peer frames
     # between the two runners with --wfc-peer-host <other-PC-LAN-IP> on BOTH
-    # machines. The first peer frame pops the standard Windows "Allow access"
-    # firewall alert for inbound UDP 27610-27625 — click it (no manual port
-    # rules). The lobby/matchmaking still goes through Wiimmfi; only the peer
-    # match frames are relayed, exactly like a real DS NATNEG direct hop.
+    # machines. Allow inbound UDP 27610-27625 through the host firewall on
+    # trusted/private networks. The lobby/matchmaking still goes through
+    # Wiimmfi; only the peer match frames are relayed, exactly like a real DS
+    # NATNEG direct hop.
     #   A: recomp/run_jus.sh online --instance-index 0 --wfc-peer-host <B-IP> --player-name "A"
     #   B: recomp/run_jus.sh online --instance-index 1 --wfc-peer-host <A-IP> --player-name "B"
     #
@@ -118,7 +142,7 @@ case "$MODE" in
       --live-overlay-activation-delay-ms 15000 \
       --live-overlay-auto-delay-ms 15000 \
       --live-overlay-auto-cooldown-ms 20000 \
-      --live-overlay-command "py tools\ndsrecomp\tools\compile_live_shards.py --ndsrecomp-root tools\ndsrecomp --runner-build tools\ndsrecomp\runner\build-mingw --recompiler tools\ndsrecomp\recompiler\build\nds_recompile.exe --gcc gcc" \
+      --live-overlay-command "$LIVE_COMPILER" \
       --live-overlay-cache recomp/live-cache \
       "${@:2}"
     ;;

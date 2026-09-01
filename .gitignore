@@ -125,6 +125,7 @@ target/
 build-mingw/
 dist/
 launcher/build/
+launcher/build-linux/
 *.o
 *.elf
 *.bin.tmp

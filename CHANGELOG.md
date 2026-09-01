@@ -4,6 +4,42 @@ All notable changes to this project are documented here. Version numbers track
 the public releases; internal research milestones before v0.1.0 are summarized
 below from the project's working history.
 
+## 0.3.0 — 2026-09-01 (Linux support)
+
+**Native Linux host** — the full runner and a GTK launcher build and run on
+Linux with feature parity to the Windows app. First release with a Linux
+target (source build; see [`docs/LINUX.md`](docs/LINUX.md)).
+
+- **One-command Linux build**: `tools/scripts/build_linux.sh` clones, pins,
+  and patches ndsrecomp, verifies the ROM SHA-1, generates all title banks,
+  builds the runner (GCC, SDL2, OpenGL 4.3 compute renderer with automatic
+  software-renderer fallback) and the GTK3 launcher, and runs both test
+  suites.
+- **GTK launcher (feature parity)**: ROM verification, mod toggles,
+  controller and keyboard mapping, save import/reset, display layout,
+  Wiimmfi online settings, and session logging. Settings live in
+  `~/.config/JUSDecomp` (`$XDG_CONFIG_HOME` respected; portable mode
+  supported).
+- **Linux-native infrastructure**: live-overlay promotion compiles hot pages
+  to `.so` banks in-session; local wireless and the WFC peer relay use POSIX
+  sockets. Packet-capture integration remains Windows-only (off by default).
+- **Linux framerate pre-seed — 60 fps from first launch.** The Linux build
+  now runs `tools/scripts/live_preseed.py` after the runner build to seed
+  `recomp/live-cache` (plus both 2P caches) with every ROM overlay page
+  compiled to native — the same step the Windows packager applies to its
+  bundle. Without it, a fresh Linux install booted with the RAM overlays on
+  the Tier-3 interpreter (~30 fps) and then spent minutes compiling banks in
+  the background while playing. Verified on the reference machine: the menu
+  runs at 59.4 fps with zero interpreted instructions and an idle overlay
+  compiler, versus 39–41 fps while converging before. Recovery if a cache is
+  ever missing/stale: `python3 tools/scripts/live_preseed.py` (deduped).
+  One residual: the ARM7 WRAM Wi-Fi driver pages are assembled by the guest
+  at runtime and converge in-session during the first minutes of online
+  play (not pre-seedable from ROM data).
+- **Docs**: new [`docs/LINUX.md`](docs/LINUX.md) (requirements, build, run,
+  native pre-seed + framerate troubleshooting); README and USER_GUIDE Linux
+  sections.
+
 ## 0.2.2 — 2026-08-29 (intro crash hotfix)
 
 Fixes a silent crash-to-desktop a few seconds into the video intro on some

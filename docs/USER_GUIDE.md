@@ -1,12 +1,15 @@
 # JUSDecomp — Player's Guide
 
 Thank you for trying JUSDecomp! This app runs **Jump Ultimate Stars** natively
-on your Windows PC. You need your **own legally dumped copy** of the game —
+on Windows or Linux. You need your **own legally dumped copy** of the game —
 no game files are included with JUSDecomp.
 
 ## 1. Getting started (3 steps)
 
-1. **Start JUSDecomp.exe** — no installation needed for the portable version.
+1. **Start JUSDecomp** (`JUSDecomp.exe` on Windows or
+   `launcher/build-linux/JUSDecomp` in a Linux source build).
+   *On Linux there is no download — build it from source with one command:*
+   `tools/scripts/build_linux.sh` (see [`LINUX.md`](LINUX.md)).
 2. **Click "Change ROM..."** and select your `Jump Ultimate Stars.nds` file.
    The app verifies it automatically (unmodified dumps only).
 3. **Click "Play Jump Ultimate Stars".**
@@ -50,8 +53,9 @@ layers on top at runtime.
 
 ## 4. Save data
 
-- Your save lives in `%APPDATA%\JUSDecomp\jus-play.sav` (portable mode:
-  next to the executable).
+- Your save lives in `%APPDATA%\JUSDecomp\jus-play.sav` on Windows or
+  `~/.config/JUSDecomp/jus-play.sav` on Linux (portable mode: next to the
+  executable).
 - **Import save file...** copies an existing `.sav` (from an emulator or a
   cartridge backup) into the app's own working save. Your original file is
   never modified, referenced, or deleted.
@@ -77,7 +81,7 @@ patching is needed. Online play runs at ~60 fps.
 
 ## 6. Known issues
 
-These are known v0.2.2 limitations we are working on — none of them block
+These are known v0.3.0 limitations we are working on — none of them block
 progress (your save is always safe):
 
 - **Occasional micro-stutters during online play.** Online WiFi Battle now
@@ -104,6 +108,7 @@ progress (your save is always safe):
 | The game stopped unexpectedly | Your progress is safe. Click **Open log** on the main window and share `launcher.log` + `game.log` when asking for help. |
 | Controller buttons are wrong | Settings → Configure controller... and follow the prompts (press **Skip** for anything you don't use). |
 | Game runs slowly | Close other GPU-heavy apps and keep the window size modest. |
+| Game runs at about half framerate (~30 fps) on Linux | The native code cache is missing or stale — run `python3 tools/scripts/live_preseed.py` in the project folder and relaunch (see [`LINUX.md`](LINUX.md)). |
 | Black screen / graphics errors | Update your GPU driver. |
 | The game closes by itself during the intro (integrated graphics) | Fixed in v0.2.2 — the app now falls back to the software renderer automatically. If it still happens, update your GPU driver and share `launcher.log` + `game.log`. |
 
