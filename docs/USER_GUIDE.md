@@ -63,7 +63,9 @@ logic or your save.
   borderless, game speed, overlay and screenshots take effect immediately;
   the quality knobs (marked "(R)") are saved but apply on the next launch.
   Changes made here are remembered even after you quit — they carry into
-  the launcher's settings automatically.
+  the launcher's settings automatically. On desktops that reserve bare F9
+  globally (including Omarchy's default push-to-talk binding), **Shift+F9**
+  reaches the same menu.
 - **Game speed** — run the game slower (25%–75%) or faster (150%–800%) than
   real time. Note: non-100% speeds mute the audio (the DS audio stream is
   fixed-rate). Hold **Tab** for temporary turbo, or press **F10** to toggle

@@ -1,10 +1,20 @@
-# F9 Recomp-Settings Menu — Orientation / Mirroring Investigation (handoff)
+# F9 Recomp-Settings Menu — Orientation / Mirroring Investigation
 
-Status: **UNRESOLVED**. The F9 menu renders, but the user consistently reports its
-text as mirrored/garbled on screen. All code-side evidence says the buffer is
-correct and the presenter does not flip, yet the on-screen result disagrees.
-This document records every fact, experiment, and hypothesis so the next session
-can finish the job without redoing the groundwork.
+Status: **RESOLVED AND LIVE-VERIFIED 2026-09-02**.
+
+The problem was inside the bitmap-font renderer, not the framebuffer presenter.
+`kFont3x5` stores the leftmost pixel in bit 2, but both text functions treated
+bit 0 as the leftmost pixel. This mirrored every asymmetric glyph individually
+while preserving the order of the characters in each word. Mirroring the whole
+frame therefore corrected each glyph but reversed the words, producing the
+reported scrambled result.
+
+The menu also supplied mixed-case labels to a table whose lowercase glyph slots
+are blank. Both renderers now map lowercase input to the corresponding uppercase
+glyph, read glyph rows from bit 2 to bit 0, and retain the intended directions of
+the `<` and `>` glyphs.
+
+The remainder of this document preserves the investigation history.
 
 ## 1. What the feature is
 
@@ -37,14 +47,14 @@ horizontal flip of the presented buffer.
 
 ## 3. Hard facts established
 
-### 3.1 The framebuffer content is correct (F12 screenshot decode)
+### 3.1 Why the screenshot decode was misleading
 
 `jus_shot_6.bmp` was captured by the current build with the menu open. A full
-decode (see tools in §6) shows the top buffer contains the menu **upright and
-left-to-right**: title "RECOMP SETTINGS", a right-pointing `>` cursor, option
-labels, values, `(R)` markers, and the bottom hint line. The game's own text in
-the same file is also correctly oriented. The font table and draw routines are
-correct as written.
+decode (see tools in §6) showed the top buffer contained the characters in
+left-to-right order and was not flipped as a whole. It did not establish that
+the pixels inside each glyph were oriented correctly. The OCR tooling used the
+same font table and therefore reproduced the renderer's mistaken bit-order
+assumption instead of exposing it.
 
 ### 3.2 The GL compute presenter does not flip (shader analysis)
 
@@ -68,14 +78,15 @@ texture row 0. The fallback texture is uploaded with
 The bottom screen goes through the SDL renderer (`SDL_UpdateTexture` +
 `SDL_RenderCopy`), also no flip.
 
-### 3.3 The contradiction
+### 3.3 The apparent contradiction
 
 - Buffer correct (screenshot), presenter does not flip → screen should be correct.
 - User sees mirrored/garbled in every build.
 - The game's own text on the same screens renders fine (never complained about).
 
-These cannot all be true under a single simple transform, which is why this is
-still open.
+The missing distinction was between mirroring the complete framebuffer and
+mirroring each glyph in place. The latter matched every observation without
+requiring any transform in the presenter.
 
 ## 4. Failed experiments and what they imply
 
@@ -90,7 +101,7 @@ flip and the buffer itself is not what the decode suggested, or (b) the flip is
 (c) the on-screen issue is not a global mirror at all but per-glyph corruption
 ("partly wrong" is a recurring description) plus a separate orientation issue.
 
-## 5. Hypotheses for the next session (ranked)
+## 5. Historical hypotheses (superseded)
 
 1. **Vertical (upside-down) flip, not horizontal.** A vertical flip would make a
    correct buffer appear upside down, which a user may describe loosely as
@@ -141,30 +152,22 @@ flip and the buffer itself is not what the decode suggested, or (b) the flip is
 - This was FIXED: `save_stacked_bmp` now writes the top screen upright in the
   top half and the bottom screen upright below. Keep this fix.
 
-## 7. Current code state (clean)
+## 7. Final code state
 
-- Mirror experiments **reverted** — no `mirror_horizontal` remains.
+- Glyph pixels are read bit 2 first, matching the font table's encoding.
+- Lowercase input maps to the matching uppercase glyph.
+- The `<` and `>` bitmap entries preserve their intended directions.
+- Framebuffer-level mirror experiments remain reverted.
 - `save_stacked_bmp` fix kept (upright, correctly-ordered screenshots).
-- F12 debug capture kept (unconditional, falls back to `recomp_shots`); intended
-  to be removed once the menu displays correctly.
+- Temporary unconditional F12 capture removed; screenshots again respect the
+  menu's enable/disable setting.
 - Patch regenerated: `patches/ndsrecomp/0001-jus-runner-modifications.patch`.
-- Release bundle rebuilt: `dist/JUSDecomp`.
 
-## 8. Recommended next steps (concrete)
+## 8. Verification
 
-1. **Capture a fresh F12 screenshot** from the current (no-mirror) build with the
-   menu open, and decode it with `bmp_ocr2.py` (fix the lattice alignment) to
-   get an unambiguous text readout of what the buffer actually contains today.
-2. **Probe the live presenter output**: temporarily add a `glReadPixels` of the
-   back buffer after `nds_compute_host_present_top` (or render the present
-   program to a 256x192 FBO and read it back) and save it next to the F12 BMP.
-   Compare with the scratch buffer → answers whether the presenter transforms
-   the image.
-3. **Check the direct-frame path with the menu open**: log
-   `nds_gpu2d_direct_frame()`/`hd_active` while `menu_open` is true.
-4. **Test the vertical-flip hypothesis** with an asymmetric marker.
-5. If a flip is confirmed, apply it at the presentation layer for the top screen
-   only (not by mirroring the menu draw), so the game content and menu agree.
+The host build and automated runner tests verify compilation and regressions.
+The corrected menu was also verified in a playable build, including asymmetric
+glyphs and the previously missing mixed-case labels.
 
 ## 9. Relevant code locations
 
