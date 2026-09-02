@@ -364,10 +364,18 @@ index d5d7fec..9a19197 100644
          out += "]}";
          return out;
 diff --git a/runner/src/frontend.cpp b/runner/src/frontend.cpp
-index 8b5947d..7bcb3cf 100644
+index 8b5947d..4677fc5 100644
 --- a/runner/src/frontend.cpp
 +++ b/runner/src/frontend.cpp
-@@ -12,6 +12,7 @@
+@@ -1,5 +1,7 @@
+ #include "frontend.h"
+ 
++#include <filesystem>
++
+ #include <algorithm>
+ #include <array>
+ #include <atomic>
+@@ -12,6 +14,7 @@
  #include <initializer_list>
  #include <limits>
  #include <string>
@@ -375,7 +383,7 @@ index 8b5947d..7bcb3cf 100644
  
  #include "debug_server.h"
  #include "gpu2d.h"
-@@ -306,6 +307,40 @@ MphPadBinding parse_mph_pad_binding(const std::string& value,
+@@ -306,6 +309,40 @@ MphPadBinding parse_mph_pad_binding(const std::string& value,
      return {};
  }
  
@@ -416,7 +424,20 @@ index 8b5947d..7bcb3cf 100644
  MphPadBindingSet make_mph_pad_bindings(
      const NdsMphPrimeControlBindings& source) {
      MphPadBindingSet set{};
-@@ -508,26 +543,91 @@ void SDLCALL audio_callback(void* userdata, Uint8* stream, int len) {
+@@ -464,7 +501,11 @@ MphPrimeBindingSet make_mph_prime_bindings(
+     put(MphPrimeAction::Menu, source.menu);
+     return set;
+ }
+-constexpr int kWindowScale = 2;
++// QOL: the window scale is runtime-configurable (display.window_scale /
++// --window-scale). g_window_scale is set from the frontend options before
++// window creation; the default 2x preserves the historical behavior.
++constexpr int kDefaultWindowScale = 2;
++int g_window_scale = kDefaultWindowScale;
+ constexpr uint64_t kSystemCyclesPerFrame = 2130ull * 263ull;
+ constexpr int kAudioFrequency = 33513982 / 1024;
+ constexpr uint32_t kAudioQueueFrames = 2048;
+@@ -508,26 +549,91 @@ void SDLCALL audio_callback(void* userdata, Uint8* stream, int len) {
          queue->underruns.fetch_add(1, std::memory_order_relaxed);
  }
  
@@ -524,7 +545,327 @@ index 8b5947d..7bcb3cf 100644
  uint16_t controller_bit(SDL_GameControllerButton button) {
      switch (button) {
          case SDL_CONTROLLER_BUTTON_A:             return 1u << 0;
-@@ -982,6 +1082,31 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -715,6 +821,273 @@ void destroy_presentation(FrontendPresentation& presentation) {
+     presentation.windows[1] = nullptr;
+ }
+ 
++// QOL: window-geometry persistence. A tiny key=value file stores the last
++// windowed position/size so the player's window arrangement survives
++// relaunches (skipped entirely in fullscreen mode).
++bool load_window_state_file(const char* path, int* x, int* y,
++                            int* w, int* h) {
++    if (!path || !path[0] || !x || !y || !w || !h) return false;
++    FILE* f = std::fopen(path, "r");
++    if (!f) return false;
++    int vals[4] = {0, 0, 0, 0};
++    bool have[4] = {false, false, false, false};
++    char line[128];
++    while (std::fgets(line, sizeof(line), f)) {
++        int v = 0;
++        if (std::sscanf(line, "x=%d", &v) == 1) {
++            vals[0] = v; have[0] = true;
++        } else if (std::sscanf(line, "y=%d", &v) == 1) {
++            vals[1] = v; have[1] = true;
++        } else if (std::sscanf(line, "w=%d", &v) == 1) {
++            vals[2] = v; have[2] = true;
++        } else if (std::sscanf(line, "h=%d", &v) == 1) {
++            vals[3] = v; have[3] = true;
++        }
++    }
++    std::fclose(f);
++    if (!have[0] || !have[1] || !have[2] || !have[3]) return false;
++    *x = vals[0]; *y = vals[1]; *w = vals[2]; *h = vals[3];
++    return true;
++}
++
++void save_window_state_file(const char* path, int x, int y, int w, int h) {
++    if (!path || !path[0]) return;
++    FILE* f = std::fopen(path, "w");
++    if (!f) return;
++    std::fprintf(f, "x=%d\ny=%d\nw=%d\nh=%d\n", x, y, w, h);
++    std::fclose(f);
++}
++
++// ── QOL in-game HUD overlay ──────────────────────────────────────────────
++// A tiny 3x5 bitmap font. Each glyph is 5 rows; each row byte's low 3 bits
++// are the columns (bit 0 = left). Unused ASCII slots are blank.
++static const uint8_t kFont3x5[95][5] = {
++    // idx 0..4   (32 ' ' .. 36 '$')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++    // idx 5..9   (37 '%' .. 41 ')')
++    {0x05,0x01,0x02,0x04,0x05}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++    // idx 10..14 (42 '*' .. 46 '.')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0x00,0x00,0x07,0x00,0x00}, {0x00,0x00,0x00,0x00,0x02},
++    // idx 15..19 (47 '/' .. 51 '3')
++    {0x01,0x01,0x02,0x04,0x04}, {0x07,0x05,0x05,0x05,0x07}, {0x02,0x06,0x02,0x02,0x07},
++    {0x07,0x01,0x07,0x04,0x07}, {0x07,0x01,0x07,0x01,0x07},
++    // idx 20..24 (52 '4' .. 56 '8')
++    {0x05,0x05,0x07,0x01,0x01}, {0x07,0x04,0x07,0x01,0x07}, {0x07,0x04,0x07,0x05,0x07},
++    {0x07,0x01,0x02,0x02,0x02}, {0x07,0x05,0x07,0x05,0x07},
++    // idx 25..29 (57 '9' .. 61 '=')
++    {0x07,0x05,0x07,0x01,0x07}, {0x00,0x02,0x00,0x02,0x00}, {0,0,0,0,0},
++    {0x04,0x02,0x01,0x02,0x04}, {0x00,0x07,0x00,0x07,0x00},
++    // idx 30..34 (62 '>' .. 66 'B')
++    {0x01,0x02,0x04,0x02,0x01}, {0x07,0x01,0x02,0x02,0x00}, {0,0,0,0,0},
++    {0x07,0x05,0x07,0x05,0x05}, {0x06,0x05,0x06,0x05,0x06},
++    // idx 35..39 (67 'C' .. 71 'G')
++    {0x07,0x04,0x04,0x04,0x07}, {0x06,0x05,0x05,0x05,0x06}, {0x07,0x04,0x07,0x04,0x07},
++    {0x07,0x04,0x07,0x04,0x04}, {0x07,0x04,0x05,0x05,0x07},
++    // idx 40..44 (72 'H' .. 76 'L')
++    {0x05,0x05,0x07,0x05,0x05}, {0x07,0x02,0x02,0x02,0x07}, {0x01,0x01,0x01,0x05,0x07},
++    {0x05,0x05,0x06,0x05,0x05}, {0x04,0x04,0x04,0x04,0x07},
++    // idx 45..49 (77 'M' .. 81 'Q')
++    {0x07,0x07,0x05,0x05,0x05}, {0x05,0x07,0x07,0x05,0x05}, {0x07,0x05,0x05,0x05,0x07},
++    {0x07,0x05,0x07,0x04,0x04}, {0x07,0x05,0x05,0x07,0x01},
++    // idx 50..54 (82 'R' .. 86 'V')
++    {0x07,0x05,0x07,0x05,0x05}, {0x07,0x04,0x07,0x01,0x07}, {0x07,0x02,0x02,0x02,0x02},
++    {0x05,0x05,0x05,0x05,0x07}, {0x05,0x05,0x05,0x05,0x02},
++    // idx 55..59 (87 'W' .. 91 '[')
++    {0x05,0x05,0x05,0x07,0x07}, {0x05,0x05,0x02,0x05,0x05}, {0x05,0x05,0x02,0x02,0x02},
++    {0x07,0x01,0x02,0x04,0x07}, {0,0,0,0,0},
++    // idx 60..64 (92 '\' .. 96 '`')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++    // idx 65..69 (97 'a' .. 101 'e')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++    // idx 70..74 (102 'f' .. 106 'j')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++    // idx 75..79 (107 'k' .. 111 'o')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++    // idx 80..84 (112 'p' .. 116 't')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++    // idx 85..89 (117 'u' .. 121 'y')  -- 'x' = 120 = idx 88
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0x00,0x05,0x02,0x05,0x00}, {0,0,0,0,0},
++    // idx 90..94 (122 'z' .. 126 '~')
++    {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},
++};
++
++// Scratch surface for the HUD overlay (drawn into a copy so the guest
++// framebuffer is never modified).
++std::vector<uint32_t> g_overlay_scratch;
++
++void draw_text_3x5(uint32_t* fb, int fb_w, int x, int y,
++                   const char* text, uint32_t color) {
++    for (const char* p = text; *p; ++p) {
++        const unsigned char c = static_cast<unsigned char>(*p);
++        if (c < 32 || c > 126) { x += 4; continue; }
++        const uint8_t* g = kFont3x5[c - 32];
++        for (int row = 0; row < 5; ++row) {
++            const uint8_t bits = g[row];
++            for (int col = 0; col < 3; ++col) {
++                if (!(bits & (1u << col))) continue;
++                const int px = x + col;
++                const int py = y + row;
++                if (px >= 0 && px < fb_w && py >= 0 && py < kScreenHeight)
++                    fb[py * fb_w + px] = color;
++            }
++        }
++        x += 4;
++    }
++}
++
++void draw_overlay_line(uint32_t* fb, int fb_w, int x, int y,
++                       const char* text, uint32_t color) {
++    const size_t len = std::strlen(text);
++    const int box_w = static_cast<int>(len) * 4 + 2;
++    for (int yy = 0; yy < 6; ++yy) {
++        for (int xx = 0; xx < box_w; ++xx) {
++            const int px = x + xx;
++            const int py = y + yy;
++            if (px >= 0 && px < fb_w && py >= 0 && py < kScreenHeight)
++                fb[py * fb_w + px] = 0xFF000000u;
++        }
++    }
++    draw_text_3x5(fb, fb_w, x + 1, y + 1, text, color);
++}
++
++// Integer-scaled variant of the 3x5 bitmap font (each glyph pixel becomes a
++// scale x scale block). Used by the F9 recomp settings menu for readability.
++void draw_text_3x5_scaled(uint32_t* fb, int fb_w, int x, int y,
++                          const char* text, uint32_t color, int scale) {
++    if (scale < 1) scale = 1;
++    for (const char* p = text; *p; ++p) {
++        const unsigned char c = static_cast<unsigned char>(*p);
++        if (c < 32 || c > 126) { x += 4 * scale; continue; }
++        const uint8_t* g = kFont3x5[c - 32];
++        for (int row = 0; row < 5; ++row) {
++            const uint8_t bits = g[row];
++            for (int col = 0; col < 3; ++col) {
++                if (!(bits & (1u << col))) continue;
++                for (int dy = 0; dy < scale; ++dy) {
++                    for (int dx = 0; dx < scale; ++dx) {
++                        const int px = x + col * scale + dx;
++                        const int py = y + row * scale + dy;
++                        if (px >= 0 && px < fb_w && py >= 0 &&
++                            py < kScreenHeight) {
++                            fb[py * fb_w + px] = color;
++                        }
++                    }
++                }
++            }
++        }
++        x += 4 * scale;
++    }
++}
++
++// The F9 recomp settings menu: full-screen dark backdrop + title + option
++// list with a selection cursor + hint line. Rendered into a scratch copy of
++// the top framebuffer (the guest surface is never modified).
++void draw_recomp_menu(uint32_t* fb, int fb_w, int cursor, int row_count,
++                      const char* const* labels,
++                      const char* const* values,
++                      const bool* restart_required) {
++    constexpr int kScale = 2;
++    constexpr int kRowH = 12;  // 2 * (5 glyph rows + 1 gap)
++    for (int y = 0; y < kScreenHeight; ++y)
++        for (int x = 0; x < fb_w; ++x)
++            fb[y * fb_w + x] = 0xFF14141Cu;
++
++    const char* title = "RECOMP SETTINGS";
++    const int title_x = (fb_w - static_cast<int>(std::strlen(title)) * 4 * kScale) / 2;
++    draw_text_3x5_scaled(fb, fb_w, std::max(0, title_x), 8, title,
++                         0xFFFFFFFFu, kScale);
++    const int value_x = fb_w - 130;
++    const int mark_x = fb_w - 30;
++    for (int i = 0; i < row_count && i < 14; ++i) {
++        const int y = 30 + i * kRowH;
++        if (i == cursor)
++            draw_text_3x5_scaled(fb, fb_w, 12, y, ">", 0xFFFFD700u, kScale);
++        draw_text_3x5_scaled(fb, fb_w, 24, y, labels[i], 0xFFE0E0E0u, kScale);
++        if (values && values[i])
++            draw_text_3x5_scaled(fb, fb_w, value_x, y, values[i],
++                                 0xFF66C2FFu, kScale);
++        if (restart_required && restart_required[i])
++            draw_text_3x5_scaled(fb, fb_w, mark_x, y, "(R)", 0xFF707070u,
++                                 kScale);
++    }
++    const char* hint = "UP/DOWN MOVE  LEFT/RIGHT CHANGE  ENTER OK  ESC CLOSE";
++    const int hint_x = (fb_w - static_cast<int>(std::strlen(hint)) * 4 * kScale) / 2;
++    draw_text_3x5_scaled(fb, fb_w, std::max(0, hint_x), kScreenHeight - 18,
++                         hint, 0xFF9AA0A0u, kScale);
++}
++
++// QOL screenshot: save the two native 256x192 framebuffers as one stacked
++// 256x384 24-bit BMP (top above bottom). BMP is deliberately used for v1 --
++// it needs no external image library.
++bool save_stacked_bmp(const std::string& dir, uint32_t index,
++                      const uint32_t* top, const uint32_t* bottom) {
++    constexpr int kW = kScreenWidth;
++    constexpr int kH = kScreenHeight * 2;
++    const int row_bytes = kW * 3;
++    const int pad = (4 - (row_bytes % 4)) % 4;
++    const int data_size = (row_bytes + pad) * kH;
++    const uint32_t file_size = 54u + static_cast<uint32_t>(data_size);
++    const std::string name =
++        dir + "/jus_shot_" + std::to_string(index) + ".bmp";
++    FILE* f = std::fopen(name.c_str(), "wb");
++    if (!f) return false;
++    uint8_t header[54] = {};
++    header[0] = 'B';
++    header[1] = 'M';
++    header[2] = static_cast<uint8_t>(file_size & 0xFFu);
++    header[3] = static_cast<uint8_t>((file_size >> 8) & 0xFFu);
++    header[4] = static_cast<uint8_t>((file_size >> 16) & 0xFFu);
++    header[5] = static_cast<uint8_t>((file_size >> 24) & 0xFFu);
++    header[10] = 54;
++    uint32_t ih = 40;
++    std::memcpy(header + 14, &ih, 4);
++    int32_t iw = kW;
++    std::memcpy(header + 18, &iw, 4);
++    int32_t ihh = kH;
++    std::memcpy(header + 22, &ihh, 4);
++    uint16_t planes = 1;
++    std::memcpy(header + 26, &planes, 2);
++    uint16_t bpp = 24;
++    std::memcpy(header + 28, &bpp, 2);
++    uint32_t compression = 0;
++    std::memcpy(header + 30, &compression, 4);
++    uint32_t img_size = static_cast<uint32_t>(data_size);
++    std::memcpy(header + 34, &img_size, 4);
++    uint32_t ppm = 2835;
++    std::memcpy(header + 38, &ppm, 4);
++    std::memcpy(header + 42, &ppm, 4);
++    std::fwrite(header, 1, 54, f);
++    // BMP pixel rows are stored bottom-up: file row 0 is the image bottom.
++    // Iteration y writes file row (kH - 1 - y), so the first write (y = kH-1)
++    // lands at file row 0. Map the two buffers so the final image shows the
++    // top screen upright in the top half and the bottom screen upright below:
++    //   - y in [kScreenHeight, kH-1] -> file rows 0..kScreenHeight-1 (bottom
++    //     half of the image) carry the bottom buffer, bottom[0] at image-top
++    //     of that half (file row kScreenHeight-1).
++    //   - y in [0, kScreenHeight-1]  -> file rows kScreenHeight..kH-1 (top
++    //     half of the image) carry the top buffer, top[0] at the image top.
++    std::vector<uint8_t> row(static_cast<size_t>(row_bytes + pad));
++    for (int y = kH - 1; y >= 0; --y) {
++        const uint32_t* src =
++            (y >= kScreenHeight)
++                ? bottom + static_cast<size_t>(y - kScreenHeight) * kW
++                : top + static_cast<size_t>(y) * kW;
++        for (int x = 0; x < kW; ++x) {
++            const uint32_t px = src[x];
++            row[static_cast<size_t>(x) * 3 + 0] = static_cast<uint8_t>(px);
++            row[static_cast<size_t>(x) * 3 + 1] =
++                static_cast<uint8_t>(px >> 8);
++            row[static_cast<size_t>(x) * 3 + 2] =
++                static_cast<uint8_t>(px >> 16);
++        }
++        for (int p = 0; p < pad; ++p)
++            row[static_cast<size_t>(row_bytes + p)] = 0;
++        std::fwrite(row.data(), 1, row.size(), f);
++    }
++    std::fclose(f);
++    return true;
++}
++
+ SDL_Renderer* create_renderer(SDL_Window* window) {
+     SDL_Renderer* renderer = SDL_CreateRenderer(
+         window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+@@ -757,10 +1130,14 @@ bool create_presentation(const NdsFrontendOptions& options,
+         presentation.screen_widths[0],
+         presentation.screen_widths[1]);
+     const int first_height = presentation.separate
+-        ? kScreenHeight * kWindowScale
+-        : kScreenHeight * 2 * kWindowScale;
++        ? kScreenHeight * g_window_scale
++        : kScreenHeight * 2 * g_window_scale;
+     const uint32_t top_window_flags =
+         SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
++        (options.fullscreen
++             ? static_cast<uint32_t>(SDL_WINDOW_FULLSCREEN_DESKTOP) : 0u) |
++        (options.borderless
++             ? static_cast<uint32_t>(SDL_WINDOW_BORDERLESS) : 0u) |
+         (presentation.gl_top
+              ? static_cast<uint32_t>(SDL_WINDOW_OPENGL) : 0u);
+     presentation.windows[0] = SDL_CreateWindow(
+@@ -768,7 +1145,7 @@ bool create_presentation(const NdsFrontendOptions& options,
+                               : "ndsrecomp firmware preview",
+         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+         (presentation.separate ? presentation.screen_widths[0]
+-                               : presentation.canvas_width) * kWindowScale,
++                               : presentation.canvas_width) * g_window_scale,
+         first_height,
+         top_window_flags);
+     if (!presentation.windows[0]) {
+@@ -790,11 +1167,15 @@ bool create_presentation(const NdsFrontendOptions& options,
+         SDL_GetWindowPosition(presentation.windows[0], &top_x, &top_y);
+         presentation.windows[1] = SDL_CreateWindow(
+             "ndsrecomp - Bottom Screen",
+-            top_x + presentation.screen_widths[0] * kWindowScale + 32,
++            top_x + presentation.screen_widths[0] * g_window_scale + 32,
+             top_y,
+-            presentation.screen_widths[1] * kWindowScale,
+-            kScreenHeight * kWindowScale,
+-            SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
++            presentation.screen_widths[1] * g_window_scale,
++            kScreenHeight * g_window_scale,
++            SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
++            (options.fullscreen
++                 ? static_cast<uint32_t>(SDL_WINDOW_FULLSCREEN_DESKTOP) : 0u) |
++            (options.borderless
++                 ? static_cast<uint32_t>(SDL_WINDOW_BORDERLESS) : 0u));
+         if (!presentation.windows[1]) {
+             std::fprintf(stderr, "[sdl] bottom window failed: %s\n",
+                          SDL_GetError());
+@@ -982,6 +1363,31 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          std::fprintf(stderr, "[sdl] init failed: %s\n", SDL_GetError());
          return 1;
      }
@@ -556,7 +897,33 @@ index 8b5947d..7bcb3cf 100644
      if (SDL_SetThreadPriority(SDL_THREAD_PRIORITY_HIGH) != 0)
          std::fprintf(stderr, "[sdl] thread priority unchanged: %s\n",
                       SDL_GetError());
-@@ -1187,6 +1312,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -989,11 +1395,25 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,
+                 (options.supersampling > 1 || options.antialiasing > 0)
+                     ? "1" : "0");
++    // QOL: the window scale is runtime-configurable; apply it before any
++    // window is created so all sizes and injected-event coordinates agree.
++    g_window_scale = std::max(1, static_cast<int>(options.window_scale));
+     FrontendPresentation presentation{};
+     if (!create_presentation(options, presentation)) {
+         SDL_Quit();
+         return 1;
+     }
++    // QOL: restore the last windowed geometry (skipped in fullscreen mode).
++    if (!options.window_state_file.empty() && !options.fullscreen &&
++        presentation.windows[0]) {
++        int wx = 0, wy = 0, ww = 0, wh = 0;
++        if (load_window_state_file(options.window_state_file.c_str(),
++                                   &wx, &wy, &ww, &wh) &&
++            ww > 0 && wh > 0) {
++            SDL_SetWindowPosition(presentation.windows[0], wx, wy);
++            SDL_SetWindowSize(presentation.windows[0], ww, wh);
++        }
++    }
+     const int bottom_logical_width = presentation.separate
+         ? presentation.screen_widths[1]
+         : presentation.canvas_width;
+@@ -1187,6 +1607,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
      bool mph_pad_trigger_left_held = false;
      bool mph_pad_trigger_right_held = false;
      uint64_t mph_pad_aim_writes = 0;
@@ -571,7 +938,382 @@ index 8b5947d..7bcb3cf 100644
      auto mph_prime_active = [&]() {
          return mph_prime_controls_available &&
                 (relative_mouse.captured() || mph_prime_pad_engaged);
-@@ -1818,6 +1951,42 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1342,6 +1770,11 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+     bool audio_queue_error = false;
+     bool turbo_pressed = false;
+     bool turbo_active = false;
++    bool turbo_toggled = false;  // QOL: F10 sticky turbo (no need to hold)
++    bool overlay_visible = options.overlay_enabled;  // QOL HUD (F11 toggles)
++    bool screenshot_pending = false;                 // QOL F12
++    uint32_t screenshot_count = 0;
++    double last_frame_emu_ms = 0.0;
+     uint32_t audio_pace_floor = kAudioQueueFrames;
+     uint32_t audio_min_queue = std::numeric_limits<uint32_t>::max();
+     uint32_t audio_max_queue = 0;
+@@ -1407,7 +1840,235 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+     uint64_t last_underrun_frame = 0;
+     const uint64_t soak_start = SDL_GetPerformanceCounter();
+ 
++    // QOL game-speed preset (% of real time, 100 = normal). Non-100 speeds
++    // are paced by host time with the audio muted: the audio queue is
++    // fixed-rate, so slowing or speeding the guest would otherwise underrun
++    // or overflow it. Hold-Tab / F10 turbo still overrides to full speed.
++    // The F9 settings menu mutates these at runtime, so they are not const.
++    uint16_t game_speed =
++        options.game_speed < 25 ? 100 : options.game_speed;
++    bool speed_alt = game_speed != 100;
++    uint64_t frame_target_ticks = 0;
++    uint64_t frame_start_tick = SDL_GetPerformanceCounter();
++
++    // QOL F9 recomp-settings menu state. Working copies of the options the
++    // menu can change live; the renderer-quality knobs change value here but
++    // only take effect on the next launch (baked at renderer init).
++    bool menu_open = false;
++    int menu_cursor = 0;
++    constexpr int kMenuRowCount = 12;
++    bool menu_fullscreen = options.fullscreen;
++    bool menu_borderless = options.borderless;
++    bool screenshots_enabled = !options.screenshot_dir.empty();
++    uint8_t menu_internal_res = options.internal_resolution;
++    uint8_t menu_texture_upscale = options.texture_upscale;
++    uint8_t menu_aa = options.antialiasing;
++    uint8_t menu_supersampling = options.supersampling;
++
++    auto recompute_speed = [&]() {
++        speed_alt = game_speed != 100;
++        frame_target_ticks = static_cast<uint64_t>(
++            static_cast<double>(frequency) * 100.0 /
++            (60.0 * static_cast<double>(game_speed)));
++    };
++    recompute_speed();
++
++    // Restart the audio pipeline cleanly (same handling as a turbo toggle),
++    // used when the F9 menu changes the game speed or restores defaults.
++    auto pause_audio_for_speed = [&]() {
++        if (audio) {
++            SDL_PauseAudioDevice(audio, 1);
++            clear_audio_queue(audio, audio_queue);
++            audio_queue.started.store(false, std::memory_order_relaxed);
++        }
++        audio_started = false;
++        audio_start_threshold = kAudioQueueFrames;
++        audio_pace_floor = audio_start_threshold;
++        audio_min_queue = std::numeric_limits<uint32_t>::max();
++        audio_max_queue = 0;
++    };
++
++    auto apply_window_scale = [&]() {
++        if (!presentation.windows[0]) return;
++        const int w0 = presentation.separate
++                           ? presentation.screen_widths[0]
++                           : presentation.canvas_width;
++        const int h0 = presentation.separate
++                           ? kScreenHeight
++                           : kScreenHeight * 2;
++        SDL_SetWindowSize(presentation.windows[0], w0 * g_window_scale,
++                          h0 * g_window_scale);
++        if (presentation.separate && presentation.windows[1]) {
++            SDL_SetWindowSize(presentation.windows[1],
++                              presentation.screen_widths[1] * g_window_scale,
++                              kScreenHeight * g_window_scale);
++        }
++    };
++    auto apply_fullscreen = [&]() {
++        if (!presentation.windows[0]) return;
++        SDL_SetWindowFullscreen(
++            presentation.windows[0],
++            menu_fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
++        if (presentation.separate && presentation.windows[1]) {
++            SDL_SetWindowFullscreen(
++                presentation.windows[1],
++                menu_fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
++        }
++    };
++    auto apply_borderless = [&]() {
++        if (!presentation.windows[0]) return;
++        SDL_SetWindowBordered(presentation.windows[0],
++                              menu_borderless ? SDL_TRUE : SDL_FALSE);
++        if (presentation.separate && presentation.windows[1]) {
++            SDL_SetWindowBordered(presentation.windows[1],
++                                  menu_borderless ? SDL_TRUE : SDL_FALSE);
++        }
++    };
++
++    // Persist the menu's current values to the host override file (key=value,
++    // same pattern as the window-state file). The launcher merges these over
++    // its settings.json on the next launch.
++    auto save_in_game_settings = [&]() {
++        if (options.in_game_settings_file.empty()) return;
++        FILE* f = std::fopen(options.in_game_settings_file.c_str(), "w");
++        if (!f) return;
++        std::fprintf(f, "window_scale=%d\n", g_window_scale);
++        std::fprintf(f, "fullscreen=%d\n", menu_fullscreen ? 1 : 0);
++        std::fprintf(f, "borderless=%d\n", menu_borderless ? 1 : 0);
++        std::fprintf(f, "game_speed=%u\n",
++                     static_cast<unsigned>(game_speed));
++        std::fprintf(f, "overlay=%d\n", overlay_visible ? 1 : 0);
++        std::fprintf(f, "screenshots=%d\n", screenshots_enabled ? 1 : 0);
++        std::fprintf(f, "internal_resolution=%u\n",
++                     static_cast<unsigned>(menu_internal_res));
++        std::fprintf(f, "texture_upscale=%u\n",
++                     static_cast<unsigned>(menu_texture_upscale));
++        std::fprintf(f, "antialiasing=%u\n",
++                     static_cast<unsigned>(menu_aa));
++        std::fprintf(f, "supersampling=%u\n",
++                     static_cast<unsigned>(menu_supersampling));
++        std::fclose(f);
++    };
++
++    auto open_menu = [&]() {
++        if (menu_open) return;
++        menu_open = true;
++        menu_cursor = 0;
++        if (audio) SDL_PauseAudioDevice(audio, 1);
++        std::fprintf(stderr, "[sdl] recomp settings menu opened\n");
++    };
++    auto close_menu = [&]() {
++        if (!menu_open) return;
++        menu_open = false;
++        save_in_game_settings();
++        if (audio) SDL_PauseAudioDevice(audio, 0);
++        std::fprintf(stderr, "[sdl] recomp settings menu closed\n");
++    };
++
++    auto menu_adjust = [&](int row, int dir) {
++        switch (row) {
++            case 0: {  // window size 1x..4x
++                int v = g_window_scale + dir;
++                if (v < 1) v = 4;
++                if (v > 4) v = 1;
++                g_window_scale = v;
++                apply_window_scale();
++                break;
++            }
++            case 1:
++                menu_fullscreen = !menu_fullscreen;
++                apply_fullscreen();
++                break;
++            case 2:
++                menu_borderless = !menu_borderless;
++                apply_borderless();
++                break;
++            case 3: {  // game speed presets
++                static const uint16_t speeds[] = {
++                    25, 50, 75, 100, 150, 200, 300, 400, 600, 800};
++                constexpr int kCount = 10;
++                int idx = 3;  // 100
++                for (int i = 0; i < kCount; ++i) {
++                    if (speeds[i] == game_speed) { idx = i; break; }
++                }
++                idx = (idx + dir + kCount) % kCount;
++                game_speed = speeds[idx];
++                recompute_speed();
++                pause_audio_for_speed();
++                break;
++            }
++            case 4:
++                overlay_visible = !overlay_visible;
++                break;
++            case 5:
++                screenshots_enabled = !screenshots_enabled;
++                break;
++            case 6: {  // internal res 1x..4x (restart)
++                int v = static_cast<int>(menu_internal_res) + dir;
++                if (v < 1) v = 4;
++                if (v > 4) v = 1;
++                menu_internal_res = static_cast<uint8_t>(v);
++                break;
++            }
++            case 7: {  // texture upscale 1/2/4 (restart)
++                static const uint8_t opts[] = {1, 2, 4};
++                int idx = 0;
++                for (int i = 0; i < 3; ++i) {
++                    if (opts[i] == menu_texture_upscale) { idx = i; break; }
++                }
++                idx = (idx + dir + 3) % 3;
++                menu_texture_upscale = opts[idx];
++                break;
++            }
++            case 8: {  // anti-alias 0/2/4/8 (restart)
++                static const uint8_t opts[] = {0, 2, 4, 8};
++                int idx = 0;
++                for (int i = 0; i < 4; ++i) {
++                    if (opts[i] == menu_aa) { idx = i; break; }
++                }
++                idx = (idx + dir + 4) % 4;
++                menu_aa = opts[idx];
++                break;
++            }
++            case 9: {  // supersampling 1x..4x (restart)
++                int v = static_cast<int>(menu_supersampling) + dir;
++                if (v < 1) v = 4;
++                if (v > 4) v = 1;
++                menu_supersampling = static_cast<uint8_t>(v);
++                break;
++            }
++            default:
++                break;
++        }
++        save_in_game_settings();
++    };
++
++    auto menu_activate = [&](int row) {
++        if (row == 10) {  // restore defaults
++            g_window_scale = kDefaultWindowScale;
++            menu_fullscreen = false;
++            menu_borderless = false;
++            overlay_visible = false;
++            screenshots_enabled = false;
++            game_speed = 100;
++            recompute_speed();
++            menu_internal_res = 1;
++            menu_texture_upscale = 1;
++            menu_aa = 0;
++            menu_supersampling = 1;
++            apply_window_scale();
++            apply_fullscreen();
++            apply_borderless();
++            pause_audio_for_speed();
++            save_in_game_settings();
++        } else if (row == 11) {  // close menu
++            close_menu();
++        }
++    };
++
+     while (running) {
++        // Mark the start of this frame slot for host-time speed pacing.
++        frame_start_tick = SDL_GetPerformanceCounter();
+ #if defined(NDS_HAVE_COMPUTE_RENDERER)
+         if (!nds_compute_host_make_current()) {
+             std::fprintf(stderr, "[gpu3d] lost compute GL context: %s\n",
+@@ -1447,9 +2108,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+                 // SDL transforms window-tagged mouse events from physical
+                 // window pixels into the renderer's logical coordinates.
+                 injected.button.x =
+-                    (bottom_content_left + 127) * kWindowScale;
++                    (bottom_content_left + 127) * g_window_scale;
+                 injected.button.y = (presentation.separate
+-                    ? 180 : 192 + 180) * kWindowScale;
++                    ? 180 : 192 + 180) * g_window_scale;
+                 selftest_event_error |= SDL_PushEvent(&injected) < 0;
+                 selftest_touch_down = true;
+             } else if (selftest_touch_down && !selftest_touch_up &&
+@@ -1459,9 +2120,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+                 injected.button.windowID = presentation.window_ids[1];
+                 injected.button.button = SDL_BUTTON_LEFT;
+                 injected.button.x =
+-                    (bottom_content_left + 127) * kWindowScale;
++                    (bottom_content_left + 127) * g_window_scale;
+                 injected.button.y = (presentation.separate
+-                    ? 180 : 192 + 180) * kWindowScale;
++                    ? 180 : 192 + 180) * g_window_scale;
+                 selftest_event_error |= SDL_PushEvent(&injected) < 0;
+                 selftest_touch_up = true;
+             }
+@@ -1551,27 +2212,57 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+                 release_relative_mouse();
+             }
+             if (event.type == SDL_KEYDOWN && !event.key.repeat) {
+-                if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
++                const SDL_Scancode sc = event.key.keysym.scancode;
++                if (menu_open) {
++                    // F9 menu: consume navigation keys, never leak to guest.
++                    // F12 still screenshots the presented top (menu included).
++                    if (sc == SDL_SCANCODE_F12) {
++                        screenshot_pending = true;
++                    } else if (sc == SDL_SCANCODE_UP) {
++                        menu_cursor = (menu_cursor + kMenuRowCount - 1) %
++                                      kMenuRowCount;
++                    } else if (sc == SDL_SCANCODE_DOWN) {
++                        menu_cursor = (menu_cursor + 1) % kMenuRowCount;
++                    } else if (sc == SDL_SCANCODE_LEFT) {
++                        menu_adjust(menu_cursor, -1);
++                    } else if (sc == SDL_SCANCODE_RIGHT) {
++                        menu_adjust(menu_cursor, 1);
++                    } else if (sc == SDL_SCANCODE_RETURN) {
++                        menu_activate(menu_cursor);
++                    } else if (sc == SDL_SCANCODE_ESCAPE ||
++                               sc == SDL_SCANCODE_F9) {
++                        close_menu();
++                    }
++                } else if (sc == SDL_SCANCODE_F9) {
++                    open_menu();
++                } else if (sc == SDL_SCANCODE_ESCAPE) {
+                     if (relative_mouse.captured())
+                         release_relative_mouse();
+                     else
+                         running = false;
+-                } else if (event.key.keysym.scancode == SDL_SCANCODE_TAB) {
++                } else if (sc == SDL_SCANCODE_TAB) {
+                     turbo_pressed = true;
+-                } else if (process_mph_prime_key(
+-                               event.key.keysym.scancode, true, false)) {
++                } else if (sc == SDL_SCANCODE_F10) {
++                    turbo_toggled = !turbo_toggled;
++                } else if (sc == SDL_SCANCODE_F11) {
++                    overlay_visible = !overlay_visible;
++                } else if (sc == SDL_SCANCODE_F12) {
++                    screenshot_pending = true;
++                } else if (process_mph_prime_key(sc, true, false)) {
+                     // Consumed by the MPH-specific keyboard/mouse layer.
+                 } else if (mph_prime_active()) {
+                     // Prime Controls replaces the normal keyboard keypad map;
+                     // unbound keys must not leak through as DS buttons.
+-                } else if (const uint16_t bit = key_bit(event.key.keysym.scancode)) {
++                } else if (const uint16_t bit = key_bit(sc)) {
+                     ++host_key_presses;
+                     keyboard_pressed |= bit;
+                     publish_keys();
+                 }
+             }
+             if (event.type == SDL_KEYUP && !event.key.repeat) {
+-                if (event.key.keysym.scancode == SDL_SCANCODE_TAB) {
++                if (menu_open) {
++                    // F9 menu owns the keyboard; ignore key releases.
++                } else if (event.key.keysym.scancode == SDL_SCANCODE_TAB) {
+                     turbo_pressed = false;
+                 } else if (process_mph_prime_key(
+                         event.key.keysym.scancode, false, false)) {
+@@ -1609,8 +2300,23 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+             if (event.type == SDL_CONTROLLERBUTTONDOWN) {
+                 const auto button = static_cast<SDL_GameControllerButton>(
+                     event.cbutton.button);
+-                if (process_mph_prime_pad(MphPadInputKind::Button, button,
+-                                          true)) {
++                if (menu_open) {
++                    // F9 menu: gamepad navigation, never leaked to the guest.
++                    if (button == SDL_CONTROLLER_BUTTON_DPAD_UP)
++                        menu_cursor = (menu_cursor + kMenuRowCount - 1) %
++                                      kMenuRowCount;
++                    else if (button == SDL_CONTROLLER_BUTTON_DPAD_DOWN)
++                        menu_cursor = (menu_cursor + 1) % kMenuRowCount;
++                    else if (button == SDL_CONTROLLER_BUTTON_DPAD_LEFT)
++                        menu_adjust(menu_cursor, -1);
++                    else if (button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT)
++                        menu_adjust(menu_cursor, 1);
++                    else if (button == SDL_CONTROLLER_BUTTON_A)
++                        menu_activate(menu_cursor);
++                    else if (button == SDL_CONTROLLER_BUTTON_B)
++                        close_menu();
++                } else if (process_mph_prime_pad(MphPadInputKind::Button,
++                                                 button, true)) {
+                     // Consumed by Prime Controls.
+                 } else if (const uint16_t bit = controller_bit(button)) {
+                     controller_pressed |= bit;
+@@ -1620,8 +2326,10 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+             if (event.type == SDL_CONTROLLERBUTTONUP) {
+                 const auto button = static_cast<SDL_GameControllerButton>(
+                     event.cbutton.button);
+-                if (process_mph_prime_pad(MphPadInputKind::Button, button,
+-                                          false)) {
++                if (menu_open) {
++                    // F9 menu owns the gamepad; ignore releases.
++                } else if (process_mph_prime_pad(MphPadInputKind::Button,
++                                                 button, false)) {
+                     // Consumed by Prime Controls.
+                 } else if (const uint16_t bit = controller_bit(button)) {
+                     controller_pressed &= static_cast<uint16_t>(~bit);
+@@ -1818,6 +2526,42 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                      mph_pad_aim_rem_y -= static_cast<float>(mph_pad_frame_y);
                  }
              }
@@ -614,7 +1356,7 @@ index 8b5947d..7bcb3cf 100644
          } else {
              if (stick_pressed != 0) {
                  stick_pressed = 0;
-@@ -1837,6 +2006,7 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1837,6 +2581,7 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                  mph_prime_pad_engaged = false;
                  if (!relative_mouse.captured()) nds_set_touch(0, 0, false);
              }
@@ -622,7 +1364,18 @@ index 8b5947d..7bcb3cf 100644
          }
  
          const bool mph_prime_is_active = mph_prime_active();
-@@ -1886,6 +2056,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1844,8 +2589,8 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+             mph_prime_held[static_cast<size_t>(
+                 MphPrimeAction::VirtualStylus)];
+ 
+-        if (turbo_pressed != turbo_active) {
+-            turbo_active = turbo_pressed;
++        if ((turbo_pressed || turbo_toggled) != turbo_active) {
++            turbo_active = turbo_pressed || turbo_toggled;
+             if (audio) {
+                 SDL_PauseAudioDevice(audio, 1);
+                 clear_audio_queue(audio, audio_queue);
+@@ -1886,6 +2631,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
              relative_delta_x = 0;
              relative_delta_y = 0;
          }
@@ -637,9 +1390,29 @@ index 8b5947d..7bcb3cf 100644
          if (mph_prime_is_active) {
              if (mph_touch_sequence.active()) {
                  mph_touch_sequence.tick();
-@@ -1938,7 +2116,11 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1910,6 +2663,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         }
+         publish_input_debug();
+ 
++        // QOL: the F9 settings menu pauses the guest — skip emulation while
++        // it is open (the last presented frame stays frozen).
++        if (!menu_open) {
+         const uint64_t phase0 = SDL_GetPerformanceCounter();
+         const uint64_t now = scheduler_system_timestamp();
+         const uint64_t next_frame =
+@@ -1931,14 +2687,21 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         {
+             const uint64_t emu_ticks = SDL_GetPerformanceCounter() - phase0;
+             phase_emu_ticks += emu_ticks;
++            last_frame_emu_ms = static_cast<double>(emu_ticks) * 1000.0 /
++                                static_cast<double>(frequency);
+             if (emu_ticks > max_emu_ticks) {
+                 max_emu_ticks = emu_ticks;
+                 max_emu_frame = shown_frames;
+             }
              if (emu_ticks * 1000u > frequency * 32u) ++slow_frames_32ms;
          }
++        }  // !menu_open (guest paused while the F9 menu is open)
  #if defined(NDS_HAVE_COMPUTE_RENDERER)
 -        if (nds_gpu3d_compute_runtime_failed()) {
 +        // A runtime compute failure is recovered by demoting to the soft
@@ -650,8 +1423,226 @@ index 8b5947d..7bcb3cf 100644
              compute_failed = true;
              running = false;
              break;
+@@ -1983,6 +2746,115 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         phase_adaptive_ticks +=
+             SDL_GetPerformanceCounter() - adaptive_start;
+         observe_top_black_bands(native_top, shown_frames);
++
++        // QOL: the F9 recomp settings menu takes over the whole top screen
++        // while open; otherwise draw the small HUD overlay (F11). Both draw
++        // into a scratch copy of the top framebuffer (guest surface intact).
++        if (menu_open && top_pixels && top_width > 0) {
++            const size_t cap = static_cast<size_t>(top_width) * kScreenHeight;
++            if (g_overlay_scratch.size() < cap)
++                g_overlay_scratch.assign(cap, 0);
++            std::memcpy(g_overlay_scratch.data(), top_pixels,
++                        cap * sizeof(uint32_t));
++            const char* labels[kMenuRowCount];
++            char value_bufs[kMenuRowCount][32];
++            const char* values[kMenuRowCount];
++            bool restart[kMenuRowCount] = {};
++            labels[0] = "Window size";
++            std::snprintf(value_bufs[0], 32, "%dx", g_window_scale);
++            values[0] = value_bufs[0];
++            labels[1] = "Fullscreen";
++            values[1] = menu_fullscreen ? "On" : "Off";
++            labels[2] = "Borderless";
++            values[2] = menu_borderless ? "On" : "Off";
++            labels[3] = "Game speed";
++            std::snprintf(value_bufs[3], 32, "%u%%",
++                          static_cast<unsigned>(game_speed));
++            values[3] = value_bufs[3];
++            labels[4] = "Overlay";
++            values[4] = overlay_visible ? "On" : "Off";
++            labels[5] = "Screenshots";
++            values[5] = screenshots_enabled ? "On" : "Off";
++            labels[6] = "Internal res";
++            std::snprintf(value_bufs[6], 32, "%dx", menu_internal_res);
++            values[6] = value_bufs[6];
++            restart[6] = true;
++            labels[7] = "Texture upscale";
++            std::snprintf(value_bufs[7], 32, "%dx", menu_texture_upscale);
++            values[7] = value_bufs[7];
++            restart[7] = true;
++            labels[8] = "Anti-alias";
++            if (menu_aa)
++                std::snprintf(value_bufs[8], 32, "%dx", menu_aa);
++            else
++                std::snprintf(value_bufs[8], 32, "Off");
++            values[8] = value_bufs[8];
++            restart[8] = true;
++            labels[9] = "Supersampling";
++            std::snprintf(value_bufs[9], 32, "%dx", menu_supersampling);
++            values[9] = value_bufs[9];
++            restart[9] = true;
++            labels[10] = "Restore defaults";
++            values[10] = nullptr;
++            labels[11] = "Close menu";
++            values[11] = nullptr;
++            draw_recomp_menu(g_overlay_scratch.data(), top_width, menu_cursor,
++                             kMenuRowCount, labels, values, restart);
++            top_pixels = g_overlay_scratch.data();
++        } else if (overlay_visible && top_pixels && top_width > 0) {
++            const size_t cap = static_cast<size_t>(top_width) * kScreenHeight;
++            if (g_overlay_scratch.size() < cap)
++                g_overlay_scratch.assign(cap, 0);
++            std::memcpy(g_overlay_scratch.data(), top_pixels,
++                        cap * sizeof(uint32_t));
++            const uint64_t ov_now = SDL_GetPerformanceCounter();
++            const double ov_fps = (ov_now > fps_start && fps_frames > 0)
++                ? static_cast<double>(fps_frames) * frequency /
++                  static_cast<double>(ov_now - fps_start)
++                : 0.0;
++            char line[48];
++            std::snprintf(line, sizeof(line), "%4.1f FPS", ov_fps);
++            draw_overlay_line(g_overlay_scratch.data(), top_width, 2, 2,
++                              line, 0xFFFFFFFFu);
++            std::snprintf(line, sizeof(line), "%5.1fMS", last_frame_emu_ms);
++            draw_overlay_line(g_overlay_scratch.data(), top_width, 2, 9,
++                              line, 0xFFFFC000u);
++            if (turbo_active)
++                std::snprintf(line, sizeof(line), "TURBO");
++            else if (speed_alt)
++                std::snprintf(line, sizeof(line), "%3.1fX",
++                              static_cast<double>(game_speed) / 100.0);
++            else
++                std::snprintf(line, sizeof(line), "1.0X");
++            draw_overlay_line(g_overlay_scratch.data(), top_width, 2, 16,
++                              line, 0xFF00FF00u);
++            std::snprintf(line, sizeof(line), "NET %s",
++                          options.network.enabled ? "ON" : "OFF");
++            draw_overlay_line(g_overlay_scratch.data(), top_width, 2, 23,
++                              line, 0xFF00C0FFu);
++            top_pixels = g_overlay_scratch.data();
++        }
++
++        // QOL: screenshot hotkey (F12). Save the native framebuffers as a
++        // stacked 256x384 BMP into the configured directory.
++        // DEBUG (temporary): capture unconditionally with a fallback dir so
++        // the menu orientation can be inspected without settings toggling.
++        if (screenshot_pending) {
++            screenshot_pending = false;
++            ++screenshot_count;
++            std::string shot_dir = options.screenshot_dir;
++            if (shot_dir.empty()) shot_dir = "recomp_shots";
++            std::error_code ec;
++            std::filesystem::create_directories(shot_dir, ec);
++            if (save_stacked_bmp(shot_dir, screenshot_count,
++                                 top_pixels, nds_gpu2d_framebuffer(1))) {
++                std::fprintf(stderr, "[sdl] screenshot saved (%u)\n",
++                             screenshot_count);
++            } else {
++                std::fprintf(stderr, "[sdl] screenshot failed\n");
++            }
++        }
++
+         const PresentationTicks presentation_ticks = present_screens(
+             presentation, top_pixels, top_width,
+             bottom_pixels, bottom_width);
+@@ -2010,7 +2882,10 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         else
+             audio_pace_floor = kAudioQueueFrames;
+         uint32_t queued = audio_queue_count(audio, audio_queue);
+-        if (turbo_active) {
++        if (menu_open) {
++            // Paused while the F9 menu is open; the audio device stays
++            // paused, so there is nothing to drain or discard.
++        } else if (turbo_active || speed_alt) {
+             discard_spu_output();
+         } else {
+             queued = drain_audio(
+@@ -2019,8 +2894,8 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         }
+         phase_drain_ticks += SDL_GetPerformanceCounter() - phase2;
+         audio_max_queue = std::max(audio_max_queue, queued);
+-        if (audio && !audio_started && !turbo_active &&
+-            queued >= audio_start_threshold) {
++        if (audio && !audio_started && !turbo_active && !speed_alt &&
++            !menu_open && queued >= audio_start_threshold) {
+             // Opening paused and prebuffering avoids the guaranteed startup
+             // underrun produced by unpausing an empty SDL queue.
+             audio_queue.started.store(true, std::memory_order_relaxed);
+@@ -2030,6 +2905,25 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+             audio_pace_floor = audio_start_threshold;
+         }
+ 
++        // QOL: host-time pacing for non-100% game speed (audio is muted in
++        // this mode, so the audio queue cannot pace us). Sleep the remainder
++        // of the target frame duration; if the host is slower than target,
++        // fall through immediately and simply run below target speed.
++        if (speed_alt && !turbo_active) {
++            const uint64_t target = frame_target_ticks;
++            uint64_t elapsed = SDL_GetPerformanceCounter() - frame_start_tick;
++            while (elapsed < target) {
++                const uint64_t remaining_us =
++                    (target - elapsed) * 1000000ull / frequency;
++                if (remaining_us >= 1000)
++                    SDL_Delay(static_cast<uint32_t>(remaining_us / 1000));
++                else
++                    SDL_Delay(0);
++                elapsed = SDL_GetPerformanceCounter() - frame_start_tick;
++            }
++            frame_start_tick = SDL_GetPerformanceCounter();
++        }
++
+         ++shown_frames;
+         ++fps_frames;
+         g_live_stats.frames = shown_frames;
+@@ -2096,6 +2990,16 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+     nds_gpu2d_set_direct_present(false);
+     nds_compute_host_stop();
+ #endif
++    // QOL: persist the windowed geometry for the next launch (skipped in
++    // fullscreen mode, where a saved rect would be meaningless).
++    if (!options.window_state_file.empty() && !options.fullscreen &&
++        presentation.windows[0]) {
++        int wx = 0, wy = 0, ww = 0, wh = 0;
++        SDL_GetWindowPosition(presentation.windows[0], &wx, &wy);
++        SDL_GetWindowSize(presentation.windows[0], &ww, &wh);
++        save_window_state_file(options.window_state_file.c_str(),
++                               wx, wy, ww, wh);
++    }
+     if (controller) SDL_GameControllerClose(controller);
+     destroy_presentation(presentation);
+     SDL_Quit();
+@@ -2222,8 +3126,8 @@ bool nds_frontend_debug_mouse_button(uint8_t button, bool down) {
+     event.button.button = button;
+     event.button.state = down ? SDL_PRESSED : SDL_RELEASED;
+     event.button.clicks = 1;
+-    event.button.x = 128 * kWindowScale;
+-    event.button.y = 96 * kWindowScale;
++    event.button.x = 128 * g_window_scale;
++    event.button.y = 96 * g_window_scale;
+     const bool pushed = SDL_PushEvent(&event) == 1;
+     if (pushed) ++g_input_debug.debug_mouse_button_events;
+     else ++g_input_debug.debug_event_errors;
+@@ -2242,8 +3146,8 @@ bool nds_frontend_debug_mouse_motion(int dx, int dy) {
+     SDL_Event event{};
+     event.type = SDL_MOUSEMOTION;
+     event.motion.windowID = g_input_debug.top_window_id;
+-    event.motion.x = 128 * kWindowScale;
+-    event.motion.y = 96 * kWindowScale;
++    event.motion.x = 128 * g_window_scale;
++    event.motion.y = 96 * g_window_scale;
+     event.motion.xrel = dx;
+     event.motion.yrel = dy;
+     const bool pushed = SDL_PushEvent(&event) == 1;
+@@ -2268,11 +3172,11 @@ bool nds_frontend_debug_touch(uint16_t x, uint16_t y, bool down) {
+     event.button.state = down ? SDL_PRESSED : SDL_RELEASED;
+     event.button.clicks = 1;
+     event.button.x = (g_input_debug.bottom_content_left +
+-                      static_cast<int>(x)) * kWindowScale;
++                      static_cast<int>(x)) * g_window_scale;
+     event.button.y = (g_input_debug.separate ? static_cast<int>(y)
+                                              : kScreenHeight +
+                                                    static_cast<int>(y)) *
+-                     kWindowScale;
++                     g_window_scale;
+     const bool pushed = SDL_PushEvent(&event) == 1;
+     if (pushed) ++g_input_debug.debug_touch_events;
+     else ++g_input_debug.debug_event_errors;
 diff --git a/runner/src/frontend.h b/runner/src/frontend.h
-index c1d5755..332dcf0 100644
+index c1d5755..09343a1 100644
 --- a/runner/src/frontend.h
 +++ b/runner/src/frontend.h
 @@ -2,6 +2,7 @@
@@ -735,7 +1726,30 @@ index c1d5755..332dcf0 100644
  struct NdsFrontendOptions {
      // Optional exact cartridge identity from [game]. When present, every
      // title-owned setting in this config is rejected for any other ROM.
-@@ -242,8 +302,26 @@ struct NdsFrontendOptions {
+@@ -218,6 +278,22 @@ struct NdsFrontendOptions {
+     // texture once on a cache miss; independent of internal_resolution, but
+     // only worth enabling alongside it.
+     uint8_t texture_upscale = 1;
++    // QOL host-window options (JUSDecomp). Purely presentation-level: none
++    // of them alter guest-visible rasterization or framebuffer bytes.
++    uint8_t window_scale = 2;      // 1x..4x initial window scale (default 2x)
++    bool fullscreen = false;       // borderless fullscreen desktop window
++    bool borderless = false;       // borderless windowed window
++    bool overlay_enabled = false;  // in-game HUD overlay (FPS/emu/turbo/network)
++    uint16_t game_speed = 100;     // pacing % of real time (25..800, 100 = 1x)
++    std::string screenshot_dir;    // empty disables the screenshot hotkey
++    // Optional window-geometry persistence: a small key=value file holding
++    // the last windowed position/size. Read at startup (when windowed), and
++    // rewritten on exit, so the player's window arrangement survives.
++    std::string window_state_file;
++    // Optional in-game-settings persistence (QOL F9 menu): a small key=value
++    // file the runner writes when the player changes options inside the game,
++    // which the host launcher merges over its settings on the next launch.
++    std::string in_game_settings_file;
+     // Optional host FPS-control transport. This stays default-off and is
+     // selected by a title launcher; deterministic/headless routes never
+     // synthesize mouse input.
+@@ -242,8 +318,26 @@ struct NdsFrontendOptions {
      NdsCartridgeSaveConfig cartridge_save{};
      NdsNetworkOptions network{};
      NdsLocalWirelessOptions local_wireless{};
@@ -762,8 +1776,17 @@ index c1d5755..332dcf0 100644
  // Parse [display] settings from a game TOML. Missing [display] is valid.
  // Returns false for an unreadable file or an invalid recognized value.
  bool nds_load_frontend_config(const std::string& path,
+@@ -262,6 +356,8 @@ bool nds_parse_instance_index(const std::string& value, uint32_t* out);
+ bool nds_parse_adaptive_screens(const std::string& value, uint8_t* out);
+ bool nds_parse_supersampling(const std::string& value, uint8_t* out);
+ bool nds_parse_antialiasing(const std::string& value, uint8_t* out);
++bool nds_parse_window_scale(const std::string& value, uint8_t* out);
++bool nds_parse_game_speed(const std::string& value, uint16_t* out);
+ bool nds_parse_internal_resolution(const std::string& value, uint8_t* out);
+ bool nds_parse_texture_upscale(const std::string& value, uint8_t* out);
+ bool nds_parse_on_off(const std::string& value, bool* out);
 diff --git a/runner/src/frontend_config.cpp b/runner/src/frontend_config.cpp
-index 0607a25..31a8426 100644
+index 0607a25..b6cbcd8 100644
 --- a/runner/src/frontend_config.cpp
 +++ b/runner/src/frontend_config.cpp
 @@ -4,6 +4,8 @@
@@ -775,7 +1798,32 @@ index 0607a25..31a8426 100644
  
  #include "toml.hpp"
  
-@@ -227,6 +229,49 @@ bool nds_set_mph_prime_pad_binding(NdsFrontendOptions* options,
+@@ -100,6 +102,24 @@ bool nds_parse_antialiasing(const std::string& value, uint8_t* out) {
+     return true;
+ }
+ 
++bool nds_parse_window_scale(const std::string& value, uint8_t* out) {
++    if (!out || value.empty()) return false;
++    char* end = nullptr;
++    const long parsed = std::strtol(value.c_str(), &end, 10);
++    if (!end || *end != '\0' || parsed < 1 || parsed > 4) return false;
++    *out = static_cast<uint8_t>(parsed);
++    return true;
++}
++
++bool nds_parse_game_speed(const std::string& value, uint16_t* out) {
++    if (!out || value.empty()) return false;
++    char* end = nullptr;
++    const long parsed = std::strtol(value.c_str(), &end, 10);
++    if (!end || *end != '\0' || parsed < 25 || parsed > 800) return false;
++    *out = static_cast<uint16_t>(parsed);
++    return true;
++}
++
+ bool nds_parse_on_off(const std::string& value, bool* out) {
+     if (!out) return false;
+     const std::string normalized = lower_ascii(value);
+@@ -227,6 +247,49 @@ bool nds_set_mph_prime_pad_binding(NdsFrontendOptions* options,
      return true;
  }
  
@@ -825,7 +1873,50 @@ index 0607a25..31a8426 100644
  bool nds_parse_cartridge_save_type(const std::string& value,
                                     NdsCartridgeSaveType* out) {
      if (!out) return false;
-@@ -664,6 +709,9 @@ bool nds_load_frontend_config(const std::string& path,
+@@ -573,6 +636,42 @@ bool nds_load_frontend_config(const std::string& path,
+                 return false;
+             }
+         }
++        // QOL host-window options. All are presentation-level only.
++        if (const auto value = (*display)["window_scale"].value<int64_t>()) {
++            if (!nds_parse_window_scale(std::to_string(*value),
++                                        &options->window_scale)) {
++                if (error) *error = "display.window_scale must be 1..4";
++                return false;
++            }
++        }
++        if (const auto value = (*display)["fullscreen"].value<bool>()) {
++            options->fullscreen = *value;
++        }
++        if (const auto value = (*display)["borderless"].value<bool>()) {
++            options->borderless = *value;
++        }
++        if (const auto value = (*display)["overlay"].value<bool>()) {
++            options->overlay_enabled = *value;
++        }
++        if (const auto value = (*display)["game_speed"].value<int64_t>()) {
++            if (!nds_parse_game_speed(std::to_string(*value),
++                                      &options->game_speed)) {
++                if (error) *error = "display.game_speed must be 25..800";
++                return false;
++            }
++        }
++        if (const auto value =
++                (*display)["screenshot_dir"].value<std::string>()) {
++            options->screenshot_dir = *value;
++        }
++        if (const auto value =
++                (*display)["window_state_file"].value<std::string>()) {
++            options->window_state_file = *value;
++        }
++        if (const auto value =
++                (*display)["in_game_settings_file"].value<std::string>()) {
++            options->in_game_settings_file = *value;
++        }
+     }
+ 
+     if (const toml::table* cartridge = root["cartridge"].as_table()) {
+@@ -664,6 +763,9 @@ bool nds_load_frontend_config(const std::string& path,
              if (const auto value = (*wfc)["provider"].value<std::string>()) {
                  options->network.wfc_provider.name = *value;
              }
@@ -835,7 +1926,7 @@ index 0607a25..31a8426 100644
              if (const auto value = (*wfc)["dns_server"].value<std::string>()) {
                  uint32_t probe = 0;
                  if (!nds_parse_ipv4(*value, &probe)) {
-@@ -757,6 +805,125 @@ bool nds_load_frontend_config(const std::string& path,
+@@ -757,6 +859,125 @@ bool nds_load_frontend_config(const std::string& path,
                  }
              }
          }
@@ -899,7 +1990,7 @@ index 0607a25..31a8426 100644
 +                options->pad_taps.push_back(action);
 +            }
 +        }
-     }
++    }
 +
 +    // ── ROM overlay mods, e.g.:
 +    //   [[mods.overlays]]
@@ -928,7 +2019,7 @@ index 0607a25..31a8426 100644
 +            overlay.file = *file;
 +            options->mod_overlays.push_back(std::move(overlay));
 +        }
-+    }
+     }
 +
 +    // ── Keyboard bindings, e.g.:
 +    //   [[input.keyboard]]
@@ -1236,7 +2327,7 @@ index de668c9..9b5afef 100644
  void     nds_io_write(uint32_t addr, uint32_t value, uint32_t width);
  void     nds_io_reset();
 diff --git a/runner/src/main.cpp b/runner/src/main.cpp
-index a5b2e32..986a88c 100644
+index a5b2e32..479f060 100644
 --- a/runner/src/main.cpp
 +++ b/runner/src/main.cpp
 @@ -14,6 +14,7 @@
@@ -1247,7 +2338,96 @@ index a5b2e32..986a88c 100644
  #include <vector>
  
  #include "state.h"
-@@ -1349,6 +1350,22 @@ int main(int argc, char** argv) {
+@@ -328,6 +329,14 @@ int main(int argc, char** argv) {
+     std::string cli_internal_resolution;
+     std::string cli_texture_upscale;
+     std::string cli_antialiasing;
++    std::string cli_window_scale;
++    std::string cli_fullscreen;
++    std::string cli_borderless;
++    std::string cli_overlay;
++    std::string cli_game_speed;
++    std::string cli_screenshot_dir;
++    std::string cli_window_state_file;
++    std::string cli_in_game_settings_file;
+     std::string cli_relative_mouse_touch;
+     std::string cli_relative_mouse_sensitivity;
+     std::string cli_relative_mouse_invert_y;
+@@ -438,6 +447,22 @@ int main(int argc, char** argv) {
+             cli_texture_upscale = argv[++i];
+         } else if (a == "--antialiasing" && i + 1 < argc) {
+             cli_antialiasing = argv[++i];
++        } else if (a == "--window-scale" && i + 1 < argc) {
++            cli_window_scale = argv[++i];
++        } else if (a == "--fullscreen" && i + 1 < argc) {
++            cli_fullscreen = argv[++i];
++        } else if (a == "--borderless" && i + 1 < argc) {
++            cli_borderless = argv[++i];
++        } else if (a == "--overlay" && i + 1 < argc) {
++            cli_overlay = argv[++i];
++        } else if (a == "--game-speed" && i + 1 < argc) {
++            cli_game_speed = argv[++i];
++        } else if (a == "--screenshot-dir" && i + 1 < argc) {
++            cli_screenshot_dir = argv[++i];
++        } else if (a == "--window-state-file" && i + 1 < argc) {
++            cli_window_state_file = argv[++i];
++        } else if (a == "--in-game-settings" && i + 1 < argc) {
++            cli_in_game_settings_file = argv[++i];
+         } else if (a == "--relative-mouse-touch" && i + 1 < argc) {
+             cli_relative_mouse_touch = argv[++i];
+         } else if (a == "--relative-mouse-sensitivity" && i + 1 < argc) {
+@@ -555,6 +580,10 @@ int main(int argc, char** argv) {
+                 "[--internal-resolution 1|2|3|4] "
+                 "[--texture-upscale 1|2|4] "
+                 "[--antialiasing 0|2|4|8] "
++                "[--window-scale 1|2|3|4] [--fullscreen on|off] "
++                "[--borderless on|off] [--overlay on|off] "
++                "[--game-speed 25..800] [--screenshot-dir DIR] "
++                "[--window-state-file FILE] [--in-game-settings FILE] "
+                 "[--relative-mouse-touch on|off] "
+                 "[--relative-mouse-sensitivity 10..400] "
+                 "[--relative-mouse-invert-y on|off] "
+@@ -767,6 +796,39 @@ int main(int argc, char** argv) {
+                      "(expected 0, 2, 4, or 8)\n");
+         return 2;
+     }
++    if (!cli_window_scale.empty() &&
++        !nds_parse_window_scale(cli_window_scale,
++                                &frontend_options.window_scale)) {
++        std::fprintf(stderr,
++                     "invalid --window-scale (expected 1..4)\n");
++        return 2;
++    }
++    if (!cli_fullscreen.empty() &&
++        !nds_parse_on_off(cli_fullscreen, &frontend_options.fullscreen)) {
++        std::fprintf(stderr, "invalid --fullscreen (expected on or off)\n");
++        return 2;
++    }
++    if (!cli_borderless.empty() &&
++        !nds_parse_on_off(cli_borderless, &frontend_options.borderless)) {
++        std::fprintf(stderr, "invalid --borderless (expected on or off)\n");
++        return 2;
++    }
++    if (!cli_overlay.empty() &&
++        !nds_parse_on_off(cli_overlay, &frontend_options.overlay_enabled)) {
++        std::fprintf(stderr, "invalid --overlay (expected on or off)\n");
++        return 2;
++    }
++    if (!cli_game_speed.empty() &&
++        !nds_parse_game_speed(cli_game_speed, &frontend_options.game_speed)) {
++        std::fprintf(stderr, "invalid --game-speed (expected 25..800)\n");
++        return 2;
++    }
++    if (!cli_screenshot_dir.empty())
++        frontend_options.screenshot_dir = cli_screenshot_dir;
++    if (!cli_window_state_file.empty())
++        frontend_options.window_state_file = cli_window_state_file;
++    if (!cli_in_game_settings_file.empty())
++        frontend_options.in_game_settings_file = cli_in_game_settings_file;
+     if (!cli_relative_mouse_touch.empty() &&
+         !nds_parse_on_off(cli_relative_mouse_touch,
+                           &frontend_options.relative_mouse_touch)) {
+@@ -1349,6 +1411,22 @@ int main(int argc, char** argv) {
      nds_io_set_cartridge_save_path(save_path.c_str());
      nds_io_set_firmware_save_path(cli_firmware_state_path.c_str());
      nds_io_configure_cartridge_save(frontend_options.cartridge_save);
@@ -1270,7 +2450,7 @@ index a5b2e32..986a88c 100644
      if (!rom.empty()) {
          const char* type = "none";
          switch (frontend_options.cartridge_save.type) {
-@@ -1761,7 +1778,11 @@ int main(int argc, char** argv) {
+@@ -1761,7 +1839,11 @@ int main(int argc, char** argv) {
          const bool save_ok = nds_io_flush_cartridge_save();
          const bool firmware_ok = nds_io_flush_firmware_save();
  #if defined(NDS_HAVE_COMPUTE_RENDERER)
@@ -1283,7 +2463,7 @@ index a5b2e32..986a88c 100644
          nds_compute_host_stop();
  #else
          const bool compute_failed = false;
-@@ -1796,7 +1817,9 @@ int main(int argc, char** argv) {
+@@ -1796,7 +1878,9 @@ int main(int argc, char** argv) {
      }
      dump_replay_status();
  #if defined(NDS_HAVE_COMPUTE_RENDERER)

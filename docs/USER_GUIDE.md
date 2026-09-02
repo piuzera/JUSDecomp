@@ -38,7 +38,45 @@ only the **stock, unmodified** dump (64 MB, sha1
   use the right stick in separate-screen mode.
 - Save progress is automatic, exactly like the original cartridge.
 
-## 3. Mods
+## 3. Display & quality-of-life options
+
+Settings → **Display (QOL)** lets you tune how the game window looks and
+behaves. All of these are host-side only — they never change the game's own
+logic or your save.
+
+- **Window size** — 1x, 2x, 3x, or 4x scale for the initial window (the
+  window is still freely resizable afterwards, and the image always scales
+  in whole pixels). Your window size and position are remembered between
+  launches.
+- **Fullscreen** — borderless fullscreen desktop mode (the image is scaled
+  up in whole pixels, with black bars when the aspect doesn't divide evenly).
+- **Borderless window** — a normal window without the title bar/borders.
+- **On-screen overlay** — a small FPS/emulation-time/speed/network HUD on
+  the top screen. Press **F11** in-game to toggle it.
+- **In-game settings (F9)** — press **F9** anywhere in the game to open a
+  full-screen **Recomp Settings** menu (the game pauses while it's open).
+  Navigate with the arrow keys (or gamepad D-pad), change a value with
+  Left/Right (A), and close with Esc/F9 (B). Window size, fullscreen,
+  borderless, game speed, overlay and screenshots take effect immediately;
+  the quality knobs (marked "(R)") are saved but apply on the next launch.
+  Changes made here are remembered even after you quit — they carry into
+  the launcher's settings automatically.
+- **Game speed** — run the game slower (25%–75%) or faster (150%–800%) than
+  real time. Note: non-100% speeds mute the audio (the DS audio stream is
+  fixed-rate). Hold **Tab** for temporary turbo, or press **F10** to toggle
+  turbo on/off.
+- **Screenshots** — when enabled, press **F12** in-game to save a stacked
+  top+bottom screenshot (BMP) into the chosen folder (default:
+  `%APPDATA%\JUSDecomp\screenshots`).
+- **Save backups** — before each launch, a timestamped copy of your save is
+  kept in `%APPDATA%\JUSDecomp\backups` (choose how many to keep). If a
+  save is ever lost, copy the newest backup back to the working save.
+- **Quality knobs** — internal resolution (1x–4x), texture upscaling
+  (1x/2x/4x), anti-aliasing (off/2x/4x/8x) and supersampling (1x–4x) for the
+  accelerated renderer. These cost performance; leave them at defaults on
+  weaker hardware.
+
+## 4. Mods
 
 Settings → **Mods** lists the bundled mods. Tick a mod to enable it (takes
 effect on the next launch). The bundled mod is **English Translation**, a
@@ -48,7 +86,7 @@ Japanese ROM at runtime.
 Mods never modify your ROM. The game reads the original file and the mod
 layers on top at runtime.
 
-## 4. Save data
+## 5. Save data
 
 - Your save lives in `%APPDATA%\JUSDecomp\jus-play.sav` (portable mode:
   next to the executable).
@@ -59,7 +97,7 @@ layers on top at runtime.
   save in use lives outside the app's folders, it is only detached — never
   deleted.
 
-## 5. Online play (Wiimmfi)
+## 6. Online play (Wiimmfi)
 
 Jump! Ultimate Stars' **WiFi Battle** works online through the public
 **Wiimmfi/Kaeru** service — the runner redirects the game's DNS, so no ROM
@@ -75,7 +113,7 @@ patching is needed. Online play runs at ~60 fps.
 - Same router? Two players can also battle on one network (peer frames are
   tunnelled host-to-host; see `ONLINE_TEST.txt` in this folder).
 
-## 6. Known issues
+## 7. Known issues
 
 These are known v0.2.2 limitations we are working on — none of them block
 progress (your save is always safe):
@@ -95,7 +133,7 @@ progress (your save is always safe):
 - **Minor visual bugs on some levels.** Scrolling background elements can
   render buggy (split or misaligned layers) on certain stages.
 
-## 7. Troubleshooting
+## 8. Troubleshooting
 
 | Problem | Solution |
 |---|---|
@@ -107,7 +145,7 @@ progress (your save is always safe):
 | Black screen / graphics errors | Update your GPU driver. |
 | The game closes by itself during the intro (integrated graphics) | Fixed in v0.2.2 — the app now falls back to the software renderer automatically. If it still happens, update your GPU driver and share `launcher.log` + `game.log`. |
 
-## 8. FAQ
+## 9. FAQ
 
 **Is this legal?** JUSDecomp contains only original code and documentation.
 You must supply the game yourself from a cartridge you own.

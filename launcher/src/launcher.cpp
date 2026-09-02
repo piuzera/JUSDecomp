@@ -28,6 +28,7 @@
 #include <algorithm>
 #include <cstdarg>
 #include <cstdio>
+#include <cstdlib>
 #include <string>
 #include <vector>
 
@@ -59,7 +60,12 @@ enum {
     // keyboard capture dialog
     IDC_KB_STATE = 320, IDC_KB_SKIP, IDC_KB_RESET, IDC_KB_DONE,
     // rom progress
-    IDC_PROG_TEXT = 400, IDC_PROG_BAR
+    IDC_PROG_TEXT = 400, IDC_PROG_BAR,
+    // settings dialog — QOL display controls
+    IDC_WIN_SCALE = 500, IDC_FULLSCREEN_CHK, IDC_BORDERLESS_CHK,
+    IDC_OVERLAY_CHK, IDC_GAME_SPEED, IDC_SHOT_CHK, IDC_SHOT_DIR,
+    IDC_SHOT_BROWSE, IDC_BACKUPS, IDC_INT_RES, IDC_TEX_UPSCALE,
+    IDC_AA, IDC_SUPER
 };
 
 // ---------------------------------------------------------------------------
@@ -180,6 +186,19 @@ struct Settings {
     // (a b select start right left up down r l x y), key is an SDL scancode
     // name. Emitted to the run config as [[input.keyboard]] tables.
     std::vector<std::string> keyboard_mappings;
+    // QOL display settings (passed to the runner via run.toml [display]).
+    int window_scale = 2;          // 1x..4x initial window scale
+    bool fullscreen = false;       // borderless fullscreen desktop
+    bool borderless = false;       // borderless window
+    bool overlay_enabled = false;  // in-game HUD overlay (FPS/emu/speed/network)
+    int game_speed = 100;          // 25..800 percent of real time (100 = 1x)
+    bool screenshots_enabled = false;
+    std::string screenshot_dir;    // empty -> user_dir\screenshots
+    int backup_count = 10;         // 0 = no save backups
+    int internal_resolution = 1;   // 1..4 (3D; needs accelerated renderer)
+    int texture_upscale = 1;       // 1/2/4 (3D textures)
+    int antialiasing = 0;          // 0/2/4/8 (presentation AA)
+    int supersampling = 1;         // 1..4 (presentation reconstruction)
 };
 
 struct Overlay { std::string offset; std::string file; };
@@ -192,6 +211,14 @@ static Settings g_settings;
 static std::vector<ModInfo> g_mods;
 static std::wstring g_settings_path() { return user_dir() + L"\\settings.json"; }
 static std::wstring g_run_config_path() { return user_dir() + L"\\run.toml"; }
+// In-game overrides (written by the runner's F9 settings menu). These win
+// over settings.json for the keys they contain, so changes made inside the
+// game survive relaunch. The launcher dialog clears the file on Apply.
+static std::wstring g_in_game_settings_path() {
+    return user_dir() + L"\\ingame-settings.txt";
+}
+// Defined below load_settings(); declared here because load_settings calls it.
+static void apply_in_game_overrides();
 
 static std::wstring default_save_path() {
     return user_dir() + L"\\jus-play.sav";
@@ -215,9 +242,82 @@ static void load_settings() {
         for (const jz::Value& v : root.get_arr("keyboard_mappings"))
             if (v.t == jz::Value::Str)
                 g_settings.keyboard_mappings.push_back(v.s);
+        g_settings.window_scale = (int)root.get_int("window_scale", 2);
+        if (g_settings.window_scale < 1 || g_settings.window_scale > 4)
+            g_settings.window_scale = 2;
+        g_settings.fullscreen = root.get_bool("fullscreen", false);
+        g_settings.borderless = root.get_bool("borderless", false);
+        g_settings.overlay_enabled = root.get_bool("overlay_enabled", false);
+        g_settings.game_speed = (int)root.get_int("game_speed", 100);
+        if (g_settings.game_speed < 25 || g_settings.game_speed > 800)
+            g_settings.game_speed = 100;
+        g_settings.screenshots_enabled = root.get_bool("screenshots_enabled", false);
+        g_settings.screenshot_dir = root.get_str("screenshot_dir");
+        g_settings.backup_count = (int)root.get_int("backup_count", 10);
+        if (g_settings.backup_count < 0 || g_settings.backup_count > 100)
+            g_settings.backup_count = 10;
+        g_settings.internal_resolution = (int)root.get_int("internal_resolution", 1);
+        if (g_settings.internal_resolution < 1 || g_settings.internal_resolution > 4)
+            g_settings.internal_resolution = 1;
+        g_settings.texture_upscale = (int)root.get_int("texture_upscale", 1);
+        if (g_settings.texture_upscale != 1 && g_settings.texture_upscale != 2 &&
+            g_settings.texture_upscale != 4)
+            g_settings.texture_upscale = 1;
+        g_settings.antialiasing = (int)root.get_int("antialiasing", 0);
+        if (g_settings.antialiasing != 0 && g_settings.antialiasing != 2 &&
+            g_settings.antialiasing != 4 && g_settings.antialiasing != 8)
+            g_settings.antialiasing = 0;
+        g_settings.supersampling = (int)root.get_int("supersampling", 1);
+        if (g_settings.supersampling < 1 || g_settings.supersampling > 4)
+            g_settings.supersampling = 1;
     } catch (const std::exception& e) {
         log_line("settings.json unreadable (%s) — starting with defaults", e.what());
     }
+    apply_in_game_overrides();
+}
+
+// The F9 in-game settings menu persists changed options to a key=value
+// override file (see g_in_game_settings_path). Apply any such overrides on
+// top of settings.json so in-game changes survive relaunch.
+static void apply_in_game_overrides() {
+    std::string text = read_text_file(g_in_game_settings_path());
+    if (text.empty()) return;
+    size_t pos = 0;
+    while (pos < text.size()) {
+        size_t nl = text.find('\n', pos);
+        std::string line = text.substr(
+            pos, nl == std::string::npos ? std::string::npos : nl - pos);
+        pos = nl == std::string::npos ? text.size() : nl + 1;
+        if (!line.empty() && line.back() == '\r') line.pop_back();
+        size_t eq = line.find('=');
+        if (eq == std::string::npos) continue;
+        const std::string key = line.substr(0, eq);
+        const int val = std::atoi(line.c_str() + eq + 1);
+        if (key == "window_scale")
+            g_settings.window_scale = val < 1 ? 1 : (val > 4 ? 4 : val);
+        else if (key == "fullscreen")
+            g_settings.fullscreen = val != 0;
+        else if (key == "borderless")
+            g_settings.borderless = val != 0;
+        else if (key == "game_speed")
+            g_settings.game_speed = val < 25 ? 25 : (val > 800 ? 800 : val);
+        else if (key == "overlay")
+            g_settings.overlay_enabled = val != 0;
+        else if (key == "screenshots")
+            g_settings.screenshots_enabled = val != 0;
+        else if (key == "internal_resolution")
+            g_settings.internal_resolution =
+                val < 1 ? 1 : (val > 4 ? 4 : val);
+        else if (key == "texture_upscale")
+            g_settings.texture_upscale =
+                (val == 2 || val == 4) ? val : 1;
+        else if (key == "antialiasing")
+            g_settings.antialiasing =
+                (val == 2 || val == 4 || val == 8) ? val : 0;
+        else if (key == "supersampling")
+            g_settings.supersampling = val < 1 ? 1 : (val > 4 ? 4 : val);
+    }
+    log_line("applied in-game settings overrides");
 }
 
 static void save_settings() {
@@ -239,6 +339,18 @@ static void save_settings() {
     for (const auto& m : g_settings.keyboard_mappings)
         kb.a.push_back(jz::Value(m));
     root.o["keyboard_mappings"] = kb;
+    root.o["window_scale"] = jz::Value((long long)g_settings.window_scale);
+    root.o["fullscreen"] = jz::Value(g_settings.fullscreen);
+    root.o["borderless"] = jz::Value(g_settings.borderless);
+    root.o["overlay_enabled"] = jz::Value(g_settings.overlay_enabled);
+    root.o["game_speed"] = jz::Value((long long)g_settings.game_speed);
+    root.o["screenshots_enabled"] = jz::Value(g_settings.screenshots_enabled);
+    root.o["screenshot_dir"] = jz::Value(g_settings.screenshot_dir);
+    root.o["backup_count"] = jz::Value((long long)g_settings.backup_count);
+    root.o["internal_resolution"] = jz::Value((long long)g_settings.internal_resolution);
+    root.o["texture_upscale"] = jz::Value((long long)g_settings.texture_upscale);
+    root.o["antialiasing"] = jz::Value((long long)g_settings.antialiasing);
+    root.o["supersampling"] = jz::Value((long long)g_settings.supersampling);
     ensure_dir(user_dir());
     write_text_file(g_settings_path(), root.dump(2));
     log_line("settings saved");
@@ -369,6 +481,14 @@ static RomStatus validate_rom_file(const std::wstring& path) {
 // ---------------------------------------------------------------------------
 // Runtime config composition (base + enabled mods)
 // ---------------------------------------------------------------------------
+// TOML basic strings treat '\' as an escape introducer, so Windows paths must
+// have their backslashes doubled before they are embedded in run.toml.
+static std::string toml_escape_path(const std::wstring& path) {
+    std::string out;
+    for (char c : w2u(path)) out += (c == '\\') ? "\\\\" : std::string(1, c);
+    return out;
+}
+
 static std::string compose_run_config() {
     std::string out;
     out += "# Generated by JUSDecomp launcher. Do not hand-edit.\n";
@@ -376,7 +496,31 @@ static std::string compose_run_config() {
     out += "sha1 = \"" + std::string(STOCK_SHA1) + "\"\n\n";
     out += "[display]\n";
     out += "screen_layout = \"" + g_settings.display_layout + "\"\n";
-    out += "adaptive_widescreen = \"none\"\n\n";
+    out += "adaptive_widescreen = \"none\"\n";
+    // QOL display options (runner display.* keys).
+    out += "window_scale = " + std::to_string(g_settings.window_scale) + "\n";
+    out += "fullscreen = " +
+           std::string(g_settings.fullscreen ? "true" : "false") + "\n";
+    out += "borderless = " +
+           std::string(g_settings.borderless ? "true" : "false") + "\n";
+    out += "overlay = " +
+           std::string(g_settings.overlay_enabled ? "true" : "false") + "\n";
+    out += "game_speed = " + std::to_string(g_settings.game_speed) + "\n";
+    if (g_settings.screenshots_enabled) {
+        std::wstring shot_dir = g_settings.screenshot_dir.empty()
+                                    ? (user_dir() + L"\\screenshots")
+                                    : u2w(g_settings.screenshot_dir);
+        out += "screenshot_dir = \"" + toml_escape_path(shot_dir) + "\"\n";
+    }
+    out += "window_state_file = \"" +
+           toml_escape_path(user_dir() + L"\\window-state.txt") + "\"\n";
+    out += "in_game_settings_file = \"" +
+           toml_escape_path(g_in_game_settings_path()) + "\"\n";
+    out += "supersampling = " + std::to_string(g_settings.supersampling) + "\n";
+    out += "antialiasing = " + std::to_string(g_settings.antialiasing) + "\n";
+    out += "texture_upscale = " + std::to_string(g_settings.texture_upscale) + "\n";
+    out += "internal_resolution = " +
+           std::to_string(g_settings.internal_resolution) + "\n\n";
     out += "[system]\nstartup_mode = \"automatic\"\n\n";
     out += "[cartridge]\nsave_type = \"eeprom\"\nsave_size = 65536\n";
     for (const auto& mod : g_mods) {
@@ -433,10 +577,67 @@ static void open_log(HWND parent) {
                   nullptr, SW_SHOWNORMAL);
 }
 
+// ---------------------------------------------------------------------------
+// Save backup rotation (QOL): timestamped copies kept on each launch.
+// ---------------------------------------------------------------------------
+struct BackupFile { __int64 time; std::wstring name; };
+
+static void prune_save_backups(const std::wstring& dir, int keep) {
+    if (keep <= 0) return;
+    std::vector<BackupFile> files;
+    WIN32_FIND_DATAW fd;
+    HANDLE h = FindFirstFileW((dir + L"\\jus-play-*.sav").c_str(), &fd);
+    if (h == INVALID_HANDLE_VALUE) return;
+    do {
+        if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) continue;
+        __int64 ft = ((__int64)fd.ftLastWriteTime.dwHighDateTime << 32) |
+                     fd.ftLastWriteTime.dwLowDateTime;
+        files.push_back({ft, std::wstring(fd.cFileName)});
+    } while (FindNextFileW(h, &fd));
+    FindClose(h);
+    std::sort(files.begin(), files.end(),
+              [](const BackupFile& a, const BackupFile& b) {
+                  return a.time > b.time;
+              });
+    for (size_t i = (size_t)keep; i < files.size(); ++i)
+        DeleteFileW((dir + L"\\" + files[i].name).c_str());
+}
+
+static void backup_save_before_launch() {
+    if (g_settings.backup_count <= 0) return;
+    std::wstring src = g_settings.save_path.empty()
+                           ? default_save_path()
+                           : u2w(g_settings.save_path);
+    DWORD attr = GetFileAttributesW(src.c_str());
+    if (attr == INVALID_FILE_ATTRIBUTES || (attr & FILE_ATTRIBUTE_DIRECTORY))
+        return;
+    std::wstring dir = user_dir() + L"\\backups";
+    ensure_dir(dir);
+    SYSTEMTIME st;
+    GetLocalTime(&st);
+    wchar_t name[80];
+    _snwprintf(name, 80,
+               L"jus-play-%04d%02d%02d-%02d%02d%02d.sav",
+               (int)st.wYear, (int)st.wMonth, (int)st.wDay,
+               (int)st.wHour, (int)st.wMinute, (int)st.wSecond);
+    if (CopyFileW(src.c_str(), (dir + L"\\" + name).c_str(), FALSE))
+        log_line("save backup created: %ls", name);
+    prune_save_backups(dir, g_settings.backup_count);
+}
+
 static void launch_game(HWND parent) {
     if (g_settings.rom_path.empty() || g_rom_status != RomStatus::Ok) {
         show_error(parent, L"Please select a valid Jump Ultimate Stars ROM first.");
         return;
+    }
+    // QOL: keep timestamped save backups before each launch (rotating).
+    backup_save_before_launch();
+    // QOL: make sure the screenshot directory exists before the game starts.
+    if (g_settings.screenshots_enabled) {
+        std::wstring shot_dir = g_settings.screenshot_dir.empty()
+                                    ? (user_dir() + L"\\screenshots")
+                                    : u2w(g_settings.screenshot_dir);
+        ensure_dir(shot_dir);
     }
     std::wstring runner = app_dir() + L"\\app\\nds_runner.exe";
     if (GetFileAttributesW(runner.c_str()) == INVALID_FILE_ATTRIBUTES) {
@@ -660,6 +861,46 @@ static void settings_apply(HWND dlg) {
     int layout = (int)SendMessageW(GetDlgItem(dlg, IDC_LAYOUT_COMBO),
                                    CB_GETCURSEL, 0, 0);
     g_settings.display_layout = layout == 0 ? "stacked" : "separate";
+    // QOL display options
+    int wscale = (int)SendMessageW(GetDlgItem(dlg, IDC_WIN_SCALE),
+                                   CB_GETCURSEL, 0, 0);
+    g_settings.window_scale = (wscale >= 0 && wscale < 4) ? wscale + 1 : 2;
+    g_settings.fullscreen =
+        SendMessageW(GetDlgItem(dlg, IDC_FULLSCREEN_CHK), BM_GETCHECK, 0, 0) ==
+        BST_CHECKED;
+    g_settings.borderless =
+        SendMessageW(GetDlgItem(dlg, IDC_BORDERLESS_CHK), BM_GETCHECK, 0, 0) ==
+        BST_CHECKED;
+    g_settings.overlay_enabled =
+        SendMessageW(GetDlgItem(dlg, IDC_OVERLAY_CHK), BM_GETCHECK, 0, 0) ==
+        BST_CHECKED;
+    static const int speeds[] = {25, 50, 75, 100, 150, 200, 300, 400, 600, 800};
+    int gs = (int)SendMessageW(GetDlgItem(dlg, IDC_GAME_SPEED),
+                               CB_GETCURSEL, 0, 0);
+    g_settings.game_speed =
+        (gs >= 0 && gs < (int)(sizeof(speeds) / sizeof(speeds[0])))
+            ? speeds[gs] : 100;
+    g_settings.screenshots_enabled =
+        SendMessageW(GetDlgItem(dlg, IDC_SHOT_CHK), BM_GETCHECK, 0, 0) ==
+        BST_CHECKED;
+    wchar_t shotbuf[1024] = {};
+    GetWindowTextW(GetDlgItem(dlg, IDC_SHOT_DIR), shotbuf, 1024);
+    g_settings.screenshot_dir = w2u(shotbuf);
+    static const int counts[] = {0, 5, 10, 20, 50};
+    int bk = (int)SendMessageW(GetDlgItem(dlg, IDC_BACKUPS),
+                               CB_GETCURSEL, 0, 0);
+    g_settings.backup_count = (bk >= 0 && bk < 5) ? counts[bk] : 10;
+    int ir = (int)SendMessageW(GetDlgItem(dlg, IDC_INT_RES), CB_GETCURSEL, 0, 0);
+    g_settings.internal_resolution = (ir >= 0 && ir < 4) ? ir + 1 : 1;
+    static const int texup[] = {1, 2, 4};
+    int tu = (int)SendMessageW(GetDlgItem(dlg, IDC_TEX_UPSCALE),
+                               CB_GETCURSEL, 0, 0);
+    g_settings.texture_upscale = (tu >= 0 && tu < 3) ? texup[tu] : 1;
+    static const int aaopts[] = {0, 2, 4, 8};
+    int av = (int)SendMessageW(GetDlgItem(dlg, IDC_AA), CB_GETCURSEL, 0, 0);
+    g_settings.antialiasing = (av >= 0 && av < 4) ? aaopts[av] : 0;
+    int su = (int)SendMessageW(GetDlgItem(dlg, IDC_SUPER), CB_GETCURSEL, 0, 0);
+    g_settings.supersampling = (su >= 0 && su < 4) ? su + 1 : 1;
     // online
     wchar_t namebuf[128] = {};
     GetWindowTextW(GetDlgItem(dlg, IDC_PLAYERNAME), namebuf, 128);
@@ -669,6 +910,9 @@ static void settings_apply(HWND dlg) {
         BST_CHECKED;
     save_settings();
     write_merged_controller_db();
+    // The launcher is authoritative when the user edits settings here: clear
+    // any in-game overrides so they don't silently override this dialog.
+    DeleteFileW(g_in_game_settings_path().c_str());
 }
 
 static void import_save(HWND parent) {
@@ -1373,6 +1617,197 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
                          g_settings.online_mode ? BST_CHECKED : BST_UNCHECKED,
                          0);
 
+            // QOL display options
+            CreateWindowExW(0, L"STATIC", L"Display (QOL)",
+                            WS_CHILD | WS_VISIBLE, 380, 245, 150, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            CreateWindowExW(0, L"STATIC", L"Window size",
+                            WS_CHILD | WS_VISIBLE, 380, 268, 80, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND wscale = CreateWindowExW(0, L"COMBOBOX", L"",
+                                          WS_CHILD | WS_VISIBLE |
+                                              CBS_DROPDOWNLIST,
+                                          465, 266, 70, 120, hwnd,
+                                          (HMENU)IDC_WIN_SCALE,
+                                          GetModuleHandleW(nullptr), nullptr);
+            for (int i = 1; i <= 4; ++i) {
+                wchar_t t[8];
+                swprintf(t, 8, L"%dx", i);
+                SendMessageW(wscale, CB_ADDSTRING, 0, (LPARAM)t);
+            }
+            SendMessageW(wscale, CB_SETCURSEL,
+                         (g_settings.window_scale - 1 < 0) ? 0
+                                                           : g_settings.window_scale - 1,
+                         0);
+
+            HWND full = CreateWindowExW(0, L"BUTTON", L"Fullscreen",
+                                        WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,
+                                        380, 292, 140, 20, hwnd,
+                                        (HMENU)IDC_FULLSCREEN_CHK,
+                                        GetModuleHandleW(nullptr), nullptr);
+            SendMessageW(full, BM_SETCHECK,
+                         g_settings.fullscreen ? BST_CHECKED : BST_UNCHECKED, 0);
+            HWND bdr = CreateWindowExW(0, L"BUTTON", L"Borderless window",
+                                       WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,
+                                       380, 315, 140, 20, hwnd,
+                                       (HMENU)IDC_BORDERLESS_CHK,
+                                       GetModuleHandleW(nullptr), nullptr);
+            SendMessageW(bdr, BM_SETCHECK,
+                         g_settings.borderless ? BST_CHECKED : BST_UNCHECKED, 0);
+            HWND ovl = CreateWindowExW(0, L"BUTTON", L"On-screen overlay (F11)",
+                                       WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,
+                                       380, 338, 160, 20, hwnd,
+                                       (HMENU)IDC_OVERLAY_CHK,
+                                       GetModuleHandleW(nullptr), nullptr);
+            SendMessageW(ovl, BM_SETCHECK,
+                         g_settings.overlay_enabled ? BST_CHECKED : BST_UNCHECKED,
+                         0);
+
+            CreateWindowExW(0, L"STATIC", L"Game speed",
+                            WS_CHILD | WS_VISIBLE, 380, 363, 90, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND gspeed = CreateWindowExW(0, L"COMBOBOX", L"",
+                                          WS_CHILD | WS_VISIBLE |
+                                              CBS_DROPDOWNLIST,
+                                          465, 361, 90, 160, hwnd,
+                                          (HMENU)IDC_GAME_SPEED,
+                                          GetModuleHandleW(nullptr), nullptr);
+            {
+                static const int speeds[] = {25, 50, 75, 100, 150, 200,
+                                             300, 400, 600, 800};
+                int sel = 0;
+                for (size_t i = 0; i < sizeof(speeds) / sizeof(speeds[0]);
+                     ++i) {
+                    wchar_t t[16];
+                    swprintf(t, 16, L"%d%%", speeds[i]);
+                    SendMessageW(gspeed, CB_ADDSTRING, 0, (LPARAM)t);
+                    if (speeds[i] == g_settings.game_speed) sel = (int)i;
+                }
+                SendMessageW(gspeed, CB_SETCURSEL, sel, 0);
+            }
+
+            HWND shot = CreateWindowExW(0, L"BUTTON", L"Screenshots (F12)",
+                                        WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,
+                                        380, 392, 150, 20, hwnd,
+                                        (HMENU)IDC_SHOT_CHK,
+                                        GetModuleHandleW(nullptr), nullptr);
+            SendMessageW(shot, BM_SETCHECK,
+                         g_settings.screenshots_enabled ? BST_CHECKED
+                                                        : BST_UNCHECKED, 0);
+            HWND shotdir = CreateWindowExW(WS_EX_CLIENTEDGE, L"EDIT", L"",
+                                           WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL,
+                                           380, 415, 110, 22, hwnd,
+                                           (HMENU)IDC_SHOT_DIR,
+                                           GetModuleHandleW(nullptr), nullptr);
+            {
+                std::wstring dir = g_settings.screenshot_dir.empty()
+                    ? (user_dir() + L"\\screenshots")
+                    : u2w(g_settings.screenshot_dir);
+                SetWindowTextW(shotdir, dir.c_str());
+            }
+            CreateWindowExW(0, L"BUTTON", L"Browse...",
+                            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+                            495, 415, 80, 22, hwnd, (HMENU)IDC_SHOT_BROWSE,
+                            GetModuleHandleW(nullptr), nullptr);
+
+            CreateWindowExW(0, L"STATIC", L"Save backups",
+                            WS_CHILD | WS_VISIBLE, 380, 444, 90, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND baks = CreateWindowExW(0, L"COMBOBOX", L"",
+                                        WS_CHILD | WS_VISIBLE |
+                                            CBS_DROPDOWNLIST,
+                                        465, 442, 110, 120, hwnd,
+                                        (HMENU)IDC_BACKUPS,
+                                        GetModuleHandleW(nullptr), nullptr);
+            {
+                static const int counts[] = {0, 5, 10, 20, 50};
+                int sel = 0;
+                for (size_t i = 0; i < sizeof(counts) / sizeof(counts[0]);
+                     ++i) {
+                    wchar_t t[24];
+                    swprintf(t, 24, counts[i] ? L"%d backups" : L"Off",
+                             counts[i]);
+                    SendMessageW(baks, CB_ADDSTRING, 0, (LPARAM)t);
+                    if (counts[i] == g_settings.backup_count) sel = (int)i;
+                }
+                SendMessageW(baks, CB_SETCURSEL, sel, 0);
+            }
+
+            // Quality knobs (runner display.* keys)
+            CreateWindowExW(0, L"STATIC", L"Internal res",
+                            WS_CHILD | WS_VISIBLE, 380, 470, 90, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND intres = CreateWindowExW(0, L"COMBOBOX", L"",
+                                          WS_CHILD | WS_VISIBLE |
+                                              CBS_DROPDOWNLIST,
+                                          465, 468, 110, 120, hwnd,
+                                          (HMENU)IDC_INT_RES,
+                                          GetModuleHandleW(nullptr), nullptr);
+            for (int i = 1; i <= 4; ++i) {
+                wchar_t t[8];
+                swprintf(t, 8, L"%dx", i);
+                SendMessageW(intres, CB_ADDSTRING, 0, (LPARAM)t);
+            }
+            SendMessageW(intres, CB_SETCURSEL,
+                         g_settings.internal_resolution - 1, 0);
+
+            CreateWindowExW(0, L"STATIC", L"Tex upscale",
+                            WS_CHILD | WS_VISIBLE, 380, 496, 90, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND texup = CreateWindowExW(0, L"COMBOBOX", L"",
+                                         WS_CHILD | WS_VISIBLE |
+                                             CBS_DROPDOWNLIST,
+                                         465, 494, 110, 120, hwnd,
+                                         (HMENU)IDC_TEX_UPSCALE,
+                                         GetModuleHandleW(nullptr), nullptr);
+            {
+                static const int tex[] = {1, 2, 4};
+                int sel = 0;
+                for (size_t i = 0; i < 3; ++i) {
+                    wchar_t t[8];
+                    swprintf(t, 8, L"%dx", tex[i]);
+                    SendMessageW(texup, CB_ADDSTRING, 0, (LPARAM)t);
+                    if (tex[i] == g_settings.texture_upscale) sel = (int)i;
+                }
+                SendMessageW(texup, CB_SETCURSEL, sel, 0);
+            }
+
+            CreateWindowExW(0, L"STATIC", L"Anti-alias",
+                            WS_CHILD | WS_VISIBLE, 380, 522, 90, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND aa = CreateWindowExW(0, L"COMBOBOX", L"",
+                                      WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST,
+                                      465, 520, 110, 120, hwnd,
+                                      (HMENU)IDC_AA,
+                                      GetModuleHandleW(nullptr), nullptr);
+            {
+                static const int aaopts[] = {0, 2, 4, 8};
+                int sel = 0;
+                for (size_t i = 0; i < 4; ++i) {
+                    wchar_t t[8];
+                    swprintf(t, 8, aaopts[i] ? L"%dx" : L"Off", aaopts[i]);
+                    SendMessageW(aa, CB_ADDSTRING, 0, (LPARAM)t);
+                    if (aaopts[i] == g_settings.antialiasing) sel = (int)i;
+                }
+                SendMessageW(aa, CB_SETCURSEL, sel, 0);
+            }
+
+            CreateWindowExW(0, L"STATIC", L"Supersamp.",
+                            WS_CHILD | WS_VISIBLE, 380, 548, 90, 18, hwnd,
+                            nullptr, GetModuleHandleW(nullptr), nullptr);
+            HWND super = CreateWindowExW(0, L"COMBOBOX", L"",
+                                         WS_CHILD | WS_VISIBLE |
+                                             CBS_DROPDOWNLIST,
+                                         465, 546, 110, 120, hwnd,
+                                         (HMENU)IDC_SUPER,
+                                         GetModuleHandleW(nullptr), nullptr);
+            for (int i = 1; i <= 4; ++i) {
+                wchar_t t[8];
+                swprintf(t, 8, L"%dx", i);
+                SendMessageW(super, CB_ADDSTRING, 0, (LPARAM)t);
+            }
+            SendMessageW(super, CB_SETCURSEL, g_settings.supersampling - 1, 0);
+
             // save data
             CreateWindowExW(0, L"STATIC", L"Save data", WS_CHILD | WS_VISIBLE,
                             20, 200, 150, 18, hwnd, nullptr,
@@ -1389,11 +1824,11 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
             // bottom buttons
             CreateWindowExW(0, L"BUTTON", L"OK", WS_CHILD | WS_VISIBLE |
                                 BS_PUSHBUTTON | BS_DEFPUSHBUTTON,
-                            380, 260, 90, 26, hwnd, (HMENU)IDC_OK,
+                            380, 580, 90, 26, hwnd, (HMENU)IDC_OK,
                             GetModuleHandleW(nullptr), nullptr);
             CreateWindowExW(0, L"BUTTON", L"Cancel", WS_CHILD | WS_VISIBLE |
                                 BS_PUSHBUTTON,
-                            480, 260, 90, 26, hwnd, (HMENU)IDC_CANCEL,
+                            480, 580, 90, 26, hwnd, (HMENU)IDC_CANCEL,
                             GetModuleHandleW(nullptr), nullptr);
 
             // font
@@ -1424,6 +1859,24 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
                 case IDC_DELETE_SAVE:
                     delete_save(hwnd);
                     break;
+                case IDC_SHOT_BROWSE: {
+                    BROWSEINFOW bi = {};
+                    bi.hwndOwner = hwnd;
+                    bi.lpszTitle = L"Choose a folder for screenshots";
+                    bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+                    LPITEMIDLIST pidl = SHBrowseForFolderW(&bi);
+                    if (pidl) {
+                        wchar_t buf[MAX_PATH];
+                        if (SHGetPathFromIDListW(pidl, buf))
+                            SetWindowTextW(GetDlgItem(hwnd, IDC_SHOT_DIR), buf);
+                        IMalloc* im = nullptr;
+                        if (SUCCEEDED(SHGetMalloc(&im))) {
+                            im->Free(pidl);
+                            im->Release();
+                        }
+                    }
+                    break;
+                }
             }
             break;
         case WM_CLOSE:
@@ -1436,7 +1889,7 @@ static LRESULT CALLBACK settings_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
 static void open_settings(HWND parent) {
     CreateWindowExW(0, L"JUSSettingsWnd", L"Settings — JUSDecomp",
                     WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE,
-                    CW_USEDEFAULT, CW_USEDEFAULT, 600, 330, parent, nullptr,
+                    CW_USEDEFAULT, CW_USEDEFAULT, 600, 640, parent, nullptr,
                     GetModuleHandleW(nullptr), nullptr);
 }
 

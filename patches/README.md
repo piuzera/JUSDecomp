@@ -38,6 +38,33 @@ git apply ../../patches/ndsrecomp/0001-jus-runner-modifications.patch
   MAC (unicast-to-self) instead of broadcast, testing the JUS 80430
   match-completion hypothesis (MKDS tolerated broadcast; JUS appears not to).
 - Test adjustments for the save-model fixes + the new provider entry.
+- **QOL host-window options** (`display.*` config keys + `--window-scale`,
+  `--fullscreen`, `--borderless`): runtime window scale (1x..4x, was a
+  compile-time 2x constant), borderless/fullscreen desktop windows, and
+  window-geometry persistence via `display.window_state_file` (the runner
+  restores the last windowed position/size on launch and saves it on exit).
+- **Game-speed presets** (`display.game_speed` 25..800% of real time /
+  `--game-speed`): slow-mo and fast-forward paced by host time with the
+  audio muted (the audio queue is fixed-rate, so non-100% speeds would
+  otherwise underrun/overflow it). Hold-Tab turbo is unchanged; **F10 now
+  toggles** sticky turbo.
+- **In-game HUD overlay** (`display.overlay` / `--overlay`): a small 3x5
+  bitmap-font HUD on the top screen showing FPS, per-frame emulation ms,
+  speed/turbo state and network state. Drawn into a scratch copy of the
+  framebuffer (the guest surface is never modified); **F11** toggles it at
+  runtime.
+- **Screenshot hotkey** (`display.screenshot_dir` / `--screenshot-dir`):
+  **F12** saves the native top+bottom framebuffers as one stacked 256x384
+  24-bit BMP (`jus_shot_N.bmp`, no external image library needed).
+- **In-game recomp settings menu (F9)** — a host-rendered full-screen menu
+  (opened with **F9** anywhere in the game; keyboard arrows/Enter/Esc or
+  gamepad D-pad/A/B) that pauses the guest while open and lets the player
+  change recomp options without exiting. Window size, fullscreen,
+  borderless, game speed, overlay and screenshots apply live; the
+  renderer-quality knobs change value and are marked "(R)" (applies on the
+  next launch). Changes persist to a key=value override file
+  (`display.in_game_settings_file` / `--in-game-settings FILE`) that the
+  host launcher merges over its settings on the next launch.
 
 ## Regenerating the patch
 
