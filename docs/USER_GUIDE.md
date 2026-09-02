@@ -121,7 +121,7 @@ patching is needed. Online play runs at ~60 fps.
 
 ## 7. Known issues
 
-These are known v0.3.0 limitations we are working on — none of them block
+These are known v0.3.1 limitations we are working on — none of them block
 progress (your save is always safe):
 
 - **Occasional micro-stutters during online play.** Online WiFi Battle now

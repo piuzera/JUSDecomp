@@ -4,6 +4,28 @@ All notable changes to this project are documented here. Version numbers track
 the public releases; internal research milestones before v0.1.0 are summarized
 below from the project's working history.
 
+## 0.3.1 — 2026-09-02 (quality of life and performance)
+
+- **In-game settings menu (F9):** live window/display, game-speed, input,
+  screenshot and renderer-quality controls, with corrected non-mirrored text.
+  F10 toggles turbo, F11 toggles the FPS/status overlay, and F12 captures a
+  screenshot.
+- **Lower scheduler overhead:** fixed-rate LCD, SPU and RTC deadlines are
+  retained exactly and device catch-up runs only when due. In an instrumented
+  gameplay comparison, sampled scheduler cost fell about 29% (4.530 to 3.215
+  ms per 1,000 rounds) without changing guest timing or event order.
+- **Cheaper native dispatch and overlay management:** cached banks preload in
+  one batched registration before boot; overlay polling moved out of the
+  64-cycle scheduler hot loop; successful hit diagnostics are sampled; and
+  negative dispatch-cache hits stay within one cache line.
+- **Performance diagnostics:** rolling 600-frame p50/p95/p99/max work times,
+  deadline misses, renderer state, audio underruns, overlay queues and network
+  queue/drop counters are available through the debug server and corrected
+  CSV probe. Startup FMV performance is explicitly excluded from gameplay
+  conclusions.
+- **Stability:** Linux and MinGW Release builds pass, all 14 runner tests pass,
+  and bounded headless plus interactive gameplay soaks complete normally.
+
 ## 0.3.0 — 2026-09-01 (Linux support)
 
 **Native Linux host** — the full runner and a GTK launcher build and run on

@@ -10,7 +10,7 @@ ARM9/ARM7 banks, overlay promotion, melonDS-derived 3D/Wi-Fi, SDL host. The
 repository itself contains no game assets — you bring your own legally dumped
 ROM (sha1-gated).
 
-> **Status: v0.3.0** — full game playable natively on **Windows and Linux**,
+> **Status: v0.3.1** — full game playable natively on **Windows and Linux**,
 > including **online WiFi Battle over the public Wiimmfi service** (world-wide
 > and same-network friend battles) at ~60 fps. In-game saves, deck injection,
 > arcade-stick + keyboard input (remappable in the launcher), a
@@ -25,9 +25,9 @@ ROM (sha1-gated).
 The launcher release turns the project into a **single self-contained
 executable**:
 
-1. Download the latest release — **v0.3.0** — from the
+1. Download the latest release — **v0.3.1** — from the
    [Releases page](https://github.com/piuzera/JUSDecomp/releases)
-   (`JUSDecomp-0.3.0.zip`), or build it with
+   (`JUSDecomp-0.3.1.zip`), or build it with
    `py tools/scripts/package_release.py`.
 2. Run `JUSDecomp.exe`, pick your own legally dumped ROM in the file dialog —
    it is verified automatically.
@@ -42,7 +42,7 @@ native code cache so the game boots at full speed. Full instructions:
 
 Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
 
-### Known issues (v0.3.0)
+### Known issues (v0.3.1)
 
 - **Occasional micro-stutters during online play** — online WiFi Battle now
   runs at ~60 fps almost all the time (the old 60 → ~35 fps drop is fixed),
@@ -243,7 +243,7 @@ for the full publish/ignore policy.
 | [`decomp/docs/SAVEBUG.md`](decomp/docs/SAVEBUG.md) | Save-chip reverse engineering (resolved) |
 | [`decomp/docs/REPO_AUDIT.md`](decomp/docs/REPO_AUDIT.md) | Public-repo publishing policy |
 
-## Known limitations (v0.3.0)
+## Known limitations (v0.3.1)
 
 - Linux ships as a source build (`tools/scripts/build_linux.sh`); a
   self-contained packaged Linux release is planned.

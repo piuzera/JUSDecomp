@@ -18,6 +18,9 @@ cumulative, everything reported is a rate/delta over the sampling window:
                              second (`static_coverage`) — the smoking gun for
                              "network stack running interpreted"
   dispatch rate + hit%     : from `dispatch_stats` (native dispatch volume)
+  present/upload/swap      : frontend phase split and rolling work percentiles
+  overlay queues/compiler  : compact live-overlay status (no huge bank list)
+  network queues/drops     : host bridge health from `net_state`
 
 Required launcher conditions
 ----------------------------
@@ -72,11 +75,16 @@ def snapshot(host: str, port: int, timeout: float) -> Dict[str, Any]:
         prof = request(sock, {"cmd": "profile"})
         sc = request(sock, {"cmd": "static_coverage"})
         ds = request(sock, {"cmd": "dispatch_stats"})
+        live = request(sock, {"cmd": "live_overlay_status", "compact": True})
+        net = request(sock, {"cmd": "net_state"})
     return {
         "fs": fs,
         "sched": prof.get("sched", {}),
         "sc": sc,
         "ds": ds,
+        "live": live,
+        "net": net,
+        "sample_time": time.monotonic(),
     }
 
 
@@ -94,6 +102,24 @@ def window_diff(prev: Dict[str, Any], cur: Dict[str, Any], wall: float) -> Dict[
     out["emu_ms_per_frame"] = (
         (d_emu / freq) * 1000.0 / d_frames) if d_frames > 0 else 0.0
     out["frames_in_window"] = float(d_frames)
+    for key in ("present_ticks", "adaptive_ticks", "upload_ticks",
+                "draw_ticks", "swap_ticks", "drain_ticks"):
+        delta = cfs.get(key, 0) - pfs.get(key, 0)
+        out[key.replace("_ticks", "_ms_per_frame")] = (
+            (delta / freq) * 1000.0 / d_frames) if d_frames > 0 else 0.0
+    for key in ("work_p50_ticks", "work_p95_ticks", "work_p99_ticks",
+                "work_max_ticks", "max_emu_ticks"):
+        out[key.replace("_ticks", "_ms")] = (
+            cfs.get(key, 0) * 1000.0 / freq)
+    d_deadlines = (cfs.get("deadline_misses", 0) -
+                   pfs.get("deadline_misses", 0))
+    out["deadline_misses"] = float(d_deadlines)
+    out["deadline_miss_pct"] = (
+        100.0 * d_deadlines / d_frames) if d_frames > 0 else 0.0
+    out["underruns"] = float(cfs.get("underruns", 0) -
+                              pfs.get("underruns", 0))
+    out["renderer_compute"] = float(cfs.get("renderer_compute", 0))
+    out["renderer_demoted"] = float(cfs.get("renderer_demoted", 0))
 
     # ── scheduler phase split (ms per 1000 rounds, report scale) ─────────
     ps, cs = prev["sched"], cur["sched"]
@@ -136,11 +162,34 @@ def window_diff(prev: Dict[str, Any], cur: Dict[str, Any], wall: float) -> Dict[
         slow = cd.get("cache_slow_lookup", 0) - pd.get("cache_slow_lookup", 0)
         denom = hit + absent + slow
         out[f"cache_hit_{suffix}_pct"] = (100.0 * hit / denom) if denom else 0.0
+
+    # ── live-overlay and host-network health ─────────────────────────────
+    plive, clive = prev.get("live", {}), cur.get("live", {})
+    out["overlay_preparing"] = float(clive.get("preparing_banks", 0))
+    out["overlay_ready"] = float(clive.get("ready_banks", 0))
+    out["overlay_busy"] = float(bool(clive.get("busy", False)))
+    out["overlay_banks_loaded"] = float(
+        clive.get("banks_loaded", 0) - plive.get("banks_loaded", 0))
+    out["overlay_runs_started"] = float(
+        clive.get("runs_started", 0) - plive.get("runs_started", 0))
+
+    pnet, cnet = prev.get("net", {}), cur.get("net", {})
+    out["net_tx_queue"] = float(cnet.get("tx_queue_depth", 0))
+    out["net_rx_queue"] = float(cnet.get("rx_queue_depth", 0))
+    out["net_tx_drops"] = float(
+        cnet.get("tx_queue_drops", 0) - pnet.get("tx_queue_drops", 0))
+    out["net_rx_drops"] = float(
+        cnet.get("rx_queue_drops", 0) - pnet.get("rx_queue_drops", 0))
     return out
 
 
 FIELDS = [
-    "fps", "emu_ms_per_frame", "frames_in_window",
+    "fps", "emu_ms_per_frame", "present_ms_per_frame",
+    "adaptive_ms_per_frame", "upload_ms_per_frame", "draw_ms_per_frame",
+    "swap_ms_per_frame", "drain_ms_per_frame", "frames_in_window",
+    "work_p50_ms", "work_p95_ms", "work_p99_ms", "work_max_ms",
+    "max_emu_ms", "deadline_misses", "deadline_miss_pct", "underruns",
+    "renderer_compute", "renderer_demoted",
     "sched_rounds_window",
     "arm9_ns", "arm7_ns", "devices_ns", "display_ns", "spu_ns", "wifi_ns",
     "rtc_ns", "sysev_ns", "switch_ns", "next_event_ns", "sampled_round_ns",
@@ -148,6 +197,9 @@ FIELDS = [
     "tier3_insns9_per_s", "tier3_insns7_per_s",
     "dispatch_9_per_s", "dispatch_7_per_s", "cache_hit_9_pct",
     "cache_hit_7_pct",
+    "overlay_preparing", "overlay_ready", "overlay_busy",
+    "overlay_banks_loaded", "overlay_runs_started",
+    "net_tx_queue", "net_rx_queue", "net_tx_drops", "net_rx_drops",
 ]
 
 
@@ -188,7 +240,11 @@ def main() -> int:
             time.sleep(args.interval)
             continue
         if prev is not None:
-            wall = time.monotonic() - t_start
+            # The old probe divided instruction/dispatch deltas by the time
+            # spent issuing the current debug queries (usually milliseconds),
+            # not by the interval between snapshots. That inflated every
+            # per-second rate. Use the two completed-snapshot timestamps.
+            wall = cur["sample_time"] - prev["sample_time"]
             row = window_diff(prev, cur, wall)
             writer.writerow([f"{time.monotonic() - t0:.1f}"] +
                             [f"{row[f]:.3f}" for f in FIELDS])

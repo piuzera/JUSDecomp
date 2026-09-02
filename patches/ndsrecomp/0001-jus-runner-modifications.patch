@@ -1,5 +1,5 @@
 diff --git i/recompiler/armv4t/interpreter.cpp w/recompiler/armv4t/interpreter.cpp
-index 84e613d..092c4b4 100644
+index 84e613d2e567c5f462d6fb2de4f9903352771b55..092c4b413b21b2257714ffa98ee9166675f3c62b 100644
 --- i/recompiler/armv4t/interpreter.cpp
 +++ w/recompiler/armv4t/interpreter.cpp
 @@ -2,6 +2,7 @@
@@ -20,7 +20,7 @@ index 84e613d..092c4b4 100644
                  uint32_t addr;
                  if (i.block.add) {
 diff --git i/recompiler/armv4t/runtime_arm.h w/recompiler/armv4t/runtime_arm.h
-index 2f52bad..7273bfb 100644
+index 2f52badb09b6b745d98d3a48bbf5cbd4478d17e1..7273bfb18209d107537814734f4f4397b0e31e1a 100644
 --- i/recompiler/armv4t/runtime_arm.h
 +++ w/recompiler/armv4t/runtime_arm.h
 @@ -334,8 +334,16 @@ static inline uint8_t bus_read_u8(uint32_t addr) {
@@ -60,7 +60,7 @@ index 2f52bad..7273bfb 100644
          const NdsBusFastWin* w = nds_busf_classify(addr, &off);
          if (w && w->data) {
 diff --git i/runner/CMakeLists.txt w/runner/CMakeLists.txt
-index 81c98af..5e51f2d 100644
+index 81c98af6b683aaa46412040bb5ae4e0d29899ac2..5e51f2d484ad0958ca5884c462812947b7fd5775 100644
 --- i/runner/CMakeLists.txt
 +++ w/runner/CMakeLists.txt
 @@ -156,6 +156,12 @@ target_include_directories(nds_banks PRIVATE
@@ -97,7 +97,7 @@ index 81c98af..5e51f2d 100644
      target_compile_definitions(nds_runner PRIVATE NDS_BOOTSTRAP_FIRMWARE=1)
  elseif(EXISTS "${GEN}/fw_arm9_calibration_save_dispatch.c")
 diff --git i/runner/src/bus.cpp w/runner/src/bus.cpp
-index 57c9a47..71718ff 100644
+index 57c9a4722ed54d9afd93c82a57929f74c8b35834..71718ffe4daeb61135a4010358fd22ca46bf4bd7 100644
 --- i/runner/src/bus.cpp
 +++ w/runner/src/bus.cpp
 @@ -241,16 +241,27 @@ BusEvent g_ring[kRingSize];
@@ -177,7 +177,7 @@ index 57c9a47..71718ff 100644
      if (!out || max_entries == 0) return 0;
      uint32_t count = g_watch_count;
 diff --git i/runner/src/cart_backup.cpp w/runner/src/cart_backup.cpp
-index f893433..9388099 100644
+index f89343316618184637dd8938a90ad979d8933fe3..9388099bb50c9ca06301afe7f841f1b337d8f486 100644
 --- i/runner/src/cart_backup.cpp
 +++ w/runner/src/cart_backup.cpp
 @@ -96,19 +96,46 @@ uint8_t eeprom_tiny_spi_write(NdsCartBackup& chip, uint8_t val, uint32_t pos,
@@ -264,7 +264,7 @@ index f893433..9388099 100644
                      }
                  }
 diff --git i/runner/src/debug_server.cpp w/runner/src/debug_server.cpp
-index d5d7fec..9a19197 100644
+index d5d7fec6cace49b75445323a886ef2d19533489f..514dc3fcd30fff81e21f43e94364e40b9648ee5d 100644
 --- i/runner/src/debug_server.cpp
 +++ w/runner/src/debug_server.cpp
 @@ -403,6 +403,11 @@ std::string handle(const std::string& line) {
@@ -279,7 +279,81 @@ index d5d7fec..9a19197 100644
      if (cmd == "regs") {
          uint64_t cpu = json_u64(line, "cpu", 9);
          const ArmCpuState& c = scheduler_cpu_state(cpu == 7 ? 1 : 0);
-@@ -1266,6 +1271,10 @@ std::string handle(const std::string& line) {
+@@ -530,7 +535,7 @@ std::string handle(const std::string& line) {
+     }
+     if (cmd == "live_overlay_status") {
+         live_overlay_poll();
+-        return live_overlay_status_json();
++        return live_overlay_status_json(!json_bool(line, "compact", false));
+     }
+     if (cmd == "live_overlay_diagnostics") {
+         return live_overlay_diagnostics_json(
+@@ -765,7 +770,7 @@ std::string handle(const std::string& line) {
+         std::string src_mac_hex, dst_mac_hex;
+         append_hex(src_mac_hex, e.src_mac, sizeof(e.src_mac));
+         append_hex(dst_mac_hex, e.dst_mac, sizeof(e.dst_mac));
+-        char buf[512];
++        char buf[768];
+         std::snprintf(buf, sizeof(buf),
+             "{\"found\":true,\"count\":%llu,\"sys\":%llu,\"cyc9\":%llu,"
+             "\"cyc7\":%llu,\"insn9\":%llu,\"insn7\":%llu,\"arm9_pc\":%u,"
+@@ -860,12 +865,14 @@ std::string handle(const std::string& line) {
+         const bool has_net = nds_wifi_network_state(&net);
+         const std::string wfc_dns_ip =
+             has_net ? ipv4_host_order_string(net.wfc_dns_ipv4) : "0.0.0.0";
+-        char buf[512];
++        char buf[768];
+         std::snprintf(buf, sizeof(buf),
+             "{\"produced\":%llu,\"oldest\":%llu,\"capacity\":%u,"
+             "\"wifi_attached\":%s,\"network_enabled\":%s,"
+             "\"backend\":\"%s\",\"live_backend_active\":%s,"
+             "\"replay_backend_active\":%s,\"worker_active\":%s,"
++            "\"tx_queue_depth\":%u,\"rx_queue_depth\":%u,"
++            "\"tx_queue_drops\":%llu,\"rx_queue_drops\":%llu,"
+             "\"wfc_enabled\":%s,\"wfc_dns_ipv4\":%u,"
+             "\"wfc_dns_ip\":\"%s\","
+             "\"pcap_adapter_selected\":%s",
+@@ -877,6 +884,10 @@ std::string handle(const std::string& line) {
+             has_net && net.live_backend_active ? "true" : "false",
+             has_net && net.replay_backend_active ? "true" : "false",
+             has_net && net.worker_active ? "true" : "false",
++            has_net ? net.tx_queue_depth : 0u,
++            has_net ? net.rx_queue_depth : 0u,
++            (unsigned long long)(has_net ? net.tx_queue_drops : 0u),
++            (unsigned long long)(has_net ? net.rx_queue_drops : 0u),
+             has_net && net.wfc_enabled ? "true" : "false",
+             has_net ? net.wfc_dns_ipv4 : 0u,
+             wfc_dns_ip.c_str(),
+@@ -970,7 +981,27 @@ std::string handle(const std::string& line) {
+                ",\"drain_ticks\":" + std::to_string(s.drain_ticks) +
+                ",\"now_ticks\":" + std::to_string(s.now_ticks) +
+                ",\"freq\":" + std::to_string(s.freq) +
+-               ",\"underruns\":" + std::to_string(s.underruns) + "}";
++               ",\"underruns\":" + std::to_string(s.underruns) +
++               ",\"work_p50_ticks\":" +
++                   std::to_string(s.work_p50_ticks) +
++               ",\"work_p95_ticks\":" +
++                   std::to_string(s.work_p95_ticks) +
++               ",\"work_p99_ticks\":" +
++                   std::to_string(s.work_p99_ticks) +
++               ",\"work_max_ticks\":" +
++                   std::to_string(s.work_max_ticks) +
++               ",\"max_emu_ticks\":" +
++                   std::to_string(s.max_emu_ticks) +
++               ",\"deadline_misses\":" +
++                   std::to_string(s.deadline_misses) +
++               ",\"slow_frames_32ms\":" +
++                   std::to_string(s.slow_frames_32ms) +
++               ",\"renderer_compute\":" +
++                   std::to_string(s.renderer_compute) +
++               ",\"renderer_demoted\":" +
++                   std::to_string(s.renderer_demoted) +
++               ",\"renderer_soft_threaded\":" +
++                   std::to_string(s.renderer_soft_threaded) + "}";
+     }
+     if (cmd == "frontend_input_stats") {
+         NdsFrontendInputDebugState s{};
+@@ -1266,6 +1297,10 @@ std::string handle(const std::string& line) {
          uint64_t max_rounds = json_u64(line, "max_rounds", 50000000);
          if (!pc) return "{\"error\":\"pc must be nonzero\"}";
          if (max_rounds > 100000000u) max_rounds = 100000000u;
@@ -290,7 +364,7 @@ index d5d7fec..9a19197 100644
          g_runtime_break_pc = pc;
          uint64_t rounds = 0;
          while (!scheduler_cpu_terminal_halted(0) &&
-@@ -1425,6 +1434,23 @@ std::string handle(const std::string& line) {
+@@ -1425,6 +1460,23 @@ std::string handle(const std::string& line) {
          return "{\"hex\":\"" + hex + "\"}";
      }
  
@@ -314,7 +388,7 @@ index d5d7fec..9a19197 100644
      if (cmd == "read_io") {
          uint64_t cpu = json_u64(line, "cpu", 9);
          uint32_t addr = (uint32_t)json_u64(line, "addr", 0);
-@@ -1437,25 +1463,41 @@ std::string handle(const std::string& line) {
+@@ -1437,25 +1489,41 @@ std::string handle(const std::string& line) {
          return buf;
      }
  
@@ -364,7 +438,7 @@ index d5d7fec..9a19197 100644
          out += "]}";
          return out;
 diff --git i/runner/src/frontend.cpp w/runner/src/frontend.cpp
-index 8b5947d..bbaaa40 100644
+index 8b5947d1db26a82e7ae1367130eec19009167c54..d05035fde99f6eb23870c84f182e067a5565e847 100644
 --- i/runner/src/frontend.cpp
 +++ w/runner/src/frontend.cpp
 @@ -1,5 +1,7 @@
@@ -375,7 +449,7 @@ index 8b5947d..bbaaa40 100644
  #include <algorithm>
  #include <array>
  #include <atomic>
-@@ -12,6 +14,7 @@
+@@ -12,12 +14,14 @@
  #include <initializer_list>
  #include <limits>
  #include <string>
@@ -383,7 +457,14 @@ index 8b5947d..bbaaa40 100644
  
  #include "debug_server.h"
  #include "gpu2d.h"
-@@ -306,6 +309,40 @@ MphPadBinding parse_mph_pad_binding(const std::string& value,
+ #include "gpu3d.h"
+ #include "melonds_compute/TextureUpscale.h"
+ #include "io.h"
++#include "live_overlay.h"
+ #include "profile_report.h"
+ #include "relative_mouse_touch.h"
+ #include "runtime_arm.h"
+@@ -306,6 +310,40 @@ MphPadBinding parse_mph_pad_binding(const std::string& value,
      return {};
  }
  
@@ -424,7 +505,7 @@ index 8b5947d..bbaaa40 100644
  MphPadBindingSet make_mph_pad_bindings(
      const NdsMphPrimeControlBindings& source) {
      MphPadBindingSet set{};
-@@ -464,7 +501,11 @@ MphPrimeBindingSet make_mph_prime_bindings(
+@@ -464,7 +502,11 @@ MphPrimeBindingSet make_mph_prime_bindings(
      put(MphPrimeAction::Menu, source.menu);
      return set;
  }
@@ -437,7 +518,7 @@ index 8b5947d..bbaaa40 100644
  constexpr uint64_t kSystemCyclesPerFrame = 2130ull * 263ull;
  constexpr int kAudioFrequency = 33513982 / 1024;
  constexpr uint32_t kAudioQueueFrames = 2048;
-@@ -508,26 +549,91 @@ void SDLCALL audio_callback(void* userdata, Uint8* stream, int len) {
+@@ -508,26 +550,91 @@ void SDLCALL audio_callback(void* userdata, Uint8* stream, int len) {
          queue->underruns.fetch_add(1, std::memory_order_relaxed);
  }
  
@@ -547,7 +628,7 @@ index 8b5947d..bbaaa40 100644
  uint16_t controller_bit(SDL_GameControllerButton button) {
      switch (button) {
          case SDL_CONTROLLER_BUTTON_A:             return 1u << 0;
-@@ -715,6 +821,294 @@ void destroy_presentation(FrontendPresentation& presentation) {
+@@ -715,6 +822,294 @@ void destroy_presentation(FrontendPresentation& presentation) {
      presentation.windows[1] = nullptr;
  }
  
@@ -842,7 +923,7 @@ index 8b5947d..bbaaa40 100644
  SDL_Renderer* create_renderer(SDL_Window* window) {
      SDL_Renderer* renderer = SDL_CreateRenderer(
          window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
-@@ -757,10 +1151,14 @@ bool create_presentation(const NdsFrontendOptions& options,
+@@ -757,10 +1152,14 @@ bool create_presentation(const NdsFrontendOptions& options,
          presentation.screen_widths[0],
          presentation.screen_widths[1]);
      const int first_height = presentation.separate
@@ -859,7 +940,7 @@ index 8b5947d..bbaaa40 100644
          (presentation.gl_top
               ? static_cast<uint32_t>(SDL_WINDOW_OPENGL) : 0u);
      presentation.windows[0] = SDL_CreateWindow(
-@@ -768,7 +1166,7 @@ bool create_presentation(const NdsFrontendOptions& options,
+@@ -768,7 +1167,7 @@ bool create_presentation(const NdsFrontendOptions& options,
                                : "ndsrecomp firmware preview",
          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
          (presentation.separate ? presentation.screen_widths[0]
@@ -868,7 +949,7 @@ index 8b5947d..bbaaa40 100644
          first_height,
          top_window_flags);
      if (!presentation.windows[0]) {
-@@ -790,11 +1188,15 @@ bool create_presentation(const NdsFrontendOptions& options,
+@@ -790,11 +1189,15 @@ bool create_presentation(const NdsFrontendOptions& options,
          SDL_GetWindowPosition(presentation.windows[0], &top_x, &top_y);
          presentation.windows[1] = SDL_CreateWindow(
              "ndsrecomp - Bottom Screen",
@@ -888,7 +969,7 @@ index 8b5947d..bbaaa40 100644
          if (!presentation.windows[1]) {
              std::fprintf(stderr, "[sdl] bottom window failed: %s\n",
                           SDL_GetError());
-@@ -982,6 +1384,31 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -982,6 +1385,31 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          std::fprintf(stderr, "[sdl] init failed: %s\n", SDL_GetError());
          return 1;
      }
@@ -920,7 +1001,7 @@ index 8b5947d..bbaaa40 100644
      if (SDL_SetThreadPriority(SDL_THREAD_PRIORITY_HIGH) != 0)
          std::fprintf(stderr, "[sdl] thread priority unchanged: %s\n",
                       SDL_GetError());
-@@ -989,11 +1416,25 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -989,11 +1417,25 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
      SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,
                  (options.supersampling > 1 || options.antialiasing > 0)
                      ? "1" : "0");
@@ -946,7 +1027,7 @@ index 8b5947d..bbaaa40 100644
      const int bottom_logical_width = presentation.separate
          ? presentation.screen_widths[1]
          : presentation.canvas_width;
-@@ -1187,6 +1628,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1187,6 +1629,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
      bool mph_pad_trigger_left_held = false;
      bool mph_pad_trigger_right_held = false;
      uint64_t mph_pad_aim_writes = 0;
@@ -961,7 +1042,7 @@ index 8b5947d..bbaaa40 100644
      auto mph_prime_active = [&]() {
          return mph_prime_controls_available &&
                 (relative_mouse.captured() || mph_prime_pad_engaged);
-@@ -1342,6 +1791,11 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1342,6 +1792,11 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
      bool audio_queue_error = false;
      bool turbo_pressed = false;
      bool turbo_active = false;
@@ -973,7 +1054,31 @@ index 8b5947d..bbaaa40 100644
      uint32_t audio_pace_floor = kAudioQueueFrames;
      uint32_t audio_min_queue = std::numeric_limits<uint32_t>::max();
      uint32_t audio_max_queue = 0;
-@@ -1407,7 +1861,235 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1402,12 +1857,259 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+     uint64_t max_emu_ticks = 0;
+     uint64_t max_emu_frame = 0;
+     uint64_t slow_frames_32ms = 0;
++    uint64_t deadline_misses = 0;
++    std::array<uint64_t, 600> work_window{};
++    std::size_t work_window_count = 0;
++    std::size_t work_window_write = 0;
++    auto publish_work_quantiles = [&]() {
++        if (work_window_count == 0u) return;
++        std::vector<uint64_t> sorted(
++            work_window.begin(), work_window.begin() + work_window_count);
++        std::sort(sorted.begin(), sorted.end());
++        auto percentile = [&](uint64_t numerator, uint64_t denominator) {
++            const std::size_t index = static_cast<std::size_t>(
++                ((work_window_count - 1u) * numerator) / denominator);
++            return sorted[index];
++        };
++        g_live_stats.work_p50_ticks = percentile(50u, 100u);
++        g_live_stats.work_p95_ticks = percentile(95u, 100u);
++        g_live_stats.work_p99_ticks = percentile(99u, 100u);
++        g_live_stats.work_max_ticks = sorted.back();
++    };
+     uint64_t last_underruns_seen = 0;
+     uint64_t first_underrun_frame = 0;
      uint64_t last_underrun_frame = 0;
      const uint64_t soak_start = SDL_GetPerformanceCounter();
  
@@ -1209,7 +1314,19 @@ index 8b5947d..bbaaa40 100644
  #if defined(NDS_HAVE_COMPUTE_RENDERER)
          if (!nds_compute_host_make_current()) {
              std::fprintf(stderr, "[gpu3d] lost compute GL context: %s\n",
-@@ -1447,9 +2129,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1422,6 +2124,11 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         // client is connected). See debug_server.h.
+         publish_input_debug();
+         debug_pump();
++        // Host-side overlay management is serviced once per presented frame at
++        // a scheduler-safe boundary. It used to run after every 64-cycle CPU
++        // rendezvous (~8,750 times/frame), taking a mutex even when the fully
++        // pre-seeded cache had no work to do.
++        live_overlay_poll();
+         if (selftest_menu) {
+             const NdsEventCounts& counts = nds_event_counts();
+             SDL_Event injected{};
+@@ -1447,9 +2154,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                  // SDL transforms window-tagged mouse events from physical
                  // window pixels into the renderer's logical coordinates.
                  injected.button.x =
@@ -1221,7 +1338,7 @@ index 8b5947d..bbaaa40 100644
                  selftest_event_error |= SDL_PushEvent(&injected) < 0;
                  selftest_touch_down = true;
              } else if (selftest_touch_down && !selftest_touch_up &&
-@@ -1459,9 +2141,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1459,9 +2166,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                  injected.button.windowID = presentation.window_ids[1];
                  injected.button.button = SDL_BUTTON_LEFT;
                  injected.button.x =
@@ -1233,7 +1350,7 @@ index 8b5947d..bbaaa40 100644
                  selftest_event_error |= SDL_PushEvent(&injected) < 0;
                  selftest_touch_up = true;
              }
-@@ -1551,27 +2233,57 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1551,27 +2258,57 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                  release_relative_mouse();
              }
              if (event.type == SDL_KEYDOWN && !event.key.repeat) {
@@ -1297,7 +1414,7 @@ index 8b5947d..bbaaa40 100644
                      turbo_pressed = false;
                  } else if (process_mph_prime_key(
                          event.key.keysym.scancode, false, false)) {
-@@ -1609,8 +2321,23 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1609,8 +2346,23 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
              if (event.type == SDL_CONTROLLERBUTTONDOWN) {
                  const auto button = static_cast<SDL_GameControllerButton>(
                      event.cbutton.button);
@@ -1323,7 +1440,7 @@ index 8b5947d..bbaaa40 100644
                      // Consumed by Prime Controls.
                  } else if (const uint16_t bit = controller_bit(button)) {
                      controller_pressed |= bit;
-@@ -1620,8 +2347,10 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1620,8 +2372,10 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
              if (event.type == SDL_CONTROLLERBUTTONUP) {
                  const auto button = static_cast<SDL_GameControllerButton>(
                      event.cbutton.button);
@@ -1336,7 +1453,7 @@ index 8b5947d..bbaaa40 100644
                      // Consumed by Prime Controls.
                  } else if (const uint16_t bit = controller_bit(button)) {
                      controller_pressed &= static_cast<uint16_t>(~bit);
-@@ -1818,6 +2547,42 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1818,6 +2572,42 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                      mph_pad_aim_rem_y -= static_cast<float>(mph_pad_frame_y);
                  }
              }
@@ -1379,7 +1496,7 @@ index 8b5947d..bbaaa40 100644
          } else {
              if (stick_pressed != 0) {
                  stick_pressed = 0;
-@@ -1837,6 +2602,7 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1837,6 +2627,7 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
                  mph_prime_pad_engaged = false;
                  if (!relative_mouse.captured()) nds_set_touch(0, 0, false);
              }
@@ -1387,7 +1504,7 @@ index 8b5947d..bbaaa40 100644
          }
  
          const bool mph_prime_is_active = mph_prime_active();
-@@ -1844,8 +2610,8 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1844,8 +2635,8 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
              mph_prime_held[static_cast<size_t>(
                  MphPrimeAction::VirtualStylus)];
  
@@ -1398,7 +1515,7 @@ index 8b5947d..bbaaa40 100644
              if (audio) {
                  SDL_PauseAudioDevice(audio, 1);
                  clear_audio_queue(audio, audio_queue);
-@@ -1886,6 +2652,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1886,6 +2677,14 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
              relative_delta_x = 0;
              relative_delta_y = 0;
          }
@@ -1413,7 +1530,7 @@ index 8b5947d..bbaaa40 100644
          if (mph_prime_is_active) {
              if (mph_touch_sequence.active()) {
                  mph_touch_sequence.tick();
-@@ -1910,6 +2684,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1910,6 +2709,9 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          }
          publish_input_debug();
  
@@ -1423,7 +1540,7 @@ index 8b5947d..bbaaa40 100644
          const uint64_t phase0 = SDL_GetPerformanceCounter();
          const uint64_t now = scheduler_system_timestamp();
          const uint64_t next_frame =
-@@ -1931,14 +2708,21 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1931,14 +2733,21 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          {
              const uint64_t emu_ticks = SDL_GetPerformanceCounter() - phase0;
              phase_emu_ticks += emu_ticks;
@@ -1446,7 +1563,7 @@ index 8b5947d..bbaaa40 100644
              compute_failed = true;
              running = false;
              break;
-@@ -1983,6 +2767,113 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1983,6 +2792,113 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          phase_adaptive_ticks +=
              SDL_GetPerformanceCounter() - adaptive_start;
          observe_top_black_bands(native_top, shown_frames);
@@ -1560,7 +1677,29 @@ index 8b5947d..bbaaa40 100644
          const PresentationTicks presentation_ticks = present_screens(
              presentation, top_pixels, top_width,
              bottom_pixels, bottom_width);
-@@ -2010,7 +2901,10 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -1995,6 +2911,21 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         phase_draw_ticks += presentation_ticks.draw;
+         phase_swap_ticks += presentation_ticks.swap;
+         phase_present_ticks += SDL_GetPerformanceCounter() - phase1;
++        if (!menu_open) {
++            const uint64_t work_ticks =
++                SDL_GetPerformanceCounter() - frame_start_tick;
++            work_window[work_window_write] = work_ticks;
++            work_window_write = (work_window_write + 1u) % work_window.size();
++            work_window_count = std::min(work_window_count + 1u,
++                                         work_window.size());
++            // One DS frame is 560,190 system cycles at 33,513,982 Hz.
++            // Cross-multiply so deadline classification has no floating-point
++            // rounding around the native 16.715 ms boundary.
++            if (work_ticks * 33513982ull >
++                frequency * kSystemCyclesPerFrame) {
++                ++deadline_misses;
++            }
++        }
+         if (audio && audio_started) {
+             const uint32_t queued = audio_queue_count(audio, audio_queue);
+             audio_min_queue = std::min(audio_min_queue, queued);
+@@ -2010,7 +2941,10 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          else
              audio_pace_floor = kAudioQueueFrames;
          uint32_t queued = audio_queue_count(audio, audio_queue);
@@ -1572,7 +1711,7 @@ index 8b5947d..bbaaa40 100644
              discard_spu_output();
          } else {
              queued = drain_audio(
-@@ -2019,8 +2913,8 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -2019,8 +2953,8 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
          }
          phase_drain_ticks += SDL_GetPerformanceCounter() - phase2;
          audio_max_queue = std::max(audio_max_queue, queued);
@@ -1583,7 +1722,7 @@ index 8b5947d..bbaaa40 100644
              // Opening paused and prebuffering avoids the guaranteed startup
              // underrun produced by unpausing an empty SDL queue.
              audio_queue.started.store(true, std::memory_order_relaxed);
-@@ -2030,6 +2924,25 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -2030,6 +2964,25 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
              audio_pace_floor = audio_start_threshold;
          }
  
@@ -1609,7 +1748,24 @@ index 8b5947d..bbaaa40 100644
          ++shown_frames;
          ++fps_frames;
          g_live_stats.frames = shown_frames;
-@@ -2096,6 +3009,16 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+@@ -2042,8 +2995,16 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
+         g_live_stats.drain_ticks = phase_drain_ticks;
+         g_live_stats.underruns =
+             audio_queue.underruns.load(std::memory_order_relaxed);
++        g_live_stats.max_emu_ticks = max_emu_ticks;
++        g_live_stats.deadline_misses = deadline_misses;
++        g_live_stats.slow_frames_32ms = slow_frames_32ms;
++        g_live_stats.renderer_compute = nds_gpu3d_compute_active() ? 1 : 0;
++        g_live_stats.renderer_demoted = nds_gpu3d_compute_demoted() ? 1 : 0;
++        g_live_stats.renderer_soft_threaded =
++            nds_gpu3d_soft_threaded() ? 1 : 0;
+         const uint64_t counter = SDL_GetPerformanceCounter();
+         if (counter - fps_start >= frequency) {
++            publish_work_quantiles();
+             const double seconds = static_cast<double>(counter - fps_start) /
+                                    static_cast<double>(frequency);
+             const double fps = static_cast<double>(fps_frames) / seconds;
+@@ -2096,6 +3057,16 @@ int nds_run_interactive_frontend(const NdsFrontendOptions& options) {
      nds_gpu2d_set_direct_present(false);
      nds_compute_host_stop();
  #endif
@@ -1626,7 +1782,7 @@ index 8b5947d..bbaaa40 100644
      if (controller) SDL_GameControllerClose(controller);
      destroy_presentation(presentation);
      SDL_Quit();
-@@ -2222,8 +3145,8 @@ bool nds_frontend_debug_mouse_button(uint8_t button, bool down) {
+@@ -2222,8 +3193,8 @@ bool nds_frontend_debug_mouse_button(uint8_t button, bool down) {
      event.button.button = button;
      event.button.state = down ? SDL_PRESSED : SDL_RELEASED;
      event.button.clicks = 1;
@@ -1637,7 +1793,7 @@ index 8b5947d..bbaaa40 100644
      const bool pushed = SDL_PushEvent(&event) == 1;
      if (pushed) ++g_input_debug.debug_mouse_button_events;
      else ++g_input_debug.debug_event_errors;
-@@ -2242,8 +3165,8 @@ bool nds_frontend_debug_mouse_motion(int dx, int dy) {
+@@ -2242,8 +3213,8 @@ bool nds_frontend_debug_mouse_motion(int dx, int dy) {
      SDL_Event event{};
      event.type = SDL_MOUSEMOTION;
      event.motion.windowID = g_input_debug.top_window_id;
@@ -1648,7 +1804,7 @@ index 8b5947d..bbaaa40 100644
      event.motion.xrel = dx;
      event.motion.yrel = dy;
      const bool pushed = SDL_PushEvent(&event) == 1;
-@@ -2268,11 +3191,11 @@ bool nds_frontend_debug_touch(uint16_t x, uint16_t y, bool down) {
+@@ -2268,11 +3239,11 @@ bool nds_frontend_debug_touch(uint16_t x, uint16_t y, bool down) {
      event.button.state = down ? SDL_PRESSED : SDL_RELEASED;
      event.button.clicks = 1;
      event.button.x = (g_input_debug.bottom_content_left +
@@ -1663,7 +1819,7 @@ index 8b5947d..bbaaa40 100644
      if (pushed) ++g_input_debug.debug_touch_events;
      else ++g_input_debug.debug_event_errors;
 diff --git i/runner/src/frontend.h w/runner/src/frontend.h
-index c1d5755..09343a1 100644
+index c1d57553db24856f09e9193c7594c0e1635279f6..224dcb2520bc85e0c95f1e870dfbee4a0f660d70 100644
 --- i/runner/src/frontend.h
 +++ w/runner/src/frontend.h
 @@ -2,6 +2,7 @@
@@ -1806,8 +1962,25 @@ index c1d5755..09343a1 100644
  bool nds_parse_internal_resolution(const std::string& value, uint8_t* out);
  bool nds_parse_texture_upscale(const std::string& value, uint8_t* out);
  bool nds_parse_on_off(const std::string& value, bool* out);
+@@ -312,6 +408,16 @@ struct NdsFrontendLiveStats {
+     uint64_t now_ticks;       // performance counter at query time
+     uint64_t freq;            // performance frequency (ticks/second)
+     uint64_t underruns;       // audio underruns so far
++    uint64_t work_p50_ticks;  // rolling 600-frame emu+present quantiles
++    uint64_t work_p95_ticks;
++    uint64_t work_p99_ticks;
++    uint64_t work_max_ticks;
++    uint64_t max_emu_ticks;   // maximum emulation phase since start
++    uint64_t deadline_misses; // work frames exceeding native DS cadence
++    uint64_t slow_frames_32ms;
++    int renderer_compute;     // active backend, not requested policy
++    int renderer_demoted;     // compute failed and recovered to software
++    int renderer_soft_threaded;
+ };
+ void nds_frontend_live_stats(NdsFrontendLiveStats* out);
+ 
 diff --git i/runner/src/frontend_config.cpp w/runner/src/frontend_config.cpp
-index 0607a25..b6cbcd8 100644
+index 0607a2500f9561c796aec4d79922135748f218cf..b6cbcd8db7d0641fce16241343519f85e24606c8 100644
 --- i/runner/src/frontend_config.cpp
 +++ w/runner/src/frontend_config.cpp
 @@ -4,6 +4,8 @@
@@ -2074,7 +2247,7 @@ index 0607a25..b6cbcd8 100644
      return true;
  }
 diff --git i/runner/src/gpu3d.cpp w/runner/src/gpu3d.cpp
-index eb29cef..8e18a80 100644
+index eb29cef91a859af5122a7541950af4480efdb11b..5525c910e9f6f37e092f0b367c864eb692476ff4 100644
 --- i/runner/src/gpu3d.cpp
 +++ w/runner/src/gpu3d.cpp
 @@ -107,10 +107,18 @@ void compute_readback_failed(const char* stage) {
@@ -2098,7 +2271,7 @@ index eb29cef..8e18a80 100644
  }
  
  void compute_submit_readback() {
-@@ -422,6 +430,19 @@ bool nds_gpu3d_compute_runtime_failed() {
+@@ -422,6 +430,27 @@ bool nds_gpu3d_compute_runtime_failed() {
  #endif
  }
  
@@ -2115,14 +2288,22 @@ index eb29cef..8e18a80 100644
 +#endif
 +}
 +
++bool nds_gpu3d_compute_active() {
++    return g_nds.GPU.GPU3D.IsRendererAccelerated();
++}
++
++bool nds_gpu3d_soft_threaded() {
++    return !nds_gpu3d_compute_active() && g_soft_threaded;
++}
++
  uint32_t nds_gpu3d_compute_output_texture() {
  #if defined(NDS_HAVE_COMPUTE_RENDERER)
      auto* renderer = dynamic_cast<melonDS::ComputeRenderer*>(
 diff --git i/runner/src/gpu3d.h w/runner/src/gpu3d.h
-index c768491..0281e46 100644
+index c768491cbe039c442008ea2bf340b70b0c19d6ca..c31a21ab2741e09ad2fd993937c98e140fe1e780 100644
 --- i/runner/src/gpu3d.h
 +++ w/runner/src/gpu3d.h
-@@ -40,6 +40,10 @@ bool nds_gpu3d_renderer_requires_compute();
+@@ -40,6 +40,15 @@ bool nds_gpu3d_renderer_requires_compute();
  bool nds_gpu3d_use_compute_renderer();
  bool nds_gpu3d_compute_renderer_built();
  bool nds_gpu3d_compute_runtime_failed();
@@ -2130,11 +2311,16 @@ index c768491..0281e46 100644
 +// renderer (session may continue normally). False when compute is still the
 +// active renderer after a failure (nothing recovered the path).
 +bool nds_gpu3d_compute_demoted();
++// Current renderer identity for live performance diagnostics. Unlike the
++// policy, this reports the backend actually serving the frame after automatic
++// startup/runtime fallback.
++bool nds_gpu3d_compute_active();
++bool nds_gpu3d_soft_threaded();
  // Host presentation handle for the accelerated renderer's integer
  // RGB6/alpha5 surface. Valid only while its OpenGL context is current.
  uint32_t nds_gpu3d_compute_output_texture();
 diff --git i/runner/src/io.cpp w/runner/src/io.cpp
-index 7bb99d7..ef84ea7 100644
+index 7bb99d7b8590f5495c07eb4f852294a0e0239159..ef84ea7c57ce89053ecb3feeb96155ff07ed61b0 100644
 --- i/runner/src/io.cpp
 +++ w/runner/src/io.cpp
 @@ -6,6 +6,7 @@
@@ -2325,7 +2511,7 @@ index 7bb99d7..ef84ea7 100644
                  case NdsBatterySaveLoadResult::Missing:
                      std::fprintf(stderr,
 diff --git i/runner/src/io.h w/runner/src/io.h
-index de668c9..9b5afef 100644
+index de668c9820457e0d154bda971891ba19aced4cb6..9b5afefde5023cb9d29619a6f25ca6b59af3b31e 100644
 --- i/runner/src/io.h
 +++ w/runner/src/io.h
 @@ -8,9 +8,18 @@
@@ -2348,7 +2534,7 @@ index de668c9..9b5afef 100644
  void     nds_io_write(uint32_t addr, uint32_t value, uint32_t width);
  void     nds_io_reset();
 diff --git i/runner/src/live_overlay.cpp w/runner/src/live_overlay.cpp
-index 99f73d7..7d76a8d 100644
+index 99f73d75767c0279da7f329df07043e13e02cec6..14c7744ebfa2d42a58bccfc24959dee74a45f907 100644
 --- i/runner/src/live_overlay.cpp
 +++ w/runner/src/live_overlay.cpp
 @@ -2,6 +2,7 @@
@@ -2359,20 +2545,21 @@ index 99f73d7..7d76a8d 100644
  #include <cctype>
  #include <chrono>
  #include <condition_variable>
-@@ -24,6 +25,12 @@
+@@ -24,6 +25,13 @@
  #if defined(_WIN32)
  #define WIN32_LEAN_AND_MEAN
  #include <windows.h>
 +#else
 +#include <dlfcn.h>
 +#include <signal.h>
++#include <sys/resource.h>
 +#include <sys/types.h>
 +#include <sys/wait.h>
 +#include <unistd.h>
  #endif
  
  namespace {
-@@ -93,6 +100,8 @@ struct LoadedBank {
+@@ -93,6 +101,8 @@ struct LoadedBank {
      bool superseded = false;
  #if defined(_WIN32)
      HMODULE handle = nullptr;
@@ -2381,7 +2568,15 @@ index 99f73d7..7d76a8d 100644
  #endif
  };
  
-@@ -139,6 +148,8 @@ struct State {
+@@ -100,6 +110,7 @@ struct State {
+     bool enabled = false;
+     bool auto_trigger = false;
+     bool initial_cache_scan_done = false;
++    bool bulk_loading = false;
+     uint32_t activation_delay_ms = 0u;
+     uint32_t auto_start_delay_ms = 0u;
+     uint32_t auto_cooldown_ms = 0u;
+@@ -139,6 +150,8 @@ struct State {
  #if defined(_WIN32)
      HANDLE child = nullptr;
      HANDLE child_job = nullptr;
@@ -2390,7 +2585,7 @@ index 99f73d7..7d76a8d 100644
  #endif
  };
  
-@@ -553,27 +564,42 @@ uint64_t bank_content_identity(const NdsLiveBankInfo& info) {
+@@ -553,27 +566,42 @@ uint64_t bank_content_identity(const NdsLiveBankInfo& info) {
      return hash;
  }
  
@@ -2439,7 +2634,7 @@ index 99f73d7..7d76a8d 100644
              path_string(path);
          return false;
      }
-@@ -581,31 +607,56 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
+@@ -581,31 +609,56 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
      std::error_code ec;
      const auto canon_path = std::filesystem::weakly_canonical(path, ec);
      if (ec) {
@@ -2498,7 +2693,7 @@ index 99f73d7..7d76a8d 100644
          error = preflight_error + ": " + canon;
          return false;
      }
-@@ -615,8 +666,12 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
+@@ -615,8 +668,12 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
      bank.bank_id = info->bank_id ? info->bank_id : "";
      bank.candidate_id = info->candidate_id ? info->candidate_id : "";
      using GenerationFn = const char* (*)();
@@ -2511,7 +2706,7 @@ index 99f73d7..7d76a8d 100644
      GenerationFn generation_fn = nullptr;
      static_assert(sizeof(generation_fn) == sizeof(generation_proc));
      std::memcpy(&generation_fn, &generation_proc, sizeof(generation_fn));
-@@ -633,12 +688,6 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
+@@ -633,12 +690,6 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
      bank.content_identity = bank_content_identity(*info);
      bank.handle = handle;
      return true;
@@ -2524,7 +2719,7 @@ index 99f73d7..7d76a8d 100644
  }
  
  bool same_candidate_key(const LoadedBank& a, const LoadedBank& b) {
-@@ -647,7 +696,6 @@ bool same_candidate_key(const LoadedBank& a, const LoadedBank& b) {
+@@ -647,7 +698,6 @@ bool same_candidate_key(const LoadedBank& a, const LoadedBank& b) {
  }
  
  bool commit_prepared_bank(LoadedBank bank) {
@@ -2532,7 +2727,7 @@ index 99f73d7..7d76a8d 100644
      for (const LoadedBank& loaded : g_live.loaded) {
          if (!same_candidate_key(loaded, bank)) continue;
          if (loaded.content_identity != bank.content_identity) {
-@@ -656,7 +704,7 @@ bool commit_prepared_bank(LoadedBank bank) {
+@@ -656,7 +706,7 @@ bool commit_prepared_bank(LoadedBank bank) {
                  bank.bank_id + "/" + bank.candidate_id;
              ++g_live.banks_rejected;
          }
@@ -2541,7 +2736,7 @@ index 99f73d7..7d76a8d 100644
          return loaded.content_identity == bank.content_identity;
      }
      // A compiler pass may discover additional resume roots for a generation
-@@ -674,10 +722,7 @@ bool commit_prepared_bank(LoadedBank bank) {
+@@ -674,27 +724,22 @@ bool commit_prepared_bank(LoadedBank bank) {
          loaded.registered = false;
          loaded.superseded = true;
          loaded.dispatch = nullptr;
@@ -2553,9 +2748,23 @@ index 99f73d7..7d76a8d 100644
      }
      bank.serial = g_live.next_bank_serial++;
      bank.generation = static_cast<uint32_t>(++g_live.publication_generation);
-@@ -691,10 +736,6 @@ bool commit_prepared_bank(LoadedBank bank) {
-                  g_live.loaded.back().dispatch_len,
-                  g_live.loaded.back().generation);
+     g_live.loaded.push_back(std::move(bank));
+     register_loaded_bank(g_live.loaded.back());
+     ++g_live.banks_loaded;
+-    std::fprintf(stderr,
+-                 "[live-overlay] published %s candidate %s (%u rows, generation %u)\n",
+-                 g_live.loaded.back().bank_id.c_str(),
+-                 g_live.loaded.back().candidate_id.c_str(),
+-                 g_live.loaded.back().dispatch_len,
+-                 g_live.loaded.back().generation);
++    if (!g_live.bulk_loading) {
++        std::fprintf(stderr,
++            "[live-overlay] published %s candidate %s (%u rows, generation %u)\n",
++            g_live.loaded.back().bank_id.c_str(),
++            g_live.loaded.back().candidate_id.c_str(),
++            g_live.loaded.back().dispatch_len,
++            g_live.loaded.back().generation);
++    }
      return true;
 -#else
 -    (void)bank;
@@ -2564,7 +2773,7 @@ index 99f73d7..7d76a8d 100644
  }
  
  void prepare_worker_main() {
-@@ -727,7 +768,7 @@ void ensure_prepare_worker() {
+@@ -727,7 +772,7 @@ void ensure_prepare_worker() {
  }
  
  bool queue_bank_dll(const std::filesystem::path& path) {
@@ -2573,7 +2782,21 @@ index 99f73d7..7d76a8d 100644
          already_loaded(path)) {
          return false;
      }
-@@ -783,7 +824,7 @@ void rescan_cache() {
+@@ -773,17 +818,17 @@ struct CachedDllPath {
+     std::filesystem::file_time_type write_time{};
+ };
+ 
+-void rescan_cache() {
+-    if (!g_live.enabled || g_live.cache_dir.empty()) return;
+-    std::error_code ec;
+-    if (!std::filesystem::exists(g_live.cache_dir, ec)) return;
++std::vector<CachedDllPath> scan_cache_paths() {
+     std::vector<CachedDllPath> paths;
++    if (!g_live.enabled || g_live.cache_dir.empty()) return paths;
++    std::error_code ec;
++    if (!std::filesystem::exists(g_live.cache_dir, ec)) return paths;
+     for (const auto& entry :
+          std::filesystem::recursive_directory_iterator(g_live.cache_dir, ec)) {
          if (ec) break;
          if (!entry.is_regular_file(ec)) continue;
          const auto path = entry.path();
@@ -2582,7 +2805,19 @@ index 99f73d7..7d76a8d 100644
          const auto write_time = entry.last_write_time(ec);
          if (ec) {
              ec.clear();
-@@ -842,6 +883,9 @@ bool write_snapshot_manifest() {
+@@ -797,6 +842,11 @@ void rescan_cache() {
+         return lower_ascii(path_string(a.path)) <
+             lower_ascii(path_string(b.path));
+     });
++    return paths;
++}
++
++void rescan_cache() {
++    const std::vector<CachedDllPath> paths = scan_cache_paths();
+     for (const CachedDllPath& item : paths) queue_bank_dll(item.path);
+ }
+ 
+@@ -842,6 +892,9 @@ bool write_snapshot_manifest() {
  bool start_child() {
  #if defined(_WIN32)
      if (g_live.child || g_live.command.empty()) return false;
@@ -2592,7 +2827,7 @@ index 99f73d7..7d76a8d 100644
      if (!write_snapshot_manifest()) {
          ++g_live.runs_failed;
          return false;
-@@ -860,6 +904,7 @@ bool start_child() {
+@@ -860,6 +913,7 @@ bool start_child() {
      const auto log_path = g_live.cache_dir / "logs" / log_name;
      g_live.log_path = path_string(log_path);
  
@@ -2600,7 +2835,7 @@ index 99f73d7..7d76a8d 100644
      SECURITY_ATTRIBUTES sa{sizeof(sa), NULL, TRUE};
      HANDLE log = CreateFileA(g_live.log_path.c_str(), GENERIC_WRITE,
                               FILE_SHARE_READ, &sa, CREATE_ALWAYS,
-@@ -918,16 +963,38 @@ bool start_child() {
+@@ -918,16 +972,43 @@ bool start_child() {
      CloseHandle(pi.hThread);
      g_live.child = pi.hProcess;
      g_live.child_job = job;
@@ -2615,6 +2850,11 @@ index 99f73d7..7d76a8d 100644
 +        // Give the compiler and any grandchildren their own process group so
 +        // runner shutdown can terminate the whole compilation safely.
 +        setsid();
++        // Match Windows' IDLE_PRIORITY_CLASS behavior: a cache miss may build
++        // in the background, but it must yield CPU time to emulation and audio.
++        // Failure is harmless (for example under a restrictive container), so
++        // keep compiling at inherited priority rather than aborting.
++        (void)setpriority(PRIO_PROCESS, 0, 10);
 +        FILE* log = std::fopen(g_live.log_path.c_str(), "w");
 +        if (!log) _exit(126);
 +        const int fd = fileno(log);
@@ -2644,7 +2884,7 @@ index 99f73d7..7d76a8d 100644
  }
  
  }  // namespace
-@@ -1001,6 +1068,17 @@ void live_overlay_shutdown() {
+@@ -1001,6 +1082,17 @@ void live_overlay_shutdown() {
          CloseHandle(g_live.child);
          g_live.child = nullptr;
      }
@@ -2662,7 +2902,7 @@ index 99f73d7..7d76a8d 100644
  #endif
      {
          std::lock_guard<std::mutex> lock(g_live.publish_mutex);
-@@ -1009,12 +1087,10 @@ void live_overlay_shutdown() {
+@@ -1009,12 +1101,10 @@ void live_overlay_shutdown() {
      }
      g_live.publish_cv.notify_all();
      if (g_live.prepare_thread.joinable()) g_live.prepare_thread.join();
@@ -2676,7 +2916,80 @@ index 99f73d7..7d76a8d 100644
      g_live.ready_queue.clear();
  }
  
-@@ -1108,7 +1184,6 @@ void live_overlay_note_write(int cpu, uint32_t pc, uint32_t addr,
+@@ -1025,10 +1115,41 @@ void live_overlay_runtime_reset() {
+ 
+ void live_overlay_register_cached_banks() {
+     if (!g_live.enabled) return;
+-    rescan_cache();
+-    for (LoadedBank& bank : g_live.loaded)
+-        register_loaded_bank(bank);
++    // Cold-cache registration runs before CPU boot (main.cpp). Load and
++    // validate the complete pre-seeded cache synchronously so the first frame
++    // cannot race a background DLL loader. Batch registration rebuilds each
++    // CPU's flattened dispatch index and invalidates its lookup epoch once.
++    // Runtime-produced candidates discovered later still use the asynchronous
++    // prepare queue and frame-boundary publication path below.
++    const std::vector<CachedDllPath> paths = scan_cache_paths();
++    const uint64_t started = steady_ms();
++    uint64_t accepted = 0u;
++    uint64_t rejected = 0u;
++    g_live.bulk_loading = true;
++    nds_dispatch_batch_begin();
++    for (const CachedDllPath& item : paths) {
++        if (already_loaded(item.path)) continue;
++        LoadedBank bank{};
++        std::string error;
++        if (prepare_bank_dll(item.path, bank, error)) {
++            if (commit_prepared_bank(std::move(bank))) ++accepted;
++            else ++rejected;
++        } else {
++            g_live.last_error = std::move(error);
++            ++g_live.banks_rejected;
++            ++rejected;
++        }
++    }
++    nds_dispatch_batch_end();
++    g_live.bulk_loading = false;
+     g_live.initial_cache_scan_done = true;
++    if (!paths.empty()) {
++        std::fprintf(stderr,
++            "[live-overlay] preloaded %llu banks (%llu rejected) in %llu ms\n",
++            (unsigned long long)accepted,
++            (unsigned long long)rejected,
++            (unsigned long long)(steady_ms() - started));
++    }
+ }
+ 
+ void live_overlay_note_tier3(int cpu, uint32_t pc) {
+@@ -1060,6 +1181,13 @@ void live_overlay_note_lookup(int cpu, uint32_t pc, uint32_t target_pc,
+     if (selected) {
+         if (LoadedBank* bank = find_loaded_bank(cpu, selected))
+             ++bank->native_hits;
++        // A successful slow lookup is immediately installed in the dispatch
++        // cache and represented by the sampled native-hit counter thereafter.
++        // Building a full diagnostic entry here revalidated every dependency
++        // byte and linearly described the bank on a hot recovery path. Reserve
++        // the detailed ring for rejects/mismatches, where the evidence is
++        // actionable for coverage promotion and safety debugging.
++        return;
+     } else if (inactive) {
+         if (LoadedBank* bank = find_loaded_bank(cpu, inactive))
+             ++bank->rejects;
+@@ -1086,11 +1214,11 @@ uint32_t live_overlay_candidate_serial(int cpu, const NdsDispatchEntry* entry) {
+     return 0u;
+ }
+ 
+-void live_overlay_note_cached_hit(uint32_t serial) {
++void live_overlay_note_cached_hit(uint32_t serial, uint32_t weight) {
+     if (!g_live.enabled || serial == 0u || serial > g_live.loaded.size())
+         return;
+     LoadedBank& bank = g_live.loaded[serial - 1u];
+-    if (bank.serial == serial) ++bank.native_hits;
++    if (bank.serial == serial) bank.native_hits += weight;
+ }
+ 
+ void live_overlay_note_write(int cpu, uint32_t pc, uint32_t addr,
+@@ -1108,7 +1236,6 @@ void live_overlay_note_write(int cpu, uint32_t pc, uint32_t addr,
  }
  
  void live_overlay_poll() {
@@ -2684,7 +2997,7 @@ index 99f73d7..7d76a8d 100644
      if (!g_live.enabled) return;
      if (!g_live.initial_cache_scan_done)
          live_overlay_register_cached_banks();
-@@ -1116,7 +1191,14 @@ void live_overlay_poll() {
+@@ -1116,7 +1243,14 @@ void live_overlay_poll() {
      // multiple candidates, but at most one complete bank becomes visible per
      // poll so lookup can never observe a partially populated bundle.
      commit_one_ready_bank();
@@ -2700,7 +3013,7 @@ index 99f73d7..7d76a8d 100644
          DWORD exit_code = STILL_ACTIVE;
          if (GetExitCodeProcess(g_live.child, &exit_code) &&
              exit_code != STILL_ACTIVE) {
-@@ -1126,6 +1208,14 @@ void live_overlay_poll() {
+@@ -1126,6 +1260,14 @@ void live_overlay_poll() {
                  CloseHandle(g_live.child_job);
                  g_live.child_job = nullptr;
              }
@@ -2715,7 +3028,7 @@ index 99f73d7..7d76a8d 100644
              ++g_live.runs_finished;
              if (exit_code != 0) {
                  ++g_live.runs_failed;
-@@ -1147,11 +1237,16 @@ void live_overlay_poll() {
+@@ -1147,11 +1289,16 @@ void live_overlay_poll() {
      }
      if (!activation_delay_elapsed()) return;
      schedule_pending_compile();
@@ -2734,7 +3047,16 @@ index 99f73d7..7d76a8d 100644
  }
  
  bool live_overlay_trigger_now() {
-@@ -1183,7 +1278,7 @@ std::string live_overlay_status_json() {
+@@ -1162,7 +1309,7 @@ bool live_overlay_trigger_now() {
+     return true;
+ }
+ 
+-std::string live_overlay_status_json() {
++std::string live_overlay_status_json(bool include_loaded) {
+     std::size_t preparing = 0u;
+     std::size_t ready = 0u;
+     {
+@@ -1183,7 +1330,7 @@ std::string live_overlay_status_json() {
  #if defined(_WIN32)
      out << (g_live.child ? "true" : "false");
  #else
@@ -2743,8 +3065,75 @@ index 99f73d7..7d76a8d 100644
  #endif
      out << ",\"tier3_arm9\":" << g_live.tier3[0]
          << ",\"tier3_arm7\":" << g_live.tier3[1]
+@@ -1199,24 +1346,29 @@ std::string live_overlay_status_json() {
+         << ",\"runs_failed\":" << g_live.runs_failed
+         << ",\"banks_loaded\":" << g_live.banks_loaded
+         << ",\"banks_rejected\":" << g_live.banks_rejected
+-        << ",\"loaded\":[";
+-    for (std::size_t i = 0; i < g_live.loaded.size(); ++i) {
+-        const LoadedBank& bank = g_live.loaded[i];
+-        out << (i ? "," : "") << "{\"bank_id\":\""
+-            << json_escape(bank.bank_id) << "\",\"cpu\":"
+-            << (bank.cpu == NDS_ARM7 ? 7 : 9) << ",\"rows\":"
+-            << bank.dispatch_len << ",\"serial\":"
+-            << bank.serial << ",\"candidate_id\":\""
+-            << json_escape(bank.candidate_id) << "\",\"generation\":"
+-            << bank.generation << ",\"generation_id\":\""
+-            << json_escape(bank.generation_id) << "\",\"native_hits\":"
+-            << bank.native_hits << ",\"rejects\":"
+-            << bank.rejects << ",\"registered\":"
+-            << (bank.registered ? "true" : "false")
+-            << ",\"superseded\":"
+-            << (bank.superseded ? "true" : "false") << "}";
++        << ",\"native_hit_sample_log2\":10"
++        << ",\"loaded_count\":" << g_live.loaded.size();
++    if (include_loaded) {
++        out << ",\"loaded\":[";
++        for (std::size_t i = 0; i < g_live.loaded.size(); ++i) {
++            const LoadedBank& bank = g_live.loaded[i];
++            out << (i ? "," : "") << "{\"bank_id\":\""
++                << json_escape(bank.bank_id) << "\",\"cpu\":"
++                << (bank.cpu == NDS_ARM7 ? 7 : 9) << ",\"rows\":"
++                << bank.dispatch_len << ",\"serial\":"
++                << bank.serial << ",\"candidate_id\":\""
++                << json_escape(bank.candidate_id) << "\",\"generation\":"
++                << bank.generation << ",\"generation_id\":\""
++                << json_escape(bank.generation_id) << "\",\"native_hits\":"
++                << bank.native_hits << ",\"rejects\":"
++                << bank.rejects << ",\"registered\":"
++                << (bank.registered ? "true" : "false")
++                << ",\"superseded\":"
++                << (bank.superseded ? "true" : "false") << "}";
++        }
++        out << "]";
+     }
+-    out << "],\"cache\":\"" << json_escape(path_string(g_live.cache_dir))
++    out << ",\"cache\":\"" << json_escape(path_string(g_live.cache_dir))
+         << "\",\"manifest\":\"" << json_escape(g_live.manifest_path)
+         << "\",\"log\":\"" << json_escape(g_live.log_path)
+         << "\",\"last_error\":\"" << json_escape(g_live.last_error)
+diff --git i/runner/src/live_overlay.h w/runner/src/live_overlay.h
+index 67d626c4a154f97693d210cafee594f041757ec3..6216ba03e09d8b70399347c28cab7b388a5f1f16 100644
+--- i/runner/src/live_overlay.h
++++ w/runner/src/live_overlay.h
+@@ -26,7 +26,7 @@ void live_overlay_note_lookup(int cpu, uint32_t pc, uint32_t target_pc,
+                               uint32_t candidate_count,
+                               const char* outcome);
+ uint32_t live_overlay_candidate_serial(int cpu, const NdsDispatchEntry* entry);
+-void live_overlay_note_cached_hit(uint32_t serial);
++void live_overlay_note_cached_hit(uint32_t serial, uint32_t weight);
+ bool live_overlay_preflight_for_test(const NdsLiveBankInfo* info,
+                                      char* error,
+                                      uint32_t error_len);
+@@ -39,5 +39,5 @@ void live_overlay_note_write(int cpu, uint32_t pc, uint32_t addr,
+                              uint32_t new_value);
+ void live_overlay_poll();
+ bool live_overlay_trigger_now();
+-std::string live_overlay_status_json();
++std::string live_overlay_status_json(bool include_loaded = true);
+ std::string live_overlay_diagnostics_json(uint32_t max_entries);
 diff --git i/runner/src/main.cpp w/runner/src/main.cpp
-index a5b2e32..479f060 100644
+index a5b2e32756ede956f9ff89c8bb873037e39fee34..479f0605f699eb4fa97a3aa3b8ecfbc1d9a167aa 100644
 --- i/runner/src/main.cpp
 +++ w/runner/src/main.cpp
 @@ -14,6 +14,7 @@
@@ -2892,7 +3281,7 @@ index a5b2e32..479f060 100644
  #else
      const bool compute_failed = false;
 diff --git i/runner/src/net/wfc_provider.cpp w/runner/src/net/wfc_provider.cpp
-index b3ac5f2..ca6d257 100644
+index b3ac5f2b5affd97ee54d335908ddb1a69db737bb..ca6d257e51c67da5f8a8689bef66360b1f027530 100644
 --- i/runner/src/net/wfc_provider.cpp
 +++ w/runner/src/net/wfc_provider.cpp
 @@ -31,6 +31,12 @@ const NdsWfcProviderInfo kNdsWfcProviders[] = {
@@ -2909,7 +3298,7 @@ index b3ac5f2..ca6d257 100644
      // libslirp to host loopback, so the local dwc-docker/wfc_dns.py stack can
      // stay bound to 127.0.0.1 without handing the guest its own loopback.
 diff --git i/runner/src/runtime_arm.cpp w/runner/src/runtime_arm.cpp
-index 2fd6932..936277e 100644
+index 2fd69321a4edb73fd231788d46eabf229a9931b3..1d9e3775f2a3138339f43121698002d6116b12ac 100644
 --- i/runner/src/runtime_arm.cpp
 +++ w/runner/src/runtime_arm.cpp
 @@ -11,6 +11,7 @@
@@ -2920,7 +3309,150 @@ index 2fd6932..936277e 100644
  #include <cstddef>
  #if defined(NDS_PROFILE_HLE_HEAT)
  #include <chrono>
-@@ -1053,7 +1054,7 @@ extern "C" uint32_t arm_shift_ror(uint32_t v, uint32_t n, int sc) {
+@@ -102,6 +103,8 @@ struct CpuCtx {
+     uint32_t             exc_base = 0;  // exception-vector base for this CPU
+ };
+ CpuCtx g_ctx[2];
++uint32_t g_dispatch_batch_depth = 0u;
++bool g_dispatch_batch_dirty[2] = {};
+ 
+ // A live page candidate normally owns one executable page. Keep a small exact
+ // union for dependency closures and reject anything larger rather than run
+@@ -217,21 +220,55 @@ void append_json_string(std::string& out, const char* text) {
+ constexpr uint32_t kDispatchCacheSize = 65536u;
+ struct alignas(64) CachedStaticLookup {
+     uint32_t pc = 0u;
+-    uint32_t page_addr[4]{};
+-    uint32_t generation[4]{};
+-    const uint32_t* generation_ptr[4]{};
++    uint32_t dispatch_epoch = 0u;
+     void (*fn)(void) = nullptr;
+     const NdsStaticValidation* validation = nullptr;
+     uint32_t live_bank_serial = 0u;
+-    uint32_t dispatch_epoch = 0u;
+     uint8_t page_count = 0u;
+     uint8_t thumb = 0u;
+     uint8_t occupied = 0u;
++    uint8_t reserved = 0u;
++    // Keep all identity and negative-hit fields in the first cache line.
++    // Writable live-bank hits continue into the generation-pointer line;
++    // definitive Tier-3 misses and immutable static hits do not.
++    uint32_t page_addr[4]{};
++    uint32_t generation[4]{};
++    const uint32_t* generation_ptr[4]{};
+ };
+ static_assert(sizeof(CachedStaticLookup) == 128u);
+ std::array<std::array<CachedStaticLookup, kDispatchCacheSize>, 2>
+     g_dispatch_cache{};
+ 
++void bump_dispatch_epoch(int cpu) {
++    CpuCtx& ctx = g_ctx[cpu & 1];
++    if (++ctx.dispatch_epoch == 0u) {
++        g_dispatch_cache[cpu & 1] = {};
++        ctx.dispatch_epoch = 1u;
++    }
++}
++
++void rebuild_dispatch_index(int cpu) {
++    CpuCtx& ctx = g_ctx[cpu & 1];
++    std::size_t rows = 0u;
++    for (const DispatchBank& bank : ctx.banks) rows += bank.len;
++    std::vector<const DispatchEntry*> rebuilt;
++    rebuilt.reserve(rows);
++    for (const DispatchBank& bank : ctx.banks) {
++        for (unsigned i = 0u; i < bank.len; ++i)
++            rebuilt.push_back(&bank.table[i]);
++    }
++    // Registration order is the candidate preference order for equal keys.
++    // stable_sort therefore reproduces repeated nds_dispatch_index_add() while
++    // doing one O(N log N) rebuild instead of copying an ever-growing vector
++    // once for every pre-seeded DLL.
++    std::stable_sort(rebuilt.begin(), rebuilt.end(),
++        [](const DispatchEntry* a, const DispatchEntry* b) {
++            return nds_dispatch_entry_key(a) < nds_dispatch_entry_key(b);
++        });
++    ctx.dispatch_index.swap(rebuilt);
++    bump_dispatch_epoch(cpu);
++}
++
+ // Cycle budget for the run slice; runtime_should_yield trips when reached
+ // so a guest spin loop can't hang the host.
+ unsigned long long g_cycle_cap = 0;  // 0 = unlimited
+@@ -413,7 +450,12 @@ const CachedStaticLookup* lookup_static_cached(const CpuCtx& c, uint32_t pc,
+         auto& stats = g_nds_dispatch_stats[g_nds_active];
+         if (slot.fn) {
+             ++stats.cache_hit;
+-            live_overlay_note_cached_hit(slot.live_bank_serial);
++            // Per-bank hit counts are diagnostic only. Calling through the
++            // live-overlay layer on every native dispatch was measurable work
++            // on the hottest path, so sample 1/1024 hits and apply a weight.
++            // The global dispatch counter remains exact.
++            if ((stats.cache_hit & 1023u) == 0u)
++                live_overlay_note_cached_hit(slot.live_bank_serial, 1024u);
+             return &slot;
+         }
+         ++stats.cache_hit_absent;
+@@ -630,13 +672,14 @@ extern "C" void nds_register_dispatch(int cpu, const DispatchEntry* t,
+                                       unsigned len, uint32_t exc_base) {
+     CpuCtx& ctx = g_ctx[cpu & 1];
+     ctx.banks.push_back({t, len});
+-    nds_dispatch_index_add(ctx.dispatch_index, t, len);
+     ctx.exc_base = exc_base;
+-    // A PC cached as absent before a newly registered bank may now resolve.
+-    if (++ctx.dispatch_epoch == 0u) {
+-        g_dispatch_cache[cpu & 1] = {};
+-        ctx.dispatch_epoch = 1u;
++    if (g_dispatch_batch_depth != 0u) {
++        g_dispatch_batch_dirty[cpu & 1] = true;
++        return;
+     }
++    nds_dispatch_index_add(ctx.dispatch_index, t, len);
++    // A PC cached as absent before a newly registered bank may now resolve.
++    bump_dispatch_epoch(cpu);
+ }
+ 
+ extern "C" void nds_unregister_dispatch(int cpu, const DispatchEntry* t,
+@@ -651,15 +694,30 @@ extern "C" void nds_unregister_dispatch(int cpu, const DispatchEntry* t,
+     std::unordered_set<const DispatchEntry*> removed;
+     removed.reserve(len);
+     for (unsigned i = 0u; i < len; ++i) removed.insert(&t[i]);
+-    ctx.dispatch_index.erase(
+-        std::remove_if(ctx.dispatch_index.begin(), ctx.dispatch_index.end(),
+-                       [&](const DispatchEntry* entry) {
+-                           return removed.count(entry) != 0u;
+-                       }),
+-        ctx.dispatch_index.end());
+-    if (++ctx.dispatch_epoch == 0u) {
+-        g_dispatch_cache[cpu & 1] = {};
+-        ctx.dispatch_epoch = 1u;
++    if (g_dispatch_batch_depth != 0u) {
++        g_dispatch_batch_dirty[cpu & 1] = true;
++    } else {
++        ctx.dispatch_index.erase(
++            std::remove_if(ctx.dispatch_index.begin(), ctx.dispatch_index.end(),
++                           [&](const DispatchEntry* entry) {
++                               return removed.count(entry) != 0u;
++                           }),
++            ctx.dispatch_index.end());
++        bump_dispatch_epoch(cpu);
++    }
++}
++
++void nds_dispatch_batch_begin() {
++    ++g_dispatch_batch_depth;
++}
++
++void nds_dispatch_batch_end() {
++    if (g_dispatch_batch_depth == 0u) return;
++    if (--g_dispatch_batch_depth != 0u) return;
++    for (int cpu = 0; cpu < 2; ++cpu) {
++        if (!g_dispatch_batch_dirty[cpu]) continue;
++        rebuild_dispatch_index(cpu);
++        g_dispatch_batch_dirty[cpu] = false;
+     }
+ }
+ 
+@@ -1053,7 +1111,7 @@ extern "C" uint32_t arm_shift_ror(uint32_t v, uint32_t n, int sc) {
  
  // CLZ helper (ARMv5).
  extern "C" uint32_t runtime_clz(uint32_t v) {
@@ -2929,11 +3461,193 @@ index 2fd6932..936277e 100644
  }
  // ARM7TDMI early-termination multiply timing. ARM9 uses its separate static
  // numI combine, so this runtime value is ignored on that path.
+@@ -1541,6 +1599,8 @@ extern "C" void runtime_init(void*) {
+         ctx.dispatch_epoch = 1u;
+         ctx.exc_base = 0u;
+     }
++    g_dispatch_batch_depth = 0u;
++    g_dispatch_batch_dirty[0] = g_dispatch_batch_dirty[1] = false;
+     g_static_guard = nullptr;
+     g_dispatch_cache = {};
+ #if defined(NDS_PROFILE_HLE_HEAT)
 diff --git i/runner/src/scheduler.cpp w/runner/src/scheduler.cpp
-index ee7c613..6744c0a 100644
+index ee7c61398e26535c193230df1f0908afe2fd1a71..84ffab882806448ac2e1436f1ed13d98ace55023 100644
 --- i/runner/src/scheduler.cpp
 +++ w/runner/src/scheduler.cpp
-@@ -415,6 +415,19 @@ void scheduler_terminal_halt_all(const char* reason) {
+@@ -13,7 +13,6 @@
+ #include "dispatch_stats.h"
+ #include "io.h"
+ #include "gpu3d.h"
+-#include "live_overlay.h"
+ #include "spu.h"
+ #include "wifi.h"
+ 
+@@ -55,33 +54,60 @@ void profile_add(uint64_t& dst, ProfileClock::time_point start) {
+ uint64_t           g_sys_timestamp = 0;
+ constexpr int      kArm9ClockShift = 1;    // ARM9 runs at 2x the system clock
+ constexpr uint64_t kIterCap        = 64;   // system cycles per outer iteration
++constexpr uint64_t kScanlineCycles = 2130u;
++constexpr uint64_t kHblankStartCycles = 1584u;
++constexpr uint64_t kSpuPeriodCycles = 1024u;
++constexpr uint64_t kRtcNumerator = 33513982u;
++constexpr uint64_t kRtcDenominator = 32768u;
++
++// Fixed-rate device deadlines are part of the scheduler state. Recomputing
++// each one from g_sys_timestamp on every 64-cycle rendezvous paid several
++// 64-bit divisions per round, then called every catch-up function even when
++// no work was due. Keeping the exact next deadline preserves the same event
++// grid while making the overwhelmingly common no-event round a few compares.
++uint64_t g_next_lcd_event = kHblankStartCycles;
++uint64_t g_next_spu_event = kSpuPeriodCycles;
++uint64_t g_next_rtc_event = kRtcNumerator / kRtcDenominator;
++uint64_t g_next_rtc_ordinal = 1u;
++bool g_next_lcd_is_hblank = true;
++
++void advance_lcd_deadline(uint64_t timestamp) {
++    while (g_next_lcd_event <= timestamp) {
++        if (g_next_lcd_is_hblank) {
++            g_next_lcd_event += kScanlineCycles - kHblankStartCycles;
++        } else {
++            g_next_lcd_event += kHblankStartCycles;
++        }
++        g_next_lcd_is_hblank = !g_next_lcd_is_hblank;
++    }
++}
++
++void advance_spu_deadline(uint64_t timestamp) {
++    if (g_next_spu_event <= timestamp) {
++        const uint64_t periods =
++            (timestamp - g_next_spu_event) / kSpuPeriodCycles + 1u;
++        g_next_spu_event += periods * kSpuPeriodCycles;
++    }
++}
++
++void advance_rtc_deadline(uint64_t timestamp) {
++    while (g_next_rtc_event <= timestamp) {
++        ++g_next_rtc_ordinal;
++        g_next_rtc_event =
++            (g_next_rtc_ordinal * kRtcNumerator) / kRtcDenominator;
++    }
++}
++
+ // Power-on periodic scheduler events in SYSTEM cycles. NextTarget scans RTC,
+ // SPU and LCD even before their IRQs are enabled. They phase the 64-cycle CPU
+ // rendezvous grid, so omitting a deadline can move an IPCSYNC write across the
+ // peer's poll despite each CPU's local instruction timing being exact.
+ uint64_t next_scheduled_event_time() {
+-    constexpr uint64_t kLine = 2130;
+-    constexpr uint64_t kHblankStart = 1584;
+-    const uint64_t line_base = (g_sys_timestamp / kLine) * kLine;
+-    const uint64_t pos = g_sys_timestamp - line_base;
+-    const uint64_t lcd = (pos < kHblankStart) ? (line_base + kHblankStart)
+-                                               : (line_base + kLine);
+-
+-    const uint64_t spu = (g_sys_timestamp / 1024u + 1u) * 1024u;
+-
+-    // RTC ScheduleTimer carries the 33,513,982/32,768 fractional remainder,
+-    // so deadline N is floor(N*33513982/32768), starting at N=1 (1022).
+-    constexpr uint64_t kRtcNumerator = 33513982u;
+-    constexpr uint64_t kRtcDenominator = 32768u;
+-    uint64_t rtc_n = (g_sys_timestamp * kRtcDenominator) / kRtcNumerator + 1u;
+-    uint64_t rtc = (rtc_n * kRtcNumerator) / kRtcDenominator;
+-    while (rtc <= g_sys_timestamp) {
+-        ++rtc_n;
+-        rtc = (rtc_n * kRtcNumerator) / kRtcDenominator;
+-    }
+     return std::min(nds_next_system_event_time(),
+                     std::min(nds_wifi_next_event_time(),
+-                             std::min(rtc, std::min(spu, lcd))));
++                             std::min(g_next_rtc_event,
++                                      std::min(g_next_spu_event,
++                                               g_next_lcd_event))));
+ }
+ 
+ bool g_sample_active = false;
+@@ -224,6 +250,11 @@ void scheduler_init() {
+     g_slot[1] = CpuSlot{};
+     g_cur = -1;
+     g_sys_timestamp = 0;
++    g_next_lcd_event = kHblankStartCycles;
++    g_next_spu_event = kSpuPeriodCycles;
++    g_next_rtc_event = kRtcNumerator / kRtcDenominator;
++    g_next_rtc_ordinal = 1u;
++    g_next_lcd_is_hblank = true;
+     scheduler_profile_reset();
+ }
+ 
+@@ -370,29 +401,40 @@ void scheduler_run_round() {
+     }
+ 
+     if (sample) phase_start = ProfileClock::now();
+-    if (sample) {
+-        auto t = phase_start;
+-        nds_tick_display(rendezvous);
+-        profile_add(g_profile.display_ns, t);
+-        t = ProfileClock::now();
+-        nds_tick_spu(rendezvous);
+-        profile_add(g_profile.spu_ns, t);
+-        t = ProfileClock::now();
+-        nds_wifi_run_events(rendezvous);
+-        profile_add(g_profile.wifi_ns, t);
+-        t = ProfileClock::now();
+-        nds_tick_rtc(rendezvous);
+-        profile_add(g_profile.rtc_ns, t);
+-        t = ProfileClock::now();
+-        nds_run_system_events(rendezvous);
+-        profile_add(g_profile.sysev_ns, t);
+-    } else {
+-        nds_tick_display(rendezvous);
+-        nds_tick_spu(rendezvous);
+-        nds_wifi_run_events(rendezvous);
+-        nds_tick_rtc(rendezvous);
+-        nds_run_system_events(rendezvous);
+-    }
++    auto run_device = [&](uint64_t& profile_counter, bool due,
++                          auto&& function) {
++        if (!due) return;
++        const auto start = sample ? ProfileClock::now()
++                                  : ProfileClock::time_point{};
++        function();
++        if (sample) profile_add(profile_counter, start);
++    };
++
++    const bool display_due = g_next_lcd_event <= rendezvous;
++    run_device(g_profile.display_ns, display_due,
++               [&] { nds_tick_display(rendezvous); });
++    if (display_due) advance_lcd_deadline(rendezvous);
++
++    const bool spu_due = g_next_spu_event <= rendezvous;
++    run_device(g_profile.spu_ns, spu_due,
++               [&] { nds_tick_spu(rendezvous); });
++    if (spu_due) advance_spu_deadline(rendezvous);
++
++    run_device(g_profile.wifi_ns,
++               nds_wifi_next_event_time() <= rendezvous,
++               [&] { nds_wifi_run_events(rendezvous); });
++
++    const bool rtc_due = g_next_rtc_event <= rendezvous;
++    run_device(g_profile.rtc_ns, rtc_due,
++               [&] { nds_tick_rtc(rendezvous); });
++    if (rtc_due) advance_rtc_deadline(rendezvous);
++
++    // A CPU or an earlier device in this same rendezvous may have scheduled a
++    // one-shot card/SPI/div/sqrt completion, so test this dynamic deadline at
++    // the point where the old unconditional call occurred.
++    run_device(g_profile.sysev_ns,
++               nds_next_system_event_time() <= rendezvous,
++               [&] { nds_run_system_events(rendezvous); });
+     if (sample) {
+         profile_add(g_profile.devices_ns, phase_start);
+         profile_add(g_profile.sampled_round_ns, round_start);
+@@ -404,7 +446,6 @@ void scheduler_run_round() {
+     // ARM7 catch-up, then RunSystem(target) advances SysTimestamp to that
+     // ACTUAL normalized rendezvous (including one-instruction overshoot).
+     g_sys_timestamp = rendezvous;
+-    live_overlay_poll();
+     // run_due_system_events(rendezvous);  // Commit B+
+ }
+ 
+@@ -415,6 +456,19 @@ void scheduler_terminal_halt_all(const char* reason) {
      g_slot[1].reason = reason;
  }
  
@@ -2954,7 +3668,7 @@ index ee7c613..6744c0a 100644
      g_profile = NdsSchedulerProfile{};
      g_profile_rounds = 0;
 diff --git i/runner/src/scheduler.h w/runner/src/scheduler.h
-index b1956aa..fcff416 100644
+index b1956aa598c57c01ea01256e9f7a6f4880b394af..fcff4161caae84fd74863a3f2dfaa6e46abf9af4 100644
 --- i/runner/src/scheduler.h
 +++ w/runner/src/scheduler.h
 @@ -69,6 +69,11 @@ void scheduler_run_round();
@@ -2970,10 +3684,24 @@ index b1956aa..fcff416 100644
  const struct ArmCpuState& scheduler_cpu_state(int cpu);
  uint64_t scheduler_cpu_cycles(int cpu);
 diff --git i/runner/src/state.h w/runner/src/state.h
-index 0c4fe89..8bbda49 100644
+index 0c4fe8995e68522a2e95c67ef852137cb996acec..73ed88194c378869cabb66b87ac858b79702c298 100644
 --- i/runner/src/state.h
 +++ w/runner/src/state.h
-@@ -84,6 +84,7 @@ struct BusRegion {
+@@ -57,6 +57,13 @@ extern "C" void nds_register_dispatch(int cpu, const DispatchEntry* t,
+                                       unsigned len, uint32_t exc_base);
+ extern "C" void nds_unregister_dispatch(int cpu, const DispatchEntry* t,
+                                         unsigned len);
++// Defer dispatch-index rebuilds and cache-epoch invalidation while a group of
++// banks is registered. The live-overlay cold-cache loader uses this so a
++// pre-seeded cache becomes visible atomically with one rebuild per CPU instead
++// of repeatedly copying the growing index and invalidating hot lookup slots.
++// Calls may nest; only the outermost end publishes the accumulated changes.
++void nds_dispatch_batch_begin();
++void nds_dispatch_batch_end();
+ extern "C" void nds_set_cycle_cap(unsigned long long cap);
+ extern "C" void nds_reschedule_slice(unsigned long long system_deadline);
+ extern "C" void nds_halt(const char* reason);
+@@ -84,6 +91,7 @@ struct BusRegion {
  };
  bool bus_get_region(const char* name, BusRegion* out);
  uint8_t bus_debug_read8(int cpu, uint32_t addr);
@@ -2981,13 +3709,13 @@ index 0c4fe89..8bbda49 100644
  // ARM7-owned hardware bus masters (currently the SPU fetch/capture engines)
  // access memory outside a guest instruction. These helpers select the ARM7
  // memory view for the duration of the transfer and still feed the always-on
-@@ -133,3 +134,4 @@ struct BusWatchEvent {
+@@ -133,3 +141,4 @@ struct BusWatchEvent {
      uint32_t value;
  };
  uint32_t bus_debug_watch_copy(BusWatchEvent* out, uint32_t max_entries);
 +void bus_debug_watch_reset(void);
 diff --git i/runner/src/wifi_net.cpp w/runner/src/wifi_net.cpp
-index 5c803ae..0b4136c 100644
+index 5c803ae820ce9995e84e97114b046eafb7ab9ceb..82fb219d045948618afa58e5aba3d3e32c76321e 100644
 --- i/runner/src/wifi_net.cpp
 +++ w/runner/src/wifi_net.cpp
 @@ -42,6 +42,13 @@
@@ -3013,7 +3741,19 @@ index 5c803ae..0b4136c 100644
  #include "../vendor/melonds/net/Net_PCap.h"
  #endif
  
-@@ -658,6 +665,44 @@ void WriteLe64(std::vector<uint8_t>* out, uint64_t value) {
+@@ -628,6 +635,11 @@ public:
+         return true;
+     }
+ 
++    size_t Size() {
++        std::lock_guard<std::mutex> lock(mutex_);
++        return queue_.size();
++    }
++
+ private:
+     std::mutex mutex_;
+     std::deque<std::vector<uint8_t>> queue_;
+@@ -658,6 +670,44 @@ void WriteLe64(std::vector<uint8_t>* out, uint64_t value) {
      WriteLe32(out, static_cast<uint32_t>(value >> 32u));
  }
  
@@ -3058,7 +3798,7 @@ index 5c803ae..0b4136c 100644
  struct LocalMpFrame {
      uint32_t sender = 0;
      uint32_t type = 0;
-@@ -699,40 +744,35 @@ public:
+@@ -699,40 +749,35 @@ public:
  
      void Begin() {
          if (!enabled_) return;
@@ -3108,7 +3848,7 @@ index 5c803ae..0b4136c 100644
              CloseSocket();
              return;
          }
-@@ -741,19 +781,13 @@ public:
+@@ -741,19 +786,13 @@ public:
              "[local_mp] enabled instance=%u port=%u\n",
              static_cast<unsigned>(instance_),
              static_cast<unsigned>(base_port_ + instance_));
@@ -3128,7 +3868,7 @@ index 5c803ae..0b4136c 100644
      }
  
      int SendPacket(uint8_t* data, int len, uint64_t timestamp) {
-@@ -838,8 +872,7 @@ private:
+@@ -838,8 +877,7 @@ private:
      int SendGeneric(uint32_t type, uint8_t* data, int len,
                      uint64_t timestamp) {
          if (!enabled_) return 0;
@@ -3138,7 +3878,7 @@ index 5c803ae..0b4136c 100644
          if (len < 0 || static_cast<size_t>(len) > kMaxFrameBytes) return 0;
          if (len > 0 && !data) return 0;
  
-@@ -864,39 +897,31 @@ private:
+@@ -864,39 +902,31 @@ private:
                           reinterpret_cast<const char*>(datagram.data()),
                           static_cast<int>(datagram.size()), 0,
                           reinterpret_cast<sockaddr*>(&target),
@@ -3185,7 +3925,7 @@ index 5c803ae..0b4136c 100644
                      melonDS::Platform::Log(melonDS::Platform::Warn,
                          "[local_mp] recvfrom failed: %d\n", err);
                  }
-@@ -923,16 +948,13 @@ private:
+@@ -923,16 +953,13 @@ private:
              else
                  packet_queue_.TryPush(std::move(frame));
          }
@@ -3205,7 +3945,7 @@ index 5c803ae..0b4136c 100644
  
      bool enabled_ = false;
      uint32_t instance_ = 0;
-@@ -941,9 +963,7 @@ private:
+@@ -941,9 +968,7 @@ private:
      LocalMpFrameQueue reply_queue_{kQueueCapacity};
      int last_host_id_ = -1;
      uint32_t send_error_log_counter_ = 0;
@@ -3216,7 +3956,7 @@ index 5c803ae..0b4136c 100644
  };
  
  class LocalWfcPeerBridge {
-@@ -955,40 +975,35 @@ public:
+@@ -955,40 +980,35 @@ public:
  
      void Begin() {
          if (!enabled_) return;
@@ -3266,7 +4006,7 @@ index 5c803ae..0b4136c 100644
              CloseSocket();
              return;
          }
-@@ -997,24 +1012,17 @@ public:
+@@ -997,24 +1017,17 @@ public:
              "[wfc_peer] enabled instance=%u port=%u\n",
              static_cast<unsigned>(instance_),
              static_cast<unsigned>(kBasePort + instance_));
@@ -3292,7 +4032,7 @@ index 5c803ae..0b4136c 100644
          if (len <= 0 || static_cast<size_t>(len) > kMaxFrameBytes) return true;
  
          std::vector<uint8_t> datagram;
-@@ -1036,33 +1044,31 @@ public:
+@@ -1036,33 +1049,32 @@ public:
          if (::sendto(socket_, reinterpret_cast<const char*>(datagram.data()),
                       static_cast<int>(datagram.size()), 0,
                       reinterpret_cast<sockaddr*>(&peer),
@@ -3312,9 +4052,11 @@ index 5c803ae..0b4136c 100644
      }
  
      void DrainTo(BoundedPacketQueue* rx_queue,
-                  std::atomic<uint32_t>* rx_drop_counter) {
+-                 std::atomic<uint32_t>* rx_drop_counter) {
 -#ifdef _WIN32
 -        if (!enabled_ || socket_ == INVALID_SOCKET || !rx_queue) return;
++                 std::atomic<uint32_t>* rx_drop_counter,
++                 std::atomic<uint64_t>* rx_drop_total) {
 +        if (!enabled_ || socket_ == kInvalidHostSocket || !rx_queue) return;
          for (;;) {
              uint8_t datagram[kHeaderBytes + kMaxFrameBytes];
@@ -3333,8 +4075,12 @@ index 5c803ae..0b4136c 100644
                      melonDS::Platform::Log(melonDS::Platform::Warn,
                          "[wfc_peer] recvfrom failed: %d\n", err);
                  }
-@@ -1082,10 +1088,6 @@ public:
+@@ -1080,12 +1092,10 @@ public:
+                                         datagram + kHeaderBytes + len);
+             if (!rx_queue->TryPush(std::move(packet)) && rx_drop_counter) {
                  rx_drop_counter->fetch_add(1, std::memory_order_relaxed);
++                if (rx_drop_total)
++                    rx_drop_total->fetch_add(1, std::memory_order_relaxed);
              }
          }
 -#else
@@ -3344,7 +4090,7 @@ index 5c803ae..0b4136c 100644
      }
  
  private:
-@@ -1113,20 +1115,16 @@ private:
+@@ -1113,20 +1123,16 @@ private:
          return true;
      }
  
@@ -3369,8 +4115,81 @@ index 5c803ae..0b4136c 100644
  };
  
  struct WifiBridgeState {
+@@ -1186,6 +1192,8 @@ struct WifiBridgeState {
+     // the actual ring write happens on the emulation thread's next
+     // Net_RecvPacket call, which drains this counter via exchange(0).
+     std::atomic<uint32_t> rx_dropped_since_last_report{0};
++    std::atomic<uint64_t> tx_dropped_total{0};
++    std::atomic<uint64_t> rx_dropped_total{0};
+     // Pcap frames that match this guest but exceed the emulated RX buffer
+     // limit use the same emulation-thread rendezvous, with a distinct aux.
+     // Oversized unrelated LAN frames are rejected before this counter.
+@@ -1321,7 +1329,8 @@ void WifiWorkerThreadMain(WifiBridgeState* state) {
+         else if (state->live_driver)
+             state->live_driver->RecvCheck();
+         state->local_wfc_peer.DrainTo(&state->rx_queue,
+-                                      &state->rx_dropped_since_last_report);
++                                      &state->rx_dropped_since_last_report,
++                                      &state->rx_dropped_total);
+ 
+         std::unique_lock<std::mutex> lock(state->wake_mutex);
+         state->wake_cv.wait_for(
+@@ -1401,6 +1410,7 @@ int Net_SendPacket(u8* data, int len, void* userdata) {
+         net_ring_push(NDS_NET_EVENT_BACKEND_DROP, /*direction=*/0, 0, 0,
+                       nullptr, nullptr, 0, 0, 0, 0,
+                       static_cast<uint16_t>(len), /*aux=*/0u);
++        g_bridge->tx_dropped_total.fetch_add(1, std::memory_order_relaxed);
+         return 0;
+     }
+     {
+@@ -1724,6 +1734,8 @@ melonDS::Wifi* nds_wifi3d_attach() {
+                     if (!g_bridge->rx_queue.TryPush(std::move(pkt))) {
+                         g_bridge->rx_dropped_since_last_report.fetch_add(
+                             1, std::memory_order_relaxed);
++                        g_bridge->rx_dropped_total.fetch_add(
++                            1, std::memory_order_relaxed);
+                     }
+                 });
+             if (!pcap) {
+@@ -1794,6 +1806,8 @@ melonDS::Wifi* nds_wifi3d_attach() {
+                     if (!g_bridge->rx_queue.TryPush(std::move(pkt))) {
+                         g_bridge->rx_dropped_since_last_report.fetch_add(
+                             1, std::memory_order_relaxed);
++                        g_bridge->rx_dropped_total.fetch_add(
++                            1, std::memory_order_relaxed);
+                     }
+                 },
+                 nameserver_override,
+@@ -1843,6 +1857,12 @@ bool nds_wifi_network_state(NdsWifiNetworkState* out) {
+     out->live_backend_active = g_bridge->live_driver != nullptr;
+     out->replay_backend_active = g_bridge->replay_driver != nullptr;
+     out->worker_active = g_bridge->worker_thread != nullptr;
++    out->tx_queue_depth = static_cast<uint32_t>(g_bridge->tx_queue.Size());
++    out->rx_queue_depth = static_cast<uint32_t>(g_bridge->rx_queue.Size());
++    out->tx_queue_drops =
++        g_bridge->tx_dropped_total.load(std::memory_order_relaxed);
++    out->rx_queue_drops =
++        g_bridge->rx_dropped_total.load(std::memory_order_relaxed);
+     return true;
+ }
+ 
+diff --git i/runner/src/wifi_net.h w/runner/src/wifi_net.h
+index 9255ada8ae2c258f08b35a4b589e6f590ec31d45..82d480909a87a25b1032b50018ac1340122fcfc8 100644
+--- i/runner/src/wifi_net.h
++++ w/runner/src/wifi_net.h
+@@ -144,6 +144,10 @@ struct NdsWifiNetworkState {
+     bool live_backend_active = false;
+     bool replay_backend_active = false;
+     bool worker_active = false;
++    uint32_t tx_queue_depth = 0;
++    uint32_t rx_queue_depth = 0;
++    uint64_t tx_queue_drops = 0;
++    uint64_t rx_queue_drops = 0;
+     NdsNetBackendKind backend = NdsNetBackendKind::Slirp;
+     bool wfc_enabled = false;
+     uint32_t wfc_dns_ipv4 = 0;
 diff --git i/runner/tests/cart_backup_test.cpp w/runner/tests/cart_backup_test.cpp
-index fc9cc65..8b2e969 100644
+index fc9cc6586722da53e66836957683bc9baf75519f..8b2e96999f04e5b52aa2f7aeb16ddf1fadf31087 100644
 --- i/runner/tests/cart_backup_test.cpp
 +++ w/runner/tests/cart_backup_test.cpp
 @@ -114,17 +114,18 @@ void test_status_poll_between_wren_and_write() {
@@ -3406,8 +4225,21 @@ index fc9cc65..8b2e969 100644
  }
  
  void test_eeprom_write_survives_separate_wren_transfer() {
+diff --git i/runner/tests/live_overlay_preflight_test.cpp w/runner/tests/live_overlay_preflight_test.cpp
+index dae9a38b2273a5ab4ec48cd88fa06975022405bb..5ccdb4d0c2b941a4e29d89e16a96276e717c5aaf 100644
+--- i/runner/tests/live_overlay_preflight_test.cpp
++++ w/runner/tests/live_overlay_preflight_test.cpp
+@@ -14,6 +14,8 @@ extern "C" void nds_register_dispatch(int, const NdsDispatchEntry*, unsigned,
+                                        uint32_t) {}
+ extern "C" void nds_unregister_dispatch(int, const NdsDispatchEntry*,
+                                          unsigned) {}
++void nds_dispatch_batch_begin() {}
++void nds_dispatch_batch_end() {}
+ bool coverage_manifest_write(const char*, char*, unsigned) { return false; }
+ bool coverage_manifest_write_live_snapshot(const char*, uint32_t, char*,
+                                            unsigned) { return false; }
 diff --git i/runner/tests/wfc_provider_test.cpp w/runner/tests/wfc_provider_test.cpp
-index 7f166e3..a5db02e 100644
+index 7f166e344b55a5b26fbd9972e703ef6694c237f0..a5db02ea43648b4ce60bdb3e45dd56da924247e2 100644
 --- i/runner/tests/wfc_provider_test.cpp
 +++ w/runner/tests/wfc_provider_test.cpp
 @@ -19,9 +19,11 @@ int main() {
@@ -3423,7 +4255,7 @@ index 7f166e3..a5db02e 100644
          return 1;
      }
 diff --git i/runner/vendor/melonds/GPU3D.cpp w/runner/vendor/melonds/GPU3D.cpp
-index b1885db..94eab06 100644
+index b1885db5d2de09af22276eeb07c1920878c43b58..94eab0661b7223f52f92ce3254749e383bda1067 100644
 --- i/runner/vendor/melonds/GPU3D.cpp
 +++ w/runner/vendor/melonds/GPU3D.cpp
 @@ -2360,7 +2360,11 @@ void GPU3D::ExecuteCommand() noexcept
@@ -3439,7 +4271,7 @@ index b1885db..94eab06 100644
              }
          }
 diff --git i/runner/vendor/melonds/GPU3D_Compute.cpp w/runner/vendor/melonds/GPU3D_Compute.cpp
-index c4e8a30..e244a5c 100644
+index c4e8a30e30f75b12dfe00a30afb70b59c882e426..e244a5cd27bb6de1a0c67c0ced592ee9418c0076 100644
 --- i/runner/vendor/melonds/GPU3D_Compute.cpp
 +++ w/runner/vendor/melonds/GPU3D_Compute.cpp
 @@ -167,7 +167,11 @@ void ComputeRenderer::ShaderCompileStep(int& current, int& count)
@@ -3455,7 +4287,7 @@ index c4e8a30..e244a5c 100644
      }
  }
 diff --git i/tools/compile_live_shards.py w/tools/compile_live_shards.py
-index 547b8bd..e3856de 100644
+index 547b8bd3af2ddc9bb8ef9f4fe226104a53899b93..e3856def704134a353648c6e644803408f55ac2a 100644
 --- i/tools/compile_live_shards.py
 +++ w/tools/compile_live_shards.py
 @@ -44,7 +44,23 @@ def run(command: list[str]) -> subprocess.CompletedProcess:

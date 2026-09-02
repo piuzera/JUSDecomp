@@ -1,4 +1,4 @@
-# JUS Online Test Guide (release 0.2.1, 2026-08-25)
+# JUS Online Test Guide (release 0.3.1, 2026-09-02)
 
 Jump! Ultimate Stars **WiFi Battle (WiFiバトル)** online bring-up — validated
 same-machine on 2026-08-25: **distinct friend codes, room created + joined,

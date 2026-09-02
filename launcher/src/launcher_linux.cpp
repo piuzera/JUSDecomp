@@ -26,7 +26,7 @@
 
 namespace fs = std::filesystem;
 
-static constexpr const char* APP_VERSION = "0.3.0";
+static constexpr const char* APP_VERSION = "0.3.1";
 static constexpr const char* STOCK_SHA1 =
     "ba58e20ee60eb81c33dcd4934a21271baa9f954a";
 static constexpr std::uintmax_t STOCK_SIZE = 0x4000000ULL;
