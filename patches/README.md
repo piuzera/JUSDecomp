@@ -17,6 +17,9 @@ git apply ../../patches/ndsrecomp/0001-jus-runner-modifications.patch
 
 ## What the patch does
 
+- **Native Linux host support** — builds the SDL/OpenGL runner with GCC,
+  loads live overlay banks as `.so` libraries, and implements local wireless
+  and WFC peer-relay sockets with POSIX APIs. Windows remains supported.
 - **EEPROM cartridge save model fixes** — JUS uses a 64 KiB EEPROM save chip;
   upstream's flash model AND-programmed bytes (1→0 only), silently corrupting
   re-saves and breaking the game's read-back verify (the "restart console"

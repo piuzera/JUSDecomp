@@ -16,7 +16,7 @@ How: it synthesizes the schema-3 tier3-coverage manifest that
 tools/ndsrecomp/tools/compile_live_shards.py consumes (4096-byte resident
 page payloads + function entry points from
 decomp/arm9/overlays/<ov>/symbols.txt) and runs that tool against a
-STAGING cache. The produced DLLs are then copied into every requested
+STAGING cache. The produced native libraries are then copied into every requested
 cache dir — the runner discovers banks by scanning the cache directory
 (live_overlay.cpp rescan_cache), so DLLs on disk are all it needs.
 
@@ -197,11 +197,14 @@ def main(argv: list[str] | None = None) -> int:
                     help="list pages + entry counts, compile nothing")
     ap.add_argument("--ndsrecomp-root", type=Path,
                     default=REPO / "tools" / "ndsrecomp")
+    linux = sys.platform.startswith("linux")
     ap.add_argument("--runner-build", type=Path,
-                    default=REPO / "tools" / "ndsrecomp" / "runner" / "build-mingw")
+                    default=REPO / "tools" / "ndsrecomp" / "runner"
+                    / ("build-linux" if linux else "build-mingw"))
     ap.add_argument("--recompiler", type=Path,
-                    default=REPO / "tools" / "ndsrecomp" / "recompiler" / "build"
-                    / "nds_recompile.exe")
+                    default=REPO / "tools" / "ndsrecomp" / "recompiler"
+                    / ("build-linux" if linux else "build")
+                    / ("nds_recompile" if linux else "nds_recompile.exe"))
     ap.add_argument("--gcc", default="gcc")
     args = ap.parse_args(argv)
 
@@ -264,21 +267,27 @@ def main(argv: list[str] | None = None) -> int:
     if result.returncode != 0:
         return result.returncode
 
-    # Copy the produced DLLs into every target cache. The runner only needs
-    # the DLL files on disk (rescan_cache globs the cache directory); the
+    # Copy produced native libraries into every target cache. The runner only
+    # needs these files on disk (rescan_cache scans the cache directory); the
     # live index stays per-cache and only affects future compile dedupe.
-    produced = sorted((args.stage / "gcc").glob("*.dll"))
-    print(f"staging produced {len(produced)} DLLs")
+    # Copy ONLY the flavor this run's bank compiler targets (the staging dir
+    # may also hold banks from a run for the other platform).
+    want_dll = "w64" in subprocess.check_output(
+        [args.gcc, "-dumpmachine"], text=True).strip() or sys.platform == "win32"
+    produced = sorted(args.stage.glob("gcc/*.dll" if want_dll else "gcc/*.so"))
+    print(f"staging produced {len(produced)} native libraries")
     for cache in args.caches:
         target = cache / "gcc"
         target.mkdir(parents=True, exist_ok=True)
         copied = 0
-        for dll in produced:
-            dest = target / dll.name
+        for library in produced:
+            dest = target / library.name
             if not dest.is_file():
-                shutil.copy2(dll, dest)
+                shutil.copy2(library, dest)
                 copied += 1
-        print(f"{cache}: +{copied} DLLs (total {len(list(target.glob('*.dll')))})")
+        suffix = "*.dll" if want_dll else "*.so"
+        print(f"{cache}: +{copied} libraries "
+              f"(total {len(list(target.glob(suffix)))})")
     return 0
 
 

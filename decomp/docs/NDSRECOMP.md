@@ -4,6 +4,16 @@ Written 2026-08-21 after cloning `mstan/ndsrecomp` (v0.0.1 pre-alpha) and the
 `mstan/supermario64dsrecomp` title project into `tools/` (both git-ignored).
 Everything below is **confirmed** by reading the repos unless labeled otherwise.
 
+## Linux port verification (2026-09-01)
+
+The pinned recompiler and patched runner now build natively with GCC on Linux.
+The runner patch uses `dlopen` for live `.so` banks and POSIX sockets for local
+wireless and the WFC peer relay. On Omarchy, all 3 recompiler tests and all 14
+runner tests pass with SDL2 and the OpenGL compute renderer enabled. The clean,
+ROM-free verification command is `tools/scripts/build_linux.sh --host-only`;
+the full title build is documented in `docs/LINUX.md` and remains SHA-1-gated
+to the user's legal ROM. The Windows GUI launcher is not part of this port.
+
 ## What ndsrecomp is (confirmed)
 
 - Static recompiler for the DS: lifts guest ARM code (ARM7TDMI + ARM946E-S,

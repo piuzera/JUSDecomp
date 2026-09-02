@@ -16,7 +16,16 @@ tools/ndsrecomp/runner/build-mingw, your stock ROM at rom/jus.nds and its
 dsd extraction under extract/.
 
 Usage:
-    py tools/scripts/package_release.py [--portable]
+    py tools/scripts/package_release.py [--portable]        (Windows host)
+
+    python3 tools/scripts/package_release.py --cross-linux \
+        --sdl2 <SDL2-devel-mingw-dir>                       (Linux host)
+
+The cross mode builds the same bundle on Linux with the mingw-w64
+toolchain (see tools/scripts/cross-mingw64.cmake): it cross-compiles the
+launcher and the runner, links the pre-seed DLL banks against the
+runner's import library, and sources the mingw runtime DLLs from the
+toolchain sysroot instead of MSYS2.
 """
 from __future__ import annotations
 
@@ -33,7 +42,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / "dist" / "JUSDecomp"
 MSYS = Path("C:/msys64/ucrt64")
+MINGW_SYSROOT = Path("/usr/x86_64-w64-mingw32")
 STOCK_SHA1 = "ba58e20ee60eb81c33dcd4934a21271baa9f954a"
+CROSS_TOOLCHAIN = ROOT / "tools" / "scripts" / "cross-mingw64.cmake"
 
 
 def run(cmd: list[str], cwd: Path | None = None, env: dict | None = None):
@@ -44,7 +55,18 @@ def run(cmd: list[str], cwd: Path | None = None, env: dict | None = None):
     subprocess.run([str(c) for c in cmd], cwd=cwd or ROOT, env=e, check=True)
 
 
-def build_launcher() -> Path:
+def build_launcher(cross: dict | None = None) -> Path:
+    if cross:
+        build = ROOT / "launcher" / "build-cross"
+        run(["cmake", "-G", "Ninja", "-S", str(ROOT / "launcher"),
+             "-B", str(build), "-DCMAKE_BUILD_TYPE=Release",
+             f"-DCMAKE_TOOLCHAIN_FILE={CROSS_TOOLCHAIN}",
+             f"-DSDL2_DIR={cross['sdl2_dir']}"])
+        run(["cmake", "--build", str(build)])
+        exe = build / "JUSDecomp.exe"
+        if not exe.is_file():
+            raise SystemExit("[!] cross launcher build produced no JUSDecomp.exe")
+        return exe
     build = ROOT / "launcher" / "build"
     env = {"PATH": f"{MSYS / 'bin'};{os.environ['PATH']}"}
     run(["cmake", "-G", "Ninja", "-S", str(ROOT / "launcher"),
@@ -55,6 +77,38 @@ def build_launcher() -> Path:
     if not exe.is_file():
         raise SystemExit("[!] launcher build produced no JUSDecomp.exe")
     return exe
+
+
+def build_runner_cross(cross: dict) -> Path:
+    """Cross-compile the Windows runner (build-mingw) from Linux. Mirrors the
+    bank defines of tools/scripts/build_linux.sh so the title banks and the
+    compute renderer are baked in exactly like a native MSYS2 build."""
+    runner_src = ROOT / "tools" / "ndsrecomp" / "runner"
+    build = runner_src / "build-mingw"
+    run(["cmake", "-G", "Ninja", "-S", str(runner_src), "-B", str(build),
+         "-DCMAKE_BUILD_TYPE=Release",
+         f"-DCMAKE_TOOLCHAIN_FILE={CROSS_TOOLCHAIN}",
+         f"-DSDL2_DIR={cross['sdl2_dir']}",
+         "-DNDS_BOOTSTRAP_FIRMWARE=ON",
+         "-DNDS_ENABLE_COMPUTE_RENDERER=ON",
+         f"-DNDS_TITLE_BANK_DIR={ROOT / 'recomp' / 'generated'}",
+         f"-DNDS_TITLE_ROM_SHA1={STOCK_SHA1}"])
+    run(["cmake", "--build", str(build)])
+    exe = build / "nds_runner.exe"
+    if not exe.is_file():
+        raise SystemExit("[!] cross runner build produced no nds_runner.exe")
+    return exe
+
+
+def cross_dll_dir() -> dict[str, Path]:
+    """Runtime DLLs bundled from the Linux mingw-w64 sysroot."""
+    bin_dir = MINGW_SYSROOT / "bin"
+    out: dict[str, Path] = {}
+    for dll in ("SDL2.dll", "libgcc_s_seh-1.dll", "libstdc++-6.dll",
+                "libwinpthread-1.dll"):
+        candidate = bin_dir / dll
+        out[dll] = candidate if candidate.is_file() else Path("")
+    return out
 
 
 def check_rom() -> None:
@@ -113,7 +167,7 @@ def collect_mods() -> None:
     print(f"bundled {len(mods)} mod pack(s)")
 
 
-def preseed_live_cache() -> None:
+def preseed_live_cache(cross: dict | None = None) -> None:
     """Pre-compile every ROM overlay page to native and seed the bundle's
     live-overlay cache (app/live-cache). This is what makes the shipped bundle
     boot fully native for online play: the WFC/DWC stack (ARM9 ov008/ov010 +
@@ -131,15 +185,23 @@ def preseed_live_cache() -> None:
     cache = DIST / "app" / "live-cache"
     cache.mkdir(parents=True, exist_ok=True)
     print(f"[preseed] compiling all overlay pages -> {cache}")
-    rc = live_preseed.main([
+    recompiler = (ROOT / "tools" / "ndsrecomp" / "recompiler" / "build-linux"
+                  / "nds_recompile" if cross else
+                  ROOT / "tools" / "ndsrecomp" / "recompiler" / "build"
+                  / "nds_recompile.exe")
+    argv = [
         "--rom", str(ROOT / "rom" / "jus.nds"),
         "--caches", str(cache),
         "--stage", str(ROOT / "recomp" / "live-cache-preseed"),
         "--ndsrecomp-root", str(ROOT / "tools" / "ndsrecomp"),
         "--runner-build", str(ROOT / "tools" / "ndsrecomp" / "runner" / "build-mingw"),
-        "--recompiler", str(ROOT / "tools" / "ndsrecomp" / "recompiler" / "build"
-                            / "nds_recompile.exe"),
-    ])
+        "--recompiler", str(recompiler),
+    ]
+    if cross:
+        # The bank compiler target decides the library flavor: mingw
+        # cross-gcc produces PE DLLs against the build-mingw import lib.
+        argv += ["--gcc", cross["gcc"]]
+    rc = live_preseed.main(argv)
     if rc != 0:
         raise SystemExit(f"[!] live-overlay pre-seed failed (exit {rc})")
     n = len(list((cache / "gcc").glob("*.dll"))) if (cache / "gcc").is_dir() else 0
@@ -150,7 +212,27 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--portable", action="store_true",
                     help="create portable.txt so settings live next to the exe")
+    ap.add_argument("--cross-linux", action="store_true",
+                    help="build the Windows bundle on a Linux host with the "
+                         "mingw-w64 cross-toolchain")
+    ap.add_argument("--sdl2", type=Path,
+                    help="[cross] SDL2-devel-mingw directory (contains "
+                         "x86_64-w64-mingw32/)")
+    ap.add_argument("--gcc", default="x86_64-w64-mingw32-gcc",
+                    help="[cross] bank compiler for the pre-seed DLLs")
     args = ap.parse_args()
+
+    cross: dict | None = None
+    if args.cross_linux:
+        if not args.sdl2 or not (args.sdl2 / "x86_64-w64-mingw32").is_dir():
+            raise SystemExit("[!] --cross-linux needs --sdl2 <SDL2-devel-mingw> "
+                             "(official SDL2 release zip, extracted)")
+        sdl2_prefix = (args.sdl2 / "x86_64-w64-mingw32").resolve()
+        cross = {
+            "sdl2_dir": sdl2_prefix / "lib" / "cmake" / "SDL2",
+            "sdl2_bin": sdl2_prefix / "bin",
+            "gcc": args.gcc,
+        }
 
     # Preserve the user's portable-mode data (settings/saves) across repacks.
     # Copy (not move) so a locked file (e.g. in-game save while playing) is
@@ -194,30 +276,40 @@ def main() -> int:
     # resolve a wrong-architecture copy from System32/PATH -> 0xc000007b
     # (STATUS_INVALID_IMAGE_FORMAT). libgcc/libstdc++ are static-linked into
     # the launcher but are bundled too for safety.
-    launcher_exe = build_launcher()
+    launcher_exe = build_launcher(cross)
     shutil.copy2(launcher_exe, DIST / "JUSDecomp.exe")
-    for dll in ["SDL2.dll", "libwinpthread-1.dll", "libgcc_s_seh-1.dll",
-                "libstdc++-6.dll"]:
-        src = MSYS / "bin" / dll
+
+    def runtime_dll_sources():
+        if cross:
+            sources = cross_dll_dir()
+            # SDL2.dll comes from the cross SDL2 prefix, not the sysroot.
+            sources["SDL2.dll"] = cross["sdl2_bin"] / "SDL2.dll"
+            return sources
+        return {dll: MSYS / "bin" / dll for dll in
+                ["SDL2.dll", "libwinpthread-1.dll", "libgcc_s_seh-1.dll",
+                 "libstdc++-6.dll"]}
+
+    for dll, src in runtime_dll_sources().items():
         if src.is_file():
             shutil.copy2(src, DIST / dll)
     print("launcher built + copied (with runtime DLLs next to the exe)")
 
     # 2. runner + DLLs (mingw runtime deps + SDL2)
-    runner = ROOT / "tools" / "ndsrecomp" / "runner" / "build-mingw" / "nds_runner.exe"
-    if not runner.is_file():
-        raise SystemExit("[!] runner not built — see README.md developer setup")
+    if cross:
+        runner = build_runner_cross(cross)
+    else:
+        runner = ROOT / "tools" / "ndsrecomp" / "runner" / "build-mingw" / "nds_runner.exe"
+        if not runner.is_file():
+            raise SystemExit("[!] runner not built — see README.md developer setup")
     shutil.copy2(runner, DIST / "app" / "nds_runner.exe")
-    for dll in ["SDL2.dll", "libgcc_s_seh-1.dll", "libstdc++-6.dll",
-                "libwinpthread-1.dll"]:
-        src = MSYS / "bin" / dll
+    for dll, src in runtime_dll_sources().items():
         if src.is_file():
             shutil.copy2(src, DIST / "app" / dll)
     print("runner + DLLs copied")
 
     # 2b. Pre-seed the bundle's live-overlay cache so online play boots fully
     # native (no in-session convergence tax, no runtime compiler needed).
-    preseed_live_cache()
+    preseed_live_cache(cross)
 
     # 3. FreeBIOS/firmware (the runner's first positional arg directory)
     bios_src = ROOT / "tools" / "ndsrecomp" / "bios"

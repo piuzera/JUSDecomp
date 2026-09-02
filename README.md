@@ -1,7 +1,7 @@
 # JUS Decomp
 
 Reverse engineering and **static recompilation** of **Jump Ultimate Stars**
-(Nintendo DS, game code `AJUJ`) into a native Windows executable — with a
+(Nintendo DS, game code `AJUJ`) into a native Windows or Linux executable — with a
 user-facing **mod pipeline** on top.
 
 The original game runs natively through
@@ -10,12 +10,12 @@ ARM9/ARM7 banks, overlay promotion, melonDS-derived 3D/Wi-Fi, SDL host. The
 repository itself contains no game assets — you bring your own legally dumped
 ROM (sha1-gated).
 
-> **Status: v0.2.2** — full game playable natively, including **online WiFi
-> Battle over the public Wiimmfi service** (world-wide and same-network
-> friend battles) at ~60 fps. In-game saves, deck injection, arcade-stick +
-> keyboard input (remappable in the launcher), a beginner-friendly launcher,
-> and a working runtime mod system whose flagship pack is a faithful
-> **English Translation** of the game. See
+> **Status: v0.3.0** — full game playable natively on **Windows and Linux**,
+> including **online WiFi Battle over the public Wiimmfi service** (world-wide
+> and same-network friend battles) at ~60 fps. In-game saves, deck injection,
+> arcade-stick + keyboard input (remappable in the launcher), a
+> beginner-friendly launcher, and a working runtime mod system whose flagship
+> pack is a faithful **English Translation** of the game. See
 > [`decomp/docs/TODO.md`](decomp/docs/TODO.md) for scope and open items.
 
 ---
@@ -25,18 +25,24 @@ ROM (sha1-gated).
 The launcher release turns the project into a **single self-contained
 executable**:
 
-1. Download the latest release — **v0.2.2** — from the
+1. Download the latest release — **v0.3.0** — from the
    [Releases page](https://github.com/piuzera/JUSDecomp/releases)
-   (`JUSDecomp-0.2.2.zip`), or build it with
+   (`JUSDecomp-0.3.0.zip`), or build it with
    `py tools/scripts/package_release.py`.
 2. Run `JUSDecomp.exe`, pick your own legally dumped ROM in the file dialog —
    it is verified automatically.
 3. Play. Mods toggle on/off and controller buttons are configured inside the
    app (Settings), with everything saved between sessions.
 
+**Linux**: there is no packaged download yet — build it from source with one
+command (`tools/scripts/build_linux.sh`; needs your legal ROM dump). The build
+verifies the ROM, compiles the runner and GTK launcher, and pre-compiles the
+native code cache so the game boots at full speed. Full instructions:
+[`docs/LINUX.md`](docs/LINUX.md).
+
 Full instructions: [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md).
 
-### Known issues (v0.2.2)
+### Known issues (v0.3.0)
 
 - **Occasional micro-stutters during online play** — online WiFi Battle now
   runs at ~60 fps almost all the time (the old 60 → ~35 fps drop is fixed),
@@ -75,6 +81,10 @@ pre-compiled to native and auto-promoted; see
 
 Everything below this point is for developers.
 
+Linux developers can build and test the native host without a ROM, then build
+the complete title after supplying their own legal dump. See
+[`docs/LINUX.md`](docs/LINUX.md).
+
 ---
 
 ## Legal
@@ -91,12 +101,15 @@ Everything below this point is for developers.
 
 ## Requirements
 
-- **Windows 10/11**
 - **Python 3.11+**
-- **MSYS2** (UCRT64) with `mingw-w64-ucrt-x86_64-gcc`, `-SDL2`, `-ninja`, `-cmake`
-- **Visual Studio Build Tools 2022** (MSVC) — builds the `nds_recompile` tool
 - **ds-decomp** (`dsd`) — place `dsd.exe` in `tools/dsd/`
 - Your own dump of Jump Ultimate Stars (stock, unmodified)
+- **Windows 10/11:** MSYS2 UCRT64 with GCC, SDL2, Ninja, and CMake, plus
+  Visual Studio Build Tools 2022 for `nds_recompile`
+- **Linux:** CMake, Ninja, GCC, SDL2 and GTK3 development files, Git, and Python
+
+For a native Linux build, use [`tools/scripts/build_linux.sh`](tools/scripts/build_linux.sh)
+instead of the Windows steps below. Full instructions: [`docs/LINUX.md`](docs/LINUX.md).
 
 ## Setup — from a clean clone
 
@@ -218,6 +231,7 @@ for the full publish/ignore policy.
 
 | Doc | Topic |
 |---|---|
+| [`docs/LINUX.md`](docs/LINUX.md) | Native Linux build and current limitations |
 | [`decomp/docs/PROJECT.md`](decomp/docs/PROJECT.md) | Project overview, toolchain, methodology |
 | [`decomp/docs/TODO.md`](decomp/docs/TODO.md) | Scope, status, and work queue |
 | [`decomp/docs/NDSRECOMP.md`](decomp/docs/NDSRECOMP.md) | Track C bring-up recipe + spike results |
@@ -229,9 +243,10 @@ for the full publish/ignore policy.
 | [`decomp/docs/SAVEBUG.md`](decomp/docs/SAVEBUG.md) | Save-chip reverse engineering (resolved) |
 | [`decomp/docs/REPO_AUDIT.md`](decomp/docs/REPO_AUDIT.md) | Public-repo publishing policy |
 
-## Known limitations (v0.2.2)
+## Known limitations (v0.3.0)
 
-- Windows-only runner; interactive play needs a gamepad or keyboard.
+- Linux ships as a source build (`tools/scripts/build_linux.sh`); a
+  self-contained packaged Linux release is planned.
 - Mods are directory-based packs (no zip distribution yet); payload growth is
   bounded by NitroFS slack.
 

@@ -1,7 +1,7 @@
-diff --git a/recompiler/armv4t/interpreter.cpp b/recompiler/armv4t/interpreter.cpp
+diff --git i/recompiler/armv4t/interpreter.cpp w/recompiler/armv4t/interpreter.cpp
 index 84e613d..092c4b4 100644
---- a/recompiler/armv4t/interpreter.cpp
-+++ b/recompiler/armv4t/interpreter.cpp
+--- i/recompiler/armv4t/interpreter.cpp
++++ w/recompiler/armv4t/interpreter.cpp
 @@ -2,6 +2,7 @@
  
  #include "interpreter.h"
@@ -19,10 +19,10 @@ index 84e613d..092c4b4 100644
              if (n == 0) {
                  uint32_t addr;
                  if (i.block.add) {
-diff --git a/recompiler/armv4t/runtime_arm.h b/recompiler/armv4t/runtime_arm.h
+diff --git i/recompiler/armv4t/runtime_arm.h w/recompiler/armv4t/runtime_arm.h
 index 2f52bad..7273bfb 100644
---- a/recompiler/armv4t/runtime_arm.h
-+++ b/recompiler/armv4t/runtime_arm.h
+--- i/recompiler/armv4t/runtime_arm.h
++++ w/recompiler/armv4t/runtime_arm.h
 @@ -334,8 +334,16 @@ static inline uint8_t bus_read_u8(uint32_t addr) {
      return bus_read_u8_slow(addr);
  }
@@ -59,10 +59,10 @@ index 2f52bad..7273bfb 100644
          uint32_t off;
          const NdsBusFastWin* w = nds_busf_classify(addr, &off);
          if (w && w->data) {
-diff --git a/runner/CMakeLists.txt b/runner/CMakeLists.txt
+diff --git i/runner/CMakeLists.txt w/runner/CMakeLists.txt
 index 81c98af..5e51f2d 100644
---- a/runner/CMakeLists.txt
-+++ b/runner/CMakeLists.txt
+--- i/runner/CMakeLists.txt
++++ w/runner/CMakeLists.txt
 @@ -156,6 +156,12 @@ target_include_directories(nds_banks PRIVATE
      ${CMAKE_CURRENT_SOURCE_DIR}/../recompiler/armv4t
      ${NDS_SM64DS_BANK_DIR}
@@ -96,10 +96,10 @@ index 81c98af..5e51f2d 100644
  if(NDS_BOOTSTRAP_FIRMWARE)
      target_compile_definitions(nds_runner PRIVATE NDS_BOOTSTRAP_FIRMWARE=1)
  elseif(EXISTS "${GEN}/fw_arm9_calibration_save_dispatch.c")
-diff --git a/runner/src/bus.cpp b/runner/src/bus.cpp
+diff --git i/runner/src/bus.cpp w/runner/src/bus.cpp
 index 57c9a47..71718ff 100644
---- a/runner/src/bus.cpp
-+++ b/runner/src/bus.cpp
+--- i/runner/src/bus.cpp
++++ w/runner/src/bus.cpp
 @@ -241,16 +241,27 @@ BusEvent g_ring[kRingSize];
  uint32_t g_ring_w = 0;
  uint64_t g_ring_seq = 0;
@@ -176,10 +176,10 @@ index 57c9a47..71718ff 100644
  uint32_t bus_debug_watch_copy(BusWatchEvent* out, uint32_t max_entries) {
      if (!out || max_entries == 0) return 0;
      uint32_t count = g_watch_count;
-diff --git a/runner/src/cart_backup.cpp b/runner/src/cart_backup.cpp
+diff --git i/runner/src/cart_backup.cpp w/runner/src/cart_backup.cpp
 index f893433..9388099 100644
---- a/runner/src/cart_backup.cpp
-+++ b/runner/src/cart_backup.cpp
+--- i/runner/src/cart_backup.cpp
++++ w/runner/src/cart_backup.cpp
 @@ -96,19 +96,46 @@ uint8_t eeprom_tiny_spi_write(NdsCartBackup& chip, uint8_t val, uint32_t pos,
  uint8_t flash_spi_write(NdsCartBackup& chip, uint8_t val, uint32_t pos,
                          bool last) {
@@ -263,10 +263,10 @@ index f893433..9388099 100644
                          chip.dirty = true;
                      }
                  }
-diff --git a/runner/src/debug_server.cpp b/runner/src/debug_server.cpp
+diff --git i/runner/src/debug_server.cpp w/runner/src/debug_server.cpp
 index d5d7fec..9a19197 100644
---- a/runner/src/debug_server.cpp
-+++ b/runner/src/debug_server.cpp
+--- i/runner/src/debug_server.cpp
++++ w/runner/src/debug_server.cpp
 @@ -403,6 +403,11 @@ std::string handle(const std::string& line) {
          return "{\"ok\":true}";
      }
@@ -363,10 +363,10 @@ index d5d7fec..9a19197 100644
          }
          out += "]}";
          return out;
-diff --git a/runner/src/frontend.cpp b/runner/src/frontend.cpp
+diff --git i/runner/src/frontend.cpp w/runner/src/frontend.cpp
 index 8b5947d..4677fc5 100644
---- a/runner/src/frontend.cpp
-+++ b/runner/src/frontend.cpp
+--- i/runner/src/frontend.cpp
++++ w/runner/src/frontend.cpp
 @@ -1,5 +1,7 @@
  #include "frontend.h"
  
@@ -441,6 +441,24 @@ index 8b5947d..4677fc5 100644
          queue->underruns.fetch_add(1, std::memory_order_relaxed);
  }
  
+-uint16_t key_bit(SDL_Scancode key) {
+-    // KEYINPUT/EXTKEYIN are active-low. This layout follows the common DS
+-    // emulator convention: Z/X = A/B, A/S = Y/X, Q/W = L/R.
+-    switch (key) {
+-        case SDL_SCANCODE_Z:         return 1u << 0;  // A
+-        case SDL_SCANCODE_X:         return 1u << 1;  // B
+-        case SDL_SCANCODE_BACKSPACE: return 1u << 2;  // Select
+-        case SDL_SCANCODE_RETURN:    return 1u << 3;  // Start
+-        case SDL_SCANCODE_RIGHT:     return 1u << 4;
+-        case SDL_SCANCODE_LEFT:      return 1u << 5;
+-        case SDL_SCANCODE_UP:        return 1u << 6;
+-        case SDL_SCANCODE_DOWN:      return 1u << 7;
+-        case SDL_SCANCODE_W:         return 1u << 8;  // R
+-        case SDL_SCANCODE_Q:         return 1u << 9;  // L
+-        case SDL_SCANCODE_S:         return 1u << 10; // X
+-        case SDL_SCANCODE_A:         return 1u << 11; // Y
+-        default:                     return 0;
+-    }
 +// KEYINPUT/EXTKEYIN are active-low. The default layout follows the common DS
 +// emulator convention: Z/X = A/B, A/S = Y/X, Q/W = L/R; it can be overridden
 +// per DS button via [[input.keyboard]] (see nds_apply_keyboard_bindings).
@@ -464,27 +482,11 @@ index 8b5947d..4677fc5 100644
 +        {SDL_SCANCODE_S, 1u << 10},         // X
 +        {SDL_SCANCODE_A, 1u << 11},         // Y
 +    };
-+}
-+
+ }
+ 
 +static std::vector<KeyRule> g_key_rules = default_key_rules();
 +
- uint16_t key_bit(SDL_Scancode key) {
--    // KEYINPUT/EXTKEYIN are active-low. This layout follows the common DS
--    // emulator convention: Z/X = A/B, A/S = Y/X, Q/W = L/R.
--    switch (key) {
--        case SDL_SCANCODE_Z:         return 1u << 0;  // A
--        case SDL_SCANCODE_X:         return 1u << 1;  // B
--        case SDL_SCANCODE_BACKSPACE: return 1u << 2;  // Select
--        case SDL_SCANCODE_RETURN:    return 1u << 3;  // Start
--        case SDL_SCANCODE_RIGHT:     return 1u << 4;
--        case SDL_SCANCODE_LEFT:      return 1u << 5;
--        case SDL_SCANCODE_UP:        return 1u << 6;
--        case SDL_SCANCODE_DOWN:      return 1u << 7;
--        case SDL_SCANCODE_W:         return 1u << 8;  // R
--        case SDL_SCANCODE_Q:         return 1u << 9;  // L
--        case SDL_SCANCODE_S:         return 1u << 10; // X
--        case SDL_SCANCODE_A:         return 1u << 11; // Y
--        default:                     return 0;
++uint16_t key_bit(SDL_Scancode key) {
 +    for (const KeyRule& rule : g_key_rules)
 +        if (rule.key == key) return rule.bit;
 +    return 0;
@@ -536,10 +538,10 @@ index 8b5947d..4677fc5 100644
 +        rules.push_back({key, bit});
 +        std::fprintf(stderr, "[input] keyboard: '%s' -> DS %s\n",
 +                     binding.key.c_str(), binding.button.c_str());
-     }
++    }
 +    g_key_rules = std::move(rules);
- }
- 
++}
++
 +namespace {
 +
  uint16_t controller_bit(SDL_GameControllerButton button) {
@@ -1641,10 +1643,10 @@ index 8b5947d..4677fc5 100644
      const bool pushed = SDL_PushEvent(&event) == 1;
      if (pushed) ++g_input_debug.debug_touch_events;
      else ++g_input_debug.debug_event_errors;
-diff --git a/runner/src/frontend.h b/runner/src/frontend.h
+diff --git i/runner/src/frontend.h w/runner/src/frontend.h
 index c1d5755..09343a1 100644
---- a/runner/src/frontend.h
-+++ b/runner/src/frontend.h
+--- i/runner/src/frontend.h
++++ w/runner/src/frontend.h
 @@ -2,6 +2,7 @@
  
  #include <cstdint>
@@ -1785,10 +1787,10 @@ index c1d5755..09343a1 100644
  bool nds_parse_internal_resolution(const std::string& value, uint8_t* out);
  bool nds_parse_texture_upscale(const std::string& value, uint8_t* out);
  bool nds_parse_on_off(const std::string& value, bool* out);
-diff --git a/runner/src/frontend_config.cpp b/runner/src/frontend_config.cpp
+diff --git i/runner/src/frontend_config.cpp w/runner/src/frontend_config.cpp
 index 0607a25..b6cbcd8 100644
---- a/runner/src/frontend_config.cpp
-+++ b/runner/src/frontend_config.cpp
+--- i/runner/src/frontend_config.cpp
++++ w/runner/src/frontend_config.cpp
 @@ -4,6 +4,8 @@
  #include <cctype>
  #include <exception>
@@ -1990,7 +1992,7 @@ index 0607a25..b6cbcd8 100644
 +                options->pad_taps.push_back(action);
 +            }
 +        }
-+    }
+     }
 +
 +    // ── ROM overlay mods, e.g.:
 +    //   [[mods.overlays]]
@@ -2019,7 +2021,7 @@ index 0607a25..b6cbcd8 100644
 +            overlay.file = *file;
 +            options->mod_overlays.push_back(std::move(overlay));
 +        }
-     }
++    }
 +
 +    // ── Keyboard bindings, e.g.:
 +    //   [[input.keyboard]]
@@ -2052,10 +2054,10 @@ index 0607a25..b6cbcd8 100644
 +
      return true;
  }
-diff --git a/runner/src/gpu3d.cpp b/runner/src/gpu3d.cpp
+diff --git i/runner/src/gpu3d.cpp w/runner/src/gpu3d.cpp
 index eb29cef..8e18a80 100644
---- a/runner/src/gpu3d.cpp
-+++ b/runner/src/gpu3d.cpp
+--- i/runner/src/gpu3d.cpp
++++ w/runner/src/gpu3d.cpp
 @@ -107,10 +107,18 @@ void compute_readback_failed(const char* stage) {
      g_compute_readback_pending = false;
      g_compute_frame_ready = false;
@@ -2097,10 +2099,10 @@ index eb29cef..8e18a80 100644
  uint32_t nds_gpu3d_compute_output_texture() {
  #if defined(NDS_HAVE_COMPUTE_RENDERER)
      auto* renderer = dynamic_cast<melonDS::ComputeRenderer*>(
-diff --git a/runner/src/gpu3d.h b/runner/src/gpu3d.h
+diff --git i/runner/src/gpu3d.h w/runner/src/gpu3d.h
 index c768491..0281e46 100644
---- a/runner/src/gpu3d.h
-+++ b/runner/src/gpu3d.h
+--- i/runner/src/gpu3d.h
++++ w/runner/src/gpu3d.h
 @@ -40,6 +40,10 @@ bool nds_gpu3d_renderer_requires_compute();
  bool nds_gpu3d_use_compute_renderer();
  bool nds_gpu3d_compute_renderer_built();
@@ -2112,10 +2114,10 @@ index c768491..0281e46 100644
  // Host presentation handle for the accelerated renderer's integer
  // RGB6/alpha5 surface. Valid only while its OpenGL context is current.
  uint32_t nds_gpu3d_compute_output_texture();
-diff --git a/runner/src/io.cpp b/runner/src/io.cpp
+diff --git i/runner/src/io.cpp w/runner/src/io.cpp
 index 7bb99d7..ef84ea7 100644
---- a/runner/src/io.cpp
-+++ b/runner/src/io.cpp
+--- i/runner/src/io.cpp
++++ w/runner/src/io.cpp
 @@ -6,6 +6,7 @@
  #include <algorithm>
  #include <cstdint>
@@ -2303,10 +2305,10 @@ index 7bb99d7..ef84ea7 100644
                      break;
                  case NdsBatterySaveLoadResult::Missing:
                      std::fprintf(stderr,
-diff --git a/runner/src/io.h b/runner/src/io.h
+diff --git i/runner/src/io.h w/runner/src/io.h
 index de668c9..9b5afef 100644
---- a/runner/src/io.h
-+++ b/runner/src/io.h
+--- i/runner/src/io.h
++++ w/runner/src/io.h
 @@ -8,9 +8,18 @@
  #pragma once
  
@@ -2326,10 +2328,406 @@ index de668c9..9b5afef 100644
  uint32_t nds_io_read(uint32_t addr, uint32_t width);
  void     nds_io_write(uint32_t addr, uint32_t value, uint32_t width);
  void     nds_io_reset();
-diff --git a/runner/src/main.cpp b/runner/src/main.cpp
+diff --git i/runner/src/live_overlay.cpp w/runner/src/live_overlay.cpp
+index 99f73d7..7d76a8d 100644
+--- i/runner/src/live_overlay.cpp
++++ w/runner/src/live_overlay.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cerrno>
+ #include <cctype>
+ #include <chrono>
+ #include <condition_variable>
+@@ -24,6 +25,12 @@
+ #if defined(_WIN32)
+ #define WIN32_LEAN_AND_MEAN
+ #include <windows.h>
++#else
++#include <dlfcn.h>
++#include <signal.h>
++#include <sys/types.h>
++#include <sys/wait.h>
++#include <unistd.h>
+ #endif
+ 
+ namespace {
+@@ -93,6 +100,8 @@ struct LoadedBank {
+     bool superseded = false;
+ #if defined(_WIN32)
+     HMODULE handle = nullptr;
++#else
++    void* handle = nullptr;
+ #endif
+ };
+ 
+@@ -139,6 +148,8 @@ struct State {
+ #if defined(_WIN32)
+     HANDLE child = nullptr;
+     HANDLE child_job = nullptr;
++#else
++    pid_t child = -1;
+ #endif
+ };
+ 
+@@ -553,27 +564,42 @@ uint64_t bank_content_identity(const NdsLiveBankInfo& info) {
+     return hash;
+ }
+ 
+-bool is_final_dll_path(const std::filesystem::path& path) {
++bool is_final_library_path(const std::filesystem::path& path) {
+     const std::string filename = lower_ascii(path.filename().string());
++#if defined(_WIN32)
+     constexpr const char* kStageSuffix = ".stage.dll";
++    constexpr const char* kLibrarySuffix = ".dll";
++#else
++    constexpr const char* kStageSuffix = ".stage.so";
++    constexpr const char* kLibrarySuffix = ".so";
++#endif
+     if (filename.size() >= std::strlen(kStageSuffix) &&
+         filename.compare(filename.size() - std::strlen(kStageSuffix),
+                          std::strlen(kStageSuffix), kStageSuffix) == 0) {
+         return false;
+     }
+-    return lower_ascii(path.extension().string()) == ".dll";
++    return lower_ascii(path.extension().string()) == kLibrarySuffix;
++}
++
++void close_library(LoadedBank& bank) {
++    if (!bank.handle) return;
++#if defined(_WIN32)
++    FreeLibrary(bank.handle);
++#else
++    dlclose(bank.handle);
++#endif
++    bank.handle = nullptr;
+ }
+ 
+ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
+                       std::string& error) {
+-#if defined(_WIN32)
+     if (!path_under_cache(path)) {
+-        error = "published DLL outside live overlay cache: " +
++        error = "published library outside live overlay cache: " +
+             path_string(path);
+         return false;
+     }
+-    if (!is_final_dll_path(path)) {
+-        error = "live bank is not an atomically published DLL: " +
++    if (!is_final_library_path(path)) {
++        error = "live bank is not an atomically published library: " +
+             path_string(path);
+         return false;
+     }
+@@ -581,31 +607,56 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
+     std::error_code ec;
+     const auto canon_path = std::filesystem::weakly_canonical(path, ec);
+     if (ec) {
+-        error = "cannot canonicalize published DLL: " +
++        error = "cannot canonicalize published library: " +
+             path_string(path);
+         return false;
+     }
+     const std::string canon = path_string(canon_path);
++#if defined(_WIN32)
+     HMODULE handle = LoadLibraryA(canon.c_str());
+     if (!handle) {
+         error = "LoadLibrary failed: " + canon;
+         return false;
+     }
++#else
++    void* handle = dlopen(canon.c_str(), RTLD_NOW | RTLD_LOCAL);
++    if (!handle) {
++        const char* detail = dlerror();
++        error = "dlopen failed: " + canon;
++        if (detail) error += ": " + std::string(detail);
++        return false;
++    }
++#endif
+ 
+     using InfoFn = const NdsLiveBankInfo* (*)();
++#if defined(_WIN32)
+     FARPROC proc = GetProcAddress(handle, "nds_live_bank_info");
+     InfoFn info_fn = nullptr;
+     static_assert(sizeof(info_fn) == sizeof(proc));
+     std::memcpy(&info_fn, &proc, sizeof(info_fn));
++#else
++    void* proc = dlsym(handle, "nds_live_bank_info");
++    InfoFn info_fn = nullptr;
++    static_assert(sizeof(info_fn) == sizeof(proc));
++    std::memcpy(&info_fn, &proc, sizeof(info_fn));
++#endif
+     const NdsLiveBankInfo* info = info_fn ? info_fn() : nullptr;
+     if (!info) {
++#if defined(_WIN32)
+         FreeLibrary(handle);
+-        error = "live DLL does not export bank metadata: " + canon;
++#else
++        dlclose(handle);
++#endif
++        error = "live library does not export bank metadata: " + canon;
+         return false;
+     }
+     std::string preflight_error;
+     if (!validate_live_bank_info(*info, g_live.rom_sha1, preflight_error)) {
++#if defined(_WIN32)
+         FreeLibrary(handle);
++#else
++        dlclose(handle);
++#endif
+         error = preflight_error + ": " + canon;
+         return false;
+     }
+@@ -615,8 +666,12 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
+     bank.bank_id = info->bank_id ? info->bank_id : "";
+     bank.candidate_id = info->candidate_id ? info->candidate_id : "";
+     using GenerationFn = const char* (*)();
++#if defined(_WIN32)
+     FARPROC generation_proc =
+         GetProcAddress(handle, "nds_live_generation_id");
++#else
++    void* generation_proc = dlsym(handle, "nds_live_generation_id");
++#endif
+     GenerationFn generation_fn = nullptr;
+     static_assert(sizeof(generation_fn) == sizeof(generation_proc));
+     std::memcpy(&generation_fn, &generation_proc, sizeof(generation_fn));
+@@ -633,12 +688,6 @@ bool prepare_bank_dll(const std::filesystem::path& path, LoadedBank& bank,
+     bank.content_identity = bank_content_identity(*info);
+     bank.handle = handle;
+     return true;
+-#else
+-    (void)path;
+-    (void)bank;
+-    error = "live overlay loading is implemented for Windows only";
+-    return false;
+-#endif
+ }
+ 
+ bool same_candidate_key(const LoadedBank& a, const LoadedBank& b) {
+@@ -647,7 +696,6 @@ bool same_candidate_key(const LoadedBank& a, const LoadedBank& b) {
+ }
+ 
+ bool commit_prepared_bank(LoadedBank bank) {
+-#if defined(_WIN32)
+     for (const LoadedBank& loaded : g_live.loaded) {
+         if (!same_candidate_key(loaded, bank)) continue;
+         if (loaded.content_identity != bank.content_identity) {
+@@ -656,7 +704,7 @@ bool commit_prepared_bank(LoadedBank bank) {
+                 bank.bank_id + "/" + bank.candidate_id;
+             ++g_live.banks_rejected;
+         }
+-        if (bank.handle) FreeLibrary(bank.handle);
++        close_library(bank);
+         return loaded.content_identity == bank.content_identity;
+     }
+     // A compiler pass may discover additional resume roots for a generation
+@@ -674,10 +722,7 @@ bool commit_prepared_bank(LoadedBank bank) {
+         loaded.registered = false;
+         loaded.superseded = true;
+         loaded.dispatch = nullptr;
+-        if (loaded.handle) {
+-            FreeLibrary(loaded.handle);
+-            loaded.handle = nullptr;
+-        }
++        close_library(loaded);
+     }
+     bank.serial = g_live.next_bank_serial++;
+     bank.generation = static_cast<uint32_t>(++g_live.publication_generation);
+@@ -691,10 +736,6 @@ bool commit_prepared_bank(LoadedBank bank) {
+                  g_live.loaded.back().dispatch_len,
+                  g_live.loaded.back().generation);
+     return true;
+-#else
+-    (void)bank;
+-    return false;
+-#endif
+ }
+ 
+ void prepare_worker_main() {
+@@ -727,7 +768,7 @@ void ensure_prepare_worker() {
+ }
+ 
+ bool queue_bank_dll(const std::filesystem::path& path) {
+-    if (!is_final_dll_path(path) || !path_under_cache(path) ||
++    if (!is_final_library_path(path) || !path_under_cache(path) ||
+         already_loaded(path)) {
+         return false;
+     }
+@@ -783,7 +824,7 @@ void rescan_cache() {
+         if (ec) break;
+         if (!entry.is_regular_file(ec)) continue;
+         const auto path = entry.path();
+-        if (!is_final_dll_path(path)) continue;
++        if (!is_final_library_path(path)) continue;
+         const auto write_time = entry.last_write_time(ec);
+         if (ec) {
+             ec.clear();
+@@ -842,6 +883,9 @@ bool write_snapshot_manifest() {
+ bool start_child() {
+ #if defined(_WIN32)
+     if (g_live.child || g_live.command.empty()) return false;
++#else
++    if (g_live.child > 0 || g_live.command.empty()) return false;
++#endif
+     if (!write_snapshot_manifest()) {
+         ++g_live.runs_failed;
+         return false;
+@@ -860,6 +904,7 @@ bool start_child() {
+     const auto log_path = g_live.cache_dir / "logs" / log_name;
+     g_live.log_path = path_string(log_path);
+ 
++#if defined(_WIN32)
+     SECURITY_ATTRIBUTES sa{sizeof(sa), NULL, TRUE};
+     HANDLE log = CreateFileA(g_live.log_path.c_str(), GENERIC_WRITE,
+                              FILE_SHARE_READ, &sa, CREATE_ALWAYS,
+@@ -918,16 +963,38 @@ bool start_child() {
+     CloseHandle(pi.hThread);
+     g_live.child = pi.hProcess;
+     g_live.child_job = job;
++#else
++    const pid_t child = fork();
++    if (child < 0) {
++        g_live.last_error = "fork failed for live overlay compiler";
++        ++g_live.runs_failed;
++        return false;
++    }
++    if (child == 0) {
++        // Give the compiler and any grandchildren their own process group so
++        // runner shutdown can terminate the whole compilation safely.
++        setsid();
++        FILE* log = std::fopen(g_live.log_path.c_str(), "w");
++        if (!log) _exit(126);
++        const int fd = fileno(log);
++        if (dup2(fd, STDOUT_FILENO) < 0 || dup2(fd, STDERR_FILENO) < 0)
++            _exit(126);
++        if (fd > STDERR_FILENO) std::fclose(log);
++        setenv("NDS_LIVE_OVERLAY_MANIFEST", g_live.manifest_path.c_str(), 1);
++        const std::string cache = path_string(g_live.cache_dir);
++        setenv("NDS_LIVE_OVERLAY_CACHE", cache.c_str(), 1);
++        setenv("NDS_LIVE_OVERLAY_ROM_SHA1", g_live.rom_sha1.c_str(), 1);
++        execl("/bin/sh", "sh", "-c", g_live.command.c_str(),
++              static_cast<char*>(nullptr));
++        _exit(127);
++    }
++    g_live.child = child;
++#endif
+     ++g_live.runs_started;
+     g_live.last_compile_start_ms = steady_ms();
+     std::fprintf(stderr, "[live-overlay] compiling from %s\n",
+                  g_live.manifest_path.c_str());
+     return true;
+-#else
+-    g_live.last_error = "live overlay compilation is implemented for Windows only";
+-    ++g_live.runs_failed;
+-    return false;
+-#endif
+ }
+ 
+ }  // namespace
+@@ -1001,6 +1068,17 @@ void live_overlay_shutdown() {
+         CloseHandle(g_live.child);
+         g_live.child = nullptr;
+     }
++#else
++    if (g_live.child > 0) {
++        // start_child() creates a session whose process-group ID is the child
++        // PID. Stop the group so gcc/recompiler grandchildren cannot outlive
++        // the runner. Published files are atomically renamed, so interrupted
++        // builds leave only ignored staging artifacts.
++        kill(-g_live.child, SIGTERM);
++        int status = 0;
++        while (waitpid(g_live.child, &status, 0) < 0 && errno == EINTR) {}
++        g_live.child = -1;
++    }
+ #endif
+     {
+         std::lock_guard<std::mutex> lock(g_live.publish_mutex);
+@@ -1009,12 +1087,10 @@ void live_overlay_shutdown() {
+     }
+     g_live.publish_cv.notify_all();
+     if (g_live.prepare_thread.joinable()) g_live.prepare_thread.join();
+-#if defined(_WIN32)
+     std::lock_guard<std::mutex> lock(g_live.publish_mutex);
+     for (LoadedBank& bank : g_live.ready_queue) {
+-        if (bank.handle) FreeLibrary(bank.handle);
++        close_library(bank);
+     }
+-#endif
+     g_live.ready_queue.clear();
+ }
+ 
+@@ -1108,7 +1184,6 @@ void live_overlay_note_write(int cpu, uint32_t pc, uint32_t addr,
+ }
+ 
+ void live_overlay_poll() {
+-#if defined(_WIN32)
+     if (!g_live.enabled) return;
+     if (!g_live.initial_cache_scan_done)
+         live_overlay_register_cached_banks();
+@@ -1116,7 +1191,14 @@ void live_overlay_poll() {
+     // multiple candidates, but at most one complete bank becomes visible per
+     // poll so lookup can never observe a partially populated bundle.
+     commit_one_ready_bank();
+-    if (g_live.child) {
++    bool child_active = false;
++#if defined(_WIN32)
++    child_active = g_live.child != nullptr;
++#else
++    child_active = g_live.child > 0;
++#endif
++    if (child_active) {
++#if defined(_WIN32)
+         DWORD exit_code = STILL_ACTIVE;
+         if (GetExitCodeProcess(g_live.child, &exit_code) &&
+             exit_code != STILL_ACTIVE) {
+@@ -1126,6 +1208,14 @@ void live_overlay_poll() {
+                 CloseHandle(g_live.child_job);
+                 g_live.child_job = nullptr;
+             }
++#else
++        int status = 0;
++        const pid_t waited = waitpid(g_live.child, &status, WNOHANG);
++        if (waited == g_live.child) {
++            const int exit_code = WIFEXITED(status)
++                ? WEXITSTATUS(status) : 128 + WTERMSIG(status);
++            g_live.child = -1;
++#endif
+             ++g_live.runs_finished;
+             if (exit_code != 0) {
+                 ++g_live.runs_failed;
+@@ -1147,11 +1237,16 @@ void live_overlay_poll() {
+     }
+     if (!activation_delay_elapsed()) return;
+     schedule_pending_compile();
+-    if (!g_live.child && g_live.trigger_requests > g_live.runs_started) {
++    child_active = false;
++#if defined(_WIN32)
++    child_active = g_live.child != nullptr;
++#else
++    child_active = g_live.child > 0;
++#endif
++    if (!child_active && g_live.trigger_requests > g_live.runs_started) {
+         if (!start_child())
+             g_live.trigger_requests = g_live.runs_started;
+     }
+-#endif
+ }
+ 
+ bool live_overlay_trigger_now() {
+@@ -1183,7 +1278,7 @@ std::string live_overlay_status_json() {
+ #if defined(_WIN32)
+     out << (g_live.child ? "true" : "false");
+ #else
+-    out << "false";
++    out << (g_live.child > 0 ? "true" : "false");
+ #endif
+     out << ",\"tier3_arm9\":" << g_live.tier3[0]
+         << ",\"tier3_arm7\":" << g_live.tier3[1]
+diff --git i/runner/src/main.cpp w/runner/src/main.cpp
 index a5b2e32..479f060 100644
---- a/runner/src/main.cpp
-+++ b/runner/src/main.cpp
+--- i/runner/src/main.cpp
++++ w/runner/src/main.cpp
 @@ -14,6 +14,7 @@
  #include <filesystem>
  #include <fstream>
@@ -2474,10 +2872,10 @@ index a5b2e32..479f060 100644
      nds_compute_host_stop();
  #else
      const bool compute_failed = false;
-diff --git a/runner/src/net/wfc_provider.cpp b/runner/src/net/wfc_provider.cpp
+diff --git i/runner/src/net/wfc_provider.cpp w/runner/src/net/wfc_provider.cpp
 index b3ac5f2..ca6d257 100644
---- a/runner/src/net/wfc_provider.cpp
-+++ b/runner/src/net/wfc_provider.cpp
+--- i/runner/src/net/wfc_provider.cpp
++++ w/runner/src/net/wfc_provider.cpp
 @@ -31,6 +31,12 @@ const NdsWfcProviderInfo kNdsWfcProviders[] = {
      // Raw official Wiimmfi DNS endpoint. Kept for diagnostics and future
      // patched-client compatibility; not the stock-DS route.
@@ -2491,10 +2889,10 @@ index b3ac5f2..ca6d257 100644
      // Guest-visible Slirp host alias. Packets sent here are translated by
      // libslirp to host loopback, so the local dwc-docker/wfc_dns.py stack can
      // stay bound to 127.0.0.1 without handing the guest its own loopback.
-diff --git a/runner/src/runtime_arm.cpp b/runner/src/runtime_arm.cpp
+diff --git i/runner/src/runtime_arm.cpp w/runner/src/runtime_arm.cpp
 index 2fd6932..936277e 100644
---- a/runner/src/runtime_arm.cpp
-+++ b/runner/src/runtime_arm.cpp
+--- i/runner/src/runtime_arm.cpp
++++ w/runner/src/runtime_arm.cpp
 @@ -11,6 +11,7 @@
  
  #include <algorithm>
@@ -2512,10 +2910,10 @@ index 2fd6932..936277e 100644
  }
  // ARM7TDMI early-termination multiply timing. ARM9 uses its separate static
  // numI combine, so this runtime value is ignored on that path.
-diff --git a/runner/src/scheduler.cpp b/runner/src/scheduler.cpp
+diff --git i/runner/src/scheduler.cpp w/runner/src/scheduler.cpp
 index ee7c613..6744c0a 100644
---- a/runner/src/scheduler.cpp
-+++ b/runner/src/scheduler.cpp
+--- i/runner/src/scheduler.cpp
++++ w/runner/src/scheduler.cpp
 @@ -415,6 +415,19 @@ void scheduler_terminal_halt_all(const char* reason) {
      g_slot[1].reason = reason;
  }
@@ -2536,10 +2934,10 @@ index ee7c613..6744c0a 100644
  void scheduler_profile_reset() {
      g_profile = NdsSchedulerProfile{};
      g_profile_rounds = 0;
-diff --git a/runner/src/scheduler.h b/runner/src/scheduler.h
+diff --git i/runner/src/scheduler.h w/runner/src/scheduler.h
 index b1956aa..fcff416 100644
---- a/runner/src/scheduler.h
-+++ b/runner/src/scheduler.h
+--- i/runner/src/scheduler.h
++++ w/runner/src/scheduler.h
 @@ -69,6 +69,11 @@ void scheduler_run_round();
  // outside CPU dispatch. Unlike nds_halt(), this survives the next slice setup.
  void scheduler_terminal_halt_all(const char* reason);
@@ -2552,10 +2950,10 @@ index b1956aa..fcff416 100644
  // Inspect a CPU's saved state after a run (for reporting).
  const struct ArmCpuState& scheduler_cpu_state(int cpu);
  uint64_t scheduler_cpu_cycles(int cpu);
-diff --git a/runner/src/state.h b/runner/src/state.h
+diff --git i/runner/src/state.h w/runner/src/state.h
 index 0c4fe89..8bbda49 100644
---- a/runner/src/state.h
-+++ b/runner/src/state.h
+--- i/runner/src/state.h
++++ w/runner/src/state.h
 @@ -84,6 +84,7 @@ struct BusRegion {
  };
  bool bus_get_region(const char* name, BusRegion* out);
@@ -2569,10 +2967,393 @@ index 0c4fe89..8bbda49 100644
  };
  uint32_t bus_debug_watch_copy(BusWatchEvent* out, uint32_t max_entries);
 +void bus_debug_watch_reset(void);
-diff --git a/runner/tests/cart_backup_test.cpp b/runner/tests/cart_backup_test.cpp
+diff --git i/runner/src/wifi_net.cpp w/runner/src/wifi_net.cpp
+index 5c803ae..0b4136c 100644
+--- i/runner/src/wifi_net.cpp
++++ w/runner/src/wifi_net.cpp
+@@ -42,6 +42,13 @@
+ #include <winsock2.h>
+ #include <mswsock.h>
+ #include <ws2tcpip.h>
++#else
++#include <arpa/inet.h>
++#include <cerrno>
++#include <fcntl.h>
++#include <netinet/in.h>
++#include <sys/socket.h>
++#include <unistd.h>
+ #endif
+ 
+ #if defined(NDS_ENABLE_PCAP_BACKEND) && defined(_WIN32)
+@@ -72,7 +79,7 @@
+ #include "../vendor/melonds/net/Net.h"
+ #include "../vendor/melonds/net/NetDriver.h"
+ #include "../vendor/melonds/net/Net_Slirp.h"
+-#if defined(NDS_ENABLE_PCAP_BACKEND)
++#if defined(NDS_ENABLE_PCAP_BACKEND) && defined(_WIN32)
+ #include "../vendor/melonds/net/Net_PCap.h"
+ #endif
+ 
+@@ -658,6 +665,44 @@ void WriteLe64(std::vector<uint8_t>* out, uint64_t value) {
+     WriteLe32(out, static_cast<uint32_t>(value >> 32u));
+ }
+ 
++#ifdef _WIN32
++using HostSocket = SOCKET;
++using HostSockLen = int;
++constexpr HostSocket kInvalidHostSocket = INVALID_SOCKET;
++
++int HostSocketError() { return WSAGetLastError(); }
++bool HostSocketWouldBlock(int error) {
++    return error == WSAEWOULDBLOCK || error == WSAECONNRESET;
++}
++bool SetHostSocketNonblocking(HostSocket socket) {
++    u_long nonblocking = 1;
++    return ioctlsocket(socket, FIONBIO, &nonblocking) != SOCKET_ERROR;
++}
++void DisableUdpConnectionReset(HostSocket socket) {
++    BOOL reset_enabled = FALSE;
++    DWORD bytes_returned = 0;
++    WSAIoctl(socket, SIO_UDP_CONNRESET, &reset_enabled,
++             sizeof(reset_enabled), nullptr, 0, &bytes_returned,
++             nullptr, nullptr);
++}
++void CloseHostSocket(HostSocket socket) { closesocket(socket); }
++#else
++using HostSocket = int;
++using HostSockLen = socklen_t;
++constexpr HostSocket kInvalidHostSocket = -1;
++
++int HostSocketError() { return errno; }
++bool HostSocketWouldBlock(int error) {
++    return error == EAGAIN || error == EWOULDBLOCK || error == ECONNRESET;
++}
++bool SetHostSocketNonblocking(HostSocket socket) {
++    const int flags = fcntl(socket, F_GETFL, 0);
++    return flags >= 0 && fcntl(socket, F_SETFL, flags | O_NONBLOCK) == 0;
++}
++void DisableUdpConnectionReset(HostSocket) {}
++void CloseHostSocket(HostSocket socket) { close(socket); }
++#endif
++
+ struct LocalMpFrame {
+     uint32_t sender = 0;
+     uint32_t type = 0;
+@@ -699,40 +744,35 @@ public:
+ 
+     void Begin() {
+         if (!enabled_) return;
+-#ifdef _WIN32
+-        if (socket_ != INVALID_SOCKET) return;
++        if (socket_ != kInvalidHostSocket) return;
+ 
+         socket_ = ::socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+-        if (socket_ == INVALID_SOCKET) {
++        if (socket_ == kInvalidHostSocket) {
+             melonDS::Platform::Log(melonDS::Platform::Error,
+-                "[local_mp] socket failed: %d\n", WSAGetLastError());
++                "[local_mp] socket failed: %d\n", HostSocketError());
+             return;
+         }
+ 
+-        BOOL reset_enabled = FALSE;
+-        DWORD bytes_returned = 0;
+-        WSAIoctl(socket_, SIO_UDP_CONNRESET, &reset_enabled,
+-                 sizeof(reset_enabled), nullptr, 0, &bytes_returned,
+-                 nullptr, nullptr);
++        DisableUdpConnectionReset(socket_);
+ 
+         sockaddr_in addr{};
+         addr.sin_family = AF_INET;
+         addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+         addr.sin_port = htons(static_cast<uint16_t>(base_port_ + instance_));
+         if (::bind(socket_, reinterpret_cast<sockaddr*>(&addr),
+-                   sizeof(addr)) == SOCKET_ERROR) {
++                   sizeof(addr)) < 0) {
+             melonDS::Platform::Log(melonDS::Platform::Error,
+                 "[local_mp] bind 127.0.0.1:%u failed: %d\n",
+                 static_cast<unsigned>(base_port_ + instance_),
+-                WSAGetLastError());
++                HostSocketError());
+             CloseSocket();
+             return;
+         }
+ 
+-        u_long nonblocking = 1;
+-        if (ioctlsocket(socket_, FIONBIO, &nonblocking) == SOCKET_ERROR) {
++        if (!SetHostSocketNonblocking(socket_)) {
+             melonDS::Platform::Log(melonDS::Platform::Error,
+-                "[local_mp] nonblocking setup failed: %d\n", WSAGetLastError());
++                "[local_mp] nonblocking setup failed: %d\n",
++                HostSocketError());
+             CloseSocket();
+             return;
+         }
+@@ -741,19 +781,13 @@ public:
+             "[local_mp] enabled instance=%u port=%u\n",
+             static_cast<unsigned>(instance_),
+             static_cast<unsigned>(base_port_ + instance_));
+-#else
+-        melonDS::Platform::Log(melonDS::Platform::Warn,
+-            "[local_mp] localhost UDP transport is currently Windows-only\n");
+-#endif
+     }
+ 
+     void End() {
+         packet_queue_.Clear();
+         reply_queue_.Clear();
+         last_host_id_ = -1;
+-#ifdef _WIN32
+         CloseSocket();
+-#endif
+     }
+ 
+     int SendPacket(uint8_t* data, int len, uint64_t timestamp) {
+@@ -838,8 +872,7 @@ private:
+     int SendGeneric(uint32_t type, uint8_t* data, int len,
+                     uint64_t timestamp) {
+         if (!enabled_) return 0;
+-#ifdef _WIN32
+-        if (socket_ == INVALID_SOCKET) return 0;
++        if (socket_ == kInvalidHostSocket) return 0;
+         if (len < 0 || static_cast<size_t>(len) > kMaxFrameBytes) return 0;
+         if (len > 0 && !data) return 0;
+ 
+@@ -864,39 +897,31 @@ private:
+                          reinterpret_cast<const char*>(datagram.data()),
+                          static_cast<int>(datagram.size()), 0,
+                          reinterpret_cast<sockaddr*>(&target),
+-                         sizeof(target)) != SOCKET_ERROR) {
++                         sizeof(target)) >= 0) {
+                 sent = len;
+             } else if (send_error_log_counter_ < 8u) {
+                 ++send_error_log_counter_;
+                 melonDS::Platform::Log(melonDS::Platform::Warn,
+                     "[local_mp] sendto 127.0.0.1:%u failed: %d\n",
+                     static_cast<unsigned>(base_port_ + i),
+-                    WSAGetLastError());
++                    HostSocketError());
+             }
+         }
+         return sent;
+-#else
+-        (void)type;
+-        (void)data;
+-        (void)len;
+-        (void)timestamp;
+-        return 0;
+-#endif
+     }
+ 
+     void DrainSocket() {
+-#ifdef _WIN32
+-        if (!enabled_ || socket_ == INVALID_SOCKET) return;
++        if (!enabled_ || socket_ == kInvalidHostSocket) return;
+         for (;;) {
+             uint8_t datagram[kHeaderBytes + kMaxFrameBytes];
+             sockaddr_in from{};
+-            int from_len = sizeof(from);
++            HostSockLen from_len = sizeof(from);
+             const int got = ::recvfrom(
+                 socket_, reinterpret_cast<char*>(datagram), sizeof(datagram),
+                 0, reinterpret_cast<sockaddr*>(&from), &from_len);
+-            if (got == SOCKET_ERROR) {
+-                const int err = WSAGetLastError();
+-                if (err != WSAEWOULDBLOCK && err != WSAECONNRESET) {
++            if (got < 0) {
++                const int err = HostSocketError();
++                if (!HostSocketWouldBlock(err)) {
+                     melonDS::Platform::Log(melonDS::Platform::Warn,
+                         "[local_mp] recvfrom failed: %d\n", err);
+                 }
+@@ -923,16 +948,13 @@ private:
+             else
+                 packet_queue_.TryPush(std::move(frame));
+         }
+-#endif
+     }
+ 
+-#ifdef _WIN32
+     void CloseSocket() {
+-        if (socket_ == INVALID_SOCKET) return;
+-        closesocket(socket_);
+-        socket_ = INVALID_SOCKET;
++        if (socket_ == kInvalidHostSocket) return;
++        CloseHostSocket(socket_);
++        socket_ = kInvalidHostSocket;
+     }
+-#endif
+ 
+     bool enabled_ = false;
+     uint32_t instance_ = 0;
+@@ -941,9 +963,7 @@ private:
+     LocalMpFrameQueue reply_queue_{kQueueCapacity};
+     int last_host_id_ = -1;
+     uint32_t send_error_log_counter_ = 0;
+-#ifdef _WIN32
+-    SOCKET socket_ = INVALID_SOCKET;
+-#endif
++    HostSocket socket_ = kInvalidHostSocket;
+ };
+ 
+ class LocalWfcPeerBridge {
+@@ -955,40 +975,35 @@ public:
+ 
+     void Begin() {
+         if (!enabled_) return;
+-#ifdef _WIN32
+-        if (socket_ != INVALID_SOCKET) return;
++        if (socket_ != kInvalidHostSocket) return;
+ 
+         socket_ = ::socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+-        if (socket_ == INVALID_SOCKET) {
++        if (socket_ == kInvalidHostSocket) {
+             melonDS::Platform::Log(melonDS::Platform::Error,
+-                "[wfc_peer] socket failed: %d\n", WSAGetLastError());
++                "[wfc_peer] socket failed: %d\n", HostSocketError());
+             return;
+         }
+ 
+-        BOOL reset_enabled = FALSE;
+-        DWORD bytes_returned = 0;
+-        WSAIoctl(socket_, SIO_UDP_CONNRESET, &reset_enabled,
+-                 sizeof(reset_enabled), nullptr, 0, &bytes_returned,
+-                 nullptr, nullptr);
++        DisableUdpConnectionReset(socket_);
+ 
+         sockaddr_in addr{};
+         addr.sin_family = AF_INET;
+         addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+         addr.sin_port = htons(static_cast<uint16_t>(kBasePort + instance_));
+         if (::bind(socket_, reinterpret_cast<sockaddr*>(&addr),
+-                   sizeof(addr)) == SOCKET_ERROR) {
++                   sizeof(addr)) < 0) {
+             melonDS::Platform::Log(melonDS::Platform::Error,
+                 "[wfc_peer] bind 127.0.0.1:%u failed: %d\n",
+                 static_cast<unsigned>(kBasePort + instance_),
+-                WSAGetLastError());
++                HostSocketError());
+             CloseSocket();
+             return;
+         }
+ 
+-        u_long nonblocking = 1;
+-        if (ioctlsocket(socket_, FIONBIO, &nonblocking) == SOCKET_ERROR) {
++        if (!SetHostSocketNonblocking(socket_)) {
+             melonDS::Platform::Log(melonDS::Platform::Error,
+-                "[wfc_peer] nonblocking setup failed: %d\n", WSAGetLastError());
++                "[wfc_peer] nonblocking setup failed: %d\n",
++                HostSocketError());
+             CloseSocket();
+             return;
+         }
+@@ -997,24 +1012,17 @@ public:
+             "[wfc_peer] enabled instance=%u port=%u\n",
+             static_cast<unsigned>(instance_),
+             static_cast<unsigned>(kBasePort + instance_));
+-#else
+-        melonDS::Platform::Log(melonDS::Platform::Warn,
+-            "[wfc_peer] localhost UDP transport is currently Windows-only\n");
+-#endif
+     }
+ 
+     void End() {
+-#ifdef _WIN32
+         CloseSocket();
+-#endif
+     }
+ 
+     bool ForwardIfPeerFrame(const uint8_t* data, int len) {
+         if (!enabled_ || !data) return false;
+         uint32_t target = 0;
+         if (!IsPeerFrame(data, len, &target)) return false;
+-#ifdef _WIN32
+-        if (socket_ == INVALID_SOCKET) return false;
++        if (socket_ == kInvalidHostSocket) return false;
+         if (len <= 0 || static_cast<size_t>(len) > kMaxFrameBytes) return true;
+ 
+         std::vector<uint8_t> datagram;
+@@ -1036,33 +1044,31 @@ public:
+         if (::sendto(socket_, reinterpret_cast<const char*>(datagram.data()),
+                      static_cast<int>(datagram.size()), 0,
+                      reinterpret_cast<sockaddr*>(&peer),
+-                     sizeof(peer)) == SOCKET_ERROR) {
++                     sizeof(peer)) < 0) {
+             if (send_error_log_counter_ < 8u) {
+                 ++send_error_log_counter_;
+                 melonDS::Platform::Log(melonDS::Platform::Warn,
+                     "[wfc_peer] sendto 127.0.0.1:%u failed: %d\n",
+                     static_cast<unsigned>(kBasePort + target),
+-                    WSAGetLastError());
++                    HostSocketError());
+             }
+         }
+-#endif
+         return true;
+     }
+ 
+     void DrainTo(BoundedPacketQueue* rx_queue,
+                  std::atomic<uint32_t>* rx_drop_counter) {
+-#ifdef _WIN32
+-        if (!enabled_ || socket_ == INVALID_SOCKET || !rx_queue) return;
++        if (!enabled_ || socket_ == kInvalidHostSocket || !rx_queue) return;
+         for (;;) {
+             uint8_t datagram[kHeaderBytes + kMaxFrameBytes];
+             sockaddr_in from{};
+-            int from_len = sizeof(from);
++            HostSockLen from_len = sizeof(from);
+             const int got = ::recvfrom(
+                 socket_, reinterpret_cast<char*>(datagram), sizeof(datagram),
+                 0, reinterpret_cast<sockaddr*>(&from), &from_len);
+-            if (got == SOCKET_ERROR) {
+-                const int err = WSAGetLastError();
+-                if (err != WSAEWOULDBLOCK && err != WSAECONNRESET) {
++            if (got < 0) {
++                const int err = HostSocketError();
++                if (!HostSocketWouldBlock(err)) {
+                     melonDS::Platform::Log(melonDS::Platform::Warn,
+                         "[wfc_peer] recvfrom failed: %d\n", err);
+                 }
+@@ -1082,10 +1088,6 @@ public:
+                 rx_drop_counter->fetch_add(1, std::memory_order_relaxed);
+             }
+         }
+-#else
+-        (void)rx_queue;
+-        (void)rx_drop_counter;
+-#endif
+     }
+ 
+ private:
+@@ -1113,20 +1115,16 @@ private:
+         return true;
+     }
+ 
+-#ifdef _WIN32
+     void CloseSocket() {
+-        if (socket_ == INVALID_SOCKET) return;
+-        closesocket(socket_);
+-        socket_ = INVALID_SOCKET;
++        if (socket_ == kInvalidHostSocket) return;
++        CloseHostSocket(socket_);
++        socket_ = kInvalidHostSocket;
+     }
+-#endif
+ 
+     bool enabled_ = false;
+     uint32_t instance_ = 0;
+     uint32_t send_error_log_counter_ = 0;
+-#ifdef _WIN32
+-    SOCKET socket_ = INVALID_SOCKET;
+-#endif
++    HostSocket socket_ = kInvalidHostSocket;
+ };
+ 
+ struct WifiBridgeState {
+diff --git i/runner/tests/cart_backup_test.cpp w/runner/tests/cart_backup_test.cpp
 index fc9cc65..8b2e969 100644
---- a/runner/tests/cart_backup_test.cpp
-+++ b/runner/tests/cart_backup_test.cpp
+--- i/runner/tests/cart_backup_test.cpp
++++ w/runner/tests/cart_backup_test.cpp
 @@ -114,17 +114,18 @@ void test_status_poll_between_wren_and_write() {
  void test_flash_program_versus_write_and_erase() {
      NdsCartBackup chip = make_chip(NdsCartridgeSaveType::Flash, 262144u);
@@ -2606,10 +3387,10 @@ index fc9cc65..8b2e969 100644
  }
  
  void test_eeprom_write_survives_separate_wren_transfer() {
-diff --git a/runner/tests/wfc_provider_test.cpp b/runner/tests/wfc_provider_test.cpp
+diff --git i/runner/tests/wfc_provider_test.cpp w/runner/tests/wfc_provider_test.cpp
 index 7f166e3..a5db02e 100644
---- a/runner/tests/wfc_provider_test.cpp
-+++ b/runner/tests/wfc_provider_test.cpp
+--- i/runner/tests/wfc_provider_test.cpp
++++ w/runner/tests/wfc_provider_test.cpp
 @@ -19,9 +19,11 @@ int main() {
      if (!require(provider_is("kaeru", "178.62.43.212")) ||
          !require(provider_is("wiimmfi", "178.62.43.212")) ||
@@ -2622,10 +3403,10 @@ index 7f166e3..a5db02e 100644
          !require(nds_wfc_provider_lookup("unknown") == nullptr)) {
          return 1;
      }
-diff --git a/runner/vendor/melonds/GPU3D.cpp b/runner/vendor/melonds/GPU3D.cpp
+diff --git i/runner/vendor/melonds/GPU3D.cpp w/runner/vendor/melonds/GPU3D.cpp
 index b1885db..94eab06 100644
---- a/runner/vendor/melonds/GPU3D.cpp
-+++ b/runner/vendor/melonds/GPU3D.cpp
+--- i/runner/vendor/melonds/GPU3D.cpp
++++ w/runner/vendor/melonds/GPU3D.cpp
 @@ -2360,7 +2360,11 @@ void GPU3D::ExecuteCommand() noexcept
                      break;
  
@@ -2638,10 +3419,10 @@ index b1885db..94eab06 100644
                  }
              }
          }
-diff --git a/runner/vendor/melonds/GPU3D_Compute.cpp b/runner/vendor/melonds/GPU3D_Compute.cpp
+diff --git i/runner/vendor/melonds/GPU3D_Compute.cpp w/runner/vendor/melonds/GPU3D_Compute.cpp
 index c4e8a30..e244a5c 100644
---- a/runner/vendor/melonds/GPU3D_Compute.cpp
-+++ b/runner/vendor/melonds/GPU3D_Compute.cpp
+--- i/runner/vendor/melonds/GPU3D_Compute.cpp
++++ w/runner/vendor/melonds/GPU3D_Compute.cpp
 @@ -167,7 +167,11 @@ void ComputeRenderer::ShaderCompileStep(int& current, int& count)
          CompileShader(ShaderFinalPass[7], ComputeRendererShaders::FinalPass, {"FinalPass", "AntiAliasing", "EdgeMarking", "Fog"});
          return;
@@ -2654,3 +3435,132 @@ index c4e8a30..e244a5c 100644
          return;
      }
  }
+diff --git i/tools/compile_live_shards.py w/tools/compile_live_shards.py
+index 547b8bd..e3856de 100644
+--- i/tools/compile_live_shards.py
++++ w/tools/compile_live_shards.py
+@@ -44,7 +44,23 @@ def run(command: list[str]) -> subprocess.CompletedProcess:
+     return subprocess.run(command, text=True)
+ 
+ 
+-def find_import_lib(runner_build: Path) -> Path:
++def gcc_targets_windows(gcc) -> bool:
++    # The bank library flavor follows the COMPILER TARGET, not the host OS:
++    # a mingw cross-gcc driven from Linux must produce PE DLLs linked against
++    # the runner's import library, exactly like a native MSYS2 build.
++    machine = subprocess.check_output(
++        [str(gcc), "-dumpmachine"], text=True).strip()
++    return "w64" in machine or os.name == "nt"
++
++
++def find_import_lib(runner_build: Path,
++                    windows_target: bool = False) -> Path | None:
++    # PE/COFF live libraries must link the executable's generated import
++    # library. ELF shared objects intentionally leave runtime ABI symbols
++    # unresolved; nds_runner exports them with ENABLE_EXPORTS/-rdynamic and
++    # dlopen resolves them from the main program.
++    if not windows_target:
++        return None
+     for name in (
+             "libnds_runner.dll.a", "nds_runner.exe.a",
+             "libnds_runner.exe.a"):
+@@ -279,10 +295,10 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+             print(f"capture {key}: previously rejected unsupported opcode",
+                   flush=True)
+             return "skipped", None
+-        dll = Path(indexed.get("dll", ""))
+-        if dll.is_file():
+-            print(f"capture {key}: already compiled as {dll}", flush=True)
+-            return "skipped", dll
++        library = Path(indexed.get("library", indexed.get("dll", "")))
++        if library.is_file():
++            print(f"capture {key}: already compiled as {library}", flush=True)
++            return "skipped", library
+ 
+     cpu_name = "arm9" if cpu == 9 else "arm7"
+     bank = f"nds_live_{cpu_name}_{addr:08x}"
+@@ -329,10 +345,11 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+         print(f"capture {key}: generated body contains an unsupported opcode; "
+               "kept in Tier 3", flush=True)
+         return "skipped", None
+-    dll_dir = args.cache / "gcc"
+-    dll_dir.mkdir(parents=True, exist_ok=True)
+-    dll = dll_dir / f"{bank}_{candidate_id}.dll"
+-    if not dll.is_file():
++    library_dir = args.cache / "gcc"
++    library_dir.mkdir(parents=True, exist_ok=True)
++    suffix = ".dll" if args.windows_target else ".so"
++    library = library_dir / f"{bank}_{candidate_id}{suffix}"
++    if not library.is_file():
+         wrapper = src_dir / f"{bank}_live.c"
+         write_wrapper(wrapper, bank, candidate_id, page_sha1,
+                       args.rom_sha1, cpu)
+@@ -340,22 +357,25 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+         sources = [*bank_sources, wrapper]
+         if len(bank_sources) < 2 or not all(path.is_file() for path in sources):
+             raise RuntimeError(f"generated source set is incomplete for {bank}")
+-        stage = dll.with_suffix(".stage.dll")
++        stage = library.with_suffix(f".stage{suffix}")
+         stage.unlink(missing_ok=True)
+         gcc = [
+             args.gcc, "-shared", args.generated_opt, "-g0",
+             f"-DNDS_STATIC_CPU={0 if cpu == 9 else 1}",
+             "-I", str(args.ndsrecomp_root / "recompiler" / "armv4t"),
+             "-I", str(src_dir),
+-            "-Wl,--enable-auto-import",
+             "-o", str(stage),
+             *[str(path) for path in sources],
+-            str(args.runner_import_lib),
+         ]
++        if args.windows_target:
++            gcc.extend(["-Wl,--enable-auto-import",
++                        str(args.runner_import_lib)])
++        else:
++            gcc.insert(2, "-fPIC")
+         if run(gcc).returncode != 0:
+             stage.unlink(missing_ok=True)
+             return "failed", None
+-        os.replace(stage, dll)
++        os.replace(stage, library)
+ 
+     index.setdefault("captures", {})[key] = {
+         "candidate_id": candidate_id,
+@@ -365,11 +385,14 @@ def compile_page(args: argparse.Namespace, page: dict, entries: list[dict],
+         "page": f"0x{addr:08X}",
+         "page_sha1": page_sha1,
+         "entries": len(entries),
+-        "dll": dll.resolve().as_posix(),
++        # Keep the legacy key for existing Windows caches while making the
++        # platform-neutral name canonical for new consumers.
++        "library": library.resolve().as_posix(),
++        "dll": library.resolve().as_posix(),
+     }
+     atomic_json(args.index, index)
+-    print(f"NDS_SHARD_PUBLISHED {dll.resolve().as_posix()}", flush=True)
+-    return "ok", dll
++    print(f"NDS_SHARD_PUBLISHED {library.resolve().as_posix()}", flush=True)
++    return "ok", library
+ 
+ 
+ def main() -> int:
+@@ -408,7 +431,9 @@ def main() -> int:
+         raise SystemExit(f"recompiler does not exist: {args.recompiler}")
+     args.cache.mkdir(parents=True, exist_ok=True)
+     args.index = args.cache / "live-index.json"
+-    args.runner_import_lib = find_import_lib(args.runner_build)
++    args.windows_target = gcc_targets_windows(args.gcc)
++    args.runner_import_lib = find_import_lib(args.runner_build,
++                                             args.windows_target)
+     args.provider_id = provider_identity(args)
+ 
+     manifest = load_json(args.manifest)
+@@ -448,7 +473,8 @@ def main() -> int:
+                             args.provider_id)
+         indexed = index.get("captures", {}).get(key)
+         if indexed and (indexed.get("status") == "unsupported" or
+-                        Path(indexed.get("dll", "")).is_file()):
++                        Path(indexed.get(
++                            "library", indexed.get("dll", ""))).is_file()):
+             skipped += 1
+             continue
+         if attempted >= args.max_pages:
