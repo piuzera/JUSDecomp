@@ -2,6 +2,7 @@
 """Compile declared source TUs and gate their raw objects against dsd references."""
 import bisect
 import hashlib
+import re
 import struct
 import subprocess
 import sys
@@ -18,6 +19,25 @@ finally:
 
 class Unresolved(ValueError):
     pass
+
+
+def require_unit_context(unit, compiler_hash, runner_hash, source):
+    compiler = unit.get('compiler', {})
+    if not compiler.get('package') or compiler.get('sha256') != compiler_hash:
+        raise ValueError('TU compiler differs from declared compiler pin')
+    if compiler.get('runner_sha256') != runner_hash:
+        raise ValueError('TU compiler runner differs from declared runner pin')
+    abi = unit.get('abi', {})
+    if (abi.get('language') not in ('C', 'C++') or abi.get('instruction_mode') not in ('arm', 'thumb')
+            or abi.get('endianness') != 'little' or abi.get('pointer_bits') != 32
+            or abi.get('settings') != 'pinned compiler defaults'):
+        raise ValueError('TU ABI context missing or unsupported')
+    if unit.get('headers') != {} or unit.get('include_paths'):
+        raise Unresolved('declared header dependencies require compiler dependency capture')
+    if re.search(r'^\s*#\s*include', source.read_text(), re.M):
+        raise ValueError('header-free TU includes an untracked header')
+    if '-nostdinc' not in unit.get('flags', []):
+        raise ValueError('header-free TU must disable ambient include paths')
 
 
 def sha256(path):
@@ -208,6 +228,8 @@ def build_sources(manifest, root, output, reference_dir, compiler, runner):
                 raise ValueError('declared reference TU missing')
             unit['source_sha256'] = sha256(source)
             unit['reference'] = {'path': str(reference), 'sha256': sha256(reference)}
+            if 'compiler' in specification:
+                require_unit_context(specification, compiler_hash, runner_hash, source)
             includes = [_inside(root, name) for name in specification['include_paths']]
             if any(not path.is_dir() for path in includes):
                 raise ValueError('declared include directory missing')
@@ -232,6 +254,9 @@ def build_sources(manifest, root, output, reference_dir, compiler, runner):
             if sha256(source) != unit['source_sha256'] or sha256(reference) != unit['reference']['sha256']:
                 raise ValueError('source/reference changed during compilation')
             unit['checks'] = compare_objects(reference, destination, specification['functions'])
+            if 'abi' in specification and any(function['mode'] != specification['abi']['instruction_mode']
+                                             for function in unit['checks']['functions']):
+                raise ValueError('compiled function mode differs from declared TU ABI')
             unit['status'] = 'passed'
         for name, digest in input_hashes.items():
             if sha256(Path(name)) != digest:

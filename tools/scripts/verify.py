@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Strict fresh native ARM9 baseline build and verification; no skipped stages."""
 import argparse
+import copy
 import hashlib
 import importlib.util
 import json
@@ -13,11 +14,13 @@ import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-REQUIRED_STAGES = ('intake', 'tool_versions', 'prepare_config', 'extract', 'delink',
+MODULE_STAGES = ('intake', 'tool_versions', 'prepare_config', 'extract', 'delink',
                    'lcf', 'native_link', 'link_inputs', 'check_modules', 'check_symbols',
                    'direct_comparison', 'relocation_check', 'freshness')
-SOURCE_STAGES = (*REQUIRED_STAGES[:5], 'source_config', 'source_delink', 'source_build',
-                 *REQUIRED_STAGES[5:12], 'source_ownership', 'freshness')
+SOURCE_MODULE_STAGES = (*MODULE_STAGES[:5], 'source_config', 'source_delink', 'source_build',
+                        *MODULE_STAGES[5:12], 'source_ownership', 'freshness')
+REQUIRED_STAGES = (*MODULE_STAGES, 'rom_roundtrip', 'rom_freshness')
+SOURCE_STAGES = (*SOURCE_MODULE_STAGES, 'rom_roundtrip', 'rom_freshness')
 
 
 def sha256(path):
@@ -48,8 +51,7 @@ def require_unchanged(snapshot):
             raise ValueError(f'input/tool changed during build: {path.name}')
 
 
-def require_stages(stages, source_enabled=False):
-    required = SOURCE_STAGES if source_enabled else REQUIRED_STAGES
+def require_stage_sequence(stages, required):
     names = [stage['name'] for stage in stages]
     for name in required:
         matches = [s for s in stages if s['name'] == name]
@@ -57,6 +59,37 @@ def require_stages(stages, source_enabled=False):
             raise ValueError(f'required stage missing/skipped/failed: {name}')
     if names != list(required):
         raise ValueError('verification stage order differs from required pipeline')
+
+
+def require_stages(stages, source_enabled=False):
+    require_stage_sequence(stages, SOURCE_STAGES if source_enabled else REQUIRED_STAGES)
+
+
+def verified_module_checkpoint(report, source_enabled=False):
+    required = SOURCE_MODULE_STAGES if source_enabled else MODULE_STAGES
+    require_stage_sequence(report['stages'], required)
+    checkpoint = copy.deepcopy(report)
+    checkpoint['status'] = 'passed'
+    return checkpoint
+
+
+def require_rom_freshness(snapshot, report, output, rom, expected_hash):
+    require_unchanged(snapshot)
+    for name, digest in report['artifact_hashes'].items():
+        path = output / name
+        if (not path.is_file() or path.is_symlink()
+                or not path.resolve().is_relative_to(output.resolve())
+                or sha256(path) != digest):
+            raise ValueError(f'output artifact changed during ROM packing: {name}')
+    if (not rom.is_file() or rom.is_symlink()
+            or not rom.resolve().is_relative_to(output.resolve())
+            or rom.stat().st_mtime_ns < report['started_ns']):
+        raise ValueError('rebuilt ROM is missing, stale, or outside the fresh build')
+    if sha256(rom) != expected_hash:
+        raise ValueError('rebuilt ROM hash changed after packing')
+    report['artifact_hashes'][str(rom.relative_to(output))] = expected_hash
+    return {'inputs_unchanged': True, 'artifact_count': len(report['artifact_hashes']),
+            'rom_sha256': expected_hash}
 
 
 def require_module_files(directory, expected):
@@ -314,7 +347,8 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
     output = output.resolve()
     report = {'schema_version': 1, 'build_id': str(uuid.uuid4()), 'status': 'failed',
               'started_ns': time.time_ns(), 'stages': [],
-              'scope': 'native ARM9 main/ITCM/DTCM/14 overlays; ARM7 and embedded program unbuilt',
+              'scope': 'native ARM9 main/ITCM/DTCM/14 overlays and exact whole-ROM repack; '
+                       'ARM7 and embedded program preserved with zero source credit',
               'source_coverage': {'matched_source_bytes': 0, 'percent': 0}}
     report_path = output / 'report.json'
     try:
@@ -323,7 +357,7 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
             raise ValueError('output already exists; supply a fresh build directory')
         output.mkdir(parents=True)
         sources = [root / 'tools/scripts' / name for name in
-                   ('verify.py', 'baseline_intake.py', 'native_link.py')]
+                   ('verify.py', 'baseline_intake.py', 'native_link.py', 'rom_roundtrip.py')]
         sources += [root / 'decomp/toolchain.lock.json', root / 'decomp/rom-manifest.json',
                     root / 'decomp/matching-notes/baseline-t01/executable-regions.json',
                     root / 'decomp/matching-notes/baseline-t01/reference-relocations.json']
@@ -337,6 +371,9 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
             manifest = json.loads(source_manifest.read_text())
             if manifest.get('schema_version') != 1 or not manifest.get('translation_units'):
                 raise ValueError('source manifest must declare nonempty schema version 1 translation_units')
+            if any(not all(name in unit for name in ('compiler', 'abi', 'headers', 'experimental_overrides'))
+                   for unit in manifest['translation_units']):
+                raise ValueError('source manifest needs per-TU compiler, ABI, headers, and experiment context')
             sources += [source_manifest, root / 'tools/scripts/source_build.py',
                         root / 'tools/scripts/source_accounting.py']
             for unit in manifest['translation_units']:
@@ -490,6 +527,13 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
             return {'artifact_count': len(artifacts), 'inputs_unchanged': True}
 
         record_stage(report, 'freshness', freshness)
+        checkpoint = verified_module_checkpoint(report, source_enabled=bool(manifest))
+        packer = load_script(root / 'tools/scripts/rom_roundtrip.py', 'rom_roundtrip_verify')
+        rebuilt_rom = output / 'rebuilt.nds'
+        report['rom_roundtrip'] = record_stage(report, 'rom_roundtrip', lambda: packer.roundtrip_rom(
+            rom, output, regions, checkpoint, rebuilt_rom))
+        record_stage(report, 'rom_freshness', lambda: require_rom_freshness(
+            snapshot, report, output, rebuilt_rom, report['rom']['sha256']))
         require_stages(report['stages'], source_enabled=bool(manifest))
         if manifest:
             report['source_coverage'] = accounting.summarize_coverage(ownership, config.parent,

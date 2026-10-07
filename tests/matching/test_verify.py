@@ -24,6 +24,56 @@ class VerificationTests(unittest.TestCase):
     def setUp(self):
         self.assertTrue(SCRIPT.exists(), 'strict verifier missing')
 
+    def test_module_only_success_cannot_pass_without_rom_roundtrip(self):
+        tool = module()
+        for source_enabled in (False, True):
+            stages = tool.SOURCE_STAGES if source_enabled else tool.REQUIRED_STAGES
+            module_only = [{'name': name, 'status': 'passed'} for name in stages
+                           if name not in ('rom_roundtrip', 'rom_freshness')]
+            with self.subTest(source_enabled=source_enabled):
+                with self.assertRaisesRegex(ValueError, 'rom_roundtrip'):
+                    tool.require_stages(module_only, source_enabled=source_enabled)
+
+    def test_rom_checkpoint_requires_all_module_gates_and_keeps_final_failed(self):
+        tool = module()
+        self.assertTrue(hasattr(tool, 'verified_module_checkpoint'), 'ROM checkpoint gate missing')
+        stages = [dict(name=name, status='passed') for name in tool.SOURCE_STAGES
+                  if name not in ('rom_roundtrip', 'rom_freshness')]
+        report = {'status': 'failed', 'stages': stages,
+                  'source_coverage': {'matched_source_bytes': 0}}
+        checkpoint = tool.verified_module_checkpoint(report, source_enabled=True)
+        self.assertEqual(checkpoint['status'], 'passed')
+        self.assertEqual(report['status'], 'failed')
+        checkpoint['stages'][0]['status'] = 'failed'
+        self.assertEqual(report['stages'][0]['status'], 'passed')
+        for name in ('source_build', 'relocation_check', 'source_ownership', 'freshness'):
+            broken = dict(report, stages=[s for s in stages if s['name'] != name])
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, name):
+                tool.verified_module_checkpoint(broken, source_enabled=True)
+
+    def test_rom_final_freshness_rejects_mutated_module_or_repacked_output(self):
+        tool = module()
+        self.assertTrue(hasattr(tool, 'require_rom_freshness'), 'post-pack freshness missing')
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)
+            started = time.time_ns()
+            payload = output / 'arm9.bin'
+            payload.write_bytes(b'public module')
+            rom = output / 'rebuilt.nds'
+            rom.write_bytes(b'public rebuilt ROM')
+            report = {'started_ns': started,
+                      'artifact_hashes': {'arm9.bin': tool.sha256(payload)}}
+            result = tool.require_rom_freshness({}, report, output, rom, tool.sha256(rom))
+            self.assertTrue(result['inputs_unchanged'])
+            payload.write_bytes(b'mutated module')
+            with self.assertRaisesRegex(ValueError, 'artifact changed'):
+                tool.require_rom_freshness({}, report, output, rom, tool.sha256(rom))
+            payload.write_bytes(b'public module')
+            expected = tool.sha256(rom)
+            rom.write_bytes(b'mutated ROM')
+            with self.assertRaisesRegex(ValueError, 'artifact changed.*rebuilt.nds|ROM.*hash'):
+                tool.require_rom_freshness({}, report, output, rom, expected)
+
     def test_wrong_rom_fails_before_tools_or_extraction_and_writes_report(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -40,6 +90,23 @@ class VerificationTests(unittest.TestCase):
             self.assertEqual(report['stages'][-1]['name'], 'intake')
             self.assertNotIn('extract', [s['name'] for s in report['stages']])
             self.assertNotIn('tool_versions', [s['name'] for s in report['stages']])
+
+    def test_source_manifest_without_per_tu_context_rejects_before_build(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            manifest = json.loads((ROOT / 'decomp/source-manifest.json').read_text())
+            for name in ('compiler', 'abi', 'headers', 'experimental_overrides'):
+                manifest['translation_units'][0].pop(name, None)
+            path = directory / 'manifest.json'
+            path.write_text(json.dumps(manifest))
+            output = directory / 'fresh'
+            result = subprocess.run([sys.executable, str(SCRIPT), '--rom', '/unused',
+                '--output', str(output), '--dsd', '/unused', '--lld', '/unused',
+                '--clang', '/unused', '--source-manifest', str(path)], capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            report = json.loads((output / 'report.json').read_text())
+            self.assertIn('per-TU', report['failure'])
+            self.assertEqual(report['source_coverage']['matched_source_bytes'], 0)
 
     def test_existing_output_is_rejected_without_touching_stale_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp:

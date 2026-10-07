@@ -68,6 +68,29 @@ class SourceBuildTests(unittest.TestCase):
     def compare(self):
         return module().compare_objects(self.reference,self.compiled,['public_func'])
 
+    def test_tu_context_binds_compiler_runner_and_header_policy(self):
+        tool = module()
+        self.assertTrue(hasattr(tool, 'require_unit_context'), 'per-TU compiler context missing')
+        source = self.root / 'public.c'
+        source.write_text('void public_func(void) {}\n')
+        unit = {'compiler': {'package': '2.0/base', 'sha256': 'a' * 64,
+                             'runner_sha256': 'b' * 64},
+                'abi': {'language': 'C', 'instruction_mode': 'arm', 'endianness': 'little',
+                        'pointer_bits': 32, 'settings': 'pinned compiler defaults'},
+                'headers': {}, 'include_paths': [], 'flags': ['-nostdinc']}
+        tool.require_unit_context(unit, 'a' * 64, 'b' * 64, source)
+        with self.assertRaisesRegex(ValueError, 'compiler'):
+            tool.require_unit_context(unit, 'c' * 64, 'b' * 64, source)
+        with self.assertRaisesRegex(ValueError, 'runner'):
+            tool.require_unit_context(unit, 'a' * 64, 'c' * 64, source)
+        source.write_text('#include "untracked.h"\nvoid public_func(void) {}\n')
+        with self.assertRaisesRegex(ValueError, 'header'):
+            tool.require_unit_context(unit, 'a' * 64, 'b' * 64, source)
+        source.write_text('void public_func(void) {}\n')
+        unit['flags'] = []
+        with self.assertRaisesRegex(ValueError, 'ambient'):
+            tool.require_unit_context(unit, 'a' * 64, 'b' * 64, source)
+
     def test_matching_sections_functions_and_relocations_pass(self):
         result=self.compare()
         self.assertEqual(result['status'],'passed')

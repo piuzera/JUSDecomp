@@ -5,11 +5,32 @@
       "module": "ov000",
       "object": "src/ov000/test_trampoline.o",
       "source": "decomp/src/ov000/test_trampoline.c",
-      "functions": ["func_ov000_0214de00"],
+      "functions": [
+        "func_ov000_0214de00"
+      ],
       "category": "game",
       "cpu": "arm946e",
-      "flags": ["-Cpp_exceptions", "off"],
-      "include_paths": []
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc"
+      ],
+      "include_paths": [],
+      "compiler": {
+        "package": "2.0/base",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+        "selection_scope": "this TU only"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "experimental_overrides": []
     }
   ]
 }
