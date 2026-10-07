@@ -1,0 +1,105 @@
+# Nontrivial compiler experiments
+
+Four ordinary C reproducers exercise ARM loops, Thumb calls and literals, and an
+indirect call through an object table. All 288 compilations succeeded across
+24 packages and three saved contexts. None matched its original reference TU.
+Every compiler choice remains unresolved. These files contribute zero source
+coverage and do not change the production source manifest.
+
+The integrated production manifest separately pins the trampoline's compiler
+and runner per TU. Its ABI uses ARM, little-endian 32-bit pointers, and the
+pinned compiler defaults. It disables ambient includes. The production and
+experimental gates share a header policy that rejects forced headers,
+response files, and disguised include directives. Header dependencies require
+compiler dependency capture before a header-bearing TU can be promoted.
+
+The [symbol report](symbol-report.json) accepts three reviewed aliases:
+`ComicDeckCreate`, `KShapeLookup`, and the untyped `ComicDeckManagerPointer`.
+It verifies local document hashes and closed-bead provenance, then rechecks
+the actual trampoline objects and authoritative module extent. Linker names
+remain unchanged; no structure layouts or C prototypes are imported.
+
+The final integrated [ROM evidence](../rom-t08/README.md) records 124 passing
+tests and fresh source/reference builds at commit `9495e76`. The final sweep
+uses that commit's shared header policy. The historical first sweep is
+superseded by this report, with the same 288 nonmatching outputs.
+
+[The experiment manifest](../../compiler-experiments.json) pins source hashes,
+reference object hashes, compiler binaries and DLLs, the runner, and per-symbol
+CPU, flags, ABI descriptions, and include context. [The report](report.json)
+records object and section hashes, relocation identities, mismatch positions,
+and emitted-code equivalence groups. Original bytes and compiled objects stay
+in ignored `build/` directories.
+
+## Targets and limits
+
+| Original identity | Mode | Extent | Observed behavior |
+|---|---|---:|---|
+| main `func_02078aa0` at `0x02078aa0` | ARM | 48 bytes | Calls `func_020517fc` with size 92, then writes 16 halfword keys at four-byte strides. |
+| main `func_02078ad0` at `0x02078ad0` | ARM | 56 bytes | Compares 23 words through two pointers. Returns one on the first mismatch and zero if all words match. |
+| main `func_02071f60` at `0x02071f60` | Thumb | 68 bytes | Forms a 92-byte record address, compares against the destination, conditionally copies, sets a byte, and calls `func_02073114`. |
+| ov000 `func_ov000_0214d0dc` at `0x0214d0dc` | ARM | 44 bytes | Forwards an argument to `func_02035c90`, tests a field at offset 56, calls table slot at offset 20 if zero, and returns the field. |
+
+The opaque overlay layout states only the offsets needed for this experiment.
+It does not establish a class name, complete class size, destructor, vtable
+ownership, or SDK origin. No SDK function or C++ class has been identified by
+these experiments. T05 donor evidence and the T06 pilot remain necessary.
+
+The old [Deck_IsValid? hypothesis](https://github.com/piuzera/JUSDecomp/blob/6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b/decomp/docs/DECK_INJECTION.md)
+says that the body was unread and presents a single-argument call. The pinned
+body uses both `r0` and `r1` as word pointers. The experiment preserves the dsd
+name and uses the observed two-argument comparison. It does not import the
+speculative validity name or prototype.
+
+## Results
+
+Default and `-O0` contexts emit the same code for each package in this sample.
+The `-O4,p` context changes every target. This follows the inspected compiler
+help: default optimization is off.
+
+The clear-record outputs divide into groups of five and nineteen packages.
+The default Thumb-copy outputs form three groups. Its `-O4,p` outputs form four.
+The optimized word-comparison output is identical across all 24 packages.
+The overlay output is identical across all 24 packages in each context.
+
+The optimized overlay reproducer has the original extent and relocation
+identity. Its only byte mismatch is position 26: the object-table load uses
+saved register `r4` instead of returned register `r0`. No instruction patch or
+assembly substitution was attempted. Empty original-match sets and these
+emitted-code groups preserve uncertainty about compiler identity and source
+shape. A different reconstructed expression or context could change the result.
+
+## Provenance
+
+The target boundaries and dsd link names come from pinned upstream
+[`symbols.txt`](https://github.com/piuzera/JUSDecomp/blob/6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b/decomp/arm9/symbols.txt)
+and the [ov000 symbol file](https://github.com/piuzera/JUSDecomp/blob/6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b/decomp/arm9/overlays/ov000/symbols.txt).
+The manifest pins the verified T03 native ELF digest. LLVM disassembly of that
+ELF supplied instruction semantics, with explicit section selection for ov000.
+The reference TUs were generated by pinned dsd 0.12.0 using its
+[complete-TU delinks syntax](https://github.com/AetiasHax/ds-decomp/blob/v0.12.0/docs/delinks.md).
+Bead `jus-bjry.4` records the experiment scope and findings.
+
+The compiler packages come from the
+[decomp.me compiler archive](https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip)
+pinned by archive SHA256 `dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace`.
+All 24 installed packages in the requested `1.2`, `2.0`, and `dsi` families were
+swept. Package names are not compiler version numbers. The report records each
+compiler's own `-version` output. The
+[wibo 1.2.0 runner](https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos)
+runs through Rosetta on the pinned macOS host. The linker remains separately
+pinned in [toolchain.lock.json](../../toolchain.lock.json).
+
+The runner rejects changed source hashes, changed context hashes, changed
+compiler DLLs, empty compiler inventories, and duplicate contexts. Emitted-code
+fingerprints retain relocation destinations, so identical instructions with
+different destinations do not form one equivalence group.
+
+[Reproduction commands](reproduce.md) regenerate the private references and run
+the saved experiment. The current runner requires header-free C and disables
+ambient standard include paths. Header-bearing source requires dependency
+capture before promotion. Compiler help exposes `-MD` and `-M`: a future gate
+can record every compiler-reported dependency, reject paths outside declared
+include roots, hash dependencies before and after compilation, and preserve
+include order and prefix-header flags. An include directory hash alone cannot
+prove that ambient or relative headers were declared.

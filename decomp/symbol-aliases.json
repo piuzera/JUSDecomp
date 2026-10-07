@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "policy": "Aliases only; DSD link names remain authoritative. No inferred C signatures or structure layouts.",
+  "claims": [
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".text",
+        "address": 34037692,
+        "mode": "arm"
+      },
+      "dsd_name": "func_02075fbc",
+      "kind": "function",
+      "size": 1060,
+      "alias": "ComicDeckCreate",
+      "role": "alias",
+      "confidence": "confirmed_static",
+      "reviewed": true,
+      "provenance": [
+        {
+          "repository": "jus_re",
+          "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+          "bead": "jus-g2t35-chrb-loader-callers-resolved-4qxb",
+          "bead_status": "closed",
+          "path": "docs/research/Battle-Engine-Map.md",
+          "sha256": "846f8bb0a580d78590622f9773b66988d5bf35ba21367328878bad318b4c2199",
+          "summary": "Reviewed decompile plus independent ARMv5 byte-level caller census and ComicDeckCreate debug string; 16 direct callers correct the earlier zero-caller claim. No C signature or manager layout imported."
+        }
+      ]
+    },
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".text",
+        "address": 34041088,
+        "mode": "arm"
+      },
+      "dsd_name": "func_02076d00",
+      "kind": "function",
+      "size": 48,
+      "alias": "KShapeLookup",
+      "role": "alias",
+      "confidence": "confirmed_static",
+      "reviewed": true,
+      "provenance": [
+        {
+          "repository": "jus_re",
+          "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+          "bead": "jus-kshape-lookup-identified-a1j",
+          "bead_status": "closed",
+          "path": "docs/research/findings/p229-koma-shapes-come-from-kshape-bin.md",
+          "sha256": "e2fcf0c66646b97d916c0053c9996381ca4ad88989e112a7b12d1e3de0333247",
+          "summary": "Static instructions identify the cumulative-table kshape lookup using two signed-byte selectors. The original short-pointer/record-base interpretation is refuted; this alias imports lookup semantics only."
+        },
+        {
+          "repository": "jus_re",
+          "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+          "bead": "jus-d9a",
+          "bead_status": "closed",
+          "path": "docs/research/findings/p229-koma-shapes-come-from-kshape-bin.md",
+          "sha256": "e2fcf0c66646b97d916c0053c9996381ca4ad88989e112a7b12d1e3de0333247",
+          "summary": "Later file-size test corrects record base from0x54 to0x40. No record layout/type claim is imported."
+        }
+      ]
+    },
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".bss",
+        "address": 34913664,
+        "mode": "data"
+      },
+      "dsd_name": "data_0214bd80",
+      "kind": "bss",
+      "size": null,
+      "alias": "ComicDeckManagerPointer",
+      "role": "alias",
+      "confidence": "confirmed_static",
+      "reviewed": true,
+      "provenance": [
+        {
+          "repository": "jus_re",
+          "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+          "bead": "jus-g2t35-chrb-loader-callers-resolved-4qxb",
+          "bead_status": "closed",
+          "path": "docs/research/Battle-Engine-Map.md",
+          "sha256": "846f8bb0a580d78590622f9773b66988d5bf35ba21367328878bad318b4c2199",
+          "summary": "Reviewed decompile plus independent ARMv5 byte-level caller census and ComicDeckCreate debug string; 16 direct callers correct the earlier zero-caller claim. No C signature or manager layout imported."
+        }
+      ]
+    }
+  ]
+}

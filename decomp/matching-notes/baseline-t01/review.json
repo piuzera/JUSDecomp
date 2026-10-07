@@ -1,0 +1,19 @@
+{
+  "reviewer": "gpt-6-astra",
+  "source_commit": "f27d1ae",
+  "scope": "Native baseline artifacts and decision trail; T02 excluded",
+  "flags": [],
+  "verified": [
+    "39 native artifact hashes",
+    "11 public tests",
+    "17 dsd module checks",
+    "diagnostic ELF symbol check",
+    "raw ELF ARM/Thumb mode versus mapping symbols",
+    "diagnostic metadata-only change preserving payloads and extents"
+  ],
+  "native_elf_modes": {
+    "arm_functions": 9935,
+    "thumb_functions": 5044,
+    "mapping_mismatches": 0
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "reviewer_model": "gpt-6-astra",
+  "producer_commit": "47aa4b8",
+  "proof_commit": "4d6fd38",
+  "status": "cleared",
+  "flags": [],
+  "verified": {
+    "stages": 19,
+    "tests": 204,
+    "test_skips": 0,
+    "live_relocation_slots": 87493,
+    "artifact_hashes": 193,
+    "source_hashes": 68,
+    "matched_source_bytes": 76,
+    "game_source_bytes": 44,
+    "sdk_source_bytes": 32,
+    "whole_rom_exact": true,
+    "payload_bytes_unchanged": true
+  },
+  "limits": [
+    "T06 remains open: six published class targets remain fallback",
+    "T10 remains open: no child or ARM7 source credit",
+    "Global source percentage remains unknown"
+  ],
+  "audit": "Own transcript, committed decision trail and live proof hashes agree."
+}

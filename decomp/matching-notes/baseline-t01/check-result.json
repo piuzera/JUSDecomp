@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "check",
+    "modules",
+    "-c",
+    "/private/tmp/jus-track-a/build/baseline-t01/config/config.yaml",
+    "-f"
+  ],
+  "returncode": 1
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "status": "no_semantic_migration_needed",
+  "dsd": {
+    "version": "0.12.0",
+    "source_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+    "asset": "dsd-macos-arm64",
+    "url": "https://github.com/AetiasHax/ds-decomp/releases/download/v0.12.0/dsd-macos-arm64",
+    "sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+    "verified_version_output": "ds-decomp-cli 0.12.0",
+    "equivalence_to_upstream_windows_binary": "not_verified"
+  },
+  "dry_command": [
+    "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "fix",
+    "find-exceptix",
+    "-c",
+    "/private/tmp/jus-track-a-runtime/build/runtime-metadata-probe/config/config.yaml",
+    "--dry"
+  ],
+  "dry_exit_status": 0,
+  "dry_changed_files": false,
+  "dry_log_sha256": "6e84948f5b78ca97c9d67f7d5b1dd9e20f6c04f0fe163040e2629a09060045eb",
+  "applied_private_log_sha256": "e95872614a20f005e035d565a9de130787a906f4e95e5eded6d963e57acf7308",
+  "semantic_changed_files": [],
+  "line_ending_only_files": [
+    "symbols.txt",
+    "relocs.txt",
+    "itcm/symbols.txt",
+    "itcm/relocs.txt",
+    "dtcm/symbols.txt",
+    "dtcm/relocs.txt",
+    "overlays/ov012/symbols.txt",
+    "overlays/ov012/relocs.txt",
+    "overlays/ov000/symbols.txt",
+    "overlays/ov000/relocs.txt",
+    "overlays/ov007/symbols.txt",
+    "overlays/ov007/relocs.txt",
+    "overlays/ov006/symbols.txt",
+    "overlays/ov006/relocs.txt",
+    "overlays/ov001/symbols.txt",
+    "overlays/ov001/relocs.txt",
+    "overlays/ov008/symbols.txt",
+    "overlays/ov008/relocs.txt",
+    "overlays/ov011/symbols.txt",
+    "overlays/ov011/relocs.txt",
+    "overlays/ov010/symbols.txt",
+    "overlays/ov010/relocs.txt",
+    "overlays/ov004/symbols.txt",
+    "overlays/ov004/relocs.txt",
+    "overlays/ov003/symbols.txt",
+    "overlays/ov003/relocs.txt",
+    "overlays/ov002/symbols.txt",
+    "overlays/ov002/relocs.txt",
+    "overlays/ov005/symbols.txt",
+    "overlays/ov005/relocs.txt"
+  ],
+  "added_relocation_slots": 0,
+  "total_original_slots": 87493,
+  "existing_literals": [
+    {
+      "address": "0x0200f594",
+      "type": 2,
+      "addend": 0,
+      "symbol": "__exception_table_start__"
+    },
+    {
+      "address": "0x0200f598",
+      "type": 2,
+      "addend": 0,
+      "symbol": "__exception_table_end__"
+    }
+  ],
+  "exception_table_entries": 0,
+  "exception_records": 0
+}

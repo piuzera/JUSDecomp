@@ -1,0 +1,29 @@
+{
+  "reviewer": "gpt-6-astra",
+  "status": "cleared",
+  "attention_flags": [],
+  "matcher_fix_commit": "dd8a4fd",
+  "scope": [
+    "T05 donor matcher, licensed corpus, actual dependency proofs and corrected BL/BLX normalization",
+    "T10 strict child scanner repair and native reference baseline",
+    "Isolated patched-tool parent strict initialization and exact ROM reconstruction"
+  ],
+  "tests": 174,
+  "skips": 0,
+  "matcher_tests": 15,
+  "rust_tests": 5,
+  "source_stages": 19,
+  "source_bytes": 24,
+  "donor_accepted_matches": 0,
+  "donor_unresolved_leads": 868,
+  "child_modules": 3,
+  "child_relocations_validated": 35092,
+  "limitations": [
+    "No original donor source promotions or verified donor names",
+    "Child baseline uses reference objects and earns zero source credit",
+    "ARM7 analysis and source rebuilding remain open",
+    "Child compressed ROM roundtrip remains unproven",
+    "T07 runtime checks remain queued",
+    "Global source coverage remains unknown"
+  ]
+}

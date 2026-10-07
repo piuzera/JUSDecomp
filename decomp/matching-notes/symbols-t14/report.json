@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "counts": {
+    "accepted": 3,
+    "unresolved": 0
+  },
+  "records": [
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".text",
+        "address": 34037692,
+        "mode": "arm"
+      },
+      "dsd_names": [
+        "func_02075fbc"
+      ],
+      "claims": [
+        {
+          "identity": {
+            "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+            "cpu": "arm9",
+            "module": "main",
+            "section": ".text",
+            "address": 34037692,
+            "mode": "arm"
+          },
+          "dsd_name": "func_02075fbc",
+          "kind": "function",
+          "size": 1060,
+          "alias": "ComicDeckCreate",
+          "role": "alias",
+          "confidence": "confirmed_static",
+          "reviewed": true,
+          "provenance": [
+            {
+              "repository": "jus_re",
+              "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+              "bead": "jus-g2t35-chrb-loader-callers-resolved-4qxb",
+              "bead_status": "closed",
+              "path": "docs/research/Battle-Engine-Map.md",
+              "sha256": "846f8bb0a580d78590622f9773b66988d5bf35ba21367328878bad318b4c2199",
+              "summary": "Reviewed decompile plus independent ARMv5 byte-level caller census and ComicDeckCreate debug string; 16 direct callers correct the earlier zero-caller claim. No C signature or manager layout imported."
+            }
+          ]
+        }
+      ],
+      "accepted_aliases": [
+        "ComicDeckCreate"
+      ],
+      "accepted_types": [],
+      "status": "passed"
+    },
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".text",
+        "address": 34041088,
+        "mode": "arm"
+      },
+      "dsd_names": [
+        "func_02076d00"
+      ],
+      "claims": [
+        {
+          "identity": {
+            "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+            "cpu": "arm9",
+            "module": "main",
+            "section": ".text",
+            "address": 34041088,
+            "mode": "arm"
+          },
+          "dsd_name": "func_02076d00",
+          "kind": "function",
+          "size": 48,
+          "alias": "KShapeLookup",
+          "role": "alias",
+          "confidence": "confirmed_static",
+          "reviewed": true,
+          "provenance": [
+            {
+              "repository": "jus_re",
+              "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+              "bead": "jus-kshape-lookup-identified-a1j",
+              "bead_status": "closed",
+              "path": "docs/research/findings/p229-koma-shapes-come-from-kshape-bin.md",
+              "sha256": "e2fcf0c66646b97d916c0053c9996381ca4ad88989e112a7b12d1e3de0333247",
+              "summary": "Static instructions identify the cumulative-table kshape lookup using two signed-byte selectors. The original short-pointer/record-base interpretation is refuted; this alias imports lookup semantics only."
+            },
+            {
+              "repository": "jus_re",
+              "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+              "bead": "jus-d9a",
+              "bead_status": "closed",
+              "path": "docs/research/findings/p229-koma-shapes-come-from-kshape-bin.md",
+              "sha256": "e2fcf0c66646b97d916c0053c9996381ca4ad88989e112a7b12d1e3de0333247",
+              "summary": "Later file-size test corrects record base from0x54 to0x40. No record layout/type claim is imported."
+            }
+          ]
+        }
+      ],
+      "accepted_aliases": [
+        "KShapeLookup"
+      ],
+      "accepted_types": [],
+      "status": "passed"
+    },
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".bss",
+        "address": 34913664,
+        "mode": "data"
+      },
+      "dsd_names": [
+        "data_0214bd80"
+      ],
+      "claims": [
+        {
+          "identity": {
+            "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+            "cpu": "arm9",
+            "module": "main",
+            "section": ".bss",
+            "address": 34913664,
+            "mode": "data"
+          },
+          "dsd_name": "data_0214bd80",
+          "kind": "bss",
+          "size": null,
+          "alias": "ComicDeckManagerPointer",
+          "role": "alias",
+          "confidence": "confirmed_static",
+          "reviewed": true,
+          "provenance": [
+            {
+              "repository": "jus_re",
+              "commit": "6195fe88bfa3f1656fbde378da64664748c007ab",
+              "bead": "jus-g2t35-chrb-loader-callers-resolved-4qxb",
+              "bead_status": "closed",
+              "path": "docs/research/Battle-Engine-Map.md",
+              "sha256": "846f8bb0a580d78590622f9773b66988d5bf35ba21367328878bad318b4c2199",
+              "summary": "Reviewed decompile plus independent ARMv5 byte-level caller census and ComicDeckCreate debug string; 16 direct callers correct the earlier zero-caller claim. No C signature or manager layout imported."
+            }
+          ]
+        }
+      ],
+      "accepted_aliases": [
+        "ComicDeckManagerPointer"
+      ],
+      "accepted_types": [],
+      "status": "passed"
+    }
+  ],
+  "scope": {
+    "cpu": "arm9",
+    "modules": [
+      "dtcm",
+      "itcm",
+      "main",
+      "ov000",
+      "ov001",
+      "ov002",
+      "ov003",
+      "ov004",
+      "ov005",
+      "ov006",
+      "ov007",
+      "ov008",
+      "ov009",
+      "ov010",
+      "ov011",
+      "ov012",
+      "ov013"
+    ],
+    "unclassified": [
+      "arm7",
+      "embedded_executables"
+    ],
+    "global_coverage_percent": null
+  },
+  "metadata_sha256": {
+    "arm9/dtcm/symbols.txt": "61e2b6d1ad05226dab08b1848852aefcf12f58efc9f164d48e56967728c667f7",
+    "arm9/dtcm/delinks.txt": "e11b111b8f3ce492d827b58b271583ac85f4706dccc9783679f2cd460c776381",
+    "arm9/itcm/symbols.txt": "8abc48ac26b084418654bb6bbb7b53c3c6b046e3b9174917e9fc2b00fe98c0f6",
+    "arm9/itcm/delinks.txt": "9d79d5da7fde19182fd7b4d33757fd6ef34e743eae6e44dce4a4edcac90bd69c",
+    "arm9/overlays/ov000/symbols.txt": "2ca0a0be1e4c455bc139290b10525a5feb56b38197ed15ebe7ee5b05289b7804",
+    "arm9/overlays/ov000/delinks.txt": "ee87d3824d84636cf916b21fa72865a1e88620dcf2bfa79fd197533b9bbf3a1f",
+    "arm9/overlays/ov001/symbols.txt": "aaa36c5a6f98d9c4bfbd1dfd1cb4c376b25080cc1c22933b56b90d60528ebc2b",
+    "arm9/overlays/ov001/delinks.txt": "7b83e8ccfb9baca6490e4820b258df12d5853ff2cefd486c1e9c2338825b5a12",
+    "arm9/overlays/ov002/symbols.txt": "5e50aa1dd6817b8db0d9b045e2fc577858aa5e8ff9b1af35130ebcfbc9d85e11",
+    "arm9/overlays/ov002/delinks.txt": "d734638bde51e02c7405a3c97f4e9934272b83a0870db5bba1a6746240d3cb1a",
+    "arm9/overlays/ov003/symbols.txt": "4b7bb78f0af632e3f328fb6806f5f69d35638df34867eb360315941a2d5329c2",
+    "arm9/overlays/ov003/delinks.txt": "e74bf4bf2a8057f6df0bee41dfff0d61138db34f249b45baa9b1f302216c9d9a",
+    "arm9/overlays/ov004/symbols.txt": "59f8b9d592fc0eed2e9195478bc478fd774e1c400fb5167666a8ed75a429f4c5",
+    "arm9/overlays/ov004/delinks.txt": "9724ea33b471d5ddc729af906b2583525573af6b431fc24c03bd069c9803f9a4",
+    "arm9/overlays/ov005/symbols.txt": "1959c534d0368b3368b82b0476f9d4d174d50cc7de7f3a9d0b5471493dffc903",
+    "arm9/overlays/ov005/delinks.txt": "ac8fff5cb21f5b9d8cd61e6a27957146f74ec2e6db91979f94f8bbaf9e94fe67",
+    "arm9/overlays/ov006/symbols.txt": "16ba28e3be97caf1a83a2e4a785ee507b52ad98f4849d6ba0ea9e23a80b02299",
+    "arm9/overlays/ov006/delinks.txt": "f0d81b2c7bc7a8ad60f9a34ebce1a36f5d81469d4b666254f927f62cdcb33637",
+    "arm9/overlays/ov007/symbols.txt": "829bc7e2ac65d421b6fba7e6153bfee47e1f143522e704dc8210d383f967c3f3",
+    "arm9/overlays/ov007/delinks.txt": "d918089d6667d8b50f4fa34302e3222b053822d0ba3022438a3010b9a61a6cae",
+    "arm9/overlays/ov008/symbols.txt": "cb2cd2d177441ea26b7e85844a4580f78341e3a002776a5f6a173aab3edec2fa",
+    "arm9/overlays/ov008/delinks.txt": "13bd938d1dbf4c95f20c4013b9375e051eb693dfc20d8e802aadeb514cc1c55f",
+    "arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "arm9/overlays/ov009/delinks.txt": "778d10dd11e3dc0507d11868c8e3201f3e24578126440dbc8e8cac75c86341ca",
+    "arm9/overlays/ov010/symbols.txt": "417defbc3de3dbb2594a1568ccf5d347f70de3487599956a20ab90d3a8c60773",
+    "arm9/overlays/ov010/delinks.txt": "b8ef24508d73ff2521ffac3d3c6260c38fc24249530d2624d33020f579486a37",
+    "arm9/overlays/ov011/symbols.txt": "44a2dcc04251c1f4a2109c2c9a092a0aa6f70289d2f0d79a0c9b3568240b23e8",
+    "arm9/overlays/ov011/delinks.txt": "8a33ca98991daa45f909357976487d2e9a5dfc9dcf64d2d1e8a029cbc3c8085f",
+    "arm9/overlays/ov012/symbols.txt": "df3b6740b76acfa9db397473a906ec9e83e751340612c60f086bd06b99bfba11",
+    "arm9/overlays/ov012/delinks.txt": "0c4c72cde626523db37dd21c02a71798610bb13256afb8f03b0443e91ec02958",
+    "arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "arm9/overlays/ov013/delinks.txt": "befc94193f3edeb56fd3860b8642d0f8c75cc3fd0837888cc2bf08d0d153dc3b",
+    "arm9/symbols.txt": "d73d18a6183b55ac8d7ee009c81003f6fa273ee674ee4b66a776027fb4a88566",
+    "arm9/delinks.txt": "b6dd08c5542ba88e473fdad05ebdcf45d38a631f6d7e379fbc4e9b468c04865a"
+  },
+  "provenance_verification": "working_and_pinned_revision",
+  "source_symbols": {
+    "status": "passed",
+    "verified": [
+      {
+        "object": "src/ov000/test_trampoline.o",
+        "identity": {
+          "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "cpu": "arm9",
+          "module": "ov000",
+          "section": ".text",
+          "address": 34921984,
+          "mode": "arm"
+        },
+        "name": "func_ov000_0214de00",
+        "size": 24
+      }
+    ],
+    "findings": []
+  }
+}
