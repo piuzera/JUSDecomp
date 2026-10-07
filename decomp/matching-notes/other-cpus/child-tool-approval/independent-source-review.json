@@ -1,0 +1,935 @@
+{
+  "result": "source closure and manifest pins verified",
+  "local_files": 113,
+  "registry_packages": 116,
+  "registry_actual_files": 6352,
+  "local_source_files": {
+    ".github/workflows/build.yml": "0b0797ff7f908883d751e80f2ccb287ed8b89c90ad86be82613fb6ad7911c847",
+    ".gitignore": "109adaad84657fda3cea1d9c5e3196ca4c48f881a769496f35080f9630d63469",
+    "Cargo.lock": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+    "Cargo.toml": "d874bd7c774badc9ad96a2de6302901069d47892e1e072cf660ef1d07a02c9fc",
+    "LICENSE": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+    "README.md": "b2c182a8fc1f5e731c216ca0f2015f9889bed80ff180f524b488aa87f7accd5e",
+    "assets/arm9.lcf.template": "b68416090b80ae7d5707a47d03ff0fd663edcffffa4b3b53d25d1d800bd632c4",
+    "assets/signatures/FS_LoadOverlay.yaml": "b4c3854124fde9f5b5de9123e2c084ca9b7a2323c8ea37a21e7eadc0d014b7dc",
+    "assets/signatures/FS_UnloadOverlay.yaml": "dcc2b515bac2d255c28ec964d9d840dd8923f827071c4fccc66abae67e151291",
+    "cli/Cargo.toml": "91aebff5d8fbee3b0a1d090c2c1769ce1339e8a9b4f4e79bfb8bdca1959aaa9b",
+    "cli/src/analysis/data.rs": "03e0bd6d3821f80248e3773817b3b10a62147979df119928a2cab11ebd9e7909",
+    "cli/src/analysis/functions.rs": "be28f024c1e7b80b212b991d8661afd233f7ed3a3edb0f6a3404e878675ecdb5",
+    "cli/src/analysis/mod.rs": "53fea6b46c8a66b2e5ddcc01b1c03443b7dd851327e203729c83385991fa75cb",
+    "cli/src/analysis/overlay_groups.rs": "85145813db9e044e38a80b75d8d511b7499b865f08a9123b852531bfdd31a533",
+    "cli/src/analysis/signature.rs": "01cb353476a263c2293e132f651b94c0f01d3ea07903461655e7ae8b1de01e05",
+    "cli/src/cmd/apply.rs": "99efa75663950037c0c5f3311547c2cc33ebd65f6c696f77a933b39acf99a3d2",
+    "cli/src/cmd/check/mod.rs": "f6d3fae89fd6a4b8bf9db15213f1ca91865ade6ad6c9ed62d13413162399f991",
+    "cli/src/cmd/check/modules.rs": "9c1a675e21da702210420f9147408c4e60f837fc1e6e427259267ccb066597dd",
+    "cli/src/cmd/check/symbols.rs": "db20fe3cc352d3b15a4ebf880ddadf00e98f42201fe4a925513ac42d43e96ebb",
+    "cli/src/cmd/delink.rs": "2aa4fa4a92bc7473a4eccbfae291d95047596bfee8152304ce2d126616d79290",
+    "cli/src/cmd/diff/apply.rs": "900dac48085270616a051a4604f4c8d4e6160c979e8735b30dd74e079c048658",
+    "cli/src/cmd/diff/mod.rs": "8e86b7644183dbe803f4e09d6b6be08d115f2c0f592ed123214899f3697778ae",
+    "cli/src/cmd/diff/new.rs": "01ab55ba8f81fcb66c69cc962f98b27d3641875af855fdabf7654214052fe4a7",
+    "cli/src/cmd/dis.rs": "10b325c453d243c454a7c9f1772242da4bd60981dbf61af2107cb846469c8460",
+    "cli/src/cmd/dump/ambig_relocs.rs": "c6cf7a5582542793e4270b074a10994a8e9426e8390de387ca9eec8776e663d8",
+    "cli/src/cmd/dump/elf_function.rs": "ecb934313c1b760a5d8483180a85b3f91627e36cb356b978e2b57ee7993ed897",
+    "cli/src/cmd/dump/elf_symbols.rs": "108203111875918258e3256565929434b9bbea027cfb31625665f7a4c768d80a",
+    "cli/src/cmd/dump/mod.rs": "ab30c7ba9a303b332f658faf54a2dfcbb696d6b996bdabd2f3de0c92c3aa081c",
+    "cli/src/cmd/fix/ctor_symbols.rs": "1148a63bdfc5f20817e5fad395f58346e1fe60115e73a7cdfc47e3c5fa61b3fb",
+    "cli/src/cmd/fix/ctor_zero.rs": "da7ecb9c5081f18664424065ec029f3eeaa1e50ffb00f66d128f608bfe081604",
+    "cli/src/cmd/fix/dsprot.rs": "263653f0c2a4332c42025f374d86d853b272209c645f81475127b8b28261f1ec",
+    "cli/src/cmd/fix/find_exceptix.rs": "23d7d2ef2bd4363d52da3ac6b2b19d28bef50481bdb8ce1fba474f0889cb4981",
+    "cli/src/cmd/fix/mod.rs": "6cafaa6e2e6957d8ede9f0521157ae6ad43b7522a7d1c841e811549e18eb48df",
+    "cli/src/cmd/fix/ov_sigs.rs": "3dfc74aa91ff85cbb65460b2d4d9ca0d6bce565fc13f63ae8b68e7052aa06a66",
+    "cli/src/cmd/fix/thumb_nop.rs": "2ceba2223f761db5c0115a0ede796a63167cfad55c76f06e98d0f474c14715a3",
+    "cli/src/cmd/format.rs": "b713588009636afa0d6e2905603a11411316e96f12f66aec12c791d04b39d1e5",
+    "cli/src/cmd/import/mod.rs": "25cc4fba6d0ad113a3ee531e997d680fc0b3fed533cd0025233758b9edead48d",
+    "cli/src/cmd/import/symbols.rs": "7b6083c6aa63c662520ca6de4e6fd664f1504944a2c69cbc7c2e8ed3e06057f4",
+    "cli/src/cmd/init.rs": "d8804d40ff69e8017a7752c41790a7b100555e156ab1eb9f80c0feb6c7189ec2",
+    "cli/src/cmd/json/delinks.rs": "da615837ed6d3b470af439129fde7a6efdfb1b9f52cf3cce054a41d1d4a843d5",
+    "cli/src/cmd/json/mod.rs": "b5d955cab09921ab8a3fba0d94bd7d20f64b485e67d16ca8ed7f0f9cb9a95297",
+    "cli/src/cmd/lcf.rs": "089eb2de0ae1c78f3f2954ec6d7960c6da75973ddcbe935a781c470b923fd6c2",
+    "cli/src/cmd/mod.rs": "a9cd4e82641f9f2c9b21686f99945b651a7ca4e4ef9ca1533161f7d44f529c5c",
+    "cli/src/cmd/objdiff.rs": "6be800656737500765e88ff8f6e1de24324a331761939cd79337e95312c6ed05",
+    "cli/src/cmd/rom/build.rs": "c3c2b794342419d6063d73d166bd0b8ae9882ef17db76fd7d0292ac32a05f7a0",
+    "cli/src/cmd/rom/config.rs": "7a7acf0389d65cb8e685f1d60df9bae9b7c729f086093952a81ff614c3456e41",
+    "cli/src/cmd/rom/extract.rs": "af574f7f17d9860752830481ce81dfeec7b6d363a89781e62f5f5ef1ae9c802e",
+    "cli/src/cmd/rom/mod.rs": "d3a381942da42ef24ab6e1ad2ed282f1c35d5304a9b8ef7697f3ebb0fbed6a8f",
+    "cli/src/cmd/sig/apply.rs": "8622f774506c9b737d7c5f9b189482c58b1e27f97d28f4fb6924f2f7d4c2e0ea",
+    "cli/src/cmd/sig/list.rs": "f184aa5504c6cbb57ff1beef0e862e3de5a9167c2bf6baea7d427b25f6dc9fac",
+    "cli/src/cmd/sig/mod.rs": "fb3594c0df3af2e35dd354ec1c2700885ce67b01bc5e03a9851995fb99855c4b",
+    "cli/src/cmd/sig/new.rs": "e1e13f89f08d511b1e405e9bf9cf90de2b83339142fc743170f7837aa9959a9f",
+    "cli/src/cmd/sig/new_elf.rs": "45512bc351b6ce9e5d8225d561758a928aa187516718f916f547c8aa04f5ed9e",
+    "cli/src/config/delinks.rs": "9daa41535c65af147148bbb82d5be1ddc0a0bcab823561f7293ca2cb60b34c1e",
+    "cli/src/config/mod.rs": "15ae5ac89d8d8da382aff02e787eaf3cd6aca2d15531e7d7c9d23427beeb2130",
+    "cli/src/config/module.rs": "1e52e96793538b1b9d8ffc10c4f2d541e252da384a193833e0bbd1740a8cdc37",
+    "cli/src/config/program.rs": "d48db1cf901e0eae1d643a4b0571a6233b944c4ffc44ffed966f0a579583475f",
+    "cli/src/config/relocation.rs": "21ef864c3b9aee7df2ae92756e715d24b347cdf6c3e42e5c6a4baf9df49004e8",
+    "cli/src/config/section.rs": "72e69486103320f9b8d37bfd5a9793d41309bf3fd6031f816b0c7d2cb8f47966",
+    "cli/src/config/symbol.rs": "23286a1426d8d1e10debabf31fa36054a88a71166813a8d890e84d503ca84117",
+    "cli/src/lib.rs": "fe4a642b6556c00d1ed8329cfd8cf83d1de2795b41383a5a223dc9bf3e06339d",
+    "cli/src/main.rs": "bb75633d6ce6f88439c00a0d08e3fad6119453aca76fdee9f8c5583470ed6ef4",
+    "cli/src/util/bytes.rs": "b692d4cf575c4f780c13ee4d01514cb032702a4358b2dc76d0afd2eaf313ee96",
+    "cli/src/util/debug.rs": "7f806e2120262f58762366279793a42d3dbf4c7a3e6cece3260cfdb987168892",
+    "cli/src/util/io.rs": "7b4c274ea283363b3e41f30ab4a3f1ac1e9a54f70db6929d3c3148c9aee8f2ac",
+    "cli/src/util/mod.rs": "f50aaf2c168b34c60921c3f9ee09feae5c72e28dacf289e18d383a2e7078dd4f",
+    "cli/src/util/object.rs": "f9fe1ee664d7ee6635dd2be022c236c165fbeb7b594855ff7f106ec13ce14446",
+    "cli/src/util/parse.rs": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "cli/src/util/path.rs": "1dac0ef7ed9e064809298842c540c1a36dafa16d0d3788dcfbe5697ca4854cc4",
+    "cli/src/util/serde_hex.rs": "05dbf6a9718525e009fa215a237da95e023a68ec2ab7f74f95243963ba9f8968",
+    "cli/src/util/toposort.rs": "ca296df021cc907e0d46e88374181cc65096dcf4076fc81027114ebe972e80f4",
+    "cli/tests/assets/.gitignore": "16c0fc5cb15a158f698c9e30a540ef50a1e7f31b8320f14670f4bc8610b6e46e",
+    "cli/tests/assets/README.md": "5d0d3d146175e024581c042a0681d131824ce0e0e797917658d479b2b7b608ff",
+    "cli/tests/configs/.gitignore": "f45d46e100570a383f23e9ced5ae5cb10cd90ab77e2836926895bc49872e7fe7",
+    "cli/tests/configs/README.md": "505f21252ebdef4f3b6e58498b3638d84966769d00a49ccc38d6b716452f90a1",
+    "cli/tests/roms/.gitignore": "dd2d45bb4ca8dd08447728a6125c3c839862f41e2cf689e8864473ff82b7b499",
+    "cli/tests/roms/README.md": "3963d980c7c268206ce6ed786d9d3aa3a46bcf74a1f521c0946106582737283b",
+    "cli/tests/test_roundtrip.rs": "bec8a6e5c110fb962eaa641b70241b2f5b54d13a6a4b2c673a988ecbf00f566e",
+    "docs/delinks.md": "c7be62f0df548794ac80018e70f7481bff479c4b413a0a2a12a2602d2c75b46b",
+    "docs/relocs.md": "8106d576ca5d3819e06f1028d6f4c54e06899e44dd85f4b031ba9c45ba4b0d33",
+    "docs/symbols.md": "e1007dbadf1df52da6c1a445214ef3f268c3dfd2c78ff507c47652a55e8876a0",
+    "lib/Cargo.toml": "9a40259bc52c7e63f4b6a08bd81e98ed6a35dac7abbd75e4b0cf2332c109cdad",
+    "lib/README.md": "7049af371c6243a82b4ff6a7acadd5665214ad89ed59a0d3fcac62c0bf246617",
+    "lib/src/analysis/ctor.rs": "594b502ec025aebf78104b8b39e9dcfae49653c690bcbf41b662b9be2f58171e",
+    "lib/src/analysis/data.rs": "4ab009241c760d7209bc6833fb50275caad66973371ac65469b77f208d45a6d5",
+    "lib/src/analysis/exception.rs": "809486c3ef3d4577f1d1404cb2f2dc20b62822296ce20af5b38380e7f8f09e46",
+    "lib/src/analysis/function_branch.rs": "34e41972bdc84617091209077c6c46e8a40f333aef9e958bd90c1c05e59ce5e2",
+    "lib/src/analysis/function_start.rs": "34cc1baaf77db534c54c38caa280e1fe407e39c069d126bf498ac30be6b9a6f1",
+    "lib/src/analysis/functions.rs": "36d222eef259b716cef552811dcf758b303f952fa5bd59ec37f88c8d3dee6551",
+    "lib/src/analysis/illegal_code.rs": "0d2b99ef6854361eeda195afa43d4bab12315aab617017214fbfb6707af03c65",
+    "lib/src/analysis/inline_table.rs": "6f363e560416c4f3297eef8c9e416e6ee6b683c8d103b5240af88ae6a54bca49",
+    "lib/src/analysis/jump_table.rs": "6fd9ea7cbcfcf7fc8224212aa75f027b52dc0b3a087264d1d64bbf0b69e06045",
+    "lib/src/analysis/main.rs": "28a980247a953a19071633833f9d0947134bad411a04180b165776d78b745b1c",
+    "lib/src/analysis/mod.rs": "bf82e583731433e40c7ef29318627a6dc756d70bc474e4e4dbf4845e7cf5a05f",
+    "lib/src/analysis/secure_area.rs": "53a72bfc1cd66d7cb544bc88b09ae8f227d2a24658814eda347af852f97d0898",
+    "lib/src/config/config.rs": "f3cac312e1dbbe5b2166f1ebd30f03d608fafac1cb359df358381153bb115d14",
+    "lib/src/config/delinks.rs": "609e3fd19899406001c6e23b9cb91c3572c0109e66f02e01a85990cb2edebc4c",
+    "lib/src/config/link_time_const.rs": "bc5dad7e8d7dc5314411a4536d4dd8df4d4867e3b03bc902ca10aceab63dda3f",
+    "lib/src/config/mod.rs": "a45548e25e4c8bdae491cb66a80e1f6a6290de0bbfbea1d80fdf39b5129b7232",
+    "lib/src/config/module.rs": "3775939f2802d6d7c3fafbac57eefd5b90ae073fbc6a9a5ba62c277174d31bbc",
+    "lib/src/config/relocations.rs": "a3126d3e45fa0d071e0e3ad8c023f898f20fcff4f9a370a702965f1f1479c3bf",
+    "lib/src/config/section.rs": "4d56e4d071aa0fc24755dabb0a334075411b539457fe1dd5b8cd4e1d64f99573",
+    "lib/src/config/symbol.rs": "3e1f5ddf316718a2e34e90e8f817ae9a2a6f07e6e6635725e0a53a68be43fa30",
+    "lib/src/lib.rs": "0fef8864d87571cad3d13281141973945f9068a0c35103f3b01462a8bb4c28a7",
+    "lib/src/rom/mod.rs": "6df362a222eab9723d1aecc0ccae9e884ea555f936b4b61c47dc3c39f85d289f",
+    "lib/src/rom/rom.rs": "c77e366a040e7eca3b0829d04fcaaccbb7cee0a905142cae1d5e76d980c3774c",
+    "lib/src/util/bytes.rs": "b692d4cf575c4f780c13ee4d01514cb032702a4358b2dc76d0afd2eaf313ee96",
+    "lib/src/util/debug.rs": "7f806e2120262f58762366279793a42d3dbf4c7a3e6cece3260cfdb987168892",
+    "lib/src/util/io.rs": "e22fccc681dc52eccc46dc4ce61ba846a95dd3f637ceb5718b9177709ca096c2",
+    "lib/src/util/mod.rs": "aff517b9afde3c9fa3ea606f321f2c0da7f67ad6065556ae35eba4b9386c2253",
+    "lib/src/util/parse.rs": "e49120bee67609d27920bf821c8e75bf4175845bc9d676358d6b0827453407a3",
+    "rustfmt.toml": "d1d51aa86952be94c8d3c02f7569f281d14202e1d9955a3f01351f82054e8a73",
+    "lib/examples/t10_compression_probe.rs": "9baf8ab864540b9eaca6b7916f57074459ce89b5b95bb98d62bfa2c3180783c6"
+  },
+  "registry_packages_detail": [
+    {
+      "name": "addr2line",
+      "version": "0.25.1",
+      "crate_sha256": "1b5d307320b3181d6d7954e663bd7c774a838b8220fe0593c86d9fb09f498b4b",
+      "files": 16,
+      "source_inventory_sha256": "cfbac58e8d97658729b7aeddecda37db441baeebf031ddc4a89f7e4af8103789"
+    },
+    {
+      "name": "adler2",
+      "version": "2.0.1",
+      "crate_sha256": "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa",
+      "files": 13,
+      "source_inventory_sha256": "c70b697e96b971360d7811a6a71c4330fe516699bdf8be3e69a638ad14a97195"
+    },
+    {
+      "name": "ahash",
+      "version": "0.8.12",
+      "crate_sha256": "5a15f179cd60c4584b8a8c596927aadc462e27f2ca70c04e0071964a73ba7a75",
+      "files": 24,
+      "source_inventory_sha256": "78af6f5f1012e7bf0527e59041eb1a244111385544e147ea8749742fb0b8b189"
+    },
+    {
+      "name": "aho-corasick",
+      "version": "1.1.4",
+      "crate_sha256": "ddd31a130427c27518df266943a5308ed92d4b226cc639f5a8f1002816174301",
+      "files": 47,
+      "source_inventory_sha256": "b5d4e8eee7fcd2720f5ead92d9634e27331261b04c80b7e1cf41ae40b246e359"
+    },
+    {
+      "name": "allocator-api2",
+      "version": "0.2.21",
+      "crate_sha256": "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923",
+      "files": 25,
+      "source_inventory_sha256": "1b43ec55a230ed4f43328c9e4017f58883a55acfca8751f009288f6d8eb8879d"
+    },
+    {
+      "name": "annotate-snippets",
+      "version": "0.12.13",
+      "crate_sha256": "74fc7650eedcb2fee505aad48491529e408f0e854c2d9f63eb86c1361b9b3f93",
+      "files": 40,
+      "source_inventory_sha256": "df57edfe5db52654ab6240684c8d8d70fd6e9113c69ed561812e4ed65b81d9ce"
+    },
+    {
+      "name": "anstyle",
+      "version": "1.0.13",
+      "crate_sha256": "5192cca8006f1fd4f7237516f40fa183bb07f8fbdfedaa0036de5ea9b0b45e78",
+      "files": 14,
+      "source_inventory_sha256": "741d818c10a870fea6e17b65b6fca53612bbb14b5c68c1573830715b60482cf2"
+    },
+    {
+      "name": "anyhow",
+      "version": "1.0.102",
+      "crate_sha256": "7f202df86484c868dbad7eaa557ef785d5c66295e41b460ef922eca0723b842c",
+      "files": 54,
+      "source_inventory_sha256": "b46c95bc13e63cf4e0381b35ee42485492748efb3743a14c990245191ec50780"
+    },
+    {
+      "name": "arraydeque",
+      "version": "0.5.1",
+      "crate_sha256": "7d902e3d592a523def97af8f317b08ce16b7ab854c1985a0c671e6f15cebc236",
+      "files": 12,
+      "source_inventory_sha256": "d8af94afca530f631a615c644c175822518de33d2da98d4a379d1fa663a58504"
+    },
+    {
+      "name": "autocfg",
+      "version": "1.5.0",
+      "crate_sha256": "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8",
+      "files": 24,
+      "source_inventory_sha256": "5e1c9ebed3cfa819c2422960f52b4f4de3b8f2ebc66dcf489cf39d52c09cbd46"
+    },
+    {
+      "name": "backtrace",
+      "version": "0.3.76",
+      "crate_sha256": "bb531853791a215d7c62a30daf0dde835f381ab5de4589cfe7c649d2cbe92bd6",
+      "files": 60,
+      "source_inventory_sha256": "b7792a9bc7c5828a37bbdd831eb75964ff00e1f1f06e0ae19515c070faf9c32e"
+    },
+    {
+      "name": "base64",
+      "version": "0.22.1",
+      "crate_sha256": "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6",
+      "files": 38,
+      "source_inventory_sha256": "9f1b4d650aff1b05118b574449cbc7040a090e81f4765c925060560e5277707b"
+    },
+    {
+      "name": "bitfield-struct",
+      "version": "0.12.1",
+      "crate_sha256": "8769c4854c5ada2852ddf6fd09d15cf43d4c2aaeccb4de6432f5402f08a6003b",
+      "files": 14,
+      "source_inventory_sha256": "927e929d6c33592eebce2cff05e087a1fa46bfa4bc8b14e482aa8dd79eea651c"
+    },
+    {
+      "name": "bitflags",
+      "version": "2.13.1",
+      "crate_sha256": "b588b76d00fde79687d7646a9b5bdf3cc0f655e0bbd080335a95d7e96f3587da",
+      "files": 64,
+      "source_inventory_sha256": "5c6152d11ba2aca9f61b98af35bae3daaaae14131c34c339303fea19d327531b"
+    },
+    {
+      "name": "bitreader",
+      "version": "0.3.11",
+      "crate_sha256": "886559b1e163d56c765bc3a985febb4eee8009f625244511d8ee3c432e08c066",
+      "files": 10,
+      "source_inventory_sha256": "e6287377ca383368ca784e88c78f39688826ba59913e5137e236a1183e775350"
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.10.4",
+      "crate_sha256": "3078c7629b62d3f0439517fa394996acacc5cbc91c5a20d8c658e77abd503a71",
+      "files": 10,
+      "source_inventory_sha256": "0c23d0f27bb8d9ce06bccbea75209025cfda5ac668c1798eebfa8efbe35e60a8"
+    },
+    {
+      "name": "bumpalo",
+      "version": "3.20.2",
+      "crate_sha256": "5d20789868f4b01b2f2caec9f5c4e0213b41e3e5702a50157d699ae31ced2fcb",
+      "files": 19,
+      "source_inventory_sha256": "a0aaa7c56133ff9e84776cd9a65507373f0aef4330ad658707a7dae82c5a6b5e"
+    },
+    {
+      "name": "bytemuck",
+      "version": "1.25.0",
+      "crate_sha256": "c8efb64bd706a16a1bdde310ae86b351e4d21550d98d056f22f8a7f7a2183fec",
+      "files": 38,
+      "source_inventory_sha256": "fdf094c89fedc27cb1eca41f15982f65d903d13fd580a9fedc47482d1eb7c1a7"
+    },
+    {
+      "name": "bytemuck_derive",
+      "version": "1.10.2",
+      "crate_sha256": "f9abbd1bc6865053c427f7198e6af43bfdedc55ab791faed4fbd361d789575ff",
+      "files": 12,
+      "source_inventory_sha256": "8aa596a5cbe1268bd58aa1241ba368768c04c5fbc877f4afaef122624228818c"
+    },
+    {
+      "name": "byteorder-lite",
+      "version": "0.1.0",
+      "crate_sha256": "8f1fe948ff07f4bd06c30984e69f5b4899c516a3ef74f34df92a2df2ab535495",
+      "files": 8,
+      "source_inventory_sha256": "5cd8e7fd02f2cb6b197b99f8f812c3763170fa1ecf3a580f1192c8f9e6d4c9f2"
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.4",
+      "crate_sha256": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801",
+      "files": 14,
+      "source_inventory_sha256": "034f090a33136c2cd83706b93d89a52bb7ea653e59f0cb692ca84d114ab555fc"
+    },
+    {
+      "name": "convert_case",
+      "version": "0.10.0",
+      "crate_sha256": "633458d4ef8c78b72454de2d54fd6ab2e60f9e02be22f3c6104cdc8a4e0fceb9",
+      "files": 19,
+      "source_inventory_sha256": "151a8ca65c1017a126272648b3a4403c7e2e3164220576aed2807a6665d842e8"
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.2.17",
+      "crate_sha256": "59ed5838eebb26a2bb2e58f6d5b5316989ae9d08bab10e0e6d103e656d1b0280",
+      "files": 16,
+      "source_inventory_sha256": "fd08b5dbefd3c652d5def850501b27bb0cbcb33377f18e6b93ddb67fa5f940ab"
+    },
+    {
+      "name": "crc",
+      "version": "3.4.0",
+      "crate_sha256": "5eb8a2a1cd12ab0d987a5d5e825195d372001a4094a0376319d5a0ad71c1ba0d",
+      "files": 19,
+      "source_inventory_sha256": "efa54936ba76b2e661473b7746b794bd8d2af66bb96ce0ddbafc022971ac53f5"
+    },
+    {
+      "name": "crc-catalog",
+      "version": "2.4.0",
+      "crate_sha256": "19d374276b40fb8bbdee95aef7c7fa6b5316ec764510eb64b8dd0e2ed0d7e7f5",
+      "files": 11,
+      "source_inventory_sha256": "9534ecfe881ed9af318781132c498c884538b0ef56d9e7a83af12ba5d4a68db5"
+    },
+    {
+      "name": "crc32fast",
+      "version": "1.5.0",
+      "crate_sha256": "9481c1c90cbf2ac953f07c8d4a58aa3945c425b7185c9154d67a65e4230da511",
+      "files": 18,
+      "source_inventory_sha256": "32c5a1058cb2ed591004856c1959950f130f7ab94178b11a79e4c79e1d276c19"
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.1.7",
+      "crate_sha256": "78c8292055d1c1df0cce5d180393dc8cce0abec0a7102adb6c7b1eef6016d60a",
+      "files": 9,
+      "source_inventory_sha256": "cadbede7f4ca8107254b2e89a31ec75b56b6481bc7f46d442f2ed8d968e53691"
+    },
+    {
+      "name": "derive_more",
+      "version": "2.1.1",
+      "crate_sha256": "d751e9e49156b02b44f9c1815bcb94b984cdcc4396ecc32521c739452808b134",
+      "files": 191,
+      "source_inventory_sha256": "9b53c5bbff780517483e45bc22310708601ba085a94f5c1cb65e128dbafdb884"
+    },
+    {
+      "name": "derive_more-impl",
+      "version": "2.1.1",
+      "crate_sha256": "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb",
+      "files": 67,
+      "source_inventory_sha256": "4bc9d679decda9057d0d2f246c0c761c0c03bebe7e75a0d38ef54ca21fbec093"
+    },
+    {
+      "name": "digest",
+      "version": "0.10.7",
+      "crate_sha256": "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292",
+      "files": 21,
+      "source_inventory_sha256": "ee85ad31f42d2e282c4543c8516c065dd0b5ef018ef05ba0bbfaf2717a01a911"
+    },
+    {
+      "name": "ds-rom",
+      "version": "0.8.0",
+      "crate_sha256": "1198474d0a87563e36273f87278d1fddf595e88f8c4c5fe4c51ca28e264409e1",
+      "files": 50,
+      "source_inventory_sha256": "ee411df791ffc394ec22748d4563c1b0f3e82a61b691daf7fe423f9896bf9cff"
+    },
+    {
+      "name": "encoding_rs",
+      "version": "0.8.35",
+      "crate_sha256": "75030f3c4f45dafd7586dd6780965a8c7e8e285a5ecb86713e63a79c5b2766f3",
+      "files": 102,
+      "source_inventory_sha256": "935ca0735cce273ef7798b624cbdb0b50cdf9c89a86ad7b35c2bd2b3ed3bac68"
+    },
+    {
+      "name": "encoding_rs_io",
+      "version": "0.1.7",
+      "crate_sha256": "1cc3c5651fb62ab8aa3103998dade57efdd028544bd300516baa31840c252a83",
+      "files": 12,
+      "source_inventory_sha256": "3f1ca826a780dab5b6b0c5b7c2e4c58bfb12ace04fd53ac038f433c2afac9368"
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "crate_sha256": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+      "files": 10,
+      "source_inventory_sha256": "b5e81b68d2028f376319d491575c0f9143d06237d23a76e8ded7587a11c78ad9"
+    },
+    {
+      "name": "fdeflate",
+      "version": "0.3.7",
+      "crate_sha256": "1e6853b52649d4ac5c0bd02320cddc5ba956bdb407c4b75a2c6b75bf51500f8c",
+      "files": 16,
+      "source_inventory_sha256": "4351471c4ccedb351d3d278dd7925a8e7556568273137c78c9df8236e6bbc05e"
+    },
+    {
+      "name": "flate2",
+      "version": "1.1.9",
+      "crate_sha256": "843fba2746e448b37e26a819579957415c8cef339bf08564fe8b7ddbd959573c",
+      "files": 64,
+      "source_inventory_sha256": "1bae307d22945ded90dcfd6b884ae0e9d92b8a0bcf47d15932a11691a08cc9a1"
+    },
+    {
+      "name": "foldhash",
+      "version": "0.1.5",
+      "crate_sha256": "d9c4f5dac5e15c24eb999c26181a6ca40b39fe946cbe4c263c7209467bc83af2",
+      "files": 12,
+      "source_inventory_sha256": "6cab540b56081e251e80adc52ca543e53ca7ecfca176a73058e1f756459afdf9"
+    },
+    {
+      "name": "foldhash",
+      "version": "0.2.0",
+      "crate_sha256": "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb",
+      "files": 12,
+      "source_inventory_sha256": "05711dc7d91562859de13b5abf1a909bde186be6338d9ed6a56914b36bd7ca01"
+    },
+    {
+      "name": "generic-array",
+      "version": "0.14.7",
+      "crate_sha256": "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a",
+      "files": 16,
+      "source_inventory_sha256": "5ef849e573dfefd0335ab801bf6b8ce4f5856ca5bd7fe5043dd0132383427589"
+    },
+    {
+      "name": "getrandom",
+      "version": "0.3.4",
+      "crate_sha256": "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd",
+      "files": 43,
+      "source_inventory_sha256": "2037f298a29d5f722fdc530455f36acddfeb87882899198d6b9b23b109ee4a04"
+    },
+    {
+      "name": "gimli",
+      "version": "0.32.3",
+      "crate_sha256": "e629b9b98ef3dd8afe6ca2bd0f89306cec16d43d907889945bc5d6687f2f13c7",
+      "files": 53,
+      "source_inventory_sha256": "1ca728003427c6295c70c7a0532ce76c3ac2939027ddc65588bb50cd1d724462"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.15.5",
+      "crate_sha256": "9229cfe53dfd69f0609a49f65461bd93001ea1ef889cd5529dd176593f5338a1",
+      "files": 46,
+      "source_inventory_sha256": "54dbec816480ef5d102104eeed3da94e9b532cb5f67efe076063a3613f2a211f"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.16.1",
+      "crate_sha256": "841d1cc9bed7f9236f321df977030373f4a4163ae1a7dbfe1a51a2c1a51d9100",
+      "files": 48,
+      "source_inventory_sha256": "257d865abbf62f6f9d7234e29344783a11f503617e1ab0770e1a391412eb9033"
+    },
+    {
+      "name": "heck",
+      "version": "0.5.0",
+      "crate_sha256": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea",
+      "files": 16,
+      "source_inventory_sha256": "fa7c2343a2eaa71f6180f0a2a1c3f0b910fc342030dd034a26a343b363810ebf"
+    },
+    {
+      "name": "id-arena",
+      "version": "2.3.0",
+      "crate_sha256": "3d3067d79b975e8844ca9eb072e16b31c3c1c36928edf9c6789548c524d0d954",
+      "files": 15,
+      "source_inventory_sha256": "600d699e93bfccea99bd9abc1ad65bfde2cae2bd3ab6df3144c91a7098302f37"
+    },
+    {
+      "name": "image",
+      "version": "0.25.9",
+      "crate_sha256": "e6506c6c10786659413faa717ceebcb8f70731c0a60cbae39795fdf114519c1a",
+      "files": 85,
+      "source_inventory_sha256": "34f948b27c38be2a5b2a48f3e3a05fadb23efd82e7e740384bb3156bcf182307"
+    },
+    {
+      "name": "indexmap",
+      "version": "2.13.0",
+      "crate_sha256": "7714e70437a7dc3ac8eb7e6f8df75fd8eb422675fc7678aff7364301092b1017",
+      "files": 43,
+      "source_inventory_sha256": "80e7e4f51286c32d444e1abcab1860092f5d21f5194d1326e8fc150244c16be3"
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.17",
+      "crate_sha256": "92ecc6618181def0457392ccd0ee51198e065e016d1d527a7ac1b6dc7c1f09d2",
+      "files": 14,
+      "source_inventory_sha256": "3fc95084aeccfea15b7b42247581ea299de80131057e9a72979ef923f4757277"
+    },
+    {
+      "name": "js-sys",
+      "version": "0.3.91",
+      "crate_sha256": "b49715b7073f385ba4bc528e5747d02e66cb39c6146efb66b781f131f0fb399c",
+      "files": 9,
+      "source_inventory_sha256": "ea7519c3407a16c2218509159aae34593f0a6c0a6c7eea0603fbadde3d8fa407"
+    },
+    {
+      "name": "leb128fmt",
+      "version": "0.1.0",
+      "crate_sha256": "09edd9e8b54e49e587e4f6295a7d29c3ea94d469cb40ab8ca70b288248a81db2",
+      "files": 8,
+      "source_inventory_sha256": "7309f65b0ee98820463b671dc161b22a10f340280c3535412742e9c0f4c98dd8"
+    },
+    {
+      "name": "libc",
+      "version": "0.2.182",
+      "crate_sha256": "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112",
+      "files": 354,
+      "source_inventory_sha256": "2fe81c1ed85551cd86632bc95893c7e307975f78fd3ebe57c387b11cf1ed45a4"
+    },
+    {
+      "name": "log",
+      "version": "0.4.29",
+      "crate_sha256": "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897",
+      "files": 23,
+      "source_inventory_sha256": "3caddfb972c17176235c7cf4fd474cc35d271a30b2faecd0d7bdc4879b66b959"
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "crate_sha256": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+      "files": 57,
+      "source_inventory_sha256": "3b8a8e889a834a41f5a1e7257e8112c7011cb245c901e436eb8df02e6c064147"
+    },
+    {
+      "name": "miniz_oxide",
+      "version": "0.8.9",
+      "crate_sha256": "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316",
+      "files": 23,
+      "source_inventory_sha256": "39ffe224516e4bf2cf3ccf2f1d55bdd57c8383600fdd3ba082ecd24946128db0"
+    },
+    {
+      "name": "moxcms",
+      "version": "0.7.11",
+      "crate_sha256": "ac9557c559cd6fc9867e122e20d2cbefc9ca29d80d027a8e39310920ed2f0a97",
+      "files": 127,
+      "source_inventory_sha256": "d10c2a9fd628cc314786947d44e0adf58a8e7544783dd4c3ab3019f128f4083a"
+    },
+    {
+      "name": "nohash-hasher",
+      "version": "0.2.0",
+      "crate_sha256": "2bf50223579dc7cdcfb3bfcacf7069ff68243f8c363f62ffa99cf000a6b9c451",
+      "files": 9,
+      "source_inventory_sha256": "d313787b8ba7401de2eb989eaf4dce0553ea72e506c293f3ed70de142d20d8a6"
+    },
+    {
+      "name": "num-traits",
+      "version": "0.2.19",
+      "crate_sha256": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841",
+      "files": 29,
+      "source_inventory_sha256": "343bf3acec0b2a1a1dac0412db0bb8d03f980aa32e77578eb218ec377a9f77bd"
+    },
+    {
+      "name": "object",
+      "version": "0.37.3",
+      "crate_sha256": "ff76201f031d8863c38aa7f905eca4f53abbfa15f609db4277d44cd8938f33fe",
+      "files": 106,
+      "source_inventory_sha256": "531f3cb430bddec160dcafb3c74a70b5a1bbe7ddd6af1e9150a456ce0798c9b4"
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.3",
+      "crate_sha256": "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d",
+      "files": 29,
+      "source_inventory_sha256": "f24a6f2e608093200c03128c13921e63e6b271676933887059fe6d7bd2da35c3"
+    },
+    {
+      "name": "png",
+      "version": "0.18.1",
+      "crate_sha256": "60769b8b31b2a9f263dae2776c37b1b28ae246943cf719eb6946a1db05128a61",
+      "files": 39,
+      "source_inventory_sha256": "63a0254ac90b387a4a4188b4ad1149c15261ea5d75deb47c140570891de332d3"
+    },
+    {
+      "name": "prettyplease",
+      "version": "0.2.37",
+      "crate_sha256": "479ca8adacdd7ce8f1fb39ce9ecccbfe93a3f1344b3d0d97f20bc0196208f62b",
+      "files": 41,
+      "source_inventory_sha256": "e61f0f9438031bdf375849ebdfe1083e310af1c8fb4e66d1780bc286eeebe5f3"
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "crate_sha256": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+      "files": 33,
+      "source_inventory_sha256": "5e3190ec0da4640c06b8b02aa08152e60fec8eee42bda4e39edc87e61330b1d2"
+    },
+    {
+      "name": "pxfm",
+      "version": "0.1.28",
+      "crate_sha256": "b5a041e753da8b807c9255f28de81879c78c876392ff2469cde94799b2896b9d",
+      "files": 266,
+      "source_inventory_sha256": "bc6f3e386ff0fb7e6bd99fbde7a20d0fc0e1ffab90c44b7825f9ebc8ed731bf4"
+    },
+    {
+      "name": "quote",
+      "version": "1.0.45",
+      "crate_sha256": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+      "files": 35,
+      "source_inventory_sha256": "9a19f9f8cf5bb1935470f40373d743bac763ac3d540933b978a390971f270b40"
+    },
+    {
+      "name": "r-efi",
+      "version": "5.3.0",
+      "crate_sha256": "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f",
+      "files": 69,
+      "source_inventory_sha256": "fecaeb9fa6f72fca4b6380aefbb4463fe57e92132cf5a7f24ba20ba2e9fa999e"
+    },
+    {
+      "name": "regex",
+      "version": "1.12.3",
+      "crate_sha256": "e10754a14b9137dd7b1e3e5b0493cc9171fdd105e0ab477f51b72e7f3ac0e276",
+      "files": 55,
+      "source_inventory_sha256": "fdcf0ce094adfa57fe440feb7d0b550b58fac1dcb18b3eb864a84e1090c7ec3a"
+    },
+    {
+      "name": "regex-automata",
+      "version": "0.4.14",
+      "crate_sha256": "6e1dd4122fc1595e8162618945476892eefca7b88c52820e74af6262213cae8f",
+      "files": 105,
+      "source_inventory_sha256": "6d2f4d683ee6f757f8a8ed7086c24773786bed4490e8ce1e213de54b46765664"
+    },
+    {
+      "name": "regex-syntax",
+      "version": "0.8.10",
+      "crate_sha256": "dc897dd8d9e8bd1ed8cdad82b5966c3e0ecae09fb1907d58efaa013543185d0a",
+      "files": 42,
+      "source_inventory_sha256": "c63815b01d56ad709ed7c08cbe0dd19400b114a3a652738734474659ccb286e7"
+    },
+    {
+      "name": "rust-bitwriter",
+      "version": "0.0.1",
+      "crate_sha256": "7f9598a861645d22d8fe873d123e9faa209f78ff9ddca7617c2af968f7a18aad",
+      "files": 9,
+      "source_inventory_sha256": "362b6562dec966b939eae2c367322f63e2279e5a0ad83b7b87c91a283b648eb3"
+    },
+    {
+      "name": "rustc-demangle",
+      "version": "0.1.27",
+      "crate_sha256": "b50b8869d9fc858ce7266cce0194bd74df58b9d0e3f6df3a9fc8eb470d95c09d",
+      "files": 16,
+      "source_inventory_sha256": "7446bd11752aa6bda130e6d73119738d96d77abaa202f5d92a2065afa9b1e7af"
+    },
+    {
+      "name": "rustc_version",
+      "version": "0.4.1",
+      "crate_sha256": "cfcb3a22ef46e85b45de6ee7e79d063319ebb6594faafcf1c225ea92ab6e9b92",
+      "files": 13,
+      "source_inventory_sha256": "d7088ddf2a9183908898629d9ba315d0501c8c4e40ea3578fe1270e0aba00756"
+    },
+    {
+      "name": "rustversion",
+      "version": "1.0.22",
+      "crate_sha256": "b39cdef0fa800fc44525c84ccb54a029961a8215f9619753635a9c0d2538d46d",
+      "files": 39,
+      "source_inventory_sha256": "9d6735c46a6eea2d6782930739e8977b10660f814b07b798bb372ff01e1802b5"
+    },
+    {
+      "name": "saphyr-parser-bw",
+      "version": "0.0.608",
+      "crate_sha256": "d55ae5ea09894b6d5382621db78f586df37ef18ab581bf32c754e75076b124b1",
+      "files": 48,
+      "source_inventory_sha256": "60ec7070f00395d638eb2a8b63dd467614bc09a4500a3244722ad5134b60bc27"
+    },
+    {
+      "name": "semver",
+      "version": "1.0.27",
+      "crate_sha256": "d767eb0aabc880b29956c35734170f26ed551a859dbd361d140cdbeca61ab1e2",
+      "files": 25,
+      "source_inventory_sha256": "a14b07d0eee257a5f56cbdf945bc4ee6ec08ea41a3f26f33af99ea8184e7a979"
+    },
+    {
+      "name": "serde",
+      "version": "1.0.228",
+      "crate_sha256": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+      "files": 33,
+      "source_inventory_sha256": "d519a912b16c721b97f7aea499bc5a37f90fc767a625113bc7178279633e15f9"
+    },
+    {
+      "name": "serde-saphyr",
+      "version": "0.0.21",
+      "crate_sha256": "4a6fc4aa0da972ba0f51cf5c1bb16e9dba35334adc6831b09b3ffb0ec20bb264",
+      "files": 497,
+      "source_inventory_sha256": "3b81cd30ec46634787135a522d00c59647767742ad5665e5ba0491a32d54314b"
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.228",
+      "crate_sha256": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+      "files": 27,
+      "source_inventory_sha256": "49c0b3fa1d0d04214fe15ead27e60e74be1916f9f02b5295c47bb812473f5a61"
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.228",
+      "crate_sha256": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+      "files": 36,
+      "source_inventory_sha256": "817e5e72fc700a6c54217502306552a5667b804fd48d0ce5326dd6fd9913ebf0"
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.149",
+      "crate_sha256": "83fc039473c5595ace860d8c4fafa220ff474b3fc6bfdb4293327f1a37e94d86",
+      "files": 88,
+      "source_inventory_sha256": "a6e7f449ff90fde33a5c186efae539342b311e6a1c4b1107e980b563f47adc45"
+    },
+    {
+      "name": "sha1",
+      "version": "0.10.6",
+      "crate_sha256": "e3bf829a2d51ab4a5ddf1352d8470c140cadc8301b2ae1789db023f01cedd6ba",
+      "files": 16,
+      "source_inventory_sha256": "a90a501fdcbc7c800a0c08859a57333d9c72cd712f92af6928ff6ba1dfcd6e10"
+    },
+    {
+      "name": "simd-adler32",
+      "version": "0.3.8",
+      "crate_sha256": "e320a6c5ad31d271ad523dcf3ad13e2767ad8b1cb8f047f75a8aeaf8da139da2",
+      "files": 22,
+      "source_inventory_sha256": "8b581436bec3759b53dd00665f81d8bfc968fc1fdfb15405997399950bc667c9"
+    },
+    {
+      "name": "smallvec",
+      "version": "1.15.1",
+      "crate_sha256": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+      "files": 19,
+      "source_inventory_sha256": "fb1ebb501ff098ca2bed15c40a78276e8e49fe355913579eeb6ae11ba5503c62"
+    },
+    {
+      "name": "snafu",
+      "version": "0.8.9",
+      "crate_sha256": "6e84b3f4eacbf3a1ce05eac6763b4d629d60cbc94d632e4092c54ade71f1e1a2",
+      "files": 94,
+      "source_inventory_sha256": "a417f1917848e9b3acafb2f62f0a74d907133443b411d384b096cd80d5034717"
+    },
+    {
+      "name": "snafu-derive",
+      "version": "0.8.9",
+      "crate_sha256": "c1c97747dbf44bb1ca44a561ece23508e99cb592e862f22222dcf42f51d1e451",
+      "files": 11,
+      "source_inventory_sha256": "41873bce4a4e6557ba50545ffc90c680669db7d64d9f185b8cc9155e5bac10a6"
+    },
+    {
+      "name": "strum",
+      "version": "0.28.0",
+      "crate_sha256": "9628de9b8791db39ceda2b119bbe13134770b56c138ec1d3af810d045c04f9bd",
+      "files": 8,
+      "source_inventory_sha256": "7536fb5a383f1b002e5d26bb7852456f441b5cab888c09dcfebf88e41d0d81a0"
+    },
+    {
+      "name": "strum_macros",
+      "version": "0.28.0",
+      "crate_sha256": "ab85eea0270ee17587ed4156089e10b9e6880ee688791d45a905f5b1ca36f664",
+      "files": 30,
+      "source_inventory_sha256": "e3b581679da2ded60c000f3328d3934528637c590f5bdba93fc22920f2fc2437"
+    },
+    {
+      "name": "subtle",
+      "version": "2.6.1",
+      "crate_sha256": "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292",
+      "files": 10,
+      "source_inventory_sha256": "5a77869dc6ed9b5078dc53bcba3d9a046e122fce11cbad8c7f910e7180594228"
+    },
+    {
+      "name": "syn",
+      "version": "2.0.117",
+      "crate_sha256": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+      "files": 105,
+      "source_inventory_sha256": "37796de180c4a9c28afbe1c96cdd5e7c80bc1407b60c55b84a5b4c83b9ea91bf"
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.18",
+      "crate_sha256": "4288b5bcbc7920c07a1149a35cf9590a2aa808e0bc1eafaade0b80947865fbc4",
+      "files": 105,
+      "source_inventory_sha256": "b984a8c851bd3c328592f091191dc1b5e4ba04150e88a544c8ac537c62b5fa01"
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.18",
+      "crate_sha256": "ebc4ee7f67670e9b64d05fa4253e753e016c6c95ff35b89b7941d6b856dec1d5",
+      "files": 17,
+      "source_inventory_sha256": "e2e931b3c9c167c56e042ca6a1792bf3687c1ef0748dd22fe518d8aaeb0957c4"
+    },
+    {
+      "name": "typenum",
+      "version": "1.19.0",
+      "crate_sha256": "562d481066bde0658276a35467c4af00bdc6ee726305698a55b86e61d7ad82bb",
+      "files": 26,
+      "source_inventory_sha256": "46172506d9f4cfe2857aed1afa1461fb14a1fbcaac986197037f23c7feb087cb"
+    },
+    {
+      "name": "unarm",
+      "version": "1.9.2",
+      "crate_sha256": "9ea856cd3ee3abd1b585bbcdc6f8a4b356f43558fae98d76e502be868dc40e90",
+      "files": 26,
+      "source_inventory_sha256": "bd2a7b6bbc8ba85ec85b05458ffee86fda737b9f9680ea80efdd3aa2c84b2f6b"
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "crate_sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "files": 26,
+      "source_inventory_sha256": "9d7c28c5a7e42a100f08188054a7c3a4bd588d2039cf29f57297ecca68f116e1"
+    },
+    {
+      "name": "unicode-segmentation",
+      "version": "1.13.3",
+      "crate_sha256": "c6f5d3c3b1bf09027a88a6bc961fc00497d651009560b5463668dc81b0fa87a8",
+      "files": 19,
+      "source_inventory_sha256": "f05dcb4b722286e8a462e4dd4c223880110068672f6663603b7ded02f4a10766"
+    },
+    {
+      "name": "unicode-width",
+      "version": "0.2.2",
+      "crate_sha256": "b4ac048d71ede7ee76d585517add45da530660ef4390e49b098733c6e897f254",
+      "files": 15,
+      "source_inventory_sha256": "0a4e2e45b9f8a0c1b4fff3c40b1de6dcc0b6b3a064b1713e9ef9bd3c50d80429"
+    },
+    {
+      "name": "unicode-xid",
+      "version": "0.2.6",
+      "crate_sha256": "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853",
+      "files": 13,
+      "source_inventory_sha256": "626f75486946e5310f0dc0b8464e8c84e64e1e7070a26f46af806f015dba37b7"
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
+      "crate_sha256": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a",
+      "files": 13,
+      "source_inventory_sha256": "12b7f8b050873ada46368d909bfd39b82b01708c8032071bf9eb270f6daef6bc"
+    },
+    {
+      "name": "wasip2",
+      "version": "1.0.2+wasi-0.2.9",
+      "crate_sha256": "9517f9239f02c069db75e65f174b3da828fe5f5b945c4dd26bd25d89c03ebcf5",
+      "files": 25,
+      "source_inventory_sha256": "a677573a53c0f17563def4d9fd14771be1a0094a95888916a93db57812cc3b9b"
+    },
+    {
+      "name": "wasm-bindgen",
+      "version": "0.2.114",
+      "crate_sha256": "6532f9a5c1ece3798cb1c2cfdba640b9b3ba884f5db45973a6f442510a87d38e",
+      "files": 24,
+      "source_inventory_sha256": "855a72a552c20b5ca881ec4a31ff67991536ae7f517f527102febc458c8d42c5"
+    },
+    {
+      "name": "wasm-bindgen-macro",
+      "version": "0.2.114",
+      "crate_sha256": "18a2d50fcf105fb33bb15f00e7a77b772945a2ee45dcf454961fd843e74c18e6",
+      "files": 9,
+      "source_inventory_sha256": "99b8cdfae6bd6b0a7d0380b857198353c31fa79310956bee3b7b8c23acfa4703"
+    },
+    {
+      "name": "wasm-bindgen-macro-support",
+      "version": "0.2.114",
+      "crate_sha256": "03ce4caeaac547cdf713d280eda22a730824dd11e6b8c3ca9e42247b25c631e3",
+      "files": 14,
+      "source_inventory_sha256": "4c47b81024b64a704a027a5819ae41a86245f01ea00995de66d5cb94833800ed"
+    },
+    {
+      "name": "wasm-bindgen-shared",
+      "version": "0.2.114",
+      "crate_sha256": "75a326b8c223ee17883a4251907455a2431acc2791c98c26279376490c378c16",
+      "files": 11,
+      "source_inventory_sha256": "8c6c61c2f7356baa16d5d6ed467c36ff12a324920d2f050f0d8174419e5a9c06"
+    },
+    {
+      "name": "wasm-encoder",
+      "version": "0.244.0",
+      "crate_sha256": "990065f2fe63003fe337b932cfb5e3b80e0b4d0f5ff650e6985b1048f62c8319",
+      "files": 41,
+      "source_inventory_sha256": "1c6413c73941da53c86c3889ab1e19200d663ae821b74c552a9fe347b34ec044"
+    },
+    {
+      "name": "wasm-metadata",
+      "version": "0.244.0",
+      "crate_sha256": "bb0e353e6a2fbdc176932bbaab493762eb1255a7900fe0fea1a2f96c296cc909",
+      "files": 27,
+      "source_inventory_sha256": "5c787c256f656492bfb675a110b8eff8d277d02a1d8e41ac54b46b86f45ea896"
+    },
+    {
+      "name": "wasmparser",
+      "version": "0.244.0",
+      "crate_sha256": "47b807c72e1bac69382b3a6fb3dbe8ea4c0ed87ff5629b8685ae6b9a611028fe",
+      "files": 67,
+      "source_inventory_sha256": "dbd9a42c15f4ac8a93a490111076c17b9b411300c5e0609c28fbf3123599eaa0"
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "crate_sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+      "files": 8,
+      "source_inventory_sha256": "5ad79acd692a96dab613343e5f9a34d8df4312e51e3a121d0df15853b8815678"
+    },
+    {
+      "name": "wit-bindgen",
+      "version": "0.51.0",
+      "crate_sha256": "d7249219f66ced02969388cf2bb044a09756a083d0fab1e566056b04d9fbcaa5",
+      "files": 38,
+      "source_inventory_sha256": "afcb9fee5796c90baee5ec85ba834cda0a055ba1131c2a67356bcc3f8de47885"
+    },
+    {
+      "name": "wit-bindgen-core",
+      "version": "0.51.0",
+      "crate_sha256": "ea61de684c3ea68cb082b7a88508a8b27fcc8b797d738bfc99a82facf1d752dc",
+      "files": 14,
+      "source_inventory_sha256": "0babb2d14b505019992a455d5c47612f480ea764da1a8f1686d1b346d26d335d"
+    },
+    {
+      "name": "wit-bindgen-rust",
+      "version": "0.51.0",
+      "crate_sha256": "b7c566e0f4b284dd6561c786d9cb0142da491f46a9fbed79ea69cdad5db17f21",
+      "files": 15,
+      "source_inventory_sha256": "c69bc5aab950f58d89592c8c48db0245c469327a829667f20a31c37c372fed63"
+    },
+    {
+      "name": "wit-bindgen-rust-macro",
+      "version": "0.51.0",
+      "crate_sha256": "0c0f9bfd77e6a48eccf51359e3ae77140a7f50b1e2ebfe62422d8afdaffab17a",
+      "files": 9,
+      "source_inventory_sha256": "a42374a2420a052c7eb956ccae2e8cdb8286d8137931e4ffbd415b1469738fad"
+    },
+    {
+      "name": "wit-component",
+      "version": "0.244.0",
+      "crate_sha256": "9d66ea20e9553b30172b5e831994e35fbde2d165325bec84fc43dbf6f4eb9cb2",
+      "files": 776,
+      "source_inventory_sha256": "7fb6ad40fca33da313637aee197ae4978ab4003aa5dae748b0ec8430fa6a8ab2"
+    },
+    {
+      "name": "wit-parser",
+      "version": "0.244.0",
+      "crate_sha256": "ecc8ac4bc1dc3381b7f59c34f00b67e18f910c2c0f50015669dde7def656a736",
+      "files": 517,
+      "source_inventory_sha256": "00428bb3c82cdefe633a4d6f59701aa62c62b452e84cc6ed020095c4c5ecd85d"
+    },
+    {
+      "name": "zerocopy",
+      "version": "0.8.40",
+      "crate_sha256": "a789c6e490b576db9f7e6b6d661bcc9799f7c0ac8352f56ea20193b2681532e5",
+      "files": 106,
+      "source_inventory_sha256": "44ae4d2ecad76ec7ce2727f84c0a0d45dfe3b218d7db5f7d1e976ac10dc4707f"
+    },
+    {
+      "name": "zerocopy-derive",
+      "version": "0.8.40",
+      "crate_sha256": "f65c489a7071a749c849713807783f70672b28094011623e200cb86dcb835953",
+      "files": 133,
+      "source_inventory_sha256": "5eb80aa29ae1d5912e89eae219aa3c2ae6199125cf541f6faf04ef17290a9502"
+    },
+    {
+      "name": "zlib-rs",
+      "version": "0.6.3",
+      "crate_sha256": "3be3d40e40a133f9c916ee3f9f4fa2d9d63435b5fbe1bfc6d9dae0aa0ada1513",
+      "files": 51,
+      "source_inventory_sha256": "4c5e244ed255f6b47967b76176056e1eef9d71bb3fbb091cdfe67b7de2ec415a"
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.21",
+      "crate_sha256": "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa",
+      "files": 18,
+      "source_inventory_sha256": "b7649d5b58c23b0f5518501955f5b401389d028a1be016f7821249d6ac5debf6"
+    }
+  ]
+}

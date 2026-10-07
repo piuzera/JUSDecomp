@@ -1,0 +1,12 @@
+{
+  "source_hash_count": 72,
+  "unchanged": 71,
+  "expected_experimental_lock_change": {
+    "decomp/toolchain.lock.json": {
+      "current": "5cb91572ce06fc51c48c7cf17a7f465801807b627b182e94d49a85bf8b95e691",
+      "reference": "2611fc6c8796a4a2f7945dfe206590cee84f8e533ab0e63264dd41a1f23b8600"
+    }
+  },
+  "game_source_unchanged": true,
+  "production_pin_changed": false
+}

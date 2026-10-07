@@ -1,0 +1,12 @@
+{
+  "status": "verified_observed_contracts",
+  "reviewer": "gpt-6-astra",
+  "notes_source_commit": "2f59408",
+  "verified_original_functions": 25,
+  "root_range_hash_source": "Pinned original ROM, initialized ARM9 at file offset16384,656832 bytes",
+  "independent_baseline_elf_and_extract": "Verified including706400zeroBSS bytes",
+  "source_credit_added": 0,
+  "canonical_source_bytes": 304,
+  "ownership_types_and_dynamic_targets": "unresolved",
+  "task_complete": false
+}

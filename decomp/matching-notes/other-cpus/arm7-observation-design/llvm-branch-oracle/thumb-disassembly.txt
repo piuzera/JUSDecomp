@@ -1,0 +1,24 @@
+
+/private/tmp/jus-arm-branch-llvm-oracle/thumb.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+02380000 <_start>:
+ 2380000: e3ff         	b	0x2380802 <short_target> @ imm = #0x7fe
+ 2380002: d17f         	bne	0x2380104 <conditional_target> @ imm = #0xfe
+ 2380004: f3ff ffff    	bl	0x2780006 <long_target> @ imm = #0x3ffffe
+
+Disassembly of section .short_target:
+
+02380802 <short_target>:
+ 2380802: 46c0         	mov	r8, r8
+
+Disassembly of section .conditional_target:
+
+02380104 <conditional_target>:
+ 2380104: 46c0         	mov	r8, r8
+
+Disassembly of section .long_target:
+
+02780006 <long_target>:
+ 2780006: 46c0         	mov	r8, r8

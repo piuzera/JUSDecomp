@@ -1,0 +1,97 @@
+{
+  "status": "verified",
+  "synthetic_cases": 32,
+  "commands": [
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--triple=armv5te-none-eabi",
+      "--filetype=obj",
+      "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/oracle/arm.s",
+      "-o",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/arm.o"
+    ],
+    [
+      "/opt/homebrew/bin/ld.lld",
+      "-T",
+      "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/oracle/layout.ld",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/arm.o",
+      "-o",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/arm.elf"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-objdump",
+      "-d",
+      "--mcpu=arm946e-s",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/arm.elf"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--triple=armv5te-none-eabi",
+      "--filetype=obj",
+      "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/oracle/thumb.s",
+      "-o",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb.o"
+    ],
+    [
+      "/opt/homebrew/bin/ld.lld",
+      "-T",
+      "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/oracle/layout.ld",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb.o",
+      "-o",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb.elf"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-objdump",
+      "-d",
+      "--mcpu=arm946e-s",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb.elf"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--triple=armv5te-none-eabi",
+      "--filetype=obj",
+      "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment.s",
+      "-o",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb-blx-alignment.o"
+    ],
+    [
+      "/opt/homebrew/bin/ld.lld",
+      "-T",
+      "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/oracle/layout.ld",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb-blx-alignment.o",
+      "-o",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb-blx-alignment.elf"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-objdump",
+      "-d",
+      "--mcpu=arm946e-s",
+      "/private/tmp/jus-arm7-branch-root-oracle-32/thumb-blx-alignment.elf"
+    ]
+  ],
+  "source_hashes": {
+    "layout.ld": "be95da09dc8885d2d2eb9ae198601d4a376bc59e751682743e2de3b619febe72",
+    "thumb-disassembly.txt": "76a8f8d3f7f92b360a5b8b8f2d855fb9354943e83a623865ef5986ad53735767",
+    "arm.s": "129d593c29177a9c95006ec2119ce5f77463e62c7054b2c7afb3881847fd34a9",
+    "thumb.s": "5cbf753f6b5842fcbd999efad3f1e9713bb89bd499ce5f05b05a2431bd13c7fb",
+    "arm-disassembly.txt": "02b545268b34eb1cfae4004b57f0ac31cd784268eb12f36de6a339366bf533ad",
+    "thumb-blx-alignment.s": "aefbd9c7b790465af9c69dca6a542a5795f290cb5d46d0653734d00ee6902449",
+    "thumb-blx-alignment-disassembly.txt": "3a89b0d3a4dbcc677819f5162ac27003e1846a14e333174a762f4296cdf4f5c2"
+  },
+  "tools": {
+    "/opt/homebrew/opt/llvm/bin/llvm-mc": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+    "/opt/homebrew/opt/llvm/bin/llvm-objdump": "a4498b0883383a2653530a8575b53c3058dfbfd9aeb36e9d0e77df1c77fde2f6",
+    "/opt/homebrew/bin/ld.lld": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54"
+  },
+  "outputs": {
+    "arm.o": "6473941762bb3bb33886b275ccce869050d009878639c660a6368ad090089cd7",
+    "arm.elf": "48cf5a1ca2da2b660a14d3885f72059e61bdcff1f058ffa155968499ee43fbc2",
+    "arm-disassembly.txt": "eade325b15131b14a4ddcf942067d855eaf6424374959954603ae020674e47ae",
+    "thumb.o": "81a6e8e62cf4d383c3015da4614d936f5b7af41efc77af1d5326828477ad683a",
+    "thumb.elf": "d5faa4498856aacf742b2b5489e74236f53baa1de4e5701d6bc8f3fd045bf994",
+    "thumb-disassembly.txt": "3302b7c8f6ccc54f9bb925fe62811c2132e017c2edb75b29ce25a7d73f41424b",
+    "thumb-blx-alignment.o": "a3b22375fcd358b10223c48e181691884de33c75f1813afae19eaf02112a7c0d",
+    "thumb-blx-alignment.elf": "b623238a073866b8a90b326c6360b7df2358f13d5086bb1592033eff0d7b95c4",
+    "thumb-blx-alignment-disassembly.txt": "1a3a366a41be429ca01addbaa682bec24db846def19794b97007e4476e94ffae"
+  }
+}

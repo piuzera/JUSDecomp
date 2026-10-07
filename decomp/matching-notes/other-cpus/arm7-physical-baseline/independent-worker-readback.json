@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "method": "independent Python readback from original NDS header and FAT79 plus actual ELF32 program headers and emitted files",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "direct_original_image_equal": true,
+      "stored_bytes": 165552,
+      "artifact_count": 16,
+      "all_artifact_sizes_hashes_match": true,
+      "elf_machine": 40,
+      "actual_load_segments_match": 6,
+      "checked_header_bytes": 16384,
+      "entry_header_params_table_match": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "direct_original_image_equal": true,
+      "stored_bytes": 165552,
+      "artifact_count": 16,
+      "all_artifact_sizes_hashes_match": true,
+      "elf_machine": 40,
+      "actual_load_segments_match": 6,
+      "checked_header_bytes": 16384,
+      "entry_header_params_table_match": true
+    }
+  ],
+  "parent_unchanged": true,
+  "arm7_source_bytes": 0,
+  "full_arm7_binary_baseline_complete": false,
+  "t10_complete": false
+}

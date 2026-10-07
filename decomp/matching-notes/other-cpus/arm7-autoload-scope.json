@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.10",
+  "scope": "ARM7 physical inventory inferred from the actual startup loader and table; no analysis/link/source baseline",
+  "source_credit": 0,
+  "program_instances": [
+    "parent.arm7",
+    "ChildRom/JSS2Child.srl.arm7"
+  ],
+  "instances_byte_identical": true,
+  "stored_image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+  "stored_image_bytes": 165552,
+  "autoload_parameters_address": 37224856,
+  "autoload_table_address": 37389976,
+  "autoload_table_bytes": 24,
+  "autoload_table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+  "regions": [
+    {
+      "id": "startup",
+      "cpu": "arm7",
+      "mode_at_entry": "arm",
+      "load_address": 37224448,
+      "stored_offset": 0,
+      "initialized_bytes": 432,
+      "bss_bytes": 0,
+      "payload_sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35"
+    },
+    {
+      "id": "autoload0",
+      "cpu": "arm7",
+      "mode_at_entry": "unresolved",
+      "load_address": 58687488,
+      "stored_offset": 432,
+      "initialized_bytes": 66120,
+      "bss_bytes": 14920,
+      "bss_start": 58753608,
+      "bss_end": 58768528,
+      "payload_sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+      "observed_program_entry": {
+        "address": "0x037f8468",
+        "initialized_offset": "0x468",
+        "mode": "arm",
+        "evidence": "Startup BX r1 loads bit-zero-clear address from literal 0x023800f8; destination is inside autoload0 initialized bytes and begins ARM prologue",
+        "function_extent": "unresolved"
+      }
+    },
+    {
+      "id": "autoload1",
+      "cpu": "arm7",
+      "mode_at_entry": "unresolved",
+      "load_address": 41811968,
+      "stored_offset": 66552,
+      "initialized_bytes": 98976,
+      "bss_bytes": 6504,
+      "bss_start": 41910944,
+      "bss_end": 41917448,
+      "payload_sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217"
+    }
+  ],
+  "initialized_bytes_excluding_table": 165528,
+  "bss_bytes": 21424,
+  "loader_evidence": {
+    "params_literal_address": "0x023800ec",
+    "loader_routine_address": "0x02380100",
+    "callback_address": "0x02380158",
+    "table_record_bytes": 12,
+    "algorithm": "Load destination and initialized size; copy words from autoload data; load BSS size and clear words; loop until table end. Startup clears main BSS using parameter words 3 and 4.",
+    "private_disassembly_sha256": "f7bdec6ff94b59f08deb47addb7b9039caee7423e0df3c39bb8f9efdd61ffbf6"
+  },
+  "limitations": [
+    "ARM7 function boundaries and ARM/Thumb mappings unresolved",
+    "Autoload static data/code split unresolved",
+    "dsd has no ARM7 ModuleKind or ARMv4T analysis policy",
+    "Compiler/ABI and source matching remain unresolved"
+  ],
+  "upstream_arm7_support_check": {
+    "checked_head": "c4080635ac38aaf9608ca23751defa9fa19cf81a",
+    "arm7_module_kind": false,
+    "parser_version": "fixed ARMv5TE"
+  },
+  "startup_ram_copy_dependencies": [
+    {
+      "source_address": "0x023fe940",
+      "destination_address": "0x027ffa80",
+      "bytes": 352
+    },
+    {
+      "source_address": "0x023fe904",
+      "destination_address": "0x027ffbe0",
+      "bytes": 32
+    }
+  ],
+  "startup_ram_copy_dependency_status": "Sources are outside the stored ARM7 image; contents and executable status unresolved; not included in recovered autoload or source coverage.",
+  "related_arm9_startup_buffer_use": {
+    "function": "func_02061e70",
+    "source_address": "0x027ffe00",
+    "destination_address": "0x027ffa80",
+    "bytes": 352,
+    "condition": "halfword at 0x027ffc40 is not 2",
+    "copy_function": "func_02051890",
+    "status": "Byte-copy direction and extent verified from original ARM9 code; ARM7 source contents and executable status remain unresolved."
+  }
+}

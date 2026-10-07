@@ -1,0 +1,10 @@
+{
+  "input_sha256": {
+    "reproduce.py": "e5da61b03646656308c18befb86507329d11b08585dd2aba00977b8691a475f7",
+    "rom.py": "82a45a58e32f5d1117a0930a5438eeb227dd6f052a2f39769cb61df6aa58a57c",
+    "test_rom.py": "347bfc88c8b94ba0f261c3f08267815fc1fa7f90dda00da5b8567d337cd6bd7e",
+    "dependency-catalog.json": "3678ea59396a1ab6b932461750c7ec9afb334ecd19a8ab94a8b3a107a1334781",
+    "profile.json": "4a314f6a7fac8a66a497ad925719a639617c6a690cf4a93e49e0f7d38f601672",
+    "checkout-eol.json": "0bbbc6b52c63eeb16d08e08725d31c72c2cd9922514a0ae1d74d05a3c96a8cb7"
+  }
+}

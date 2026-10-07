@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "upstream": {
+    "url": "https://github.com/piuzera/JUSDecomp",
+    "commit": "6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b"
+  },
+  "origin": "https://github.com/drj613/JUSDecomp",
+  "branch": "track-a/matching",
+  "dsd": {
+    "version": "0.12.0",
+    "source_commit": "78630f8f54835e0e627cd4e45a9626d88c307f8b",
+    "asset": "locally-built-dsd-macos-arm64",
+    "url": "local patched source checkout; durable patch is in other-cpus notes",
+    "sha256": "d1117b6126a27c3c1f8d429840c61671f492d7bcb22bedc84e42ed8509a5041f",
+    "verified_version_output": "ds-decomp-cli 0.12.0",
+    "equivalence_to_upstream_windows_binary": "not_verified",
+    "upstream_source_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe"
+  },
+  "mwldarm": {
+    "required": true,
+    "preferred_version": "1.2/sp2p3",
+    "status": "available_and_original_baseline_verified",
+    "version": "2.0 build 76",
+    "sha256": "eada466d4f0c309fbcf061ff5791a2c98a92d8b0e2364c53a0a9d0fe42100a7f"
+  },
+  "mwccarm": {
+    "required_for_t01": false,
+    "status": "available_and_trampoline_compilation_verified",
+    "package": "2.0/base",
+    "version": "3.0 build 114",
+    "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880"
+  },
+  "host": {
+    "os": "macOS",
+    "version": "26.6.2",
+    "build": "25G83",
+    "arch": "arm64",
+    "python": "3.14.7"
+  },
+  "windows_runner": {
+    "status": "wibo_macos_1.2.0_tested_with_mwccarm_via_Rosetta",
+    "candidate": "wibo-macos via Rosetta 2",
+    "available_worker": "Docker/Colima Linux aarch64; x86_64/i386 QEMU binfmt enabled"
+  },
+  "baseline_status": "native_modules_symbols_and_original_rom_comparison_passed",
+  "native_linker": {
+    "version": "23.1.2",
+    "tool": "LLVM lld",
+    "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+    "distribution": "Homebrew core lld 23.1.2 macOS arm64",
+    "recipe": "HOMEBREW_NO_AUTO_UPDATE=1 HOMEBREW_NO_INSTALL_CLEANUP=1 brew install lld"
+  },
+  "native_attributes_compiler": {
+    "tool": "LLVM clang",
+    "version": "23.1.2",
+    "sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+    "flags": [
+      "--target=arm-none-eabi",
+      "-march=armv5te",
+      "-c"
+    ],
+    "purpose": "Generate .ARM.attributes shim only; zero reconstructed game source"
+  },
+  "original_metrowerks_baseline_status": "modules_symbols_and_native_baseline_equivalence_passed",
+  "source_compiler_runner": {
+    "name": "wibo",
+    "version": "1.2.0",
+    "host": "Darwin x86_64 via Rosetta 2",
+    "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+    "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+  },
+  "source_compiler": {
+    "name": "Metrowerks C/C++ for Embedded ARM",
+    "package": "mwccarm/2.0/base",
+    "version": "3.0 build 114",
+    "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "version_argument": "-version",
+    "cpu": "arm946e",
+    "runtime_libraries": {
+      "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+      "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+      "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+    },
+    "archive": {
+      "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+      "bytes": 51684965,
+      "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+    },
+    "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+  }
+}

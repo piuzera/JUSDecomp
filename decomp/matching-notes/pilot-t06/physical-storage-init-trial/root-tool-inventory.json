@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "compiler_package": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base",
+  "package_exe_dll_inventory": {
+    "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+    "mwasmarm.exe": "e928cbcce71d687fadf25cf426280f23252e2aaae897fc2ce4e5570d8554dc8c",
+    "mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "mwldarm.exe": "bd8a36a81d79af96f02fdd06e114ae97ea47acc801775a0701f93b7be139fa74"
+  },
+  "required_compiler_and_runtime_pins": {
+    "mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+  "target_compiler_invoked": false
+}

@@ -1,0 +1,310 @@
+{
+  "status": "passed",
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "layout_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "llvm_tool_sha256": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+  "child_path": "ChildRom/JSS2Child.srl",
+  "child_file_id": 79,
+  "child_rom_extent": {
+    "start": 2340864,
+    "end": 4482248
+  },
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "autoload0": {
+        "runtime": 58687488,
+        "initialized_bytes": 66120,
+        "bss_bytes": 14920,
+        "stored_start": 432
+      },
+      "selections": [
+        {
+          "start": 58708080,
+          "end": 58708160,
+          "stored_image_offset": 21024,
+          "program_offset": 2183712,
+          "sha256": "2682fcfd18c0bdc36ed6547ad546bef1d300ab2a3eea24c1e3c1a2ca7dde3f33",
+          "words": [
+            "0xe3a00007",
+            "0xebffffc2",
+            "0xe1a01000",
+            "0xe3a00007",
+            "0xebffffa4",
+            "0xe3a00007",
+            "0xebffffa7",
+            "0xe1a01000",
+            "0xe3a00007",
+            "0xebffff9a",
+            "0xe3a00008",
+            "0xebffffb8",
+            "0xe1a01000",
+            "0xe3a00008",
+            "0xebffff9a",
+            "0xe3a00008",
+            "0xebffff9d",
+            "0xe1a01000",
+            "0xe3a00008",
+            "0xebffff90"
+          ],
+          "raw_calls": [
+            {
+              "source": 58708084,
+              "imm24": 16777154,
+              "signed_displacement": -248,
+              "pc_bias": 8,
+              "target": 58707844,
+              "continuation": 58708088
+            },
+            {
+              "source": 58708096,
+              "imm24": 16777124,
+              "signed_displacement": -368,
+              "pc_bias": 8,
+              "target": 58707736,
+              "continuation": 58708100
+            },
+            {
+              "source": 58708104,
+              "imm24": 16777127,
+              "signed_displacement": -356,
+              "pc_bias": 8,
+              "target": 58707756,
+              "continuation": 58708108
+            },
+            {
+              "source": 58708116,
+              "imm24": 16777114,
+              "signed_displacement": -408,
+              "pc_bias": 8,
+              "target": 58707716,
+              "continuation": 58708120
+            },
+            {
+              "source": 58708124,
+              "imm24": 16777144,
+              "signed_displacement": -288,
+              "pc_bias": 8,
+              "target": 58707844,
+              "continuation": 58708128
+            },
+            {
+              "source": 58708136,
+              "imm24": 16777114,
+              "signed_displacement": -408,
+              "pc_bias": 8,
+              "target": 58707736,
+              "continuation": 58708140
+            },
+            {
+              "source": 58708144,
+              "imm24": 16777117,
+              "signed_displacement": -396,
+              "pc_bias": 8,
+              "target": 58707756,
+              "continuation": 58708148
+            },
+            {
+              "source": 58708156,
+              "imm24": 16777104,
+              "signed_displacement": -448,
+              "pc_bias": 8,
+              "target": 58707716,
+              "continuation": 58708160
+            }
+          ]
+        },
+        {
+          "start": 58708160,
+          "end": 58708172,
+          "stored_image_offset": 21104,
+          "program_offset": 2183792,
+          "sha256": "97e49fab5b2490c4b4977ff23d65446f267880f107a387035c5cf63b97d1d2ad",
+          "words": [
+            "0xe28dd004",
+            "0xe8bd4000",
+            "0xe12fff1e"
+          ]
+        }
+      ],
+      "excluded_literal": {
+        "address": 58708172,
+        "stored_image_offset": 21116,
+        "word": 58754096,
+        "selected_as_instruction": false
+      }
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "autoload0": {
+        "runtime": 58687488,
+        "initialized_bytes": 66120,
+        "bss_bytes": 14920,
+        "stored_start": 432
+      },
+      "selections": [
+        {
+          "start": 58708080,
+          "end": 58708160,
+          "stored_image_offset": 21024,
+          "program_offset": 1993760,
+          "sha256": "2682fcfd18c0bdc36ed6547ad546bef1d300ab2a3eea24c1e3c1a2ca7dde3f33",
+          "words": [
+            "0xe3a00007",
+            "0xebffffc2",
+            "0xe1a01000",
+            "0xe3a00007",
+            "0xebffffa4",
+            "0xe3a00007",
+            "0xebffffa7",
+            "0xe1a01000",
+            "0xe3a00007",
+            "0xebffff9a",
+            "0xe3a00008",
+            "0xebffffb8",
+            "0xe1a01000",
+            "0xe3a00008",
+            "0xebffff9a",
+            "0xe3a00008",
+            "0xebffff9d",
+            "0xe1a01000",
+            "0xe3a00008",
+            "0xebffff90"
+          ],
+          "raw_calls": [
+            {
+              "source": 58708084,
+              "imm24": 16777154,
+              "signed_displacement": -248,
+              "pc_bias": 8,
+              "target": 58707844,
+              "continuation": 58708088
+            },
+            {
+              "source": 58708096,
+              "imm24": 16777124,
+              "signed_displacement": -368,
+              "pc_bias": 8,
+              "target": 58707736,
+              "continuation": 58708100
+            },
+            {
+              "source": 58708104,
+              "imm24": 16777127,
+              "signed_displacement": -356,
+              "pc_bias": 8,
+              "target": 58707756,
+              "continuation": 58708108
+            },
+            {
+              "source": 58708116,
+              "imm24": 16777114,
+              "signed_displacement": -408,
+              "pc_bias": 8,
+              "target": 58707716,
+              "continuation": 58708120
+            },
+            {
+              "source": 58708124,
+              "imm24": 16777144,
+              "signed_displacement": -288,
+              "pc_bias": 8,
+              "target": 58707844,
+              "continuation": 58708128
+            },
+            {
+              "source": 58708136,
+              "imm24": 16777114,
+              "signed_displacement": -408,
+              "pc_bias": 8,
+              "target": 58707736,
+              "continuation": 58708140
+            },
+            {
+              "source": 58708144,
+              "imm24": 16777117,
+              "signed_displacement": -396,
+              "pc_bias": 8,
+              "target": 58707756,
+              "continuation": 58708148
+            },
+            {
+              "source": 58708156,
+              "imm24": 16777104,
+              "signed_displacement": -448,
+              "pc_bias": 8,
+              "target": 58707716,
+              "continuation": 58708160
+            }
+          ]
+        },
+        {
+          "start": 58708160,
+          "end": 58708172,
+          "stored_image_offset": 21104,
+          "program_offset": 1993840,
+          "sha256": "97e49fab5b2490c4b4977ff23d65446f267880f107a387035c5cf63b97d1d2ad",
+          "words": [
+            "0xe28dd004",
+            "0xe8bd4000",
+            "0xe12fff1e"
+          ]
+        }
+      ],
+      "excluded_literal": {
+        "address": 58708172,
+        "stored_image_offset": 21116,
+        "word": 58754096,
+        "selected_as_instruction": false
+      }
+    }
+  ],
+  "llvm_runs": [
+    {
+      "extent": {
+        "start": 58708080,
+        "end": 58708160
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout_file": "llvm-continuation.txt",
+      "stdout_sha256": "508883225420b4e4ea57b61fca31f8c989c83dfd33d849721575a1b3466f3077"
+    },
+    {
+      "extent": {
+        "start": 58708160,
+        "end": 58708172
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout_file": "llvm-epilogue.txt",
+      "stdout_sha256": "2cc8bcd5a0074ff8047de1bee11edc91a69ab4650daa68ef147ef84f1aaa69fe"
+    }
+  ],
+  "inputs_unchanged": true,
+  "source_credit_bytes": 0,
+  "original_names_established": false
+}

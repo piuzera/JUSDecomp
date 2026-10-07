@@ -1,0 +1,14 @@
+{
+  "reviewer": "gpt-6-astra",
+  "reviewed_integration_commit": "d9db884",
+  "status": "cleared",
+  "attention_flags": [],
+  "strict_object_trials_verified": 60,
+  "accepted_units": 0,
+  "source_credit_bytes": 0,
+  "current_promoted_source_hashes_verified": 72,
+  "canonical_source_bytes": 304,
+  "tests_passed": 222,
+  "tests_skipped": 0,
+  "full_rom_attempted_for_initializer": false
+}

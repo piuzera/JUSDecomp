@@ -1,0 +1,50 @@
+{
+  "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+  "functions": [
+    {
+      "name": "func_0202c4ac",
+      "offset": 0,
+      "size": 92,
+      "mode": "arm",
+      "section": ".text"
+    }
+  ],
+  "relocations": [
+    {
+      "section": ".text",
+      "offset": 40,
+      "type": 1,
+      "symbol": "func_020326b0",
+      "addend": -8
+    },
+    {
+      "section": ".text",
+      "offset": 52,
+      "type": 1,
+      "symbol": "func_020326b0",
+      "addend": -8
+    },
+    {
+      "section": ".text",
+      "offset": 84,
+      "type": 2,
+      "symbol": "data_02098708",
+      "addend": 0
+    },
+    {
+      "section": ".text",
+      "offset": 88,
+      "type": 2,
+      "symbol": "data_020a0c34",
+      "addend": 0
+    }
+  ],
+  "sections": [
+    {
+      "name": ".text",
+      "size": 92,
+      "flags": 6,
+      "sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+    }
+  ]
+}

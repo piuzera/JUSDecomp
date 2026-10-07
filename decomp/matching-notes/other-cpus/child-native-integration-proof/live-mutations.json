@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "native-link/linked.elf",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "native-link/linked.elf rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "native-link/dsd-check.elf",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "native-link/dsd-check.elf rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "native-link/link.map",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "native-link/link.map rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "native-link/objects/_dsd_gap@main_5.o",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "native-link/objects/_dsd_gap@main_5.o rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "delinks/_dsd_gap@main_5.o",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "delinks/_dsd_gap@main_5.o rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "native-link/arm9.bin",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "native-link/arm9.bin rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "native-link/modules.json",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "native-link/modules.json rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "rebuilt.srl",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "rebuilt.srl rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "command-1.json",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "command-1.json rewritten audit",
+      "status": "rejected",
+      "reason": "child audit report differs from live operation"
+    },
+    {
+      "case": "unrecorded artifact",
+      "status": "rejected",
+      "reason": "child artifacts changed, missing or unrecorded"
+    },
+    {
+      "case": "stale encoded child",
+      "status": "rejected",
+      "reason": "ARM7 artifact is stale: rebuilt.srl"
+    },
+    {
+      "case": "detached JSON",
+      "status": "rejected",
+      "reason": "child needs live fresh operation; rerun canonical verifier"
+    }
+  ],
+  "restored_live_operation": "passed",
+  "source_bytes": 0,
+  "original_relocations": {
+    "failed": 0,
+    "total": 35092,
+    "unresolved": 0,
+    "validated": 35092
+  }
+}

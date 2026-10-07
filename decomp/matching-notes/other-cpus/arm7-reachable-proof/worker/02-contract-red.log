@@ -1,0 +1,122 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-reachable-dsd/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.50s
+     Running tests/arm7_reachable.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/arm7_reachable-a3ba8b202a421675)
+
+running 13 tests
+test empty_inputs_and_roots_reject ... FAILED
+test bss_unmapped_and_indirect_pc_writes_stay_frontiers ... FAILED
+test finite_cycle_retains_back_edge_counts_and_deterministic_scope ... FAILED
+test omitted_mapping_cannot_be_repaired_by_another_observation ... FAILED
+test complete_thumb_bl_interior_is_not_a_selected_start ... FAILED
+test direct_call_joins_separately_selected_checked_span ... FAILED
+test cross_selection_thumb_interior_does_not_join ... FAILED
+test conditional_call_preserves_all_guards_source_condition_and_original_mapping ... FAILED
+test opposite_mode_overlap_quarantines_whole_instruction_and_root ... FAILED
+test root_requires_exact_borrowed_membership_start_assumption_and_uniqueness ... FAILED
+test equal_bytes_in_foreign_programs_do_not_join ... FAILED
+test same_mode_duplicate_and_partial_overlap_reject ... FAILED
+test target_selected_only_in_opposite_mode_is_frontier ... FAILED
+
+failures:
+
+---- empty_inputs_and_roots_reject stdout ----
+
+thread 'empty_inputs_and_roots_reject' (252148707) panicked at lib/tests/arm7_reachable.rs:27:50:
+called `Result::unwrap_err()` on an `Ok` value: CandidateGraph { scope: "root_assumed_selected_interpretations" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- bss_unmapped_and_indirect_pc_writes_stay_frontiers stdout ----
+
+thread 'bss_unmapped_and_indirect_pc_writes_stay_frontiers' (252148702) panicked at lib/tests/arm7_reachable.rs:146:9:
+assertion `left == right` failed
+  left: Null
+ right: "bss"
+
+---- finite_cycle_retains_back_edge_counts_and_deterministic_scope stdout ----
+
+thread 'finite_cycle_retains_back_edge_counts_and_deterministic_scope' (252148709) panicked at lib/tests/arm7_reachable.rs:172:5:
+assertion `left == right` failed
+  left: Null
+ right: Array [Number(0), Number(1)]
+
+---- omitted_mapping_cannot_be_repaired_by_another_observation stdout ----
+
+thread 'omitted_mapping_cannot_be_repaired_by_another_observation' (252148710) panicked at lib/tests/arm7_reachable.rs:134:5:
+assertion `left == right` failed
+  left: Null
+ right: "unmapped"
+
+---- complete_thumb_bl_interior_is_not_a_selected_start stdout ----
+
+thread 'complete_thumb_bl_interior_is_not_a_selected_start' (252148703) panicked at lib/tests/arm7_reachable.rs:27:50:
+called `Result::unwrap_err()` on an `Ok` value: CandidateGraph { scope: "root_assumed_selected_interpretations" }
+
+---- direct_call_joins_separately_selected_checked_span stdout ----
+
+thread 'direct_call_joins_separately_selected_checked_span' (252148706) panicked at lib/tests/arm7_reachable.rs:18:5:
+assertion `left == right` failed
+  left: None
+ right: Some(2)
+
+---- cross_selection_thumb_interior_does_not_join stdout ----
+
+thread 'cross_selection_thumb_interior_does_not_join' (252148705) panicked at lib/tests/arm7_reachable.rs:122:5:
+assertion `left == right` failed
+  left: Null
+ right: "instruction_interior"
+
+---- conditional_call_preserves_all_guards_source_condition_and_original_mapping stdout ----
+
+thread 'conditional_call_preserves_all_guards_source_condition_and_original_mapping' (252148704) panicked at lib/tests/arm7_reachable.rs:157:9:
+assertion `left == right` failed
+  left: Null
+ right: "condition_passed"
+
+---- opposite_mode_overlap_quarantines_whole_instruction_and_root stdout ----
+
+thread 'opposite_mode_overlap_quarantines_whole_instruction_and_root' (252148711) panicked at lib/tests/arm7_reachable.rs:85:5:
+assertion `left == right` failed
+  left: Null
+ right: true
+
+---- root_requires_exact_borrowed_membership_start_assumption_and_uniqueness stdout ----
+
+thread 'root_requires_exact_borrowed_membership_start_assumption_and_uniqueness' (252148712) panicked at lib/tests/arm7_reachable.rs:27:50:
+called `Result::unwrap_err()` on an `Ok` value: CandidateGraph { scope: "root_assumed_selected_interpretations" }
+
+---- equal_bytes_in_foreign_programs_do_not_join stdout ----
+
+thread 'equal_bytes_in_foreign_programs_do_not_join' (252148708) panicked at lib/tests/arm7_reachable.rs:27:50:
+called `Result::unwrap_err()` on an `Ok` value: CandidateGraph { scope: "root_assumed_selected_interpretations" }
+
+---- same_mode_duplicate_and_partial_overlap_reject stdout ----
+
+thread 'same_mode_duplicate_and_partial_overlap_reject' (252148713) panicked at lib/tests/arm7_reachable.rs:27:50:
+called `Result::unwrap_err()` on an `Ok` value: CandidateGraph { scope: "root_assumed_selected_interpretations" }
+
+---- target_selected_only_in_opposite_mode_is_frontier stdout ----
+
+thread 'target_selected_only_in_opposite_mode_is_frontier' (252148714) panicked at lib/tests/arm7_reachable.rs:99:5:
+assertion `left == right` failed
+  left: Null
+ right: "mode_conflict"
+
+
+failures:
+    bss_unmapped_and_indirect_pc_writes_stay_frontiers
+    complete_thumb_bl_interior_is_not_a_selected_start
+    conditional_call_preserves_all_guards_source_condition_and_original_mapping
+    cross_selection_thumb_interior_does_not_join
+    direct_call_joins_separately_selected_checked_span
+    empty_inputs_and_roots_reject
+    equal_bytes_in_foreign_programs_do_not_join
+    finite_cycle_retains_back_edge_counts_and_deterministic_scope
+    omitted_mapping_cannot_be_repaired_by_another_observation
+    opposite_mode_overlap_quarantines_whole_instruction_and_root
+    root_requires_exact_borrowed_membership_start_assumption_and_uniqueness
+    same_mode_duplicate_and_partial_overlap_reject
+    target_selected_only_in_opposite_mode_is_frontier
+
+test result: FAILED. 0 passed; 13 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_reachable`

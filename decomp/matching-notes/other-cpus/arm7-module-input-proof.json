@@ -1,0 +1,566 @@
+{
+  "schema_version": 1,
+  "scope": "experimental_checked_arm7_module_inputs_and_explicit_span_observations",
+  "source_credit_bytes": 0,
+  "arm7_binary_baseline_complete": false,
+  "production_pin_changed": false,
+  "t10_complete": false,
+  "producer": {
+    "patch_base_revision": "0ef447312649db7412ddd98fe0b2b23beb5bd196",
+    "source_revision": "bee60e2ee89308616933a391c387928e2dfb5c07",
+    "source_tree": "9bdb5141422bace5f700c2d4e82bcd716fa8b04c",
+    "patch": "arm7-module-input.patch",
+    "patch_sha256": "0001c73030992c6e8b41f23b32795736c9ee9cabfe19b81a630764b630f7da32",
+    "native_probe_sha256": "6bb268b2b9208651e54e2d90b6b9edd3c1e62e95114d0d70acd3be5f10644502",
+    "native_cli_sha256": "ac10a6f214c6f5c5ba8696839a25a0671313452daa167f7a3282260fce286905",
+    "cargo_lock_sha256": "46f889093356a81ac8565ab22423fa91fe39bd3b3a9d5aaa184dcd954fe5f29f",
+    "locked_unarm_version": "1.9.2",
+    "dependency_resolution_changed": false,
+    "host": {
+      "system": "Darwin",
+      "architecture": "arm64"
+    },
+    "profile": "release-fast",
+    "rustc": "1.98.1 (48a229cea 2026-09-01) (Homebrew)",
+    "cargo": "1.98.1 (797e8a9bc 2026-08-05) (Homebrew)"
+  },
+  "verification": {
+    "public_tests_passed": 41,
+    "test_groups": {
+      "existing_lib": 5,
+      "checked_arm7_view": 24,
+      "arm7_module_inputs_and_isa": 12
+    },
+    "clippy_passed": true,
+    "clippy_allow": "clippy::chunks_exact_to_as_chunks (existing source)",
+    "source_diff_check_passed": true,
+    "test_first_red": [
+      "Against exact patch base, locked decoder test fails to compile because ArmVersion::V4T is feature-disabled; adding only the existing v4t feature proves actual V4T/V5TE opcode separation.",
+      "Before adapter implementation, checked-view consumer tests fail to compile for missing module_inputs/arm7_modules/DecodeSpanError."
+    ],
+    "covered_rejections": [
+      "ARM9 CPU/ISA policy at checked intake",
+      "empty/reversed/unaligned/out-of-bounds/BSS/table/neighbor spans",
+      "runtime range overflow at checked intake",
+      "illegal ARM/Thumb V5-only instructions under V4T",
+      "standalone/trailing Thumb BL halves without complete exact byte consumption"
+    ],
+    "legacy_explicit_v5te_verified": true,
+    "thumb_bl_exact_byte_consumption_verified": true
+  },
+  "unchanged_analyzer_and_config_sources": {
+    "lib/src/analysis/functions.rs": {
+      "sha256": "1712bde2b644ff12f276339d8e33ca92177e651946062a0ead58171c3b264ccc",
+      "unchanged_from_patch_base": true
+    },
+    "lib/src/config/module.rs": {
+      "sha256": "ffddf5a1ca34bb2e852dcf827bfdff0568563ea3a5b61af927f28f3fae0d152d",
+      "unchanged_from_patch_base": true
+    },
+    "lib/src/config/config.rs": {
+      "sha256": "f3cac312e1dbbe5b2166f1ebd30f03d608fafac1cb359df358381153bb115d14",
+      "unchanged_from_patch_base": true
+    },
+    "lib/src/config/symbol.rs": {
+      "sha256": "3e1f5ddf316718a2e34e90e8f817ae9a2a6f07e6e6635725e0a53a68be43fa30",
+      "unchanged_from_patch_base": true
+    },
+    "lib/src/config/relocations.rs": {
+      "sha256": "a3126d3e45fa0d071e0e3ad8c023f898f20fcff4f9a370a702965f1f1479c3bf",
+      "unchanged_from_patch_base": true
+    },
+    "lib/src/rom/rom.rs": {
+      "sha256": "c77e366a040e7eca3b0829d04fcaaccbb7cee0a905142cae1d5e76d980c3774c",
+      "unchanged_from_patch_base": true
+    },
+    "cli/src/config/program.rs": {
+      "sha256": "d48db1cf901e0eae1d643a4b0571a6233b944c4ffc44ffed966f0a579583475f",
+      "unchanged_from_patch_base": true
+    },
+    "cli/src/cmd/init.rs": {
+      "sha256": "d8804d40ff69e8017a7752c41790a7b100555e156ab1eb9f80c0feb6c7189ec2",
+      "unchanged_from_patch_base": true
+    },
+    "cli/src/analysis/functions.rs": {
+      "sha256": "be28f024c1e7b80b212b991d8661afd233f7ed3a3edb0f6a3404e878675ecdb5",
+      "unchanged_from_patch_base": true
+    },
+    "cli/src/analysis/signature.rs": {
+      "sha256": "01cb353476a263c2293e132f651b94c0f01d3ea07903461655e7ae8b1de01e05",
+      "unchanged_from_patch_base": true
+    }
+  },
+  "actual_arm7_probe": {
+    "arm7_binary_baseline_complete": false,
+    "inputs_unchanged": true,
+    "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "programs": [
+      {
+        "identity": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "parent"
+          },
+          "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+        },
+        "linked_binary_baseline": false,
+        "modules": [
+          {
+            "bss": {
+              "end": 37224880,
+              "start": 37224880
+            },
+            "code_data_classification": "unresolved",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": "startup"
+            },
+            "initialized": {
+              "end": 37224880,
+              "start": 37224448
+            },
+            "initialized_bytes": 432,
+            "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+            "source_bytes": 0,
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          },
+          {
+            "bss": {
+              "end": 58768528,
+              "start": 58753608
+            },
+            "code_data_classification": "unresolved",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "initialized": {
+              "end": 58753608,
+              "start": 58687488
+            },
+            "initialized_bytes": 66120,
+            "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+            "source_bytes": 0,
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          },
+          {
+            "bss": {
+              "end": 41917448,
+              "start": 41910944
+            },
+            "code_data_classification": "unresolved",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 1
+              }
+            },
+            "initialized": {
+              "end": 41910944,
+              "start": 41811968
+            },
+            "initialized_bytes": 98976,
+            "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+            "source_bytes": 0,
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          }
+        ],
+        "observations": [
+          {
+            "bytes": 8,
+            "executable_coverage_established": false,
+            "extent": {
+              "end": 37224456,
+              "start": 37224448
+            },
+            "function_extent_established": false,
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": "startup"
+            },
+            "input_sha256": "2d0ccbc5a15eaf9f9ead4c84da21f212556b94c6e866e6ffac9b2e939722196e",
+            "instruction_count": 2,
+            "mode": "Arm",
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          },
+          {
+            "bytes": 8,
+            "executable_coverage_established": false,
+            "extent": {
+              "end": 58688624,
+              "start": 58688616
+            },
+            "function_extent_established": false,
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "input_sha256": "96ebbaa283cc55bdbf644bd4b63359d608fe35f8048bc0ee21e4fe8b515fd7b5",
+            "instruction_count": 2,
+            "mode": "Arm",
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          }
+        ],
+        "source_bytes": 0,
+        "table_bytes": 24,
+        "table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+      },
+      {
+        "identity": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "nitro_fs",
+            "path": "ChildRom/JSS2Child.srl"
+          },
+          "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+        },
+        "linked_binary_baseline": false,
+        "modules": [
+          {
+            "bss": {
+              "end": 37224880,
+              "start": 37224880
+            },
+            "code_data_classification": "unresolved",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": "startup"
+            },
+            "initialized": {
+              "end": 37224880,
+              "start": 37224448
+            },
+            "initialized_bytes": 432,
+            "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+            "source_bytes": 0,
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          },
+          {
+            "bss": {
+              "end": 58768528,
+              "start": 58753608
+            },
+            "code_data_classification": "unresolved",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "initialized": {
+              "end": 58753608,
+              "start": 58687488
+            },
+            "initialized_bytes": 66120,
+            "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+            "source_bytes": 0,
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          },
+          {
+            "bss": {
+              "end": 41917448,
+              "start": 41910944
+            },
+            "code_data_classification": "unresolved",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 1
+              }
+            },
+            "initialized": {
+              "end": 41910944,
+              "start": 41811968
+            },
+            "initialized_bytes": 98976,
+            "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+            "source_bytes": 0,
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          }
+        ],
+        "observations": [
+          {
+            "bytes": 8,
+            "executable_coverage_established": false,
+            "extent": {
+              "end": 37224456,
+              "start": 37224448
+            },
+            "function_extent_established": false,
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": "startup"
+            },
+            "input_sha256": "2d0ccbc5a15eaf9f9ead4c84da21f212556b94c6e866e6ffac9b2e939722196e",
+            "instruction_count": 2,
+            "mode": "Arm",
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          },
+          {
+            "bytes": 8,
+            "executable_coverage_established": false,
+            "extent": {
+              "end": 58688624,
+              "start": 58688616
+            },
+            "function_extent_established": false,
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "input_sha256": "96ebbaa283cc55bdbf644bd4b63359d608fe35f8048bc0ee21e4fe8b515fd7b5",
+            "instruction_count": 2,
+            "mode": "Arm",
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            }
+          }
+        ],
+        "source_bytes": 0,
+        "table_bytes": 24,
+        "table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+      }
+    ],
+    "schema_version": 1,
+    "source_bytes": 0,
+    "span_sidecar_sha256": "8182526973c7187937cea858e9337e7842e31f0045691118c65ba3fbbbdb2d62",
+    "status": "physical_modules_and_selected_spans_verified",
+    "task_complete": false
+  },
+  "actual_arm9_compatibility": {
+    "status": "passed",
+    "steps": [
+      {
+        "program": "parent",
+        "stage": "extract",
+        "exit_code": 0,
+        "log_sha256": "9574143fb3b332d5e6eb530ae58577c11061fd373ab444b8254b4910f95e57e5",
+        "strict_unknown_function_calls": false,
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      {
+        "program": "parent",
+        "stage": "init",
+        "exit_code": 0,
+        "log_sha256": "43d28254b40e74c32e321228b380ba0dc13f9554ea88d9cf289f228061bddfac",
+        "strict_unknown_function_calls": true,
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "analysis_metadata_files": 51,
+        "reference_metadata_files": 51,
+        "different_metadata_files": [],
+        "metadata_sha256": {
+          "arm9/symbols.txt": "ccc3fa562fed0190cb09fcffb3c46c32ea70e146546a35b876f3c8899ee104e5",
+          "arm9/relocs.txt": "584b525e1a4928a4614c27aa940c619bc7fa9218892762a4052070d417ff6710",
+          "arm9/delinks.txt": "733dfbbf90a0e4afe65032fd8346e546749ea8c4a519ef9576116b2f737148cd",
+          "arm9/itcm/symbols.txt": "74d8a4e833aec321b8bbb4592bb0fe435bbc385d6cf13ccec21859e6c130ad39",
+          "arm9/itcm/relocs.txt": "e30c7eef1fb0a35371db763914986ae04d8aaa436b544a769d49a32e047a9280",
+          "arm9/itcm/delinks.txt": "ec221c2e910f8606319f2cbef6caaa21903ded058a1bad04273b2980c2790e65",
+          "arm9/dtcm/symbols.txt": "07492b2585c01882faba65762cf8e8508aeba42c7d885744fcac24029a39b5b3",
+          "arm9/dtcm/relocs.txt": "133709383864974086925aeb48f007d89bde8c4ce0262e8e096c5e5559629df2",
+          "arm9/dtcm/delinks.txt": "0e35390e706c9b88262661558f2ffe5ce029110a8e29863bdb23d2ba66f8e3f2",
+          "arm9/overlays/ov012/symbols.txt": "48176a82575afe0da85c69b05a8bb6fb51f876c2989b59036a37b404a2979fab",
+          "arm9/overlays/ov012/relocs.txt": "948894cb28c678de2485ce2c9f26da640e458a79547a7d9e932a411e530a788a",
+          "arm9/overlays/ov012/delinks.txt": "996b95018796b9919f6f128c126dae85c4bb9eefce6eefa6d03576fd7a65e5d5",
+          "arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "arm9/overlays/ov013/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "arm9/overlays/ov013/delinks.txt": "de8416591b0c413f2156e851261e7562b6f75c076d9cfa350ca8df3c3b6bebb2",
+          "arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "arm9/overlays/ov009/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "arm9/overlays/ov009/delinks.txt": "dde359d800f71c8b0134a3e4dfc5c60a07431da498ddf170a1eb51ee7a7fe3d8",
+          "arm9/overlays/ov000/symbols.txt": "89bd122511a38d21e7bcd51432112dac68f00e424a45e9fca3500bb0d6ea6a45",
+          "arm9/overlays/ov000/relocs.txt": "52a6f9bf7d4f1c219abeb65085b3e2f47bf5dac61f28945508a8e8364e2bcb60",
+          "arm9/overlays/ov000/delinks.txt": "0a8a652366fcde77eb698af96519b05752a7981aeddda1b35940f4efe8cfd8ad",
+          "arm9/overlays/ov007/symbols.txt": "c60775713dc15576cdacf88458410eb5676e42903b246d78b2af8e01c9d1e534",
+          "arm9/overlays/ov007/relocs.txt": "4fd9efa87ac14c8a82d592d6e87b480d34b1e22da5edd717eb31b5a719a5dbfd",
+          "arm9/overlays/ov007/delinks.txt": "0807efd4c5bafb39ec1b00cee1d183afdf6d701f9c48a28015b219332e1b1a6b",
+          "arm9/overlays/ov006/symbols.txt": "ebc8dbcdf670c29953e5de797ce52c341aedd6c6fd3e4ef3b755f9bd1c1b1e5f",
+          "arm9/overlays/ov006/relocs.txt": "76e8bf9e8f1677369f12d71b7e676e37bf40341f3f652079c230e930ed209a34",
+          "arm9/overlays/ov006/delinks.txt": "35e289724006a9d98e8c266d30e5e3c0560474f0a1c8699244459f1fc3e971d5",
+          "arm9/overlays/ov001/symbols.txt": "e63a1de70690af915c31e5ac35bb529443e17e453743927a0d0a83094a2dea2f",
+          "arm9/overlays/ov001/relocs.txt": "f61746c70a915c5c5227af31d57f53356a137c3e6b8a32f6bae6ad12f89d2127",
+          "arm9/overlays/ov001/delinks.txt": "e4dcab9859cc17225dba2c567ea30880a3b7e509af44aac5bc829c9450d5eee4",
+          "arm9/overlays/ov008/symbols.txt": "f3b6d9610d25a0ee0b50a6557aa1556ea3f68bd2112d66ad7f2c7f2c7b747976",
+          "arm9/overlays/ov008/relocs.txt": "06c470ddfedb9dbd30065c24de662cd2825c5d1db51bc05d6f69edd07c2fb714",
+          "arm9/overlays/ov008/delinks.txt": "17d303b96bf4aaffc89a8b8c6db9436161f7e4b0df922dd44ab34b0efb377e6a",
+          "arm9/overlays/ov011/symbols.txt": "97866f92a78a5f134c0b46590f229cc9ceda6765a5944a430539ec49708970cc",
+          "arm9/overlays/ov011/relocs.txt": "23272997f41166a09facf5f92737534821f9309399cc703e8c2630e63c48a150",
+          "arm9/overlays/ov011/delinks.txt": "964e5b941443914ad339b7b5c854157f5981a145403da75306ce98ea9bb41364",
+          "arm9/overlays/ov010/symbols.txt": "dfe7cffe30fbd0ea6993a7f94604785cb119f7d6720259f664b354ae8fb7ea65",
+          "arm9/overlays/ov010/relocs.txt": "63c903cfe5208f87b2d13e1aed1d00e8537fae55bec89613130f20474a2c1f7c",
+          "arm9/overlays/ov010/delinks.txt": "6124a7ab3258aeca73dd0ae54d04e3558d545f2056175532d665740f419b1a41",
+          "arm9/overlays/ov004/symbols.txt": "48a7005aa2f56ba5ed118de3e6316f6e86d0377be1a84e5dd3360c75e05d6b1f",
+          "arm9/overlays/ov004/relocs.txt": "6b8f93b01baf2fe8082239638d78c2c9e9ac06b09e6c41f09d530e6bcfcd8993",
+          "arm9/overlays/ov004/delinks.txt": "ef5d1bceaa61484daa9fc4e0712224afa93ca603cb68558a2401b0d54bdfa097",
+          "arm9/overlays/ov003/symbols.txt": "18ede8163b51498eb8076f97438c5560e087c6dbea9ad2c51dc83327e2618e91",
+          "arm9/overlays/ov003/relocs.txt": "07f14c387ac72640dc3e4a32370811cec4872204ea6b300a66221c5032534d58",
+          "arm9/overlays/ov003/delinks.txt": "7ca4a4bc4ac5251945507fd2a7f937e1949f05cb957d2963514cfef2e460e55b",
+          "arm9/overlays/ov002/symbols.txt": "4b74e5d4b4ccecf0738e7dc360ecdd69268f2134bb8809e526aa199bb111f327",
+          "arm9/overlays/ov002/relocs.txt": "b7680d69d6e0aa07e1b4e979591ab68e905300242bd1d86e7212e509bc13faf6",
+          "arm9/overlays/ov002/delinks.txt": "e28cc7f950e1bd620bd664f23a8367c84059d4fab99ef4fa34a6796831d90e71",
+          "arm9/overlays/ov005/symbols.txt": "ba10661ac95c8dc1b0533226f6725d007d91fb8a6c4b1ffead132b600dd00311",
+          "arm9/overlays/ov005/relocs.txt": "d866c7ee4ae929f10aeb224a04d0e6bcc0e812cc9ba0f2a53eca31cb45605580",
+          "arm9/overlays/ov005/delinks.txt": "70da09a04e76111f0f0082dc3df4fdc77e74f60f7374a5bc1aa4e6437fde3028"
+        }
+      },
+      {
+        "program": "child",
+        "stage": "extract",
+        "exit_code": 0,
+        "log_sha256": "4ad7f14f8504f153921264271fae18bd16b17fc6cca4db3af9fbe7d05e9fe605",
+        "strict_unknown_function_calls": false,
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      {
+        "program": "child",
+        "stage": "init",
+        "exit_code": 0,
+        "log_sha256": "bc0f527a6e9ff58fa0a14de7e90566b1a022f011155a503ee407d45b06b008d8",
+        "strict_unknown_function_calls": true,
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+        "analysis_metadata_files": 9,
+        "reference_metadata_files": 9,
+        "different_metadata_files": [],
+        "metadata_sha256": {
+          "arm9/symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
+          "arm9/relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
+          "arm9/delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36",
+          "arm9/itcm/symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
+          "arm9/itcm/relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
+          "arm9/itcm/delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148",
+          "arm9/dtcm/symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
+          "arm9/dtcm/relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
+          "arm9/dtcm/delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82"
+        }
+      }
+    ],
+    "candidate_cli_sha256": "ac10a6f214c6f5c5ba8696839a25a0671313452daa167f7a3282260fce286905",
+    "no_analyzer_source_changes": true,
+    "source_credit_for_arm7": 0
+  },
+  "limitations": [
+    "Physical module inputs expose original initialized bytes and BSS ownership, not analyzed code/data sections or inferred function boundaries.",
+    "Two explicitly selected eight-byte ARM spans per program prove only selected-span V4T decoding; counts are not executable, baseline, or source coverage.",
+    "Autoload1 mode and entry, full original symbol/relocation metadata, compiler/SDK/ABI and external startup RAM contents remain unresolved.",
+    "No ModuleKind/Config/Program/analyzer/legacy parser integration, production pin update, linking, emulator job or ARM7 source promotion occurred."
+  ]
+}

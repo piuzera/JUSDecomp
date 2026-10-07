@@ -1,0 +1,62 @@
+{
+  "status": "accepted_rejection_evidence",
+  "reviewed_worker_commits": [
+    "bfd4f5345e364139a7b819bde6907a9d66b17ae8",
+    "8e99718c7f0256ecca57eb2a88fd918db444d350"
+  ],
+  "published_research_commit": "7d6afa5ac7e6e8d9571705979b5d13d6983cd868",
+  "independent_review": "accepted_no_flags",
+  "root_public_replay": "passed",
+  "root_and_independent_tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "actual_object_sha256": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+  "instruction_mismatch_offsets": [
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+  ],
+  "two_actual_ABS32_RELA_records": true,
+  "diagnostic_pool_correspondence": "passed",
+  "native_link_attempted": false,
+  "full_image_native_link_reconstruction": "not attempted",
+  "artifact_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/.gitattributes": "6998e23cef5b6458e16d6edd2ac74070ac623a2590def3ca2176c55e2ef56364",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/compiled-llvm.txt": "865e24260f627994b0de05fef50cdfc2010e4f193a29b4c0485275d0b7732378",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/compiler-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/compiler-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/elf-readback.txt": "2a67bccc5843f62826eb7bb9a017038d526b6befc679fa5ad610ca61e88b09ef",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/independent/final-independent-review.json": "bfd34abeb83a5f899cb0e1790d3d5bd278a59ba53f6e05c4ba0b3ce87e533900",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/independent/fresh-public-replay.json": "83b09e923d452c1e0ce7f1f9e5892c20b362ab9df5fa84fbd21ee4ae2efe0b0f",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/independent/independent-review.json": "fc398147bd7a246a6a350811c8262d2413fe7b9e3a735edb55de9130a685daf6",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/independent/llvm-comparison.txt": "5f81cea47768926f343ddc9e9d598000efb4d486754cd018a421a80128c12af8",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/independent/verify_independent.py": "07abef7576cb369a18854d516ae7b84da201f49ffbda7abcd0b9955e6d14d17e",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/llvm-original-low-getter.txt": "32411e7e1f3f35f0df12322c5167be80606209f7386e639a4f3eb9f8536ee9d0",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/low_getter_trial.c": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/original-manifest.json": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/original-read.json": "25e66aa18cb2f2231b11d591ba6798e21c8981b9e6ce4d6b3804dc6580695a1e",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/provenance.json": "6d1a5dcf4363c880988a0220b240d5e04a9d8f1511032606709e187efd374631",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/read_original.py": "20054901f1a82b9749f97cf891cf6a6535ccc0bdc2c4b503bd956f81c45ff447",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/reproduce.py": "43fdfd0ddce853d97c9e85fbdc336a3be323614a2fb1da78f2a9d966381570a0",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/root-fresh-replay.json": "d8167b96a14187a1a10c0b16f370387238cca2f00c15163db419349c2537231f",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-green.log": "921b60a7fd52e978fbb551cacd29df2d6708879400278e1fcc70fceeb0c6f8e0",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-red.log": "fbf1b3bb4437e0b51d126b0c07dd3fbc6961a457065167d9641d57b41bcdc807",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-replay-green.log": "f47062fbeabe241d110de7e06c849849535b0b7047391c3def376a1a01af23e8",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-replay-red.log": "34ff2a5b47fbf1ff7cb0bcc16026352515d15c5b85a3263772322ca72c589d13",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/test_reproduce.py": "8bc558b1ff6c19c01a579ec2079b807d34285981decefa44f4b15648731ad413",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/test_verify.py": "841fd530cebf7775bf15ad352ca0acb605e92d198fd0e783ef4e3607ad896f89",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/trial-proof.json": "6bd26f0468980f662bd6a5eee4c8f875fe466b06dff4eb3fa04df3fb89c633c6",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/verify.py": "d4b282bfbdae3a439ed74fbf88990afba7f7d26ea4e88ee45593888f4672cde2",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial.md": "7ebfb8ca1be1544696ec6239c18b705341a98c582ba81edd480d40543f78e4fa"
+  },
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "canonical_update": false,
+  "T10_complete": false
+}

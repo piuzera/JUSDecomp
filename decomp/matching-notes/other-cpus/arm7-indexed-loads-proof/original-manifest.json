@@ -1,0 +1,377 @@
+{
+  "instruction_windows": [
+    {
+      "label": "preceding_lower_load",
+      "start": 58707972,
+      "end": 58707992,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5900da0",
+        "0xe12fff1e"
+      ],
+      "sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e"
+    },
+    {
+      "label": "preceding_upper_load",
+      "start": 58707992,
+      "end": 58708012,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5900dc4",
+        "0xe12fff1e"
+      ],
+      "sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262"
+    },
+    {
+      "label": "guarded_initializer",
+      "start": 58708012,
+      "end": 58708172,
+      "words": [
+        "0xe92d4000",
+        "0xe24dd004",
+        "0xe59f1090",
+        "0xe5910000",
+        "0xe3500000",
+        "0x1a00001e",
+        "0xe3a00001",
+        "0xe5810000",
+        "0xebffffcc",
+        "0xe1a01000",
+        "0xe3a00001",
+        "0xebffffae",
+        "0xe3a00001",
+        "0xebffffb1",
+        "0xe1a01000",
+        "0xe3a00001",
+        "0xebffffa4",
+        "0xe3a00007",
+        "0xebffffc2",
+        "0xe1a01000",
+        "0xe3a00007",
+        "0xebffffa4",
+        "0xe3a00007",
+        "0xebffffa7",
+        "0xe1a01000",
+        "0xe3a00007",
+        "0xebffff9a",
+        "0xe3a00008",
+        "0xebffffb8",
+        "0xe1a01000",
+        "0xe3a00008",
+        "0xebffff9a",
+        "0xe3a00008",
+        "0xebffff9d",
+        "0xe1a01000",
+        "0xe3a00008",
+        "0xebffff90",
+        "0xe28dd004",
+        "0xe8bd4000",
+        "0xe12fff1e"
+      ],
+      "sha256": "83038b37535751d27c4d0d60b283dfd8f72b63f81fbb92549ade31979ac31f9b"
+    }
+  ],
+  "literal": {
+    "address": 58708172,
+    "word": "0x3808430",
+    "sha256": "57b0891abc6d6b61a7345b6a995c20fdeb937a1f7ca61ffa06b012074e0e73a4"
+  },
+  "caller_entry": 58708012,
+  "source_credit_bytes": 0,
+  "original_function_extent_proven": false,
+  "callees": {
+    "lower_store": {
+      "instruction_windows": [
+        {
+          "start": 58707716,
+          "end": 58707736,
+          "words": [
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5801da0",
+            "0xe12fff1e"
+          ],
+          "sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488"
+        }
+      ],
+      "literal_words": []
+    },
+    "upper_store": {
+      "instruction_windows": [
+        {
+          "start": 58707736,
+          "end": 58707756,
+          "words": [
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5801dc4",
+            "0xe12fff1e"
+          ],
+          "sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe"
+        }
+      ],
+      "literal_words": []
+    },
+    "lower_getter": {
+      "status": "finite windows frozen after first bounded raw read; no recursive expansion",
+      "instruction_windows": [
+        {
+          "start": 58707756,
+          "end": 58707784,
+          "sha256": "34b0ed4e38399d836d25130aef949cab5e1e0d11a1197ef200a2f5143d3379e8",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000006",
+            "0xea00000a"
+          ],
+          "label": "low_dispatch",
+          "length_reason": "Seven dispatch words stop before the first separately owned case entry."
+        },
+        {
+          "start": 58707784,
+          "end": 58707792,
+          "sha256": "81482e904df8557d0ee4a8b9dee39159942088e72d0d0ace1e49070cca2b8f48",
+          "words": [
+            "0xe59f002c",
+            "0xe12fff1e"
+          ],
+          "label": "low_id1",
+          "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+        },
+        {
+          "start": 58707792,
+          "end": 58707808,
+          "sha256": "1f3c2b8a9b1d10568078500d97247dcf2b0818244770b21d6b4cd658ab523d4b",
+          "words": [
+            "0xe59f0028",
+            "0xe350050e",
+            "0x83a0050e",
+            "0xe12fff1e"
+          ],
+          "label": "low_id7",
+          "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+        },
+        {
+          "start": 58707808,
+          "end": 58707828,
+          "sha256": "bac3f5742b73aa4826927abafe9932fb0f97daf589795ff4b797dd496674211f",
+          "words": [
+            "0xe3a0050e",
+            "0xe59f1014",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe12fff1e"
+          ],
+          "label": "low_id8",
+          "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+        },
+        {
+          "start": 58707828,
+          "end": 58707836,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ],
+          "label": "low_default",
+          "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+        }
+      ],
+      "literal_words": [
+        {
+          "address": 58707836,
+          "bytes": 4,
+          "sha256": "9fbac9e63aeeb0ab27ae825c78c1f1e0db13941a547bf8ce9f186ec09d306be9",
+          "word": "0x027f9c08",
+          "load_sources": [
+            58707784
+          ]
+        },
+        {
+          "address": 58707840,
+          "bytes": 4,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "word": "0x0380bc90",
+          "load_sources": [
+            58707792,
+            58707812
+          ]
+        }
+      ],
+      "instruction_count": 20,
+      "literal_bytes": 8,
+      "original_function_extent_proven": false,
+      "source_credit_bytes": 0,
+      "parent_grounding_manifest_sha256": "978c0a6d743ba6a790de8f2d4277747055913d27044cd9d2c2c8afadc7b18310"
+    },
+    "upper_getter": {
+      "instruction_windows": [
+        {
+          "start": 58707844,
+          "end": 58707872,
+          "sha256": "fc773af8408aab5f6223889cf579e8096b40962f6b800a362dd7bfa57a10450a",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000004",
+            "0xea000011"
+          ]
+        },
+        {
+          "start": 58707872,
+          "end": 58707880,
+          "sha256": "9b89d55eab4a0cf40b11c6dd27589af847e9050f9e3cb057b1148db3ebf46a81",
+          "words": [
+            "0xe59f0048",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707880,
+          "end": 58707888,
+          "sha256": "0e586df921c49865830816bf47809f423dde30038a4605f9076fe3b5e7a8b1b3",
+          "words": [
+            "0xe3a0050e",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707888,
+          "end": 58707944,
+          "sha256": "74a9af49da64fc6418fe362b407b16d3325c7e1fe6328546a43495820faf42be",
+          "words": [
+            "0xe59f103c",
+            "0xe59f003c",
+            "0xe0402001",
+            "0xe3a0050e",
+            "0xe59f1034",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe59f102c",
+            "0xe3510000",
+            "0x012fff1e",
+            "0xe3510000",
+            "0xb0400001",
+            "0xa0420001",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707944,
+          "end": 58707952,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ]
+        }
+      ],
+      "literal_words": [
+        {
+          "address": 58707952,
+          "bytes": 4,
+          "sha256": "f585806e0c36f26f5bb712c65a5c1ff52a9d494fcf4ab39b7110516099222528",
+          "word": "0x027ff000",
+          "load_sources": [
+            58707872
+          ]
+        },
+        {
+          "address": 58707956,
+          "bytes": 4,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "word": "0x00000400",
+          "load_sources": [
+            58707888
+          ]
+        },
+        {
+          "address": 58707960,
+          "bytes": 4,
+          "sha256": "10e90213854ad8d7a3c230a550f02a4f07da0304629e8a793807151e5c33dfd1",
+          "word": "0x0380ff80",
+          "load_sources": [
+            58707892
+          ]
+        },
+        {
+          "address": 58707964,
+          "bytes": 4,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "word": "0x0380bc90",
+          "load_sources": [
+            58707904
+          ]
+        },
+        {
+          "address": 58707968,
+          "bytes": 4,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "word": "0x00000400",
+          "load_sources": [
+            58707916
+          ]
+        }
+      ],
+      "instruction_count": 27,
+      "literal_bytes": 20,
+      "fixed_code_extent": {
+        "start": 58707844,
+        "end": 58707952
+      },
+      "fixed_candidate_extent": {
+        "start": 58707844,
+        "end": 58707972
+      }
+    },
+    "lower_load": {
+      "instruction_windows": [
+        {
+          "label": "preceding_lower_load",
+          "start": 58707972,
+          "end": 58707992,
+          "words": [
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5900da0",
+            "0xe12fff1e"
+          ],
+          "sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e"
+        }
+      ],
+      "literal_words": []
+    },
+    "upper_load": {
+      "instruction_windows": [
+        {
+          "label": "preceding_upper_load",
+          "start": 58707992,
+          "end": 58708012,
+          "words": [
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5900dc4",
+            "0xe12fff1e"
+          ],
+          "sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262"
+        }
+      ],
+      "literal_words": []
+    }
+  }
+}

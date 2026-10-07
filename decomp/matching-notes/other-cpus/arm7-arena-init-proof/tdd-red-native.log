@@ -1,0 +1,58 @@
+test_actual_call_relocations_and_both_complete_images (__main__.NativeInitializer.test_actual_call_relocations_and_both_complete_images) ... FAIL
+test_actual_wrong_guard_and_callee_outputs_are_rejected (__main__.NativeInitializer.test_actual_wrong_guard_and_callee_outputs_are_rejected) ... FAIL
+test_actual_wrong_placement_and_malformed_segment_reject (__main__.NativeInitializer.test_actual_wrong_placement_and_malformed_segment_reject) ... FAIL
+test_each_actual_omitted_input_rejects (__main__.NativeInitializer.test_each_actual_omitted_input_rejects) ... FAIL
+test_finite_split_calls_and_separate_bss_literal (__main__.OriginalGrounding.test_finite_split_calls_and_separate_bss_literal) ... ok
+
+======================================================================
+FAIL: test_actual_call_relocations_and_both_complete_images (__main__.NativeInitializer.test_actual_call_relocations_and_both_complete_images)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 58, in test_actual_call_relocations_and_both_complete_images
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 55, in ready
+    self.assertTrue(self.available, 'actual five-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual five-object native replay is missing
+
+======================================================================
+FAIL: test_actual_wrong_guard_and_callee_outputs_are_rejected (__main__.NativeInitializer.test_actual_wrong_guard_and_callee_outputs_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 82, in test_actual_wrong_guard_and_callee_outputs_are_rejected
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 55, in ready
+    self.assertTrue(self.available, 'actual five-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual five-object native replay is missing
+
+======================================================================
+FAIL: test_actual_wrong_placement_and_malformed_segment_reject (__main__.NativeInitializer.test_actual_wrong_placement_and_malformed_segment_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 96, in test_actual_wrong_placement_and_malformed_segment_reject
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 55, in ready
+    self.assertTrue(self.available, 'actual five-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual five-object native replay is missing
+
+======================================================================
+FAIL: test_each_actual_omitted_input_rejects (__main__.NativeInitializer.test_each_actual_omitted_input_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 103, in test_each_actual_omitted_input_rejects
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 55, in ready
+    self.assertTrue(self.available, 'actual five-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual five-object native replay is missing
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.266s
+
+FAILED (failures=4)

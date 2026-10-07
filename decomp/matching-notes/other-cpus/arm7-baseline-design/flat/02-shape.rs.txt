@@ -1,0 +1,153 @@
+// DESIGN SKETCH ONLY. No implementations or production API changes.
+// Checked-view source: 67e9a8bc65fba0e5cdc3ab784c77de28253ee3dc.
+
+// Extend the checked-view ownership boundary with retained physical authority.
+// Private fields are constructed only after the existing actual-byte checks.
+// Existing checked() callers can retain this envelope without a sidecar pin;
+// the baseline's PinnedArm7Input separately requires consumed sidecar bytes.
+pub struct CheckedArm7ImageEnvelope<'rom> {
+    identity: ProgramIdentity,
+    header: CheckedHeaderIdentity,
+    image: &'rom [u8],
+    image_offset_in_program: u32,
+    original_entry: u32,
+    params_extent_in_image: Range<u32>,
+    params_sha256: Sha256,
+    regions: Vec<CheckedPhysicalRegion>,
+    table_extent_in_image: Range<u32>,
+    table_sha256: Sha256,
+}
+
+// These descriptions contain physical offsets/ranges only. No Code/Data kind.
+pub struct CheckedPhysicalRegion {
+    kind: Arm7RegionKind,
+    stored_extent: Range<u32>,
+    initialized_runtime: Range<u32>,
+    bss_runtime: Range<u32>,
+    sha256: Sha256,
+}
+
+impl<'rom> Arm7View<'rom> {
+    pub fn image_envelope(&self) -> &CheckedArm7ImageEnvelope<'rom> {
+        unimplemented!("retain actual checked envelope at construction")
+    }
+    // Existing identity/startup/autoload/table getters derive their descriptions
+    // from the same envelope, rather than maintaining a second layout copy.
+}
+
+// The exact consumed pin cannot be installed by an arbitrary caller.
+pub struct PinnedArm7Input<'rom> {
+    view: Arm7View<'rom>,
+    consumed_sidecar: ConsumedSidecarPin,
+}
+struct ConsumedSidecarPin {
+    sha256: Sha256,
+    size_bytes: u64,
+}
+impl<'rom> PinnedArm7Input<'rom> {
+    pub fn load(
+        parent: &'rom [u8],
+        selected_program: ProgramSelector,
+        sidecar_bytes: &[u8],
+        expected_sidecar_sha256: Sha256,
+    ) -> Result<Self, BaselineInputError> {
+        // Hash consumed sidecar bytes before parsing. Select exactly one layout
+        // by complete program selector; reject duplicate/missing matches.
+        // Invoke existing Arm7Layout::checked on actual parent bytes. Keep the
+        // envelope built there; never reconstruct it from later mutable layout.
+        // Retain sidecar digest and original program identity. No raw wire types
+        // or mutable public constructors escape this boundary.
+        unimplemented!()
+    }
+    pub fn view(&self) -> &Arm7View<'rom> { unimplemented!() }
+}
+
+pub struct NativeTools {
+    clang: PinnedExecutable,
+    lld: PinnedExecutable,
+    objcopy: PinnedExecutable,
+}
+// Executable pins are read from the reviewed lock by the shell adapter;
+// build rechecks each actual executable and records version+hash+actual argv.
+pub struct PinnedExecutable {
+    path: PathBuf,
+    sha256: Sha256,
+    version: String,
+}
+
+pub struct FlatArm7Baseline;
+impl FlatArm7Baseline {
+    pub fn build(
+        input: &PinnedArm7Input<'_>,
+        tools: &NativeTools,
+        fresh_private_output: &Path,
+    ) -> Result<OpaqueStorageBaseline, BaselineFailure> {
+        // Claim fresh output; bind source/tool/input hashes before work.
+        // Materialize checked image as private native-link input, preserving
+        // startup+autoload payloads+the exact original loader table.
+        // Make a data-only ARM relocatable input with LLVM objcopy. Require
+        // .arm7_stored PROGBITS, flags0, offset coordinates, alignment4.
+        // Produce ARMv4T attributes using clang; reject unexpected payloads.
+        // LLVM's empty default executable .text may be removed ONLY after
+        // proving zero length; preserve attributes and capture raw/clean hashes.
+        // Run native lld with explicit script and entry0. No ARM9 normalizer,
+        // no LCF translator, no executable symbols or mapping-symbol invention.
+        // Parse output ELF, enforce exact structural contract, reconstruct only
+        // from .arm7_stored, and compare every byte to checked original image.
+        // Independently verify image params/table/regions/BSS against retained
+        // physical envelope; ELF does not claim those runtime placements.
+        // Final freshness checks bind original inputs, actual outputs and tools.
+        // Record every stage and emit success receipt only after all gates pass.
+        unimplemented!()
+    }
+}
+
+pub struct OpaqueStorageBaseline {
+    identity: ProgramIdentity,
+    elf: VerifiedArtifact,
+    reconstructed_image: VerifiedArtifact,
+    report: FlatBaselineReport,
+}
+impl OpaqueStorageBaseline {
+    pub fn identity(&self) -> &ProgramIdentity { unimplemented!() }
+    pub fn report(&self) -> &FlatBaselineReport { unimplemented!() }
+}
+
+pub enum LayoutAuthority { CheckedEnvelope }
+pub struct OpaqueCoverage; // ZERO only: source/functions/relocations/executable
+impl OpaqueCoverage { pub const ZERO: Self = Self; }
+pub struct FlatBaselineReport {
+    artifact_kind: OpaqueStoredImage, // not a runtime-loaded ARM7 ELF
+    identity: ProgramIdentity,
+    target: FixedArm7TdmiArmV4T,
+    consumed_sidecar: ConsumedSidecarPin,
+    original_entry: u32,
+    elf_entry: Zero,
+    checked_envelope: PublicPhysicalMetadata,
+    actual_tool_invocations: Vec<StageEvidence>,
+    source_and_tool_hashes: BuildFreshness,
+    actual_link_inputs: Vec<InputArtifactHash>,
+    output_artifacts: Vec<OutputArtifactHash>,
+    stored_image_comparison: CompleteByteEquality,
+    runtime_layout_authority: LayoutAuthority,
+    coverage: OpaqueCoverage,
+}
+impl FlatBaselineReport {
+    pub fn native_link_completed(&self) -> bool { unimplemented!() }
+    pub fn stored_image_equal(&self) -> bool { unimplemented!() }
+    pub fn coverage(&self) -> OpaqueCoverage { unimplemented!() }
+    pub fn runtime_layout_authority(&self) -> LayoutAuthority { unimplemented!() }
+}
+
+pub enum BaselineInputError {
+    SidecarPin, Selector, AmbiguousLayout, CheckedView(Arm7LayoutError),
+}
+pub struct BaselineFailure {
+    stage: StageName,
+    diagnostic_report: PathBuf,
+    // no success receipt or accepted payload is exposed after failure
+}
+
+// Internal types above are placeholders for this bounded report/artifact seam.
+// No generalized linker, ELF loader, function inventory, relocation decoder or
+// mutable checked-layout setters are part of this package.

@@ -1,0 +1,635 @@
+{
+  "inputs_unchanged": true,
+  "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "native_pins_sidecar_sha256": "a7a90669d34d6990bcff4105320dc267ebd70add7926838576e11e472262b504",
+  "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "producer_binary_sha256": "77824ff7fcc60d97b7b5a8c877345178c2ac222c6eeffe31c3ec3c9491366d3b",
+  "programs": [
+    {
+      "arm7_source_complete": false,
+      "artifacts": [
+        {
+          "bytes": 432,
+          "name": "startup.bin",
+          "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35"
+        },
+        {
+          "bytes": 83,
+          "name": "startup.s",
+          "sha256": "206080eb52b242cdf51ad1f82ab638170538bf944ee8df395916a0ba20013d6c"
+        },
+        {
+          "bytes": 832,
+          "name": "startup.o",
+          "sha256": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601"
+        },
+        {
+          "bytes": 66120,
+          "name": "autoload0.bin",
+          "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349"
+        },
+        {
+          "bytes": 152,
+          "name": "autoload0.s",
+          "sha256": "f3870ddc23fef9458756bb8eb621794a2c1e1816cc7e52ace7049444493ab068"
+        },
+        {
+          "bytes": 66580,
+          "name": "autoload0.o",
+          "sha256": "e72a4412bc7892947103c5d7425792f4e0659cefe159ba9725318d7d50326cf9"
+        },
+        {
+          "bytes": 98976,
+          "name": "autoload1.bin",
+          "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217"
+        },
+        {
+          "bytes": 151,
+          "name": "autoload1.s",
+          "sha256": "ff96c93618eae933c4d80dd67b0f071a5d68f824d6be115b7f05c632d87bc22b"
+        },
+        {
+          "bytes": 99436,
+          "name": "autoload1.o",
+          "sha256": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d"
+        },
+        {
+          "bytes": 24,
+          "name": "table.bin",
+          "sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+        },
+        {
+          "bytes": 79,
+          "name": "table.s",
+          "sha256": "e74fd0329916edfb12fa9a8b0cf1088936d204a860ec30a95d142a259a9590a2"
+        },
+        {
+          "bytes": 420,
+          "name": "table.o",
+          "sha256": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325"
+        },
+        {
+          "bytes": 976,
+          "name": "physical.ld",
+          "sha256": "607915444d28bfe913e0676d85bfe4d923389dd109bcfa993220528acb2bfa1a"
+        },
+        {
+          "bytes": 1853,
+          "name": "physical.map",
+          "sha256": "c28c609bf31466982c1be3d3e489e42d3ae4423391053263ca19312d4f941ef8"
+        },
+        {
+          "bytes": 166588,
+          "name": "linked.elf",
+          "sha256": "c722d281b052cf928872bc93898776ffd7227aeecd68b6c55e0262ac8d21ef85"
+        },
+        {
+          "bytes": 165552,
+          "name": "arm7.bin",
+          "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139"
+        }
+      ],
+      "bootable_elf": false,
+      "clang_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+      "commands": [
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload0.s",
+            "-o",
+            "autoload0.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "physical.ld",
+            "-Map",
+            "physical.map",
+            "-o",
+            "linked.elf",
+            "startup.o",
+            "autoload0.o",
+            "autoload1.o",
+            "table.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54"
+        }
+      ],
+      "entry": 37224448,
+      "executability": "unknown",
+      "functions": "unknown",
+      "generated_cpu_arch": "ARMv4T",
+      "generated_elf_abi_flags": 83886592,
+      "header_sha256": "afa321ff2d0b6d7c793c10ed7aa810755175fde894349b13f08eff9c80abd3de",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "image_bytes": 165552,
+      "image_offset": 2162688,
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+      "lld_sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "native_pins_sidecar_sha256": "a7a90669d34d6990bcff4105320dc267ebd70add7926838576e11e472262b504",
+      "original_relocations": "unknown",
+      "params_offset": 408,
+      "params_sha256": "35ee58caed3e0988996effb640208bbd868bba58e1f81ac2cfcd06a32501b1c4",
+      "regions": [
+        {
+          "bss_bytes": 0,
+          "kind": "startup",
+          "runtime_base": 37224448,
+          "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+          "stored_extent": {
+            "end": 432,
+            "start": 0
+          }
+        },
+        {
+          "bss_bytes": 14920,
+          "kind": {
+            "autoload": 0
+          },
+          "runtime_base": 58687488,
+          "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+          "stored_extent": {
+            "end": 66552,
+            "start": 432
+          }
+        },
+        {
+          "bss_bytes": 6504,
+          "kind": {
+            "autoload": 1
+          },
+          "runtime_base": 41811968,
+          "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+          "stored_extent": {
+            "end": 165528,
+            "start": 66552
+          }
+        }
+      ],
+      "segments": [
+        {
+          "alignment": 4,
+          "file_bytes": 432,
+          "file_offset": 244,
+          "flags": 4,
+          "lma": 37224448,
+          "memory_bytes": 432,
+          "section": ".arm7.startup",
+          "vma": 37224448
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 24,
+          "file_offset": 676,
+          "flags": 4,
+          "lma": 37389976,
+          "memory_bytes": 24,
+          "section": ".arm7.table",
+          "vma": 37389976
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 98976,
+          "file_offset": 700,
+          "flags": 4,
+          "lma": 37291000,
+          "memory_bytes": 98976,
+          "section": ".arm7.autoload1",
+          "vma": 41811968
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 0,
+          "file_offset": 99676,
+          "flags": 6,
+          "lma": 41910944,
+          "memory_bytes": 6504,
+          "section": ".arm7.bss.autoload1",
+          "vma": 41910944
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 66120,
+          "file_offset": 99676,
+          "flags": 4,
+          "lma": 37224880,
+          "memory_bytes": 66120,
+          "section": ".arm7.autoload0",
+          "vma": 58687488
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 0,
+          "file_offset": 165796,
+          "flags": 6,
+          "lma": 58753608,
+          "memory_bytes": 14920,
+          "section": ".arm7.bss.autoload0",
+          "vma": 58753608
+        }
+      ],
+      "selected_inputs": [
+        {
+          "bytes": 832,
+          "name": "startup.o",
+          "sha256": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601"
+        },
+        {
+          "bytes": 66580,
+          "name": "autoload0.o",
+          "sha256": "e72a4412bc7892947103c5d7425792f4e0659cefe159ba9725318d7d50326cf9"
+        },
+        {
+          "bytes": 99436,
+          "name": "autoload1.o",
+          "sha256": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d"
+        },
+        {
+          "bytes": 420,
+          "name": "table.o",
+          "sha256": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325"
+        },
+        {
+          "bytes": 976,
+          "name": "physical.ld",
+          "sha256": "607915444d28bfe913e0676d85bfe4d923389dd109bcfa993220528acb2bfa1a"
+        }
+      ],
+      "source_bytes": 0,
+      "status": "opaque_physical_baseline_verified",
+      "t10_complete": false,
+      "table_extent": {
+        "end": 165552,
+        "start": 165528
+      },
+      "table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+    },
+    {
+      "arm7_source_complete": false,
+      "artifacts": [
+        {
+          "bytes": 432,
+          "name": "startup.bin",
+          "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35"
+        },
+        {
+          "bytes": 83,
+          "name": "startup.s",
+          "sha256": "206080eb52b242cdf51ad1f82ab638170538bf944ee8df395916a0ba20013d6c"
+        },
+        {
+          "bytes": 832,
+          "name": "startup.o",
+          "sha256": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601"
+        },
+        {
+          "bytes": 66120,
+          "name": "autoload0.bin",
+          "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349"
+        },
+        {
+          "bytes": 152,
+          "name": "autoload0.s",
+          "sha256": "f3870ddc23fef9458756bb8eb621794a2c1e1816cc7e52ace7049444493ab068"
+        },
+        {
+          "bytes": 66580,
+          "name": "autoload0.o",
+          "sha256": "e72a4412bc7892947103c5d7425792f4e0659cefe159ba9725318d7d50326cf9"
+        },
+        {
+          "bytes": 98976,
+          "name": "autoload1.bin",
+          "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217"
+        },
+        {
+          "bytes": 151,
+          "name": "autoload1.s",
+          "sha256": "ff96c93618eae933c4d80dd67b0f071a5d68f824d6be115b7f05c632d87bc22b"
+        },
+        {
+          "bytes": 99436,
+          "name": "autoload1.o",
+          "sha256": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d"
+        },
+        {
+          "bytes": 24,
+          "name": "table.bin",
+          "sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+        },
+        {
+          "bytes": 79,
+          "name": "table.s",
+          "sha256": "e74fd0329916edfb12fa9a8b0cf1088936d204a860ec30a95d142a259a9590a2"
+        },
+        {
+          "bytes": 420,
+          "name": "table.o",
+          "sha256": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325"
+        },
+        {
+          "bytes": 976,
+          "name": "physical.ld",
+          "sha256": "607915444d28bfe913e0676d85bfe4d923389dd109bcfa993220528acb2bfa1a"
+        },
+        {
+          "bytes": 1853,
+          "name": "physical.map",
+          "sha256": "c28c609bf31466982c1be3d3e489e42d3ae4423391053263ca19312d4f941ef8"
+        },
+        {
+          "bytes": 166588,
+          "name": "linked.elf",
+          "sha256": "c722d281b052cf928872bc93898776ffd7227aeecd68b6c55e0262ac8d21ef85"
+        },
+        {
+          "bytes": 165552,
+          "name": "arm7.bin",
+          "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139"
+        }
+      ],
+      "bootable_elf": false,
+      "clang_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+      "commands": [
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload0.s",
+            "-o",
+            "autoload0.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+        },
+        {
+          "arguments": [
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "physical.ld",
+            "-Map",
+            "physical.map",
+            "-o",
+            "linked.elf",
+            "startup.o",
+            "autoload0.o",
+            "autoload1.o",
+            "table.o"
+          ],
+          "return_code": 0,
+          "tool_sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54"
+        }
+      ],
+      "entry": 37224448,
+      "executability": "unknown",
+      "functions": "unknown",
+      "generated_cpu_arch": "ARMv4T",
+      "generated_elf_abi_flags": 83886592,
+      "header_sha256": "43eb7b2454d786b0f087f9bc4198e76f8f63b6353eb95af7a39ca063d22dceca",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "image_bytes": 165552,
+      "image_offset": 1972736,
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+      "lld_sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "native_pins_sidecar_sha256": "a7a90669d34d6990bcff4105320dc267ebd70add7926838576e11e472262b504",
+      "original_relocations": "unknown",
+      "params_offset": 408,
+      "params_sha256": "35ee58caed3e0988996effb640208bbd868bba58e1f81ac2cfcd06a32501b1c4",
+      "regions": [
+        {
+          "bss_bytes": 0,
+          "kind": "startup",
+          "runtime_base": 37224448,
+          "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+          "stored_extent": {
+            "end": 432,
+            "start": 0
+          }
+        },
+        {
+          "bss_bytes": 14920,
+          "kind": {
+            "autoload": 0
+          },
+          "runtime_base": 58687488,
+          "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+          "stored_extent": {
+            "end": 66552,
+            "start": 432
+          }
+        },
+        {
+          "bss_bytes": 6504,
+          "kind": {
+            "autoload": 1
+          },
+          "runtime_base": 41811968,
+          "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+          "stored_extent": {
+            "end": 165528,
+            "start": 66552
+          }
+        }
+      ],
+      "segments": [
+        {
+          "alignment": 4,
+          "file_bytes": 432,
+          "file_offset": 244,
+          "flags": 4,
+          "lma": 37224448,
+          "memory_bytes": 432,
+          "section": ".arm7.startup",
+          "vma": 37224448
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 24,
+          "file_offset": 676,
+          "flags": 4,
+          "lma": 37389976,
+          "memory_bytes": 24,
+          "section": ".arm7.table",
+          "vma": 37389976
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 98976,
+          "file_offset": 700,
+          "flags": 4,
+          "lma": 37291000,
+          "memory_bytes": 98976,
+          "section": ".arm7.autoload1",
+          "vma": 41811968
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 0,
+          "file_offset": 99676,
+          "flags": 6,
+          "lma": 41910944,
+          "memory_bytes": 6504,
+          "section": ".arm7.bss.autoload1",
+          "vma": 41910944
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 66120,
+          "file_offset": 99676,
+          "flags": 4,
+          "lma": 37224880,
+          "memory_bytes": 66120,
+          "section": ".arm7.autoload0",
+          "vma": 58687488
+        },
+        {
+          "alignment": 4,
+          "file_bytes": 0,
+          "file_offset": 165796,
+          "flags": 6,
+          "lma": 58753608,
+          "memory_bytes": 14920,
+          "section": ".arm7.bss.autoload0",
+          "vma": 58753608
+        }
+      ],
+      "selected_inputs": [
+        {
+          "bytes": 832,
+          "name": "startup.o",
+          "sha256": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601"
+        },
+        {
+          "bytes": 66580,
+          "name": "autoload0.o",
+          "sha256": "e72a4412bc7892947103c5d7425792f4e0659cefe159ba9725318d7d50326cf9"
+        },
+        {
+          "bytes": 99436,
+          "name": "autoload1.o",
+          "sha256": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d"
+        },
+        {
+          "bytes": 420,
+          "name": "table.o",
+          "sha256": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325"
+        },
+        {
+          "bytes": 976,
+          "name": "physical.ld",
+          "sha256": "607915444d28bfe913e0676d85bfe4d923389dd109bcfa993220528acb2bfa1a"
+        }
+      ],
+      "source_bytes": 0,
+      "status": "opaque_physical_baseline_verified",
+      "t10_complete": false,
+      "table_extent": {
+        "end": 165552,
+        "start": 165528
+      },
+      "table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+    }
+  ],
+  "source_bytes": 0,
+  "status": "opaque_physical_baselines_verified",
+  "t10_complete": false
+}

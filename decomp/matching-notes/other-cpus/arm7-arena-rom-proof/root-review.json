@@ -1,0 +1,35 @@
+{
+  "status": "root_and_independent_actual_artifacts_verified",
+  "implementation_commits": [
+    "bbfae51c3f1843d1d3d79bf95284325e5ba99bf4",
+    "f0380b7633df1d8265917dc059ad8a1501f38f74"
+  ],
+  "publisher_implementation_head": "168b5d2",
+  "root_receipt_sha256": "c46fa44a590048d93539b5b49e6163e352b30cfe07b4aa7629d4ce1dbb1d7e93",
+  "root_readback": "root-readback.json",
+  "root_readback_script": "root-readback.py",
+  "root_final_publication_regression": "root-final-publication-control.json",
+  "root_final_publication_regression_script": "root-final-publication-control.py",
+  "historical_refutation": "historical-pre-fix-publication-refutation.json",
+  "historical_refutation_is_current_acceptance": false,
+  "independent_review": "independent-review.json",
+  "independent_tests": {
+    "passed": 12,
+    "seconds": 173.405,
+    "log": "independent-tests.log"
+  },
+  "root_raw_published_pin_count_before_proof_packaging": 88,
+  "repository_inputs_checked": 119,
+  "converted_checkout_inputs_checked": 47,
+  "working_checkout_transform": "existing text=set/eol=crlf; exact committed LF to working CRLF",
+  "whole_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "source_credit": {
+    "canonical": 304,
+    "arm7": 0,
+    "global_percent": null
+  },
+  "t06_complete": false,
+  "t10_complete": false,
+  "execution_or_boot_verified": false,
+  "approved_canonical_dependencies_changed": false
+}

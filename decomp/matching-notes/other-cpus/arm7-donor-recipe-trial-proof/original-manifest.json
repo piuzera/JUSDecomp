@@ -1,0 +1,96 @@
+{
+  "status": "finite windows frozen after first bounded raw read; no recursive expansion",
+  "instruction_windows": [
+    {
+      "start": 58707756,
+      "end": 58707784,
+      "sha256": "34b0ed4e38399d836d25130aef949cab5e1e0d11a1197ef200a2f5143d3379e8",
+      "words": [
+        "0xe3500001",
+        "0x0a000004",
+        "0xe3500007",
+        "0x0a000004",
+        "0xe3500008",
+        "0x0a000006",
+        "0xea00000a"
+      ],
+      "label": "low_dispatch",
+      "length_reason": "Seven dispatch words stop before the first separately owned case entry."
+    },
+    {
+      "start": 58707784,
+      "end": 58707792,
+      "sha256": "81482e904df8557d0ee4a8b9dee39159942088e72d0d0ace1e49070cca2b8f48",
+      "words": [
+        "0xe59f002c",
+        "0xe12fff1e"
+      ],
+      "label": "low_id1",
+      "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+    },
+    {
+      "start": 58707792,
+      "end": 58707808,
+      "sha256": "1f3c2b8a9b1d10568078500d97247dcf2b0818244770b21d6b4cd658ab523d4b",
+      "words": [
+        "0xe59f0028",
+        "0xe350050e",
+        "0x83a0050e",
+        "0xe12fff1e"
+      ],
+      "label": "low_id7",
+      "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+    },
+    {
+      "start": 58707808,
+      "end": 58707828,
+      "sha256": "bac3f5742b73aa4826927abafe9932fb0f97daf589795ff4b797dd496674211f",
+      "words": [
+        "0xe3a0050e",
+        "0xe59f1014",
+        "0xe351050e",
+        "0x81a00001",
+        "0xe12fff1e"
+      ],
+      "label": "low_id8",
+      "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+    },
+    {
+      "start": 58707828,
+      "end": 58707836,
+      "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+      "words": [
+        "0xe3a00000",
+        "0xe12fff1e"
+      ],
+      "label": "low_default",
+      "length_reason": "Known dispatch/case/default entry split; terminator BX remains inside its bounded case/default window."
+    }
+  ],
+  "literal_words": [
+    {
+      "address": 58707836,
+      "bytes": 4,
+      "sha256": "9fbac9e63aeeb0ab27ae825c78c1f1e0db13941a547bf8ce9f186ec09d306be9",
+      "word": "0x027f9c08",
+      "load_sources": [
+        58707784
+      ]
+    },
+    {
+      "address": 58707840,
+      "bytes": 4,
+      "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+      "word": "0x0380bc90",
+      "load_sources": [
+        58707792,
+        58707812
+      ]
+    }
+  ],
+  "instruction_count": 20,
+  "literal_bytes": 8,
+  "original_function_extent_proven": false,
+  "source_credit_bytes": 0,
+  "parent_grounding_manifest_sha256": "978c0a6d743ba6a790de8f2d4277747055913d27044cd9d2c2c8afadc7b18310"
+}

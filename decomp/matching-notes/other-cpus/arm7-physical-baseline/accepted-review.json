@@ -1,0 +1,15 @@
+{
+  "reviewed_JUS_commit": "a3e3dd6",
+  "model": "gpt-6.1-sol",
+  "result": "No flags",
+  "scope": "native producer, proof bundle and decision trail; pending canonical integration excluded",
+  "verified": [
+    "public evidence and actual source hashes",
+    "both actual ELF-only images exact original165552 bytes",
+    "6PT_LOAD/21424BSS/16artifacthashes per program",
+    "80 root Rust tests and legacy19-stage compatibility",
+    "all3 publication mutation counterexamples reject"
+  ],
+  "ARM7_source_bytes": 0,
+  "T10_complete": false
+}

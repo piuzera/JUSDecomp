@@ -1,0 +1,51 @@
+[
+  {
+    "trial": "positive",
+    "elf_sha256": "c24aed47166192ebef56a5ec52a206df372a6fcdd98ab71d2ac074faeef88384",
+    "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+    "stored_mismatches": [],
+    "changes": []
+  },
+  {
+    "trial": "swap-stores",
+    "elf_sha256": "0a3b6577363d2870b106e78c32f5e84ac56253e5e8384de068ff7f8b3dab5dc2",
+    "image_sha256": "1728502650e8695f3c162650bcca72adc925d57d5097e4e351effcb3148655f0",
+    "stored_mismatches": [
+      20672,
+      20692
+    ],
+    "changes": [
+      {
+        "offset": 20672,
+        "original": 160,
+        "linked": 196
+      },
+      {
+        "offset": 20692,
+        "original": 196,
+        "linked": 160
+      }
+    ]
+  },
+  {
+    "trial": "wrong-wram",
+    "elf_sha256": "5cfce0b43398bc43bb46c373e0e24765ce71e4c44a4ca61b96d6c1e29772e968",
+    "image_sha256": "dc9bcedeabe58216760ca04dac8919ce561ee8ae582601b83e3e3eb89f59876b",
+    "stored_mismatches": [
+      20784,
+      20908
+    ],
+    "changes": [
+      {
+        "offset": 20784,
+        "original": 144,
+        "linked": 148
+      },
+      {
+        "offset": 20908,
+        "original": 144,
+        "linked": 148
+      }
+    ]
+  }
+]

@@ -1,0 +1,321 @@
+{
+  "command": [
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwldarm.exe",
+    "-w",
+    "off",
+    "-sym",
+    "on",
+    "-nodead",
+    "-proc",
+    "v5te",
+    "-interworking",
+    "-map",
+    "closure,unused",
+    "-symtab",
+    "sort",
+    "-nostdlib",
+    "-m",
+    "Entry",
+    "-o",
+    "final_link.o",
+    "arm9.lcf",
+    "@objects.txt"
+  ],
+  "cwd": "/private/tmp/jus-track-a-source-link/build/original-mw-link",
+  "returncode": 0,
+  "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+  "linker_sha256": "eada466d4f0c309fbcf061ff5791a2c98a92d8b0e2364c53a0a9d0fe42100a7f",
+  "original_lcf_sha256": "690f1577ac6f5aa2c79faabc923fc587b8846b80ad6505df08ef5ef07951a7c8",
+  "objects_txt_sha256": "7c3d12b32f9b53eb3d94d667ec2d0c67022a70f540e6e419cbd0e889ba5b92cc",
+  "initial_error": "LCF build/ outputs are resolved relative to -o output directory, causing build/build when -o build/final_link.o.",
+  "modules": [
+    {
+      "filename": "arm9.bin",
+      "payload_exact": true,
+      "size": 656832,
+      "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 34211264
+    },
+    {
+      "filename": "itcm.bin",
+      "payload_exact": true,
+      "size": 31552,
+      "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 33553216
+    },
+    {
+      "filename": "dtcm.bin",
+      "payload_exact": true,
+      "size": 4160,
+      "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 41685056
+    },
+    {
+      "filename": "arm9_ov000.bin",
+      "payload_exact": true,
+      "size": 85760,
+      "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35003424
+    },
+    {
+      "filename": "arm9_ov001.bin",
+      "payload_exact": true,
+      "size": 135456,
+      "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35053120
+    },
+    {
+      "filename": "arm9_ov002.bin",
+      "payload_exact": true,
+      "size": 65152,
+      "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 34982816
+    },
+    {
+      "filename": "arm9_ov003.bin",
+      "payload_exact": true,
+      "size": 73472,
+      "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 34991136
+    },
+    {
+      "filename": "arm9_ov004.bin",
+      "payload_exact": true,
+      "size": 86208,
+      "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35003872
+    },
+    {
+      "filename": "arm9_ov005.bin",
+      "payload_exact": true,
+      "size": 152928,
+      "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35070592
+    },
+    {
+      "filename": "arm9_ov006.bin",
+      "payload_exact": true,
+      "size": 154688,
+      "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35072352
+    },
+    {
+      "filename": "arm9_ov007.bin",
+      "payload_exact": true,
+      "size": 122816,
+      "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35040480
+    },
+    {
+      "filename": "arm9_ov008.bin",
+      "payload_exact": true,
+      "size": 128160,
+      "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35045824
+    },
+    {
+      "filename": "arm9_ov009.bin",
+      "payload_exact": true,
+      "size": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 34917696
+    },
+    {
+      "filename": "arm9_ov010.bin",
+      "payload_exact": true,
+      "size": 215264,
+      "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35287872
+    },
+    {
+      "filename": "arm9_ov011.bin",
+      "payload_exact": true,
+      "size": 61440,
+      "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35134048
+    },
+    {
+      "filename": "arm9_ov012.bin",
+      "payload_exact": true,
+      "size": 167776,
+      "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35475744
+    },
+    {
+      "filename": "arm9_ov013.bin",
+      "payload_exact": true,
+      "size": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+      "address_exact": true,
+      "layout_symbols_exact": true,
+      "bss_start": 35308000
+    }
+  ],
+  "section_names": [
+    "",
+    ".shstrtab",
+    ".strtab",
+    ".symtab",
+    "ARM9",
+    ".relaARM9",
+    "ITCM",
+    ".relaITCM",
+    "DTCM",
+    ".relaDTCM",
+    "OV000",
+    ".relaOV000",
+    "OV001",
+    ".relaOV001",
+    "OV002",
+    ".relaOV002",
+    "OV003",
+    ".relaOV003",
+    "OV004",
+    ".relaOV004",
+    "OV005",
+    ".relaOV005",
+    "OV006",
+    ".relaOV006",
+    "OV007",
+    ".relaOV007",
+    "OV008",
+    ".relaOV008",
+    "OV009",
+    "OV010",
+    ".relaOV010",
+    "OV011",
+    ".relaOV011",
+    "OV012",
+    ".relaOV012",
+    "OV013",
+    "SPACE"
+  ],
+  "checks": {
+    "modules": {
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "check",
+        "modules",
+        "-c",
+        "/private/tmp/jus-track-a-source-link/build/original-mw-link/config/config.yaml",
+        "-f"
+      ],
+      "returncode": 0
+    },
+    "symbols": {
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "check",
+        "symbols",
+        "-c",
+        "/private/tmp/jus-track-a-source-link/build/original-mw-link/config/config.yaml",
+        "-f",
+        "-e",
+        "/private/tmp/jus-track-a-source-link/build/original-mw-link/final_link.o"
+      ],
+      "returncode": 0
+    }
+  },
+  "raw_reference_inputs": [
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@main_5.o",
+      "sha256": "248e6844754b8c07c9d8b037ca7c01600dfc7566ec61a168aab69c8d238696c3"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov000_4.o",
+      "sha256": "ad54a864f72c73bad6b74181d0ab99e924b6497221643c27584edd44720b86b2"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov001_5.o",
+      "sha256": "81d2df74fef7ae7cdfe08caecfe9ba8c0544d63762bbf70a9792c97d68fed3d7"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov002_5.o",
+      "sha256": "bbf679310a2e1f97ce8bc6db763f71ac528f8acc9b20e2af1e07dc6d7f9fc7bb"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov003_5.o",
+      "sha256": "e342b3afd351e946b447988e50807cc59beb50396c559a0a0f0849012df6b628"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov004_5.o",
+      "sha256": "8de2c7ce1bd974aaa288eb43d93face104cb8cac2181b22ff85d0886ba85f543"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov005_5.o",
+      "sha256": "b78de161984f5a7fd2f98ef503c4e6a6900d1bfed19915d52e761f401436c01b"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov006_5.o",
+      "sha256": "9056f0313d862cf6d9636db3f534786bb84534fa4b32f82240c82cefce25652d"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov007_5.o",
+      "sha256": "ff27de96f31f6cf90329ecd38a7a31bbef49d96c9fab028c8d694e3e4d84ba26"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov008_3.o",
+      "sha256": "f3f5cf8d3452224b928391694f7bcf616a398c86e65a125cea82ff09a4d8a36b"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov010_3.o",
+      "sha256": "b184f31ba190d6331ab8c3304cd5fb5c9f8a4f627b350e08f9b89004ac0f8748"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov011_5.o",
+      "sha256": "08327138e749b877a2e8ec7a4e636c01a6c50429a98a19a8dba1a860ce536ee2"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@ov012_5.o",
+      "sha256": "63c39a8f03c8aa20b35a5a3e81096bb4b076aa044b9f4557a7a0be3601c82375"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@itcm_0.o",
+      "sha256": "52051c163374bfc0e472d7e7da565c5dc9cb1c06b88dbb565a954845a1106a84"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/build/verify-t02-final/delinks/_dsd_gap@dtcm_1.o",
+      "sha256": "5ccb7fe8a9752f702d8c64ab1af13e3408c6c89c356436b53cb9a47fe2a89026"
+    }
+  ],
+  "linked_sha256": "be54029f229bf4893b93dda616d3d3c590bd188a8fa9f56d39c931504d114c19",
+  "version_command": [
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwldarm.exe",
+    "-version"
+  ],
+  "version_output": "\nMetrowerks Linker for Embedded ARM.\nCopyright (c) 2005, Freescale Semiconductor, Inc\nAll rights reserved.\nVersion 2.0 build 76 (Build 0076)\nRuntime Built: Oct 11 2005 05:18:13\n\n"
+}

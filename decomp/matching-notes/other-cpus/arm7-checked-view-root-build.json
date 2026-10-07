@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.10",
+  "status": "independently_rebuilt",
+  "source_revision": "0ef447312649db7412ddd98fe0b2b23beb5bd196",
+  "patch_sha256": "e0830a0ea25d67e9fd6b35fe9b043a7055851815fd451e3e6ed3f177a65554ad",
+  "sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "native_probe_sha256": "2fab077d22f2aa5e6bac5dba491d777e7206042964a194f13b585876321cc221",
+  "native_dsd_sha256": "717a54f59e162abeb8f146f665ecd8b1e2737cb8c6602199957fb1fb4b33a169",
+  "rust_tests": {
+    "passed": 29,
+    "failed": 0
+  },
+  "clippy": "passed; inherited chunks_exact_to_as_chunks lint allowed",
+  "review_reproducer_exit_codes": {
+    "control": 0,
+    "overlay-file-id": 1,
+    "decoded-duplicates": 1
+  },
+  "actual_parent_and_child_views": "verified against unchanged original inputs",
+  "source_bytes": 0,
+  "production_pin_changed": false,
+  "all_cpu_baseline_complete": false,
+  "task_complete": false
+}

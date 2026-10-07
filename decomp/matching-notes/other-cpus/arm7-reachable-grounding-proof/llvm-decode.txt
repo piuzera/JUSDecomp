@@ -1,0 +1,3 @@
+	stmdb	sp!, {lr}
+	sub	sp, sp, #4
+	bl	#336

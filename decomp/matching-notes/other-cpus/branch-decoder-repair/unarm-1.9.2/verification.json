@@ -1,0 +1,420 @@
+{
+  "status": "worker_verified_pending_independent_full_rom",
+  "dsd_base_commit": "67e9a8bc65fba0e5cdc3ab784c77de28253ee3dc",
+  "unarm_upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+  "unarm_repair_commit": "a128db0e7ce3fc1f216f5ab3385523a4e3d9a7da",
+  "unarm_patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
+  "source_files_verified": 47,
+  "registry_runtime_files_equal": 11,
+  "license_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+  "tests": {
+    "original_upstream_parser_red": {
+      "passed": 2,
+      "failed": 4,
+      "command": "cargo test -p unarm --test test_branch_boundaries --locked --offline"
+    },
+    "original_shared_dsd_parser_red": {
+      "passed": 2,
+      "failed": 4,
+      "command": "cargo test -p ds-decomp --test branch_boundaries --locked --offline"
+    },
+    "signed_fixed_but_alignment_red": {
+      "passed": 6,
+      "failed": 1
+    },
+    "final_upstream_suite": 532,
+    "final_shared_dsd_suite": 63,
+    "direct_parser_groups": 8,
+    "llvm_oracle_instructions": 32,
+    "preparation_tests": 10,
+    "clippy": "passed with existing chunks_exact_to_as_chunks allowance",
+    "generator_idempotence": "clean upstream git status after second regeneration",
+    "feature_checks": {
+      "arm_thumb_v4t": "passed",
+      "thumb_only_v4t": "pre-existing failure: util.rs unconditionally imports ARM; independently reproduced on exact unpatched commit; unchanged and outside repair scope"
+    }
+  },
+  "observer_normalization": {
+    "unchanged": true,
+    "sha256": "d3912e9e11ea29e594277d9cae9d2fd16693d592a2c2a9d134acdc23f1905d4b"
+  },
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01) (Homebrew)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8",
+  "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05) (Homebrew)",
+  "tools": {
+    "llvm-mc": {
+      "path": "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "sha256": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+      "version": "Homebrew LLVM version 23.1.2\n  Optimized build.\n\n  Registered Targets:\n    aarch64     - AArch64 (little endian)\n    aarch64_32  - AArch64 (little endian ILP32)\n    aarch64_be  - AArch64 (big endian)\n    amdgcn      - legacy name for amdgpu\n    amdgpu      - AMDGPU gfx6+\n    arm         - ARM\n    arm64       - ARM64 (little endian)\n    arm64_32    - ARM64 (little endian ILP32)\n    armeb       - ARM (big endian)\n    avr         - Atmel AVR Microcontroller\n    bpf         - BPF (host endian)\n    bpfeb       - BPF (big endian)\n    bpfel       - BPF (little endian)\n    hexagon     - Hexagon\n    lanai       - Lanai\n    loongarch32 - 32-bit LoongArch\n    loongarch64 - 64-bit LoongArch\n    mips        - MIPS (32-bit big endian)\n    mips64      - MIPS (64-bit big endian)\n    mips64el    - MIPS (64-bit little endian)\n    mipsel      - MIPS (32-bit little endian)\n    msp430      - MSP430 [experimental]\n    nvptx       - NVIDIA PTX 32-bit\n    nvptx64     - NVIDIA PTX 64-bit\n    ppc32       - PowerPC 32\n    ppc32le     - PowerPC 32 LE\n    ppc64       - PowerPC 64\n    ppc64le     - PowerPC 64 LE\n    r600        - AMD GPUs HD2XXX-HD6XXX\n    riscv32     - 32-bit RISC-V\n    riscv32be   - 32-bit big endian RISC-V\n    riscv64     - 64-bit RISC-V\n    riscv64be   - 64-bit big endian RISC-V\n    sparc       - Sparc\n    sparcel     - Sparc LE\n    sparcv9     - Sparc V9\n    spirv       - SPIR-V Logical\n    spirv32     - SPIR-V 32-bit\n    spirv64     - SPIR-V 64-bit\n    systemz     - SystemZ\n    thumb       - Thumb\n    thumbeb     - Thumb (big endian)\n    ve          - VE\n    wasm32      - WebAssembly 32-bit\n    wasm64      - WebAssembly 64-bit\n    x86         - 32-bit X86: Pentium-Pro and above\n    x86-64      - 64-bit X86: EM64T and AMD64\n    xcore       - XCore"
+    },
+    "ld.lld": {
+      "path": "/opt/homebrew/bin/ld.lld",
+      "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "version": "Homebrew LLD 23.1.2 (compatible with GNU linkers)"
+    },
+    "llvm-objdump": {
+      "path": "/opt/homebrew/opt/llvm/bin/llvm-objdump",
+      "sha256": "a4498b0883383a2653530a8575b53c3058dfbfd9aeb36e9d0e77df1c77fde2f6",
+      "version": "Homebrew LLVM version 23.1.2\n  Optimized build.\n\n\n  Registered Targets:\n    aarch64     - AArch64 (little endian)\n    aarch64_32  - AArch64 (little endian ILP32)\n    aarch64_be  - AArch64 (big endian)\n    amdgcn      - legacy name for amdgpu\n    amdgpu      - AMDGPU gfx6+\n    arm         - ARM\n    arm64       - ARM64 (little endian)\n    arm64_32    - ARM64 (little endian ILP32)\n    armeb       - ARM (big endian)\n    avr         - Atmel AVR Microcontroller\n    bpf         - BPF (host endian)\n    bpfeb       - BPF (big endian)\n    bpfel       - BPF (little endian)\n    hexagon     - Hexagon\n    lanai       - Lanai\n    loongarch32 - 32-bit LoongArch\n    loongarch64 - 64-bit LoongArch\n    mips        - MIPS (32-bit big endian)\n    mips64      - MIPS (64-bit big endian)\n    mips64el    - MIPS (64-bit little endian)\n    mipsel      - MIPS (32-bit little endian)\n    msp430      - MSP430 [experimental]\n    nvptx       - NVIDIA PTX 32-bit\n    nvptx64     - NVIDIA PTX 64-bit\n    ppc32       - PowerPC 32\n    ppc32le     - PowerPC 32 LE\n    ppc64       - PowerPC 64\n    ppc64le     - PowerPC 64 LE\n    r600        - AMD GPUs HD2XXX-HD6XXX\n    riscv32     - 32-bit RISC-V\n    riscv32be   - 32-bit big endian RISC-V\n    riscv64     - 64-bit RISC-V\n    riscv64be   - 64-bit big endian RISC-V\n    sparc       - Sparc\n    sparcel     - Sparc LE\n    sparcv9     - Sparc V9\n    spirv       - SPIR-V Logical\n    spirv32     - SPIR-V 32-bit\n    spirv64     - SPIR-V 64-bit\n    systemz     - SystemZ\n    thumb       - Thumb\n    thumbeb     - Thumb (big endian)\n    ve          - VE\n    wasm32      - WebAssembly 32-bit\n    wasm64      - WebAssembly 64-bit\n    x86         - 32-bit X86: Pentium-Pro and above\n    x86-64      - 64-bit X86: EM64T and AMD64\n    xcore       - XCore"
+    }
+  },
+  "build": {
+    "environment": {
+      "CARGO_HOME": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/cargo-home",
+      "CARGO_TARGET_DIR": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target",
+      "RUSTFLAGS": "--remap-path-prefix=/private/tmp/jus-arm7-branch-dependency-repair-dsd=/dsd-source --remap-path-prefix=/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/cargo-home=/cargo-home"
+    },
+    "command": [
+      "cargo",
+      "build",
+      "-p",
+      "ds-decomp-cli",
+      "--release",
+      "--locked",
+      "--offline"
+    ],
+    "binary": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target/release/dsd",
+    "binary_sha256": "ddae743f29432dc5d057292fd1f25dde716e352c2da133f9bb7abe68dc6213b3"
+  },
+  "strict_legacy_init": [
+    {
+      "program": "parent",
+      "command": [
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target/release/dsd",
+        "init",
+        "--rom-config",
+        "/private/tmp/jus-track-a-arm7-observation-proof/build/arm7-observer-root-compat/extract/config.yaml",
+        "--output-path",
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/parent/analysis",
+        "--build-path",
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/parent/build"
+      ],
+      "exit_code": 0,
+      "expected_files": 51,
+      "actual_files": 51,
+      "metadata_sha256": {
+        "arm9/symbols.txt": "ccc3fa562fed0190cb09fcffb3c46c32ea70e146546a35b876f3c8899ee104e5",
+        "arm9/relocs.txt": "584b525e1a4928a4614c27aa940c619bc7fa9218892762a4052070d417ff6710",
+        "arm9/delinks.txt": "733dfbbf90a0e4afe65032fd8346e546749ea8c4a519ef9576116b2f737148cd",
+        "arm9/itcm/symbols.txt": "74d8a4e833aec321b8bbb4592bb0fe435bbc385d6cf13ccec21859e6c130ad39",
+        "arm9/itcm/relocs.txt": "e30c7eef1fb0a35371db763914986ae04d8aaa436b544a769d49a32e047a9280",
+        "arm9/itcm/delinks.txt": "ec221c2e910f8606319f2cbef6caaa21903ded058a1bad04273b2980c2790e65",
+        "arm9/dtcm/symbols.txt": "07492b2585c01882faba65762cf8e8508aeba42c7d885744fcac24029a39b5b3",
+        "arm9/dtcm/relocs.txt": "133709383864974086925aeb48f007d89bde8c4ce0262e8e096c5e5559629df2",
+        "arm9/dtcm/delinks.txt": "0e35390e706c9b88262661558f2ffe5ce029110a8e29863bdb23d2ba66f8e3f2",
+        "arm9/overlays/ov012/symbols.txt": "48176a82575afe0da85c69b05a8bb6fb51f876c2989b59036a37b404a2979fab",
+        "arm9/overlays/ov012/relocs.txt": "948894cb28c678de2485ce2c9f26da640e458a79547a7d9e932a411e530a788a",
+        "arm9/overlays/ov012/delinks.txt": "996b95018796b9919f6f128c126dae85c4bb9eefce6eefa6d03576fd7a65e5d5",
+        "arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov013/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov013/delinks.txt": "de8416591b0c413f2156e851261e7562b6f75c076d9cfa350ca8df3c3b6bebb2",
+        "arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov009/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov009/delinks.txt": "dde359d800f71c8b0134a3e4dfc5c60a07431da498ddf170a1eb51ee7a7fe3d8",
+        "arm9/overlays/ov000/symbols.txt": "89bd122511a38d21e7bcd51432112dac68f00e424a45e9fca3500bb0d6ea6a45",
+        "arm9/overlays/ov000/relocs.txt": "52a6f9bf7d4f1c219abeb65085b3e2f47bf5dac61f28945508a8e8364e2bcb60",
+        "arm9/overlays/ov000/delinks.txt": "0a8a652366fcde77eb698af96519b05752a7981aeddda1b35940f4efe8cfd8ad",
+        "arm9/overlays/ov007/symbols.txt": "c60775713dc15576cdacf88458410eb5676e42903b246d78b2af8e01c9d1e534",
+        "arm9/overlays/ov007/relocs.txt": "4fd9efa87ac14c8a82d592d6e87b480d34b1e22da5edd717eb31b5a719a5dbfd",
+        "arm9/overlays/ov007/delinks.txt": "0807efd4c5bafb39ec1b00cee1d183afdf6d701f9c48a28015b219332e1b1a6b",
+        "arm9/overlays/ov006/symbols.txt": "ebc8dbcdf670c29953e5de797ce52c341aedd6c6fd3e4ef3b755f9bd1c1b1e5f",
+        "arm9/overlays/ov006/relocs.txt": "76e8bf9e8f1677369f12d71b7e676e37bf40341f3f652079c230e930ed209a34",
+        "arm9/overlays/ov006/delinks.txt": "35e289724006a9d98e8c266d30e5e3c0560474f0a1c8699244459f1fc3e971d5",
+        "arm9/overlays/ov001/symbols.txt": "e63a1de70690af915c31e5ac35bb529443e17e453743927a0d0a83094a2dea2f",
+        "arm9/overlays/ov001/relocs.txt": "f61746c70a915c5c5227af31d57f53356a137c3e6b8a32f6bae6ad12f89d2127",
+        "arm9/overlays/ov001/delinks.txt": "e4dcab9859cc17225dba2c567ea30880a3b7e509af44aac5bc829c9450d5eee4",
+        "arm9/overlays/ov008/symbols.txt": "f3b6d9610d25a0ee0b50a6557aa1556ea3f68bd2112d66ad7f2c7f2c7b747976",
+        "arm9/overlays/ov008/relocs.txt": "06c470ddfedb9dbd30065c24de662cd2825c5d1db51bc05d6f69edd07c2fb714",
+        "arm9/overlays/ov008/delinks.txt": "17d303b96bf4aaffc89a8b8c6db9436161f7e4b0df922dd44ab34b0efb377e6a",
+        "arm9/overlays/ov011/symbols.txt": "97866f92a78a5f134c0b46590f229cc9ceda6765a5944a430539ec49708970cc",
+        "arm9/overlays/ov011/relocs.txt": "23272997f41166a09facf5f92737534821f9309399cc703e8c2630e63c48a150",
+        "arm9/overlays/ov011/delinks.txt": "964e5b941443914ad339b7b5c854157f5981a145403da75306ce98ea9bb41364",
+        "arm9/overlays/ov010/symbols.txt": "dfe7cffe30fbd0ea6993a7f94604785cb119f7d6720259f664b354ae8fb7ea65",
+        "arm9/overlays/ov010/relocs.txt": "63c903cfe5208f87b2d13e1aed1d00e8537fae55bec89613130f20474a2c1f7c",
+        "arm9/overlays/ov010/delinks.txt": "6124a7ab3258aeca73dd0ae54d04e3558d545f2056175532d665740f419b1a41",
+        "arm9/overlays/ov004/symbols.txt": "48a7005aa2f56ba5ed118de3e6316f6e86d0377be1a84e5dd3360c75e05d6b1f",
+        "arm9/overlays/ov004/relocs.txt": "6b8f93b01baf2fe8082239638d78c2c9e9ac06b09e6c41f09d530e6bcfcd8993",
+        "arm9/overlays/ov004/delinks.txt": "ef5d1bceaa61484daa9fc4e0712224afa93ca603cb68558a2401b0d54bdfa097",
+        "arm9/overlays/ov003/symbols.txt": "18ede8163b51498eb8076f97438c5560e087c6dbea9ad2c51dc83327e2618e91",
+        "arm9/overlays/ov003/relocs.txt": "07f14c387ac72640dc3e4a32370811cec4872204ea6b300a66221c5032534d58",
+        "arm9/overlays/ov003/delinks.txt": "7ca4a4bc4ac5251945507fd2a7f937e1949f05cb957d2963514cfef2e460e55b",
+        "arm9/overlays/ov002/symbols.txt": "4b74e5d4b4ccecf0738e7dc360ecdd69268f2134bb8809e526aa199bb111f327",
+        "arm9/overlays/ov002/relocs.txt": "b7680d69d6e0aa07e1b4e979591ab68e905300242bd1d86e7212e509bc13faf6",
+        "arm9/overlays/ov002/delinks.txt": "e28cc7f950e1bd620bd664f23a8367c84059d4fab99ef4fa34a6796831d90e71",
+        "arm9/overlays/ov005/symbols.txt": "ba10661ac95c8dc1b0533226f6725d007d91fb8a6c4b1ffead132b600dd00311",
+        "arm9/overlays/ov005/relocs.txt": "d866c7ee4ae929f10aeb224a04d0e6bcc0e812cc9ba0f2a53eca31cb45605580",
+        "arm9/overlays/ov005/delinks.txt": "70da09a04e76111f0f0082dc3df4fdc77e74f60f7374a5bc1aa4e6437fde3028"
+      },
+      "reference_metadata_sha256": {
+        "arm9/symbols.txt": "ccc3fa562fed0190cb09fcffb3c46c32ea70e146546a35b876f3c8899ee104e5",
+        "arm9/relocs.txt": "584b525e1a4928a4614c27aa940c619bc7fa9218892762a4052070d417ff6710",
+        "arm9/delinks.txt": "733dfbbf90a0e4afe65032fd8346e546749ea8c4a519ef9576116b2f737148cd",
+        "arm9/itcm/symbols.txt": "74d8a4e833aec321b8bbb4592bb0fe435bbc385d6cf13ccec21859e6c130ad39",
+        "arm9/itcm/relocs.txt": "e30c7eef1fb0a35371db763914986ae04d8aaa436b544a769d49a32e047a9280",
+        "arm9/itcm/delinks.txt": "ec221c2e910f8606319f2cbef6caaa21903ded058a1bad04273b2980c2790e65",
+        "arm9/dtcm/symbols.txt": "07492b2585c01882faba65762cf8e8508aeba42c7d885744fcac24029a39b5b3",
+        "arm9/dtcm/relocs.txt": "133709383864974086925aeb48f007d89bde8c4ce0262e8e096c5e5559629df2",
+        "arm9/dtcm/delinks.txt": "0e35390e706c9b88262661558f2ffe5ce029110a8e29863bdb23d2ba66f8e3f2",
+        "arm9/overlays/ov012/symbols.txt": "48176a82575afe0da85c69b05a8bb6fb51f876c2989b59036a37b404a2979fab",
+        "arm9/overlays/ov012/relocs.txt": "948894cb28c678de2485ce2c9f26da640e458a79547a7d9e932a411e530a788a",
+        "arm9/overlays/ov012/delinks.txt": "996b95018796b9919f6f128c126dae85c4bb9eefce6eefa6d03576fd7a65e5d5",
+        "arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov013/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov013/delinks.txt": "de8416591b0c413f2156e851261e7562b6f75c076d9cfa350ca8df3c3b6bebb2",
+        "arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov009/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "arm9/overlays/ov009/delinks.txt": "dde359d800f71c8b0134a3e4dfc5c60a07431da498ddf170a1eb51ee7a7fe3d8",
+        "arm9/overlays/ov000/symbols.txt": "89bd122511a38d21e7bcd51432112dac68f00e424a45e9fca3500bb0d6ea6a45",
+        "arm9/overlays/ov000/relocs.txt": "52a6f9bf7d4f1c219abeb65085b3e2f47bf5dac61f28945508a8e8364e2bcb60",
+        "arm9/overlays/ov000/delinks.txt": "0a8a652366fcde77eb698af96519b05752a7981aeddda1b35940f4efe8cfd8ad",
+        "arm9/overlays/ov007/symbols.txt": "c60775713dc15576cdacf88458410eb5676e42903b246d78b2af8e01c9d1e534",
+        "arm9/overlays/ov007/relocs.txt": "4fd9efa87ac14c8a82d592d6e87b480d34b1e22da5edd717eb31b5a719a5dbfd",
+        "arm9/overlays/ov007/delinks.txt": "0807efd4c5bafb39ec1b00cee1d183afdf6d701f9c48a28015b219332e1b1a6b",
+        "arm9/overlays/ov006/symbols.txt": "ebc8dbcdf670c29953e5de797ce52c341aedd6c6fd3e4ef3b755f9bd1c1b1e5f",
+        "arm9/overlays/ov006/relocs.txt": "76e8bf9e8f1677369f12d71b7e676e37bf40341f3f652079c230e930ed209a34",
+        "arm9/overlays/ov006/delinks.txt": "35e289724006a9d98e8c266d30e5e3c0560474f0a1c8699244459f1fc3e971d5",
+        "arm9/overlays/ov001/symbols.txt": "e63a1de70690af915c31e5ac35bb529443e17e453743927a0d0a83094a2dea2f",
+        "arm9/overlays/ov001/relocs.txt": "f61746c70a915c5c5227af31d57f53356a137c3e6b8a32f6bae6ad12f89d2127",
+        "arm9/overlays/ov001/delinks.txt": "e4dcab9859cc17225dba2c567ea30880a3b7e509af44aac5bc829c9450d5eee4",
+        "arm9/overlays/ov008/symbols.txt": "f3b6d9610d25a0ee0b50a6557aa1556ea3f68bd2112d66ad7f2c7f2c7b747976",
+        "arm9/overlays/ov008/relocs.txt": "06c470ddfedb9dbd30065c24de662cd2825c5d1db51bc05d6f69edd07c2fb714",
+        "arm9/overlays/ov008/delinks.txt": "17d303b96bf4aaffc89a8b8c6db9436161f7e4b0df922dd44ab34b0efb377e6a",
+        "arm9/overlays/ov011/symbols.txt": "97866f92a78a5f134c0b46590f229cc9ceda6765a5944a430539ec49708970cc",
+        "arm9/overlays/ov011/relocs.txt": "23272997f41166a09facf5f92737534821f9309399cc703e8c2630e63c48a150",
+        "arm9/overlays/ov011/delinks.txt": "964e5b941443914ad339b7b5c854157f5981a145403da75306ce98ea9bb41364",
+        "arm9/overlays/ov010/symbols.txt": "dfe7cffe30fbd0ea6993a7f94604785cb119f7d6720259f664b354ae8fb7ea65",
+        "arm9/overlays/ov010/relocs.txt": "63c903cfe5208f87b2d13e1aed1d00e8537fae55bec89613130f20474a2c1f7c",
+        "arm9/overlays/ov010/delinks.txt": "6124a7ab3258aeca73dd0ae54d04e3558d545f2056175532d665740f419b1a41",
+        "arm9/overlays/ov004/symbols.txt": "48a7005aa2f56ba5ed118de3e6316f6e86d0377be1a84e5dd3360c75e05d6b1f",
+        "arm9/overlays/ov004/relocs.txt": "6b8f93b01baf2fe8082239638d78c2c9e9ac06b09e6c41f09d530e6bcfcd8993",
+        "arm9/overlays/ov004/delinks.txt": "ef5d1bceaa61484daa9fc4e0712224afa93ca603cb68558a2401b0d54bdfa097",
+        "arm9/overlays/ov003/symbols.txt": "18ede8163b51498eb8076f97438c5560e087c6dbea9ad2c51dc83327e2618e91",
+        "arm9/overlays/ov003/relocs.txt": "07f14c387ac72640dc3e4a32370811cec4872204ea6b300a66221c5032534d58",
+        "arm9/overlays/ov003/delinks.txt": "7ca4a4bc4ac5251945507fd2a7f937e1949f05cb957d2963514cfef2e460e55b",
+        "arm9/overlays/ov002/symbols.txt": "4b74e5d4b4ccecf0738e7dc360ecdd69268f2134bb8809e526aa199bb111f327",
+        "arm9/overlays/ov002/relocs.txt": "b7680d69d6e0aa07e1b4e979591ab68e905300242bd1d86e7212e509bc13faf6",
+        "arm9/overlays/ov002/delinks.txt": "e28cc7f950e1bd620bd664f23a8367c84059d4fab99ef4fa34a6796831d90e71",
+        "arm9/overlays/ov005/symbols.txt": "ba10661ac95c8dc1b0533226f6725d007d91fb8a6c4b1ffead132b600dd00311",
+        "arm9/overlays/ov005/relocs.txt": "d866c7ee4ae929f10aeb224a04d0e6bcc0e812cc9ba0f2a53eca31cb45605580",
+        "arm9/overlays/ov005/delinks.txt": "70da09a04e76111f0f0082dc3df4fdc77e74f60f7374a5bc1aa4e6437fde3028"
+      },
+      "metadata_equal": true,
+      "input_config_sha256": "34856fad6210c35f749a85435fd30155e3bae801c639ac90959042efc8a006a3",
+      "input_config_unchanged": true
+    },
+    {
+      "program": "child",
+      "command": [
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target/release/dsd",
+        "init",
+        "--rom-config",
+        "/private/tmp/jus-track-a-arm7-observation-proof/build/arm7-observer-root-init/child/extract/config.yaml",
+        "--output-path",
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/child/analysis",
+        "--build-path",
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/child/build"
+      ],
+      "exit_code": 0,
+      "expected_files": 9,
+      "actual_files": 9,
+      "metadata_sha256": {
+        "arm9/symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
+        "arm9/relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
+        "arm9/delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36",
+        "arm9/itcm/symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
+        "arm9/itcm/relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
+        "arm9/itcm/delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148",
+        "arm9/dtcm/symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
+        "arm9/dtcm/relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
+        "arm9/dtcm/delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82"
+      },
+      "reference_metadata_sha256": {
+        "arm9/symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
+        "arm9/relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
+        "arm9/delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36",
+        "arm9/itcm/symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
+        "arm9/itcm/relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
+        "arm9/itcm/delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148",
+        "arm9/dtcm/symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
+        "arm9/dtcm/relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
+        "arm9/dtcm/delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82"
+      },
+      "metadata_equal": true,
+      "input_config_sha256": "fc1e0caa2a41208ec39e8a80b95bed97f85367dcf3e53aa5a6f51505007d8ab4",
+      "input_config_unchanged": true
+    }
+  ],
+  "logs": {
+    "dsd-red-ready.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-red-ready.log",
+      "sha256": "db708f70183c1c8b6dabd42b80bbf309171bb21c19e91f96caa2c11144e90fe5"
+    },
+    "unarm-red-complete.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-red-complete.log",
+      "sha256": "b80b6a7b6ae193ba2ade169e6d0f38e49a74c3db87641e830608d63198a4fb1d"
+    },
+    "unarm-alignment-red.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-alignment-red.log",
+      "sha256": "c2a54864208f03fa31107341d47da5b655f8e30336fcb674e9513310715cbb0b"
+    },
+    "unarm-suite-final.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-suite-final.log",
+      "sha256": "d58721d125d71164cc0ddec4e626a65fa6165167b4ab18d4150e3cc0707819d0"
+    },
+    "dsd-green.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-green.log",
+      "sha256": "85ec7506b5f2c961bf5b7c11ade9162315d584923554e648b18c537ecf6a541d"
+    },
+    "prepare-red.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-red.log",
+      "sha256": "4019f20616cac83852534448a0270bb353d3d600c7c9f18ed0040d3591ad3fed"
+    },
+    "prepare-green.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-green.log",
+      "sha256": "99dc4c8447148fad25b4f2ae80ad168b932bfe6df7cbe495fbf2a54920f3c079"
+    },
+    "generator.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/generator.log",
+      "sha256": "1b8ae11fb263afc24b05882720fa4b9c530e1d630ffa7517d3378ed3e104cf9e"
+    },
+    "generator-idempotence.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/generator-idempotence.log",
+      "sha256": "183c0dd6d9f2b870fdce4a7bd3813fd5a43dde317d4194f85f88768f32c3e12c"
+    },
+    "dsd-clippy.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-clippy.log",
+      "sha256": "b211d7cf74026f59a93f323f8242f971ff076e2b6dda4ce6cb2df56de956c395"
+    },
+    "dsd-release.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-release.log",
+      "sha256": "fe03b0c3d20a76f60e829818ea2796a65c519392a86347f675d0b629a07bf0de"
+    },
+    "unarm-thumb-v4t-check.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-thumb-v4t-check.log",
+      "sha256": "fc2a6ae519aadd6a3cab9a2da5be18bccdf6ef20e77106cc734e4a44e4c7cb80"
+    },
+    "unarm-thumb-v4t-baseline.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-thumb-v4t-baseline.log",
+      "sha256": "329e4727694baa38b4f84591caa0faa6558c1cab603b7a1fc1fe6b79944ec3dc"
+    },
+    "unarm-arm-thumb-v4t-check.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-arm-thumb-v4t-check.log",
+      "sha256": "8f721c970333b979141a7481bc76d5e05e87d8503bb0fed343295b599876680f"
+    },
+    "parent-init.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/parent-init.log",
+      "sha256": "a749dc8842051778f10e19b1f3884df94b794060d940a8ff2cc426b9c90a6b32"
+    },
+    "child-init.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/child-init.log",
+      "sha256": "fca49d2c6cbf43ddf1e4424e0896a0b26b5e129f63bc5c459bcc3533f95481dd"
+    },
+    "prepare-ignored-red.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-red.log",
+      "sha256": "967822796e465afb1b8661d06260d1a4af8384509da18d3e3b5bf539aa24d6eb"
+    },
+    "prepare-ignored-green.log": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-green.log",
+      "sha256": "75ea11b2e059fb291cdccd81de09de1bc1933af828e56e0fb9004bf055980bfe"
+    },
+    "prepare-ignored-actual-red.json": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-actual-red.json",
+      "sha256": "d12419b2bc0f4976a1645a862e9247d68d1d57bd4539d2140d4d07c3ba9bc71f"
+    },
+    "prepare-ignored-actual-green.json": {
+      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-actual-green.json",
+      "sha256": "995932eb48292365d7594b4aefd707e313a099644a4a4ca6c9a74a7cf243b70f"
+    }
+  },
+  "source_bytes": 304,
+  "arm7_source_bytes": 0,
+  "full_19_rom": "pending independent root run",
+  "global_cargo_cache_mutated": false,
+  "source_context": {
+    "Cargo.toml": "61bdd32c51732eb8bc8cb982b8d3ad0f8d34a550ff7603fc57f5bf7543df1afe",
+    "Cargo.lock": "ac5b52e79117df8da34e6d5b1678e69580b4170c80ca9b6b8abfc586ba0166d5",
+    "lib/tests/branch_boundaries.rs": "6ecd4cdef9060a8d1783a4e76d6752a7a09816e75e9bf49218fea9b548069551",
+    "dependency-patches/unarm-1.9.2/prepare.py": "5fde56ada52911a52aa0cddb08e593ac9c8f0ce9e98c0ba776ab11b646eb1d63",
+    "dependency-patches/unarm-1.9.2/manifest.json": "3174b5660dcc9eec7d6d7783fe611ab80645e4832cd412b6eb9ea958ef0a4950",
+    "dependency-patches/unarm-1.9.2/test_prepare.py": "137a249afe8538463444cbcc683b011271f73f8d00f5e8d8f10aa5a4b18ce3a2",
+    "dependency-patches/unarm-1.9.2/proofs/ignored-build-probe.py": "b13e55ca783a5d641c6973dc655308c9b8d71c6559ec370d64a3f46fc272f789"
+  },
+  "preparation_inventory_hardening": {
+    "reviewer_counterexample": "ignored disasm/build.rs accepted because git --exclude-standard concealed it",
+    "red": {
+      "passed": 6,
+      "failed": 4
+    },
+    "green": {
+      "passed": 10,
+      "failed": 0
+    },
+    "untracked_scan": [
+      "git",
+      "ls-files",
+      "--others",
+      "-z"
+    ],
+    "only_output_allowance": [
+      "target/"
+    ],
+    "ignored_build_script_actual_red": {
+      "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
+      "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+      "check_only": {
+        "accepted": true,
+        "report": {
+          "status": "already_prepared",
+          "checkout": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe",
+          "version": "1.9.2",
+          "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+          "patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
+          "verified_source_files": 47,
+          "license_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b"
+        }
+      },
+      "cargo_metadata_command": [
+        "cargo",
+        "metadata",
+        "--manifest-path",
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
+        "--format-version",
+        "1",
+        "--no-deps",
+        "--locked",
+        "--offline"
+      ],
+      "custom_build_targets": [
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
+      ],
+      "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
+      "build_script_executed": false
+    },
+    "ignored_build_script_actual_green": {
+      "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
+      "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+      "check_only": {
+        "accepted": false,
+        "error": "unexpected untracked source files"
+      },
+      "cargo_metadata_command": [
+        "cargo",
+        "metadata",
+        "--manifest-path",
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
+        "--format-version",
+        "1",
+        "--no-deps",
+        "--locked",
+        "--offline"
+      ],
+      "custom_build_targets": [
+        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
+      ],
+      "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
+      "build_script_executed": false
+    },
+    "upstream_source_patch_changed": false,
+    "rust_source_changed": false,
+    "release_cli_changed": false
+  }
+}

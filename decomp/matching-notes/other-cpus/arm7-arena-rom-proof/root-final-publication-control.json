@@ -1,0 +1,6 @@
+{
+  "status": "actual_final_receipt_ROM_mutation_rejected",
+  "receipt_returned": false,
+  "error": "output artifact changed during ROM packing: research.nds",
+  "actual_changed_rom_sha256": "acf90bac90acfac6e64e44d19095feaf00e10ec000ddd0757b8d5324334f2323"
+}

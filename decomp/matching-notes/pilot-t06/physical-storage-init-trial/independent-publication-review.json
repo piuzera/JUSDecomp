@@ -1,0 +1,93 @@
+{
+  "status": "No flags",
+  "reviewer_model": "gpt-6-astra, parent-assigned cross-family reviewer",
+  "reviewed_source_commit": "70235e9b377036e7258a111a1d8077195acb4e3c",
+  "reviewed_tracker_commit": "8e40e79bc25eb57ba012999b7dc3d9a4b2317de4",
+  "review_bounds": "Final task37 packaging, acceptance, README, root and independent receipts/readbacks, Git blobs, finite raw and typed EOL provenance, decision trail and tracker closure. Transcript evidence is manually selected excerpt and cited records, not a full API transcript. No target compile or source/tracker edits performed by this reviewer.",
+  "actual_checks": {
+    "source_head": "70235e9b377036e7258a111a1d8077195acb4e3c",
+    "new_capsule_files": 44,
+    "all_new_git_blobs_equal_working": true,
+    "only_other_diff": "append-only decisions.tsv",
+    "strict_acceptance_gate": "66 published pins passed",
+    "runtime_provenance": {
+      "total": 66,
+      "raw": 19,
+      "typed_LF_to_CRLF": 47,
+      "old_catalog_subset": 65,
+      "additional_raw": "tools/scripts/compiler_experiments.py",
+      "all_current_git_working_hashes_and_attributes_verified": true
+    },
+    "receipts": [
+      {
+        "path": "/private/tmp/jus-37-root-released-final-replay/receipt.json",
+        "sha256": "8b1f693d6f3b526d9ad3929b2a389b0436e0ef889ad836dde809745d0e615b64",
+        "artifacts_verified": 2566,
+        "inputs_verified": 157,
+        "status": "measured_rejection",
+        "exact_inventory": true,
+        "raw_source_build_result_matches": true
+      },
+      {
+        "path": "/private/tmp/jus-37-independent-released-final/replay/receipt.json",
+        "sha256": "bdabb4ead720e101a554428c1386db7b979ab6d9f125a964f5582a042b5cba32",
+        "artifacts_verified": 2566,
+        "inputs_verified": 157,
+        "status": "measured_rejection",
+        "exact_inventory": true,
+        "raw_source_build_result_matches": true
+      }
+    ],
+    "tracker_git_working_equal": true,
+    "tracker_states": {
+      "jus-bjry.37": "closed",
+      "jus-bjry.6": "in_progress",
+      "jus-bjry.10": "in_progress",
+      "jus-bjry": "open"
+    },
+    "tracker_head_observed_after_task38_advanced": "e830010973798efe04b3f35b18b40f8ceace3e4b",
+    "reviewed_tracker_commit": "8e40e79bc25eb57ba012999b7dc3d9a4b2317de4",
+    "reviewed_tracker_blob_sha256": "bf60d21aa7d5e7fc5c0ff796f448b4381e9dd0cb587127f29a71ac333ca3b014",
+    "reviewed_tracker_states": {
+      "jus-bjry.37": "closed",
+      "jus-bjry.6": "in_progress",
+      "jus-bjry.10": "in_progress",
+      "jus-bjry": "open"
+    }
+  },
+  "publication_evidence": {
+    "source_initial_clean": true,
+    "source_HEAD_equals_local_origin_ref": true,
+    "source_remote_tracking_reflog": "70235e9 update by push",
+    "tracker_initial_clean": true,
+    "tracker_initial_HEAD_equals_local_origin_ref": true,
+    "tracker_remote_tracking_reflog": "8e40e79b update by push; later e8300109 update by push is separate task38 scope",
+    "direct_remote_query": "git ls-remote failed DNS resolving github.com; server state was not independently re-queried. Local ref equality and update-by-push reflogs corroborate root-reported successful ordinary pushes."
+  },
+  "acceptance_limits_verified": {
+    "outcome": "measured_rejection",
+    "canonical_source_bytes": 304,
+    "arm7_source_bytes": 0,
+    "added_source_bytes": 0,
+    "global_percent": null,
+    "strict_accepted_units": 0,
+    "native_or_ROM_stage_run": false,
+    "T06_and_T10_closed": false,
+    "original_class_or_ownership_promoted": false
+  },
+  "metadata_sha256": {
+    "acceptance.json": "addf36e007302a0fc58d822bd461385ecf637b89bbb34e42ee89bce3783b6daa",
+    "README.md": "aacaa5234b0ec3a06e094be99e1f439924501160b9552629904b5185fefac9fb",
+    "independent-final-review.json": "f49d2422d94c02a5dc2b60c4c04ca68c32d13095265e92692e1dfcd1dad1a85c",
+    "independent-trail-review.json": "dfc2d08eed9c855dc9b1d73b26777085cc436115acd5638e2a52bd8101fe21b8",
+    "root-provenance-readback.json": "5be0d3c09e5a88b592a30ddb27a1e82f09e7cc9997ff709f7ecb02fb3db59b89",
+    "root-public-readback.json": "d970207f7a68fac587e5c5023e7834163451d785d26b5fa416cf30eed53d435c"
+  },
+  "chronology": "Design release preceded source and compiler. Original full92 identity controls, locator setup failure, frozen recipe hash chronology, raw rejection, actual late symlink refutation/fixes and CLI leaf red/green remain explicitly recorded. Historical receipts are not final acceptance authority. Final runtime/model/recipe match prior independently controlled release; metadata702 is now separately inspected.",
+  "remaining_flags": [],
+  "scope_exclusions": [
+    "Later copying/publication of this audit is outside inspected source70235e9.",
+    "Task38 scope and later tracker commit e8300109 are outside task37 acceptance review.",
+    "Direct remote server query unavailable due DNS; no full transcript claim."
+  ]
+}

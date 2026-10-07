@@ -1,0 +1,16 @@
+test_actual_public_replay (test_rom.PublicReplay.test_actual_public_replay) ... FAIL
+
+======================================================================
+FAIL: test_actual_public_replay (test_rom.PublicReplay.test_actual_public_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-rom-trial/decomp/matching-notes/other-cpus/arm7-arena-rom-proof/test_rom.py", line 23, in test_actual_public_replay
+    self.assertEqual(run.returncode, 0, run.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0 : /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/jus-arm7-arena-rom-trial/decomp/matching-notes/other-cpus/arm7-arena-rom-proof/reproduce.py': [Errno 2] No such file or directory
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.035s
+
+FAILED (failures=1)

@@ -1,0 +1,22 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.15s
+     Running tests/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/deps/arm7_physical_baseline-af6a7e4b2a3cc3c0)
+
+running 1 test
+test validated_elf_and_reconstructed_image_cannot_be_replaced_before_publication ... FAILED
+
+failures:
+
+---- validated_elf_and_reconstructed_image_cannot_be_replaced_before_publication stdout ----
+
+thread 'validated_elf_and_reconstructed_image_cannot_be_replaced_before_publication' (251410832) panicked at lib/tests/arm7_physical_baseline.rs:154:5:
+published success for replaced artifacts: ["linked.elf", "arm7.bin"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    validated_elf_and_reconstructed_image_cannot_be_replaced_before_publication
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 6 filtered out; finished in 20.75s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_physical_baseline`

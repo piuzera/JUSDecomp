@@ -1,0 +1,641 @@
+{
+  "status": "passed",
+  "tests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "root_trial_receipt_sha256": "56c4fcd8ff3ccf33e5738924292c2a68642e1232591fff3a83cdd4581ee4df2f",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "public_positive_elf_sha256": "ce8c2d2566962edb4df29af9bccae294d135656ddca4b46fab7d85163dbc5267",
+      "independent_positive_elf_sha256": "5c3e9f36964f1bb9f40446fa68f5949f76a95472d35b84c169ceb56445ce2739",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "loads": 6,
+      "BSS_bytes": 21424,
+      "opaque_bridge_bytes": 40,
+      "all_five_bindings": {
+        "subpriv": 41917448,
+        "wram": 58768528,
+        "irq": 1024,
+        "system": 1024,
+        "guard": 58754096
+      },
+      "initializer_calls": [
+        {
+          "source": 58708044,
+          "word": "0xebffffcc",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708056,
+          "word": "0xebffffae",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708064,
+          "word": "0xebffffb1",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708076,
+          "word": "0xebffffa4",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708084,
+          "word": "0xebffffc2",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708096,
+          "word": "0xebffffa4",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708104,
+          "word": "0xebffffa7",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708116,
+          "word": "0xebffff9a",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708124,
+          "word": "0xebffffb8",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708136,
+          "word": "0xebffff9a",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708144,
+          "word": "0xebffff9d",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708156,
+          "word": "0xebffff90",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        }
+      ],
+      "all_five_omissions_rejected": true,
+      "swap_native_returncode": 0,
+      "swap_image_differences": [
+        20672,
+        20692,
+        21000,
+        21020,
+        21040,
+        21060,
+        21080,
+        21100
+      ],
+      "wrong_guard_image_differences": [
+        21116
+      ],
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "public_positive_elf_sha256": "ce8c2d2566962edb4df29af9bccae294d135656ddca4b46fab7d85163dbc5267",
+      "independent_positive_elf_sha256": "5c3e9f36964f1bb9f40446fa68f5949f76a95472d35b84c169ceb56445ce2739",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "loads": 6,
+      "BSS_bytes": 21424,
+      "opaque_bridge_bytes": 40,
+      "all_five_bindings": {
+        "subpriv": 41917448,
+        "wram": 58768528,
+        "irq": 1024,
+        "system": 1024,
+        "guard": 58754096
+      },
+      "initializer_calls": [
+        {
+          "source": 58708044,
+          "word": "0xebffffcc",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708056,
+          "word": "0xebffffae",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708064,
+          "word": "0xebffffb1",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708076,
+          "word": "0xebffffa4",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708084,
+          "word": "0xebffffc2",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708096,
+          "word": "0xebffffa4",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708104,
+          "word": "0xebffffa7",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708116,
+          "word": "0xebffff9a",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708124,
+          "word": "0xebffffb8",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708136,
+          "word": "0xebffff9a",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708144,
+          "word": "0xebffff9d",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708156,
+          "word": "0xebffff90",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        }
+      ],
+      "all_five_omissions_rejected": true,
+      "swap_native_returncode": 0,
+      "swap_image_differences": [
+        20672,
+        20692,
+        21000,
+        21020,
+        21040,
+        21060,
+        21080,
+        21100
+      ],
+      "wrong_guard_image_differences": [
+        21116
+      ],
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    }
+  ],
+  "root_direct_load_readback_sha256": "aa0251afe200eb5ba511c671a05a7c92485097a634e2a89c0bb6d349c5c0d407",
+  "root_original_object_observation": {
+    "object_sha256": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+    "flags": 34603008,
+    "text_bytes": 164,
+    "code_bytes": 160,
+    "text_sha256": "35ff79603ccc5afde50cdd183cf0006e3117337853b201488dcdfe8caa2bab22",
+    "nonrelocated_original_mismatches": [],
+    "text_relocations": [
+      {
+        "offset": 32,
+        "type": 1,
+        "symbol": "arm7_high_getter_trial",
+        "addend": -8
+      },
+      {
+        "offset": 44,
+        "type": 1,
+        "symbol": "arm7_store_trial",
+        "addend": -8
+      },
+      {
+        "offset": 52,
+        "type": 1,
+        "symbol": "arm7_low_getter_trial",
+        "addend": -8
+      },
+      {
+        "offset": 64,
+        "type": 1,
+        "symbol": "arm7_low_store_trial",
+        "addend": -8
+      },
+      {
+        "offset": 72,
+        "type": 1,
+        "symbol": "arm7_high_getter_trial",
+        "addend": -8
+      },
+      {
+        "offset": 84,
+        "type": 1,
+        "symbol": "arm7_store_trial",
+        "addend": -8
+      },
+      {
+        "offset": 92,
+        "type": 1,
+        "symbol": "arm7_low_getter_trial",
+        "addend": -8
+      },
+      {
+        "offset": 104,
+        "type": 1,
+        "symbol": "arm7_low_store_trial",
+        "addend": -8
+      },
+      {
+        "offset": 112,
+        "type": 1,
+        "symbol": "arm7_high_getter_trial",
+        "addend": -8
+      },
+      {
+        "offset": 124,
+        "type": 1,
+        "symbol": "arm7_store_trial",
+        "addend": -8
+      },
+      {
+        "offset": 132,
+        "type": 1,
+        "symbol": "arm7_low_getter_trial",
+        "addend": -8
+      },
+      {
+        "offset": 144,
+        "type": 1,
+        "symbol": "arm7_low_store_trial",
+        "addend": -8
+      },
+      {
+        "offset": 160,
+        "type": 2,
+        "symbol": "hyp_arena_initialized",
+        "addend": 0
+      }
+    ],
+    "discarded_exceptix_relocations": [
+      {
+        "offset": 0,
+        "type": 2,
+        "symbol": "arm7_arena_init_trial",
+        "addend": 0
+      }
+    ],
+    "note": "Direct root ELF bytes read; metadata discard and resolved exact calls still require actual native output."
+  },
+  "git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/arena_init_trial.c",
+      "bytes": 834,
+      "sha256": "b014099daa3d3dc1e2a14ca39a434726946067f448ff0e92ae5c2393bb44507e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/checked-layouts.json",
+      "bytes": 3685,
+      "sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/contract.json",
+      "bytes": 4819,
+      "sha256": "78f7235adad7684cc2f662c02b41b5e69d1f38c771f0474268fd0e919d18af4a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/design.md",
+      "bytes": 4883,
+      "sha256": "653f9c008ae656444e0b7e6cc196442da7427148b84896e203b2a42466126ad7"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/evidence-pins.json",
+      "bytes": 8680,
+      "sha256": "bed056be83d5aafd8ee23008800946e2c0ffed7419287531a88c84f92eaf79b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/first-compile.json",
+      "bytes": 831,
+      "sha256": "3065e064be132466436cdfcb25fbc722017d79432c4ba4ae84f38fcb57ebbe9a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/first-original-read.json",
+      "bytes": 3459,
+      "sha256": "73a6d3d4fe7770ad756051be5338ac3010ce3ea971c3ba6214f9bc08da7bc4ea"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/high_getter_trial.c",
+      "bytes": 904,
+      "sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/init.py",
+      "bytes": 38486,
+      "sha256": "8d74efe6a826c16f2d47ee23d76b41e91642f01a48a2930f09665477a0429fa2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/initializer-compiled-llvm.txt",
+      "bytes": 441,
+      "sha256": "45de9fed5eabb684af761a51b1854bc3d817356855b6addf61f1164f4fbd1ab3"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/initializer-elf-readback.txt",
+      "bytes": 5109,
+      "sha256": "f5de509ca90fc3bb58a40d5da5042fd608b0f9515e163c3aa337018fa5343d21"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/low_getter_trial.c",
+      "bytes": 609,
+      "sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/low_store_trial.c",
+      "bytes": 138,
+      "sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/lower_getter-compiled-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/lower_getter-elf-readback.txt",
+      "bytes": 3298,
+      "sha256": "a3e46f39fe86128ca0b7640b7c6b6b3f0da4888b57b33b297b70faab59cbd354"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/lower_store-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/lower_store-elf-readback.txt",
+      "bytes": 2476,
+      "sha256": "91e3c3e50a97c34456e76c9bdb6f0074281862fa86ef8554dbec165ad00e8268"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/object-findings.json",
+      "bytes": 1185,
+      "sha256": "6aba30654c04d0956e26839b38f529a81669db8b3f50dbe0a0d8479e6632c049"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-guarded_initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-lower_getter-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-lower_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-preceding_lower_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-preceding_upper_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-upper_getter-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-0-upper_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-guarded_initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-lower_getter-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-lower_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-preceding_lower_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-preceding_upper_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-upper_getter-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-1-upper_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/original-manifest.json",
+      "bytes": 9441,
+      "sha256": "46fd4292659a5c582f952792dd00bde8a8cafdb6814164de42066c9464c8a57f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/public-tests.log",
+      "bytes": 793,
+      "sha256": "5730d4850eda185a19e5089153eae0852e3e292654b6bea8a01de0108ebd6726"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/recipes.json",
+      "bytes": 2493,
+      "sha256": "069c9eaf14c89c115bfb2f88d0e2c9f59697ce4b674059ceceee8f3d676bd080"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/reproduce.py",
+      "bytes": 4556,
+      "sha256": "ab1d8b74c974343d443d7ef5bb94196af174f13f7df87e4af982a678d9df3b98"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/store_trial.c",
+      "bytes": 134,
+      "sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/tdd-green-native.log",
+      "bytes": 793,
+      "sha256": "a38bd51de512b3e5fa4950d19fbde55c9c406a643e4c573186e0d4161c691d87"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/tdd-green-original.log",
+      "bytes": 232,
+      "sha256": "948161e0798806efe9e5bd124551a50054cc481ff22b13bab1d386b8018bb1ab"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/tdd-red-native.log",
+      "bytes": 4460,
+      "sha256": "4461c042d54fb19ac316fcef2782103c9a7c384f6e3a653aa49f6dd85aadcc2f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/tdd-red.log",
+      "bytes": 983,
+      "sha256": "b74664be9a8cb16c0214659a207477a2f7b7986564210ae627ad406f58b172fb"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py",
+      "bytes": 6598,
+      "sha256": "2a46aee33c9ebf9066a06d2daa9bc62f53e22c4bbe4d3776ce270d30a03c31f2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/trial-proof.json",
+      "bytes": 172309,
+      "sha256": "26eef5f70b026c28b00ef6757ee79923c6d8b6a61b3133230b513d94fa63dc79"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/upper_getter-compiled-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/upper_getter-elf-readback.txt",
+      "bytes": 3514,
+      "sha256": "8d175475fc20dd06b64f9f59110271379e5312c272e22e8e8b252e5e96e548a6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/upper_store-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-proof/upper_store-elf-readback.txt",
+      "bytes": 2472,
+      "sha256": "943f5a6bf249b65cf8dc3ce214909e82e46d36a1e6d203ac36f45410667d739a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-init-trial.md",
+      "bytes": 11882,
+      "sha256": "1374aa8b9469b73ff0f358f4af2fcce80003cc0ffee26bc74f0f80b305a15270"
+    }
+  ],
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T06_complete": false,
+  "T10_complete": false
+}

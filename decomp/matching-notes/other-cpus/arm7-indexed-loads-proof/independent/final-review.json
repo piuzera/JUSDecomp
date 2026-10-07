@@ -1,0 +1,28 @@
+{
+  "status": "accepted_no_flags",
+  "public_worker_commit": "b922173aa2d12103af896b3de0eb0a25a20369af",
+  "independent_cherry_commit": "199e14ac0ca5b1effabbc37614ca0afb4056936a",
+  "new_git_blobs": 57,
+  "git_head_pins": 56,
+  "published_receipt_sha256": "58014b589deafe7ab6cea70125d538d2b8bc545d1f2b8007ee00404d517dfd9b",
+  "fresh_public_replay_receipt_sha256": "dc6ea0bdeb7abfb05f3787c4f95fd120560d82fe43b401af138047d337177618",
+  "independent_native_receipt_sha256": "5e0e27fa43d79d9a1ea8dcc174806b7135e71e7762ebc93f941fc48d3c1b612b",
+  "programs": [
+    {
+      "identity": 0,
+      "public_elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "independent_elf_sha256": "46ce79deda3e6b3aca33f3d0462d76b459f59d1a8c86eecf86758d45bf30feb6",
+      "equal_entry_flags_six_loads_allocated_payloads": true,
+      "linker_marker_names_differ": true
+    },
+    {
+      "identity": 1,
+      "public_elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "independent_elf_sha256": "46ce79deda3e6b3aca33f3d0462d76b459f59d1a8c86eecf86758d45bf30feb6",
+      "equal_entry_flags_six_loads_allocated_payloads": true,
+      "linker_marker_names_differ": true
+    }
+  ],
+  "source_credit_bytes": 0,
+  "remaining_boundary": "original names, types, ABI, extent, SDK, source ownership and runtime BX/call returns unproved"
+}

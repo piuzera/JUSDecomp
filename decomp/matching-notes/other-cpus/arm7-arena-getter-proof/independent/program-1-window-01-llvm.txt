@@ -1,0 +1,2 @@
+	ldr	r0, [pc, #44]
+	bx	lr

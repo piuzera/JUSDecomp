@@ -1,0 +1,28 @@
+{
+  "status": "accepted_no_concrete_citation_flags",
+  "reviewed_commit": "c957abd3a1ee3191903e344d03a376892fd7da5e",
+  "note_sha256": "c438b0860baf5429b85df1bfc57e381024a4a43a1f4e3597cc8569b6cc81c16e",
+  "external_sources_manifest_sha256": "cf4446494570f4ea137e44d513fa886de6d4a1b4ac67477d46ed0c3909ec017a",
+  "inspection": "Seven exact primary repository paths fetched from pinned commits through raw.githubusercontent.com; no source copies saved.",
+  "source_urls": [
+    "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/README.md",
+    "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/include/nitro/OS_arena_shared.h",
+    "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/include/nitro/mmap_shared.h",
+    "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/include/nitro/consts_shared.h",
+    "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/include/OS_arena.h",
+    "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c",
+    "https://raw.githubusercontent.com/devkitPro/libnds/5ddb7d9b05ea4cae145da8dbb19401a9387888a9/include/nds/system.h"
+  ],
+  "checks": {
+    "community_provenance": "pret/pokediamond README explicitly identifies a Pokemon Diamond decompilation; note treats its Nitro files as community reconstruction, not Nintendo SDK or original JUS authority.",
+    "arena_ids_layout": "OS_ARENA_MAIN_SUBPRIV=1, OS_ARENA_WRAM_SUB=7, OS_ARENA_WRAM_SUBPRIV=8, OS_ARENA_MAX=9; OSArenaInfo declares lo[9] then hi[9].",
+    "address_derivation": "HW_MAIN_MEM 0x02000000 + 0x007ffda0 = 0x027ffda0; OSi_GetArenaInfo casts that address; 32-bit pointer slots give lo[id]=0x027ffda0+4*id and hi[id]=0x027ffdc4+4*id.",
+    "arm7_signatures": "ARM7 header declares void OS_SetArenaHi/Lo(OSArenaId, void*) and void* OS_GetInitArenaHi/Lo(OSArenaId). Note labels these as candidate reconstructed signatures only.",
+    "init_order": "ARM7 source has separate static OSi_Initialized guard and initializes IDs 1, 7, 8 in high-then-low setter order; each initial-bound getter switches on those IDs.",
+    "donor_literal": "OS_GetInitArenaLo ID-1 case hardcodes 0x027fafcc with TODO SDK_SUBPRIV_ARENA_LO. Note does not import that value into JUS.",
+    "libnds_scope": "Pinned devkitPro/libnds include/nds/system.h declares getHeapStart/End/Limit returning u8* under ARM9. It does not establish NitroSDK arena names or slot addresses.",
+    "authority_boundary": "The note explicitly leaves original JUS names, types, signatures, SDK version, function ownership, original relocation, ABI, extent, execution, and source credit unresolved."
+  },
+  "findings": [],
+  "review_scope": "External citation and claim audit only; original ROM arithmetic and graph counts assigned to separate reviewer."
+}

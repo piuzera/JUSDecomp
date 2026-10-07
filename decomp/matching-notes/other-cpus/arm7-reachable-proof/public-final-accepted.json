@@ -1,0 +1,17 @@
+{
+  "decision": "accepted_no_flags",
+  "reviewed_commit": "701b12b47d37b16b94cb83165dc09ed48f2fcb7d",
+  "reviewed_tree": "613e97b4c6c08a560b56945dd853a85d5f22a0bd",
+  "root_proof_sha256": "b896d0881e14395a3619ee939171d6e7a999825327cda1b3dd98bc0c0a910fc1",
+  "source_commit": "71e766e562c78d4b0ec404b3b4edbe242a8d1b0f",
+  "source_tree": "75215439eec429f6dd82df8a9f49bba054a16839",
+  "findings": [],
+  "verification": {
+    "public_evidence_entries": 69,
+    "public_evidence_hash_mismatches": 0,
+    "frozen_source_and_evidence_unchanged": true,
+    "memory_bound_disposition": "source confirms observe emits at most 3 transfers per instruction; private SpanObservation fields and no Deserialize preserve E <= 3N; docs state general O(N + E + R*(N + E)) and current O(N + E + R*N)",
+    "initial_finding_and_disposition_preserved": true,
+    "public_summary_scope_consistent": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent_dsd": "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+  "lld": "/opt/homebrew/bin/ld.lld",
+  "clang": "/opt/homebrew/opt/llvm/bin/clang",
+  "parent_source_manifest": "decomp/source-manifest.json",
+  "parent_compiler": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+  "runner": "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+  "arm7_producer": "/private/tmp/jus-arm7-physical-root-cache/target/release/examples/arm7_physical_baseline",
+  "child_analyzer": "/private/tmp/jus-arm7-physical-root-cache/target/release/dsd",
+  "child_encoder": "/private/tmp/jus-child-codec-root-cache/target/release-fast/examples/t10_compression_probe",
+  "arm7_approval": "decomp/matching-notes/other-cpus/arm7-physical-baseline/approval.json",
+  "child_analyzer_approval": "decomp/matching-notes/other-cpus/child-tool-approval/analyzer-approval.json",
+  "child_codec_approval": "decomp/matching-notes/other-cpus/child-tool-approval/codec-approval.json"
+}

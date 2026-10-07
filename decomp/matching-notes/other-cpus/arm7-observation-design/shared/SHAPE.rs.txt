@@ -1,0 +1,216 @@
+//! Design sketch only. Bodies deliberately panic; this is not a compilable patch.
+//! Existing Function/options/context names identify edit sites in functions.rs.
+use std::{collections::BTreeMap, io, ops::Range, sync::Arc};
+use crate::rom::{arm7::{ProgramIdentity, Cpu, InstructionSet, Arm7RegionKind, Arm7View},
+    arm7_modules::Arm7ModuleInput};
+use crate::config::{module::ModuleKind, symbol::InstructionMode};
+use unarm::{Ins, ParsedIns, Parser, ParseFlags};
+
+// No public constructor combines arbitrary CPU and ISA fields.
+#[derive(Clone, Debug)]
+enum Architecture { Arm7TdmiV4T, Arm946EV5Te }
+impl Architecture {
+    fn parse_flags(&self, ual: bool) -> ParseFlags { unimplemented!("fixed explicit version; never Default") }
+}
+
+// ProgramIdentity already has Eq, but not Ord/Hash. Keep address indexes local;
+// do not pretend it can be dropped into the existing BTreeMap key unchanged.
+#[derive(Clone, Debug, PartialEq, Eq)]
+enum ProgramKey {
+    Verified(ProgramIdentity),
+    LegacyArm9(Arm9Scope),
+}
+#[derive(Clone, Debug)]
+pub struct Arm9Scope { token: Arc<OpaqueScopeToken> }
+#[derive(Debug)]
+struct OpaqueScopeToken { /* private unique instance identity, no fabricated hashes */ }
+impl PartialEq for Arm9Scope {
+    fn eq(&self, other: &Self) -> bool { unimplemented!("Arc::ptr_eq on allocated scope tokens") }
+}
+impl Eq for Arm9Scope {}
+impl Arm9Scope {
+    pub fn new() -> Self { unimplemented!("one allocation per legacy Program load; clones retain scope") }
+}
+#[derive(Clone, Debug, PartialEq, Eq)]
+enum RegionKey { Arm7(Arm7RegionKind), Arm9(ModuleKind) }
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct AnalysisIdentity { program: ProgramKey, cpu: Cpu, region: RegionKey }
+
+#[derive(Clone, Debug)]
+pub struct AnalysisContext {
+    identity: AnalysisIdentity,
+    architecture: Architecture,
+    destinations: Arc<AddressContext>,
+    semantics: AnalyzerSemantics,
+}
+#[derive(Clone, Debug)]
+enum AnalyzerSemantics { Arm9Legacy, ExplicitInstructionSpan }
+impl AnalysisContext {
+    pub fn arm9_legacy(identity: &AnalysisIdentity) -> Result<Self, AnalysisInputError> { unimplemented!("reject non-ARM9 identity; old heuristics/address rules") }
+    pub fn isa(&self) -> InstructionSet { unimplemented!() }
+    pub fn identity(&self) -> &AnalysisIdentity { unimplemented!() }
+    pub(crate) fn flags(&self, ual: bool) -> ParseFlags { unimplemented!() }
+}
+
+// Each map belongs to exactly one program and CPU. Immutable owned declarations.
+// Checked physical ranges establish MappingKind only. Code declarations stay separate.
+#[derive(Clone, Debug)]
+pub struct AddressContext {
+    program: ProgramKey, cpu: Cpu,
+    mappings: Vec<PhysicalMapping>, declarations: Vec<ExecutableDeclaration>,
+}
+#[derive(Clone, Debug)]
+struct PhysicalMapping { region: RegionKey, initialized: Range<u32>, bss: Range<u32> }
+#[derive(Clone, Debug)]
+pub struct ExecutableDeclaration {
+    // Construct through checked declaration constructor, not public fields.
+    region: RegionKey, span: Range<u32>, mode: InstructionMode,
+    evidence: DeclarationEvidence,
+}
+#[derive(Clone, Debug)]
+struct DeclarationEvidence { /* caller-supplied evidence reference retained in report */ }
+impl AddressContext {
+    pub fn arm7_physical(view: &Arm7View<'_>, executable: &[ExecutableDeclaration])
+        -> Result<Self, AnalysisInputError> { unimplemented!("reject mismatched identities, overlapping contradictory mode declarations") }
+    fn classify(&self, reference: TargetReference) -> TargetResolution { unimplemented!("mapping, execution and mode are independent") }
+}
+
+// Source borrows immutable bytes, while its owned identity may be stored in Function.
+// The ARM7 bridge copies identity() accessors, initialized(), bss(), bytes().
+// It never accepts the mutable descriptive TargetPolicy as decoder authority.
+pub struct AnalysisSource<'a> { identity: AnalysisIdentity, bytes: &'a [u8], initialized: Range<u32> }
+impl<'a> AnalysisSource<'a> {
+    pub fn arm7(input: &'a Arm7ModuleInput<'_>) -> Self {
+        unimplemented!("copy only checked input identity and ranges; borrow immutable bytes")
+    }
+    pub fn arm9_config(scope: &Arm9Scope, kind: ModuleKind, base: u32, bytes: &'a [u8])
+        -> Result<Self, AnalysisInputError> { unimplemented!("checked base+length; explicit legacy ARM9 scope") }
+    pub fn identity(&self) -> &AnalysisIdentity { unimplemented!() }
+}
+
+// A strict ARM7 instruction span has complete V4T decoding for all requested bytes.
+// This type is not a function extent or a declaration that its bytes execute.
+pub struct AnalysisSpan<'a> {
+    source: AnalysisSource<'a>, context: AnalysisContext,
+    mode: InstructionMode, requested: Range<u32>,
+    instructions: Vec<DecodedInstruction>,
+}
+impl<'a> AnalysisSpan<'a> {
+    pub fn arm7(input: &'a Arm7ModuleInput<'_>, mode: InstructionMode, span: Range<u32>,
+        addresses: &AddressContext) -> Result<Self, AnalysisInputError> {
+        unimplemented!("check full context identity; call existing decode_span(mode, span); own context copy; retain exact span")
+    }
+}
+pub struct DecodedInstruction { address: u32, byte_len: u8, ins: Ins, parsed: ParsedIns }
+pub enum AnalysisInputError {
+    IdentityMismatch, ContextMismatch, Bounds, Overflow, Alignment,
+    EmptyOrReversed, TruncatedInstruction { address: u32 }, IllegalInstruction { address: u32 },
+    ContradictoryDeclaration,
+}
+
+pub struct SpanOptions { candidate: Option<CandidateRequest>, check_defs_uses: bool }
+impl SpanOptions {
+    pub fn observations() -> Self { unimplemented!("no function claim; optional semantic facts only") }
+    pub fn candidate(name: String, entry: u32) -> Self { unimplemented!("caller candidate, not a proven boundary") }
+}
+struct CandidateRequest { name: String, entry: u32 }
+pub enum Completion {
+    InstructionSpanOnly,
+    CandidateIncomplete { reason: StopReason },
+    CandidateRejected { reason: StopReason },
+    CandidateTerminated { derived_extent: Range<u32> },
+}
+pub enum StopReason { DecodeLimit, UnresolvedControlFlow, InvalidEntry, UnsupportedHeuristic, OutsideSpan }
+pub struct SpanAnalysis {
+    context: AnalysisContext, mode: InstructionMode, requested: Range<u32>,
+    instructions: Vec<DecodedInstruction>, targets: Vec<TargetResolution>,
+    completion: Completion, function: Option<Function>,
+}
+impl SpanAnalysis {
+    pub fn context(&self) -> &AnalysisContext { unimplemented!() }
+    pub fn completion(&self) -> &Completion { unimplemented!() }
+    pub fn function(&self) -> Option<&Function> { unimplemented!("Some only for actual bounded termination; no known_end override") }
+    pub fn write_json<W: io::Write>(&self, w: &mut W) -> io::Result<()> {
+        unimplemented!("private serde DTO; full ARM7 ProgramIdentity and scope included")
+    }
+}
+
+struct TargetReference { source: u32, address: Option<u32>, kind: TargetKind, mode: TargetMode }
+enum TargetKind { B, Bl, Blx, Bx, JumpTable }
+enum TargetMode { Arm, Thumb, Unknown }
+pub enum TargetResolution {
+    DeclaredExecutable { address: u32, region: RegionKey, mode: InstructionMode },
+    Unresolved { address: Option<u32>, mapping: MappingKnowledge, mode: TargetMode, reason: UnresolvedReason },
+}
+pub enum MappingKnowledge { Initialized(RegionKey), Bss(RegionKey), OutsideDeclaredMappings, Unknown }
+pub enum UnresolvedReason { ExecutionUndeclared, ModeUnknown, BytesUnavailable, RegisterValueUnknown, ConflictingDeclaration }
+
+// Proposed changes to the existing stored Function, not a parallel ARM7 Function.
+#[derive(Clone, Debug)]
+pub struct Function {
+    context: AnalysisContext,
+    // Existing private name/start/end/first/last/mode/labels/pools/tables/calls/
+    // DS Protect fields remain. Bounded ARM7 construction excludes fabricated credit.
+}
+pub struct Presentation { pub ual: bool }
+// unarm 1.9.2 Parser has public mode/address/endian/flags. Never return it publicly.
+// This cursor allows output traversal without exposing an ISA or endian setter.
+pub struct FunctionCursor<'a> {
+    parser: Parser<'a>, context: &'a AnalysisContext,
+    permitted: Range<u32>, code_mode: InstructionMode,
+}
+pub enum CursorMode { Code(InstructionMode), Data }
+pub struct DecodedItem { pub address: u32, pub byte_len: u8, pub ins: Ins, pub parsed: ParsedIns }
+impl Iterator for FunctionCursor<'_> {
+    type Item = Result<DecodedItem, AnalysisInputError>;
+    fn next(&mut self) -> Option<Self::Item> {
+        unimplemented!("complete consumption check; policy fixed; report truncated final instruction")
+    }
+}
+impl FunctionCursor<'_> {
+    pub fn mode(&self) -> CursorMode { unimplemented!() }
+    pub fn address(&self) -> u32 { unimplemented!() }
+    pub fn seek_forward(&mut self, address: u32) -> Result<(), AnalysisInputError> {
+        unimplemented!("forward only, within stored function and initialized source; check alignment")
+    }
+    pub fn set_data_mode(&mut self, data: bool) -> Result<(), AnalysisInputError> {
+        unimplemented!("data intervals from stored Function facts only; restore original code mode")
+    }
+}
+impl Function {
+    pub fn analyze_span(input: AnalysisSpan<'_>, options: SpanOptions)
+        -> Result<SpanAnalysis, FunctionAnalysisError> {
+        unimplemented!("share instruction state handling; bounds are input.requested, never known_end_address")
+    }
+    // Existing signature, with one required explicit context field in its options.
+    pub fn parse_function(options: FunctionParseOptions<'_>)
+        -> Result<Self, FunctionAnalysisError> {
+        unimplemented!("legacy ARM9 adapter only; explicitly V5TE, preserve old heuristics")
+    }
+    // Proposed replacement of parser(module_code, base_address). Binds full identity,
+    // verifies derived function extent fits initialized bytes before any subtraction.
+    pub fn parser<'a>(&'a self, source: &'a AnalysisSource<'a>, presentation: Presentation)
+        -> Result<FunctionCursor<'a>, AnalysisInputError> {
+        unimplemented!("context fixed ISA+LE; only presentation.ual varies; checked source slice")
+    }
+}
+pub struct FunctionParseOptions<'a> {
+    pub analysis: &'a AnalysisContext,
+    // Existing fields unchanged: name, start_address, base_address, module_code,
+    // known_end_address, module_start/end_address, existing_functions,
+    // dsprot_encrypted_ranges, check_defs_uses, parse_options.
+}
+pub enum FunctionAnalysisError { /* extend existing transparent Snafu error */ }
+
+// Modify ParseFunctionContext in place: retain context and hard optional span limit.
+// Internal parse/defs/uses/diagnostic DisplayIns all take context.flags(false).
+// Address-only indexes remain valid because their owner carries one context.
+struct FunctionSet { context: AnalysisContext, functions: BTreeMap<u32, Function> }
+impl FunctionSet {
+    fn insert(&mut self, function: Function) -> Result<(), AnalysisInputError> {
+        unimplemented!("reject another program/CPU/region before inserting address")
+    }
+}
+// Existing ARM9 module maps can remain BTreeMap<u32, Function> while migration
+// validates every map at module boundaries; cross-program collections use a scoped
+// FunctionSet or explicit nested scopes, never a flat address-only map.

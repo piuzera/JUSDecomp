@@ -1,0 +1,23 @@
+{
+  "reviewer": "gpt-6.1-sol",
+  "checkpoint": "ae1aa92",
+  "result": "No flags",
+  "tool_source": "67e9a8bc65fba0e5cdc3ab784c77de28253ee3dc",
+  "rust_tests": 55,
+  "observer_tests": 14,
+  "matching_tests_last_checkpoint": 229,
+  "compatibility_stages": 19,
+  "whole_rom_exact": true,
+  "source_bytes": 304,
+  "arm7_source_bytes": 0,
+  "arm7_linked_baseline": false,
+  "native_probe_and_cli_hashes_match_worker": true,
+  "fresh_init_metadata_files": {
+    "parent": 51,
+    "child": 9
+  },
+  "production_pins_unchanged": true,
+  "experimental_producer": "73eee8d",
+  "scope": "bounded observer code, public proof and trail; shared dependency repair jus-bjry.16 remains in progress",
+  "reviewer_fallback": "gpt-5.6-sol hit terminal provider usage limit after earlier design-only review; final review used available gpt-6.1-sol"
+}

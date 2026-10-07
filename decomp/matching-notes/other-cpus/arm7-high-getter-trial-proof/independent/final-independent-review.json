@@ -1,0 +1,250 @@
+{
+  "status": "accepted_no_flags",
+  "reviewed_commit": "ad263cf56a7e8c18a587c38886063b047d7017c5",
+  "reviewed_tree": "9dbf4fc28eca2d5eabf14a83c8d9e95c29056bb8",
+  "base_commit": "6a39bceb7893e1a2cf0a57359797a13fd094cace",
+  "git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/compiled-llvm.txt",
+      "bytes": 361,
+      "git_blob": "b7489ca9dfc3816be677c34d98b9a32570d50c44",
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/donor-primary-audit.json",
+      "bytes": 7343,
+      "git_blob": "220d6c4f4cd0f420810f42b6a1311b1baf82824b",
+      "sha256": "6d2d67aaf53be488c2585626dd74f9cd71f618c74ac934184ef6359a7e1efd24"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/elf-readback.txt",
+      "bytes": 3510,
+      "git_blob": "1685be32bfeb2a05774141313db0d0b6c2a63dae",
+      "sha256": "acb03c21048dae95c7c0896607ab075e06bec8f3c3795cda38d30c48c6546a84"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/evidence-pins.json",
+      "bytes": 5406,
+      "git_blob": "77d23216f42e3815adcf930fd0becf3176427b35",
+      "sha256": "61a4b6a6999a8b9c7c1b40f7e07421728a67a55e2dcaefa429c428086766093f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/experiment-stderr.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/experiment-stdout.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/first-compile.json",
+      "bytes": 2555,
+      "git_blob": "709c0b1ddb17e9b032ff856edbb2eb76cfdc0418",
+      "sha256": "77b3553cd9f55f9531042fea40ad71dd439d6a475d7f79ee9441f9bb1ded07cc"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/high_getter_trial.c",
+      "bytes": 904,
+      "git_blob": "a7d1df1b190d8e487b556d9f4bfb37354a851988",
+      "sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/llvm-original-high-getter.txt",
+      "bytes": 461,
+      "git_blob": "2ecafcb25ef56d964b2b03eec52c667a176c0bd6",
+      "sha256": "1f95eaeafad852aad7785886a2fb8273d5ce9dce42716e5d2a1cf7b84a6537c7"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/model.md",
+      "bytes": 1240,
+      "git_blob": "622ae634c15fb7bfdae5bc3495bf8cb6ab112019",
+      "sha256": "57cde7a88b9242289b0c949c030c9dd689d4d12a5615c9b42efb02db474b19c9"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/native-layout.json",
+      "bytes": 1441,
+      "git_blob": "9887951f030d854acc559ee95af1107e73b44e5b",
+      "sha256": "c37047688c888ea5b312010d6ad157127fc9d195766b0539b17f4f8c6f6d845d"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/native-proof.json",
+      "bytes": 39915,
+      "git_blob": "83f10f41a22cd6aa2ee0d458c676ce1c2696feef",
+      "sha256": "999e3cc63a6df7f9ad8110f9810253d598662d5fb575c6081ab8d6797812d7d2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/native.py",
+      "bytes": 14579,
+      "git_blob": "be323517907ffedb2722b2cbe5b303358b97303d",
+      "sha256": "a0488e0933fb06199b229f818677a932c00dce3e4480a9eb530949a0bb2f2793"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/original-manifest.json",
+      "bytes": 2794,
+      "git_blob": "f0606bda615361f50d4aca851d1982a5e73760ec",
+      "sha256": "51a958cb6b83d1444169a68bd023b960e14e53250c5fe24d8a8091b8e56b6764"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/original-read.json",
+      "bytes": 14520,
+      "git_blob": "576504bce1533b036df3b13f658553af2d557394",
+      "sha256": "dde5ae1a33af1022315a299d56881be1c1913657b75cbc32fa273472b26a230c"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/public-replay.log",
+      "bytes": 287,
+      "git_blob": "6a905d24f84a02f7fc3fc2bc34118e5a6129b9b7",
+      "sha256": "0ddde73127b976b1d7151e06c50c5d7c89de9252641b730b28d792b04f0d24f7"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/public-tests.log",
+      "bytes": 1022,
+      "git_blob": "2a647a05220202a7844b8eba2bc55b912a6bef0a",
+      "sha256": "30e0a98f25ec4a8ef893b4e6ad766c42b6a774bf88e24d613edbf8bcc9bf63a0"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/read_original.py",
+      "bytes": 8733,
+      "git_blob": "1fd936ec159a501382b07b086a7ec86f79ef974d",
+      "sha256": "fc61058961dc583f71152c7e71fdc48ff1434b7a89b57974dee2dcdb055320d1"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/recipe.json",
+      "bytes": 2092,
+      "git_blob": "9dc1ed3c24347bb60b9766b8fe00f3a78d3522c4",
+      "sha256": "eaed7d4ab375e711ecf67f1a075ebf6e8ea1922cbe4a86b08ec5ebf3dacc62ef"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/reproduce.py",
+      "bytes": 6082,
+      "git_blob": "a5d244eb9690c58f81fea18a0d9da66a57fc0f5d",
+      "sha256": "f3db54a8da2e114b475f6c12b8f70d1e92c9817fc834f754459a7e1f2b72d50e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-native-green.log",
+      "bytes": 98,
+      "git_blob": "60c2c1886c791890ecbb8f9e57a419672a6610b2",
+      "sha256": "2362fe4c39d6c8fb96564b550ce2adc457643785846d4f66eddeed3c47ec9f06"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-native-red.log",
+      "bytes": 821,
+      "git_blob": "313cedaf3a5afe9e681de35eb517d35fddef4aae",
+      "sha256": "1ce6471a58ce93601844397b6c6c9244428316e3d1f064d646eafe9e415b2d42"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-original-green.log",
+      "bytes": 98,
+      "git_blob": "fcfd3596060bbcfc182ec8211f2315e0b38dd975",
+      "sha256": "91979d0184a85394a31bc4de57918feaf50293e2be86fff19ce3874557943d5d"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-original-red.log",
+      "bytes": 814,
+      "git_blob": "3a267b0b5ef69c878d5c7603ea0ba448c8706fe4",
+      "sha256": "0e2e45556b21dd23d1311be25089f99570e8a560c8dda01117c0d5ecb3aa6f0a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-reproduce-green.log",
+      "bytes": 98,
+      "git_blob": "b7d9f3df210ecb68b483673d9a61a4ce6ca56559",
+      "sha256": "3ebb075f85b3b26923606cf57a81ff3256c69aabb5050a2494614ddf5cfb8dbe"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-reproduce-red.log",
+      "bytes": 940,
+      "git_blob": "4c3b58d24140f78d916582ef3e45ae538308d738",
+      "sha256": "db760b0be589267aef09b91eacec2667c3b077a1cc41ff201218f31d24e2e05b"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-verify-green.log",
+      "bytes": 100,
+      "git_blob": "bbf64a9946eb5eacca6eba1924a46e494e59c5b8",
+      "sha256": "fe008aab760eb03ccac7578e2b84665b1b50b0d7f855b17a0c7a8d039435b658"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/tdd-verify-red.log",
+      "bytes": 1476,
+      "git_blob": "59496b78c030cef1ed9096af2e562f6ea3268b97",
+      "sha256": "a4a6102319f54d4aab3a17ec3ea62970ff067424fa27528a3d7a402e31d9395c"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/test_native.py",
+      "bytes": 1522,
+      "git_blob": "f584bb1eb214a7b929a821fd36f981b80103168f",
+      "sha256": "fb3b49e2da2786c64316563d0d62c35b747b30708c6f2494e1365c0dde09b839"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/test_original.py",
+      "bytes": 1619,
+      "git_blob": "6d25e518b275c9d094005df185632dbd1f40097c",
+      "sha256": "7ff76e1f04e62f807eeb8252d342e8b08f10087184af830d7462c57550fe6641"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/test_reproduce.py",
+      "bytes": 1397,
+      "git_blob": "7582ff2b37831d1b083bf7b29e79e4dd935d53da",
+      "sha256": "adeb6a5b95fb9055fed8eb1627ccb531c46c25e43b6cc9dd257d6bb314f7d13f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/test_verify.py",
+      "bytes": 1526,
+      "git_blob": "cd4c71f0becb12dfca347c34d043c0592a13d452",
+      "sha256": "5b9e360531b85de1a55fd92e9988b4ca9ef9bdad073397a7df06435441b70db6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/trial-proof.json",
+      "bytes": 44613,
+      "git_blob": "b42c0c6708c1c33874977423ae00700cfb6c304e",
+      "sha256": "c390cd166895c743c0628dc4a5d11747544bc81b3700bb095882cf270e5fa684"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/verify.py",
+      "bytes": 4369,
+      "git_blob": "6af8e48092d02689e42e2f9949fbf43db9cbb106",
+      "sha256": "4a0d9dd9931c409825e1e6c8ec780b82d7d5108784802206c085efbcede9a65b"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-high-getter-trial.md",
+      "bytes": 9847,
+      "git_blob": "c4bfe0e0bad8288c2becbeb7670bff6c41853157",
+      "sha256": "a0e2e922d10272471d29a734e5d64fb4d50cd9d7046f607937fcf03c184659ef"
+    }
+  ],
+  "public_manifest_sha256": "61a4b6a6999a8b9c7c1b40f7e07421728a67a55e2dcaefa429c428086766093f",
+  "git_owned_pins_verified": 34,
+  "frozen_source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+  "actual_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+  "fixed_code_bytes": 108,
+  "literal_pool_bytes": 20,
+  "actual_relocation_offsets": [
+    112,
+    120,
+    124
+  ],
+  "complete_candidate_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+  "positive_elf_sha256_both_programs": "d90a255d1193d31f0c4b322250e2b4de85608dbf59b855975a25ad499332c059",
+  "full_image_sha256_both_programs": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+  "image_bytes": 165552,
+  "load_segments": 6,
+  "BSS_bytes": 21424,
+  "public_IRQ_0x800_wrong_binding_offset": [
+    20901
+  ],
+  "independent_WRAM_0x0380bc94_wrong_binding_offset": [
+    20908
+  ],
+  "malformed_PT_LOAD_rejected_both": true,
+  "public_replay": "passed with fresh ROM-derived opaque inputs; six readbacks/logs byte-identical",
+  "five_tests": "passed with documented TRIAL_OBJECT",
+  "independent_native_script_sha256": "1840f54f53431bbb25f0ad5bc7e776346c5de44b6a74afeff4602d0f004f54f3",
+  "independent_native_result_sha256": "6f162aa1e0c5ee2a7618b98fc5f67ed84db4031444915d920ef1f23b514b05d3",
+  "original_names_types_ABI_extent_compiler_ownership_proven": false,
+  "source_credit_bytes": 0,
+  "canonical_bytes": 304,
+  "T10_open": true
+}

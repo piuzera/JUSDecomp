@@ -1,0 +1,12 @@
+
+target/branch-repair/oracle/thumb-blx-alignment.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+02380000 <_start>:
+ 2380000: 46c0         	mov	r8, r8
+ 2380002: f000 e800    	blx	0x2380004 <_start+0x4>  @ imm = #0x0
+ 2380006: f3ff effe    	blx	0x2780004 <_start+0x400004> @ imm = #0x3ffffc
+ 238000a: f400 e800    	blx	0x1f8000c               @ imm = #-0x400000
+ 238000e: f7ff effe    	blx	0x238000c <_start+0xc>  @ imm = #-0x4
+ 2380012: f000 f800    	bl	0x2380016 <_start+0x16> @ imm = #0x0

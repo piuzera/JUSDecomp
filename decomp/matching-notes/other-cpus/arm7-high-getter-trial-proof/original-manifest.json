@@ -1,0 +1,123 @@
+{
+  "instruction_windows": [
+    {
+      "start": 58707844,
+      "end": 58707872,
+      "sha256": "fc773af8408aab5f6223889cf579e8096b40962f6b800a362dd7bfa57a10450a",
+      "words": [
+        "0xe3500001",
+        "0x0a000004",
+        "0xe3500007",
+        "0x0a000004",
+        "0xe3500008",
+        "0x0a000004",
+        "0xea000011"
+      ]
+    },
+    {
+      "start": 58707872,
+      "end": 58707880,
+      "sha256": "9b89d55eab4a0cf40b11c6dd27589af847e9050f9e3cb057b1148db3ebf46a81",
+      "words": [
+        "0xe59f0048",
+        "0xe12fff1e"
+      ]
+    },
+    {
+      "start": 58707880,
+      "end": 58707888,
+      "sha256": "0e586df921c49865830816bf47809f423dde30038a4605f9076fe3b5e7a8b1b3",
+      "words": [
+        "0xe3a0050e",
+        "0xe12fff1e"
+      ]
+    },
+    {
+      "start": 58707888,
+      "end": 58707944,
+      "sha256": "74a9af49da64fc6418fe362b407b16d3325c7e1fe6328546a43495820faf42be",
+      "words": [
+        "0xe59f103c",
+        "0xe59f003c",
+        "0xe0402001",
+        "0xe3a0050e",
+        "0xe59f1034",
+        "0xe351050e",
+        "0x81a00001",
+        "0xe59f102c",
+        "0xe3510000",
+        "0x012fff1e",
+        "0xe3510000",
+        "0xb0400001",
+        "0xa0420001",
+        "0xe12fff1e"
+      ]
+    },
+    {
+      "start": 58707944,
+      "end": 58707952,
+      "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+      "words": [
+        "0xe3a00000",
+        "0xe12fff1e"
+      ]
+    }
+  ],
+  "literal_words": [
+    {
+      "address": 58707952,
+      "bytes": 4,
+      "sha256": "f585806e0c36f26f5bb712c65a5c1ff52a9d494fcf4ab39b7110516099222528",
+      "word": "0x027ff000",
+      "load_sources": [
+        58707872
+      ]
+    },
+    {
+      "address": 58707956,
+      "bytes": 4,
+      "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+      "word": "0x00000400",
+      "load_sources": [
+        58707888
+      ]
+    },
+    {
+      "address": 58707960,
+      "bytes": 4,
+      "sha256": "10e90213854ad8d7a3c230a550f02a4f07da0304629e8a793807151e5c33dfd1",
+      "word": "0x0380ff80",
+      "load_sources": [
+        58707892
+      ]
+    },
+    {
+      "address": 58707964,
+      "bytes": 4,
+      "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+      "word": "0x0380bc90",
+      "load_sources": [
+        58707904
+      ]
+    },
+    {
+      "address": 58707968,
+      "bytes": 4,
+      "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+      "word": "0x00000400",
+      "load_sources": [
+        58707916
+      ]
+    }
+  ],
+  "instruction_count": 27,
+  "literal_bytes": 20,
+  "fixed_code_extent": {
+    "start": 58707844,
+    "end": 58707952
+  },
+  "fixed_candidate_extent": {
+    "start": 58707844,
+    "end": 58707972
+  }
+}

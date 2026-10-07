@@ -1,0 +1,61 @@
+{
+  "status": "No flags",
+  "reviewer_model": "gpt-6-astra",
+  "reviewed_commit": "2ef4e018c6674df3915824b4730a59cd7fdbb662",
+  "scope": "Task36 selected records and actual artifacts; not full transcript; source grounding only",
+  "capsule_sha256": {
+    "check_original.py": "6ea86d2a643a60ee615a93e1807b06a38f1454eb59843fab9396fa79ca641b1d",
+    "README.md": "863e8b6188ae2bf2c9b645d731a336c58600957b2da13d057f4a0df9d9355b0c",
+    "integrity-controls.json": "90bfeb167e4d6b7d45b3f1c3d00dc6017e29cf5f793286d4bf5b3c1e097441f5",
+    "contract.json": "a1398492742c6ceb365169ace4c6da688cf2dcd294dfe67c679018c05d908994"
+  },
+  "actual_final_runs": [
+    {
+      "mode": "normal",
+      "exit_code": 0,
+      "output_exists": true,
+      "readback_sha256": "1d085e35ecc327cbb128ab3eb455b8841ea3b11a3b45fe009f0bc88da349a662"
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 1,
+      "output_exists": false,
+      "stderr": "Optimized Python disables verification assertions; run without -O or -OO.\n"
+    },
+    {
+      "mode": "double-optimized",
+      "exit_code": 1,
+      "output_exists": false,
+      "stderr": "Optimized Python disables verification assertions; run without -O or -OO.\n"
+    }
+  ],
+  "independent_checks": {
+    "original_objects": 15,
+    "direct_calls": 13,
+    "main_calls": 9,
+    "ov012_calls": 4,
+    "caller_functions": 11,
+    "instruction_bytes": 84,
+    "literal_bytes": 8,
+    "full_extent_bytes": 92,
+    "outgoing_relocations": 4,
+    "label_strings": 10,
+    "repository_source_pins": 56,
+    "source_pins_exact_subset_of_existing_119_catalog": true,
+    "actual_existing_git_blob_checkout_relations_checked": 47,
+    "helper_execution_trace": "executed-closure.json",
+    "storage_wording_fixed": true
+  },
+  "resolved_findings": [
+    "Optimized Python guard now precedes imports and rejects -O/-OO before output",
+    "021b0880 described as forwarding incoming storage unchanged"
+  ],
+  "source_credit": {
+    "canonical": 304,
+    "arm7": 0,
+    "added": 0
+  },
+  "source_trial_authorized": false,
+  "remaining_root_acceptance": "Publish root acceptance capsule with strict artifact Git gate and pinned unchanged Git/CRLF owner; publication not reviewed here",
+  "next_design": "Separate bounded physical preallocated-storage initializer design is supported; no original C++ type, ownership, or allocation-policy promotion; separate recorded trial release required"
+}

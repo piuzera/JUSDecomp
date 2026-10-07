@@ -1,0 +1,26 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.25s
+     Running tests/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/deps/arm7_physical_baseline-af6a7e4b2a3cc3c0)
+
+running 5 tests
+test wrong_native_pin_or_nonempty_output_does_not_publish_success ... ok
+test valid_child_view_builds_its_own_identity_report ... ok
+test native_fixture_preserves_loader_order_with_distinct_vmas_lmas_and_bss ... ok
+test reported_provenance_includes_original_regions_and_actual_native_invocations ... FAILED
+test checked_metadata_and_entry_survive_original_layout_mutation ... ok
+
+failures:
+
+---- reported_provenance_includes_original_regions_and_actual_native_invocations stdout ----
+
+thread 'reported_provenance_includes_original_regions_and_actual_native_invocations' (251090813) panicked at lib/tests/arm7_physical_baseline.rs:78:46:
+original checked region metadata
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    reported_provenance_includes_original_regions_and_actual_native_invocations
+
+test result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_physical_baseline`

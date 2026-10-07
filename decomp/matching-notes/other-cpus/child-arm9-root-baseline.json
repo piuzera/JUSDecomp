@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "source_credit": 0,
+  "comparisons": [
+    {
+      "module_file": "arm9.bin",
+      "size_bytes": 2624320,
+      "sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+      "extracted_bytes_equal": true
+    },
+    {
+      "module_file": "itcm.bin",
+      "size_bytes": 3968,
+      "sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "extracted_bytes_equal": true
+    },
+    {
+      "module_file": "dtcm.bin",
+      "size_bytes": 96,
+      "sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "extracted_bytes_equal": true
+    }
+  ],
+  "checks": [
+    {
+      "kind": "modules",
+      "command": [
+        "/private/tmp/jus-dsd-root-check/target/release-fast/dsd",
+        "check",
+        "modules",
+        "--fail",
+        "-c",
+        "build/dsd-child-root-proof/analysis/arm9/config.yaml"
+      ],
+      "returncode": 0,
+      "log_sha256": "0258f661d29cda9d1f8c80088ea0b2df76909b94fc76dc4149e726baf8796085"
+    },
+    {
+      "kind": "symbols",
+      "command": [
+        "/private/tmp/jus-dsd-root-check/target/release-fast/dsd",
+        "check",
+        "symbols",
+        "-e",
+        "build/dsd-child-root-proof/native/dsd-check.elf",
+        "--fail",
+        "-c",
+        "build/dsd-child-root-proof/analysis/arm9/config.yaml"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "relocations": {
+    "status": "passed",
+    "counts": {
+      "total": 35092,
+      "validated": 35092,
+      "failed": 0,
+      "unresolved": 0
+    },
+    "relocation_types": {
+      "2": 20440,
+      "1": 10755,
+      "10": 3897
+    },
+    "modules": {
+      "DTCM": {
+        "total": 22,
+        "validated": 22,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ITCM": {
+        "total": 78,
+        "validated": 78,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ARM9": {
+        "total": 34992,
+        "validated": 34992,
+        "failed": 0,
+        "unresolved": 0
+      }
+    },
+    "findings": [],
+    "findings_truncated": false,
+    "placement_scope": "one_original_gap_object_per_module",
+    "source_mode_fallbacks": {
+      "count": 0,
+      "contexts": []
+    }
+  },
+  "tool_sha256": "d1117b6126a27c3c1f8d429840c61671f492d7bcb22bedc84e42ed8509a5041f"
+}

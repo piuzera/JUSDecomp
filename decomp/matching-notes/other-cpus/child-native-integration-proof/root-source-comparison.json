@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "prior_canonical_producer": "cef286fcdf12a56669bae4a0fe56c30ab1245113",
+  "prior_source_hashes": 75,
+  "unchanged_source_hashes": 73,
+  "intentional_script_changes": {
+    "tools/scripts/verify.py": {
+      "prior": "a62b7754aa69a82a44c49ebe7d402de6e509a8cb3cbdbd0a0c1a3c8da421afaa",
+      "current": "d6d91117bb3a3e4a163c153c797b5ba89d37308fc866228de9394e3c5d0a1f90"
+    },
+    "tools/scripts/rom_roundtrip.py": {
+      "prior": "eed2dc2614c5ba9ba5ac8eca26c50feca371fc5202e4c195d22ee9050e6fbb01",
+      "current": "a09e8d2a049c1bfa217dba311fd6ad4ebca5ab01a8bf411daa854ac7009439c4"
+    }
+  },
+  "new_optional_inputs": {
+    "tools/scripts/child_native_baseline.py": "43e9de7245d3db7115f92942e594a99aa31f274664927e075718b41ded57783c",
+    "tools/scripts/child_rom_roundtrip.py": "690e35f99ad582745c71185a4b22cc5a1412df957b90fdb6db62b2c048e6f4a8",
+    "decomp/matching-notes/other-cpus/child-tool-approval/analyzer-approval.json": "cd5f54c8fa5f9fb19e7fcb02c66b1b3c402478148a14ae948c4790987d8b235f",
+    "decomp/matching-notes/other-cpus/child-tool-approval/codec-approval.json": "b64228826f3efc132f2917c979b2ceb28d645863a13965229fe30b95928ff16d",
+    "decomp/matching-notes/other-cpus/child-arm9-native-baseline.json": "12c2adf2a5c71e0f7011482d2038ddb23b46294243df7ceb28b64db08a37016e"
+  },
+  "production_lock_unchanged": true
+}

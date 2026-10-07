@@ -1,0 +1,94 @@
+{
+  "previous_commit": "57df0d24a0418c67706e5e74b5fe6867ec7dd2ca",
+  "receipt_probe": {
+    "publication_returned_success": true,
+    "receipt_is_symlink": true,
+    "receipt_resolves_outside_output": true,
+    "bytes_unchanged": true
+  },
+  "artifact_probe": {
+    "publication_returned_success": true,
+    "artifact_is_symlink": true,
+    "artifact_resolves_outside_output": true
+  },
+  "real_red": "symlink-boundaries-red.log",
+  "fixed_eight_tests": "symlink-boundaries-green.log",
+  "same_byte_external_files_preserved": true,
+  "real_compiled_object_positive": {
+    "source": "/private/tmp/jus-37-trial-02/verify/source-build/src/main/physical_initializer.o",
+    "sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+    "ordinary_exclusive_receipt": "/private/tmp/jus-37-fixed-receipt-control/receipt.json",
+    "receipt_sha256": "b4e38e2972795feae04a5331b3f341ec462df3112cac9f516f6240a7b994f213"
+  },
+  "declared_lld_alias_positive": {
+    "path": "/opt/homebrew/bin/ld.lld",
+    "target": "/opt/homebrew/Cellar/lld/23.1.2/bin/lld",
+    "snapshot_passed": true
+  },
+  "precompiler_controls": [
+    {
+      "input": "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/physical_initializer.c",
+      "actual_sha256": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+      "wrong_pin_rejected": true,
+      "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/physical_initializer.c"
+    },
+    {
+      "input": "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/reference-shape.json",
+      "actual_sha256": "d4e9794bc8b159f28fb969617169ef8159cb4302d6c9b29f25b016913e46a97b",
+      "wrong_pin_rejected": true,
+      "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/reference-shape.json"
+    },
+    {
+      "input": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+      "actual_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "wrong_pin_rejected": true,
+      "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe"
+    },
+    {
+      "input": "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "actual_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "wrong_pin_rejected": true,
+      "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/wibo/wibo-macos"
+    },
+    {
+      "input": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll",
+      "actual_sha256": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+      "wrong_pin_rejected": true,
+      "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll"
+    },
+    {
+      "input": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll",
+      "actual_sha256": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+      "wrong_pin_rejected": true,
+      "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll"
+    },
+    {
+      "input": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll",
+      "actual_sha256": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+      "wrong_pin_rejected": true,
+      "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll"
+    },
+    {
+      "control": "-O",
+      "exit_status": 1,
+      "output_absent": true,
+      "stderr": "Optimized Python disables verification checks; run without -O or -OO.\n"
+    },
+    {
+      "control": "-OO",
+      "exit_status": 1,
+      "output_absent": true,
+      "stderr": "Optimized Python disables verification checks; run without -O or -OO.\n"
+    },
+    {
+      "control": "existing_output",
+      "exit_status": 1,
+      "marker_unchanged": true,
+      "stderr": "blocked: output already exists; supply a fresh directory\n"
+    }
+  ],
+  "model_sha256": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+  "recipe_sha256": "f37d79d0b0e3cb466dd3b8909d53164fbc0fecee561c7367697e2727e5d053dd",
+  "fixed_replay_sha256": "201c877375b126aa3685e9090abb1e99c108002b13f5889693f697e07ba5dabf",
+  "additional_target_compiles": 0
+}

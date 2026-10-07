@@ -1,0 +1,183 @@
+{
+  "status": "accepted",
+  "findings": [],
+  "reviewed_commit": "59760663c617c589d7c7d253595f64a02a8b7da3",
+  "independence": "Full FNT traversal and original-ROM headers/parameters/table readback; fresh per-program LLVM decode; exact frozen-producer replay; graph and compact-summary field checks.",
+  "fnt_directories_visited": 39,
+  "fnt_files_visited": 379,
+  "child_file_id": 79,
+  "child_rom_extent": [
+    2340864,
+    4482248
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "header": {
+        "image_offset": 2162688,
+        "entry": 37224448,
+        "base": 37224448,
+        "image_bytes": 165552
+      },
+      "autoloads": [
+        [
+          58687488,
+          66120,
+          14920,
+          432
+        ],
+        [
+          41811968,
+          98976,
+          6504,
+          66552
+        ]
+      ],
+      "prefix_original_rom_offset": 2183644,
+      "prefix_stored_offset": 20956,
+      "prefix_sha256": "cc0404050002c6ff8309766ef0431c16eabaeb11f1407ee6fdff635cbb08e871",
+      "branch_target": 58708160,
+      "fallthrough": 58708036
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "header": {
+        "image_offset": 1972736,
+        "entry": 37224448,
+        "base": 37224448,
+        "image_bytes": 165552
+      },
+      "autoloads": [
+        [
+          58687488,
+          66120,
+          14920,
+          432
+        ],
+        [
+          41811968,
+          98976,
+          6504,
+          66552
+        ]
+      ],
+      "prefix_original_rom_offset": 4334556,
+      "prefix_stored_offset": 20956,
+      "prefix_sha256": "cc0404050002c6ff8309766ef0431c16eabaeb11f1407ee6fdff635cbb08e871",
+      "branch_target": 58708160,
+      "fallthrough": 58708036
+    }
+  ],
+  "complete_report_sha256": "e3920a2a353cbfb5c9a35a0d0e2a01f23cfe4a75e3580215f38de62f389b8bf7",
+  "complete_report_bytes": 159209,
+  "graph_counts_per_program": {
+    "nodes": 11,
+    "edges": 14,
+    "selected_edges": 10,
+    "frontier_edges": 4,
+    "visited_nodes": 11,
+    "edge_examinations": 14
+  },
+  "frontier_edges": [
+    2,
+    6,
+    12,
+    13
+  ],
+  "witness_edges": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      1,
+      3,
+      4,
+      6
+    ],
+    [
+      0,
+      1,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    [
+      0,
+      1,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13
+    ]
+  ],
+  "source_bytes": 0,
+  "function_extents_established": false,
+  "executable_coverage_established": false,
+  "original_relocations_established": false,
+  "arm7_binary_baseline_complete": false,
+  "inputs_unchanged": true,
+  "probe_argv": [
+    "/private/tmp/jus-arm7-reachable-root-cache/target/release/examples/arm7_reachable_probe",
+    "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "/private/tmp/jus-arm7-callee-grounding-write/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+    "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "/private/tmp/jus-arm7-callee-grounding-write/decomp/matching-notes/other-cpus/arm7-callee-prefix-proof/requests.json",
+    "91fc7b3da7000d67be18042a49e513a4d5ac474cb4430bb13a13ea21f33296ef",
+    "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff"
+  ],
+  "llvm_argv": [
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--disassemble",
+      "--triple=armv4t-none-eabi"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--disassemble",
+      "--triple=armv4t-none-eabi"
+    ]
+  ],
+  "public_files_sha256": {
+    "arm7-callee-prefix-proof/commands.json": "1777bb8628f4d06d48a727e8cbc387e43d3fa8add3f7e93e345b0c4e67005b12",
+    "arm7-callee-prefix-proof/original-read.json": "f3357064a764e2a74d0930f06aee9fc30e1b0f27800777d61acdd15791d487b5",
+    "arm7-callee-prefix-proof/graph-summary.json": "e4f093dea8b00ec0ad704f715fd4bc930b041f03ff0cb41ec663f1453397eb52",
+    "arm7-callee-prefix-proof/requests.json": "91fc7b3da7000d67be18042a49e513a4d5ac474cb4430bb13a13ea21f33296ef",
+    "arm7-callee-prefix-proof/.gitattributes": "7657ca55d84344f7d627d4d543c2fff6a967eec82830f63f101c9bd86581e415",
+    "arm7-callee-prefix-proof/llvm-decode.txt": "ff801ec399a5e3f333ef9337ae2d64520aad9a94bd03a330b6d0f6c90604cd2a",
+    "arm7-callee-prefix-proof/read_original.py": "de29a02abcbe418d8345ab529379440a456fb98be6ac14333adcd11ffd11cc84",
+    "arm7-callee-prefix-grounding.md": "d8e37ab12b6040f8cbca833de1cb52a4b7a35ac5ab4bf2055524d7e49d44355d"
+  },
+  "verification_script_sha256": "0e20e89faa076adf106f77e9092e975572aaa0b1e41c6d8a4227a1148247370b",
+  "llvm_stdout_sha256": {
+    "llvm-program-0.txt": "ff801ec399a5e3f333ef9337ae2d64520aad9a94bd03a330b6d0f6c90604cd2a",
+    "llvm-program-1.txt": "ff801ec399a5e3f333ef9337ae2d64520aad9a94bd03a330b6d0f6c90604cd2a"
+  },
+  "compact_summary_counts_and_observations_verified": true,
+  "scope_review": "Documentation confines the result to explicit selected ARM interpretations, retains unknown execution/function extent/relocations, zero source bytes, and leaves T10 open. Commit changes only documentation and compact proof artifacts."
+}

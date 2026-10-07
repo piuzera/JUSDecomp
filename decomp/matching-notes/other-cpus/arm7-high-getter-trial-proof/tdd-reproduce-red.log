@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_fresh_public_inputs_compile_and_native_link_actual_high_object (__main__.PublicReplayTests.test_fresh_public_inputs_compile_and_native_link_actual_high_object)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-high-getter-trial/decomp/matching-notes/other-cpus/arm7-high-getter-trial-proof/test_reproduce.py", line 11, in test_fresh_public_inputs_compile_and_native_link_actual_high_object
+    self.assertTrue(script.is_file(),'public high compile/native replay not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : public high compile/native replay not implemented
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

@@ -1,0 +1,170 @@
+[
+  {
+    "source": "low_load_trial.c",
+    "source_sha256": "2c264ddcef93585dbd3f0e938feef537eece386c50f899bf9db1b5aa0df92de1",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "low_load_trial.c",
+      "-o",
+      "compiled.o"
+    ],
+    "cwd": "/private/tmp/jus-arm7-indexed-loads-worker-proof/single-compiles/low_load_trial",
+    "object_bytes": 512,
+    "object_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+    "text_bytes": 20,
+    "text_sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+    "flags": 34603008,
+    "function": {
+      "Name": {
+        "Name": "arm7_low_load_trial",
+        "Value": 1
+      },
+      "Value": 0,
+      "Size": 20,
+      "Binding": {
+        "Name": "Global",
+        "Value": 1
+      },
+      "Type": {
+        "Name": "Function",
+        "Value": 2
+      },
+      "Other": {
+        "Value": 0,
+        "Flags": []
+      },
+      "Section": {
+        "Name": ".text",
+        "Value": 5
+      }
+    },
+    "mode_symbols": [
+      {
+        "Name": {
+          "Name": "$a",
+          "Value": 21
+        },
+        "Value": 0,
+        "Size": 0,
+        "Binding": {
+          "Name": "Local",
+          "Value": 0
+        },
+        "Type": {
+          "Name": "Function",
+          "Value": 2
+        },
+        "Other": {
+          "Value": 0,
+          "Flags": []
+        },
+        "Section": {
+          "Name": ".text",
+          "Value": 5
+        }
+      }
+    ],
+    "relocations": [],
+    "readobj_argv": [
+      "/opt/homebrew/opt/llvm/bin/llvm-readobj",
+      "--file-headers",
+      "--sections",
+      "--symbols",
+      "--relocations",
+      "--elf-output-style=JSON",
+      "/private/tmp/jus-arm7-indexed-loads-worker-proof/single-compiles/low_load_trial/compiled.o"
+    ]
+  },
+  {
+    "source": "high_load_trial.c",
+    "source_sha256": "e6a1f9bb097ff25b1e91c9e14040a90cbebeeb1a0d14248124d116c05a4e0ce8",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "high_load_trial.c",
+      "-o",
+      "compiled.o"
+    ],
+    "cwd": "/private/tmp/jus-arm7-indexed-loads-worker-proof/single-compiles/high_load_trial",
+    "object_bytes": 512,
+    "object_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+    "text_bytes": 20,
+    "text_sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+    "flags": 34603008,
+    "function": {
+      "Name": {
+        "Name": "arm7_high_load_trial",
+        "Value": 1
+      },
+      "Value": 0,
+      "Size": 20,
+      "Binding": {
+        "Name": "Global",
+        "Value": 1
+      },
+      "Type": {
+        "Name": "Function",
+        "Value": 2
+      },
+      "Other": {
+        "Value": 0,
+        "Flags": []
+      },
+      "Section": {
+        "Name": ".text",
+        "Value": 5
+      }
+    },
+    "mode_symbols": [
+      {
+        "Name": {
+          "Name": "$a",
+          "Value": 22
+        },
+        "Value": 0,
+        "Size": 0,
+        "Binding": {
+          "Name": "Local",
+          "Value": 0
+        },
+        "Type": {
+          "Name": "Function",
+          "Value": 2
+        },
+        "Other": {
+          "Value": 0,
+          "Flags": []
+        },
+        "Section": {
+          "Name": ".text",
+          "Value": 5
+        }
+      }
+    ],
+    "relocations": [],
+    "readobj_argv": [
+      "/opt/homebrew/opt/llvm/bin/llvm-readobj",
+      "--file-headers",
+      "--sections",
+      "--symbols",
+      "--relocations",
+      "--elf-output-style=JSON",
+      "/private/tmp/jus-arm7-indexed-loads-worker-proof/single-compiles/high_load_trial/compiled.o"
+    ]
+  }
+]

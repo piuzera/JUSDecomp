@@ -1,0 +1,30 @@
+{
+  "scope": "Public files from the isolated WRAM declaration-kind trial; verify after commit.",
+  "artifact_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind.md": "3dfe3eef7da294d2f56f4b60da9dae1b3a9e356ae48ecdf431cee1781db7d502",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/.gitattributes": "6998e23cef5b6458e16d6edd2ac74070ac623a2590def3ca2176c55e2ef56364",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/accepted-recipe.json": "b19ce0b85c789fc25a0ad204dcee085e8b00cedb7a8d5be09c254ba0f2a5ef10",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/accepted_original_source.c": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/compiled-llvm.txt": "865e24260f627994b0de05fef50cdfc2010e4f193a29b4c0485275d0b7732378",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/compiler-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/compiler-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/elf-readback.txt": "2a67bccc5843f62826eb7bb9a017038d526b6befc679fa5ad610ca61e88b09ef",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/llvm-original-low-getter.txt": "32411e7e1f3f35f0df12322c5167be80606209f7386e639a4f3eb9f8536ee9d0",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/low_getter_trial.c": "3f7b22c42f4b98cfed84308f2e5b658ae9cecdb8a17d900421e71ed70c496495",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/original-manifest.json": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/original-read.json": "25e66aa18cb2f2231b11d591ba6798e21c8981b9e6ce4d6b3804dc6580695a1e",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/provenance.json": "eb2806b4f332e6bb07bb95d920699eb1e574af161ebec6f9a126bb67c84180cb",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/read_original.py": "20054901f1a82b9749f97cf891cf6a6535ccc0bdc2c4b503bd956f81c45ff447",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/reproduce.py": "ccb9868ec52151e902124a4580b0a8d5367813930084ac8550e4e1bd3a9c8e43",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/source-diff.json": "03f6953c55b24ce2fcfecb01492166a5da9f19ca9b70033096b17c69dfd6f443",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/tdd-green.log": "e4042321c65757d6536c958a7071baf28053a9387b3c93b797ef573a6d72ace6",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/tdd-red.log": "1dcc7a7da29511c694ba7852e623fb20e856b8e4487d82e7b83dc3f1448ba047",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/test_replay.py": "3273b4b90683692e1ae0bed609f8c673a25da1132bbdadcdc030b5afa087c947",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/test_verify.py": "841fd530cebf7775bf15ad352ca0acb605e92d198fd0e783ef4e3607ad896f89",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/trial-proof.json": "08eb44148e69456348ca07f571c148260a486dfb0678690fe96e4983e638b943",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-symbol-kind-proof/verify.py": "d4b282bfbdae3a439ed74fbf88990afba7f7d26ea4e88ee45593888f4672cde2"
+  },
+  "self_hash_omitted": true,
+  "inventory_is_explicit": true,
+  "private_objects_tools_ROM_and_ignored_caches_excluded": true
+}

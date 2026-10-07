@@ -1,0 +1,162 @@
+{
+  "status": "direct_MW_object_two_program_images_exact",
+  "source_credit_bytes": 0,
+  "original_compiler_identity_proven": false,
+  "actual_MW_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+  "native_results": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "prepared": {
+        "prefix_sha256": "9f6a7a2cedb0251b3a5437a9f4601b5c175813047ac218173d5c31dfb7d12abf",
+        "candidate_original_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+        "suffix_sha256": "4b2ab8e15336aeea81eed2e167e4911c9445dacfe37c281d1bd4372d7f5343ba",
+        "object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "script_sha256": "0571963e66809998fb3258398bb0e29dd994e365a8c65186bc835baa594270a2"
+      },
+      "exact": {
+        "elf_sha256": "d90a255d1193d31f0c4b322250e2b4de85608dbf59b855975a25ad499332c059",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "differences": [],
+        "segments": [
+          {
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4
+          },
+          {
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4
+          },
+          {
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4
+          },
+          {
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6
+          },
+          {
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4
+          },
+          {
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6
+          }
+        ]
+      },
+      "wrong_binding_differences": [
+        20908
+      ],
+      "malformed_segment_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "prepared": {
+        "prefix_sha256": "9f6a7a2cedb0251b3a5437a9f4601b5c175813047ac218173d5c31dfb7d12abf",
+        "candidate_original_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+        "suffix_sha256": "4b2ab8e15336aeea81eed2e167e4911c9445dacfe37c281d1bd4372d7f5343ba",
+        "object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "script_sha256": "0571963e66809998fb3258398bb0e29dd994e365a8c65186bc835baa594270a2"
+      },
+      "exact": {
+        "elf_sha256": "d90a255d1193d31f0c4b322250e2b4de85608dbf59b855975a25ad499332c059",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "differences": [],
+        "segments": [
+          {
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4
+          },
+          {
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4
+          },
+          {
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4
+          },
+          {
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6
+          },
+          {
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4
+          },
+          {
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6
+          }
+        ]
+      },
+      "wrong_binding_differences": [
+        20908
+      ],
+      "malformed_segment_rejected": true
+    }
+  ],
+  "inputs_unchanged": true
+}

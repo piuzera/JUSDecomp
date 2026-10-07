@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.15",
+  "fix_commit": "bcdbbf9",
+  "runtime_candidate_commit": "74fcffb",
+  "proof_tree_commit": "78969c8",
+  "source_promotion_scope": "disposable proof only; root integration and combined class proof pending",
+  "status": "passed",
+  "canonical_runtime_registration_changed_in_fix_tree": false,
+  "proof_report_sha256": "c1707ca5e86b04980bbe59c9daeaccdba54d1f87abd9aedb91194ef736e66b3b",
+  "implementation_sha256": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+  "selected_objects": [
+    {
+      "filename": "_dsd_gap@main_6.o",
+      "kind": "reference",
+      "raw_sha256": "f529f0556025a4f0dda469c07ee7e1ae8ecc0d142b20e15f53c9c84e690ca078",
+      "normalized_sha256": "50a48fd8d943b97f076b34a82ec58a7611c66041085964c707810230ba77d3b3",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "find_exception_table.o",
+      "kind": "source",
+      "raw_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+      "normalized_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@main_1.o",
+      "kind": "reference",
+      "raw_sha256": "b4dee69c7e017812649c01676feaea07853e7ef795251cafa8a33f602606d0bc",
+      "normalized_sha256": "6fa86b121f3f4b385e0024f142d2beba0c0d2be24e4eb3596748a7b939deb78f",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@itcm_0.o",
+      "kind": "reference",
+      "raw_sha256": "52051c163374bfc0e472d7e7da565c5dc9cb1c06b88dbb565a954845a1106a84",
+      "normalized_sha256": "3ea1571c0f00b46e4bd694145bec19b025fed8ef5271cb9fd1d9cab9f08a6321",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@dtcm_1.o",
+      "kind": "reference",
+      "raw_sha256": "5ccb7fe8a9752f702d8c64ab1af13e3408c6c89c356436b53cb9a47fe2a89026",
+      "normalized_sha256": "f12513035216304fc68403445a7965fa429b6a404b5149e1b4d19b30be4db762",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov000_5.o",
+      "kind": "reference",
+      "raw_sha256": "4924f42eb473057464e8594daef93826bc5fce455f0b6533cd23c812b47445dc",
+      "normalized_sha256": "d57f11600ab04344aa6aa93229c5b8da84088a7b10808379187f4b5e61392506",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "test_trampoline.o",
+      "kind": "source",
+      "raw_sha256": "9bbeff924c067e61d03021ddf7ee2953dd385da6d82a00f2021c1027f3deb323",
+      "normalized_sha256": "9bbeff924c067e61d03021ddf7ee2953dd385da6d82a00f2021c1027f3deb323",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov000_1.o",
+      "kind": "reference",
+      "raw_sha256": "28d161280c47b58a9a8a99adb2fae65c08f19b5109483075f0e8c9b6dd15e5bf",
+      "normalized_sha256": "6cda02226709e305e4a18bd21e46ec5185d40dcdc92bd8742b62b0d6f2b4bb0c",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov001_5.o",
+      "kind": "reference",
+      "raw_sha256": "81d2df74fef7ae7cdfe08caecfe9ba8c0544d63762bbf70a9792c97d68fed3d7",
+      "normalized_sha256": "5bd0536985e066a3bd820e365c7daa9768274b1e4fb3400a59a32818d033f6e8",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov002_5.o",
+      "kind": "reference",
+      "raw_sha256": "bbf679310a2e1f97ce8bc6db763f71ac528f8acc9b20e2af1e07dc6d7f9fc7bb",
+      "normalized_sha256": "433f3d48ac07ea0f4e69afb2911568e3fb200dcc242b5924ec878e8d174c6de2",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov003_5.o",
+      "kind": "reference",
+      "raw_sha256": "e342b3afd351e946b447988e50807cc59beb50396c559a0a0f0849012df6b628",
+      "normalized_sha256": "4f295f0ff217ce1c63a7b1339b9d42e918e11d44e21a62a3e8f071c08ab810fc",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov004_5.o",
+      "kind": "reference",
+      "raw_sha256": "8de2c7ce1bd974aaa288eb43d93face104cb8cac2181b22ff85d0886ba85f543",
+      "normalized_sha256": "c32c5c840d8f96d819305681e4cc88d2f0243218a4ca16af7367e0cebab3288d",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov005_5.o",
+      "kind": "reference",
+      "raw_sha256": "b78de161984f5a7fd2f98ef503c4e6a6900d1bfed19915d52e761f401436c01b",
+      "normalized_sha256": "e7804cd2e98838700a70e837d3f2e455ce1e99a19e0aa3f56518d5d5be810e09",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov006_5.o",
+      "kind": "reference",
+      "raw_sha256": "9056f0313d862cf6d9636db3f534786bb84534fa4b32f82240c82cefce25652d",
+      "normalized_sha256": "a510da8679d1bcb5457eb694486208e8453452ed0071294f7fee921e0c01ffbe",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov007_5.o",
+      "kind": "reference",
+      "raw_sha256": "ff27de96f31f6cf90329ecd38a7a31bbef49d96c9fab028c8d694e3e4d84ba26",
+      "normalized_sha256": "a28a5830d4fe7bea33fe823a0c7590be9e1c342934922d7aa8b332fcf9466551",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov008_3.o",
+      "kind": "reference",
+      "raw_sha256": "f3f5cf8d3452224b928391694f7bcf616a398c86e65a125cea82ff09a4d8a36b",
+      "normalized_sha256": "83bc9f901c11890283c6b0202635a4140f83c1e5bf53e299c9ffa948cee337ec",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov010_3.o",
+      "kind": "reference",
+      "raw_sha256": "b184f31ba190d6331ab8c3304cd5fb5c9f8a4f627b350e08f9b89004ac0f8748",
+      "normalized_sha256": "95fce6dc597b62de160196ee27321998fb54890977b74cecfc5a34ce4479a88c",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov011_5.o",
+      "kind": "reference",
+      "raw_sha256": "08327138e749b877a2e8ec7a4e636c01a6c50429a98a19a8dba1a860ce536ee2",
+      "normalized_sha256": "6394ccffaa0449e12581d5240e77f1904c4f8d77cab475f181a7c122242ab9a7",
+      "allocated_initialized_content_unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov012_5.o",
+      "kind": "reference",
+      "raw_sha256": "63c39a8f03c8aa20b35a5a3e81096bb4b076aa044b9f4557a7a0be3601c82375",
+      "normalized_sha256": "5ea4ee342a6bd88a7bfcf50879f6f87109bae5d4903aaeb00ca753ca134c765d",
+      "allocated_initialized_content_unchanged": true
+    }
+  ],
+  "external_notype_modes": {
+    ".L_0200cf14": "a",
+    ".L_0200d0d0": "a"
+  },
+  "corrected_calls": [
+    {
+      "source": "0x2066762",
+      "destination": "0x200cf14",
+      "mode": "arm",
+      "call": true
+    },
+    {
+      "source": "0x20667c0",
+      "destination": "0x200cf14",
+      "mode": "arm",
+      "call": true
+    },
+    {
+      "source": "0x2066806",
+      "destination": "0x200cf14",
+      "mode": "arm",
+      "call": true
+    }
+  ],
+  "stages": [
+    {
+      "name": "intake",
+      "status": "passed"
+    },
+    {
+      "name": "tool_versions",
+      "status": "passed"
+    },
+    {
+      "name": "prepare_config",
+      "status": "passed"
+    },
+    {
+      "name": "extract",
+      "status": "passed"
+    },
+    {
+      "name": "delink",
+      "status": "passed"
+    },
+    {
+      "name": "source_config",
+      "status": "passed"
+    },
+    {
+      "name": "source_delink",
+      "status": "passed"
+    },
+    {
+      "name": "source_build",
+      "status": "passed"
+    },
+    {
+      "name": "lcf",
+      "status": "passed"
+    },
+    {
+      "name": "native_link",
+      "status": "passed"
+    },
+    {
+      "name": "link_inputs",
+      "status": "passed"
+    },
+    {
+      "name": "check_modules",
+      "status": "passed"
+    },
+    {
+      "name": "check_symbols",
+      "status": "passed"
+    },
+    {
+      "name": "direct_comparison",
+      "status": "passed"
+    },
+    {
+      "name": "relocation_check",
+      "status": "passed"
+    },
+    {
+      "name": "source_ownership",
+      "status": "passed"
+    },
+    {
+      "name": "freshness",
+      "status": "passed"
+    },
+    {
+      "name": "rom_roundtrip",
+      "status": "passed"
+    },
+    {
+      "name": "rom_freshness",
+      "status": "passed"
+    }
+  ],
+  "relocations": {
+    "status": "passed",
+    "counts": {
+      "total": 87493,
+      "validated": 87493,
+      "failed": 0,
+      "unresolved": 0
+    },
+    "relocation_types": {
+      "2": 32552,
+      "1": 31038,
+      "10": 23903
+    },
+    "modules": {
+      "DTCM": {
+        "total": 43,
+        "validated": 43,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ITCM": {
+        "total": 476,
+        "validated": 476,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ARM9": {
+        "total": 25957,
+        "validated": 25957,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV000": {
+        "total": 3292,
+        "validated": 3292,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV001": {
+        "total": 6925,
+        "validated": 6925,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV002": {
+        "total": 2484,
+        "validated": 2484,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV003": {
+        "total": 2905,
+        "validated": 2905,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV004": {
+        "total": 3651,
+        "validated": 3651,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV005": {
+        "total": 5509,
+        "validated": 5509,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV006": {
+        "total": 4659,
+        "validated": 4659,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV007": {
+        "total": 5974,
+        "validated": 5974,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV008": {
+        "total": 6602,
+        "validated": 6602,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV010": {
+        "total": 9513,
+        "validated": 9513,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV011": {
+        "total": 1233,
+        "validated": 1233,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV012": {
+        "total": 8270,
+        "validated": 8270,
+        "failed": 0,
+        "unresolved": 0
+      }
+    },
+    "findings": [],
+    "findings_truncated": false,
+    "placement_scope": "one_original_gap_object_per_module",
+    "source_mode_fallbacks": {
+      "count": 1,
+      "contexts": [
+        {
+          "object": "_dsd_gap@ov007_5.o",
+          "module": "OV007",
+          "offset": 35358,
+          "type": 10,
+          "addend": -4,
+          "source": 34953022,
+          "symbol": "func_ov007_021552b0",
+          "target_module": "OV007",
+          "mapping_mode": "d",
+          "function_mode": "t"
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "status": "credited",
+    "matched_source_bytes": 56,
+    "instructions": {
+      "matched_bytes": 44,
+      "total_bytes": null
+    },
+    "literals": {
+      "matched_bytes": 12,
+      "total_bytes": null
+    },
+    "implementation_categories": {
+      "game": {
+        "matched_source_bytes": 24,
+        "matched_functions": 1
+      },
+      "sdk": {
+        "matched_source_bytes": 32,
+        "matched_functions": 1
+      },
+      "unknown": {
+        "matched_source_bytes": 0,
+        "matched_functions": 0
+      }
+    }
+  },
+  "rom_roundtrip": {
+    "status": "passed",
+    "rom": {
+      "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+      "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "size_bytes": 67108864
+    },
+    "checks": [
+      {
+        "name": "header",
+        "status": "passed",
+        "sha256": "afa321ff2d0b6d7c793c10ed7aa810755175fde894349b13f08eff9c80abd3de"
+      },
+      {
+        "name": "arm9_overlay_table",
+        "status": "passed",
+        "offset": 709120,
+        "size_bytes": 448,
+        "sha256": "985c926dc85d0161b3fb7d0965fc13c90b5ead4e7a4a77472d142cc010a972e3"
+      },
+      {
+        "name": "arm7_overlay_table",
+        "status": "passed",
+        "offset": 0,
+        "size_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "fnt",
+        "status": "passed",
+        "offset": 2328576,
+        "size_bytes": 5813,
+        "sha256": "b1d678306304b5aeaf193395f34b8d0c647f75d8624888dfb04b5971e0a4b194"
+      },
+      {
+        "name": "fat",
+        "status": "passed",
+        "offset": 2334720,
+        "size_bytes": 3144,
+        "sha256": "571ced1ba03e47135da381cffdaedb8f89943790a4a4dd460b5d17e541c13fae"
+      },
+      {
+        "name": "compression_encoding",
+        "status": "passed"
+      },
+      {
+        "name": "arm9_payloads",
+        "status": "passed"
+      },
+      {
+        "name": "autoload_table",
+        "status": "passed"
+      },
+      {
+        "name": "arm7",
+        "status": "passed"
+      },
+      {
+        "name": "raw_assets",
+        "status": "passed"
+      },
+      {
+        "name": "padding",
+        "status": "passed"
+      },
+      {
+        "name": "whole_rom_hash",
+        "status": "passed"
+      }
+    ],
+    "arm9_modules_checked": 17,
+    "preserved_source_bytes": 0,
+    "preserved_arm7": {
+      "size_bytes": 165552,
+      "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "source_bytes": 0
+    },
+    "preserved_raw_assets": {
+      "file_count": 379,
+      "size_bytes": 63545489,
+      "source_bytes": 0
+    },
+    "smoke_checks": "queued for T07; not performed",
+    "provenance": {
+      "producer_build_id": "2e29fc49-090b-480d-967a-306d84e797e2",
+      "source_enabled": true,
+      "linked_elf_sha256": "8579a82416e10ba999de557466dff229ec433e7dfc66801f630fb54ad9122f1e",
+      "link_inputs_sha256": "43a73f1f34517c65897eb38c54fc2400cd282d4748c5a4c8e39ff8443dcf0a74",
+      "artifact_count": 187
+    },
+    "writes": [
+      {
+        "module": "ARM9",
+        "input_file": "arm9.bin",
+        "rom_offset": 16384,
+        "size_bytes": 656832,
+        "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e"
+      },
+      {
+        "module": "ITCM",
+        "input_file": "itcm.bin",
+        "rom_offset": 673216,
+        "size_bytes": 31552,
+        "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3"
+      },
+      {
+        "module": "DTCM",
+        "input_file": "dtcm.bin",
+        "rom_offset": 704768,
+        "size_bytes": 4160,
+        "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487"
+      },
+      {
+        "module": "OV000",
+        "input_file": "arm9_ov000.bin",
+        "rom_offset": 709632,
+        "size_bytes": 85760,
+        "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6"
+      },
+      {
+        "module": "OV001",
+        "input_file": "arm9_ov001.bin",
+        "rom_offset": 795648,
+        "size_bytes": 135456,
+        "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b"
+      },
+      {
+        "module": "OV002",
+        "input_file": "arm9_ov002.bin",
+        "rom_offset": 931328,
+        "size_bytes": 65152,
+        "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b"
+      },
+      {
+        "module": "OV003",
+        "input_file": "arm9_ov003.bin",
+        "rom_offset": 996864,
+        "size_bytes": 73472,
+        "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a"
+      },
+      {
+        "module": "OV004",
+        "input_file": "arm9_ov004.bin",
+        "rom_offset": 1070592,
+        "size_bytes": 86208,
+        "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3"
+      },
+      {
+        "module": "OV005",
+        "input_file": "arm9_ov005.bin",
+        "rom_offset": 1157120,
+        "size_bytes": 152928,
+        "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6"
+      },
+      {
+        "module": "OV006",
+        "input_file": "arm9_ov006.bin",
+        "rom_offset": 1310208,
+        "size_bytes": 154688,
+        "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984"
+      },
+      {
+        "module": "OV007",
+        "input_file": "arm9_ov007.bin",
+        "rom_offset": 1465344,
+        "size_bytes": 122816,
+        "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30"
+      },
+      {
+        "module": "OV008",
+        "input_file": "arm9_ov008.bin",
+        "rom_offset": 1588224,
+        "size_bytes": 128160,
+        "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7"
+      },
+      {
+        "module": "OV009",
+        "input_file": "arm9_ov009.bin",
+        "rom_offset": 1716736,
+        "size_bytes": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      },
+      {
+        "module": "OV010",
+        "input_file": "arm9_ov010.bin",
+        "rom_offset": 1717248,
+        "size_bytes": 215264,
+        "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99"
+      },
+      {
+        "module": "OV011",
+        "input_file": "arm9_ov011.bin",
+        "rom_offset": 1932800,
+        "size_bytes": 61440,
+        "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9"
+      },
+      {
+        "module": "OV012",
+        "input_file": "arm9_ov012.bin",
+        "rom_offset": 1994240,
+        "size_bytes": 167776,
+        "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f"
+      },
+      {
+        "module": "OV013",
+        "input_file": "arm9_ov013.bin",
+        "rom_offset": 2162176,
+        "size_bytes": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      }
+    ],
+    "repacker_source_sha256": "c3d84bd29758ef96e57ac0c052562ce8ecf0949174740cf51d7430615927f262",
+    "started_ns": 1791203257160442000,
+    "finished_ns": 1791203259435191000
+  },
+  "tool_pins": {
+    "dsd": {
+      "sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+      "version": "0.12.0",
+      "stdout": "ds-decomp-cli 0.12.0\n",
+      "stderr": "",
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "--version"
+      ],
+      "exit_status": 0
+    },
+    "lld": {
+      "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "version": "23.1.2",
+      "stdout": "Homebrew LLD 23.1.2 (compatible with GNU linkers)\n",
+      "stderr": "",
+      "command": [
+        "/opt/homebrew/bin/ld.lld",
+        "--version"
+      ],
+      "exit_status": 0
+    },
+    "clang": {
+      "sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+      "version": "23.1.2",
+      "stdout": "Homebrew clang version 23.1.2\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /opt/homebrew/Cellar/llvm/23.1.2/bin\nConfiguration file: /opt/homebrew/Cellar/llvm/23.1.2/etc/clang/arm64-apple-darwin25.cfg\n",
+      "stderr": "",
+      "command": [
+        "/opt/homebrew/opt/llvm/bin/clang",
+        "--version"
+      ],
+      "exit_status": 0
+    },
+    "source_compiler": {
+      "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "version": "3.0 build 114",
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-version"
+      ],
+      "stdout": "\nMetrowerks C/C++ for Embedded ARM.\nCopyright (c) 2006, Freescale Semiconductor, Inc\nAll rights reserved.\nVersion 3.0 build 114 (build 114)\nRuntime Built: Mar 30 2006 14:39:17\n\n",
+      "stderr": "",
+      "exit_status": 0,
+      "runtime_libraries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+      }
+    },
+    "compiler_runner": {
+      "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "version": "1.2.0",
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "--version"
+      ],
+      "stdout": "wibo 1.2.0 (Darwin x86_64)\n",
+      "stderr": "",
+      "exit_status": 0
+    }
+  },
+  "actual_source_ownership_status": "passed",
+  "reproduction_command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "tools/scripts/verify.py",
+    "--rom",
+    "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "--output",
+    "build/runtime-fixed-final",
+    "--dsd",
+    "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "--lld",
+    "/opt/homebrew/bin/ld.lld",
+    "--clang",
+    "/opt/homebrew/opt/llvm/bin/clang",
+    "--source-manifest",
+    "decomp/matching-notes/pilot-t06/runtime/candidate-source-manifest.json",
+    "--source-compiler",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+    "--compiler-runner",
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos"
+  ]
+}

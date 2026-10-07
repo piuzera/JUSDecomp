@@ -1,0 +1,87 @@
+{
+  "commands": [
+    [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "rom",
+      "extract",
+      "-r",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "-o",
+      "/private/tmp/jus-37-original-prerequisite-01/extract"
+    ],
+    [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "delink",
+      "-c",
+      "/private/tmp/jus-37-original-prerequisite-01/config/config.yaml"
+    ],
+    [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "delink",
+      "-c",
+      "/private/tmp/jus-37-original-prerequisite-01/config/config.yaml"
+    ]
+  ],
+  "target": {
+    "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+    "functions": [
+      {
+        "name": "func_0202c4ac",
+        "offset": 0,
+        "size": 92,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".text",
+        "offset": 40,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 52,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 84,
+        "type": 2,
+        "symbol": "data_02098708",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 88,
+        "type": 2,
+        "symbol": "data_020a0c34",
+        "addend": 0
+      }
+    ],
+    "sections": [
+      {
+        "name": ".text",
+        "size": 92,
+        "flags": 6,
+        "sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+      }
+    ]
+  },
+  "config_derivation": {
+    "original_delink_config_sha256": "8c678adf26218284553ca4d428027cfaed3873de5cccb5fe36d178aedf87a082",
+    "candidate_delink_config_sha256": "a1d4cb49c7586302b1f8ca0dbec5e76c223e0119c66b8b071904940f2d2bea07",
+    "operation": "After original delink, the same config/config.yaml path was changed only from delinks_path: ../delinks to delinks_path: ../candidate-delinks; config/delinks.txt gained the following research-only complete block. Third genuine DSD command then read the changed config. Original config digest was printed before mutation and rechecked by reversing the exact replacement.",
+    "appended_complete_block": "src/main/physical_initializer.c:\n    complete\n    .text start:0x0202c4ac end:0x0202c508\n",
+    "candidate_delinks_txt_sha256": "496fe74d180c74f9acd5371d8508d7353c11f7c667c08229e1f6caeed11a1155"
+  },
+  "command_stages": [
+    "fresh_extract",
+    "original_delink_with_original_config",
+    "candidate_delink_with_derived_config_at_same_path"
+  ]
+}

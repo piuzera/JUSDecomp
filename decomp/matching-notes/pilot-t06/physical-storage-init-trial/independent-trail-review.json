@@ -1,0 +1,69 @@
+{
+  "status": "No flags",
+  "reviewer_model": "gpt-6-astra, parent-assigned cross-family reviewer",
+  "reviewed_commit": "37f8817105839617d2f714044577bec49755a744",
+  "bounds": "Bounded frozen runtime diff and actual controls/current root receipt. Root metadata and README are uncommitted and excluded. Selected transcript only, not a full API transcript. No target compiler invoked by this reviewer.",
+  "resolved_finding": {
+    "decision": "fix validated",
+    "finding": "CLI resolve followed existing broken output leaf symlink and created target",
+    "fix": "CLI absolute preserves leaf for existing fresh_output symlink rejection; earlier receipt/artifact symlink guards unchanged.",
+    "red_evidence": "evidence/cli-broken-symlink-red.log shows target creation before deliberate Git failure and before compiler.",
+    "independent_actual_cli": {
+      "exit_status": 1,
+      "stdout": "",
+      "stderr": "blocked: output already exists; supply a fresh directory\n",
+      "target_absent": true,
+      "link_preserved": true
+    }
+  },
+  "tests": {
+    "count": 11,
+    "seconds": 0.529,
+    "status": "passed",
+    "path": "/private/tmp/jus-37-final-trail-review/cli-fixed-controls/tests.log"
+  },
+  "current_hashes": {
+    "replay.py": "68cf243364dd69c45332ff698e17eb7eb1101f0a76dd7669a80ecefae256d687",
+    "physical_initializer.c": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+    "recipe.json": "f37d79d0b0e3cb466dd3b8909d53164fbc0fecee561c7367697e2727e5d053dd",
+    "pins.json": "4d7535b678b459e7470f38e02d87ca6b8464162832a7232156ebef48ba11f5c1",
+    "test_boundaries.py": "ad59da4790f2b3ec370f5cd0b6808e44592adb08a9aeb83af7dad836b0059dd7",
+    "test_replay.py": "1900cc85e27c671b57614927b742fe9c4fb46691b9ec82509b170863163c5486"
+  },
+  "current_root_receipt": {
+    "path": "/private/tmp/jus-37-root-released-final-replay/receipt.json",
+    "sha256": "8b1f693d6f3b526d9ad3929b2a389b0436e0ef889ad836dde809745d0e615b64",
+    "status": "measured_rejection",
+    "artifacts_verified": 2566,
+    "inputs_verified": 157,
+    "freshness_containment_no_artifact_symlinks": true,
+    "source_delink_precedes_source_build": true,
+    "raw_stage_matches_diagnostics": true,
+    "compiled_sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+    "masked_positions": [
+      20,
+      22,
+      23,
+      24,
+      26,
+      27,
+      28,
+      29,
+      31,
+      33
+    ],
+    "accepted_units": 0,
+    "last_stage": "source_build",
+    "native_or_ROM_stages": false
+  },
+  "prior_reviews_preserved": {
+    "initial_refutation_sha256": "30f674e890ad5dc1ac67a6286b2a86353fa16dbf03e969264bb18d040f979cc2",
+    "publication_symlink_fix_sha256": "a9a3a9a8232eb78566b73a05e700d15aba05808019dfe2200815b0129d002634"
+  },
+  "remaining_flags": [],
+  "limits": [
+    "Other independent-agent released replay not inspected here.",
+    "Final acceptance packaging, Gate, publication and pushes remain outside this review.",
+    "C model and recipe unchanged; this is a measured strict-comparison rejection, with zero new accepted source units."
+  ]
+}

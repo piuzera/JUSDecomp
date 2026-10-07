@@ -1,0 +1,84 @@
+{
+  "status": "private_read_only_leaf_triage",
+  "source_commit": "71e766e562c78d4b0ec404b3b4edbe242a8d1b0f",
+  "source_tree": "75215439eec429f6dd82df8a9f49bba054a16839",
+  "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+  "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "layout_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "method": "Separate 32-byte ARM-mode checked probe requests per target, each for parent and nitro_fs identities; ARM7 autoload0 region hash checked against original images; each word independently decoded by LLVM armv4t-none-eabi. A separate 16-byte checked predecessor and 32-byte checked caller-context request bound entry and register observations.",
+  "target_spans": [
+    {
+      "span": "[037fcf84,037fcfa4)",
+      "sha256": "e5aa3e96f088c71247b7fd313a4c9aae75dc3ad749624a13b9a02ce87596b469",
+      "instructions": [
+        "037fcf84 cmp r0,#1",
+        "037fcf88 beq 037fcfa0",
+        "037fcf8c cmp r0,#7",
+        "037fcf90 beq 037fcfa8",
+        "037fcf94 cmp r0,#8",
+        "037fcf98 beq 037fcfb0",
+        "037fcf9c b 037fcfe8",
+        "037fcfa0 ldr r0,[pc,#0x48]"
+      ],
+      "root_visited": 8,
+      "root_edges_examined": 11,
+      "extent_status": "unresolved; three branch destinations leave the 32-byte selection and no return is observed",
+      "leaf_trial": false
+    },
+    {
+      "span": "[037fcf18,037fcf38)",
+      "sha256": "da97480374a93d69141154c8577a414a857d79cb5a04e004026c70693c45fb38",
+      "instructions": [
+        "037fcf18 lsl r0,r0,#2",
+        "037fcf1c add r0,r0,#0x02700000",
+        "037fcf20 add r0,r0,#0x000ff000",
+        "037fcf24 str r1,[r0,#0x0dc4]",
+        "037fcf28 bx lr",
+        "037fcf2c cmp r0,#1",
+        "037fcf30 beq 037fcf48",
+        "037fcf34 cmp r0,#7"
+      ],
+      "root_visited": 5,
+      "root_edges_examined": 5,
+      "candidate_extent": "[037fcf18,037fcf2c), 20 bytes",
+      "evidence": "direct BL from 037fd058; immediate predecessor 037fcf14 is bx lr; five straight-line instructions terminate at 037fcf28 bx lr; no selected path reaches 037fcf2c",
+      "uncertainty": "The range is a candidate original function extent, not a proven original symbol boundary. Unseen incoming branches or shared tails remain unexcluded; execution and semantic types are unknown.",
+      "register_facts": "At 037fd050 mov r1,r0; 037fd054 mov r0,#1; 037fd058 bl 037fcf18. Callee consumes r0 as a 4-byte index and r1 as stored word; no stack access in candidate span. At this call, r0 result is overwritten by mov r0,#1 at 037fd05c, so return type is not proved.",
+      "effective_store_address": "0x027ffdc4 + (r0 << 2); observed caller passes index 1, yielding 0x027ffdc8",
+      "leaf_trial": true
+    },
+    {
+      "span": "[037fcf2c,037fcf4c)",
+      "sha256": "caab26ccfeb550f9ae7dbd727cd84f1f1817a2746a9346638100841f58e36625",
+      "instructions": [
+        "037fcf2c cmp r0,#1",
+        "037fcf30 beq 037fcf48",
+        "037fcf34 cmp r0,#7",
+        "037fcf38 beq 037fcf50",
+        "037fcf3c cmp r0,#8",
+        "037fcf40 beq 037fcf60",
+        "037fcf44 b 037fcf74",
+        "037fcf48 ldr r0,[pc,#0x2c]"
+      ],
+      "root_visited": 8,
+      "root_edges_examined": 11,
+      "extent_status": "unresolved; three branch destinations leave the 32-byte selection and no return is observed",
+      "leaf_trial": false
+    }
+  ],
+  "next_bounded_trial": "Use 037fcf18 only. In private scratch, compile a tentative C leaf equivalent to *(volatile uint32_t *)(0x027FFDC4u + (index << 2)) = value with the established ARM7 SDK/compiler settings; compare the exact 20-byte candidate window and inspect register use, literal pools, and relocations. Treat void return, C types, and source identity as hypotheses, since the observed call only establishes register flow and a BX LR return. Stop if the exact target cannot be matched without inventing ABI or extent.",
+  "public_claims": {
+    "original_names": false,
+    "original_function_extent_proven": false,
+    "ABI_fully_proven": false,
+    "source_credit_bytes": 0,
+    "canonical_update": false
+  },
+  "artifacts_sha256": {
+    "probe-037fcf18.json": "bb7acfeaa275037156122c1c6eeb3e3734afd4fb1e2d0f2bd50e0f970a3a3255",
+    "probe-037fcf2c.json": "d3bbfb1c883ef51b0116efc86111a3f0d7de440ee0a7d152defdf0f7777844c2",
+    "probe-037fcf84.json": "90681bbfcadd312d0752bc85a7f7297c15668aa75dd2e30f38e8a81a809d5321",
+    "probe-caller-context.json": "dd0e677b9be8483672fb9a0d556edab6484e485cbaf6132f279d4492b1d2d913",
+    "probe-cf18-predecessor.json": "012561128d448c9077a6225b957dbd8b41a2b3f408bd4cbf36d10138c7051719"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "source_commit": "67e9a8bc65fba0e5cdc3ab784c77de28253ee3dc",
+  "source_base": "bee60e2ee89308616933a391c387928e2dfb5c07",
+  "release_probe": "/private/tmp/jus-arm7-analysis-design-bounded/target/release/examples/arm7_observation_probe",
+  "release_probe_sha256": "222350b406018ed60e784deb0c1cbab9760a164b867deab369b98599ad4cf0bb",
+  "release_cli": "/private/tmp/jus-arm7-analysis-design-bounded/target/release/dsd",
+  "release_cli_sha256": "96cb02ec18210b5eeb701f26f7050ddb3f274257085dd680decacad5c305b73c",
+  "actual_release_report": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/actual-observations-release.json",
+  "actual_release_report_sha256": "238a6e7fa50fdd06dd7838331ab5c9be12a231a720c50266d350aa12ef6c4ff6",
+  "commands": [
+    "cargo build -p ds-decomp --release --example arm7_observation_probe",
+    "cargo build -p ds-decomp-cli --release",
+    "python3 .audit/arm7-design/probe-release-check.py",
+    "target/release/dsd --version"
+  ],
+  "logs": [
+    "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/release-probe-build.log",
+    "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/release-cli-build.log",
+    "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/probe-release-check.log"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "build_verified_approval_pending",
+  "scope": "unchanged ds-rom0.8.0 codec from fresh exact upstream context plus published example",
+  "source_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+  "source_tree": "1d0ccf3e5ccc8f6530fb6181dd526b698eeb99bc",
+  "cargo_lock_sha256": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+  "example_sha256": "9baf8ab864540b9eaca6b7916f57074459ce89b5b95bb98d62bfa2c3180783c6",
+  "encoder_sha256": "5c04f2668aec35d969036499fd7065ea8c9fe9c6bda457b7042f74f4ff7b6064",
+  "profile": "release-fast",
+  "target": "aarch64-apple-darwin",
+  "rustc_version": "rustc 1.98.1 (48a229cea 2026-09-01) (Homebrew)",
+  "rustc_sha256": "2814fb55fb9cfb3eef5848a8104d77e3de7fd95394661144a12ee90cd4405340",
+  "rustflags": "--remap-path-prefix=<source>=/codec-source --remap-path-prefix=<cargo-home>=/cargo-home",
+  "registry_packages": 116,
+  "registry_source_files": 6352,
+  "invented_roundtrip_tests": 1,
+  "source_credit": 0,
+  "independent_review": "pending"
+}

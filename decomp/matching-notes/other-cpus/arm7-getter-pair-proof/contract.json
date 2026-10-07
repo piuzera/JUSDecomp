@@ -1,0 +1,76 @@
+{
+  "bindings": {
+    "subpriv": {
+      "symbol": "hyp_subpriv_arena_lo",
+      "value": 41917448
+    },
+    "wram": {
+      "symbol": "hyp_wram_arena_lo",
+      "value": 58768528
+    },
+    "irq": {
+      "symbol": "hyp_irq_stack_size",
+      "value": 1024
+    },
+    "system": {
+      "symbol": "hyp_system_stack_size",
+      "value": 1024
+    }
+  },
+  "getters": [
+    {
+      "role": "low",
+      "source": "low_getter_trial.c",
+      "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+      "function": "arm7_low_getter_trial",
+      "object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+      "vma": 58707756,
+      "bytes": 88,
+      "code_bytes": 80,
+      "relocations": [
+        {
+          "offset": 80,
+          "binding": "subpriv",
+          "type": 2,
+          "addend": 0
+        },
+        {
+          "offset": 84,
+          "binding": "wram",
+          "type": 2,
+          "addend": 0
+        }
+      ]
+    },
+    {
+      "role": "high",
+      "source": "high_getter_trial.c",
+      "source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+      "function": "arm7_high_getter_trial",
+      "object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+      "vma": 58707844,
+      "bytes": 128,
+      "code_bytes": 108,
+      "relocations": [
+        {
+          "offset": 112,
+          "binding": "irq",
+          "type": 2,
+          "addend": 0
+        },
+        {
+          "offset": 120,
+          "binding": "wram",
+          "type": 2,
+          "addend": 0
+        },
+        {
+          "offset": 124,
+          "binding": "system",
+          "type": 2,
+          "addend": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "layout_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "fnt_offset": 2328576,
+  "fnt_size": 5813,
+  "fat_offset": 2334720,
+  "fat_size": 3144,
+  "child_path": "ChildRom/JSS2Child.srl",
+  "child_file_id": 79,
+  "child_rom_extent": {
+    "start": 2340864,
+    "end": 4482248
+  },
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "image_offset": 2162688,
+      "entry": 37224448,
+      "image_base": 37224448,
+      "image_size": 165552,
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "autoload0": {
+        "runtime_base": 58687488,
+        "initialized_size": 66120,
+        "bss_size": 14920,
+        "stored_start": 432
+      },
+      "prefix": {
+        "start": 58708012,
+        "end": 58708036,
+        "stored_image_offset": 20956,
+        "program_offset": 2183644,
+        "original_rom_offset": 2183644,
+        "sha256": "cc0404050002c6ff8309766ef0431c16eabaeb11f1407ee6fdff635cbb08e871",
+        "words": [
+          "0xe92d4000",
+          "0xe24dd004",
+          "0xe59f1090",
+          "0xe5910000",
+          "0xe3500000",
+          "0x1a00001e"
+        ]
+      },
+      "raw_branch": {
+        "source": 58708032,
+        "condition": "ne",
+        "imm24": 30,
+        "signed_displacement": 120,
+        "pc_bias": 8,
+        "target": 58708160,
+        "not_taken_target": 58708036
+      },
+      "literal_address_only": 58708172
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "image_offset": 1972736,
+      "entry": 37224448,
+      "image_base": 37224448,
+      "image_size": 165552,
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "autoload0": {
+        "runtime_base": 58687488,
+        "initialized_size": 66120,
+        "bss_size": 14920,
+        "stored_start": 432
+      },
+      "prefix": {
+        "start": 58708012,
+        "end": 58708036,
+        "stored_image_offset": 20956,
+        "program_offset": 1993692,
+        "original_rom_offset": 4334556,
+        "sha256": "cc0404050002c6ff8309766ef0431c16eabaeb11f1407ee6fdff635cbb08e871",
+        "words": [
+          "0xe92d4000",
+          "0xe24dd004",
+          "0xe59f1090",
+          "0xe5910000",
+          "0xe3500000",
+          "0x1a00001e"
+        ]
+      },
+      "raw_branch": {
+        "source": 58708032,
+        "condition": "ne",
+        "imm24": 30,
+        "signed_displacement": 120,
+        "pc_bias": 8,
+        "target": 58708160,
+        "not_taken_target": 58708036
+      },
+      "literal_address_only": 58708172
+    }
+  ],
+  "llvm_argv": [
+    "/opt/homebrew/opt/llvm/bin/llvm-mc",
+    "--disassemble",
+    "--triple=armv4t-none-eabi"
+  ],
+  "llvm_stdout_sha256": "ff801ec399a5e3f333ef9337ae2d64520aad9a94bd03a330b6d0f6c90604cd2a",
+  "llvm_stderr": "",
+  "inputs_unchanged": true
+}

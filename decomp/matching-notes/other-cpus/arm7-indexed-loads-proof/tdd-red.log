@@ -1,0 +1,80 @@
+test_actual_call_relocations_and_both_complete_images (test_loads.NativeInitializer.test_actual_call_relocations_and_both_complete_images) ... FAIL
+test_actual_wrong_guard_and_callee_outputs_are_rejected (test_loads.NativeInitializer.test_actual_wrong_guard_and_callee_outputs_are_rejected) ... FAIL
+test_actual_wrong_placement_and_malformed_segment_reject (test_loads.NativeInitializer.test_actual_wrong_placement_and_malformed_segment_reject) ... FAIL
+test_each_actual_omitted_input_rejects (test_loads.NativeInitializer.test_each_actual_omitted_input_rejects) ... FAIL
+test_successful_actual_load_swap_rejects_real_placements (test_loads.NativeInitializer.test_successful_actual_load_swap_rejects_real_placements) ... FAIL
+test_finite_split_calls_and_separate_bss_literal (test_loads.OriginalGrounding.test_finite_split_calls_and_separate_bss_literal) ... FAIL
+
+======================================================================
+FAIL: test_actual_call_relocations_and_both_complete_images (test_loads.NativeInitializer.test_actual_call_relocations_and_both_complete_images)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 58, in test_actual_call_relocations_and_both_complete_images
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 55, in ready
+    self.assertTrue(self.available, 'actual seven-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual seven-object native replay is missing
+
+======================================================================
+FAIL: test_actual_wrong_guard_and_callee_outputs_are_rejected (test_loads.NativeInitializer.test_actual_wrong_guard_and_callee_outputs_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 82, in test_actual_wrong_guard_and_callee_outputs_are_rejected
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 55, in ready
+    self.assertTrue(self.available, 'actual seven-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual seven-object native replay is missing
+
+======================================================================
+FAIL: test_actual_wrong_placement_and_malformed_segment_reject (test_loads.NativeInitializer.test_actual_wrong_placement_and_malformed_segment_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 96, in test_actual_wrong_placement_and_malformed_segment_reject
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 55, in ready
+    self.assertTrue(self.available, 'actual seven-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual seven-object native replay is missing
+
+======================================================================
+FAIL: test_each_actual_omitted_input_rejects (test_loads.NativeInitializer.test_each_actual_omitted_input_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 103, in test_each_actual_omitted_input_rejects
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 55, in ready
+    self.assertTrue(self.available, 'actual seven-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual seven-object native replay is missing
+
+======================================================================
+FAIL: test_successful_actual_load_swap_rejects_real_placements (test_loads.NativeInitializer.test_successful_actual_load_swap_rejects_real_placements)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 113, in test_successful_actual_load_swap_rejects_real_placements
+    self.ready()
+    ~~~~~~~~~~^^
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 55, in ready
+    self.assertTrue(self.available, 'actual seven-object native replay is missing')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : actual seven-object native replay is missing
+
+======================================================================
+FAIL: test_finite_split_calls_and_separate_bss_literal (test_loads.OriginalGrounding.test_finite_split_calls_and_separate_bss_literal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-indexed-loads-trial/decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py", line 11, in test_finite_split_calls_and_separate_bss_literal
+    self.assertTrue((HERE / "loads.py").exists(), "finite original reader is missing")
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : finite original reader is missing
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=6)

@@ -1,0 +1,11 @@
+{
+  "upstream_source_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+  "analyzer_patch_source_commit": "78630f8f54835e0e627cd4e45a9626d88c307f8b",
+  "cargo_lock_sha256": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+  "example_source_sha256": "9baf8ab864540b9eaca6b7916f57074459ce89b5b95bb98d62bfa2c3180783c6",
+  "codec_sha256": "99f89606cc359780861c44416cf7b6bae8fc2af1afa8a29e9ecb94914d1c3c51",
+  "codec_library": "unmodified ds-rom 0.8.0",
+  "public_rust_tests_passed": 1,
+  "public_packer_tests_passed": 11,
+  "source_credit": 0
+}

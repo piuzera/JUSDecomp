@@ -1,0 +1,1197 @@
+{
+  "schema_version": 1,
+  "scope": "bounded ordinary C++ ABI candidates",
+  "source_credit": 0,
+  "promotion_status": "not_activated",
+  "reference": {
+    "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9",
+    "functions": [
+      {
+        "name": "func_0206c244",
+        "offset": 0,
+        "size": 596,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".text",
+        "offset": 40,
+        "type": 1,
+        "symbol": "func_02010238",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 56,
+        "type": 1,
+        "symbol": "func_0201024c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 60,
+        "type": 1,
+        "symbol": "func_0203b404",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 68,
+        "type": 1,
+        "symbol": "func_0206c498",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 80,
+        "type": 1,
+        "symbol": "func_02035e88",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 148,
+        "type": 1,
+        "symbol": "func_02032a4c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 152,
+        "type": 1,
+        "symbol": "func_02011b38",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 184,
+        "type": 1,
+        "symbol": "func_02023894",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 228,
+        "type": 1,
+        "symbol": "func_0206c4d4",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 300,
+        "type": 1,
+        "symbol": "func_0206c514",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 320,
+        "type": 1,
+        "symbol": "func_020107f4",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 324,
+        "type": 1,
+        "symbol": "func_0206c54c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 372,
+        "type": 1,
+        "symbol": "func_02023cd0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 392,
+        "type": 1,
+        "symbol": "func_0201a21c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 408,
+        "type": 1,
+        "symbol": "func_0202f8a4",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 436,
+        "type": 1,
+        "symbol": "func_0201a21c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 456,
+        "type": 1,
+        "symbol": "func_0202c4ac",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 532,
+        "type": 2,
+        "symbol": "data_020afc40",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 536,
+        "type": 2,
+        "symbol": "data_020afc4c",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 544,
+        "type": 2,
+        "symbol": "data_0209e050",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 548,
+        "type": 2,
+        "symbol": "data_020923b4",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 552,
+        "type": 2,
+        "symbol": "func_02074540",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 560,
+        "type": 2,
+        "symbol": "func_0206c57c",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 564,
+        "type": 2,
+        "symbol": "data_0209dff0",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 568,
+        "type": 2,
+        "symbol": "data_0209dfbc",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 572,
+        "type": 2,
+        "symbol": "data_0209e258",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 576,
+        "type": 2,
+        "symbol": "data_0209e244",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 580,
+        "type": 2,
+        "symbol": "data_0209e26c",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 584,
+        "type": 2,
+        "symbol": "data_0209e280",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 588,
+        "type": 2,
+        "symbol": "data_0209e068",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 592,
+        "type": 2,
+        "symbol": "data_02099640",
+        "addend": 0
+      }
+    ],
+    "sections": [
+      {
+        "name": ".text",
+        "size": 596,
+        "flags": 6,
+        "sha256": "171c0661b1ebcf0105cf74f5b0ec0dbe1dd431ed3b94b1e290a2f7df95d14748"
+      }
+    ]
+  },
+  "saved_contexts": {
+    "schema_version": 1,
+    "target": {
+      "symbol": "func_0206c244",
+      "module": "main",
+      "address": "0x0206c244",
+      "extent": 596,
+      "publication": "../targets.json",
+      "source_gate_scope": "complete TU; no ignored allocated sections"
+    },
+    "reference_sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9",
+    "reference_generation": {
+      "config_input": "private copied baseline config with rom_config pointing to existing extract/config.yaml",
+      "appended_delink_entry": "src/main/common_effect_init.cpp:\n    complete\n    .text start:0x0206c244 end:0x0206c498\n",
+      "command": [
+        "dsd-macos-arm64",
+        "delink",
+        "-c",
+        "build/initializer-trial/config/config.yaml",
+        "--main"
+      ]
+    },
+    "compiler_package": "2.0/base",
+    "cpu": "arm946e",
+    "language": "C++",
+    "headers": {},
+    "include_paths": [],
+    "sources": [
+      {
+        "id": "flags_constructor",
+        "path": "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp",
+        "sha256": "9ed3599c105a291431d84560c79be6acc2ba884d6557897eff9f48ff86c6cd24"
+      }
+    ],
+    "contexts": [
+      {
+        "id": "inline-all",
+        "flags": [
+          "-Cpp_exceptions",
+          "off",
+          "-nostdinc",
+          "-O2",
+          "-inline",
+          "all"
+        ]
+      },
+      {
+        "id": "inline-level8",
+        "flags": [
+          "-Cpp_exceptions",
+          "off",
+          "-nostdinc",
+          "-O2",
+          "-inline",
+          "on,level=8"
+        ]
+      },
+      {
+        "id": "inline-all-bottomup",
+        "flags": [
+          "-Cpp_exceptions",
+          "off",
+          "-nostdinc",
+          "-O2",
+          "-inline",
+          "all,level=8,bottomup"
+        ]
+      },
+      {
+        "id": "ipa-file",
+        "flags": [
+          "-Cpp_exceptions",
+          "off",
+          "-nostdinc",
+          "-O2",
+          "-ipa",
+          "file",
+          "-inline",
+          "all"
+        ]
+      }
+    ],
+    "abi_limits": [
+      "virtual-slot calls model only explicitly prepared values; complete argument signatures remain unresolved",
+      "initializer void return is candidate interface; no original source-language return type inferred",
+      "code addresses use Word; declaration-only functions are never invoked as callbacks in this TU",
+      "reserved resource virtual declarations supply observed slot position only; no original semantic class or full method signature inferred"
+    ],
+    "approach": "declaration-only resource virtual ABI view; three-word constructor address encodings are hypotheses"
+  },
+  "tool_hashes": {
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "trials": [
+    {
+      "source": "flags_constructor",
+      "context": "inline-all",
+      "result": {
+        "status": "failed",
+        "accepted_units": 0,
+        "objects": {},
+        "units": [
+          {
+            "module": "main",
+            "object": "src/main/common_effect_init.o",
+            "source": "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp",
+            "functions": [
+              "func_0206c244"
+            ],
+            "category": "game",
+            "cpu": "arm946e",
+            "flags": [
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all"
+            ],
+            "include_paths": [],
+            "headers": {},
+            "compiler": {
+              "package": "2.0/base",
+              "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+              "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+              "selection_scope": "bounded initializer experiment only"
+            },
+            "abi": {
+              "language": "C++",
+              "instruction_mode": "arm",
+              "endianness": "little",
+              "pointer_bits": 32,
+              "settings": "pinned compiler defaults"
+            },
+            "link_name": "common_effect_init.o",
+            "status": "failed",
+            "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "source_sha256": "9ed3599c105a291431d84560c79be6acc2ba884d6557897eff9f48ff86c6cd24",
+            "reference": {
+              "path": "/private/tmp/jus-track-a-initializer/build/initializer-trial/delinks/src/main/common_effect_init.o",
+              "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9"
+            },
+            "include_hashes": {},
+            "cpu_flags": [
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all"
+            ],
+            "command": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-c",
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all",
+              "-o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/inline-all/src/main/common_effect_init.o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+            ],
+            "dependencies": {
+              "schema_version": 1,
+              "policy": "header_free",
+              "status": "passed",
+              "ordered_dependencies": [
+                "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+              ],
+              "headers": {},
+              "include_paths": [],
+              "forced_headers": [],
+              "source_credit": 0
+            },
+            "stdout": "",
+            "stderr": "",
+            "exit_status": 0,
+            "compiled": {
+              "path": "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/inline-all/src/main/common_effect_init.o",
+              "sha256": "b919c3f56577d51c8ffc12e89612547e8aee86a7db8b38de7b5763917f13c7b2"
+            }
+          }
+        ],
+        "failure": "duplicate allocated section: .text"
+      },
+      "object": {
+        "sha256": "b919c3f56577d51c8ffc12e89612547e8aee86a7db8b38de7b5763917f13c7b2",
+        "summary_error": "duplicate allocated section: .text",
+        "allocated_sections": [
+          {
+            "index": 5,
+            "name": ".text",
+            "size": 548,
+            "sha256": "ff77877763a148bf2d61dab6cf766d5ef60040106f3f1b58bc295a9b85efb3be"
+          },
+          {
+            "index": 7,
+            "name": ".text",
+            "size": 72,
+            "sha256": "785d7a5f28fb86c941fab8f7491bc37813c49018fdc76028b45e6f8353301d68"
+          }
+        ],
+        "defined_functions": [
+          {
+            "name": "func_0206c244",
+            "size": 548,
+            "section": 5
+          },
+          {
+            "name": "_ZN5FlagsC1EPKcS1_",
+            "size": 72,
+            "section": 7
+          }
+        ]
+      }
+    },
+    {
+      "source": "flags_constructor",
+      "context": "inline-level8",
+      "result": {
+        "status": "failed",
+        "accepted_units": 0,
+        "objects": {},
+        "units": [
+          {
+            "module": "main",
+            "object": "src/main/common_effect_init.o",
+            "source": "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp",
+            "functions": [
+              "func_0206c244"
+            ],
+            "category": "game",
+            "cpu": "arm946e",
+            "flags": [
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "on,level=8"
+            ],
+            "include_paths": [],
+            "headers": {},
+            "compiler": {
+              "package": "2.0/base",
+              "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+              "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+              "selection_scope": "bounded initializer experiment only"
+            },
+            "abi": {
+              "language": "C++",
+              "instruction_mode": "arm",
+              "endianness": "little",
+              "pointer_bits": 32,
+              "settings": "pinned compiler defaults"
+            },
+            "link_name": "common_effect_init.o",
+            "status": "failed",
+            "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "source_sha256": "9ed3599c105a291431d84560c79be6acc2ba884d6557897eff9f48ff86c6cd24",
+            "reference": {
+              "path": "/private/tmp/jus-track-a-initializer/build/initializer-trial/delinks/src/main/common_effect_init.o",
+              "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9"
+            },
+            "include_hashes": {},
+            "cpu_flags": [
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "on,level=8"
+            ],
+            "command": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-c",
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "on,level=8",
+              "-o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/inline-level8/src/main/common_effect_init.o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+            ],
+            "dependencies": {
+              "schema_version": 1,
+              "policy": "header_free",
+              "status": "passed",
+              "ordered_dependencies": [
+                "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+              ],
+              "headers": {},
+              "include_paths": [],
+              "forced_headers": [],
+              "source_credit": 0
+            },
+            "stdout": "",
+            "stderr": "",
+            "exit_status": 0,
+            "compiled": {
+              "path": "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/inline-level8/src/main/common_effect_init.o",
+              "sha256": "b919c3f56577d51c8ffc12e89612547e8aee86a7db8b38de7b5763917f13c7b2"
+            }
+          }
+        ],
+        "failure": "duplicate allocated section: .text"
+      },
+      "object": {
+        "sha256": "b919c3f56577d51c8ffc12e89612547e8aee86a7db8b38de7b5763917f13c7b2",
+        "summary_error": "duplicate allocated section: .text",
+        "allocated_sections": [
+          {
+            "index": 5,
+            "name": ".text",
+            "size": 548,
+            "sha256": "ff77877763a148bf2d61dab6cf766d5ef60040106f3f1b58bc295a9b85efb3be"
+          },
+          {
+            "index": 7,
+            "name": ".text",
+            "size": 72,
+            "sha256": "785d7a5f28fb86c941fab8f7491bc37813c49018fdc76028b45e6f8353301d68"
+          }
+        ],
+        "defined_functions": [
+          {
+            "name": "func_0206c244",
+            "size": 548,
+            "section": 5
+          },
+          {
+            "name": "_ZN5FlagsC1EPKcS1_",
+            "size": 72,
+            "section": 7
+          }
+        ]
+      }
+    },
+    {
+      "source": "flags_constructor",
+      "context": "inline-all-bottomup",
+      "result": {
+        "status": "failed",
+        "accepted_units": 0,
+        "objects": {},
+        "units": [
+          {
+            "module": "main",
+            "object": "src/main/common_effect_init.o",
+            "source": "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp",
+            "functions": [
+              "func_0206c244"
+            ],
+            "category": "game",
+            "cpu": "arm946e",
+            "flags": [
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all,level=8,bottomup"
+            ],
+            "include_paths": [],
+            "headers": {},
+            "compiler": {
+              "package": "2.0/base",
+              "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+              "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+              "selection_scope": "bounded initializer experiment only"
+            },
+            "abi": {
+              "language": "C++",
+              "instruction_mode": "arm",
+              "endianness": "little",
+              "pointer_bits": 32,
+              "settings": "pinned compiler defaults"
+            },
+            "link_name": "common_effect_init.o",
+            "status": "failed",
+            "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "source_sha256": "9ed3599c105a291431d84560c79be6acc2ba884d6557897eff9f48ff86c6cd24",
+            "reference": {
+              "path": "/private/tmp/jus-track-a-initializer/build/initializer-trial/delinks/src/main/common_effect_init.o",
+              "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9"
+            },
+            "include_hashes": {},
+            "cpu_flags": [
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all,level=8,bottomup"
+            ],
+            "command": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-c",
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all,level=8,bottomup",
+              "-o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/inline-all-bottomup/src/main/common_effect_init.o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+            ],
+            "dependencies": {
+              "schema_version": 1,
+              "policy": "header_free",
+              "status": "passed",
+              "ordered_dependencies": [
+                "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+              ],
+              "headers": {},
+              "include_paths": [],
+              "forced_headers": [],
+              "source_credit": 0
+            },
+            "stdout": "",
+            "stderr": "",
+            "exit_status": 0,
+            "compiled": {
+              "path": "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/inline-all-bottomup/src/main/common_effect_init.o",
+              "sha256": "b919c3f56577d51c8ffc12e89612547e8aee86a7db8b38de7b5763917f13c7b2"
+            }
+          }
+        ],
+        "failure": "duplicate allocated section: .text"
+      },
+      "object": {
+        "sha256": "b919c3f56577d51c8ffc12e89612547e8aee86a7db8b38de7b5763917f13c7b2",
+        "summary_error": "duplicate allocated section: .text",
+        "allocated_sections": [
+          {
+            "index": 5,
+            "name": ".text",
+            "size": 548,
+            "sha256": "ff77877763a148bf2d61dab6cf766d5ef60040106f3f1b58bc295a9b85efb3be"
+          },
+          {
+            "index": 7,
+            "name": ".text",
+            "size": 72,
+            "sha256": "785d7a5f28fb86c941fab8f7491bc37813c49018fdc76028b45e6f8353301d68"
+          }
+        ],
+        "defined_functions": [
+          {
+            "name": "func_0206c244",
+            "size": 548,
+            "section": 5
+          },
+          {
+            "name": "_ZN5FlagsC1EPKcS1_",
+            "size": 72,
+            "section": 7
+          }
+        ]
+      }
+    },
+    {
+      "source": "flags_constructor",
+      "context": "ipa-file",
+      "result": {
+        "status": "failed",
+        "accepted_units": 0,
+        "objects": {},
+        "units": [
+          {
+            "module": "main",
+            "object": "src/main/common_effect_init.o",
+            "source": "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp",
+            "functions": [
+              "func_0206c244"
+            ],
+            "category": "game",
+            "cpu": "arm946e",
+            "flags": [
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-ipa",
+              "file",
+              "-inline",
+              "all"
+            ],
+            "include_paths": [],
+            "headers": {},
+            "compiler": {
+              "package": "2.0/base",
+              "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+              "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+              "selection_scope": "bounded initializer experiment only"
+            },
+            "abi": {
+              "language": "C++",
+              "instruction_mode": "arm",
+              "endianness": "little",
+              "pointer_bits": 32,
+              "settings": "pinned compiler defaults"
+            },
+            "link_name": "common_effect_init.o",
+            "status": "failed",
+            "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "source_sha256": "9ed3599c105a291431d84560c79be6acc2ba884d6557897eff9f48ff86c6cd24",
+            "reference": {
+              "path": "/private/tmp/jus-track-a-initializer/build/initializer-trial/delinks/src/main/common_effect_init.o",
+              "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9"
+            },
+            "include_hashes": {},
+            "cpu_flags": [
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-ipa",
+              "file",
+              "-inline",
+              "all"
+            ],
+            "command": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-c",
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-ipa",
+              "file",
+              "-inline",
+              "all",
+              "-o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/ipa-file/src/main/common_effect_init.o",
+              "/private/tmp/jus-track-a-initializer-virtual-view/decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+            ],
+            "dependencies": {
+              "schema_version": 1,
+              "policy": "header_free",
+              "status": "passed",
+              "ordered_dependencies": [
+                "decomp/matching-notes/pilot-t06/initializer-virtual-view/flags_constructor.cpp"
+              ],
+              "headers": {},
+              "include_paths": [],
+              "forced_headers": [],
+              "source_credit": 0
+            },
+            "stdout": "",
+            "stderr": "",
+            "exit_status": 0,
+            "compiled": {
+              "path": "/private/tmp/jus-track-a-initializer-virtual-view/build/constructor-inline-sweep/flags_constructor/ipa-file/src/main/common_effect_init.o",
+              "sha256": "2438a9718b0c00d4527b3f0da06a004c05a9500ebe1677138631b075c3df80a3"
+            }
+          }
+        ],
+        "failure": "function identities/extents/modes differ from declared reference TU"
+      },
+      "object": {
+        "sha256": "2438a9718b0c00d4527b3f0da06a004c05a9500ebe1677138631b075c3df80a3",
+        "functions": [
+          {
+            "name": "func_0206c244",
+            "offset": 0,
+            "size": 600,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 40,
+            "type": 1,
+            "symbol": "func_02010238",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 56,
+            "type": 1,
+            "symbol": "func_0201024c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 60,
+            "type": 1,
+            "symbol": "func_0203b404",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 68,
+            "type": 1,
+            "symbol": "func_0206c498",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 80,
+            "type": 1,
+            "symbol": "func_02035e88",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 148,
+            "type": 1,
+            "symbol": "func_02032a4c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 152,
+            "type": 1,
+            "symbol": "func_02011b38",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 184,
+            "type": 1,
+            "symbol": "func_02023894",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 228,
+            "type": 1,
+            "symbol": "func_0206c4d4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 300,
+            "type": 1,
+            "symbol": "func_0206c514",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 320,
+            "type": 1,
+            "symbol": "func_020107f4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 324,
+            "type": 1,
+            "symbol": "func_0206c54c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 372,
+            "type": 1,
+            "symbol": "func_02023cd0",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 392,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 408,
+            "type": 1,
+            "symbol": "func_0202f8a4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 436,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 460,
+            "type": 1,
+            "symbol": "func_0202c4ac",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 536,
+            "type": 2,
+            "symbol": "data_020afc40",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 540,
+            "type": 2,
+            "symbol": "data_020afc4c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 548,
+            "type": 2,
+            "symbol": "data_0209e050",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 552,
+            "type": 2,
+            "symbol": "data_020923b4",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 556,
+            "type": 2,
+            "symbol": "func_02074540",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 564,
+            "type": 2,
+            "symbol": "func_0206c57c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 568,
+            "type": 2,
+            "symbol": "data_0209dff0",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 572,
+            "type": 2,
+            "symbol": "data_0209dfbc",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 576,
+            "type": 2,
+            "symbol": "data_0209e258",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 580,
+            "type": 2,
+            "symbol": "data_0209e244",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 584,
+            "type": 2,
+            "symbol": "data_0209e280",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 588,
+            "type": 2,
+            "symbol": "data_0209e26c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 592,
+            "type": 2,
+            "symbol": "data_0209e068",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 596,
+            "type": 2,
+            "symbol": "data_02099640",
+            "addend": 0
+          }
+        ],
+        "sections": [
+          {
+            "name": ".text",
+            "size": 600,
+            "flags": 6,
+            "sha256": "cc12a745e77644ca066a5be53c1cc036a00b95bbc55631898362267de0f75321"
+          }
+        ]
+      },
+      "masked_mismatches": {
+        ".text": {
+          "reference_size": 596,
+          "compiled_size": 600,
+          "positions": [
+            4,
+            16,
+            20,
+            24,
+            28,
+            280,
+            304,
+            364,
+            368,
+            380,
+            384,
+            412,
+            416,
+            424,
+            444,
+            446,
+            447,
+            448,
+            449,
+            450,
+            451,
+            456,
+            457,
+            458,
+            459,
+            460,
+            461,
+            462,
+            463,
+            464,
+            465,
+            466,
+            467,
+            469,
+            470,
+            471,
+            472,
+            473,
+            476,
+            480,
+            484,
+            488,
+            489,
+            490,
+            491,
+            492,
+            493,
+            494,
+            495,
+            496,
+            497,
+            498,
+            500,
+            501,
+            504,
+            506,
+            508,
+            509,
+            510,
+            511,
+            512,
+            513,
+            514,
+            515,
+            516,
+            517,
+            520,
+            522,
+            524,
+            525,
+            526,
+            527,
+            528,
+            529,
+            530,
+            531,
+            532,
+            533,
+            534,
+            535,
+            540,
+            541,
+            542,
+            543,
+            544,
+            545,
+            546,
+            547,
+            556,
+            557,
+            558,
+            559,
+            560,
+            561,
+            562,
+            563,
+            596,
+            597,
+            598,
+            599
+          ]
+        }
+      }
+    }
+  ],
+  "exact_object_trials": [],
+  "status": "completed",
+  "implementation_sha256": {
+    "source_build.py": "9e62de2961c3746a09505f3188204fcab29a818b1e1e645ae1bc44f858aeb625",
+    "compiler_experiments.py": "fe14614c81b8a3e4fb556a61d3780df14e0f4db90e38d4a2c276d84e30ab7a12",
+    "native_link.py": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+    "header_dependencies.py": "c03237d6dda4792b7edc016dcd88d04337b22d5ad17fc7b5d7e0c0e5bd34b278"
+  },
+  "publication_policy": "metadata only; original and compiled objects remain in ignored build directories",
+  "reproducer_at_publication_sha256": "bda52a96d3eb2b035d11eb2580d2b03b2b32ea49a40591efaf5d918dfbac8d26"
+}

@@ -1,0 +1,6 @@
+decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/test_reproduce.cpython-314.pyc: not tracked at HEAD
+decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/test_verify.cpython-314.pyc: not tracked at HEAD
+decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/verify.cpython-314.pyc: not tracked at HEAD
+decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/test_replay.cpython-314.pyc: not tracked at HEAD
+decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/test_verify.cpython-314.pyc: not tracked at HEAD
+decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/verify.cpython-314.pyc: not tracked at HEAD

@@ -1,0 +1,24 @@
+{
+  "parent_public_base": "bf0b5240f704169579a374ffcd21a180c002207c",
+  "getter_grounding_worker_commit": "d942d2cc1a8b4f20da388ac6b8978d584803ef9f",
+  "getter_grounding_independent_acceptance_required": true,
+  "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "original_manifest_sha256": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f",
+  "source_candidate_count": 1,
+  "recipe_count": 1,
+  "primary_relocation_reference": "https://github.com/ARM-software/abi-aa/blob/2025Q1/aaelf32/aaelf32.rst#5612-relocation-types",
+  "donor_formula_reference": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c",
+  "TDD": {
+    "real_object_parser_and_pool_checks": {
+      "red_failures": 3,
+      "green_passes": 3
+    },
+    "public_replay_stop_behavior": {
+      "red_failures": 1,
+      "green_passes": 1
+    }
+  },
+  "native_link_attempted": false,
+  "objects_or_rom_copied": false,
+  "source_credit_bytes": 0
+}

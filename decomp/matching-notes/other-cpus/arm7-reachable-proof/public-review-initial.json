@@ -1,0 +1,35 @@
+{
+  "reviewed_commit": "0bb0da796bc8b3dfb0be17ae7051ce712bda76aa",
+  "source_commit": "71e766e562c78d4b0ec404b3b4edbe242a8d1b0f",
+  "decision": "flag_public_memory_bound_before_publication",
+  "findings": [
+    {
+      "severity": "medium",
+      "title": "Retained-memory bound omits per-root frontier storage",
+      "evidence": [
+        "decomp/matching-notes/other-cpus/arm7-reachable-rust-design/README.md:183 claims O(N + E + RN) retained memory",
+        "source.patch reproduces lib/src/analysis/arm7_reachable.rs:178-179 with the same bound",
+        "lib/src/analysis/arm7_reachable.rs:279 constructs one traversal per root; line 310 reserves E + 1 frontier slots in each traversal",
+        "lib/src/analysis/arm7_reachable.rs:331 stores every reachable frontier edge per root"
+      ],
+      "impact": "For R roots and E original transfers, the constructor retains O(R*E) frontier capacity in addition to O(R*N) predecessors. A caller with many roots and dense transfers may allocate much more memory than the published bound predicts.",
+      "suggested_resolution": "Either size frontier vectors on demand and state an O(N + E + R*(N + E)) worst-case retained bound, or change the representation to satisfy the stated O(N + E + R*N) bound. Update both design README and source API comment consistently."
+    }
+  ],
+  "verified": {
+    "public_evidence_entries": 69,
+    "public_evidence_missing": 0,
+    "public_evidence_hash_mismatches": 0,
+    "source_patch_sha256_matches_root_and_git_diff": true,
+    "source_commit_tree_matches_root": true,
+    "worker_root_reviewer_release_hashes_agree": true,
+    "public_summary_scope_assumptions_consistent": true,
+    "test_claim": "97 behavior + 1 authority doctest + 1 CLI unit; zero ignored",
+    "independent_probe_rejections": 20,
+    "source_audit_claim": "157 local, 349 registry packages and 15458 files, 3 pinned Git dependencies, 47 prepared unarm files; before/after identical",
+    "native_readback_claim": "51 parent and 9 child strict metadata; two 165552-byte ELF-only images with 6 loads and 21424 BSS bytes each",
+    "existing_approval_files_unchanged": 28,
+    "source_credit_bytes": 0,
+    "T10_complete": false
+  }
+}

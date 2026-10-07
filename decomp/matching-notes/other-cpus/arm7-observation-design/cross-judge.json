@@ -1,0 +1,37 @@
+{
+  "reviewer": "gpt-6-sol",
+  "candidate_A": "shared",
+  "candidate_B": "bounded",
+  "scores": {
+    "A": [
+      3,
+      3,
+      2,
+      3,
+      1
+    ],
+    "B": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ]
+  },
+  "selected": "B",
+  "deferred": [
+    "CodeDeclaration",
+    "ExchangeFact",
+    "Function migration",
+    "FunctionCursor",
+    "Arm9Scope",
+    "Config migration"
+  ],
+  "grafted": [
+    "immutable stored/formatted policy",
+    "hard initialized-span bound",
+    "V5-only and complete Thumb BL regression obligations"
+  ],
+  "design_blockers": [],
+  "implementation_and_execution_proofs": "pending"
+}

@@ -1,0 +1,66 @@
+{
+  "status": "one_operand_hypothesis_rejected",
+  "base_commit": "6ec389ff8ad8e165d408fe7bb089471bf886326a",
+  "source_baseline_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "source_candidate_sha256": "92aef5bc8ce408b4d1b19a95e8191b4668a82f335cbcb19302c52faf0668e0bb",
+  "only_source_change": "(unsigned int)&hyp_wram_arena_lo > low -> low < (unsigned int)&hyp_wram_arena_lo",
+  "actual_object_sha256": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+  "actual_object_identical_to_public_23": true,
+  "actual_compiler_recipe": "-proc arm7tdmi -nothumb -interworking -nostdinc -O4,p -c",
+  "text_bytes": 88,
+  "code_bytes": 80,
+  "pool_bytes": 8,
+  "code_word_52": "0xe59f1018",
+  "code_word_56": "0xe3a0050e",
+  "relocations": [
+    {
+      "offset": 80,
+      "type": "R_ARM_ABS32",
+      "symbol": "hyp_subpriv_arena_lo",
+      "addend": 0
+    },
+    {
+      "offset": 84,
+      "type": "R_ARM_ABS32",
+      "symbol": "hyp_wram_arena_lo",
+      "addend": 0
+    }
+  ],
+  "original_comparisons": [
+    {
+      "identity_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "original_88_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+      "mismatch_offsets": [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    {
+      "identity_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+      "original_88_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+      "mismatch_offsets": [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ]
+    }
+  ],
+  "native_link_attempted": false,
+  "source_credit_bytes": 0,
+  "input_hashes_after": {
+    "MWCC": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "Wibo": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "ROM": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+  }
+}

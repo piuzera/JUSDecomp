@@ -1,0 +1,14 @@
+test_all_physical_extents_validate_before_any_write (test_child_native_baseline.ChildNativeTests.test_all_physical_extents_validate_before_any_write) ... ok
+test_child_helpers_and_role_approvals_are_snapshotted_before_parent_work (test_child_native_baseline.ChildNativeTests.test_child_helpers_and_role_approvals_are_snapshotted_before_parent_work) ... ok
+test_child_stage_without_child_report_cannot_reach_checkpoint (test_child_native_baseline.ChildNativeTests.test_child_stage_without_child_report_cannot_reach_checkpoint) ... ok
+test_detached_child_report_rejected_before_artifact_reads (test_child_native_baseline.ChildNativeTests.test_detached_child_report_rejected_before_artifact_reads) ... ok
+test_invented_rom_cannot_borrow_real_approved_tools_or_old_proof (test_child_native_baseline.ChildNativeTests.test_invented_rom_cannot_borrow_real_approved_tools_or_old_proof) ... ok
+test_late_artifact_or_input_mutation_cannot_rewrite_capture (test_child_native_baseline.ChildNativeTests.test_late_artifact_or_input_mutation_cannot_rewrite_capture) ... ok
+test_later_operation_cannot_replace_initial_shared_source_digest (test_child_native_baseline.ChildNativeTests.test_later_operation_cannot_replace_initial_shared_source_digest) ... ok
+test_report_cannot_issue_live_operation_or_authorize_repacking (test_child_native_baseline.ChildNativeTests.test_report_cannot_issue_live_operation_or_authorize_repacking) ... ok
+test_selected_child_is_mandatory_before_freshness_and_requires_arm7 (test_child_native_baseline.ChildNativeTests.test_selected_child_is_mandatory_before_freshness_and_requires_arm7) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.091s
+
+OK

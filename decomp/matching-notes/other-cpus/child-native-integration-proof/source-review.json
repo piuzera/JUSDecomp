@@ -1,0 +1,31 @@
+{
+  "result": "No flags",
+  "reviewed_commit": "320ea2ad796fdd179ce504021436ffbd9394c1f3",
+  "accepted_parent": "27b8458",
+  "scope": "Source and provenance integration review; fresh root proof/export review pending",
+  "files": {
+    "tools/scripts/child_native_baseline.py": "43e9de7245d3db7115f92942e594a99aa31f274664927e075718b41ded57783c",
+    "tools/scripts/verify.py": "d6d91117bb3a3e4a163c153c797b5ba89d37308fc866228de9394e3c5d0a1f90",
+    "tools/scripts/rom_roundtrip.py": "a09e8d2a049c1bfa217dba311fd6ad4ebca5ab01a8bf411daa854ac7009439c4",
+    "tests/matching/test_child_native_baseline.py": "1e63841ed8232db41d32641c59f8d7af85d0afccfb0a8de79ef4c4842d06bc33"
+  },
+  "verified": [
+    "concrete live operation required; detached JSON cannot repack",
+    "capture stored as immutable serialized copy; report edits rejected before artifact reads",
+    "fresh exact child identity and file79 FAT extent",
+    "strict fresh extraction/init/delink/lcf/link; three raw gap objects independently pinned",
+    "canonical ARM ELF initialized prefixes/BSS geometry and original35092 relocation slots",
+    "diagnostic ELF used only for DSD symbol checks",
+    "separate analyzer/codec approvals; existing producer/source capsule unchanged",
+    "whole-child exact codec output and compressed-only parent write",
+    "artifact/input/tool/command rechecks through prepublication gate",
+    "atomic snapshot merge rejects conflicts before mutation",
+    "shared prevalidation of all20physical writes",
+    "reference stage counts15/16/17; source stage counts19/20/21; child requires ARM7"
+  ],
+  "public_tests": 9,
+  "skips": 0,
+  "test_log": "/private/tmp/jus-child-native-source-review-tests.log",
+  "T10_complete": false,
+  "child_source_bytes": 0
+}

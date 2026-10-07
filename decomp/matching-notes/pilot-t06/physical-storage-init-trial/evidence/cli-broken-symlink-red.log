@@ -1,0 +1,16 @@
+test_cli_broken_output_symlink_rejects_before_target_creation (__main__.BoundaryTests.test_cli_broken_output_symlink_rejects_before_target_creation) ... FAIL
+
+======================================================================
+FAIL: test_cli_broken_output_symlink_rejects_before_target_creation (__main__.BoundaryTests.test_cli_broken_output_symlink_rejects_before_target_creation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/test_boundaries.py", line 101, in test_cli_broken_output_symlink_rejects_before_target_creation
+    self.assertFalse(target.exists())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.205s
+
+FAILED (failures=1)
+{'actual_cli_returncode': 1, 'stderr': 'blocked: genuine command failed: git clone --shared --no-checkout /private/tmp/jus-header-initializer-trial /private/var/folders/g8/vqvk94x543z0zsl2jm2mc7nh0000gn/T/tmpgk2txxdq/unexpected-target/research-root\n', 'symlink_target_created': True, 'verify_created': False}

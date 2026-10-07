@@ -1,0 +1,68 @@
+{
+  "scope": "public synthetic ARMv4T branch encodings independently assembled, linked and disassembled",
+  "source_credit": 0,
+  "tools": {
+    "assembler": {
+      "path": "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "sha256": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+      "version": "Homebrew LLVM version 23.1.2"
+    },
+    "linker": {
+      "path": "/opt/homebrew/bin/ld.lld",
+      "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "version": "Homebrew LLD 23.1.2 (compatible with GNU linkers)"
+    },
+    "disassembler": {
+      "path": "/opt/homebrew/opt/llvm/bin/llvm-objdump",
+      "sha256": "a4498b0883383a2653530a8575b53c3058dfbfd9aeb36e9d0e77df1c77fde2f6",
+      "version": "Homebrew LLVM version 23.1.2"
+    }
+  },
+  "arm_targets": [
+    {
+      "source": 37224448,
+      "word": "ea51e118",
+      "target": 58688616
+    },
+    {
+      "source": 37224452,
+      "word": "eb51e117",
+      "target": 58688616
+    },
+    {
+      "source": 37224456,
+      "word": "eabffffc",
+      "target": 20447232
+    },
+    {
+      "source": 37224460,
+      "word": "ebbffffb",
+      "target": 20447232
+    }
+  ],
+  "thumb_targets": [
+    {
+      "source": 37224448,
+      "halfwords": [
+        "e3ff"
+      ],
+      "target": 37226498
+    },
+    {
+      "source": 37224450,
+      "halfwords": [
+        "d17f"
+      ],
+      "target": 37224708
+    },
+    {
+      "source": 37224452,
+      "halfwords": [
+        "f3ff",
+        "ffff"
+      ],
+      "target": 41418758
+    }
+  ],
+  "failed_initial_thumb_setup": "Assembler resolved absolute thumb_set targets against zero-based input section and rejected distance; replaced with ordinary section symbols placed by linker."
+}

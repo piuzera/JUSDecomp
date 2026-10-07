@@ -1,0 +1,60 @@
+{
+  "status": "bounded_observations_checked",
+  "probe_sha256": "222350b406018ed60e784deb0c1cbab9760a164b867deab369b98599ad4cf0bb",
+  "manifest_sha256": "4a8ce8f26c7189e5e4951c24bc5571d030d34688a64446b979dc82f183805299",
+  "observation_sha256": "694228421e131c7c390c57963f36812be7eb2f0cd60287e0d3a3a22dbb209167",
+  "command": [
+    "/private/tmp/jus-arm7-analysis-design-bounded/target/release/examples/arm7_observation_probe",
+    "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+    "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "/private/tmp/jus-track-a/build/arm7-reachable-root-grounding/spans.json",
+    "4a8ce8f26c7189e5e4951c24bc5571d030d34688a64446b979dc82f183805299"
+  ],
+  "fixtures": [
+    {
+      "program": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "span_sha256": "5a6fe96bf45550d5477d561aaad72ecd879d8123fc517097c611768598256335",
+      "words": [
+        "0xe92d4000",
+        "0xe24dd004",
+        "0xeb000054"
+      ],
+      "BL_source": 58707668,
+      "BL_destination": 58708012,
+      "continuation": 58707672,
+      "BX_source": 37224648,
+      "BX_literal": 58688616
+    },
+    {
+      "program": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "span_sha256": "5a6fe96bf45550d5477d561aaad72ecd879d8123fc517097c611768598256335",
+      "words": [
+        "0xe92d4000",
+        "0xe24dd004",
+        "0xeb000054"
+      ],
+      "BL_source": 58707668,
+      "BL_destination": 58708012,
+      "continuation": 58707672,
+      "BX_source": 37224648,
+      "BX_literal": 58688616
+    }
+  ],
+  "source_credit": 0,
+  "functions": "unknown",
+  "llvm_decode_sha256": "0a191624eb0d3931239b296cf27cf453fdbe4d37aa1086c12a6a24ad19de2a0c"
+}

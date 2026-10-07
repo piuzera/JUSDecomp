@@ -1,0 +1,434 @@
+{
+  "schema": "finite_Git_blob_and_consumed_checkout_provenance",
+  "gitattributes_sha256": "93b8e1ad54f01413492d35ccc8295ccda5fa131a8eab9ba4124f69df2f047745",
+  "observed_commit": "bbfae51c3f1843d1d3d79bf95284325e5ba99bf4",
+  "relation": "consumed bytes equal committed LF blob with LF converted to CRLF by unchanged existing Git attributes",
+  "input_count": 47,
+  "inputs": [
+    {
+      "path": "decomp/arm9/delinks.txt",
+      "committed_blob_sha256": "fe8b5275493edaff5c9d8eeca1a96beb5064642157ab63e757c4181dacc0d7f6",
+      "consumed_checkout_sha256": "23b2e570f703bf03d90045a0f3becd4b7649b6fe0762102fef5132a83430dd3c",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/dtcm/delinks.txt",
+      "committed_blob_sha256": "0e35390e706c9b88262661558f2ffe5ce029110a8e29863bdb23d2ba66f8e3f2",
+      "consumed_checkout_sha256": "e11b111b8f3ce492d827b58b271583ac85f4706dccc9783679f2cd460c776381",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/dtcm/relocs.txt",
+      "committed_blob_sha256": "133709383864974086925aeb48f007d89bde8c4ce0262e8e096c5e5559629df2",
+      "consumed_checkout_sha256": "cb5d04f741c1b02c6c4a6f7b6a2792bae494cf7868b9c08543e1ed2dae1a59b9",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/dtcm/symbols.txt",
+      "committed_blob_sha256": "07492b2585c01882faba65762cf8e8508aeba42c7d885744fcac24029a39b5b3",
+      "consumed_checkout_sha256": "61e2b6d1ad05226dab08b1848852aefcf12f58efc9f164d48e56967728c667f7",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/itcm/delinks.txt",
+      "committed_blob_sha256": "ec221c2e910f8606319f2cbef6caaa21903ded058a1bad04273b2980c2790e65",
+      "consumed_checkout_sha256": "9d79d5da7fde19182fd7b4d33757fd6ef34e743eae6e44dce4a4edcac90bd69c",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/itcm/relocs.txt",
+      "committed_blob_sha256": "e30c7eef1fb0a35371db763914986ae04d8aaa436b544a769d49a32e047a9280",
+      "consumed_checkout_sha256": "02452987cb8fd39ec64ab30d3100679b7cee6d9608f13fba6efd0d1f5123f983",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/itcm/symbols.txt",
+      "committed_blob_sha256": "74d8a4e833aec321b8bbb4592bb0fe435bbc385d6cf13ccec21859e6c130ad39",
+      "consumed_checkout_sha256": "8abc48ac26b084418654bb6bbb7b53c3c6b046e3b9174917e9fc2b00fe98c0f6",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov000/delinks.txt",
+      "committed_blob_sha256": "96bd190dcbe09c54efe519210930b9bbd826207a908bc09cc5d42395fe2fe981",
+      "consumed_checkout_sha256": "710aba1f67dac3fb97d4d43f5eeda73b2ed88d1852ba6886f30c79c4896e8f6e",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov000/relocs.txt",
+      "committed_blob_sha256": "52a6f9bf7d4f1c219abeb65085b3e2f47bf5dac61f28945508a8e8364e2bcb60",
+      "consumed_checkout_sha256": "0d547c7df050545660eb3f73834ca7eda8d0d55a99a5ffb948045539845dd3f7",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov000/symbols.txt",
+      "committed_blob_sha256": "89bd122511a38d21e7bcd51432112dac68f00e424a45e9fca3500bb0d6ea6a45",
+      "consumed_checkout_sha256": "2ca0a0be1e4c455bc139290b10525a5feb56b38197ed15ebe7ee5b05289b7804",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov001/delinks.txt",
+      "committed_blob_sha256": "e4dcab9859cc17225dba2c567ea30880a3b7e509af44aac5bc829c9450d5eee4",
+      "consumed_checkout_sha256": "7b83e8ccfb9baca6490e4820b258df12d5853ff2cefd486c1e9c2338825b5a12",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov001/relocs.txt",
+      "committed_blob_sha256": "f61746c70a915c5c5227af31d57f53356a137c3e6b8a32f6bae6ad12f89d2127",
+      "consumed_checkout_sha256": "30cc2a4ea48bb7ff84f95c37181bdbe04b93c1a08886e3d1773d363d41755afc",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov001/symbols.txt",
+      "committed_blob_sha256": "e63a1de70690af915c31e5ac35bb529443e17e453743927a0d0a83094a2dea2f",
+      "consumed_checkout_sha256": "aaa36c5a6f98d9c4bfbd1dfd1cb4c376b25080cc1c22933b56b90d60528ebc2b",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov002/delinks.txt",
+      "committed_blob_sha256": "e28cc7f950e1bd620bd664f23a8367c84059d4fab99ef4fa34a6796831d90e71",
+      "consumed_checkout_sha256": "d734638bde51e02c7405a3c97f4e9934272b83a0870db5bba1a6746240d3cb1a",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov002/relocs.txt",
+      "committed_blob_sha256": "b7680d69d6e0aa07e1b4e979591ab68e905300242bd1d86e7212e509bc13faf6",
+      "consumed_checkout_sha256": "808292a36c843ea8c842bc333a92b05287ae9e394cfc4491505f1fd48bf56fd3",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov002/symbols.txt",
+      "committed_blob_sha256": "4b74e5d4b4ccecf0738e7dc360ecdd69268f2134bb8809e526aa199bb111f327",
+      "consumed_checkout_sha256": "5e50aa1dd6817b8db0d9b045e2fc577858aa5e8ff9b1af35130ebcfbc9d85e11",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov003/delinks.txt",
+      "committed_blob_sha256": "7ca4a4bc4ac5251945507fd2a7f937e1949f05cb957d2963514cfef2e460e55b",
+      "consumed_checkout_sha256": "e74bf4bf2a8057f6df0bee41dfff0d61138db34f249b45baa9b1f302216c9d9a",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov003/relocs.txt",
+      "committed_blob_sha256": "07f14c387ac72640dc3e4a32370811cec4872204ea6b300a66221c5032534d58",
+      "consumed_checkout_sha256": "3dc8e959d8eb0b84954708fb5cb965bb9b6939dd6f82591248264a434493d040",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov003/symbols.txt",
+      "committed_blob_sha256": "18ede8163b51498eb8076f97438c5560e087c6dbea9ad2c51dc83327e2618e91",
+      "consumed_checkout_sha256": "4b7bb78f0af632e3f328fb6806f5f69d35638df34867eb360315941a2d5329c2",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov004/delinks.txt",
+      "committed_blob_sha256": "ef5d1bceaa61484daa9fc4e0712224afa93ca603cb68558a2401b0d54bdfa097",
+      "consumed_checkout_sha256": "9724ea33b471d5ddc729af906b2583525573af6b431fc24c03bd069c9803f9a4",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov004/relocs.txt",
+      "committed_blob_sha256": "6b8f93b01baf2fe8082239638d78c2c9e9ac06b09e6c41f09d530e6bcfcd8993",
+      "consumed_checkout_sha256": "4f65fa0e1c71bcc8f8649a7fb0f8db3527e409e8b17913d226f2e875be924a58",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov004/symbols.txt",
+      "committed_blob_sha256": "48a7005aa2f56ba5ed118de3e6316f6e86d0377be1a84e5dd3360c75e05d6b1f",
+      "consumed_checkout_sha256": "59f8b9d592fc0eed2e9195478bc478fd774e1c400fb5167666a8ed75a429f4c5",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov005/delinks.txt",
+      "committed_blob_sha256": "70da09a04e76111f0f0082dc3df4fdc77e74f60f7374a5bc1aa4e6437fde3028",
+      "consumed_checkout_sha256": "ac8fff5cb21f5b9d8cd61e6a27957146f74ec2e6db91979f94f8bbaf9e94fe67",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov005/relocs.txt",
+      "committed_blob_sha256": "d866c7ee4ae929f10aeb224a04d0e6bcc0e812cc9ba0f2a53eca31cb45605580",
+      "consumed_checkout_sha256": "860e60bb4cb8248d625f61ae32d2c37644c195181b68b71a2fb243e510279137",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov005/symbols.txt",
+      "committed_blob_sha256": "ba10661ac95c8dc1b0533226f6725d007d91fb8a6c4b1ffead132b600dd00311",
+      "consumed_checkout_sha256": "1959c534d0368b3368b82b0476f9d4d174d50cc7de7f3a9d0b5471493dffc903",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov006/delinks.txt",
+      "committed_blob_sha256": "35e289724006a9d98e8c266d30e5e3c0560474f0a1c8699244459f1fc3e971d5",
+      "consumed_checkout_sha256": "f0d81b2c7bc7a8ad60f9a34ebce1a36f5d81469d4b666254f927f62cdcb33637",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov006/relocs.txt",
+      "committed_blob_sha256": "76e8bf9e8f1677369f12d71b7e676e37bf40341f3f652079c230e930ed209a34",
+      "consumed_checkout_sha256": "76b90e5cfb13562e7416b09809319b8cc95d6f810d93f4a928a6e42f1126b3d1",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov006/symbols.txt",
+      "committed_blob_sha256": "ebc8dbcdf670c29953e5de797ce52c341aedd6c6fd3e4ef3b755f9bd1c1b1e5f",
+      "consumed_checkout_sha256": "16ba28e3be97caf1a83a2e4a785ee507b52ad98f4849d6ba0ea9e23a80b02299",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov007/delinks.txt",
+      "committed_blob_sha256": "0807efd4c5bafb39ec1b00cee1d183afdf6d701f9c48a28015b219332e1b1a6b",
+      "consumed_checkout_sha256": "d918089d6667d8b50f4fa34302e3222b053822d0ba3022438a3010b9a61a6cae",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov007/relocs.txt",
+      "committed_blob_sha256": "4fd9efa87ac14c8a82d592d6e87b480d34b1e22da5edd717eb31b5a719a5dbfd",
+      "consumed_checkout_sha256": "2fde4d3a267c117bd3ccf08198acd25aeb4462d88250e58ebe61d421c25a9619",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov007/symbols.txt",
+      "committed_blob_sha256": "c60775713dc15576cdacf88458410eb5676e42903b246d78b2af8e01c9d1e534",
+      "consumed_checkout_sha256": "829bc7e2ac65d421b6fba7e6153bfee47e1f143522e704dc8210d383f967c3f3",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov008/delinks.txt",
+      "committed_blob_sha256": "17d303b96bf4aaffc89a8b8c6db9436161f7e4b0df922dd44ab34b0efb377e6a",
+      "consumed_checkout_sha256": "13bd938d1dbf4c95f20c4013b9375e051eb693dfc20d8e802aadeb514cc1c55f",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov008/relocs.txt",
+      "committed_blob_sha256": "06c470ddfedb9dbd30065c24de662cd2825c5d1db51bc05d6f69edd07c2fb714",
+      "consumed_checkout_sha256": "103ef4f1d022ebeb90de7beca08af4ea57aadc89cfb441e68a90cc85dca49d68",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov008/symbols.txt",
+      "committed_blob_sha256": "f3b6d9610d25a0ee0b50a6557aa1556ea3f68bd2112d66ad7f2c7f2c7b747976",
+      "consumed_checkout_sha256": "cb2cd2d177441ea26b7e85844a4580f78341e3a002776a5f6a173aab3edec2fa",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov009/delinks.txt",
+      "committed_blob_sha256": "dde359d800f71c8b0134a3e4dfc5c60a07431da498ddf170a1eb51ee7a7fe3d8",
+      "consumed_checkout_sha256": "778d10dd11e3dc0507d11868c8e3201f3e24578126440dbc8e8cac75c86341ca",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov010/delinks.txt",
+      "committed_blob_sha256": "6124a7ab3258aeca73dd0ae54d04e3558d545f2056175532d665740f419b1a41",
+      "consumed_checkout_sha256": "b8ef24508d73ff2521ffac3d3c6260c38fc24249530d2624d33020f579486a37",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov010/relocs.txt",
+      "committed_blob_sha256": "63c903cfe5208f87b2d13e1aed1d00e8537fae55bec89613130f20474a2c1f7c",
+      "consumed_checkout_sha256": "8d9e3d6d47666943f95960b91d3eaa69e4b53d1ced2a127a87086328c0961033",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov010/symbols.txt",
+      "committed_blob_sha256": "dfe7cffe30fbd0ea6993a7f94604785cb119f7d6720259f664b354ae8fb7ea65",
+      "consumed_checkout_sha256": "417defbc3de3dbb2594a1568ccf5d347f70de3487599956a20ab90d3a8c60773",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov011/delinks.txt",
+      "committed_blob_sha256": "964e5b941443914ad339b7b5c854157f5981a145403da75306ce98ea9bb41364",
+      "consumed_checkout_sha256": "8a33ca98991daa45f909357976487d2e9a5dfc9dcf64d2d1e8a029cbc3c8085f",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov011/relocs.txt",
+      "committed_blob_sha256": "23272997f41166a09facf5f92737534821f9309399cc703e8c2630e63c48a150",
+      "consumed_checkout_sha256": "68bd78a3b9c0ece891805b77159beedb44ebd96aa4028b94814dfcb16ad87fd6",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov011/symbols.txt",
+      "committed_blob_sha256": "97866f92a78a5f134c0b46590f229cc9ceda6765a5944a430539ec49708970cc",
+      "consumed_checkout_sha256": "44a2dcc04251c1f4a2109c2c9a092a0aa6f70289d2f0d79a0c9b3568240b23e8",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov012/delinks.txt",
+      "committed_blob_sha256": "996b95018796b9919f6f128c126dae85c4bb9eefce6eefa6d03576fd7a65e5d5",
+      "consumed_checkout_sha256": "0c4c72cde626523db37dd21c02a71798610bb13256afb8f03b0443e91ec02958",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov012/relocs.txt",
+      "committed_blob_sha256": "948894cb28c678de2485ce2c9f26da640e458a79547a7d9e932a411e530a788a",
+      "consumed_checkout_sha256": "34627c8880fe61c35fa010bc444428272a5acb74636dfd7deb78cc2793306a96",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov012/symbols.txt",
+      "committed_blob_sha256": "48176a82575afe0da85c69b05a8bb6fb51f876c2989b59036a37b404a2979fab",
+      "consumed_checkout_sha256": "df3b6740b76acfa9db397473a906ec9e83e751340612c60f086bd06b99bfba11",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/overlays/ov013/delinks.txt",
+      "committed_blob_sha256": "de8416591b0c413f2156e851261e7562b6f75c076d9cfa350ca8df3c3b6bebb2",
+      "consumed_checkout_sha256": "befc94193f3edeb56fd3860b8642d0f8c75cc3fd0837888cc2bf08d0d153dc3b",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/relocs.txt",
+      "committed_blob_sha256": "584b525e1a4928a4614c27aa940c619bc7fa9218892762a4052070d417ff6710",
+      "consumed_checkout_sha256": "f78ed8d3d65fd92c992765bec2df24ef557738b05dc1007aef91c4e9db833022",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    },
+    {
+      "path": "decomp/arm9/symbols.txt",
+      "committed_blob_sha256": "ccc3fa562fed0190cb09fcffb3c46c32ea70e146546a35b876f3c8899ee104e5",
+      "consumed_checkout_sha256": "d73d18a6183b55ac8d7ee009c81003f6fa273ee674ee4b66a776027fb4a88566",
+      "attributes": {
+        "text": "set",
+        "eol": "crlf"
+      }
+    }
+  ],
+  "original_gate_failure_preserved_in_commit": "bbfae51c3f1843d1d3d79bf95284325e5ba99bf4",
+  "canonical_file_bytes_or_attributes_modified": false
+}

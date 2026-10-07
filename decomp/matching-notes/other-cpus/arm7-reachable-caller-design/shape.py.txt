@@ -1,0 +1,112 @@
+# Design signatures only; no runnable implementation.
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Literal
+
+Mode = Literal["Arm", "Thumb"]
+
+@dataclass(frozen=True)
+class ProgramIdentity:
+    parent_rom_sha256: str
+    selector: "Parent | NitroFsPath"
+    program_sha256: str
+
+@dataclass(frozen=True)
+class PinnedEvidence:
+    path: Path
+    sha256: str
+    # Caller describes the root assumption; digest establishes its stable record,
+    # not actual execution or a validated register state.
+    assumption: str
+
+@dataclass(frozen=True)
+class SelectedSpan:
+    program: ProgramIdentity
+    region: "Startup | AutoloadIndex"
+    mode: Mode
+    start: int
+    end: int
+
+@dataclass(frozen=True)
+class RootAssumption:
+    program: ProgramIdentity
+    mode: Mode
+    address: int
+    evidence: PinnedEvidence
+
+@dataclass(frozen=True)
+class NodeKey:
+    program: ProgramIdentity
+    cpu: Literal["arm7"]
+    mode: Mode
+    address: int
+
+@dataclass(frozen=True)
+class InstructionNode:
+    key: NodeKey
+    byte_len: int
+    region: "Startup | AutoloadIndex"
+    source_selection: int
+    source_observer_digest: str
+
+@dataclass(frozen=True)
+class CandidateEdge:
+    source: NodeKey
+    kind: "ObservedTransferKind"
+    guard: "ObservedTransferGuard"
+    condition: str | None
+    destination: "NodeKey | Frontier"
+    # Observer condition belongs to the source instruction. This is a symbolic
+    # guarded edge, without path feasibility or call/return matching.
+
+@dataclass(frozen=True)
+class Frontier:
+    program: ProgramIdentity
+    address: int | None
+    mode: Mode | None
+    reason: Literal["outside_selection", "instruction_interior", "bss",
+                    "unresolved_bytes", "unknown_transfer", "mode_conflict",
+                    "unobserved_root", "work_limit"]
+    region: "Startup | AutoloadIndex | None"
+
+@dataclass(frozen=True)
+class CandidateGraph:
+    # Private construction; immutable tuples. All observations remain in audit,
+    # including valid nodes not reached by the supplied assumptions.
+    roots: tuple[RootAssumption, ...]
+    reached: tuple[InstructionNode, ...]
+    edges: tuple[CandidateEdge, ...]
+    stops: tuple[Frontier, ...]
+    scope: Literal["root_assumed_selected_interpretations"]
+
+    def audit_copy(self) -> dict:
+        raise NotImplementedError
+
+class LiveCandidateOperation:
+    # Private constructor; frozen capture owns input/tool/helper-source digests,
+    # actual command/stdout, successful observer digest and the graph.
+    # No deserialization factory, CheckedView adapter, or public raw-JSON composer.
+    @property
+    def graph(self) -> CandidateGraph:
+        raise NotImplementedError
+
+    def recheck(self) -> CandidateGraph:
+        raise NotImplementedError
+
+
+def observe_candidates(*, original: Path, layout: "PinnedLayout",
+                       observer: "ApprovedObserver",
+                       selections: tuple[SelectedSpan, ...],
+                       roots: tuple[RootAssumption, ...],
+                       work: "FreshPrivateDirectory") -> LiveCandidateOperation:
+    raise NotImplementedError
+
+# Private functions in arm7_reachable.py:
+# _run_observer: snapshot inputs/helpers/complete approved producer context;
+#   create exact pinned span manifest and run unchanged five-argument observer.
+# _checked_receipt: verify actual captured successful stdout against input digests,
+#   exact program and selection inventory, CPU/V4T policy and atomic decoding.
+# _candidate_graph: immutable domain conversion, instruction-start index,
+#   conflict inventory and root worklist; no raw instruction decode.
+# _recheck: compare capture before reads, rehash all inputs/tools/artifacts,
+#   verify actual command/stdout and reject mutation; return captured graph.

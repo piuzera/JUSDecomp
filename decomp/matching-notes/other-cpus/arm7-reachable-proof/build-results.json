@@ -1,0 +1,83 @@
+[
+  {
+    "step": "tests",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "ds-decomp",
+      "--lib",
+      "--tests",
+      "--examples"
+    ],
+    "exit_code": 0
+  },
+  {
+    "step": "doc-tests",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "ds-decomp",
+      "--doc"
+    ],
+    "exit_code": 0
+  },
+  {
+    "step": "cli-tests",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "ds-decomp-cli",
+      "--lib",
+      "--bins"
+    ],
+    "exit_code": 0
+  },
+  {
+    "step": "clippy",
+    "command": [
+      "cargo",
+      "clippy",
+      "--locked",
+      "--offline",
+      "-p",
+      "ds-decomp",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings",
+      "-A",
+      "clippy::chunks_exact_to_as_chunks"
+    ],
+    "exit_code": 0
+  },
+  {
+    "step": "release-build",
+    "command": [
+      "cargo",
+      "build",
+      "--locked",
+      "--offline",
+      "--release",
+      "-p",
+      "ds-decomp-cli",
+      "-p",
+      "ds-decomp",
+      "--example",
+      "arm7_reachable_probe",
+      "--example",
+      "arm7_physical_baseline",
+      "--bin",
+      "dsd"
+    ],
+    "exit_code": 0
+  }
+]

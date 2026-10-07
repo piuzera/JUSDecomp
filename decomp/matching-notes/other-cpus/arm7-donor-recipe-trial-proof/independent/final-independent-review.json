@@ -1,0 +1,224 @@
+{
+  "status": "accepted_no_flags",
+  "reviewed_commit": "1cb9b6654ea0f334b26085c41ce6ef9149ee1072",
+  "reviewed_tree": "cc3157ce2dc356bfd80e69ca228a0f12433b474b",
+  "base_commit": "de4ea1eeb70f8d5f4b83bc0e26036f7743331536",
+  "git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/accepted_negative_control-stderr.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/accepted_negative_control-stdout.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/compiled-llvm.txt",
+      "bytes": 259,
+      "git_blob": "4fe02c41897d216e62c21ec81b2777124473f2ee",
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/donor-primary-audit.json",
+      "bytes": 7343,
+      "git_blob": "220d6c4f4cd0f420810f42b6a1311b1baf82824b",
+      "sha256": "6d2d67aaf53be488c2585626dd74f9cd71f618c74ac934184ef6359a7e1efd24"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/elf-readback.txt",
+      "bytes": 3294,
+      "git_blob": "e872c7878803684a4013a0fd2f20616322fc095e",
+      "sha256": "ef6e51b965eba6152531d13c2ddd7b36404fb842ea64818947d0b0cbb583f20c"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/evidence-pins.json",
+      "bytes": 4793,
+      "git_blob": "c97575001f7cbdf4917c497592c33f180cde4845",
+      "sha256": "9dcabd3141ba412d6cdcae4aa5bc26f7951496879fe0d3b0b596a6c73f2b7569"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/experiment-stderr.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/experiment-stdout.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/llvm-original-low-getter.txt",
+      "bytes": 359,
+      "git_blob": "b78c7fdf47ac1a5afd90d87f8025c3e33017f9ac",
+      "sha256": "32411e7e1f3f35f0df12322c5167be80606209f7386e639a4f3eb9f8536ee9d0"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/low_getter_trial.c",
+      "bytes": 609,
+      "git_blob": "1f92095cb51c057a3f204fd8059ef17c15e20d5e",
+      "sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/native-layout.json",
+      "bytes": 1441,
+      "git_blob": "9887951f030d854acc559ee95af1107e73b44e5b",
+      "sha256": "c37047688c888ea5b312010d6ad157127fc9d195766b0539b17f4f8c6f6d845d"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/native-proof.json",
+      "bytes": 54947,
+      "git_blob": "3c9912ba3de25a254c482a070aff7400b6593dcd",
+      "sha256": "f15d890061dc7fbf77f54b80a2f2620c3f873f5ee5a84572df10fd6a57a2729e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/native.py",
+      "bytes": 14875,
+      "git_blob": "3978ec5b0f899c14015974bce60c4bc5a01f3533",
+      "sha256": "409181458cb237bf0cd9bd410ed4b9929ae1b1200d9c1bd5a7d6622f2f0d816e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/original-manifest.json",
+      "bytes": 2870,
+      "git_blob": "14ed70c8de00dd52ebf49d006ae825d38d4576bc",
+      "sha256": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/original-read.json",
+      "bytes": 11319,
+      "git_blob": "023f0ece24960d60820f16e68795fc740d0290c9",
+      "sha256": "25e66aa18cb2f2231b11d591ba6798e21c8981b9e6ce4d6b3804dc6580695a1e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/public-replay.log",
+      "bytes": 258,
+      "git_blob": "eedde8c2f0f98fba6aec0ac7029861149a766f6a",
+      "sha256": "4d452d0d7154fd8114ba539abf7686c14ed7d16b0ae83d07a98f10d6f6779ebb"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/public-tests.log",
+      "bytes": 1206,
+      "git_blob": "191d0291458891f4e820c9c50c476ca20b3f31d0",
+      "sha256": "e1daa0fb7df7a0866361f4b662a2c6ca5c5070d17946e3db5f5dbcb867a78f17"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/read_original.py",
+      "bytes": 8731,
+      "git_blob": "fde70dc22d119fb19a32d119895c9a9bfd281ae5",
+      "sha256": "20054901f1a82b9749f97cf891cf6a6535ccc0bdc2c4b503bd956f81c45ff447"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/recipe.json",
+      "bytes": 3016,
+      "git_blob": "7bbed004d589923e74667b0b2b85fc47b0caaa83",
+      "sha256": "a751c6f596a2cbf91ddead59d8334ebb928fe827539a54b78046f3201d3e7b5e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/reproduce.py",
+      "bytes": 6367,
+      "git_blob": "62e6abd32e2c59381d852e4d99dc480a60abbe5f",
+      "sha256": "57fd975450b819700e2fbaf6f3f1fb0120a30a884fa8f4bfd2aa4b038a66b55a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/tdd-native-green.log",
+      "bytes": 101,
+      "git_blob": "cbba80aba2b1aaf37b57c9d876dd7dbb673b31f3",
+      "sha256": "92395aca5edbf49d4d29ddea3861bc71b588cf8268bf19bf39a896991740d6a9"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/tdd-native-red.log",
+      "bytes": 2096,
+      "git_blob": "c85bd97053a0eb908192ab56dbe073bd3a0c23ef",
+      "sha256": "91994dbe94fc7d7a3b18d38d40791b6345422a3daf6762f178dc865df7acf7f1"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/tdd-reproduce-green.log",
+      "bytes": 98,
+      "git_blob": "ddabe900548aa4acca7c600b14aad8d6f4ec884e",
+      "sha256": "c2b4cdbfd25fec5b70108b0fa040652625b22cee3f7a0c8a761645c15d122f13"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/tdd-reproduce-red.log",
+      "bytes": 948,
+      "git_blob": "61d4e20a118b45f2d978c23717270895fc571e51",
+      "sha256": "3e98fe4b57fb02118c0c21d401fd98d61728141df6c711ad9932f3b63a0f0d64"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/test_native.py",
+      "bytes": 2969,
+      "git_blob": "f2cdd7eefd78bf5c064f22dcb38e584b53058cd3",
+      "sha256": "3d206414820cd6f70f6df9bc204882b39ad421d77933a5494fdb23b85f206ed8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/test_reproduce.py",
+      "bytes": 1412,
+      "git_blob": "2b992182f4c7ce63c82cdda12720242ff23ba73d",
+      "sha256": "1ad436261374ceef602494ac32389d463fe9ea6c49436bb380d7fd294f5c19b4"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/test_verify.py",
+      "bytes": 2337,
+      "git_blob": "6cbd4c8307e5032096eb380e57e9d7c28ba6608a",
+      "sha256": "841fd530cebf7775bf15ad352ca0acb605e92d198fd0e783ef4e3607ad896f89"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/trial-proof.json",
+      "bytes": 65721,
+      "git_blob": "339434c563b0f86924c9c19e26ee666aadeb4c35",
+      "sha256": "bef7866373e3c4c7865507a09d752f73f045064468e7b1fb1ff5456bd80c6c0d"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/verify.py",
+      "bytes": 4154,
+      "git_blob": "da33501335b1d50060cb505a80b931859267953a",
+      "sha256": "d4b282bfbdae3a439ed74fbf88990afba7f7d26ea4e88ee45593888f4672cde2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-donor-recipe-trial.md",
+      "bytes": 9729,
+      "git_blob": "deaf46dd2dcebbbff9f3ce5cadc72e276c8f3309",
+      "sha256": "d5555f460480e5a27581af6c85b0e48902fbe2d9e0b117f4797740d177fd5239"
+    }
+  ],
+  "evidence_pin_manifest_sha256": "9dcabd3141ba412d6cdcae4aa5bc26f7951496879fe0d3b0b596a6c73f2b7569",
+  "git_owned_pins_verified": 29,
+  "source_unchanged_from_23": true,
+  "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "independent_object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+  "fresh_public_object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+  "wrong_original_object_sha256": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+  "positive_elf_sha256_both_programs": "673459693cdd25df49c550f9b0db3ffa8d6d703cc9cdbc4d9f249b55d92a6696",
+  "exact_full_image_sha256_both_programs": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+  "image_bytes": 165552,
+  "load_segments": 6,
+  "BSS_bytes": 21424,
+  "wrong_binding_image_offsets": [
+    20780,
+    20781
+  ],
+  "wrong_prior_object_image_offsets": [
+    20752,
+    20753,
+    20754,
+    20755,
+    20756,
+    20757,
+    20758,
+    20759
+  ],
+  "malformed_PT_LOAD_rejected_both": true,
+  "public_replay": "passed using own ROM-derived opaque inputs; 8 public readbacks/logs byte-identical",
+  "seven_tests": "passed with documented TRIAL_OBJECT and WRONG_OBJECT",
+  "own_independent_native_result_sha256": "cfdc16bad1cffb4949409848108867525d85e7dba240e43fa734ef28c66f446b",
+  "own_independent_native_script_sha256": "d0f107d1774a45ee61fc175be0c24ddac9150817386e7cb3d166674e7d94517b",
+  "original_JUS_compiler_identity_proven": false,
+  "original_names_types_ABI_extent_ownership_proven": false,
+  "source_credit_bytes": 0,
+  "canonical_bytes": 304,
+  "T10_open": true
+}

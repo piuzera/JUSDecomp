@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "base_commit": "a89e7ccd48dfbc2738181dbb5c94c4d36dd66273",
+  "strict_trials": 2,
+  "exact_trials": 0,
+  "source_credit": 0,
+  "promotion_status": "not_activated",
+  "source_shape": "Declared external Flags constructor; inline header-free placement operator new returns supplied storage; all original physical stores and argument identities unchanged.",
+  "report_sha256": "c226a1d9c99473c507dc3942213e4d9d3cf2bc50e6313d47de99839eb23d39ca",
+  "red_first": {
+    "failures_before_source": 4,
+    "reason": "diagnostic source absent",
+    "unexpected_after_source_failures": 2,
+    "reason_after_source": "original gate first rejects604-vs596 extent; test assumptions updated to record that specific observed rejection rather than claim identity-only mismatch",
+    "actual_green_tests": 4
+  },
+  "compiler_shape_findings": {
+    "label_r2_before_key_r1": true,
+    "label_then_key_pool_identity_order": true,
+    "extra_conditional_checks": [
+      {
+        "tu_offset": "0x1c0",
+        "effect": "additional compare of storage pointer with0"
+      },
+      {
+        "tu_offset": "0x1cc",
+        "effect": "skip native constructor call if storage is0"
+      }
+    ],
+    "emitted_defined_functions": [
+      "func_0206c244"
+    ],
+    "emitted_undefined_constructor": "_ZN5FlagsC1EPKcS1_",
+    "ctor_binding_status": "unresolved; no alias, symbol rewrite, or link attempted",
+    "post_call_temporary_comparison": "candidate and original use the same r1 intermediate-vptr and r0 zero-field roles; seven original words at 1cc..1e4 equal candidate words at 1d4..1ec"
+  },
+  "full_rom_attempted": false,
+  "stopping_scope": "Only requested -O2 and -O2,p; output not exact; no expanded contexts.",
+  "full_matching_suite": {
+    "status": "passed",
+    "tests": 226,
+    "skipped": 12,
+    "all_four_new_actual_tests_ran": true,
+    "environment": [
+      "JUS_INIT_MWCC",
+      "JUS_INIT_WIBO",
+      "JUS_INIT_REFERENCE"
+    ]
+  }
+}

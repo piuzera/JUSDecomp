@@ -1,0 +1,63 @@
+{
+  "status": "binary_roundtrip_verified",
+  "source_bytes": 0,
+  "source_functions": 0,
+  "source_complete": false,
+  "task_complete": false,
+  "native_modules": {
+    "main": {
+      "status": "passed",
+      "bytes": 2624320,
+      "raw_extracted_sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+      "compared_sha256": "617bec5f0664ca87113abeaf5511433d3be6b42c711f2b936c28d3420f1f6db3",
+      "hash_domain": "original pointer restored from pinned metadata",
+      "matched_source_bytes": 0
+    },
+    "ITCM": {
+      "status": "passed",
+      "bytes": 3968,
+      "raw_extracted_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "compared_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    },
+    "DTCM": {
+      "status": "passed",
+      "bytes": 96,
+      "raw_extracted_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "compared_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    }
+  },
+  "encoder": {
+    "path": "/private/tmp/jus-dsd-root-check/target/release-fast/examples/t10_compression_probe",
+    "sha256": "99f89606cc359780861c44416cf7b6bae8fc2af1afa8a29e9ecb94914d1c3c51",
+    "command": [
+      "/private/tmp/jus-dsd-root-check/target/release-fast/examples/t10_compression_probe",
+      "/private/tmp/jus-track-a/build/child-root-roundtrip/child-arm9-_2t2a31v/expanded.bin",
+      "/private/tmp/jus-track-a/build/child-root-roundtrip/child-arm9-_2t2a31v/encoded.bin",
+      "16384"
+    ],
+    "raw_encoded_sha256": "2fb27c4561c916b69b6fb323cf6e6df625d8c7178db9e0ae1fbe074329637239"
+  },
+  "input_hashes": {
+    "original_child": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+    "encoder": "99f89606cc359780861c44416cf7b6bae8fc2af1afa8a29e9ecb94914d1c3c51",
+    "native/main": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "native/ITCM": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+    "native/DTCM": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf"
+  },
+  "expanded_input_sha256": "d93722d85fbedc22fd09d8a35471a051b0dc19d8876bba91947f08ac4236d2fa",
+  "stored_arm9_sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+  "stored_arm9_bytes": 1955956,
+  "preserved_layout_metadata_bytes": 24,
+  "preserved_other_bytes": 185428,
+  "arm7": "preserved_binary",
+  "output": {
+    "path": "build/child-root-roundtrip/rebuilt.srl",
+    "bytes": 2141384,
+    "sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+  },
+  "native_link_provenance": "caller_must_verify_independently"
+}

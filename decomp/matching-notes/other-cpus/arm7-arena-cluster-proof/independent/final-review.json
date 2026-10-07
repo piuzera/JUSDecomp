@@ -1,0 +1,28 @@
+{
+  "status": "accepted_no_flags",
+  "public_worker_commit": "d23908f92146c45eb83cafb297d55deb01c7cb0a",
+  "independent_cherry_commit": "bb99a28f1dfc3ae2a9d554fa3494e80d6fdcf80f",
+  "new_git_blobs": 35,
+  "git_head_pins": 34,
+  "published_receipt_sha256": "567b0dd0cdc85e7096b599e9903631f8bace1806bc393c02a88767aff4b53711",
+  "fresh_public_replay_receipt_sha256": "de72ebe17009d9a2e940eb659a6bb4b6cba95f77dac122796717295cd3751e59",
+  "independent_native_receipt_sha256": "253b9ebfd50ab00a9edecb14a56123ce8a9b57790f77bd534dca7ebc0a054370",
+  "programs": [
+    {
+      "identity": 0,
+      "public_elf_sha256": "dbf07694b3d6b50643c1a348dfe0b93844cd7ff46345ff0fcf1ccbaaef54efca",
+      "independent_elf_sha256": "c24aed47166192ebef56a5ec52a206df372a6fcdd98ab71d2ac074faeef88384",
+      "equal_allocated_sections_and_six_loads": true,
+      "different_linker_marker_names": true
+    },
+    {
+      "identity": 1,
+      "public_elf_sha256": "dbf07694b3d6b50643c1a348dfe0b93844cd7ff46345ff0fcf1ccbaaef54efca",
+      "independent_elf_sha256": "c24aed47166192ebef56a5ec52a206df372a6fcdd98ab71d2ac074faeef88384",
+      "equal_allocated_sections_and_six_loads": true,
+      "different_linker_marker_names": true
+    }
+  ],
+  "source_credit_bytes": 0,
+  "remaining_boundary": "original names, types, ABI, extent, version, and source ownership unproved"
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "role": "low",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "/private/tmp/jus-arm7-indexed-loads-independent-proof/low/low_load_trial.c",
+      "-o",
+      "/private/tmp/jus-arm7-indexed-loads-independent-proof/low/compiled.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "source_sha256": "2c264ddcef93585dbd3f0e938feef537eece386c50f899bf9db1b5aa0df92de1",
+    "object_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94"
+  },
+  {
+    "role": "high",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "/private/tmp/jus-arm7-indexed-loads-independent-proof/high/high_load_trial.c",
+      "-o",
+      "/private/tmp/jus-arm7-indexed-loads-independent-proof/high/compiled.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "source_sha256": "e6a1f9bb097ff25b1e91c9e14040a90cbebeeb1a0d14248124d116c05a4e0ce8",
+    "object_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8"
+  }
+]

@@ -1,0 +1,7 @@
+test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) ... ok
+test_fresh_original_inventory_passes (__main__.OriginalControls.test_fresh_original_inventory_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.167s
+
+OK

@@ -1,0 +1,24 @@
+{
+  "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
+  "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+  "check_only": {
+    "accepted": false,
+    "error": "unexpected untracked source files"
+  },
+  "cargo_metadata_command": [
+    "cargo",
+    "metadata",
+    "--manifest-path",
+    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
+    "--format-version",
+    "1",
+    "--no-deps",
+    "--locked",
+    "--offline"
+  ],
+  "custom_build_targets": [
+    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
+  ],
+  "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
+  "build_script_executed": false
+}

@@ -1,0 +1,46 @@
+
+/private/tmp/jus-arm7-branch-root-oracle-32/arm.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+02380000 <b_large_positive>:
+ 2380000: ea51e118     	b	0x37f8468 <blx_min_h1+0x1478434> @ imm = #0x1478460
+
+02380004 <bl_large_positive>:
+ 2380004: eb51e117     	bl	0x37f8468 <blx_min_h1+0x1478434> @ imm = #0x147845c
+
+02380008 <b_large_negative>:
+ 2380008: eabffffc     	b	0x1380000               @ imm = #-0x1000010
+
+0238000c <bl_large_negative>:
+ 238000c: ebbffffb     	bl	0x1380000               @ imm = #-0x1000014
+
+02380010 <b_max_positive>:
+ 2380010: ea7fffff     	b	0x4380014 <blx_min_h1+0x1ffffe0> @ imm = #0x1fffffc
+
+02380014 <bl_max_positive>:
+ 2380014: eb7fffff     	bl	0x4380018 <blx_min_h1+0x1ffffe4> @ imm = #0x1fffffc
+
+02380018 <b_min_negative>:
+ 2380018: ea800000     	b	0x380020                @ imm = #-0x2000000
+
+0238001c <bl_min_negative>:
+ 238001c: eb800000     	bl	0x380024                @ imm = #-0x2000000
+
+02380020 <b_minus_one_word>:
+ 2380020: eaffffff     	b	0x2380024 <bl_zero_displacement> @ imm = #-0x4
+
+02380024 <bl_zero_displacement>:
+ 2380024: eb000000     	bl	0x238002c <blx_max_h1>  @ imm = #0x0
+
+02380028 <blx_max_h0>:
+ 2380028: fa7fffff     	blx	0x438002c <blx_min_h1+0x1fffff8> @ imm = #0x1fffffc
+
+0238002c <blx_max_h1>:
+ 238002c: fb7fffff     	blx	0x4380032 <blx_min_h1+0x1fffffe> @ imm = #0x1fffffe
+
+02380030 <blx_min_h0>:
+ 2380030: fa800000     	blx	0x380038                @ imm = #-0x2000000
+
+02380034 <blx_min_h1>:
+ 2380034: fb800000     	blx	0x38003e                @ imm = #-0x1fffffe

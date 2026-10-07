@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "status": "historical_pre_fix_only",
+  "reason": "A later actual concurrent probe showed publish_receipt accepted same-byte symlink substitution of the receipt and a captured artifact to paths outside the output tree. My earlier successful replay/hash checks did not exercise that late substitution.",
+  "historical_review": {
+    "path": "/private/tmp/jus-37-independent-final/independent-final-review.json",
+    "sha256": "0c7cb533a4ef1a918c514cb501415eb343d049622bfdb09ccc526a89ab1373a4"
+  },
+  "historical_receipt": {
+    "path": "/private/tmp/jus-37-independent-final/replay/receipt.json",
+    "sha256": "928896e05645ac0d530c224ae78110e2d5887c3223e3d757a9a1a3234b88339e"
+  },
+  "concrete_probes": [
+    "/private/tmp/jus-37-final-trail-review/receipt-symlink-probe.json",
+    "/private/tmp/jus-37-final-trail-review/artifact-symlink-probe.json"
+  ],
+  "acceptance": "held pending corrected regular-path guards and one new frozen independent replay of the same C model and recipe"
+}

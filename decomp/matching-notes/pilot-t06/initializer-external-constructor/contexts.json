@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "target": {
+    "symbol": "func_0206c244",
+    "module": "main",
+    "address": "0x0206c244",
+    "extent": 596,
+    "publication": "../targets.json",
+    "source_gate_scope": "complete TU; no ignored allocated sections"
+  },
+  "reference_sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9",
+  "reference_generation": {
+    "config_input": "private copied baseline config with rom_config pointing to existing extract/config.yaml",
+    "appended_delink_entry": "src/main/common_effect_init.cpp:\n    complete\n    .text start:0x0206c244 end:0x0206c498\n",
+    "command": [
+      "dsd-macos-arm64",
+      "delink",
+      "-c",
+      "build/initializer-trial/config/config.yaml",
+      "--main"
+    ]
+  },
+  "compiler_package": "2.0/base",
+  "cpu": "arm946e",
+  "language": "C++",
+  "headers": {},
+  "include_paths": [],
+  "sources": [
+    {
+      "id": "external_constructor",
+      "path": "decomp/matching-notes/pilot-t06/initializer-external-constructor/external_constructor.cpp",
+      "sha256": "07fcd90431fee7de3fe5cff5061ddc04ada4b8dcf09335a830b1c15aa5ce4c35"
+    }
+  ],
+  "contexts": [
+    {
+      "id": "O2",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2"
+      ]
+    },
+    {
+      "id": "O2-p",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2,p"
+      ]
+    }
+  ],
+  "abi_limits": [
+    "virtual-slot calls model only explicitly prepared values; complete argument signatures remain unresolved",
+    "initializer void return is candidate interface; no original source-language return type inferred",
+    "code addresses use Word; declaration-only functions are never invoked as callbacks in this TU",
+    "reserved resource virtual declarations supply observed slot position only; no original semantic class or full method signature inferred"
+  ],
+  "approach": "declaration-only resource virtual ABI view; three-word constructor address encodings are hypotheses",
+  "scope": "Two-context external native constructor diagnosis; no constructor binding or source activation",
+  "base_source": {
+    "path": "decomp/matching-notes/pilot-t06/initializer-virtual-view/resource_view.cpp",
+    "sha256": "c36294835a5057d5543ee7ff61939e034965f1e520e214e42f16dad0065b4f60"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "cwd": "/private/tmp/jus-arm7-reachable-dsd",
+  "environment": {
+    "CARGO_HOME": "/private/tmp/jus-arm7-reachable-worker-cache/cargo-home",
+    "CARGO_TARGET_DIR": "/private/tmp/jus-arm7-reachable-worker-cache/target",
+    "RUSTFLAGS": "--remap-path-prefix=/private/tmp/jus-arm7-reachable-dsd=/dsd-source --remap-path-prefix=/private/tmp/jus-arm7-reachable-worker-cache/cargo-home=/cargo-home"
+  },
+  "other_inherited_CARGO_or_RUST_variables": {},
+  "command": [
+    "cargo",
+    "build",
+    "-p",
+    "ds-decomp-cli",
+    "-p",
+    "ds-decomp",
+    "--release",
+    "--locked",
+    "--offline",
+    "--bin",
+    "dsd",
+    "--example",
+    "arm7_reachable_probe",
+    "--example",
+    "arm7_physical_baseline"
+  ],
+  "release_profile": {
+    "lto": true
+  },
+  "combined_cli_and_examples": true,
+  "release_build_count": 1,
+  "tools": {
+    "cargo": {
+      "path": "/opt/homebrew/bin/cargo",
+      "resolved_path": "/opt/homebrew/Cellar/rust/1.98.1/bin/cargo",
+      "sha256": "778478868dbfe74960e49329bb5813d2f5ba95c8bfb1f37cd626c62cb26a214a",
+      "version": "cargo 1.98.1 (797e8a9bc 2026-08-05) (Homebrew)\nrelease: 1.98.1\ncommit-hash: 797e8a9bca276c1c9f9f738d2a20f484fa4eea9d\ncommit-date: 2026-08-05\nhost: aarch64-apple-darwin\nlibgit2: 1.9.7 (sys:0.21.0 system)\nlibcurl: 8.7.1 (sys:0.4.90+curl-8.21.0 system ssl:(SecureTransport) LibreSSL/3.3.6)\nos: Mac OS 26.6.2 [64-bit]\n"
+    },
+    "rustc": {
+      "path": "/opt/homebrew/bin/rustc",
+      "resolved_path": "/opt/homebrew/Cellar/rust/1.98.1/bin/rustc",
+      "sha256": "2814fb55fb9cfb3eef5848a8104d77e3de7fd95394661144a12ee90cd4405340",
+      "version": "rustc 1.98.1 (48a229cea 2026-09-01) (Homebrew)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n"
+    }
+  },
+  "sequence_note": "Copied private Cargo home; prepare/check-only/tests; locked offline metadata; debug public RED/GREEN/probe and library tests/clippy; this sole combined release command; later CLI/example tests used test/debug profiles only. Final actual proofs used retained release producer. No source change or release rebuild after commit71e766e."
+}

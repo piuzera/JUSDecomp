@@ -1,0 +1,1395 @@
+{
+  "schema_version": 1,
+  "scope": "bounded ordinary C++ ABI candidates",
+  "source_credit": 0,
+  "promotion_status": "not_activated",
+  "reference": {
+    "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9",
+    "functions": [
+      {
+        "name": "func_0206c244",
+        "offset": 0,
+        "size": 596,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".text",
+        "offset": 40,
+        "type": 1,
+        "symbol": "func_02010238",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 56,
+        "type": 1,
+        "symbol": "func_0201024c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 60,
+        "type": 1,
+        "symbol": "func_0203b404",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 68,
+        "type": 1,
+        "symbol": "func_0206c498",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 80,
+        "type": 1,
+        "symbol": "func_02035e88",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 148,
+        "type": 1,
+        "symbol": "func_02032a4c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 152,
+        "type": 1,
+        "symbol": "func_02011b38",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 184,
+        "type": 1,
+        "symbol": "func_02023894",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 228,
+        "type": 1,
+        "symbol": "func_0206c4d4",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 300,
+        "type": 1,
+        "symbol": "func_0206c514",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 320,
+        "type": 1,
+        "symbol": "func_020107f4",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 324,
+        "type": 1,
+        "symbol": "func_0206c54c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 372,
+        "type": 1,
+        "symbol": "func_02023cd0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 392,
+        "type": 1,
+        "symbol": "func_0201a21c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 408,
+        "type": 1,
+        "symbol": "func_0202f8a4",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 436,
+        "type": 1,
+        "symbol": "func_0201a21c",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 456,
+        "type": 1,
+        "symbol": "func_0202c4ac",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 532,
+        "type": 2,
+        "symbol": "data_020afc40",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 536,
+        "type": 2,
+        "symbol": "data_020afc4c",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 544,
+        "type": 2,
+        "symbol": "data_0209e050",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 548,
+        "type": 2,
+        "symbol": "data_020923b4",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 552,
+        "type": 2,
+        "symbol": "func_02074540",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 560,
+        "type": 2,
+        "symbol": "func_0206c57c",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 564,
+        "type": 2,
+        "symbol": "data_0209dff0",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 568,
+        "type": 2,
+        "symbol": "data_0209dfbc",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 572,
+        "type": 2,
+        "symbol": "data_0209e258",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 576,
+        "type": 2,
+        "symbol": "data_0209e244",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 580,
+        "type": 2,
+        "symbol": "data_0209e26c",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 584,
+        "type": 2,
+        "symbol": "data_0209e280",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 588,
+        "type": 2,
+        "symbol": "data_0209e068",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 592,
+        "type": 2,
+        "symbol": "data_02099640",
+        "addend": 0
+      }
+    ],
+    "sections": [
+      {
+        "name": ".text",
+        "size": 596,
+        "flags": 6,
+        "sha256": "171c0661b1ebcf0105cf74f5b0ec0dbe1dd431ed3b94b1e290a2f7df95d14748"
+      }
+    ]
+  },
+  "saved_contexts": {
+    "schema_version": 1,
+    "target": {
+      "symbol": "func_0206c244",
+      "module": "main",
+      "address": "0x0206c244",
+      "extent": 596,
+      "publication": "../targets.json",
+      "source_gate_scope": "complete TU; no ignored allocated sections"
+    },
+    "reference_sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9",
+    "reference_generation": {
+      "config_input": "private copied baseline config with rom_config pointing to existing extract/config.yaml",
+      "appended_delink_entry": "src/main/common_effect_init.cpp:\n    complete\n    .text start:0x0206c244 end:0x0206c498\n",
+      "command": [
+        "dsd-macos-arm64",
+        "delink",
+        "-c",
+        "build/initializer-trial/config/config.yaml",
+        "--main"
+      ]
+    },
+    "compiler_package": "2.0/base",
+    "cpu": "arm946e",
+    "language": "C++",
+    "headers": {},
+    "include_paths": [],
+    "sources": [
+      {
+        "id": "member_bridge",
+        "path": "decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp",
+        "sha256": "acc69eda272a5e10d6b7a58db8e09617e56b841014459a180497574525c8f94c"
+      }
+    ],
+    "contexts": [
+      {
+        "id": "O2",
+        "flags": [
+          "-Cpp_exceptions",
+          "off",
+          "-nostdinc",
+          "-O2"
+        ]
+      },
+      {
+        "id": "O2-p",
+        "flags": [
+          "-Cpp_exceptions",
+          "off",
+          "-nostdinc",
+          "-O2,p"
+        ]
+      },
+      {
+        "id": "O2-inline-all",
+        "flags": [
+          "-Cpp_exceptions",
+          "off",
+          "-nostdinc",
+          "-O2",
+          "-inline",
+          "all"
+        ]
+      }
+    ],
+    "abi_limits": [
+      "virtual-slot calls model only explicitly prepared values; complete argument signatures remain unresolved",
+      "initializer void return is candidate interface; no original source-language return type inferred",
+      "code addresses use Word; declaration-only functions are never invoked as callbacks in this TU",
+      "reserved resource virtual declarations supply observed slot position only; no original semantic class or full method signature inferred"
+    ],
+    "approach": "declaration-only resource virtual ABI view; three-word constructor address encodings are hypotheses",
+    "scope": "Exactly three contexts for a trivial inline member bridge only; no extra sweep authorized",
+    "base_source": {
+      "path": "decomp/matching-notes/pilot-t06/initializer-virtual-view/resource_view.cpp",
+      "sha256": "c36294835a5057d5543ee7ff61939e034965f1e520e214e42f16dad0065b4f60"
+    }
+  },
+  "tool_hashes": {
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "trials": [
+    {
+      "source": "member_bridge",
+      "context": "O2",
+      "result": {
+        "status": "failed",
+        "accepted_units": 0,
+        "objects": {},
+        "units": [
+          {
+            "module": "main",
+            "object": "src/main/common_effect_init.o",
+            "source": "decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp",
+            "functions": [
+              "func_0206c244"
+            ],
+            "category": "game",
+            "cpu": "arm946e",
+            "flags": [
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2"
+            ],
+            "include_paths": [],
+            "headers": {},
+            "compiler": {
+              "package": "2.0/base",
+              "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+              "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+              "selection_scope": "bounded initializer experiment only"
+            },
+            "abi": {
+              "language": "C++",
+              "instruction_mode": "arm",
+              "endianness": "little",
+              "pointer_bits": 32,
+              "settings": "pinned compiler defaults"
+            },
+            "link_name": "common_effect_init.o",
+            "status": "failed",
+            "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "source_sha256": "acc69eda272a5e10d6b7a58db8e09617e56b841014459a180497574525c8f94c",
+            "reference": {
+              "path": "/private/tmp/jus-track-a-initializer/build/initializer-trial/delinks/src/main/common_effect_init.o",
+              "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9"
+            },
+            "include_hashes": {},
+            "cpu_flags": [
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2"
+            ],
+            "command": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-c",
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-o",
+              "/private/tmp/jus-track-a-initializer-member-bridge/build/member-bridge-trial/member_bridge/O2/src/main/common_effect_init.o",
+              "/private/tmp/jus-track-a-initializer-member-bridge/decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp"
+            ],
+            "dependencies": {
+              "schema_version": 1,
+              "policy": "header_free",
+              "status": "passed",
+              "ordered_dependencies": [
+                "decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp"
+              ],
+              "headers": {},
+              "include_paths": [],
+              "forced_headers": [],
+              "source_credit": 0
+            },
+            "stdout": "",
+            "stderr": "",
+            "exit_status": 0,
+            "compiled": {
+              "path": "/private/tmp/jus-track-a-initializer-member-bridge/build/member-bridge-trial/member_bridge/O2/src/main/common_effect_init.o",
+              "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+            }
+          }
+        ],
+        "failure": "relocation identities/offsets/types/symbols/addends differ"
+      },
+      "object": {
+        "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7",
+        "functions": [
+          {
+            "name": "func_0206c244",
+            "offset": 0,
+            "size": 596,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 40,
+            "type": 1,
+            "symbol": "func_02010238",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 56,
+            "type": 1,
+            "symbol": "func_0201024c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 60,
+            "type": 1,
+            "symbol": "func_0203b404",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 68,
+            "type": 1,
+            "symbol": "func_0206c498",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 80,
+            "type": 1,
+            "symbol": "func_02035e88",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 148,
+            "type": 1,
+            "symbol": "func_02032a4c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 152,
+            "type": 1,
+            "symbol": "func_02011b38",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 184,
+            "type": 1,
+            "symbol": "func_02023894",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 228,
+            "type": 1,
+            "symbol": "func_0206c4d4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 300,
+            "type": 1,
+            "symbol": "func_0206c514",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 320,
+            "type": 1,
+            "symbol": "func_020107f4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 324,
+            "type": 1,
+            "symbol": "func_0206c54c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 372,
+            "type": 1,
+            "symbol": "func_02023cd0",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 392,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 408,
+            "type": 1,
+            "symbol": "func_0202f8a4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 436,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 456,
+            "type": 1,
+            "symbol": "func_0202c4ac",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 532,
+            "type": 2,
+            "symbol": "data_020afc40",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 536,
+            "type": 2,
+            "symbol": "data_020afc4c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 544,
+            "type": 2,
+            "symbol": "data_0209e050",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 548,
+            "type": 2,
+            "symbol": "data_020923b4",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 552,
+            "type": 2,
+            "symbol": "func_02074540",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 560,
+            "type": 2,
+            "symbol": "func_0206c57c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 564,
+            "type": 2,
+            "symbol": "data_0209dff0",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 568,
+            "type": 2,
+            "symbol": "data_0209dfbc",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 572,
+            "type": 2,
+            "symbol": "data_0209e258",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 576,
+            "type": 2,
+            "symbol": "data_0209e244",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 580,
+            "type": 2,
+            "symbol": "data_0209e280",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 584,
+            "type": 2,
+            "symbol": "data_0209e26c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 588,
+            "type": 2,
+            "symbol": "data_0209e068",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 592,
+            "type": 2,
+            "symbol": "data_02099640",
+            "addend": 0
+          }
+        ],
+        "sections": [
+          {
+            "name": ".text",
+            "size": 596,
+            "flags": 6,
+            "sha256": "4f8d63ade9c3acc4da74234ba5ca6a768774f0baaa4754e1ad840fa2a5f271d6"
+          }
+        ]
+      },
+      "masked_mismatches": {
+        ".text": {
+          "reference_size": 596,
+          "compiled_size": 596,
+          "positions": [
+            449,
+            453
+          ]
+        }
+      }
+    },
+    {
+      "source": "member_bridge",
+      "context": "O2-p",
+      "result": {
+        "status": "failed",
+        "accepted_units": 0,
+        "objects": {},
+        "units": [
+          {
+            "module": "main",
+            "object": "src/main/common_effect_init.o",
+            "source": "decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp",
+            "functions": [
+              "func_0206c244"
+            ],
+            "category": "game",
+            "cpu": "arm946e",
+            "flags": [
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2,p"
+            ],
+            "include_paths": [],
+            "headers": {},
+            "compiler": {
+              "package": "2.0/base",
+              "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+              "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+              "selection_scope": "bounded initializer experiment only"
+            },
+            "abi": {
+              "language": "C++",
+              "instruction_mode": "arm",
+              "endianness": "little",
+              "pointer_bits": 32,
+              "settings": "pinned compiler defaults"
+            },
+            "link_name": "common_effect_init.o",
+            "status": "failed",
+            "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "source_sha256": "acc69eda272a5e10d6b7a58db8e09617e56b841014459a180497574525c8f94c",
+            "reference": {
+              "path": "/private/tmp/jus-track-a-initializer/build/initializer-trial/delinks/src/main/common_effect_init.o",
+              "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9"
+            },
+            "include_hashes": {},
+            "cpu_flags": [
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2,p"
+            ],
+            "command": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-c",
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2,p",
+              "-o",
+              "/private/tmp/jus-track-a-initializer-member-bridge/build/member-bridge-trial/member_bridge/O2-p/src/main/common_effect_init.o",
+              "/private/tmp/jus-track-a-initializer-member-bridge/decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp"
+            ],
+            "dependencies": {
+              "schema_version": 1,
+              "policy": "header_free",
+              "status": "passed",
+              "ordered_dependencies": [
+                "decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp"
+              ],
+              "headers": {},
+              "include_paths": [],
+              "forced_headers": [],
+              "source_credit": 0
+            },
+            "stdout": "",
+            "stderr": "",
+            "exit_status": 0,
+            "compiled": {
+              "path": "/private/tmp/jus-track-a-initializer-member-bridge/build/member-bridge-trial/member_bridge/O2-p/src/main/common_effect_init.o",
+              "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+            }
+          }
+        ],
+        "failure": "relocation identities/offsets/types/symbols/addends differ"
+      },
+      "object": {
+        "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7",
+        "functions": [
+          {
+            "name": "func_0206c244",
+            "offset": 0,
+            "size": 596,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 40,
+            "type": 1,
+            "symbol": "func_02010238",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 56,
+            "type": 1,
+            "symbol": "func_0201024c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 60,
+            "type": 1,
+            "symbol": "func_0203b404",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 68,
+            "type": 1,
+            "symbol": "func_0206c498",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 80,
+            "type": 1,
+            "symbol": "func_02035e88",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 148,
+            "type": 1,
+            "symbol": "func_02032a4c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 152,
+            "type": 1,
+            "symbol": "func_02011b38",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 184,
+            "type": 1,
+            "symbol": "func_02023894",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 228,
+            "type": 1,
+            "symbol": "func_0206c4d4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 300,
+            "type": 1,
+            "symbol": "func_0206c514",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 320,
+            "type": 1,
+            "symbol": "func_020107f4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 324,
+            "type": 1,
+            "symbol": "func_0206c54c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 372,
+            "type": 1,
+            "symbol": "func_02023cd0",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 392,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 408,
+            "type": 1,
+            "symbol": "func_0202f8a4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 436,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 456,
+            "type": 1,
+            "symbol": "func_0202c4ac",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 532,
+            "type": 2,
+            "symbol": "data_020afc40",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 536,
+            "type": 2,
+            "symbol": "data_020afc4c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 544,
+            "type": 2,
+            "symbol": "data_0209e050",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 548,
+            "type": 2,
+            "symbol": "data_020923b4",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 552,
+            "type": 2,
+            "symbol": "func_02074540",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 560,
+            "type": 2,
+            "symbol": "func_0206c57c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 564,
+            "type": 2,
+            "symbol": "data_0209dff0",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 568,
+            "type": 2,
+            "symbol": "data_0209dfbc",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 572,
+            "type": 2,
+            "symbol": "data_0209e258",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 576,
+            "type": 2,
+            "symbol": "data_0209e244",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 580,
+            "type": 2,
+            "symbol": "data_0209e280",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 584,
+            "type": 2,
+            "symbol": "data_0209e26c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 588,
+            "type": 2,
+            "symbol": "data_0209e068",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 592,
+            "type": 2,
+            "symbol": "data_02099640",
+            "addend": 0
+          }
+        ],
+        "sections": [
+          {
+            "name": ".text",
+            "size": 596,
+            "flags": 6,
+            "sha256": "4f8d63ade9c3acc4da74234ba5ca6a768774f0baaa4754e1ad840fa2a5f271d6"
+          }
+        ]
+      },
+      "masked_mismatches": {
+        ".text": {
+          "reference_size": 596,
+          "compiled_size": 596,
+          "positions": [
+            449,
+            453
+          ]
+        }
+      }
+    },
+    {
+      "source": "member_bridge",
+      "context": "O2-inline-all",
+      "result": {
+        "status": "failed",
+        "accepted_units": 0,
+        "objects": {},
+        "units": [
+          {
+            "module": "main",
+            "object": "src/main/common_effect_init.o",
+            "source": "decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp",
+            "functions": [
+              "func_0206c244"
+            ],
+            "category": "game",
+            "cpu": "arm946e",
+            "flags": [
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all"
+            ],
+            "include_paths": [],
+            "headers": {},
+            "compiler": {
+              "package": "2.0/base",
+              "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+              "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+              "selection_scope": "bounded initializer experiment only"
+            },
+            "abi": {
+              "language": "C++",
+              "instruction_mode": "arm",
+              "endianness": "little",
+              "pointer_bits": 32,
+              "settings": "pinned compiler defaults"
+            },
+            "link_name": "common_effect_init.o",
+            "status": "failed",
+            "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "source_sha256": "acc69eda272a5e10d6b7a58db8e09617e56b841014459a180497574525c8f94c",
+            "reference": {
+              "path": "/private/tmp/jus-track-a-initializer/build/initializer-trial/delinks/src/main/common_effect_init.o",
+              "sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9"
+            },
+            "include_hashes": {},
+            "cpu_flags": [
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all"
+            ],
+            "command": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-c",
+              "-proc",
+              "arm946e",
+              "-Cpp_exceptions",
+              "off",
+              "-nostdinc",
+              "-O2",
+              "-inline",
+              "all",
+              "-o",
+              "/private/tmp/jus-track-a-initializer-member-bridge/build/member-bridge-trial/member_bridge/O2-inline-all/src/main/common_effect_init.o",
+              "/private/tmp/jus-track-a-initializer-member-bridge/decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp"
+            ],
+            "dependencies": {
+              "schema_version": 1,
+              "policy": "header_free",
+              "status": "passed",
+              "ordered_dependencies": [
+                "decomp/matching-notes/pilot-t06/initializer-member-bridge/member_bridge.cpp"
+              ],
+              "headers": {},
+              "include_paths": [],
+              "forced_headers": [],
+              "source_credit": 0
+            },
+            "stdout": "",
+            "stderr": "",
+            "exit_status": 0,
+            "compiled": {
+              "path": "/private/tmp/jus-track-a-initializer-member-bridge/build/member-bridge-trial/member_bridge/O2-inline-all/src/main/common_effect_init.o",
+              "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+            }
+          }
+        ],
+        "failure": "relocation identities/offsets/types/symbols/addends differ"
+      },
+      "object": {
+        "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7",
+        "functions": [
+          {
+            "name": "func_0206c244",
+            "offset": 0,
+            "size": 596,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 40,
+            "type": 1,
+            "symbol": "func_02010238",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 56,
+            "type": 1,
+            "symbol": "func_0201024c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 60,
+            "type": 1,
+            "symbol": "func_0203b404",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 68,
+            "type": 1,
+            "symbol": "func_0206c498",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 80,
+            "type": 1,
+            "symbol": "func_02035e88",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 148,
+            "type": 1,
+            "symbol": "func_02032a4c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 152,
+            "type": 1,
+            "symbol": "func_02011b38",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 184,
+            "type": 1,
+            "symbol": "func_02023894",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 228,
+            "type": 1,
+            "symbol": "func_0206c4d4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 300,
+            "type": 1,
+            "symbol": "func_0206c514",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 320,
+            "type": 1,
+            "symbol": "func_020107f4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 324,
+            "type": 1,
+            "symbol": "func_0206c54c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 372,
+            "type": 1,
+            "symbol": "func_02023cd0",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 392,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 408,
+            "type": 1,
+            "symbol": "func_0202f8a4",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 436,
+            "type": 1,
+            "symbol": "func_0201a21c",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 456,
+            "type": 1,
+            "symbol": "func_0202c4ac",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 532,
+            "type": 2,
+            "symbol": "data_020afc40",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 536,
+            "type": 2,
+            "symbol": "data_020afc4c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 544,
+            "type": 2,
+            "symbol": "data_0209e050",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 548,
+            "type": 2,
+            "symbol": "data_020923b4",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 552,
+            "type": 2,
+            "symbol": "func_02074540",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 560,
+            "type": 2,
+            "symbol": "func_0206c57c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 564,
+            "type": 2,
+            "symbol": "data_0209dff0",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 568,
+            "type": 2,
+            "symbol": "data_0209dfbc",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 572,
+            "type": 2,
+            "symbol": "data_0209e258",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 576,
+            "type": 2,
+            "symbol": "data_0209e244",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 580,
+            "type": 2,
+            "symbol": "data_0209e280",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 584,
+            "type": 2,
+            "symbol": "data_0209e26c",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 588,
+            "type": 2,
+            "symbol": "data_0209e068",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 592,
+            "type": 2,
+            "symbol": "data_02099640",
+            "addend": 0
+          }
+        ],
+        "sections": [
+          {
+            "name": ".text",
+            "size": 596,
+            "flags": 6,
+            "sha256": "4f8d63ade9c3acc4da74234ba5ca6a768774f0baaa4754e1ad840fa2a5f271d6"
+          }
+        ]
+      },
+      "masked_mismatches": {
+        ".text": {
+          "reference_size": 596,
+          "compiled_size": 596,
+          "positions": [
+            449,
+            453
+          ]
+        }
+      }
+    }
+  ],
+  "exact_object_trials": [],
+  "status": "completed",
+  "implementation_sha256": {
+    "source_build.py": "9e62de2961c3746a09505f3188204fcab29a818b1e1e645ae1bc44f858aeb625",
+    "compiler_experiments.py": "fe14614c81b8a3e4fb556a61d3780df14e0f4db90e38d4a2c276d84e30ab7a12",
+    "native_link.py": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+    "header_dependencies.py": "c03237d6dda4792b7edc016dcd88d04337b22d5ad17fc7b5d7e0c0e5bd34b278"
+  },
+  "base_commit": "d2b9705a29f9a77fd6fca251cf80abd84e0290ed",
+  "source_shape": "Trivial inline ordinary member bridge around only func_0202c4ac; all physical stores and semantic arguments unchanged.",
+  "bounded_scope": "Exactly3 requested contexts; no expanded sweep after unchanged object output.",
+  "prior_object_comparisons": [
+    {
+      "prior_source": "resource_view",
+      "prior_context": "O2",
+      "report": "../initializer-virtual-view/virtual-view-report.json",
+      "whole_raw_object_identical": true,
+      "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+    },
+    {
+      "prior_source": "resource_view",
+      "prior_context": "O2-p",
+      "report": "../initializer-virtual-view/virtual-view-report.json",
+      "whole_raw_object_identical": true,
+      "sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+    }
+  ],
+  "reproducer_sha256": "bda52a96d3eb2b035d11eb2580d2b03b2b32ea49a40591efaf5d918dfbac8d26"
+}

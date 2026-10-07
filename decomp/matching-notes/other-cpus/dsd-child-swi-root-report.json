@@ -1,0 +1,44 @@
+{
+  "upstream_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+  "patch_sha256": "4a58df420e9d05d52d08f28307b37d9865e87cc0318d332f747065555c203d36",
+  "tool_sha256": "d1117b6126a27c3c1f8d429840c61671f492d7bcb22bedc84e42ed8509a5041f",
+  "strict_checks": true,
+  "source_credit": 0,
+  "commands": [
+    {
+      "command": [
+        "/private/tmp/jus-dsd-root-check/target/release-fast/dsd",
+        "rom",
+        "extract",
+        "--rom",
+        "/private/tmp/jus-track-a/build/other-cpus-final/parent/files/ChildRom/JSS2Child.srl",
+        "--output-path",
+        "/private/tmp/jus-track-a/build/dsd-child-root-proof/extract"
+      ],
+      "returncode": 0,
+      "log_sha256": "dfce01df00ee4353875e81bcaacc01c2b67b77d138293c8d0c6eff2eaf84331e"
+    },
+    {
+      "command": [
+        "/private/tmp/jus-dsd-root-check/target/release-fast/dsd",
+        "init",
+        "--rom-config",
+        "/private/tmp/jus-track-a/build/dsd-child-root-proof/extract/config.yaml",
+        "--output-path",
+        "/private/tmp/jus-track-a/build/dsd-child-root-proof/analysis",
+        "--build-path",
+        "/private/tmp/jus-track-a/build/dsd-child-root-proof/objects"
+      ],
+      "returncode": 0,
+      "log_sha256": "3c29585f60322ceab8248abdd597aecac501cbf3824a09f6dd15fbb896ff139f"
+    }
+  ],
+  "status": "passed",
+  "patched_source_commit": "78630f8f54835e0e627cd4e45a9626d88c307f8b",
+  "source_file_hashes": {
+    "lib/src/analysis/functions.rs": "1712bde2b644ff12f276339d8e33ca92177e651946062a0ead58171c3b264ccc",
+    "lib/src/config/module.rs": "ffddf5a1ca34bb2e852dcf827bfdff0568563ea3a5b61af927f28f3fae0d152d",
+    "Cargo.lock": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2"
+  },
+  "patch_reapplication": "Final published patch reapplied after restoring exact upstream files. Source file hashes are identical to the independently built and tested source and worker commit."
+}

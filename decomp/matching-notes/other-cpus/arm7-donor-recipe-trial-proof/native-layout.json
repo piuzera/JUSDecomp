@@ -1,0 +1,67 @@
+{
+  "image_bytes": 165552,
+  "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+  "entry": 37224448,
+  "segments": [
+    {
+      "alignment": 4,
+      "file_bytes": 432,
+      "file_offset": 244,
+      "flags": 4,
+      "lma": 37224448,
+      "memory_bytes": 432,
+      "section": ".arm7.startup",
+      "vma": 37224448
+    },
+    {
+      "alignment": 4,
+      "file_bytes": 24,
+      "file_offset": 676,
+      "flags": 4,
+      "lma": 37389976,
+      "memory_bytes": 24,
+      "section": ".arm7.table",
+      "vma": 37389976
+    },
+    {
+      "alignment": 4,
+      "file_bytes": 98976,
+      "file_offset": 700,
+      "flags": 4,
+      "lma": 37291000,
+      "memory_bytes": 98976,
+      "section": ".arm7.autoload1",
+      "vma": 41811968
+    },
+    {
+      "alignment": 4,
+      "file_bytes": 0,
+      "file_offset": 99676,
+      "flags": 6,
+      "lma": 41910944,
+      "memory_bytes": 6504,
+      "section": ".arm7.bss.autoload1",
+      "vma": 41910944
+    },
+    {
+      "alignment": 4,
+      "file_bytes": 66120,
+      "file_offset": 99676,
+      "flags": 4,
+      "lma": 37224880,
+      "memory_bytes": 66120,
+      "section": ".arm7.autoload0",
+      "vma": 58687488
+    },
+    {
+      "alignment": 4,
+      "file_bytes": 0,
+      "file_offset": 165796,
+      "flags": 6,
+      "lma": 58753608,
+      "memory_bytes": 14920,
+      "section": ".arm7.bss.autoload0",
+      "vma": 58753608
+    }
+  ]
+}

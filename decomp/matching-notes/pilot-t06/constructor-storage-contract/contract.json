@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "kind": "original_machine_storage_contract",
+  "scope_bead": "jus-bjry.36",
+  "notes_base_commit": "dc61c14e3c4cb3b0e8466c24522974a1c53f65e8",
+  "canonical_source_credit": {
+    "arm9_bytes": 304,
+    "arm7_bytes": 0,
+    "added_bytes": 0,
+    "t06": "open",
+    "global_readiness": "unknown"
+  },
+  "rom": {
+    "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "bytes": 67108864,
+    "header_arm9": {
+      "rom_offset": "0x4000",
+      "load_address": "0x02000000",
+      "stored_bytes": 692568
+    },
+    "main_bytes": 656832,
+    "ov012": {
+      "base": "0x021ac1c0",
+      "rom_offset": "0x1e6e00",
+      "bytes": 167776,
+      "file_id": 12,
+      "compression_flags": 0
+    }
+  },
+  "source_pins": {
+    "decomp/arm9/config.yaml": "e40459bbe3e1dc0edf9f0c7965f6b1b7304b9b88142b04c6418c2e2db281026b",
+    "decomp/arm9/delinks.txt": "23b2e570f703bf03d90045a0f3becd4b7649b6fe0762102fef5132a83430dd3c",
+    "decomp/arm9/dtcm/delinks.txt": "e11b111b8f3ce492d827b58b271583ac85f4706dccc9783679f2cd460c776381",
+    "decomp/arm9/dtcm/relocs.txt": "cb5d04f741c1b02c6c4a6f7b6a2792bae494cf7868b9c08543e1ed2dae1a59b9",
+    "decomp/arm9/dtcm/symbols.txt": "61e2b6d1ad05226dab08b1848852aefcf12f58efc9f164d48e56967728c667f7",
+    "decomp/arm9/itcm/delinks.txt": "9d79d5da7fde19182fd7b4d33757fd6ef34e743eae6e44dce4a4edcac90bd69c",
+    "decomp/arm9/itcm/relocs.txt": "02452987cb8fd39ec64ab30d3100679b7cee6d9608f13fba6efd0d1f5123f983",
+    "decomp/arm9/itcm/symbols.txt": "8abc48ac26b084418654bb6bbb7b53c3c6b046e3b9174917e9fc2b00fe98c0f6",
+    "decomp/arm9/overlays/ov000/delinks.txt": "710aba1f67dac3fb97d4d43f5eeda73b2ed88d1852ba6886f30c79c4896e8f6e",
+    "decomp/arm9/overlays/ov000/relocs.txt": "0d547c7df050545660eb3f73834ca7eda8d0d55a99a5ffb948045539845dd3f7",
+    "decomp/arm9/overlays/ov000/symbols.txt": "2ca0a0be1e4c455bc139290b10525a5feb56b38197ed15ebe7ee5b05289b7804",
+    "decomp/arm9/overlays/ov001/delinks.txt": "7b83e8ccfb9baca6490e4820b258df12d5853ff2cefd486c1e9c2338825b5a12",
+    "decomp/arm9/overlays/ov001/relocs.txt": "30cc2a4ea48bb7ff84f95c37181bdbe04b93c1a08886e3d1773d363d41755afc",
+    "decomp/arm9/overlays/ov001/symbols.txt": "aaa36c5a6f98d9c4bfbd1dfd1cb4c376b25080cc1c22933b56b90d60528ebc2b",
+    "decomp/arm9/overlays/ov002/delinks.txt": "d734638bde51e02c7405a3c97f4e9934272b83a0870db5bba1a6746240d3cb1a",
+    "decomp/arm9/overlays/ov002/relocs.txt": "808292a36c843ea8c842bc333a92b05287ae9e394cfc4491505f1fd48bf56fd3",
+    "decomp/arm9/overlays/ov002/symbols.txt": "5e50aa1dd6817b8db0d9b045e2fc577858aa5e8ff9b1af35130ebcfbc9d85e11",
+    "decomp/arm9/overlays/ov003/delinks.txt": "e74bf4bf2a8057f6df0bee41dfff0d61138db34f249b45baa9b1f302216c9d9a",
+    "decomp/arm9/overlays/ov003/relocs.txt": "3dc8e959d8eb0b84954708fb5cb965bb9b6939dd6f82591248264a434493d040",
+    "decomp/arm9/overlays/ov003/symbols.txt": "4b7bb78f0af632e3f328fb6806f5f69d35638df34867eb360315941a2d5329c2",
+    "decomp/arm9/overlays/ov004/delinks.txt": "9724ea33b471d5ddc729af906b2583525573af6b431fc24c03bd069c9803f9a4",
+    "decomp/arm9/overlays/ov004/relocs.txt": "4f65fa0e1c71bcc8f8649a7fb0f8db3527e409e8b17913d226f2e875be924a58",
+    "decomp/arm9/overlays/ov004/symbols.txt": "59f8b9d592fc0eed2e9195478bc478fd774e1c400fb5167666a8ed75a429f4c5",
+    "decomp/arm9/overlays/ov005/delinks.txt": "ac8fff5cb21f5b9d8cd61e6a27957146f74ec2e6db91979f94f8bbaf9e94fe67",
+    "decomp/arm9/overlays/ov005/relocs.txt": "860e60bb4cb8248d625f61ae32d2c37644c195181b68b71a2fb243e510279137",
+    "decomp/arm9/overlays/ov005/symbols.txt": "1959c534d0368b3368b82b0476f9d4d174d50cc7de7f3a9d0b5471493dffc903",
+    "decomp/arm9/overlays/ov006/delinks.txt": "f0d81b2c7bc7a8ad60f9a34ebce1a36f5d81469d4b666254f927f62cdcb33637",
+    "decomp/arm9/overlays/ov006/relocs.txt": "76b90e5cfb13562e7416b09809319b8cc95d6f810d93f4a928a6e42f1126b3d1",
+    "decomp/arm9/overlays/ov006/symbols.txt": "16ba28e3be97caf1a83a2e4a785ee507b52ad98f4849d6ba0ea9e23a80b02299",
+    "decomp/arm9/overlays/ov007/delinks.txt": "d918089d6667d8b50f4fa34302e3222b053822d0ba3022438a3010b9a61a6cae",
+    "decomp/arm9/overlays/ov007/relocs.txt": "2fde4d3a267c117bd3ccf08198acd25aeb4462d88250e58ebe61d421c25a9619",
+    "decomp/arm9/overlays/ov007/symbols.txt": "829bc7e2ac65d421b6fba7e6153bfee47e1f143522e704dc8210d383f967c3f3",
+    "decomp/arm9/overlays/ov008/delinks.txt": "13bd938d1dbf4c95f20c4013b9375e051eb693dfc20d8e802aadeb514cc1c55f",
+    "decomp/arm9/overlays/ov008/relocs.txt": "103ef4f1d022ebeb90de7beca08af4ea57aadc89cfb441e68a90cc85dca49d68",
+    "decomp/arm9/overlays/ov008/symbols.txt": "cb2cd2d177441ea26b7e85844a4580f78341e3a002776a5f6a173aab3edec2fa",
+    "decomp/arm9/overlays/ov009/delinks.txt": "778d10dd11e3dc0507d11868c8e3201f3e24578126440dbc8e8cac75c86341ca",
+    "decomp/arm9/overlays/ov009/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/overlays/ov010/delinks.txt": "b8ef24508d73ff2521ffac3d3c6260c38fc24249530d2624d33020f579486a37",
+    "decomp/arm9/overlays/ov010/relocs.txt": "8d9e3d6d47666943f95960b91d3eaa69e4b53d1ced2a127a87086328c0961033",
+    "decomp/arm9/overlays/ov010/symbols.txt": "417defbc3de3dbb2594a1568ccf5d347f70de3487599956a20ab90d3a8c60773",
+    "decomp/arm9/overlays/ov011/delinks.txt": "8a33ca98991daa45f909357976487d2e9a5dfc9dcf64d2d1e8a029cbc3c8085f",
+    "decomp/arm9/overlays/ov011/relocs.txt": "68bd78a3b9c0ece891805b77159beedb44ebd96aa4028b94814dfcb16ad87fd6",
+    "decomp/arm9/overlays/ov011/symbols.txt": "44a2dcc04251c1f4a2109c2c9a092a0aa6f70289d2f0d79a0c9b3568240b23e8",
+    "decomp/arm9/overlays/ov012/delinks.txt": "0c4c72cde626523db37dd21c02a71798610bb13256afb8f03b0443e91ec02958",
+    "decomp/arm9/overlays/ov012/relocs.txt": "34627c8880fe61c35fa010bc444428272a5acb74636dfd7deb78cc2793306a96",
+    "decomp/arm9/overlays/ov012/symbols.txt": "df3b6740b76acfa9db397473a906ec9e83e751340612c60f086bd06b99bfba11",
+    "decomp/arm9/overlays/ov013/delinks.txt": "befc94193f3edeb56fd3860b8642d0f8c75cc3fd0837888cc2bf08d0d153dc3b",
+    "decomp/arm9/overlays/ov013/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/relocs.txt": "f78ed8d3d65fd92c992765bec2df24ef557738b05dc1007aef91c4e9db833022",
+    "decomp/arm9/symbols.txt": "d73d18a6183b55ac8d7ee009c81003f6fa273ee674ee4b66a776027fb4a88566",
+    "decomp/matching-notes/baseline-t01/executable-regions.json": "6d4d7f88e5edd14c07c449331f6c96dd2597b4d98f8377f253945585f9823610",
+    "decomp/toolchain.lock.json": "9d713539bd7ad25c4d870ec691cd39418173400fb98461b68ac17067c2cdbe94",
+    "tools/scripts/native_link.py": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+    "tools/scripts/verify.py": "d6d91117bb3a3e4a163c153c797b5ba89d37308fc866228de9394e3c5d0a1f90"
+  },
+  "tools": {
+    "dsd": {
+      "version": "0.12.0",
+      "source_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+      "asset": "dsd-macos-arm64",
+      "url": "https://github.com/AetiasHax/ds-decomp/releases/download/v0.12.0/dsd-macos-arm64",
+      "sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+      "verified_version_output": "ds-decomp-cli 0.12.0",
+      "equivalence_to_upstream_windows_binary": "not_verified"
+    }
+  },
+  "target": {
+    "symbol": "func_0202c4ac",
+    "region": "ARM9/main",
+    "instruction_bytes": 84,
+    "literal_bytes": 8,
+    "full_bytes": 92,
+    "instruction_words": [
+      "e92d4010",
+      "e59f3048",
+      "e1a04000",
+      "e5843000",
+      "e3a00000",
+      "e9840003",
+      "e3520000",
+      "11a01002",
+      "e584100c",
+      "e5940008",
+      "eb001875",
+      "e1c401b0",
+      "e594000c",
+      "eb001872",
+      "e1c401b2",
+      "e59f1014",
+      "e1a00004",
+      "e591230c",
+      "e2822001",
+      "e581230c",
+      "e8bd8010"
+    ],
+    "outgoing_relocations": [
+      {
+        "address": "0x0202c4d4",
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "address": "0x0202c4e0",
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "address": "0x0202c500",
+        "type": 2,
+        "symbol": "data_02098708",
+        "addend": 0
+      },
+      {
+        "address": "0x0202c504",
+        "type": 2,
+        "symbol": "data_020a0c34",
+        "addend": 0
+      }
+    ],
+    "minimum_storage_bytes": 20,
+    "return": "Original incoming r0 storage",
+    "direct_allocation": "None",
+    "writes": [
+      {
+        "offset": "+0",
+        "width": 4,
+        "value": "02098708"
+      },
+      {
+        "offset": "+4",
+        "width": 4,
+        "value": 0
+      },
+      {
+        "offset": "+8",
+        "width": 4,
+        "value": "Incoming r1 key"
+      },
+      {
+        "offset": "+c",
+        "width": 4,
+        "value": "Incoming r2 when nonzero, otherwise incoming r1"
+      },
+      {
+        "offset": "+10",
+        "width": 2,
+        "value": "Low16bits of020326b0(key)"
+      },
+      {
+        "offset": "+12",
+        "width": 2,
+        "value": "Low16bits of020326b0(selected label)"
+      }
+    ],
+    "global_write": {
+      "address": "0x020a0f40",
+      "operation": "32-bit value plus1 modulo2^32",
+      "load": "0x0202c4f0",
+      "store": "0x0202c4f8"
+    },
+    "normal_return_registers": {
+      "r0": "Incoming storage",
+      "r1": "0x020a0c34",
+      "r2": "Incremented 32-bit global word",
+      "r3": "0x02098708",
+      "r4": "Restored caller value",
+      "sp": "Restored caller value"
+    },
+    "helper": {
+      "symbol": "func_020326b0",
+      "bytes": 44,
+      "reads": "Signed bytes through incoming r0 until zero",
+      "calls": 0,
+      "null_guard": false,
+      "identity": "SDK or semantic hash name not claimed"
+    }
+  },
+  "function_records": [
+    {
+      "module": "main",
+      "symbol": "func_0202c4ac",
+      "address": "0x0202c4ac",
+      "full_extent_bytes": 92,
+      "rom_payload_sha256": "3b9caafec617800aa88608cf74a33b764525fa947907e2654a85867ede6a55ba",
+      "raw_object_payload_sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+    },
+    {
+      "module": "main",
+      "symbol": "func_020326b0",
+      "address": "0x020326b0",
+      "full_extent_bytes": 44,
+      "rom_payload_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+      "raw_object_payload_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0"
+    },
+    {
+      "module": "main",
+      "symbol": "func_02011e7c",
+      "address": "0x02011e7c",
+      "full_extent_bytes": 32,
+      "rom_payload_sha256": "4509c0b8bbbfd79a19186095cd1f2ecacdbac00727c36719534eb87c60974131",
+      "raw_object_payload_sha256": "727f00ef2c6f17d24865bd6c43e1436eebd076301bcf3eea504c84b1f45734c5"
+    },
+    {
+      "module": "main",
+      "symbol": "func_02011edc",
+      "address": "0x02011edc",
+      "full_extent_bytes": 32,
+      "rom_payload_sha256": "72a7d7b0b6588c1f7ebea611b9654b140b564375e93b0a590f50da0371877b5a",
+      "raw_object_payload_sha256": "727f00ef2c6f17d24865bd6c43e1436eebd076301bcf3eea504c84b1f45734c5"
+    },
+    {
+      "module": "main",
+      "symbol": "func_02012e94",
+      "address": "0x02012e94",
+      "full_extent_bytes": 32,
+      "rom_payload_sha256": "d4c482b21577dc463f4b06384b174ea1b8540aeee0cc412a6677997c563c3e7a",
+      "raw_object_payload_sha256": "727f00ef2c6f17d24865bd6c43e1436eebd076301bcf3eea504c84b1f45734c5"
+    },
+    {
+      "module": "main",
+      "symbol": "func_02013038",
+      "address": "0x02013038",
+      "full_extent_bytes": 32,
+      "rom_payload_sha256": "ea0fd67261c2e259ec6f3b3d346707d92b2b6afe9eaa00890e04627759a245b4",
+      "raw_object_payload_sha256": "727f00ef2c6f17d24865bd6c43e1436eebd076301bcf3eea504c84b1f45734c5"
+    },
+    {
+      "module": "main",
+      "symbol": "func_02020f7c",
+      "address": "0x02020f7c",
+      "full_extent_bytes": 1900,
+      "rom_payload_sha256": "a01a1aac17254cecff690f83889aa7db5d8768842aa37891b8ad3948b411a609",
+      "raw_object_payload_sha256": "a922358018937f8d1685e37436466900fc1bbf4ccd45e1b12e81617305d29e0f"
+    },
+    {
+      "module": "main",
+      "symbol": "func_020216e8",
+      "address": "0x020216e8",
+      "full_extent_bytes": 140,
+      "rom_payload_sha256": "96358605d90f0f0b40b9614d6ae14e6545f29b423b50265c2f6fd4fc65a44947",
+      "raw_object_payload_sha256": "4651d9977147f8f71264a78b1515073a11333b3b33fe62cfa47b15d6cd6ce0ac"
+    },
+    {
+      "module": "main",
+      "symbol": "func_0206c244",
+      "address": "0x0206c244",
+      "full_extent_bytes": 596,
+      "rom_payload_sha256": "c11efb830d6e8467c37b044646381c6481bf35e05860b259dcdb792cb0dc396f",
+      "raw_object_payload_sha256": "171c0661b1ebcf0105cf74f5b0ec0dbe1dd431ed3b94b1e290a2f7df95d14748"
+    },
+    {
+      "module": "main",
+      "symbol": "func_0207a52c",
+      "address": "0x0207a52c",
+      "full_extent_bytes": 32,
+      "rom_payload_sha256": "9c903d44ef89e2894ff63b2dd4279497dc1c4f238ce2d54b22c24719558b2c94",
+      "raw_object_payload_sha256": "727f00ef2c6f17d24865bd6c43e1436eebd076301bcf3eea504c84b1f45734c5"
+    },
+    {
+      "module": "ov012",
+      "symbol": "func_ov012_021b0660",
+      "address": "0x021b0660",
+      "full_extent_bytes": 512,
+      "rom_payload_sha256": "3c43b5fd11326de4b042e799cfefbe6adf98179dd9b21bad6c940e2aed355297",
+      "raw_object_payload_sha256": "28b7d3480f36a892484ea80c53e39839342991940f16785d39174e457a13036f"
+    },
+    {
+      "module": "ov012",
+      "symbol": "func_ov012_021b0860",
+      "address": "0x021b0860",
+      "full_extent_bytes": 32,
+      "rom_payload_sha256": "cea7d129235500e46c6bf432e69aa6b4b5dd7fbfe70ddd017695ae41ca4945c2",
+      "raw_object_payload_sha256": "727f00ef2c6f17d24865bd6c43e1436eebd076301bcf3eea504c84b1f45734c5"
+    },
+    {
+      "module": "ov012",
+      "symbol": "func_ov012_021b08ac",
+      "address": "0x021b08ac",
+      "full_extent_bytes": 32,
+      "rom_payload_sha256": "709a4ea68662b0bb8aad5e7aec41c304c078d2ef8aaf50d7b1e301c461310f14",
+      "raw_object_payload_sha256": "727f00ef2c6f17d24865bd6c43e1436eebd076301bcf3eea504c84b1f45734c5"
+    }
+  ],
+  "inbound_relocations": [
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_02011e7c",
+      "address": "0x02011e84",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_02011edc",
+      "address": "0x02011ee4",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_02012e94",
+      "address": "0x02012e9c",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_02013038",
+      "address": "0x02013040",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_02020f7c",
+      "address": "0x02021080",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_02020f7c",
+      "address": "0x0202140c",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_020216e8",
+      "address": "0x020216f0",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_0206c244",
+      "address": "0x0206c40c",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "section": ".text",
+      "caller_symbol": "func_0207a52c",
+      "address": "0x0207a534",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "section": ".text",
+      "caller_symbol": "func_ov012_021b0660",
+      "address": "0x021b06a2",
+      "type": 10,
+      "addend": -4
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "section": ".text",
+      "caller_symbol": "func_ov012_021b0660",
+      "address": "0x021b0742",
+      "type": 10,
+      "addend": -4
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "section": ".text",
+      "caller_symbol": "func_ov012_021b0860",
+      "address": "0x021b0868",
+      "type": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "section": ".text",
+      "caller_symbol": "func_ov012_021b08ac",
+      "address": "0x021b08b4",
+      "type": 1,
+      "addend": -8
+    }
+  ],
+  "caller_contexts": [
+    {
+      "caller": "func_02011e7c",
+      "call_sites": [
+        "0x02011e84"
+      ],
+      "storage": "Incoming r0, saved in r4; no allocation or null guard in this function.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Overwrite storage+0 with 0x02099c4c; return saved storage."
+    },
+    {
+      "caller": "func_02011edc",
+      "call_sites": [
+        "0x02011ee4"
+      ],
+      "storage": "Incoming r0, saved in r4; no allocation or null guard in this function.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Overwrite storage+0 with 0x020985b8; return saved storage."
+    },
+    {
+      "caller": "func_02012e94",
+      "call_sites": [
+        "0x02012e9c"
+      ],
+      "storage": "Incoming r0, saved in r4; no allocation or null guard in this function.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Overwrite storage+0 with 0x02097b38; return saved storage."
+    },
+    {
+      "caller": "func_02013038",
+      "call_sites": [
+        "0x02013040"
+      ],
+      "storage": "Incoming r0, saved in r4; no allocation or null guard in this function.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Overwrite storage+0 with 0x02097a90; return saved storage."
+    },
+    {
+      "caller": "func_0207a52c",
+      "call_sites": [
+        "0x0207a534"
+      ],
+      "storage": "Incoming r0, saved in r4; no allocation or null guard in this function.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Overwrite storage+0 with 0x020979e8; return saved storage."
+    },
+    {
+      "caller": "func_020216e8",
+      "call_sites": [
+        "0x020216f0"
+      ],
+      "storage": "Incoming r0 saved in r4; no allocation or null guard here. Observed main parent func_02020f7c allocates 104 bytes at 02021030 and 020210a8 and skips this wrapper on zero.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Write vptr 02098078; initialize embedded records at +14,+30,+4c through 02021774, then write self pointers at +2c,+48,+64; return storage."
+    },
+    {
+      "caller": "func_02020f7c",
+      "call_sites": [
+        "0x02021080",
+        "0x0202140c"
+      ],
+      "storage": "Each site gets a 20-byte allocation from 0201a228 at 0202106c or 020213f8, saves r0 in r4, and skips construction on zero.",
+      "key": [
+        "0209d544 = 2DPos",
+        "0209d564 = Color"
+      ],
+      "label": [
+        "0209d5a4 = 2D位置",
+        "0209d47c = 色"
+      ],
+      "after_call": "Overwrite vptr with 02098c48 or 02098858, then pass r4, including zero, to manager virtual +3c."
+    },
+    {
+      "caller": "func_0206c244",
+      "call_sites": [
+        "0x0206c40c"
+      ],
+      "storage": "Already settled: 40-byte allocation through 0201a21c at 0206c3f8, saved in r4, zero skips construction.",
+      "key": "0209e280 = EffectFlags",
+      "label": "0209e26c = エフェクトフラグ",
+      "after_call": "Already settled: intermediate vptr 0209e068; zero words+14,+18,+1c,+20; word+24=80; final vptr 02099640; manager receives r4 including zero."
+    },
+    {
+      "caller": "func_ov012_021b0660",
+      "call_sites": [
+        "0x021b06a2",
+        "0x021b0742"
+      ],
+      "storage": "First: 20-byte allocation via 0201a21c at 021b0696, r5 retains pointer and zero skips construction; store pointer in parent+20. Second:104-byte allocation at 021b0736, r4 retains pointer and zero skips construction; manager virtual+3c receives r4.",
+      "key": [
+        "021d25fc from pool021b07ec via r6",
+        "021d1898 from pool021b0828"
+      ],
+      "label": [
+        "021d25f0 from pool021b07e8 via r7",
+        "021d1838 from pool021b082c"
+      ],
+      "after_call": "First vptr 021d1e9c. Second vptr 02098078, embedded records+14,+30,+4c and self pointers+2c,+48,+64, then final vptr 021d21e4."
+    },
+    {
+      "caller": "func_ov012_021b0860",
+      "call_sites": [
+        "0x021b0868"
+      ],
+      "storage": "Incoming r0 saved r4; no allocation/null guard here.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Overwrite vptr 02099c4c; return storage."
+    },
+    {
+      "caller": "func_ov012_021b08ac",
+      "call_sites": [
+        "0x021b08b4"
+      ],
+      "storage": "Incoming r0 saved r4; no allocation/null guard here. Wrapper 021b0880 forwards incoming storage unchanged while setting r2=r1.",
+      "key": "Incoming r1 unchanged.",
+      "label": "Incoming r2 unchanged.",
+      "after_call": "Overwrite vptr 020985b8; return storage."
+    }
+  ],
+  "settled_prior_records": [
+    "../initializer-context-audit.md",
+    "../common-effect-contracts/contracts.json"
+  ],
+  "unresolved": [
+    "Original C++ type, constructor mangling and ownership",
+    "Allocator failure policy and universal success",
+    "Complete dynamic caller set and indirect calls",
+    "Separately recorded design and trial release"
+  ],
+  "original_metadata_source_commit": "6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b"
+}

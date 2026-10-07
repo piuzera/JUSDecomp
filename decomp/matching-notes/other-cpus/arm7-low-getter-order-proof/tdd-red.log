@@ -1,0 +1,13 @@
+F
+======================================================================
+FAIL: test_only_operand_flip_reproduces_same_object_and_rejection (__main__.OperandOrderReplayTests.test_only_operand_flip_reproduces_same_object_and_rejection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-low-getter-order-worker-proof/test_replay.py", line 12, in test_only_operand_flip_reproduces_same_object_and_rejection
+    self.assertTrue(script.exists(), 'public operand-order replay is not implemented')
+AssertionError: False is not true : public operand-order replay is not implemented
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

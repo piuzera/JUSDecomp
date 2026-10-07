@@ -1,0 +1,94 @@
+{
+  "status": "No flags",
+  "reviewer_model": "gpt-6-astra, parent-assigned cross-family reviewer",
+  "reviewed_source_commit": "1ebd198793b46934372ae7667971073f6437e7d1",
+  "reviewed_tracker_commit": "c878122e2601dcb634f8c0c56f8e59cc63a5e54a",
+  "bounds": "Final task38 published19-file package and append-only trail, including6 metadata files beyond prior frozen13-file runtime review; no full transcript claim. Read-only source/tracker inspection, own scratch only. No target compiler, original runtime or emulator used.",
+  "checks": {
+    "source_commit": "1ebd198793b46934372ae7667971073f6437e7d1",
+    "new_files": 19,
+    "Git_working_equal": true,
+    "only_other_diff": "append-only TSV",
+    "old_capsules_canonical_unchanged": true,
+    "acceptance_absent_in_63c21d6": true,
+    "ignored_pyc_absent_now": true,
+    "provenance": {
+      "source_pins": 57,
+      "raw": 10,
+      "typed": 47,
+      "all_old119subset": true
+    },
+    "receipts": [
+      {
+        "path": "/private/tmp/jus-38-root-published-fresh/readback.json",
+        "sha256": "f2194831ff4d28c9edabe50338fc3b54269f4b70e72a54d85963b72117c0e56a",
+        "verified_hashes": 539,
+        "ordinary_outputs_including_receipt": 478,
+        "exact_inventory": true,
+        "incoming_sites": 62,
+        "region_qualified_callers": 42
+      },
+      {
+        "path": "/private/tmp/jus-38-independent/fresh-public-final/readback.json",
+        "sha256": "89d19e087bdecaf973e3f93433c8edcc9dd2b456230841797cbc1c15b23ebfa3",
+        "verified_hashes": 539,
+        "ordinary_outputs_including_receipt": 478,
+        "exact_inventory": true,
+        "incoming_sites": 62,
+        "region_qualified_callers": 42
+      }
+    ],
+    "tracker_commit": "c878122e2601dcb634f8c0c56f8e59cc63a5e54a",
+    "tracker_states": {
+      "jus-bjry.38": "closed",
+      "jus-bjry.6": "in_progress",
+      "jus-bjry.10": "in_progress",
+      "jus-bjry": "open"
+    },
+    "tracker_blob_sha256": "c5669328337639cc62c6a3c7de1844abbe309a45c3a49d2e6b1c43a861a1849e"
+  },
+  "strict_publication_gate": {
+    "command": "python3 decomp/matching-notes/verify-evidence-pins.py decomp/matching-notes/pilot-t06/signed-byte-fold-contract/acceptance.json",
+    "exit_status": 0,
+    "Git_HEAD_and_working_pins": 31,
+    "distinction": "31 raw published-artifact pins; separate runtime closure57 inputs verified10 raw and47 typedLF-to-CRLF under unchanged old ownership."
+  },
+  "published_metadata_sha256": {
+    "acceptance.json": "bfc4acc00946fb792fd1513bf5955ef264f5cb854d789beb5a36930fa13e1708",
+    "evidence/root-published-readback.json": "cecc201deb8a12d0498975a6df4a29fc4c68b1590b70bdc81ecb99ef077a2bbd",
+    "evidence/root-static-readback.json": "af756c7bac77f79367b3d03223e46cfcb2ba7fc3a1f79524d9135f46e185bcde",
+    "evidence/independent-final-review.json": "bdce1460eea1d41b70b8a49741c2b790a17957e56be59a760b62ad1ded8babaf",
+    "evidence/independent-cli-controls.json": "05e6dcf0d20ed03ab817b2ab6cf6fa126f8f484ea4483e0d58604fbbbef3bb67",
+    "evidence/independent-frozen-review.json": "b413e3e21ea4a8a1bc1bd046fe18b21911600cb58e45ff8bd7540bfbe6735c20"
+  },
+  "publication_evidence": {
+    "initial_source_and_tracker_clean": true,
+    "source_HEAD_equals_local_origin_ref": "1ebd198793b46934372ae7667971073f6437e7d1",
+    "tracker_HEAD_equals_local_origin_ref": "c878122e2601dcb634f8c0c56f8e59cc63a5e54a",
+    "source_reflog": "1ebd198 update by push, preceded by576207b update by push",
+    "tracker_reflog": "c878122e update by push, preceded bybd1c9092 update by push",
+    "direct_server_query": "Not repeated after this reviewer environment DNS failure in prior audit; local ref equality and update-by-push reflogs corroborate parent-reported successful ordinary pushes."
+  },
+  "packaging_incident": {
+    "decision": "resolved and disclosed",
+    "evidence": "append-only TSV2026-10-06T02:16:34Z and task38comments1416/1417; inspected63c21d6 lacks acceptance,1ebd198 adds it; actual current Gate31 passes and ignored pyc absent",
+    "assessment": "Earlier rglob/continued-shell failure is retained as failed packaging, not retroactively claimed as a passing gate. No runtime/model/source credit change and no successful push claimed until correction."
+  },
+  "claim_limits_verified": {
+    "outcome": "static_contract_grounded",
+    "predictions_only": true,
+    "compiler_or_original_runtime_invoked": false,
+    "source_language_or_SDK_identity_recovered": false,
+    "canonical_source_bytes": 304,
+    "ARM7_source_bytes": 0,
+    "added": 0,
+    "global_percent": null,
+    "T06_and_T10_complete": false
+  },
+  "remaining_flags": [],
+  "exclusions": [
+    "Task39 and any later tracker changes are excluded; tracker snapshot anchored to c878122e.",
+    "A later copy or publication of this audit is outside inspected source1ebd198.",
+    "No full transcript or direct remote-server requery claimed."
+  ]
+}

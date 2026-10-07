@@ -1,0 +1,379 @@
+[
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "parent"
+      },
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    "selections": [
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58688616,
+          "end": 58688624
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58707660,
+          "end": 58707672
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708012,
+          "end": 58708036
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708036,
+          "end": 58708068
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708160,
+          "end": 58708168
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58707716,
+          "end": 58707756
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708068,
+          "end": 58708080
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707756,
+          "end": 58707784
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707784,
+          "end": 58707792
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707792,
+          "end": 58707808
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707808,
+          "end": 58707828
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707828,
+          "end": 58707836
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707844,
+          "end": 58707872
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707872,
+          "end": 58707880
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707880,
+          "end": 58707888
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707888,
+          "end": 58707944
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707944,
+          "end": 58707952
+        },
+        "mode": "Arm"
+      }
+    ],
+    "roots": [
+      {
+        "selection": 0,
+        "address": 58688616,
+        "assumption": "Grounded explicit ARM root; execution and function extent remain unknown"
+      }
+    ]
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "nitro_fs",
+        "path": "ChildRom/JSS2Child.srl"
+      },
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+    },
+    "selections": [
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58688616,
+          "end": 58688624
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58707660,
+          "end": 58707672
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708012,
+          "end": 58708036
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708036,
+          "end": 58708068
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708160,
+          "end": 58708168
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58707716,
+          "end": 58707756
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58708068,
+          "end": 58708080
+        }
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707756,
+          "end": 58707784
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707784,
+          "end": 58707792
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707792,
+          "end": 58707808
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707808,
+          "end": 58707828
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707828,
+          "end": 58707836
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707844,
+          "end": 58707872
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707872,
+          "end": 58707880
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707880,
+          "end": 58707888
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707888,
+          "end": 58707944
+        },
+        "mode": "Arm"
+      },
+      {
+        "region": {
+          "autoload": 0
+        },
+        "extent": {
+          "start": 58707944,
+          "end": 58707952
+        },
+        "mode": "Arm"
+      }
+    ],
+    "roots": [
+      {
+        "selection": 0,
+        "address": 58688616,
+        "assumption": "Grounded explicit ARM root; execution and function extent remain unknown"
+      }
+    ]
+  }
+]

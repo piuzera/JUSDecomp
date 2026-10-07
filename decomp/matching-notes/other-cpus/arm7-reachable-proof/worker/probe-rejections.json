@@ -1,0 +1,62 @@
+[
+  {
+    "name": "wrong-layout-pin",
+    "returncode": 1,
+    "stderr": "Error: \"independent layout/request/producer hash mismatch\""
+  },
+  {
+    "name": "wrong-request-pin",
+    "returncode": 1,
+    "stderr": "Error: \"independent layout/request/producer hash mismatch\""
+  },
+  {
+    "name": "wrong-producer-pin",
+    "returncode": 1,
+    "stderr": "Error: \"independent layout/request/producer hash mismatch\""
+  },
+  {
+    "name": "empty-programs",
+    "returncode": 1,
+    "stderr": "Error: \"no layouts or program requests supplied\""
+  },
+  {
+    "name": "duplicate-program",
+    "returncode": 1,
+    "stderr": "Error: \"duplicate requested program\""
+  },
+  {
+    "name": "unknown-field",
+    "returncode": 1,
+    "stderr": "Error: Error(\"unknown field `grant_credit`, expected one of `program`, `selections`, `roots`\", line: 1, column: 575)"
+  },
+  {
+    "name": "empty-selection",
+    "returncode": 1,
+    "stderr": "Error: \"root selection index is absent\""
+  },
+  {
+    "name": "empty-roots",
+    "returncode": 1,
+    "stderr": "Error: EmptyRoots"
+  },
+  {
+    "name": "absent-root-selection",
+    "returncode": 1,
+    "stderr": "Error: \"root selection index is absent\""
+  },
+  {
+    "name": "interior-root",
+    "returncode": 1,
+    "stderr": "Error: RootNotInstructionStart"
+  },
+  {
+    "name": "empty-assumption",
+    "returncode": 1,
+    "stderr": "Error: EmptyRootAssumption"
+  },
+  {
+    "name": "detached-report",
+    "returncode": 1,
+    "stderr": "Error: Error(\"invalid type: map, expected a sequence\", line: 1, column: 0)"
+  }
+]

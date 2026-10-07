@@ -1,0 +1,35 @@
+{
+  "model": "gpt-6-sol",
+  "scope": "read-only complete frozen design packages; no native execution proof",
+  "candidates": {
+    "physical": {
+      "commit": "b061387ef779007a65bbadf6c0294ddf87e38d5c",
+      "scores": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "total": 15
+    },
+    "flat": {
+      "commit": "4bc2e0edaecc6c06a47ba0f1902f36cb3781a9cb",
+      "scores": [
+        3,
+        0,
+        3,
+        3,
+        3
+      ],
+      "total": 12
+    }
+  },
+  "base": "physical",
+  "reason": "Actual ELF VMA/PADDR/section association and separate BSS segments prove the desired physical placement; flat runtime proof remains outside ELF.",
+  "grafts": [
+    "Consumed sidecar digest and exact selector in each program receipt through pinned example.",
+    "Corrupt actual linked ELF bytes with original input intact."
+  ],
+  "first_gate": "Actual pinned synthetic native fixture must prove VMA-sorted PT_LOADs, explicit LMAs, isolated zero-file-size BSS, non-executable sections and V4T attributes under overlap/alignment checks."
+}

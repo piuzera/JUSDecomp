@@ -1,0 +1,13 @@
+{
+  "scope": "root original-TU raw readback before target source",
+  "object": "/private/tmp/jus-37-original-prerequisite-01/candidate-delinks/src/main/physical_initializer.o",
+  "bytes": 92,
+  "object_sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+  "raw_payload_sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b",
+  "target_compiler_invoked": false,
+  "status": "passed",
+  "earlier_probe_setup_errors": [
+    "Elf32 expects bytes not Path",
+    "allocated map value is (index, section), not section"
+  ]
+}

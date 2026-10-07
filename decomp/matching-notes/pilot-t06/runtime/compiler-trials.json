@@ -1,0 +1,1207 @@
+{
+  "schema_version": 1,
+  "target": {
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "cpu": "arm9",
+    "module": "main",
+    "section": ".text",
+    "mode": "arm",
+    "symbol": "__FindExceptionTable",
+    "address": "0x0200f57c",
+    "extent_bytes": 32,
+    "instruction_bytes": 24,
+    "literal_pool_bytes": 8
+  },
+  "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+  "experiments": [
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/base-0.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "object_check": {
+        "status": "failed",
+        "reason": "function identities/extents/modes differ from declared reference TU"
+      },
+      "functions": {
+        "__FindExceptionTable": {
+          "name": "__FindExceptionTable",
+          "offset": 0,
+          "size": 40,
+          "mode": "arm",
+          "section": ".text"
+        }
+      },
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 32,
+          "type": 2,
+          "symbol": "__exception_table_start__",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 36,
+          "type": 2,
+          "symbol": "__exception_table_end__",
+          "addend": 0
+        }
+      ],
+      "compiled_sha256": "31d5e0485e29fa2f757a4d99e232cbee4b3d1988d3b5dde92e800f847161e6a6",
+      "section_sha256": {
+        ".text": "69754890ff089265a321ad826ef484a30400364aa418d7de63dad745ca5c7049"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O0"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O0",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/base-1.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "object_check": {
+        "status": "failed",
+        "reason": "function identities/extents/modes differ from declared reference TU"
+      },
+      "functions": {
+        "__FindExceptionTable": {
+          "name": "__FindExceptionTable",
+          "offset": 0,
+          "size": 40,
+          "mode": "arm",
+          "section": ".text"
+        }
+      },
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 32,
+          "type": 2,
+          "symbol": "__exception_table_start__",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 36,
+          "type": 2,
+          "symbol": "__exception_table_end__",
+          "addend": 0
+        }
+      ],
+      "compiled_sha256": "31d5e0485e29fa2f757a4d99e232cbee4b3d1988d3b5dde92e800f847161e6a6",
+      "section_sha256": {
+        ".text": "69754890ff089265a321ad826ef484a30400364aa418d7de63dad745ca5c7049"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O1"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O1",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/base-2.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "object_check": {
+        "status": "failed",
+        "reason": "initialized section bytes differ: .text"
+      },
+      "functions": {
+        "__FindExceptionTable": {
+          "name": "__FindExceptionTable",
+          "offset": 0,
+          "size": 32,
+          "mode": "arm",
+          "section": ".text"
+        }
+      },
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 24,
+          "type": 2,
+          "symbol": "__exception_table_start__",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 28,
+          "type": 2,
+          "symbol": "__exception_table_end__",
+          "addend": 0
+        }
+      ],
+      "compiled_sha256": "289c4c0070782589a03b1dd5d6520ee05ec55dd58b57c94d765bd9b5a3556051",
+      "section_sha256": {
+        ".text": "3aabfc6eed80691d058f3586b70205dc2f4952e53447e81c3b7fb2ce09cd2eeb"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2,p"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2,p",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/base-3.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "object_check": {
+        "status": "failed",
+        "reason": "initialized section bytes differ: .text"
+      },
+      "functions": {
+        "__FindExceptionTable": {
+          "name": "__FindExceptionTable",
+          "offset": 0,
+          "size": 32,
+          "mode": "arm",
+          "section": ".text"
+        }
+      },
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 24,
+          "type": 2,
+          "symbol": "__exception_table_start__",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 28,
+          "type": 2,
+          "symbol": "__exception_table_end__",
+          "addend": 0
+        }
+      ],
+      "compiled_sha256": "289c4c0070782589a03b1dd5d6520ee05ec55dd58b57c94d765bd9b5a3556051",
+      "section_sha256": {
+        ".text": "3aabfc6eed80691d058f3586b70205dc2f4952e53447e81c3b7fb2ce09cd2eeb"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O3,p"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O3,p",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/base-4.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "object_check": {
+        "status": "failed",
+        "reason": "initialized section bytes differ: .text"
+      },
+      "functions": {
+        "__FindExceptionTable": {
+          "name": "__FindExceptionTable",
+          "offset": 0,
+          "size": 32,
+          "mode": "arm",
+          "section": ".text"
+        }
+      },
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 24,
+          "type": 2,
+          "symbol": "__exception_table_start__",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 28,
+          "type": 2,
+          "symbol": "__exception_table_end__",
+          "addend": 0
+        }
+      ],
+      "compiled_sha256": "289c4c0070782589a03b1dd5d6520ee05ec55dd58b57c94d765bd9b5a3556051",
+      "section_sha256": {
+        ".text": "3aabfc6eed80691d058f3586b70205dc2f4952e53447e81c3b7fb2ce09cd2eeb"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,p"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,p",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/base-5.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "object_check": {
+        "status": "failed",
+        "reason": "initialized section bytes differ: .text"
+      },
+      "functions": {
+        "__FindExceptionTable": {
+          "name": "__FindExceptionTable",
+          "offset": 0,
+          "size": 32,
+          "mode": "arm",
+          "section": ".text"
+        }
+      },
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 24,
+          "type": 2,
+          "symbol": "__exception_table_start__",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 28,
+          "type": 2,
+          "symbol": "__exception_table_end__",
+          "addend": 0
+        }
+      ],
+      "compiled_sha256": "289c4c0070782589a03b1dd5d6520ee05ec55dd58b57c94d765bd9b5a3556051",
+      "section_sha256": {
+        ".text": "3aabfc6eed80691d058f3586b70205dc2f4952e53447e81c3b7fb2ce09cd2eeb"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,s"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,s",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/base-6.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "object_check": {
+        "status": "failed",
+        "reason": "initialized section bytes differ: .text"
+      },
+      "functions": {
+        "__FindExceptionTable": {
+          "name": "__FindExceptionTable",
+          "offset": 0,
+          "size": 32,
+          "mode": "arm",
+          "section": ".text"
+        }
+      },
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 24,
+          "type": 2,
+          "symbol": "__exception_table_start__",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 28,
+          "type": 2,
+          "symbol": "__exception_table_end__",
+          "addend": 0
+        }
+      ],
+      "compiled_sha256": "289c4c0070782589a03b1dd5d6520ee05ec55dd58b57c94d765bd9b5a3556051",
+      "section_sha256": {
+        ".text": "3aabfc6eed80691d058f3586b70205dc2f4952e53447e81c3b7fb2ce09cd2eeb"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O1"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O1",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/interworking-0.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "object_check": {
+        "status": "passed",
+        "sections": [
+          {
+            "name": ".text",
+            "size": 32,
+            "flags": 6,
+            "kind": "initialized"
+          }
+        ],
+        "functions": [
+          {
+            "name": "__FindExceptionTable",
+            "offset": 0,
+            "size": 32,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 24,
+            "type": 2,
+            "symbol": "__exception_table_start__",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 28,
+            "type": 2,
+            "symbol": "__exception_table_end__",
+            "addend": 0
+          }
+        ]
+      },
+      "compiled_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+      "section_sha256": {
+        ".text": "54ab25057c1cfed592bd4157d653eb569e03f54e759dffa308ad79e98f4affea"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O2,p"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O2,p",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/interworking-1.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "object_check": {
+        "status": "passed",
+        "sections": [
+          {
+            "name": ".text",
+            "size": 32,
+            "flags": 6,
+            "kind": "initialized"
+          }
+        ],
+        "functions": [
+          {
+            "name": "__FindExceptionTable",
+            "offset": 0,
+            "size": 32,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 24,
+            "type": 2,
+            "symbol": "__exception_table_start__",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 28,
+            "type": 2,
+            "symbol": "__exception_table_end__",
+            "addend": 0
+          }
+        ]
+      },
+      "compiled_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+      "section_sha256": {
+        ".text": "54ab25057c1cfed592bd4157d653eb569e03f54e759dffa308ad79e98f4affea"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O3,p"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O3,p",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/interworking-2.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "object_check": {
+        "status": "passed",
+        "sections": [
+          {
+            "name": ".text",
+            "size": 32,
+            "flags": 6,
+            "kind": "initialized"
+          }
+        ],
+        "functions": [
+          {
+            "name": "__FindExceptionTable",
+            "offset": 0,
+            "size": 32,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 24,
+            "type": 2,
+            "symbol": "__exception_table_start__",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 28,
+            "type": 2,
+            "symbol": "__exception_table_end__",
+            "addend": 0
+          }
+        ]
+      },
+      "compiled_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+      "section_sha256": {
+        ".text": "54ab25057c1cfed592bd4157d653eb569e03f54e759dffa308ad79e98f4affea"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O4,p"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O4,p",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/interworking-3.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "object_check": {
+        "status": "passed",
+        "sections": [
+          {
+            "name": ".text",
+            "size": 32,
+            "flags": 6,
+            "kind": "initialized"
+          }
+        ],
+        "functions": [
+          {
+            "name": "__FindExceptionTable",
+            "offset": 0,
+            "size": 32,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 24,
+            "type": 2,
+            "symbol": "__exception_table_start__",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 28,
+            "type": 2,
+            "symbol": "__exception_table_end__",
+            "addend": 0
+          }
+        ]
+      },
+      "compiled_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+      "section_sha256": {
+        ".text": "54ab25057c1cfed592bd4157d653eb569e03f54e759dffa308ad79e98f4affea"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    },
+    {
+      "compiler_package": "2.0/base",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O4,s"
+      ],
+      "command": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-c",
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking",
+        "-O4,s",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-probe/interworking-4.o",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+      ],
+      "returncode": 0,
+      "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+      "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "object_check": {
+        "status": "passed",
+        "sections": [
+          {
+            "name": ".text",
+            "size": 32,
+            "flags": 6,
+            "kind": "initialized"
+          }
+        ],
+        "functions": [
+          {
+            "name": "__FindExceptionTable",
+            "offset": 0,
+            "size": 32,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 24,
+            "type": 2,
+            "symbol": "__exception_table_start__",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 28,
+            "type": 2,
+            "symbol": "__exception_table_end__",
+            "addend": 0
+          }
+        ]
+      },
+      "compiled_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+      "section_sha256": {
+        ".text": "54ab25057c1cfed592bd4157d653eb569e03f54e759dffa308ad79e98f4affea"
+      },
+      "compiler": {
+        "name": "Metrowerks C/C++ for Embedded ARM",
+        "package": "mwccarm/2.0/base",
+        "version": "3.0 build 114",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "version_argument": "-version",
+        "cpu": "arm946e",
+        "runtime_libraries": {
+          "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+          "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+          "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+        },
+        "archive": {
+          "url": "https://github.com/decompme/compilers/releases/download/compilers/mwccarm.zip",
+          "bytes": 51684965,
+          "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace"
+        },
+        "selection_scope": "Existing trampoline only; no compiler inferred for other translation units"
+      },
+      "runner": {
+        "name": "wibo",
+        "version": "1.2.0",
+        "host": "Darwin x86_64 via Rosetta 2",
+        "url": "https://github.com/decompals/wibo/releases/download/1.2.0/wibo-macos",
+        "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+      },
+      "abi": {
+        "language": "C",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "headers": {},
+      "include_paths": []
+    }
+  ],
+  "contexts_passed": 5,
+  "selected_flags": [
+    "-Cpp_exceptions",
+    "off",
+    "-nostdinc",
+    "-interworking",
+    "-O2,p"
+  ],
+  "original_compiler_identity": "unresolved; matching contexts are not unique compiler provenance",
+  "compiler_help": {
+    "command": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+      "-help",
+      "all"
+    ],
+    "sha256": "0e8aae940d8298f65378dea0f4c2568cd56e4f5d48c56097fa928f63828fa670",
+    "interworking_option": "-[no]interworking"
+  },
+  "source_credit_before_full_gates": 0
+}

@@ -1,0 +1,43 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+warning: field `child_layout` is never read
+  --> /dsd-source/lib/tests/common/mod.rs:14:9
+   |
+11 | pub struct Fixture {
+   |            ------- field in this struct
+...
+14 |     pub child_layout: Arm7Layout,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `ds-decomp` (lib test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.29s
+     Running unittests src/lib.rs (target/physical-baseline/cargo-target/debug/deps/ds_decomp-b124f285909ba1e8)
+
+running 4 tests
+test rom::arm7_physical_baseline::tests::actual_linked_elf_header_section_segment_and_byte_mutations_reject_without_panics ... ok
+test rom::arm7_physical_baseline::tests::actual_linked_elf_function_symbol_mutation_rejects ... FAILED
+test rom::arm7_physical_baseline::tests::actual_linked_elf_attribute_mutation_rejects_with_original_inputs_unchanged ... FAILED
+test rom::arm7_physical_baseline::tests::actual_omitted_or_swapped_object_fails_normal_native_link_checks ... ok
+
+failures:
+
+---- rom::arm7_physical_baseline::tests::actual_linked_elf_function_symbol_mutation_rejects stdout ----
+
+thread 'rom::arm7_physical_baseline::tests::actual_linked_elf_function_symbol_mutation_rejects' (251052179) panicked at lib/src/rom/arm7_physical_baseline/tests.rs:40:5:
+function declaration accepted
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- rom::arm7_physical_baseline::tests::actual_linked_elf_attribute_mutation_rejects_with_original_inputs_unchanged stdout ----
+
+thread 'rom::arm7_physical_baseline::tests::actual_linked_elf_attribute_mutation_rejects_with_original_inputs_unchanged' (251052178) panicked at lib/src/rom/arm7_physical_baseline/tests.rs:32:5:
+V5 architecture mutation accepted
+
+
+failures:
+    rom::arm7_physical_baseline::tests::actual_linked_elf_attribute_mutation_rejects_with_original_inputs_unchanged
+    rom::arm7_physical_baseline::tests::actual_linked_elf_function_symbol_mutation_rejects
+
+test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.41s
+
+error: test failed, to rerun pass `-p ds-decomp --lib`

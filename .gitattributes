@@ -26,3 +26,12 @@
 *.exe  binary
 *.dll  binary
 *.zip  binary
+
+# Preserve literal unified-diff context in this reviewed patch artifact.
+decomp/matching-notes/other-cpus/arm7-checked-view.patch whitespace=-blank-at-eol
+decomp/matching-notes/other-cpus/arm7-module-input.patch whitespace=-blank-at-eol
+decomp/matching-notes/other-cpus/arm7-observation.patch whitespace=-blank-at-eol
+
+# Keep pinned decoder evidence bytes stable in a fresh checkout.
+decomp/matching-notes/other-cpus/branch-decoder-repair/** text eol=lf
+decomp/matching-notes/other-cpus/branch-decoder-repair/dsd-branch-dependency-repair.patch whitespace=-blank-at-eol

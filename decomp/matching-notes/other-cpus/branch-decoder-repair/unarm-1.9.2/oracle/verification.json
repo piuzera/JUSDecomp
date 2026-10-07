@@ -1,0 +1,574 @@
+{
+  "scope": "27 public synthetic instructions, independently decoded by LLVM23.1.2; no ROM input",
+  "records": [
+    {
+      "name": "b_large_positive",
+      "address": 37224448,
+      "encoding": [
+        "ea51e118"
+      ],
+      "expected_address": 58688616,
+      "mnemonic": "b",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        24,
+        225,
+        81,
+        234
+      ]
+    },
+    {
+      "name": "bl_large_positive",
+      "address": 37224452,
+      "encoding": [
+        "eb51e117"
+      ],
+      "expected_address": 58688616,
+      "mnemonic": "bl",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        23,
+        225,
+        81,
+        235
+      ]
+    },
+    {
+      "name": "b_large_negative",
+      "address": 37224456,
+      "encoding": [
+        "eabffffc"
+      ],
+      "expected_address": 20447232,
+      "mnemonic": "b",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        252,
+        255,
+        191,
+        234
+      ]
+    },
+    {
+      "name": "bl_large_negative",
+      "address": 37224460,
+      "encoding": [
+        "ebbffffb"
+      ],
+      "expected_address": 20447232,
+      "mnemonic": "bl",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        251,
+        255,
+        191,
+        235
+      ]
+    },
+    {
+      "name": "b_max_positive",
+      "address": 37224464,
+      "encoding": [
+        "ea7fffff"
+      ],
+      "expected_address": 70778900,
+      "mnemonic": "b",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        255,
+        255,
+        127,
+        234
+      ]
+    },
+    {
+      "name": "bl_max_positive",
+      "address": 37224468,
+      "encoding": [
+        "eb7fffff"
+      ],
+      "expected_address": 70778904,
+      "mnemonic": "bl",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        255,
+        255,
+        127,
+        235
+      ]
+    },
+    {
+      "name": "b_min_negative",
+      "address": 37224472,
+      "encoding": [
+        "ea800000"
+      ],
+      "expected_address": 3670048,
+      "mnemonic": "b",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        0,
+        0,
+        128,
+        234
+      ]
+    },
+    {
+      "name": "bl_min_negative",
+      "address": 37224476,
+      "encoding": [
+        "eb800000"
+      ],
+      "expected_address": 3670052,
+      "mnemonic": "bl",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        0,
+        0,
+        128,
+        235
+      ]
+    },
+    {
+      "name": "b_minus_one_word",
+      "address": 37224480,
+      "encoding": [
+        "eaffffff"
+      ],
+      "expected_address": 37224484,
+      "mnemonic": "b",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        255,
+        255,
+        255,
+        234
+      ]
+    },
+    {
+      "name": "bl_zero_displacement",
+      "address": 37224484,
+      "encoding": [
+        "eb000000"
+      ],
+      "expected_address": 37224492,
+      "mnemonic": "bl",
+      "mode": "arm",
+      "group": "arm_b_bl",
+      "bytes": [
+        0,
+        0,
+        0,
+        235
+      ]
+    },
+    {
+      "name": "blx_max_h0",
+      "address": 37224488,
+      "encoding": [
+        "fa7fffff"
+      ],
+      "expected_address": 70778924,
+      "mnemonic": "blx",
+      "mode": "arm",
+      "group": "arm_blx",
+      "bytes": [
+        255,
+        255,
+        127,
+        250
+      ]
+    },
+    {
+      "name": "blx_max_h1",
+      "address": 37224492,
+      "encoding": [
+        "fb7fffff"
+      ],
+      "expected_address": 70778930,
+      "mnemonic": "blx",
+      "mode": "arm",
+      "group": "arm_blx",
+      "bytes": [
+        255,
+        255,
+        127,
+        251
+      ]
+    },
+    {
+      "name": "blx_min_h0",
+      "address": 37224496,
+      "encoding": [
+        "fa800000"
+      ],
+      "expected_address": 3670072,
+      "mnemonic": "blx",
+      "mode": "arm",
+      "group": "arm_blx",
+      "bytes": [
+        0,
+        0,
+        128,
+        250
+      ]
+    },
+    {
+      "name": "blx_min_h1",
+      "address": 37224500,
+      "encoding": [
+        "fb800000"
+      ],
+      "expected_address": 3670078,
+      "mnemonic": "blx",
+      "mode": "arm",
+      "group": "arm_blx",
+      "bytes": [
+        0,
+        0,
+        128,
+        251
+      ]
+    },
+    {
+      "name": "bl_positive_pc_boundary_even",
+      "address": 37224448,
+      "encoding": [
+        "f3ff",
+        "fffe"
+      ],
+      "expected_address": 41418752,
+      "mnemonic": "bl",
+      "mode": "thumb",
+      "group": "thumb_bl",
+      "bytes": [
+        255,
+        243,
+        254,
+        255
+      ]
+    },
+    {
+      "name": "bl_positive_pc_boundary_halfword",
+      "address": 37224452,
+      "encoding": [
+        "f3ff",
+        "ffff"
+      ],
+      "expected_address": 41418758,
+      "mnemonic": "bl",
+      "mode": "thumb",
+      "group": "thumb_bl",
+      "bytes": [
+        255,
+        243,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "bl_min_negative",
+      "address": 37224456,
+      "encoding": [
+        "f400",
+        "f800"
+      ],
+      "expected_address": 33030156,
+      "mnemonic": "bl",
+      "mode": "thumb",
+      "group": "thumb_bl",
+      "bytes": [
+        0,
+        244,
+        0,
+        248
+      ]
+    },
+    {
+      "name": "bl_negative_near",
+      "address": 37224460,
+      "encoding": [
+        "f7ff",
+        "ffff"
+      ],
+      "expected_address": 37224462,
+      "mnemonic": "bl",
+      "mode": "thumb",
+      "group": "thumb_bl",
+      "bytes": [
+        255,
+        247,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "bl_zero",
+      "address": 37224464,
+      "encoding": [
+        "f000",
+        "f800"
+      ],
+      "expected_address": 37224468,
+      "mnemonic": "bl",
+      "mode": "thumb",
+      "group": "thumb_bl",
+      "bytes": [
+        0,
+        240,
+        0,
+        248
+      ]
+    },
+    {
+      "name": "blx_positive_pc_boundary",
+      "address": 37224468,
+      "encoding": [
+        "f3ff",
+        "effe"
+      ],
+      "expected_address": 41418772,
+      "mnemonic": "blx",
+      "mode": "thumb",
+      "group": "thumb_blx",
+      "bytes": [
+        255,
+        243,
+        254,
+        239
+      ]
+    },
+    {
+      "name": "blx_min_negative",
+      "address": 37224472,
+      "encoding": [
+        "f400",
+        "e800"
+      ],
+      "expected_address": 33030172,
+      "mnemonic": "blx",
+      "mode": "thumb",
+      "group": "thumb_blx",
+      "bytes": [
+        0,
+        244,
+        0,
+        232
+      ]
+    },
+    {
+      "name": "blx_negative_near",
+      "address": 37224476,
+      "encoding": [
+        "f7ff",
+        "effe"
+      ],
+      "expected_address": 37224476,
+      "mnemonic": "blx",
+      "mode": "thumb",
+      "group": "thumb_blx",
+      "bytes": [
+        255,
+        247,
+        254,
+        239
+      ]
+    },
+    {
+      "name": "blx_zero",
+      "address": 37224480,
+      "encoding": [
+        "f000",
+        "e800"
+      ],
+      "expected_address": 37224484,
+      "mnemonic": "blx",
+      "mode": "thumb",
+      "group": "thumb_blx",
+      "bytes": [
+        0,
+        240,
+        0,
+        232
+      ]
+    },
+    {
+      "name": "b_short_max",
+      "address": 37224484,
+      "encoding": [
+        "e3ff"
+      ],
+      "expected_address": 37226534,
+      "mnemonic": "b",
+      "mode": "thumb",
+      "group": "thumb_short",
+      "bytes": [
+        255,
+        227
+      ]
+    },
+    {
+      "name": "b_short_min",
+      "address": 37224486,
+      "encoding": [
+        "e400"
+      ],
+      "expected_address": 37222442,
+      "mnemonic": "b",
+      "mode": "thumb",
+      "group": "thumb_short",
+      "bytes": [
+        0,
+        228
+      ]
+    },
+    {
+      "name": "b_cond_max",
+      "address": 37224488,
+      "encoding": [
+        "d17f"
+      ],
+      "expected_address": 37224746,
+      "mnemonic": "bne",
+      "mode": "thumb",
+      "group": "thumb_short",
+      "bytes": [
+        127,
+        209
+      ]
+    },
+    {
+      "name": "b_cond_min",
+      "address": 37224490,
+      "encoding": [
+        "d180"
+      ],
+      "expected_address": 37224238,
+      "mnemonic": "bne",
+      "mode": "thumb",
+      "group": "thumb_short",
+      "bytes": [
+        128,
+        209
+      ]
+    },
+    {
+      "name": "blx_halfword_pc_2380002",
+      "address": 37224450,
+      "expected_address": 37224452,
+      "mnemonic": "blx",
+      "mode": "Thumb",
+      "group": "halfword_pc_alignment",
+      "encoding": [
+        61440,
+        59392
+      ],
+      "bytes": [
+        0,
+        240,
+        0,
+        232
+      ]
+    },
+    {
+      "name": "blx_halfword_pc_2380006",
+      "address": 37224454,
+      "expected_address": 41418756,
+      "mnemonic": "blx",
+      "mode": "Thumb",
+      "group": "halfword_pc_alignment",
+      "encoding": [
+        62463,
+        61438
+      ],
+      "bytes": [
+        255,
+        243,
+        254,
+        239
+      ]
+    },
+    {
+      "name": "blx_halfword_pc_238000a",
+      "address": 37224458,
+      "expected_address": 33030156,
+      "mnemonic": "blx",
+      "mode": "Thumb",
+      "group": "halfword_pc_alignment",
+      "encoding": [
+        62464,
+        59392
+      ],
+      "bytes": [
+        0,
+        244,
+        0,
+        232
+      ]
+    },
+    {
+      "name": "blx_halfword_pc_238000e",
+      "address": 37224462,
+      "expected_address": 37224460,
+      "mnemonic": "blx",
+      "mode": "Thumb",
+      "group": "halfword_pc_alignment",
+      "encoding": [
+        63487,
+        61438
+      ],
+      "bytes": [
+        255,
+        247,
+        254,
+        239
+      ]
+    },
+    {
+      "name": "bl_halfword_pc_2380012",
+      "address": 37224466,
+      "expected_address": 37224470,
+      "mnemonic": "bl",
+      "mode": "Thumb",
+      "group": "halfword_pc_alignment",
+      "encoding": [
+        61440,
+        63488
+      ],
+      "bytes": [
+        0,
+        240,
+        0,
+        248
+      ]
+    }
+  ],
+  "commands": [
+    "llvm-mc --triple=armv5te-none-eabi --filetype=obj oracle/arm.s -o private/arm.o",
+    "ld.lld -T oracle/layout.ld private/arm.o -o private/arm.elf",
+    "llvm-objdump -d --mcpu=arm946e-s private/arm.elf",
+    "repeat for thumb.s",
+    "/opt/homebrew/opt/llvm/bin/llvm-mc -triple=arm-none-eabi -filetype=obj dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment.s -o target/branch-repair/oracle/thumb-blx-alignment.o",
+    "/opt/homebrew/bin/ld.lld -T dependency-patches/unarm-1.9.2/oracle/layout.ld target/branch-repair/oracle/thumb-blx-alignment.o -o target/branch-repair/oracle/thumb-blx-alignment.elf",
+    "/opt/homebrew/opt/llvm/bin/llvm-objdump -d --triple=armv5te-none-eabi target/branch-repair/oracle/thumb-blx-alignment.elf"
+  ],
+  "source_hashes": {
+    "layout.ld": "be95da09dc8885d2d2eb9ae198601d4a376bc59e751682743e2de3b619febe72",
+    "thumb-disassembly.txt": "76a8f8d3f7f92b360a5b8b8f2d855fb9354943e83a623865ef5986ad53735767",
+    "arm.s": "129d593c29177a9c95006ec2119ce5f77463e62c7054b2c7afb3881847fd34a9",
+    "thumb.s": "5cbf753f6b5842fcbd999efad3f1e9713bb89bd499ce5f05b05a2431bd13c7fb",
+    "arm-disassembly.txt": "02b545268b34eb1cfae4004b57f0ac31cd784268eb12f36de6a339366bf533ad",
+    "thumb-blx-alignment.s": "aefbd9c7b790465af9c69dca6a542a5795f290cb5d46d0653734d00ee6902449",
+    "thumb-blx-alignment-disassembly.txt": "3a89b0d3a4dbcc677819f5162ac27003e1846a14e333174a762f4296cdf4f5c2"
+  },
+  "failed_first_link_setup": "incorrect /opt/homebrew/opt/llvm/bin/ld.lld path; no binary linked. Correct pinned linker /opt/homebrew/bin/ld.lld used."
+}

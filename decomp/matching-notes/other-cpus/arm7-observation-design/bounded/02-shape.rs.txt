@@ -1,0 +1,117 @@
+// Design signatures only. This is not an implementation or a compilable patch.
+use std::ops::Range;
+use crate::rom::arm7::{ProgramIdentity, Arm7RegionKind, InstructionSet};
+use crate::rom::arm7_modules::{Arm7ModuleInput, Arm7ModuleIdentity, DecodeSpanError};
+use crate::config::symbol::InstructionMode;
+
+pub struct Selection {
+    pub span: Range<u32>,
+    pub mode: InstructionMode,
+}
+
+// Data supplied together; caller never coordinates decoder, branch resolver,
+// mapping lookup, or mode reconciliation phases.
+pub struct Context<'a, 'rom> {
+    pub modules: &'a [Arm7ModuleInput<'rom>],
+    pub executable: &'a [CodeDeclaration<'a>],
+    pub exchanges: &'a [ExchangeFact<'a>],
+}
+pub struct CodeDeclaration<'a> {
+    pub identity: &'a Arm7ModuleIdentity<'a>,
+    pub span: Range<u32>,
+    pub mode: Option<InstructionMode>, // executable declaration may lack mode
+    pub evidence: &'a str,
+}
+pub struct ExchangeFact<'a> {
+    pub identity: &'a Arm7ModuleIdentity<'a>,
+    pub site: u32,
+    pub source_mode: InstructionMode,
+    pub raw_register_value: u32,
+    pub evidence: &'a str,
+}
+
+// One public operation; ARM7+V4T comes only from the checked input type.
+// Internals atomically validate selection, same-program context and declarations;
+// decode the complete span; extract transfers; classify every numeric destination.
+// No CPU, ISA, default flags, module base, parser end override or raw byte arguments.
+pub fn observe<'a, 'rom>(
+    source: &'a Arm7ModuleInput<'rom>,
+    selection: Selection,
+    context: Context<'a, 'rom>,
+) -> Result<SpanObservation<'a>, ObservationError> {
+    unimplemented!()
+}
+
+// Fields private so consumers cannot mutate policy or turn observations into evidence.
+pub struct SpanObservation<'a> {
+    identity: &'a Arm7ModuleIdentity<'a>,
+    selection: Selection,
+    instructions: Vec<InstructionObservation>,
+    transfers: Vec<TransferObservation<'a>>,
+}
+impl SpanObservation<'_> {
+    pub fn identity(&self) -> &Arm7ModuleIdentity<'_> { unimplemented!() }
+    pub fn isa(&self) -> InstructionSet { unimplemented!() } // always ArmV4T
+    pub fn span(&self) -> Range<u32> { unimplemented!() }
+    pub fn mode(&self) -> InstructionMode { unimplemented!() }
+    pub fn instructions(&self) -> &[InstructionObservation] { unimplemented!() }
+    pub fn transfers(&self) -> &[TransferObservation<'_>] { unimplemented!() }
+}
+pub struct InstructionObservation {
+    pub address: u32,
+    pub byte_len: u8,
+    pub text: String, // formatted once under the same immutable V4T policy
+}
+pub struct TransferObservation<'a> {
+    pub source: u32,
+    pub kind: TransferKind,
+    pub condition: TransferCondition,
+    pub target: TargetObservation<'a>,
+    pub basis: TransferBasis<'a>,
+}
+pub enum TransferKind { Branch, Call, Fallthrough, CallContinuation, Exchange, OtherPcWrite, Exception }
+pub enum TransferCondition { Always, Conditional, IfCallReturns }
+pub enum TransferBasis<'a> { Encoding, ExchangeFact(&'a str) }
+pub enum TargetObservation<'a> {
+    Address {
+        address: u32,
+        required_mode: Option<InstructionMode>,
+        mapping: Mapping<'a>,
+        executable: ExecutableEvidence<'a>,
+        boundary: ObservationBoundary,
+    },
+    Indirect { register: Option<u8>, mode: ModeKnowledge },
+    ExceptionVectorUnknown,
+}
+pub enum Mapping<'a> {
+    Initialized(&'a Arm7ModuleIdentity<'a>),
+    Bss(&'a Arm7ModuleIdentity<'a>),
+    UnresolvedBytes,
+}
+pub enum ExecutableEvidence<'a> {
+    Unknown,
+    Declared { mode: Option<InstructionMode>, evidence: &'a str },
+    ModeConflict { declared: InstructionMode, required: InstructionMode, evidence: &'a str },
+}
+pub enum ObservationBoundary { InstructionStart, InstructionInterior, OutsideSelection }
+pub enum ModeKnowledge { Known(InstructionMode), Unknown }
+pub enum ObservationError {
+    Decode(DecodeSpanError),
+    ForeignProgram,
+    MissingSource,
+    DuplicateOrOverlappingMapping,
+    DeclarationOutsideInitialized,
+    ConflictingDeclarations,
+    InvalidExchangeFact,
+    InvalidExchangeAlignment,
+}
+
+// Private implementation shape. No caller-visible unarm types or dependency defaults.
+struct CheckedContext<'a> { /* sorted disjoint mapping ranges; validated declarations/facts */ }
+struct DecodedSpan { /* complete instruction records, by-address instruction-start index */ }
+fn checked_context<'a>(
+    source: &'a Arm7ModuleInput<'_>, context: Context<'a, '_>,
+) -> Result<CheckedContext<'a>, ObservationError> { unimplemented!() }
+fn transfers<'a>(
+    decoded: &DecodedSpan, context: &CheckedContext<'a>,
+) -> Vec<TransferObservation<'a>> { unimplemented!() }

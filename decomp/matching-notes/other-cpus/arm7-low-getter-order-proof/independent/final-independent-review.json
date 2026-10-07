@@ -1,0 +1,154 @@
+{
+  "status": "accepted_no_flags",
+  "reviewed_commit": "a5109c3f5eabac20f33018a614b967d64aecde35",
+  "reviewed_tree": "d16c31f32043192141823ec95a6aa37450200d8f",
+  "base_commit": "6ec389ff8ad8e165d408fe7bb089471bf886326a",
+  "own_cherry_pick_commit": "91f8cd9fb10f9c9de0611e047c92ef65150cede4",
+  "git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/.gitattributes",
+      "bytes": 36,
+      "git_blob": "5f5842632834720d8767120a5f786546ac04084f",
+      "sha256": "6998e23cef5b6458e16d6edd2ac74070ac623a2590def3ca2176c55e2ef56364"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/accepted-recipe.json",
+      "bytes": 399,
+      "git_blob": "92c28f0b93e5607942edeb712d089bbff4713337",
+      "sha256": "ef7e7b503d3510a102c8b6df446b0e006c265503031e6c03b8bb351db7f537ba"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/accepted_previous_source.c",
+      "bytes": 609,
+      "git_blob": "1f92095cb51c057a3f204fd8059ef17c15e20d5e",
+      "sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/compiled-llvm.txt",
+      "bytes": 259,
+      "git_blob": "f6d7553b65da2ecd93de03ea26aa1971d1b80be3",
+      "sha256": "865e24260f627994b0de05fef50cdfc2010e4f193a29b4c0485275d0b7732378"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/compiler-stderr.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/compiler-stdout.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/elf-readback.txt",
+      "bytes": 3294,
+      "git_blob": "28fc93ea7e9c70a5b148f8d2e4dfa2b242801926",
+      "sha256": "2a67bccc5843f62826eb7bb9a017038d526b6befc679fa5ad610ca61e88b09ef"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/llvm-original-low-getter.txt",
+      "bytes": 359,
+      "git_blob": "b78c7fdf47ac1a5afd90d87f8025c3e33017f9ac",
+      "sha256": "32411e7e1f3f35f0df12322c5167be80606209f7386e639a4f3eb9f8536ee9d0"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/low_getter_trial.c",
+      "bytes": 609,
+      "git_blob": "668529167a707a36ec2850782088346658d8af6b",
+      "sha256": "92aef5bc8ce408b4d1b19a95e8191b4668a82f335cbcb19302c52faf0668e0bb"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/original-manifest.json",
+      "bytes": 2870,
+      "git_blob": "14ed70c8de00dd52ebf49d006ae825d38d4576bc",
+      "sha256": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/original-read.json",
+      "bytes": 11319,
+      "git_blob": "023f0ece24960d60820f16e68795fc740d0290c9",
+      "sha256": "25e66aa18cb2f2231b11d591ba6798e21c8981b9e6ce4d6b3804dc6580695a1e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/provenance.json",
+      "bytes": 1116,
+      "git_blob": "00afa97fdd8e075e759c98e7354079cc41c817ab",
+      "sha256": "69fda70a90bec32086f3947960e698abcf973f79ff1a84af18edc0cc9455a04b"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/read_original.py",
+      "bytes": 8731,
+      "git_blob": "fde70dc22d119fb19a32d119895c9a9bfd281ae5",
+      "sha256": "20054901f1a82b9749f97cf891cf6a6535ccc0bdc2c4b503bd956f81c45ff447"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/reproduce.py",
+      "bytes": 8835,
+      "git_blob": "021754bd7938e0c83ec879b45704b4b45150c7f5",
+      "sha256": "702b91cf1999a9c7737de42c8f76816ba862c7dcdc72c98e611e7aeb0ae309d3"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/source-diff.json",
+      "bytes": 372,
+      "git_blob": "184439ecd95689c5e0fef3947f82124d4333980b",
+      "sha256": "57b5f6e7a2f1e4ae30e0508a987842cb2ba427fca454bcca473214552d734f84"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/tdd-green.log",
+      "bytes": 98,
+      "git_blob": "b87c6eb20fe72da81e765aae6e598180be36cb1c",
+      "sha256": "1c1b6f7a7314749c044ac228ea739ada8daa41fe0d614d7e0a85449d779cc15a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/tdd-red.log",
+      "bytes": 773,
+      "git_blob": "a2b467ce20948bd5d97e050ed5830db33aef9479",
+      "sha256": "058e7ea275516c413bd04b10e5c24fb3e15892c0517dbef64c738da3311d0993"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/test_replay.py",
+      "bytes": 1555,
+      "git_blob": "5aed5b2ca52d9a517e90e65a28bd7b4877067ec1",
+      "sha256": "9afd6a74e323bbc97b101831c4fb96b655af56e7486a90910453b9ec706ba7e2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/test_verify.py",
+      "bytes": 2337,
+      "git_blob": "6cbd4c8307e5032096eb380e57e9d7c28ba6608a",
+      "sha256": "841fd530cebf7775bf15ad352ca0acb605e92d198fd0e783ef4e3607ad896f89"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/trial-proof.json",
+      "bytes": 11594,
+      "git_blob": "41de43f3d1c65d46e3caf2f3739cb93efa666521",
+      "sha256": "cb39fc63300939e4c64cc2fd68dae87f093e8dc527bad549cda704146e0a7a1d"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/verify.py",
+      "bytes": 4154,
+      "git_blob": "da33501335b1d50060cb505a80b931859267953a",
+      "sha256": "d4b282bfbdae3a439ed74fbf88990afba7f7d26ea4e88ee45593888f4672cde2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-order.md",
+      "bytes": 7468,
+      "git_blob": "77370f8cb2328b091939777b9514c99686c38689",
+      "sha256": "357fbb7f4231f4e38782948788d51949e344a6c474c480d3e7d1ad642fc56e0c"
+    }
+  ],
+  "source_sha256": "92aef5bc8ce408b4d1b19a95e8191b4668a82f335cbcb19302c52faf0668e0bb",
+  "source_delta": "Only `(unsigned int)&hyp_wram_arena_lo > low` changes to `low < (unsigned int)&hyp_wram_arena_lo`; 609 bytes and all other bytes identical.",
+  "independently_compiled_object_sha256": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+  "actual_result": "Complete object byte-identical to failed .23 trial; 80 code bytes, 8 data bytes, 2 real zero-addend R_ARM_ABS32 relocations; instruction bytes 52..59 still mismatch both originals.",
+  "public_replay": "passed; scientific fields equal committed proof; only own absolute source and output paths differ in trial-proof JSON; public original readback, LLVM, ELF readback, and compiler logs byte-identical",
+  "tests": "four passed with documented TRIAL_OBJECT pointing to fresh replay object",
+  "prior_capsules": "git diff contains only 22 new .24 package files; no previous proof or approval file changed; copied accepted verifier, readback, manifest, and test blobs match prior public trial",
+  "primary_donor": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c",
+  "donor_claim": "Pinned community source line 7 declares SDK_WRAM_ARENA_LO as extern void function; lines 83\u201390 use its function designator in a greater-than unsigned ID-8 comparison. This supports one separate hypothesis about declaration kind, not original JUS source authority.",
+  "native_link_attempted": false,
+  "source_credit_bytes": 0,
+  "canonical_bytes": 304,
+  "T10_open": true
+}

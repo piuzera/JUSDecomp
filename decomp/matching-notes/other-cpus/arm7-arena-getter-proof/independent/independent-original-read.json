@@ -1,0 +1,991 @@
+{
+  "status": "passed",
+  "fnt_directories": 39,
+  "fnt_files": 379,
+  "child_file_id": 79,
+  "child_rom_extent": [
+    2340864,
+    4482248
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "windows": [
+        {
+          "extent": [
+            58707756,
+            58707784
+          ],
+          "stored_image_offset": 20700,
+          "original_rom_offset": 2183388,
+          "sha256": "34b0ed4e38399d836d25130aef949cab5e1e0d11a1197ef200a2f5143d3379e8",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000006",
+            "0xea00000a"
+          ],
+          "condition_nibbles": [
+            14,
+            0,
+            14,
+            0,
+            14,
+            0,
+            14
+          ],
+          "llvm_instructions": [
+            "cmp\tr0, #1",
+            "beq\t#16",
+            "cmp\tr0, #7",
+            "beq\t#16",
+            "cmp\tr0, #8",
+            "beq\t#24",
+            "b\t#40"
+          ],
+          "llvm_stdout_sha256": "a18334bf43a1a40aa314b3d1badaad04e02b815001c3203f8395d22be08c494c"
+        },
+        {
+          "extent": [
+            58707784,
+            58707792
+          ],
+          "stored_image_offset": 20728,
+          "original_rom_offset": 2183416,
+          "sha256": "81482e904df8557d0ee4a8b9dee39159942088e72d0d0ace1e49070cca2b8f48",
+          "words": [
+            "0xe59f002c",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr0, [pc, #44]",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "6e4530f280513d43b92e3e1ba56e25bc9cf15834f2fa830b091740f5a308c638"
+        },
+        {
+          "extent": [
+            58707792,
+            58707808
+          ],
+          "stored_image_offset": 20736,
+          "original_rom_offset": 2183424,
+          "sha256": "1f3c2b8a9b1d10568078500d97247dcf2b0818244770b21d6b4cd658ab523d4b",
+          "words": [
+            "0xe59f0028",
+            "0xe350050e",
+            "0x83a0050e",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14,
+            8,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr0, [pc, #40]",
+            "cmp\tr0, #58720256",
+            "movhi\tr0, #58720256",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "97a6c0aa6f7b8fd1a53adfe916c97c09e04454d6c2d0ba9cdaf8917a662a3ff3"
+        },
+        {
+          "extent": [
+            58707808,
+            58707828
+          ],
+          "stored_image_offset": 20752,
+          "original_rom_offset": 2183440,
+          "sha256": "bac3f5742b73aa4826927abafe9932fb0f97daf589795ff4b797dd496674211f",
+          "words": [
+            "0xe3a0050e",
+            "0xe59f1014",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14,
+            14,
+            8,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #58720256",
+            "ldr\tr1, [pc, #20]",
+            "cmp\tr1, #58720256",
+            "movhi\tr0, r1",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "b32e56231359b328a81eecdf900dc0384bde76f8b7b1291427771c4d3f63018e"
+        },
+        {
+          "extent": [
+            58707828,
+            58707836
+          ],
+          "stored_image_offset": 20772,
+          "original_rom_offset": 2183460,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #0",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "75b6efeedb5a1e884a68e1f3dc429b631c41775803b70a671fa53bad0a1080fd"
+        },
+        {
+          "extent": [
+            58707844,
+            58707872
+          ],
+          "stored_image_offset": 20788,
+          "original_rom_offset": 2183476,
+          "sha256": "fc773af8408aab5f6223889cf579e8096b40962f6b800a362dd7bfa57a10450a",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000004",
+            "0xea000011"
+          ],
+          "condition_nibbles": [
+            14,
+            0,
+            14,
+            0,
+            14,
+            0,
+            14
+          ],
+          "llvm_instructions": [
+            "cmp\tr0, #1",
+            "beq\t#16",
+            "cmp\tr0, #7",
+            "beq\t#16",
+            "cmp\tr0, #8",
+            "beq\t#16",
+            "b\t#68"
+          ],
+          "llvm_stdout_sha256": "788592a75ee7c036ca44649fe28be61e6332a7886a6ef31475d68fc721d155dd"
+        },
+        {
+          "extent": [
+            58707872,
+            58707880
+          ],
+          "stored_image_offset": 20816,
+          "original_rom_offset": 2183504,
+          "sha256": "9b89d55eab4a0cf40b11c6dd27589af847e9050f9e3cb057b1148db3ebf46a81",
+          "words": [
+            "0xe59f0048",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr0, [pc, #72]",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "85eb7f3adb437a6ae1251ca3a81d81ae9fdc7426fe8510de0ff689cc74f40231"
+        },
+        {
+          "extent": [
+            58707880,
+            58707888
+          ],
+          "stored_image_offset": 20824,
+          "original_rom_offset": 2183512,
+          "sha256": "0e586df921c49865830816bf47809f423dde30038a4605f9076fe3b5e7a8b1b3",
+          "words": [
+            "0xe3a0050e",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #58720256",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "9160c5420bf39e4bd05f138f970034e4adc20e1fbb5496a408014dd2e56d6d35"
+        },
+        {
+          "extent": [
+            58707888,
+            58707944
+          ],
+          "stored_image_offset": 20832,
+          "original_rom_offset": 2183520,
+          "sha256": "74a9af49da64fc6418fe362b407b16d3325c7e1fe6328546a43495820faf42be",
+          "words": [
+            "0xe59f103c",
+            "0xe59f003c",
+            "0xe0402001",
+            "0xe3a0050e",
+            "0xe59f1034",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe59f102c",
+            "0xe3510000",
+            "0x012fff1e",
+            "0xe3510000",
+            "0xb0400001",
+            "0xa0420001",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            8,
+            14,
+            14,
+            0,
+            14,
+            11,
+            10,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr1, [pc, #60]",
+            "ldr\tr0, [pc, #60]",
+            "sub\tr2, r0, r1",
+            "mov\tr0, #58720256",
+            "ldr\tr1, [pc, #52]",
+            "cmp\tr1, #58720256",
+            "movhi\tr0, r1",
+            "ldr\tr1, [pc, #44]",
+            "cmp\tr1, #0",
+            "bxeq\tlr",
+            "cmp\tr1, #0",
+            "sublt\tr0, r0, r1",
+            "subge\tr0, r2, r1",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "9978fa78b757a69bc9324b0ee1719dd19865d76da81b6856cb32ea6dcbb6a540"
+        },
+        {
+          "extent": [
+            58707944,
+            58707952
+          ],
+          "stored_image_offset": 20888,
+          "original_rom_offset": 2183576,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #0",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "75b6efeedb5a1e884a68e1f3dc429b631c41775803b70a671fa53bad0a1080fd"
+        }
+      ],
+      "literal_reads": [
+        {
+          "address": 58707836,
+          "word": 41917448,
+          "sha256": "9fbac9e63aeeb0ab27ae825c78c1f1e0db13941a547bf8ce9f186ec09d306be9",
+          "stored_image_offset": 20780,
+          "original_rom_offset": 2183468,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": [
+            {
+              "region": {
+                "autoload": 1
+              },
+              "kind": "bss",
+              "boundary": "exclusive_end"
+            }
+          ]
+        },
+        {
+          "address": 58707840,
+          "word": 58768528,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "stored_image_offset": 20784,
+          "original_rom_offset": 2183472,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": [
+            {
+              "region": {
+                "autoload": 0
+              },
+              "kind": "bss",
+              "boundary": "exclusive_end"
+            }
+          ]
+        },
+        {
+          "address": 58707952,
+          "word": 41938944,
+          "sha256": "f585806e0c36f26f5bb712c65a5c1ff52a9d494fcf4ab39b7110516099222528",
+          "stored_image_offset": 20896,
+          "original_rom_offset": 2183584,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        },
+        {
+          "address": 58707956,
+          "word": 1024,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "stored_image_offset": 20900,
+          "original_rom_offset": 2183588,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        },
+        {
+          "address": 58707960,
+          "word": 58785664,
+          "sha256": "10e90213854ad8d7a3c230a550f02a4f07da0304629e8a793807151e5c33dfd1",
+          "stored_image_offset": 20904,
+          "original_rom_offset": 2183592,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        },
+        {
+          "address": 58707964,
+          "word": 58768528,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "stored_image_offset": 20908,
+          "original_rom_offset": 2183596,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": [
+            {
+              "region": {
+                "autoload": 0
+              },
+              "kind": "bss",
+              "boundary": "exclusive_end"
+            }
+          ]
+        },
+        {
+          "address": 58707968,
+          "word": 1024,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "stored_image_offset": 20912,
+          "original_rom_offset": 2183600,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        }
+      ],
+      "literal_load_arithmetic": [
+        {
+          "source": 58707784,
+          "condition_nibble": 14,
+          "literal_address": 58707836,
+          "literal_word": 41917448
+        },
+        {
+          "source": 58707792,
+          "condition_nibble": 14,
+          "literal_address": 58707840,
+          "literal_word": 58768528
+        },
+        {
+          "source": 58707812,
+          "condition_nibble": 14,
+          "literal_address": 58707840,
+          "literal_word": 58768528
+        },
+        {
+          "source": 58707872,
+          "condition_nibble": 14,
+          "literal_address": 58707952,
+          "literal_word": 41938944
+        },
+        {
+          "source": 58707888,
+          "condition_nibble": 14,
+          "literal_address": 58707956,
+          "literal_word": 1024
+        },
+        {
+          "source": 58707892,
+          "condition_nibble": 14,
+          "literal_address": 58707960,
+          "literal_word": 58785664
+        },
+        {
+          "source": 58707904,
+          "condition_nibble": 14,
+          "literal_address": 58707964,
+          "literal_word": 58768528
+        },
+        {
+          "source": 58707916,
+          "condition_nibble": 14,
+          "literal_address": 58707968,
+          "literal_word": 1024
+        }
+      ],
+      "autoload_regions": [
+        {
+          "kind": {
+            "autoload": 0
+          },
+          "initialized": [
+            58687488,
+            58753608
+          ],
+          "bss": [
+            58753608,
+            58768528
+          ],
+          "stored": 432
+        },
+        {
+          "kind": {
+            "autoload": 1
+          },
+          "initialized": [
+            41811968,
+            41910944
+          ],
+          "bss": [
+            41910944,
+            41917448
+          ],
+          "stored": 66552
+        }
+      ]
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "windows": [
+        {
+          "extent": [
+            58707756,
+            58707784
+          ],
+          "stored_image_offset": 20700,
+          "original_rom_offset": 4334300,
+          "sha256": "34b0ed4e38399d836d25130aef949cab5e1e0d11a1197ef200a2f5143d3379e8",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000006",
+            "0xea00000a"
+          ],
+          "condition_nibbles": [
+            14,
+            0,
+            14,
+            0,
+            14,
+            0,
+            14
+          ],
+          "llvm_instructions": [
+            "cmp\tr0, #1",
+            "beq\t#16",
+            "cmp\tr0, #7",
+            "beq\t#16",
+            "cmp\tr0, #8",
+            "beq\t#24",
+            "b\t#40"
+          ],
+          "llvm_stdout_sha256": "a18334bf43a1a40aa314b3d1badaad04e02b815001c3203f8395d22be08c494c"
+        },
+        {
+          "extent": [
+            58707784,
+            58707792
+          ],
+          "stored_image_offset": 20728,
+          "original_rom_offset": 4334328,
+          "sha256": "81482e904df8557d0ee4a8b9dee39159942088e72d0d0ace1e49070cca2b8f48",
+          "words": [
+            "0xe59f002c",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr0, [pc, #44]",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "6e4530f280513d43b92e3e1ba56e25bc9cf15834f2fa830b091740f5a308c638"
+        },
+        {
+          "extent": [
+            58707792,
+            58707808
+          ],
+          "stored_image_offset": 20736,
+          "original_rom_offset": 4334336,
+          "sha256": "1f3c2b8a9b1d10568078500d97247dcf2b0818244770b21d6b4cd658ab523d4b",
+          "words": [
+            "0xe59f0028",
+            "0xe350050e",
+            "0x83a0050e",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14,
+            8,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr0, [pc, #40]",
+            "cmp\tr0, #58720256",
+            "movhi\tr0, #58720256",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "97a6c0aa6f7b8fd1a53adfe916c97c09e04454d6c2d0ba9cdaf8917a662a3ff3"
+        },
+        {
+          "extent": [
+            58707808,
+            58707828
+          ],
+          "stored_image_offset": 20752,
+          "original_rom_offset": 4334352,
+          "sha256": "bac3f5742b73aa4826927abafe9932fb0f97daf589795ff4b797dd496674211f",
+          "words": [
+            "0xe3a0050e",
+            "0xe59f1014",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14,
+            14,
+            8,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #58720256",
+            "ldr\tr1, [pc, #20]",
+            "cmp\tr1, #58720256",
+            "movhi\tr0, r1",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "b32e56231359b328a81eecdf900dc0384bde76f8b7b1291427771c4d3f63018e"
+        },
+        {
+          "extent": [
+            58707828,
+            58707836
+          ],
+          "stored_image_offset": 20772,
+          "original_rom_offset": 4334372,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #0",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "75b6efeedb5a1e884a68e1f3dc429b631c41775803b70a671fa53bad0a1080fd"
+        },
+        {
+          "extent": [
+            58707844,
+            58707872
+          ],
+          "stored_image_offset": 20788,
+          "original_rom_offset": 4334388,
+          "sha256": "fc773af8408aab5f6223889cf579e8096b40962f6b800a362dd7bfa57a10450a",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000004",
+            "0xea000011"
+          ],
+          "condition_nibbles": [
+            14,
+            0,
+            14,
+            0,
+            14,
+            0,
+            14
+          ],
+          "llvm_instructions": [
+            "cmp\tr0, #1",
+            "beq\t#16",
+            "cmp\tr0, #7",
+            "beq\t#16",
+            "cmp\tr0, #8",
+            "beq\t#16",
+            "b\t#68"
+          ],
+          "llvm_stdout_sha256": "788592a75ee7c036ca44649fe28be61e6332a7886a6ef31475d68fc721d155dd"
+        },
+        {
+          "extent": [
+            58707872,
+            58707880
+          ],
+          "stored_image_offset": 20816,
+          "original_rom_offset": 4334416,
+          "sha256": "9b89d55eab4a0cf40b11c6dd27589af847e9050f9e3cb057b1148db3ebf46a81",
+          "words": [
+            "0xe59f0048",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr0, [pc, #72]",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "85eb7f3adb437a6ae1251ca3a81d81ae9fdc7426fe8510de0ff689cc74f40231"
+        },
+        {
+          "extent": [
+            58707880,
+            58707888
+          ],
+          "stored_image_offset": 20824,
+          "original_rom_offset": 4334424,
+          "sha256": "0e586df921c49865830816bf47809f423dde30038a4605f9076fe3b5e7a8b1b3",
+          "words": [
+            "0xe3a0050e",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #58720256",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "9160c5420bf39e4bd05f138f970034e4adc20e1fbb5496a408014dd2e56d6d35"
+        },
+        {
+          "extent": [
+            58707888,
+            58707944
+          ],
+          "stored_image_offset": 20832,
+          "original_rom_offset": 4334432,
+          "sha256": "74a9af49da64fc6418fe362b407b16d3325c7e1fe6328546a43495820faf42be",
+          "words": [
+            "0xe59f103c",
+            "0xe59f003c",
+            "0xe0402001",
+            "0xe3a0050e",
+            "0xe59f1034",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe59f102c",
+            "0xe3510000",
+            "0x012fff1e",
+            "0xe3510000",
+            "0xb0400001",
+            "0xa0420001",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            8,
+            14,
+            14,
+            0,
+            14,
+            11,
+            10,
+            14
+          ],
+          "llvm_instructions": [
+            "ldr\tr1, [pc, #60]",
+            "ldr\tr0, [pc, #60]",
+            "sub\tr2, r0, r1",
+            "mov\tr0, #58720256",
+            "ldr\tr1, [pc, #52]",
+            "cmp\tr1, #58720256",
+            "movhi\tr0, r1",
+            "ldr\tr1, [pc, #44]",
+            "cmp\tr1, #0",
+            "bxeq\tlr",
+            "cmp\tr1, #0",
+            "sublt\tr0, r0, r1",
+            "subge\tr0, r2, r1",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "9978fa78b757a69bc9324b0ee1719dd19865d76da81b6856cb32ea6dcbb6a540"
+        },
+        {
+          "extent": [
+            58707944,
+            58707952
+          ],
+          "stored_image_offset": 20888,
+          "original_rom_offset": 4334488,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ],
+          "condition_nibbles": [
+            14,
+            14
+          ],
+          "llvm_instructions": [
+            "mov\tr0, #0",
+            "bx\tlr"
+          ],
+          "llvm_stdout_sha256": "75b6efeedb5a1e884a68e1f3dc429b631c41775803b70a671fa53bad0a1080fd"
+        }
+      ],
+      "literal_reads": [
+        {
+          "address": 58707836,
+          "word": 41917448,
+          "sha256": "9fbac9e63aeeb0ab27ae825c78c1f1e0db13941a547bf8ce9f186ec09d306be9",
+          "stored_image_offset": 20780,
+          "original_rom_offset": 4334380,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": [
+            {
+              "region": {
+                "autoload": 1
+              },
+              "kind": "bss",
+              "boundary": "exclusive_end"
+            }
+          ]
+        },
+        {
+          "address": 58707840,
+          "word": 58768528,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "stored_image_offset": 20784,
+          "original_rom_offset": 4334384,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": [
+            {
+              "region": {
+                "autoload": 0
+              },
+              "kind": "bss",
+              "boundary": "exclusive_end"
+            }
+          ]
+        },
+        {
+          "address": 58707952,
+          "word": 41938944,
+          "sha256": "f585806e0c36f26f5bb712c65a5c1ff52a9d494fcf4ab39b7110516099222528",
+          "stored_image_offset": 20896,
+          "original_rom_offset": 4334496,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        },
+        {
+          "address": 58707956,
+          "word": 1024,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "stored_image_offset": 20900,
+          "original_rom_offset": 4334500,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        },
+        {
+          "address": 58707960,
+          "word": 58785664,
+          "sha256": "10e90213854ad8d7a3c230a550f02a4f07da0304629e8a793807151e5c33dfd1",
+          "stored_image_offset": 20904,
+          "original_rom_offset": 4334504,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        },
+        {
+          "address": 58707964,
+          "word": 58768528,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "stored_image_offset": 20908,
+          "original_rom_offset": 4334508,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": [
+            {
+              "region": {
+                "autoload": 0
+              },
+              "kind": "bss",
+              "boundary": "exclusive_end"
+            }
+          ]
+        },
+        {
+          "address": 58707968,
+          "word": 1024,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "stored_image_offset": 20912,
+          "original_rom_offset": 4334512,
+          "pool_mapping": "initialized autoload0",
+          "pointed_word_mapping": null,
+          "pointed_value_boundaries": []
+        }
+      ],
+      "literal_load_arithmetic": [
+        {
+          "source": 58707784,
+          "condition_nibble": 14,
+          "literal_address": 58707836,
+          "literal_word": 41917448
+        },
+        {
+          "source": 58707792,
+          "condition_nibble": 14,
+          "literal_address": 58707840,
+          "literal_word": 58768528
+        },
+        {
+          "source": 58707812,
+          "condition_nibble": 14,
+          "literal_address": 58707840,
+          "literal_word": 58768528
+        },
+        {
+          "source": 58707872,
+          "condition_nibble": 14,
+          "literal_address": 58707952,
+          "literal_word": 41938944
+        },
+        {
+          "source": 58707888,
+          "condition_nibble": 14,
+          "literal_address": 58707956,
+          "literal_word": 1024
+        },
+        {
+          "source": 58707892,
+          "condition_nibble": 14,
+          "literal_address": 58707960,
+          "literal_word": 58785664
+        },
+        {
+          "source": 58707904,
+          "condition_nibble": 14,
+          "literal_address": 58707964,
+          "literal_word": 58768528
+        },
+        {
+          "source": 58707916,
+          "condition_nibble": 14,
+          "literal_address": 58707968,
+          "literal_word": 1024
+        }
+      ],
+      "autoload_regions": [
+        {
+          "kind": {
+            "autoload": 0
+          },
+          "initialized": [
+            58687488,
+            58753608
+          ],
+          "bss": [
+            58753608,
+            58768528
+          ],
+          "stored": 432
+        },
+        {
+          "kind": {
+            "autoload": 1
+          },
+          "initialized": [
+            41811968,
+            41910944
+          ],
+          "bss": [
+            41910944,
+            41917448
+          ],
+          "stored": 66552
+        }
+      ]
+    }
+  ],
+  "inputs_unchanged": true,
+  "source_credit_bytes": 0
+}

@@ -1,0 +1,325 @@
+{
+  "status": "accepted",
+  "findings": [],
+  "reviewed_commit": "3a31415773e78617a5dde5f13889b98cabbc4d13",
+  "public_git_blobs_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-leaf-link-proof/proof.json": "7e8f117453938f77e0ef43e68e8893bdfbbe4a95ec6b46dc120835774596b9d1",
+    "decomp/matching-notes/other-cpus/arm7-leaf-link-proof/run.py": "0d778c4d08013f83fed0d15bd929d79a9a6f64fe4e2395d23fa43362bfc75225",
+    "decomp/matching-notes/other-cpus/arm7-leaf-link-proof/test_run.py": "279c76f7ca5114f050016840e19871e80dcc39f42b7fc291a9424553fbe14b19",
+    "decomp/matching-notes/other-cpus/arm7-leaf-link.md": "c199392d0f4425c253a3525bd963dde45272c5e744677d2684d739340bfa892a"
+  },
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "independent_readback": {
+        "linked_elf_sha256": "ce1b10d668e8a2f4ff0aa506be4ac33b99c47069f68e60b9b6a2b97467313ceb",
+        "linked_elf_bytes": 166732,
+        "entry": 37224448,
+        "elf_flags": 83886592,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "allocated_sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "size": 432,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "size": 24,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "size": 98976,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "size": 6504,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "size": 66120,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "size": 14920,
+            "align": 4
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_store_trial",
+          "value": 58707736,
+          "size": 20,
+          "binding": 1,
+          "type": 2,
+          "section": 5
+        },
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "BSS_bytes": 21424,
+        "zero_relocation_sections": true,
+        "ELF_only_original_reconstruction": true
+      },
+      "actual_object_consumed_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+      "tampered_PT_LOAD_offset_independently_rejected": true,
+      "wrong_36_byte_object_LLD_exit_code": 1,
+      "wrong_object_actual_stderr": "ld.lld: error: leaf end\nld.lld: error: leaf size\nld.lld: error: size\nld.lld: error: section .arm7.autoload0 virtual address range overlaps with .arm7.bss.autoload0\n>>> .arm7.autoload0 range is [0x37F8000, 0x3808257]\n>>> .arm7.bss.autoload0 range is [0x3808248, 0x380BC8F]\n\nld.lld: error: section .arm7.autoload0 load address range overlaps with .arm7.autoload1\n>>> .arm7.autoload0 range is [0x23801B0, 0x2390407]\n>>> .arm7.autoload1 range is [0x23903F8, 0x23A8697]\n"
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "independent_readback": {
+        "linked_elf_sha256": "ce1b10d668e8a2f4ff0aa506be4ac33b99c47069f68e60b9b6a2b97467313ceb",
+        "linked_elf_bytes": 166732,
+        "entry": 37224448,
+        "elf_flags": 83886592,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "allocated_sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "size": 432,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "size": 24,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "size": 98976,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "size": 6504,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "size": 66120,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "size": 14920,
+            "align": 4
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_store_trial",
+          "value": 58707736,
+          "size": 20,
+          "binding": 1,
+          "type": 2,
+          "section": 5
+        },
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "BSS_bytes": 21424,
+        "zero_relocation_sections": true,
+        "ELF_only_original_reconstruction": true
+      },
+      "actual_object_consumed_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+      "tampered_PT_LOAD_offset_independently_rejected": true,
+      "wrong_36_byte_object_LLD_exit_code": 1,
+      "wrong_object_actual_stderr": "ld.lld: error: leaf end\nld.lld: error: leaf size\nld.lld: error: size\nld.lld: error: section .arm7.autoload0 virtual address range overlaps with .arm7.bss.autoload0\n>>> .arm7.autoload0 range is [0x37F8000, 0x3808257]\n>>> .arm7.bss.autoload0 range is [0x3808248, 0x380BC8F]\n\nld.lld: error: section .arm7.autoload0 load address range overlaps with .arm7.autoload1\n>>> .arm7.autoload0 range is [0x23801B0, 0x2390407]\n>>> .arm7.autoload1 range is [0x23903F8, 0x23A8697]\n"
+    }
+  ],
+  "inputs_unchanged": true,
+  "before_input_snapshot_sha256": "11ac17365964fb00dac1b2d9e41b5391b2f0c0f5b6a1dc1c62681754daef4e98",
+  "after_input_snapshot_sha256": "11ac17365964fb00dac1b2d9e41b5391b2f0c0f5b6a1dc1c62681754daef4e98",
+  "fresh_complete_result_sha256": "90b76c7294a57938c24d15667ca46edfdb5d1f8ee8d77e9f6138cb357aed450e",
+  "source_credit_bytes": 0,
+  "canonical_update": false,
+  "T10_complete": false,
+  "scope_review": "Actual independently compiled unmodified MW object consumed directly through compiled.o(.text), not incbin. Exact ELF-only image reconstruction is physical link feasibility, with no original entry/extent/ABI/link relocation/source/runtime/external-address contract claims. The actual input has no relocations, so no general MW relocation support established. Autoload0 executable section flag6 and nonexecutable segment flag4 confined to private experiment; canonical opaque validator unchanged.",
+  "independent_scripts_sha256": {
+    "run_fresh.py": "96e13beca471fb32989c0e41c6db2f99c7619fb0b35e0c1091572e72dfa3352f",
+    "check_link.py": "12fca237f1409480238774417a803bed69ea9ae6a5b850937f829c36e00e3601"
+  },
+  "existing_recipe_tests": {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "test_run.py",
+      "-v"
+    ],
+    "tests_passed": 2,
+    "failures": 0
+  }
+}

@@ -1,0 +1,10 @@
+
+/private/tmp/jus-arm-branch-llvm-oracle/branches.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+02380000 <_start>:
+ 2380000: ea51e118     	b	0x37f8468 <_start+0x1478468> @ imm = #0x1478460
+ 2380004: eb51e117     	bl	0x37f8468 <_start+0x1478468> @ imm = #0x147845c
+ 2380008: eabffffc     	b	0x1380000 <back_target> @ imm = #-0x1000010
+ 238000c: ebbffffb     	bl	0x1380000 <back_target> @ imm = #-0x1000014

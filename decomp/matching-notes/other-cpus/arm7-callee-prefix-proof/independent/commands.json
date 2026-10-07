@@ -1,0 +1,23 @@
+{
+  "probe": [
+    "/private/tmp/jus-arm7-reachable-root-cache/target/release/examples/arm7_reachable_probe",
+    "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "/private/tmp/jus-arm7-callee-grounding-write/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+    "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "/private/tmp/jus-arm7-callee-grounding-write/decomp/matching-notes/other-cpus/arm7-callee-prefix-proof/requests.json",
+    "91fc7b3da7000d67be18042a49e513a4d5ac474cb4430bb13a13ea21f33296ef",
+    "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff"
+  ],
+  "llvm": [
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--disassemble",
+      "--triple=armv4t-none-eabi"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--disassemble",
+      "--triple=armv4t-none-eabi"
+    ]
+  ]
+}

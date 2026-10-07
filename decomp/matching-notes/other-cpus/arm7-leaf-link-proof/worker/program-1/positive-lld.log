@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/opt/homebrew/bin/ld.lld",
+    "-m",
+    "armelf",
+    "--nmagic",
+    "-T",
+    "physical.ld",
+    "-Map",
+    "physical.map",
+    "-o",
+    "linked.elf",
+    "startup.o",
+    "table.o",
+    "autoload1.o",
+    "prefix.o",
+    "compiled.o",
+    "suffix.o",
+    "bss0.o"
+  ],
+  "return_code": 0
+}
+STDOUT
+
+STDERR

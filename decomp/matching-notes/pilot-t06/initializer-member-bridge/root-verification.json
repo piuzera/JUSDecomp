@@ -1,0 +1,16 @@
+{
+  "status": "verified_unmatched",
+  "completed_contexts": 3,
+  "independently_reproduced_raw_object_sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7",
+  "same_as_prior_near_miss": true,
+  "accepted_units": 0,
+  "published_overrides": 0,
+  "source_credit_bytes": 0,
+  "tests": {
+    "passed": 225,
+    "skipped": 0,
+    "new_actual_tool_tests": 3
+  },
+  "canonical_source_bytes": 304,
+  "full_rom_attempted_for_initializer": false
+}

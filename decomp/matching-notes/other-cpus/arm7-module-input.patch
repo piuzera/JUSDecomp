@@ -1,0 +1,597 @@
+diff --git a/lib/Cargo.toml b/lib/Cargo.toml
+index 81f14dd..ad276e3 100644
+--- a/lib/Cargo.toml
++++ b/lib/Cargo.toml
+@@ -22,6 +22,7 @@ strum_macros = "0.28.0"
+ unarm = { version = "1.8", default-features = false, features = [
+     "arm",
+     "thumb",
++    "v4t",
+     "v5te",
+ ] }
+ 
+diff --git a/lib/examples/arm7_module_probe.rs b/lib/examples/arm7_module_probe.rs
+new file mode 100644
+index 0000000..9b1c677
+--- /dev/null
++++ b/lib/examples/arm7_module_probe.rs
+@@ -0,0 +1,87 @@
++//! Read-only physical module and explicitly pinned short-span observations.
++use ds_decomp::{
++    config::symbol::InstructionMode,
++    rom::arm7::{Arm7Layout, Arm7RegionKind, ProgramIdentity},
++};
++use serde::Deserialize;
++use serde_json::json;
++use sha2::{Digest, Sha256};
++use std::{error::Error, fs, io, ops::Range};
++
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct SelectedSpan {
++    program: ProgramIdentity,
++    region: Arm7RegionKind,
++    mode: InstructionMode,
++    extent: Range<u32>,
++}
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++fn main() -> Result<(), Box<dyn Error>> {
++    let args: Vec<_> = std::env::args().skip(1).collect();
++    if args.len() != 5 {
++        return Err(
++            "usage: arm7_module_probe ROM LAYOUT_JSON LAYOUT_SHA256 SPANS_JSON SPANS_SHA256".into(),
++        );
++    }
++    let parent = fs::read(&args[0])?;
++    let sidecar = fs::read(&args[1])?;
++    let span_sidecar = fs::read(&args[3])?;
++    if sha(&sidecar) != args[2] || sha(&span_sidecar) != args[4] {
++        return Err("independent layout/span sidecar hash mismatch".into());
++    }
++    let layouts: Vec<Arm7Layout> = serde_json::from_slice(&sidecar)?;
++    let spans: Vec<SelectedSpan> = serde_json::from_slice(&span_sidecar)?;
++    if layouts.is_empty() || spans.is_empty() {
++        return Err("no physical layouts or explicit span observations supplied".into());
++    }
++    let mut programs = Vec::new();
++    let mut observed = vec![false; spans.len()];
++    for layout in layouts {
++        let view = layout.checked(&parent)?;
++        let mut modules = Vec::new();
++        let mut observations = Vec::new();
++        for module in view.module_inputs() {
++            let identity = module.identity();
++            modules.push(json!({"identity":identity,"initialized":module.initialized(),"bss":module.bss(),
++                "initialized_bytes":module.bytes().len(),"sha256":sha(module.bytes()),"target":module.target(),
++                "code_data_classification":"unresolved","source_bytes":0}));
++            for (index, span) in spans.iter().enumerate() {
++                if identity.program() != &span.program || identity.region() != &span.region {
++                    continue;
++                }
++                if observed[index] {
++                    return Err("span identity matched more than one selected module".into());
++                }
++                let instructions = module.decode_span(span.mode, span.extent.clone())?;
++                let base = module.initialized().start;
++                let bytes = &module.bytes()
++                    [(span.extent.start - base) as usize..(span.extent.end - base) as usize];
++                observations.push(json!({"identity":identity,"mode":span.mode,"extent":span.extent,
++                    "bytes":bytes.len(),"input_sha256":sha(bytes),"instruction_count":instructions.len(),
++                    "target":module.target(),"executable_coverage_established":false,"function_extent_established":false}));
++                observed[index] = true;
++            }
++        }
++        programs.push(json!({"identity":view.identity(),"modules":modules,"observations":observations,
++            "table_bytes":view.table().len(),"table_sha256":sha(view.table()),"source_bytes":0,"linked_binary_baseline":false}));
++    }
++    if observed.iter().any(|matched| !matched) {
++        return Err("explicit span did not match a checked program/region identity".into());
++    }
++    if fs::read(&args[0])? != parent
++        || fs::read(&args[1])? != sidecar
++        || fs::read(&args[3])? != span_sidecar
++    {
++        return Err("input changed during module/span observation".into());
++    }
++    serde_json::to_writer_pretty(
++        io::stdout().lock(),
++        &json!({"schema_version":1,"status":"physical_modules_and_selected_spans_verified",
++        "parent_rom_sha256":sha(&parent),"layout_sidecar_sha256":sha(&sidecar),"span_sidecar_sha256":sha(&span_sidecar),
++        "inputs_unchanged":true,"programs":programs,"source_bytes":0,"arm7_binary_baseline_complete":false,"task_complete":false}),
++    )?;
++    Ok(())
++}
+diff --git a/lib/src/rom/arm7.rs b/lib/src/rom/arm7.rs
+index de1bca0..d3d36d9 100644
+--- a/lib/src/rom/arm7.rs
++++ b/lib/src/rom/arm7.rs
+@@ -36,14 +36,14 @@ pub struct TargetPolicy {
+     pub processor: Processor,
+ }
+ /// Select a complete program inside a verified parent ROM.
+-#[derive(Clone, Debug, Serialize, Deserialize)]
++#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+ #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
+ pub enum ProgramSelector {
+     Parent,
+     NitroFs { path: String },
+ }
+ /// Program identity remains distinct even when executable payloads are identical.
+-#[derive(Clone, Debug, Serialize, Deserialize)]
++#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+ #[serde(deny_unknown_fields)]
+ pub struct ProgramIdentity {
+     pub parent_rom_sha256: String,
+diff --git a/lib/src/rom/arm7_modules.rs b/lib/src/rom/arm7_modules.rs
+new file mode 100644
+index 0000000..dc36296
+--- /dev/null
++++ b/lib/src/rom/arm7_modules.rs
+@@ -0,0 +1,154 @@
++//! Physical ARM7 module inputs and explicit ARMv4T span observations.
++//! These inputs are not analyzed modules and establish no executable/source coverage.
++use std::{error::Error, fmt, ops::Range};
++
++use serde::Serialize;
++use unarm::args::Argument;
++use unarm::{ArmVersion, Endian, Ins, ParseFlags, ParseMode, ParsedIns, Parser, arm, thumb};
++
++use super::arm7::{
++    Arm7RegionKind, Arm7View, Cpu, InstructionSet, Processor, ProgramIdentity, TargetPolicy,
++};
++use crate::config::symbol::InstructionMode;
++
++/// Full program, CPU and physical loader-region identity.
++#[derive(Debug, PartialEq, Eq, Serialize)]
++pub struct Arm7ModuleIdentity<'a> {
++    program: &'a ProgramIdentity,
++    cpu: Cpu,
++    region: Arm7RegionKind,
++}
++impl Arm7ModuleIdentity<'_> {
++    /// Both program hashes and its exact parent/NitroFS selector.
++    pub fn program(&self) -> &ProgramIdentity {
++        self.program
++    }
++    /// ARM7; construction is limited to checked ARM7 views.
++    pub fn cpu(&self) -> &Cpu {
++        &self.cpu
++    }
++    /// Startup or an original ordered autoload index.
++    pub fn region(&self) -> &Arm7RegionKind {
++        &self.region
++    }
++}
++
++/// Immutable physical input obtained only from a checked program view.
++#[derive(Debug)]
++pub struct Arm7ModuleInput<'a> {
++    identity: Arm7ModuleIdentity<'a>,
++    bytes: &'a [u8],
++    initialized: Range<u32>,
++    bss: Range<u32>,
++}
++
++impl Arm7View<'_> {
++    /// Physical startup/autoload inputs in loader order. The table is excluded.
++    pub fn module_inputs(&self) -> impl Iterator<Item = Arm7ModuleInput<'_>> {
++        let program = self.identity();
++        std::iter::once(self.startup()).chain(self.autoloads()).map(move |region| Arm7ModuleInput {
++            identity: Arm7ModuleIdentity {
++                program,
++                cpu: Cpu::Arm7,
++                region: region.description().kind.clone(),
++            },
++            bytes: region.bytes(),
++            initialized: region.description().runtime_base..region.bss_start(),
++            bss: region.bss_start()..region.bss_end(),
++        })
++    }
++}
++
++/// A rejected span yields no partial observations.
++#[derive(Debug, PartialEq, Eq)]
++pub enum DecodeSpanError {
++    EmptyOrReversed,
++    Bounds,
++    Alignment,
++    TruncatedInstruction { address: u32 },
++    IllegalInstruction { address: u32 },
++}
++impl fmt::Display for DecodeSpanError {
++    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        write!(f, "ARM7 span observation: {self:?}")
++    }
++}
++impl Error for DecodeSpanError {}
++
++impl Arm7ModuleInput<'_> {
++    /// Identity preserves program context even for equal payloads/addresses.
++    pub fn identity(&self) -> &Arm7ModuleIdentity<'_> {
++        &self.identity
++    }
++    /// Original initialized runtime range, without a code/data classification.
++    pub fn initialized(&self) -> Range<u32> {
++        self.initialized.clone()
++    }
++    /// Checked BSS runtime range.
++    pub fn bss(&self) -> Range<u32> {
++        self.bss.clone()
++    }
++    /// Original initialized bytes.
++    pub fn bytes(&self) -> &[u8] {
++        self.bytes
++    }
++    /// A description copy. Changing it cannot modify the internal decoder policy.
++    pub fn target(&self) -> TargetPolicy {
++        TargetPolicy { cpu: Cpu::Arm7, isa: InstructionSet::ArmV4T, processor: Processor::Arm7Tdmi }
++    }
++    /// Observe only an explicitly selected initialized span and ARM/Thumb mode.
++    ///
++    /// All requested bytes must decode completely under fixed ARMv4T policy.
++    /// This neither finds functions nor establishes that a span is executable.
++    pub fn decode_span(
++        &self,
++        mode: InstructionMode,
++        span: Range<u32>,
++    ) -> Result<Vec<(u32, Ins, ParsedIns)>, DecodeSpanError> {
++        if span.start >= span.end {
++            return Err(DecodeSpanError::EmptyOrReversed);
++        }
++        if span.start < self.initialized.start || span.end > self.initialized.end {
++            return Err(DecodeSpanError::Bounds);
++        }
++        let width = if mode == InstructionMode::Arm { 4 } else { 2 };
++        if !span.start.is_multiple_of(width) || !span.end.is_multiple_of(width) {
++            return Err(DecodeSpanError::Alignment);
++        }
++        let start = (span.start - self.initialized.start) as usize;
++        let end = (span.end - self.initialized.start) as usize;
++        let bytes = self.bytes.get(start..end).ok_or(DecodeSpanError::Bounds)?;
++        let flags = ParseFlags { version: ArmVersion::V4T, ual: false };
++        let parse_mode = if mode == InstructionMode::Arm {
++            ParseMode::Arm
++        } else {
++            ParseMode::Thumb
++        };
++        let mut parser = Parser::new(parse_mode, span.start, Endian::Little, flags, bytes);
++        let mut next_address = span.start;
++        let mut observations = Vec::new();
++        loop {
++            let Some((address, ins, parsed)) = parser.next() else {
++                if next_address != span.end {
++                    return Err(DecodeSpanError::TruncatedInstruction { address: next_address });
++                }
++                return Ok(observations);
++            };
++            let illegal = match ins {
++                Ins::Arm(ins) => ins.op == arm::Opcode::Illegal,
++                Ins::Thumb(ins) => {
++                    ins.op == thumb::Opcode::Illegal
++                        || (parser.address - address == 4 && ins.op != thumb::Opcode::Bl)
++                        || (ins.op == thumb::Opcode::Bl
++                            && !matches!(parsed.args[0], Argument::BranchDest(_)))
++                }
++                Ins::Data => true,
++            };
++            if illegal || parsed.mnemonic == "<illegal>" {
++                return Err(DecodeSpanError::IllegalInstruction { address });
++            }
++            next_address = parser.address;
++            observations.push((address, ins, parsed));
++        }
++    }
++}
+diff --git a/lib/src/rom/mod.rs b/lib/src/rom/mod.rs
+index 6598f56..970910a 100644
+--- a/lib/src/rom/mod.rs
++++ b/lib/src/rom/mod.rs
+@@ -1,2 +1,3 @@
+ pub mod arm7;
+ pub mod rom;
++pub mod arm7_modules;
+diff --git a/lib/tests/arm7_module_inputs.rs b/lib/tests/arm7_module_inputs.rs
+new file mode 100644
+index 0000000..07c2381
+--- /dev/null
++++ b/lib/tests/arm7_module_inputs.rs
+@@ -0,0 +1,297 @@
++use unarm::{ArmVersion, ParseFlags, arm, thumb};
++
++#[test]
++fn locked_parser_distinguishes_v4t_and_explicit_legacy_v5te() {
++    let v4 = ParseFlags { version: ArmVersion::V4T, ual: false };
++    let v5 = ParseFlags { version: ArmVersion::V5Te, ual: false };
++    assert_eq!(arm::Ins::new(0xe12fff10, &v4).op, arm::Opcode::Bx);
++    assert_eq!(arm::Ins::new(0xe12fff30, &v4).op, arm::Opcode::Illegal);
++    assert_eq!(arm::Ins::new(0xe12fff30, &v5).op, arm::Opcode::BlxR);
++    assert_eq!(thumb::Ins::new(0x4750, &v4).op, thumb::Opcode::BxR);
++    assert_eq!(thumb::Ins::new(0x47d0, &v4).op, thumb::Opcode::Illegal);
++    assert_eq!(thumb::Ins::new(0x47d0, &v5).op, thumb::Opcode::BlxR);
++    assert_eq!(thumb::Ins::new(0xe800, &v4).op, thumb::Opcode::Illegal);
++    assert_ne!(thumb::Ins::new(0xe800, &v5).op, thumb::Opcode::Illegal);
++}
++
++use ds_decomp::{
++    config::symbol::InstructionMode,
++    rom::{
++        arm7::{Arm7Layout, Cpu, InstructionSet, Processor, ProgramSelector},
++        arm7_modules::DecodeSpanError,
++    },
++};
++use serde_json::json;
++use sha2::{Digest, Sha256};
++
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++fn put(bytes: &mut [u8], offset: usize, value: u32) {
++    bytes[offset..offset + 4].copy_from_slice(&value.to_le_bytes());
++}
++struct Fixture {
++    parent: Vec<u8>,
++    parent_layout: Arm7Layout,
++    child_layout: Arm7Layout,
++}
++impl Fixture {
++    fn new(code: &[u8]) -> Self {
++        let base = 0x02380000u32;
++        let mut image = vec![0; 120];
++        image[..code.len()].copy_from_slice(code);
++        for (index, value) in
++            [base + 96, base + 120, base + 64, base + 64, base + 64].into_iter().enumerate()
++        {
++            put(&mut image, 32 + index * 4, value);
++        }
++        for (index, value) in [0x037f8000, 16, 8, 0x027e0000, 16, 4].into_iter().enumerate() {
++            put(&mut image, 96 + index * 4, value);
++        }
++        fn program(size: usize, image: &[u8]) -> Vec<u8> {
++            let mut bytes = vec![0; size];
++            for (index, value) in
++                [0x4000, 0x02380000, 0x02380000, image.len() as u32].into_iter().enumerate()
++            {
++                put(&mut bytes, 0x30 + index * 4, value);
++            }
++            bytes[0x4000..0x4078].copy_from_slice(image);
++            bytes
++        }
++        let child = program(0x5000, &image);
++        let mut parent = program(0xf000, &image);
++        parent[0x8000..0xd000].copy_from_slice(&child);
++        for (index, value) in [0x5000, 49, 0x5100, 16].into_iter().enumerate() {
++            put(&mut parent, 0x40 + index * 4, value);
++        }
++        put(&mut parent, 0x5000, 16);
++        parent[0x5006..0x5008].copy_from_slice(&2u16.to_le_bytes());
++        put(&mut parent, 0x5008, 28);
++        parent[0x500e..0x5010].copy_from_slice(&0xf000u16.to_le_bytes());
++        parent[0x5010..0x501c].copy_from_slice(b"\x88ChildRom\x01\xf0\0");
++        parent[0x501c..0x5031].copy_from_slice(b"\x0apublic.srl\x08copy.srl\0");
++        for offset in [0x5100, 0x5108] {
++            put(&mut parent, offset, 0x8000);
++            put(&mut parent, offset + 4, 0xd000);
++        }
++        let layout = |program_sha, selector, header_sha| {
++            serde_json::from_value(json!({
++            "identity":{"parent_rom_sha256":sha(&parent),"program":selector,"program_sha256":program_sha},
++            "target":{"cpu":"arm7","isa":"armv4t","processor":"arm7tdmi"},"header_sha256":header_sha,
++            "image_offset":0x4000,"image_bytes":120,"image_sha256":sha(&image),"base":base,"entry":base,
++            "params_offset":32,"params_sha256":sha(&image[32..52]),"table_extent":{"start":96,"end":120},"table_sha256":sha(&image[96..]),
++            "regions":[
++                {"kind":"startup","stored_extent":{"start":0,"end":64},"runtime_base":base,"bss_bytes":0,"sha256":sha(&image[..64])},
++                {"kind":{"autoload":0},"stored_extent":{"start":64,"end":80},"runtime_base":0x037f8000,"bss_bytes":8,"sha256":sha(&image[64..80])},
++                {"kind":{"autoload":1},"stored_extent":{"start":80,"end":96},"runtime_base":0x027e0000,"bss_bytes":4,"sha256":sha(&image[80..96])}
++            ]
++        })).unwrap()
++        };
++        let parent_layout = layout(sha(&parent), json!({"kind":"parent"}), sha(&parent[..0x4000]));
++        let child_layout = layout(
++            sha(&child),
++            json!({"kind":"nitro_fs","path":"ChildRom/public.srl"}),
++            sha(&child[..0x4000]),
++        );
++        Self { parent, parent_layout, child_layout }
++    }
++}
++
++#[test]
++fn checked_descriptors_preserve_physical_ranges_and_exclude_table() {
++    let f = Fixture::new(&[0x10, 0xff, 0x2f, 0xe1]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let modules: Vec<_> = view.module_inputs().collect();
++    assert_eq!(modules.len(), 3);
++    assert_eq!(modules[0].initialized(), 0x02380000..0x02380040);
++    assert_eq!(modules[0].bss(), 0x02380040..0x02380040);
++    assert_eq!(modules[1].initialized(), 0x037f8000..0x037f8010);
++    assert_eq!(modules[1].bss(), 0x037f8010..0x037f8018);
++    assert_eq!(modules[2].initialized(), 0x027e0000..0x027e0010);
++    assert_eq!(modules[2].bss(), 0x027e0010..0x027e0014);
++    assert_eq!(modules.iter().map(|m| m.bytes().len()).sum::<usize>() + view.table().len(), 120);
++    for module in modules {
++        let target = module.target();
++        assert_eq!(target.cpu, Cpu::Arm7);
++        assert_eq!(target.isa, InstructionSet::ArmV4T);
++        assert_eq!(target.processor, Processor::Arm7Tdmi);
++    }
++}
++
++#[test]
++fn equal_payloads_keep_parent_child_and_exact_path_identities_distinct() {
++    let f = Fixture::new(&[0x10, 0xff, 0x2f, 0xe1]);
++    let parent = f.parent_layout.checked(&f.parent).unwrap();
++    let child = f.child_layout.checked(&f.parent).unwrap();
++    let mut copy_layout = f.child_layout.clone();
++    copy_layout.identity.program = ProgramSelector::NitroFs { path: "ChildRom/copy.srl".into() };
++    let copy = copy_layout.checked(&f.parent).unwrap();
++    let a = parent.module_inputs().next().unwrap();
++    let b = child.module_inputs().next().unwrap();
++    let c = copy.module_inputs().next().unwrap();
++    assert_eq!(a.bytes(), b.bytes());
++    assert_eq!(b.bytes(), c.bytes());
++    assert_ne!(a.identity(), b.identity());
++    assert_ne!(b.identity(), c.identity());
++    assert_ne!(
++        parent.module_inputs().next().unwrap().identity(),
++        parent.module_inputs().nth(1).unwrap().identity()
++    );
++}
++
++#[test]
++fn explicit_arm_and_thumb_spans_decode_v4t_including_thumb_halfword_alignment() {
++    for (bytes, mode, span, count) in [
++        (vec![0x10, 0xff, 0x2f, 0xe1], InstructionMode::Arm, 0x02380000..0x02380004, 1),
++        (vec![0, 0, 0x50, 0x47], InstructionMode::Thumb, 0x02380002..0x02380004, 1),
++        (vec![0x99, 0xf0, 0x66, 0xf8], InstructionMode::Thumb, 0x02380000..0x02380004, 1),
++    ] {
++        let f = Fixture::new(&bytes);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let module = view.module_inputs().next().unwrap();
++        let out = module.decode_span(mode, span.clone()).unwrap();
++        assert_eq!(out.len(), count);
++        assert_eq!(out[0].0, span.start);
++    }
++}
++
++#[test]
++fn v5_only_instructions_reject_atomically_even_after_valid_prefix() {
++    for (bytes, mode, bad_address) in [
++        (vec![0x10, 0xff, 0x2f, 0xe1, 0x30, 0xff, 0x2f, 0xe1], InstructionMode::Arm, 0x02380004),
++        (vec![0x50, 0x47, 0xd0, 0x47], InstructionMode::Thumb, 0x02380002),
++        (vec![0, 0xf0, 0, 0xe8], InstructionMode::Thumb, 0x02380000),
++    ] {
++        let f = Fixture::new(&bytes);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let module = view.module_inputs().next().unwrap();
++        assert_eq!(
++            module.decode_span(mode, 0x02380000..0x02380000 + bytes.len() as u32).unwrap_err(),
++            DecodeSpanError::IllegalInstruction { address: bad_address }
++        );
++    }
++}
++
++#[test]
++fn trailing_thumb_bl_and_wrong_second_half_do_not_publish_partial_observation() {
++    for bytes in
++        [vec![0, 0xf0], vec![0x50, 0x47, 0, 0xf0], vec![0, 0xf0, 0x50, 0x47], vec![0, 0xf8]]
++    {
++        let f = Fixture::new(&bytes);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let module = view.module_inputs().next().unwrap();
++        assert!(
++            module
++                .decode_span(InstructionMode::Thumb, 0x02380000..0x02380000 + bytes.len() as u32)
++                .is_err()
++        );
++    }
++}
++
++#[test]
++fn span_alignment_bounds_order_and_table_reject_without_panics() {
++    let f = Fixture::new(&[0x10, 0xff, 0x2f, 0xe1]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let module = view.module_inputs().next().unwrap();
++    for span in [
++        0x02380000..0x02380000,
++        std::ops::Range { start: 0x02380004, end: 0x02380000 },
++        0x02380001..0x02380005,
++        0x02380002..0x02380006,
++        0x02380000..0x02380006,
++        0x0237fffc..0x02380004,
++        0x0238003c..0x02380044,
++        0x02380060..0x02380078,
++        0xfffffffc..u32::MAX,
++    ] {
++        assert!(matches!(
++            std::panic::catch_unwind(|| module.decode_span(InstructionMode::Arm, span.clone())),
++            Ok(Err(_))
++        ));
++    }
++    let autoload = view.module_inputs().nth(1).unwrap();
++    assert!(autoload.decode_span(InstructionMode::Arm, 0x037f8010..0x037f8018).is_err());
++    assert!(autoload.decode_span(InstructionMode::Arm, 0x027e0000..0x027e0004).is_err());
++}
++
++#[test]
++fn returned_target_copy_cannot_change_internal_isa_policy() {
++    let f = Fixture::new(&[0x30, 0xff, 0x2f, 0xe1]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let module = view.module_inputs().next().unwrap();
++    let mut target = module.target();
++    target.cpu = Cpu::Arm9;
++    target.isa = InstructionSet::ArmV5Te;
++    target.processor = Processor::Arm946E;
++    assert_eq!(target.cpu, Cpu::Arm9);
++    assert_eq!(module.target().cpu, Cpu::Arm7);
++    assert!(matches!(
++        module.decode_span(InstructionMode::Arm, 0x02380000..0x02380004),
++        Err(DecodeSpanError::IllegalInstruction { .. })
++    ));
++}
++
++#[test]
++fn wrong_arm9_intake_and_runtime_overflow_cannot_create_module_inputs() {
++    let f = Fixture::new(&[0x10, 0xff, 0x2f, 0xe1]);
++    let mut layout = f.parent_layout.clone();
++    layout.target.cpu = Cpu::Arm9;
++    assert!(layout.checked(&f.parent).is_err());
++    let mut layout = f.parent_layout.clone();
++    layout.regions[1].runtime_base = 0xfffffffcu32;
++    assert!(layout.checked(&f.parent).is_err());
++}
++
++#[test]
++fn existing_function_parser_keeps_explicit_v5te_and_blx_support() {
++    use ds_decomp::analysis::functions::{Function, FunctionParseOptions, ParseFunctionOptions};
++    const BASE: u32 = 0x02000000;
++    let bytes: Vec<_> = [0xe92d4010u32, 0xe3a00000, 0xe12fff30, 0xe8bd8010]
++        .into_iter()
++        .flat_map(u32::to_le_bytes)
++        .collect();
++    let function = Function::parse_function(FunctionParseOptions {
++        name: "public_arm9_blx".into(),
++        start_address: BASE,
++        base_address: BASE,
++        module_code: &bytes,
++        module_start_address: BASE,
++        module_end_address: BASE + bytes.len() as u32,
++        parse_options: ParseFunctionOptions { thumb: Some(false) },
++        ..Default::default()
++    })
++    .unwrap();
++    let parser = function.parser(&bytes, BASE);
++    assert_eq!(parser.flags.version, ArmVersion::V5Te);
++    assert!(parser.into_iter().any(|(_, _, parsed)| parsed.mnemonic == "blx"));
++}
++
++#[test]
++fn combined_thumb_bl_consumes_four_bytes_and_preserves_next_address() {
++    use unarm::args::Argument;
++    let f = Fixture::new(&[0x99, 0xf0, 0x66, 0xf8, 0x50, 0x47]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let module = view.module_inputs().next().unwrap();
++    let out = module.decode_span(InstructionMode::Thumb, 0x02380000..0x02380006).unwrap();
++    assert_eq!(out.len(), 2);
++    assert_eq!(out[0].0, 0x02380000);
++    assert_eq!(out[1].0, 0x02380004);
++    assert_eq!(out[0].2.mnemonic, "bl");
++    assert_eq!(out[0].2.args[0], Argument::BranchDest(0x990d0));
++    assert_eq!(out[1].2.mnemonic, "bx");
++}
++
++#[test]
++fn trailing_thumb_bl_reports_first_unobserved_byte_without_partial_success() {
++    for (bytes, address) in [(vec![0, 0xf0], 0x02380000), (vec![0x50, 0x47, 0, 0xf0], 0x02380002)] {
++        let f = Fixture::new(&bytes);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let module = view.module_inputs().next().unwrap();
++        assert_eq!(
++            module
++                .decode_span(InstructionMode::Thumb, 0x02380000..0x02380000 + bytes.len() as u32)
++                .unwrap_err(),
++            DecodeSpanError::TruncatedInstruction { address }
++        );
++    }
++}

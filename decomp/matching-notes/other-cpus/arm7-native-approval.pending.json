@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "pending",
+  "producer": {"sha256": null},
+  "source_commit": null,
+  "source_tree": null,
+  "source_artifacts": {},
+  "layout": {
+    "path": "decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+    "sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+  },
+  "native_pins": {"path": null, "sha256": null}
+}

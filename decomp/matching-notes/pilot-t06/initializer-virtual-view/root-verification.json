@@ -1,0 +1,32 @@
+{
+  "status": "verified_unmatched",
+  "reviewer": "gpt-6-astra",
+  "actual_saved_object_hashes_and_strict_rejections_verified": 60,
+  "completed_trial_groups": [
+    42,
+    14,
+    4
+  ],
+  "accepted_units": 0,
+  "published_overrides": 0,
+  "source_credit_bytes": 0,
+  "canonical_source_manifest_changed": false,
+  "extra_allocated_sections": "preserved and rejected",
+  "tests": {
+    "passed": 222,
+    "skipped": 0,
+    "six_new_actual_tool_tests_ran": true
+  },
+  "closest_result": {
+    "full_extent_bytes": 596,
+    "masked_mismatch_offsets": [
+      449,
+      453
+    ],
+    "swapped_ABS32_pool_offsets": [
+      580,
+      584
+    ]
+  },
+  "full_rom_attempted_for_initializer": false
+}

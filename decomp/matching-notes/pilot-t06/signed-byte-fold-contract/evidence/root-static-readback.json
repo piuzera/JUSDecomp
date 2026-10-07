@@ -1,0 +1,27 @@
+{
+  "scope": "Root direct original44 and static arithmetic refutation; no runtime execution",
+  "original_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+  "words": [
+    "e3a02000",
+    "ea000003",
+    "e0d010d1",
+    "e1811082",
+    "e1a01801",
+    "e0222821",
+    "e1d010d0",
+    "e3510000",
+    "1afffff8",
+    "e1a00002",
+    "e12fff1e"
+  ],
+  "predictions": {
+    "414200": 131,
+    "8000": 65408,
+    "804100": 193
+  },
+  "refutations": {
+    "unsigned80": 128,
+    "xor_inner_AB": 129
+  },
+  "limits": "Stable readable NUL-terminated memory; precheck and reread physically distinct; no source/type/SDK identity."
+}

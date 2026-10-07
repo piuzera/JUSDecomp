@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-reachable-worker-proof/check_probe.py", line 23, in <module>
+    assert report.get('status')=='bounded_arm7_candidate_graphs_verified',report
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {}

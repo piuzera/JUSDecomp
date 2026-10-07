@@ -1,0 +1,169 @@
+{
+  "status": "passed",
+  "public_replay": "fresh own inputs, actual objects and native links",
+  "tests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "actual_object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+  "root_trial_receipt_sha256": "f5e280cef477268cefed92206dff10a5f7801dc15be8e42f289038fb87ebeff6",
+  "root_native_receipt_sha256": "f15d890061dc7fbf77f54b80a2f2620c3f873f5ee5a84572df10fd6a57a2729e",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "positive": {
+        "linked_elf_sha256": "673459693cdd25df49c550f9b0db3ffa8d6d703cc9cdbc4d9f249b55d92a6696",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 166832
+        },
+        "candidate_and_binding_symbols": [
+          {
+            "name": "arm7_low_getter_trial",
+            "vma": 58707756,
+            "size": 88,
+            "section": 5
+          },
+          {
+            "name": "hyp_subpriv_arena_lo",
+            "vma": 41917448,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "hyp_wram_arena_lo",
+            "vma": 58768528,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "__candidate_start",
+            "vma": 58707756,
+            "size": 0,
+            "section": 5
+          },
+          {
+            "name": "__candidate_end",
+            "vma": 58707844,
+            "size": 0,
+            "section": 5
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_mismatch_offsets": [],
+        "exact_original_ELF_only": true,
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "linked_candidate_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+        "linked_literal_words": [
+          "0x027f9c08",
+          "0x0380bc90"
+        ]
+      },
+      "wrong_binding_offsets": [
+        20780,
+        20781
+      ],
+      "wrong_object_offsets": [
+        20752,
+        20753,
+        20754,
+        20755,
+        20756,
+        20757,
+        20758,
+        20759
+      ],
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "positive": {
+        "linked_elf_sha256": "673459693cdd25df49c550f9b0db3ffa8d6d703cc9cdbc4d9f249b55d92a6696",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 166832
+        },
+        "candidate_and_binding_symbols": [
+          {
+            "name": "arm7_low_getter_trial",
+            "vma": 58707756,
+            "size": 88,
+            "section": 5
+          },
+          {
+            "name": "hyp_subpriv_arena_lo",
+            "vma": 41917448,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "hyp_wram_arena_lo",
+            "vma": 58768528,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "__candidate_start",
+            "vma": 58707756,
+            "size": 0,
+            "section": 5
+          },
+          {
+            "name": "__candidate_end",
+            "vma": 58707844,
+            "size": 0,
+            "section": 5
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_mismatch_offsets": [],
+        "exact_original_ELF_only": true,
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "linked_candidate_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+        "linked_literal_words": [
+          "0x027f9c08",
+          "0x0380bc90"
+        ]
+      },
+      "wrong_binding_offsets": [
+        20780,
+        20781
+      ],
+      "wrong_object_offsets": [
+        20752,
+        20753,
+        20754,
+        20755,
+        20756,
+        20757,
+        20758,
+        20759
+      ],
+      "malformed_load_rejected": true
+    }
+  ],
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T10_complete": false
+}

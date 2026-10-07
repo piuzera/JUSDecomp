@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "target": {
+    "symbol": "func_0206c244",
+    "module": "main",
+    "address": "0x0206c244",
+    "extent": 596,
+    "publication": "../targets.json",
+    "source_gate_scope": "complete TU; no ignored allocated sections"
+  },
+  "reference_sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9",
+  "reference_generation": {
+    "config_input": "private copied baseline config with rom_config pointing to existing extract/config.yaml",
+    "appended_delink_entry": "src/main/common_effect_init.cpp:\n    complete\n    .text start:0x0206c244 end:0x0206c498\n",
+    "command": [
+      "dsd-macos-arm64",
+      "delink",
+      "-c",
+      "build/initializer-trial/config/config.yaml",
+      "--main"
+    ]
+  },
+  "compiler_package": "2.0/base",
+  "cpu": "arm946e",
+  "language": "C++",
+  "headers": {},
+  "include_paths": [],
+  "sources": [
+    {
+      "id": "for_loop",
+      "path": "decomp/matching-notes/pilot-t06/initializer/for_loop.cpp",
+      "sha256": "753c6bf88a98c81f446a39487ff1b180df22b4d019593a37b8fd4ede66867bee"
+    },
+    {
+      "id": "do_while",
+      "path": "decomp/matching-notes/pilot-t06/initializer/do_while.cpp",
+      "sha256": "1a6ca7198193395860d699de4267b2a4180cd64c364d1a66edd6ab8e69745513"
+    },
+    {
+      "id": "locals",
+      "path": "decomp/matching-notes/pilot-t06/initializer/locals.cpp",
+      "sha256": "4befe41019dbff79c51c9152d596f62776ba6d28dbc709e5e1b1eea3e157a345"
+    },
+    {
+      "id": "common_effect_init",
+      "path": "decomp/matching-notes/pilot-t06/initializer/common_effect_init.cpp",
+      "sha256": "a7ab97b504ccfcfea2cc26d319948de60cc48fa0c8c0261c20f53b0d826d194e"
+    }
+  ],
+  "contexts": [
+    {
+      "id": "default",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc"
+      ]
+    },
+    {
+      "id": "default-interworking",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-interworking"
+      ]
+    },
+    {
+      "id": "O1",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O1"
+      ]
+    },
+    {
+      "id": "O1-interworking",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O1",
+        "-interworking"
+      ]
+    },
+    {
+      "id": "O2",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2"
+      ]
+    },
+    {
+      "id": "O2-interworking",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2",
+        "-interworking"
+      ]
+    },
+    {
+      "id": "O2-p",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2,p"
+      ]
+    },
+    {
+      "id": "O2-p-interworking",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2,p",
+        "-interworking"
+      ]
+    },
+    {
+      "id": "O3-p",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O3,p"
+      ]
+    },
+    {
+      "id": "O3-p-interworking",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O3,p",
+        "-interworking"
+      ]
+    },
+    {
+      "id": "O4-p",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,p"
+      ]
+    },
+    {
+      "id": "O4-p-interworking",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,p",
+        "-interworking"
+      ]
+    },
+    {
+      "id": "O4-s",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,s"
+      ]
+    },
+    {
+      "id": "O4-s-interworking",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O4,s",
+        "-interworking"
+      ]
+    }
+  ],
+  "abi_limits": [
+    "virtual-slot calls model only explicitly prepared values; complete argument signatures remain unresolved",
+    "initializer void return is candidate interface; no original source-language return type inferred",
+    "code addresses use Word; declaration-only functions are never invoked as callbacks in this TU"
+  ]
+}

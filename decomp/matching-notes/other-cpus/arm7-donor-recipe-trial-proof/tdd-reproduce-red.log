@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_fresh_checkout_inputs_compile_real_objects_and_link_both_originals (__main__.PublicReplayTests.test_fresh_checkout_inputs_compile_real_objects_and_link_both_originals)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-donor-recipe-trial/decomp/matching-notes/other-cpus/arm7-donor-recipe-trial-proof/test_reproduce.py", line 11, in test_fresh_checkout_inputs_compile_real_objects_and_link_both_originals
+    self.assertTrue(script.is_file(),'public compile/native replay is not implemented')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : public compile/native replay is not implemented
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

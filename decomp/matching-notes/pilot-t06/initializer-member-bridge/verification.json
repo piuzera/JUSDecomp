@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "base_commit": "d2b9705a29f9a77fd6fca251cf80abd84e0290ed",
+  "target": "func_0206c244",
+  "production_coverage_bytes_unchanged": 304,
+  "strict_trials": 3,
+  "exact_trials": 0,
+  "source_credit": 0,
+  "promotion_status": "not_activated",
+  "report_sha256": "98292956e3ebece8880f56c5758ce1e22e6b52d4ba4a2bd8debcbbe77aacbec0",
+  "test_first": {
+    "red": 3,
+    "reason": "candidate absent before implementation",
+    "actual_green": 3,
+    "test_pattern": "test_initializer_member_bridge.py",
+    "environment": [
+      "JUS_INIT_MWCC",
+      "JUS_INIT_WIBO"
+    ]
+  },
+  "complete_object_unchanged_from_prior_best": true,
+  "full_rom_attempted": false,
+  "stopping_reason": "No improvement in exact3 requested contexts; original strict object gate still fails before linking.",
+  "full_matching_suite": {
+    "status": "passed",
+    "tests": 225,
+    "skipped": 12,
+    "environment": [
+      "JUS_INIT_MWCC",
+      "JUS_INIT_WIBO"
+    ],
+    "new_actual_tests_all_ran": true
+  }
+}

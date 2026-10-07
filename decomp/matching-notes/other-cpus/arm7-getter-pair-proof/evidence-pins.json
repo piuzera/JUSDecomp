@@ -1,0 +1,40 @@
+{
+  "input_sha256": {
+    "pair.py": "39309eeb44bfd1e8c45a056d606126ba38ebcce1a58d1ff663e05b1162584751",
+    "reproduce.py": "34ba7b874e44f1691066a776880e0fc8c12664b933cd1ac796ec4e7a3ba46d62",
+    "low_getter_trial.c": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "high_getter_trial.c": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+    "checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "original-manifest.json": "27a5e00b58bdb1c414f3319bf64f7b21bdef184329513912030b5e22d8bbcc42",
+    "contract.json": "7dab4ce8c029bd52e982b095aab3b637ac653e85cbd540953eabf67ccd7722e2",
+    "recipe.json": "c4bc23d280213371df265485cd12f486a1528363ba93adc3a71dd221d56c18d8"
+  },
+  "artifact_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/contract.json": "7dab4ce8c029bd52e982b095aab3b637ac653e85cbd540953eabf67ccd7722e2",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/design.md": "db1047a71e7cec9e6e131f4c3c1145b35771fb9b7a3a8b4ca9ae08dc5968a9c7",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/high-compiled-llvm.txt": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/high-elf-readback.txt": "d1384e466ac4ed7ee636b9725e49983ba6c396deb3c98fcc9fb4720d9d3320cc",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/high_getter_trial.c": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/low-compiled-llvm.txt": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/low-elf-readback.txt": "d4bcc53522ab418ceb56fe6139c3590dbedf6d3e4505ba568c70405e704a05b2",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/low_getter_trial.c": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/original-0-high-llvm.txt": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/original-0-low-llvm.txt": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/original-1-high-llvm.txt": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/original-1-low-llvm.txt": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/original-manifest.json": "27a5e00b58bdb1c414f3319bf64f7b21bdef184329513912030b5e22d8bbcc42",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/pair.py": "39309eeb44bfd1e8c45a056d606126ba38ebcce1a58d1ff663e05b1162584751",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/public-replay.log": "aa826b947a46540cf960ddc47aeeaae2d8b6c8a45800ba77918352fcdf64f528",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/public-tests.log": "025ddc329ea3ff8b564b6a997eb0f9d09d94ddc1ca13c349700f1f029cd6037c",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/recipe.json": "c4bc23d280213371df265485cd12f486a1528363ba93adc3a71dd221d56c18d8",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/reproduce.py": "34ba7b874e44f1691066a776880e0fc8c12664b933cd1ac796ec4e7a3ba46d62",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/tdd-green.log": "5a4123af9834f0477a365edefba3bdc1a123a2a20968cc8c7ec2f6f3bde2a189",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/tdd-red.log": "c425c3929a01311fe23ed6e0c35ab64aa7695caad2ab0d09787cf1bb704cb45e",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py": "1dcdefa23b2216b4fd1dc29096df78142e87b105764a5eaaa97ddedc2303bf96",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-proof/trial-proof.json": "8c0bbb27a63065579f3e59f19b6b4382b3903bbb5b8fb6b32ae17ef58d2536c4",
+    "decomp/matching-notes/other-cpus/arm7-getter-pair-trial.md": "a42b32292aa4922e4b22cca6a6100d8268831655dadf382bc2bdeb540ae12618"
+  },
+  "source_credit_bytes": 0,
+  "scope": "jus-bjry.30 fixed simultaneous low/high getter native integration"
+}

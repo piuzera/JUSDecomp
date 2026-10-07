@@ -1,0 +1,553 @@
+{
+  "status": "bounded_plain_C_trial_exact_O4_bytes",
+  "source_sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+  "input_pins": {
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+    "/Users/djdjo/Documents/mine/rom/jus.nds": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "/private/tmp/jus-arm7-leaf-independent/decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/store_trial.c": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+    "/private/tmp/jus-arm7-leaf-independent/decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage.json": "bc8ee39a731209b5a6158f6b2099d3c6ee5ff5a50579938dae9d5d272e374f42"
+  },
+  "llvm_tool_sha256": {
+    "llvm-mc": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+    "llvm-readobj": "cf8c2b665ea0a064bad08c2fe3f6ba3a21fd3fd368ea5643f0c35e12fcac5540"
+  },
+  "originals": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "extent": {
+        "start": 58707736,
+        "end": 58707756
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "stored_image_offset": 20680,
+      "program_offset": 2183368,
+      "sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801dc4",
+        "0xe12fff1e"
+      ],
+      "mappings": [
+        {
+          "region": "startup",
+          "initialized": {
+            "start": 37224448,
+            "end": 37224880
+          },
+          "bss": {
+            "start": 37224880,
+            "end": 37224880
+          }
+        },
+        {
+          "region": {
+            "autoload": 0
+          },
+          "initialized": {
+            "start": 58687488,
+            "end": 58753608
+          },
+          "bss": {
+            "start": 58753608,
+            "end": 58768528
+          }
+        },
+        {
+          "region": {
+            "autoload": 1
+          },
+          "initialized": {
+            "start": 41811968,
+            "end": 41910944
+          },
+          "bss": {
+            "start": 41910944,
+            "end": 41917448
+          }
+        }
+      ],
+      "caller_index": 1,
+      "caller_effective_store_address": 41942472,
+      "caller_store_mapping": "unmapped by checked ARM7 module layout",
+      "caller_store_memory_read": false
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "extent": {
+        "start": 58707736,
+        "end": 58707756
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "stored_image_offset": 20680,
+      "program_offset": 1993416,
+      "sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801dc4",
+        "0xe12fff1e"
+      ],
+      "mappings": [
+        {
+          "region": "startup",
+          "initialized": {
+            "start": 37224448,
+            "end": 37224880
+          },
+          "bss": {
+            "start": 37224880,
+            "end": 37224880
+          }
+        },
+        {
+          "region": {
+            "autoload": 0
+          },
+          "initialized": {
+            "start": 58687488,
+            "end": 58753608
+          },
+          "bss": {
+            "start": 58753608,
+            "end": 58768528
+          }
+        },
+        {
+          "region": {
+            "autoload": 1
+          },
+          "initialized": {
+            "start": 41811968,
+            "end": 41910944
+          },
+          "bss": {
+            "start": 41910944,
+            "end": 41917448
+          }
+        }
+      ],
+      "caller_index": 1,
+      "caller_effective_store_address": 41942472,
+      "caller_store_mapping": "unmapped by checked ARM7 module layout",
+      "caller_store_memory_read": false
+    }
+  ],
+  "trials": [
+    {
+      "recipe": "baseline",
+      "argv": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-proc",
+        "arm7tdmi",
+        "-nothumb",
+        "-interworking",
+        "-nostdinc",
+        "-c",
+        "/private/tmp/jus-arm7-leaf-independent/decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/store_trial.c",
+        "-o",
+        "/private/tmp/jus-arm7-leaf-independent-proof/closed-reproduced/baseline/compiled.o"
+      ],
+      "returncode": 0,
+      "compiler_stdout": "",
+      "compiler_stderr": "",
+      "elf": {
+        "format": "elf32-littlearm",
+        "type": 1,
+        "machine": 40,
+        "flags": 34603008,
+        "object_sha256": "182ebed8e905dd0b2b1eb363d0efefa7864e03ded84db7c1804110c1eea52bff",
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "flags": 0,
+            "offset": 0,
+            "size": 0,
+            "alignment": 0
+          },
+          {
+            "index": 1,
+            "name": ".symtab",
+            "type": 2,
+            "flags": 0,
+            "offset": 64,
+            "size": 48,
+            "alignment": 0
+          },
+          {
+            "index": 2,
+            "name": ".strtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 112,
+            "size": 21,
+            "alignment": 0
+          },
+          {
+            "index": 3,
+            "name": ".shstrtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 144,
+            "size": 42,
+            "alignment": 0
+          },
+          {
+            "index": 4,
+            "name": ".comment",
+            "type": 1,
+            "flags": 0,
+            "offset": 192,
+            "size": 35,
+            "alignment": 0
+          },
+          {
+            "index": 5,
+            "name": ".text",
+            "type": 1,
+            "flags": 6,
+            "offset": 240,
+            "size": 36,
+            "alignment": 4
+          }
+        ],
+        "symbols": [
+          {
+            "name": "",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "arm7_store_trial",
+            "value": 0,
+            "size": 36,
+            "binding": 1,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_store_trial",
+          "value": 0,
+          "size": 36,
+          "binding": 1,
+          "type": 2,
+          "other": 0,
+          "section_index": 5
+        },
+        "mode": "Arm",
+        "mode_evidence": [
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "relocation_sections": [],
+        "relocation_count": 0,
+        "text_sha256": "5f8e8cf1dcfb58428f87657c0d7ccf4c75a4aa2dae28e442b0178a04cf22c353",
+        "text_bytes": 36,
+        "words": [
+          "0xe92d000f",
+          "0xe59d1004",
+          "0xe59d0000",
+          "0xe1a00100",
+          "0xe2800627",
+          "0xe2800aff",
+          "0xe5801dc4",
+          "0xe28dd010",
+          "0xe12fff1e"
+        ]
+      },
+      "exact_original_bytes_both_programs": false,
+      "byte_mismatch_offsets": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "llvm_disassembly_sha256": "2cd7932adc5409fc60279f8c989a6ac75d346bc73c063b9c4c97376555180d81"
+    },
+    {
+      "recipe": "O4p",
+      "argv": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-proc",
+        "arm7tdmi",
+        "-nothumb",
+        "-interworking",
+        "-nostdinc",
+        "-O4,p",
+        "-c",
+        "/private/tmp/jus-arm7-leaf-independent/decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/store_trial.c",
+        "-o",
+        "/private/tmp/jus-arm7-leaf-independent-proof/closed-reproduced/O4p/compiled.o"
+      ],
+      "returncode": 0,
+      "compiler_stdout": "",
+      "compiler_stderr": "",
+      "elf": {
+        "format": "elf32-littlearm",
+        "type": 1,
+        "machine": 40,
+        "flags": 34603008,
+        "object_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "flags": 0,
+            "offset": 0,
+            "size": 0,
+            "alignment": 0
+          },
+          {
+            "index": 1,
+            "name": ".symtab",
+            "type": 2,
+            "flags": 0,
+            "offset": 64,
+            "size": 48,
+            "alignment": 0
+          },
+          {
+            "index": 2,
+            "name": ".strtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 112,
+            "size": 21,
+            "alignment": 0
+          },
+          {
+            "index": 3,
+            "name": ".shstrtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 144,
+            "size": 42,
+            "alignment": 0
+          },
+          {
+            "index": 4,
+            "name": ".comment",
+            "type": 1,
+            "flags": 0,
+            "offset": 192,
+            "size": 35,
+            "alignment": 0
+          },
+          {
+            "index": 5,
+            "name": ".text",
+            "type": 1,
+            "flags": 6,
+            "offset": 240,
+            "size": 20,
+            "alignment": 4
+          }
+        ],
+        "symbols": [
+          {
+            "name": "",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "arm7_store_trial",
+            "value": 0,
+            "size": 20,
+            "binding": 1,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_store_trial",
+          "value": 0,
+          "size": 20,
+          "binding": 1,
+          "type": 2,
+          "other": 0,
+          "section_index": 5
+        },
+        "mode": "Arm",
+        "mode_evidence": [
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "relocation_sections": [],
+        "relocation_count": 0,
+        "text_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+        "text_bytes": 20,
+        "words": [
+          "0xe1a00100",
+          "0xe2800627",
+          "0xe2800aff",
+          "0xe5801dc4",
+          "0xe12fff1e"
+        ]
+      },
+      "exact_original_bytes_both_programs": true,
+      "byte_mismatch_offsets": [],
+      "llvm_disassembly_sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    }
+  ],
+  "triage_receipts": [
+    {
+      "file": "probe-037fcf18.json",
+      "sha256": "bb7acfeaa275037156122c1c6eeb3e3734afd4fb1e2d0f2bd50e0f970a3a3255",
+      "request_sha256": "2f15e6c18c4e1af2122a3cf346ac408c5500875ca1f4cf89cfacad8765d07a97",
+      "request_file": "request-037fcf18.json",
+      "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+      "status": "bounded_arm7_candidate_graphs_verified",
+      "inputs_unchanged": true
+    },
+    {
+      "file": "probe-037fcf2c.json",
+      "sha256": "d3bbfb1c883ef51b0116efc86111a3f0d7de440ee0a7d152defdf0f7777844c2",
+      "request_sha256": "1f20b656d17cc3954923d484569e9c9c9bac034e5664120e8cb38c03b83cc639",
+      "request_file": "request-037fcf2c.json",
+      "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+      "status": "bounded_arm7_candidate_graphs_verified",
+      "inputs_unchanged": true
+    },
+    {
+      "file": "probe-037fcf84.json",
+      "sha256": "90681bbfcadd312d0752bc85a7f7297c15668aa75dd2e30f38e8a81a809d5321",
+      "request_sha256": "3d0d70d7888709e891b396f062f0cf745f4017497c437ced67e6e8cf1316ab85",
+      "request_file": "request-037fcf84.json",
+      "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+      "status": "bounded_arm7_candidate_graphs_verified",
+      "inputs_unchanged": true
+    },
+    {
+      "file": "probe-caller-context.json",
+      "sha256": "dd0e677b9be8483672fb9a0d556edab6484e485cbaf6132f279d4492b1d2d913",
+      "request_sha256": "caa85b73f08f74c178b41a4ed849f6386916f84f52bb725e2bdc657722b08012",
+      "request_file": "request-caller-context.json",
+      "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+      "status": "bounded_arm7_candidate_graphs_verified",
+      "inputs_unchanged": true
+    },
+    {
+      "file": "probe-cf18-predecessor.json",
+      "sha256": "012561128d448c9077a6225b957dbd8b41a2b3f408bd4cbf36d10138c7051719",
+      "request_sha256": "668497fa776bbe646f529c7a5c7a05db0dc7df66331c9aedf0495a014c798d95",
+      "request_file": "request-cf18-predecessor.json",
+      "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+      "status": "bounded_arm7_candidate_graphs_verified",
+      "inputs_unchanged": true
+    }
+  ],
+  "hypotheses": {
+    "unsigned_int_bits": 32,
+    "pointer_bits": 32,
+    "return_type": "void",
+    "original_symbol_name": null,
+    "original_function_extent_proven": false,
+    "full_original_ABI_proven": false,
+    "original_compiler_proven": false,
+    "runtime_execution_proven": false,
+    "original_link_contract_proven": false
+  },
+  "source_credit_bytes": 0,
+  "canonical_update": false,
+  "inputs_unchanged": true
+}

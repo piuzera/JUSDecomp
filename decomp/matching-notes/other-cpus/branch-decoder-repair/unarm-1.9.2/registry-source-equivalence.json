@@ -1,0 +1,17 @@
+{
+  "registry_checksum": "9ea856cd3ee3abd1b585bbcdc6f8a4b356f43558fae98d76e502be868dc40e90",
+  "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+  "files": {
+    "disasm/src/args.rs": true,
+    "disasm/src/arm/disasm.rs": true,
+    "disasm/src/arm/generated.rs": true,
+    "disasm/src/arm/mod.rs": true,
+    "disasm/src/display.rs": true,
+    "disasm/src/lib.rs": true,
+    "disasm/src/parse.rs": true,
+    "disasm/src/thumb/disasm.rs": true,
+    "disasm/src/thumb/generated.rs": true,
+    "disasm/src/thumb/mod.rs": true,
+    "disasm/src/util.rs": true
+  }
+}

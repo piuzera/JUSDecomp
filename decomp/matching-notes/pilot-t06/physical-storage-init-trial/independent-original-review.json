@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "review": "Task37 independent original-only DSD and comparator seam; no target C source or compiler invocation",
+  "recorded_utc": "2026-10-06T01:26:55.333566+00:00",
+  "paths": {
+    "scratch": "/private/tmp/jus-37-independent",
+    "source_publisher": "/private/tmp/jus-track-a-publish",
+    "rom": "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "dsd": "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "fresh_reference_tu": "/private/tmp/jus-37-independent/preflight/candidate-delinks/src/main/arena_storage_init_trial.o"
+  },
+  "pinned_inputs": {
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "dsd_sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+    "dsd_version": "ds-decomp-cli 0.12.0",
+    "verify_py_sha256": "d6d91117bb3a3e4a163c153c797b5ba89d37308fc866228de9394e3c5d0a1f90",
+    "source_build_py_sha256": "9e62de2961c3746a09505f3188204fcab29a818b1e1e645ae1bc44f858aeb625",
+    "native_link_py_sha256": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+    "relocation_check_py_sha256": "2a94f69a998e3712b1ec21606ff93a57cff0bc0465f9ec789da55f0c5a65cf9f",
+    "publisher_delinks_sha256": "23b2e570f703bf03d90045a0f3becd4b7649b6fe0762102fef5132a83430dd3c",
+    "research_delinks_sha256": "2b122bd8177902412c4fb5f48ad9771e95c9926705361754d52628405fdae449"
+  },
+  "research_delta": {
+    "path": "decomp/arm9/delinks.txt",
+    "appended_complete_tu": "src/main/arena_storage_init_trial.c:\n    complete\n    .text start:0x0202c4ac end:0x0202c508\n",
+    "target_source_file_written": false
+  },
+  "actual_commands": [
+    {
+      "argv": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "rom",
+        "extract",
+        "-r",
+        "/Users/djdjo/Documents/mine/rom/jus.nds",
+        "-o",
+        "/private/tmp/jus-37-independent/preflight/extract"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "delink",
+        "-c",
+        "/private/tmp/jus-37-independent/preflight/config/config.yaml"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "delink",
+        "-c",
+        "/private/tmp/jus-37-independent/preflight/candidate-config/config.yaml"
+      ],
+      "exit_status": 0
+    }
+  ],
+  "unchanged_api_sequence": [
+    "verify.expected_modules(regions)",
+    "verify.prepare_config(research_root, output, expected)",
+    "DSD rom extract",
+    "DSD reference delink",
+    "verify.prepare_source_config(research_root, output, singleton_manifest)",
+    "DSD candidate source_delink",
+    "source_build.compare_objects(reference, exact_copy, [func_0202c4ac])"
+  ],
+  "reference_result": {
+    "reference_object_count": 15,
+    "candidate_object_count": 17,
+    "fresh_tu_elf_sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+    "allocated_sections": [
+      {
+        "name": ".text",
+        "type": 1,
+        "flags": 6,
+        "bytes": 92
+      }
+    ],
+    "functions": [
+      {
+        "name": "func_0202c4ac",
+        "offset": 0,
+        "size": 92,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".text",
+        "offset": 40,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 52,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 84,
+        "type": 2,
+        "symbol": "data_02098708",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 88,
+        "type": 2,
+        "symbol": "data_020a0c34",
+        "addend": 0
+      }
+    ],
+    "raw_text_sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b",
+    "arm9_loaded_rom_offset": "0x304ac",
+    "loaded_92_sha256": "3b9caafec617800aa88608cf74a33b764525fa947907e2654a85867ede6a55ba",
+    "raw_vs_loaded_differences_only_relocation_slots": true,
+    "self_comparison_status": "passed"
+  },
+  "elf_controls": {
+    "exact_copy": "passed: passed",
+    "extent_plus4": "ValueError: function extent exceeds section: func_0202c4ac",
+    "mode_thumb": "ValueError: function identities/extents/modes differ from declared reference TU",
+    "instruction_byte": "ValueError: initialized section bytes differ: .text",
+    "pool_extent_plus4": "ValueError: section type/flags/size differ: .text",
+    "rela_target": "ValueError: relocation identities/offsets/types/symbols/addends differ",
+    "rela_addend": "ValueError: relocation identities/offsets/types/symbols/addends differ",
+    "extra_allocated_rela_section": "Unresolved: unsupported allocated section type: .rela.text",
+    "relocation_placeholder_only": "passed: passed"
+  },
+  "seam_freshness_findings": [
+    "prepare_config strips TU declarations from whole-module reference config; prepare_source_config appends the one declaration to candidate-config; completed source_delink produces current candidate-delinks TU before build_sources compiler stage",
+    "source_build.compare_objects masks actual relocation fields; an ABS32 placeholder byte mutation passes, so the precompiler reference gate must separately bind the fresh raw .text hash and original loaded ROM slice",
+    "verify.verify skips freshness and rom_freshness after source_build failure; measured_rejection requires independent recheck of frozen inputs and actual diagnostic object",
+    "this preflight used a minimal copied metadata root for original-only feasibility and does not claim the production research root Git-derivation or native/ROM proof"
+  ]
+}

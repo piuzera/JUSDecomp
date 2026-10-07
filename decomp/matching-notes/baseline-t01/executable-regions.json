@@ -1,0 +1,662 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.1",
+  "baseline": false,
+  "source_coverage_percent": 0,
+  "source_coverage": {
+    "matched_source_bytes": 0,
+    "matched_source_functions": 0,
+    "evidence": "This inventory records original binary extents. It records no verified source promotions."
+  },
+  "full_rom_check_status": "not_performed",
+  "baseline_status": "Incomplete. The executable inventory does not establish a linked baseline.",
+  "rom": {
+    "bytes": 67108864,
+    "hashes": {
+      "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+      "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "crc32": "2023075d"
+    },
+    "expected_upstream_sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+    "upstream_identity_source": "recomp/game.toml:5",
+    "matches_upstream_sha1": true,
+    "header": {
+      "title": "JUS",
+      "game_code": "AJUJ",
+      "maker_code": "01",
+      "unit_code": 0,
+      "device_capacity": 9,
+      "revision": 0,
+      "arm9_rom_offset": "0x00004000",
+      "arm9_entry": "0x02000800",
+      "arm9_ram_address": "0x02000000",
+      "arm9_size": "0x000a9158",
+      "arm7_rom_offset": "0x00210000",
+      "arm7_entry": "0x02380000",
+      "arm7_ram_address": "0x02380000",
+      "arm7_size": "0x000286b0",
+      "fnt_offset": "0x00238800",
+      "fnt_size": "0x000016b5",
+      "fat_offset": "0x0023a000",
+      "fat_size": "0x00000c48",
+      "arm9_overlay_offset": "0x000ad200",
+      "arm9_overlay_size": "0x000001c0",
+      "arm7_overlay_offset": "0x00000000",
+      "arm7_overlay_size": "0x00000000",
+      "used_rom_size": "0x03eed398",
+      "header_size": "0x00004000"
+    }
+  },
+  "regions": {
+    "arm9": {
+      "rom_offset": "0x00004000",
+      "parent_rom_offset": "0x00004000",
+      "base": "0x02000000",
+      "entry": "0x02000800",
+      "stored_bytes": 692568,
+      "stored_hashes": {
+        "sha1": "fa43df15b58b2d9a2890ed6b994045348cb4057b",
+        "sha256": "6464c6e726cd536756476392bf21996ae7289d16e269863cd0b88c1703d09287",
+        "crc32": "0053531a"
+      },
+      "stored_hash_domain": "unmodified bytes from executable extent in the ROM header",
+      "build_status": "arm9_baseline_build_target",
+      "module_params_marker_found": true,
+      "module_params": {
+        "offset": "0x00000b58",
+        "marker_offset": "0x00000b74",
+        "autoload_table_start": "0x020a9140",
+        "autoload_table_end": "0x020a9158",
+        "autoload_payload_start": "0x020a05c0",
+        "bss_start": "0x020a05c0",
+        "bss_end": "0x0214cd20",
+        "compressed_static_end": "0x00000000",
+        "sdk_version": "0x03017534"
+      },
+      "compressed": false,
+      "expanded_bytes": 692568,
+      "expanded_hashes": {
+        "sha1": "fa43df15b58b2d9a2890ed6b994045348cb4057b",
+        "sha256": "6464c6e726cd536756476392bf21996ae7289d16e269863cd0b88c1703d09287",
+        "crc32": "0053531a"
+      },
+      "expanded_hash_domain": "unmodified ROM executable extent",
+      "main": {
+        "base": "0x02000000",
+        "entry": "0x02000800",
+        "bytes": 656832,
+        "bss_start": "0x020a05c0",
+        "bss_end": "0x0214cd20",
+        "bss_bytes": 706400,
+        "hashes": {
+          "sha1": "7fa6b325489e4d0d7ff450d2dd41d37d2fdb69b0",
+          "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e",
+          "crc32": "88747b77"
+        },
+        "rom_offset": "0x00004000",
+        "parent_rom_offset": "0x00004000"
+      },
+      "autoloads": [
+        {
+          "kind": "ITCM",
+          "table_offset_in_expanded_arm9": "0x000a9140",
+          "source_offset_in_expanded_arm9": "0x000a05c0",
+          "base": "0x01ff8000",
+          "bytes": 31552,
+          "bss_bytes": 0,
+          "hashes": {
+            "sha1": "1b972525588086f039b3d398f0afc208d3383947",
+            "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3",
+            "crc32": "7c73ae59"
+          },
+          "rom_offset": "0x000a45c0",
+          "parent_rom_offset": "0x000a45c0"
+        },
+        {
+          "kind": "DTCM",
+          "table_offset_in_expanded_arm9": "0x000a914c",
+          "source_offset_in_expanded_arm9": "0x000a8100",
+          "base": "0x027c0000",
+          "bytes": 4160,
+          "bss_bytes": 32,
+          "hashes": {
+            "sha1": "b0cb1173fe2977456cd524f83c0b86cc3acefeec",
+            "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487",
+            "crc32": "13f76aec"
+          },
+          "rom_offset": "0x000ac100",
+          "parent_rom_offset": "0x000ac100"
+        }
+      ],
+      "autoload_payload_end_equals_table_start": true
+    },
+    "arm7": {
+      "rom_offset": "0x00210000",
+      "parent_rom_offset": "0x00210000",
+      "base": "0x02380000",
+      "entry": "0x02380000",
+      "stored_bytes": 165552,
+      "stored_hashes": {
+        "sha1": "461064dfadccfe3a39a149b8719a11949a7d9d86",
+        "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "crc32": "4504aba4"
+      },
+      "stored_hash_domain": "unmodified bytes from executable extent in the ROM header",
+      "build_status": "currently_unbuilt",
+      "module_params_marker_found": false,
+      "compressed": "not_resolved_from_module_parameters",
+      "internal_sections": {
+        "status": "unresolved",
+        "reason": "No standard module-parameter marker was found. No autoload or internal section layout is inferred."
+      }
+    },
+    "arm9_overlays": [
+      {
+        "id": 0,
+        "base": "0x0214cd20",
+        "bytes": 85760,
+        "bss_bytes": 0,
+        "ctor_start": "0x02160b24",
+        "ctor_end": "0x02160b34",
+        "file_id": 0,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x000ad400",
+        "parent_rom_offset": "0x000ad400",
+        "file_bytes": 85760,
+        "hashes": {
+          "sha1": "a028a48dd62044d194a5312cb1bca2722ea25e50",
+          "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6",
+          "crc32": "9a364777"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 1,
+        "base": "0x0214cd20",
+        "bytes": 135456,
+        "bss_bytes": 320,
+        "ctor_start": "0x0216b944",
+        "ctor_end": "0x0216b980",
+        "file_id": 1,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x000c2400",
+        "parent_rom_offset": "0x000c2400",
+        "file_bytes": 135456,
+        "hashes": {
+          "sha1": "c06dd2421e34ea47e0dc172ed888a66fdc2b6bc2",
+          "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b",
+          "crc32": "aa9b0b0a"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 2,
+        "base": "0x0214cd20",
+        "bytes": 65152,
+        "bss_bytes": 128,
+        "ctor_start": "0x0215bb84",
+        "ctor_end": "0x0215bb9c",
+        "file_id": 2,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x000e3600",
+        "parent_rom_offset": "0x000e3600",
+        "file_bytes": 65152,
+        "hashes": {
+          "sha1": "aec2a049fa47692aa8e92850c5308134b541cb81",
+          "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b",
+          "crc32": "c572b168"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 3,
+        "base": "0x0214cd20",
+        "bytes": 73472,
+        "bss_bytes": 32,
+        "ctor_start": "0x0215da48",
+        "ctor_end": "0x0215da68",
+        "file_id": 3,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x000f3600",
+        "parent_rom_offset": "0x000f3600",
+        "file_bytes": 73472,
+        "hashes": {
+          "sha1": "18713a2c02c13a6622513a6493c68fe8f1a24645",
+          "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a",
+          "crc32": "75eeb645"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 4,
+        "base": "0x0214cd20",
+        "bytes": 86208,
+        "bss_bytes": 32,
+        "ctor_start": "0x02160878",
+        "ctor_end": "0x02160888",
+        "file_id": 4,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x00105600",
+        "parent_rom_offset": "0x00105600",
+        "file_bytes": 86208,
+        "hashes": {
+          "sha1": "d675b8c3d008c61de86ccb21e2ebc398c0b1e1bb",
+          "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3",
+          "crc32": "0a9bfa27"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 5,
+        "base": "0x0214cd20",
+        "bytes": 152928,
+        "bss_bytes": 736,
+        "ctor_start": "0x0216f2f4",
+        "ctor_end": "0x0216f328",
+        "file_id": 5,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x0011a800",
+        "parent_rom_offset": "0x0011a800",
+        "file_bytes": 152928,
+        "hashes": {
+          "sha1": "afbf0dcb3936a49c0de67973b5493f92a9968084",
+          "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6",
+          "crc32": "ff5ea522"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 6,
+        "base": "0x0214cd20",
+        "bytes": 154688,
+        "bss_bytes": 256,
+        "ctor_start": "0x02171a7c",
+        "ctor_end": "0x02171a90",
+        "file_id": 6,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x0013fe00",
+        "parent_rom_offset": "0x0013fe00",
+        "file_bytes": 154688,
+        "hashes": {
+          "sha1": "889aca90ee7433297a8ccede9161f8ab275801d7",
+          "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984",
+          "crc32": "b3b465a6"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 7,
+        "base": "0x0214cd20",
+        "bytes": 122816,
+        "bss_bytes": 6688,
+        "ctor_start": "0x021691ec",
+        "ctor_end": "0x02169228",
+        "file_id": 7,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x00165c00",
+        "parent_rom_offset": "0x00165c00",
+        "file_bytes": 122816,
+        "hashes": {
+          "sha1": "9f442669500fc34580c75bb87d5ec6e314d1e230",
+          "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30",
+          "crc32": "cbc653af"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 8,
+        "base": "0x0214cd20",
+        "bytes": 128160,
+        "bss_bytes": 9984,
+        "ctor_start": "0x0216af0c",
+        "ctor_end": "0x0216af10",
+        "file_id": 8,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x00183c00",
+        "parent_rom_offset": "0x00183c00",
+        "file_bytes": 128160,
+        "hashes": {
+          "sha1": "13a0c808c364d3c783b5a5a9fb2bdc90dcbde9d7",
+          "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7",
+          "crc32": "40f9535f"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 9,
+        "base": "0x0214cd20",
+        "bytes": 32,
+        "bss_bytes": 0,
+        "ctor_start": "0x0214cd20",
+        "ctor_end": "0x0214cd24",
+        "file_id": 9,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x001a3200",
+        "parent_rom_offset": "0x001a3200",
+        "file_bytes": 32,
+        "hashes": {
+          "sha1": "de8a847bff8c343d69b853a215e6ee775ef2ef96",
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+          "crc32": "190a55ad"
+        },
+        "zero_filled_stub": true,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 10,
+        "base": "0x02172a60",
+        "bytes": 215264,
+        "bss_bytes": 19040,
+        "ctor_start": "0x021a3714",
+        "ctor_end": "0x021a3718",
+        "file_id": 10,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x001a3400",
+        "parent_rom_offset": "0x001a3400",
+        "file_bytes": 215264,
+        "hashes": {
+          "sha1": "b7c3bffed99a40b880cd717cf8ba0494a9fda4f5",
+          "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99",
+          "crc32": "789507d1"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 11,
+        "base": "0x02172a60",
+        "bytes": 61440,
+        "bss_bytes": 173920,
+        "ctor_start": "0x02181698",
+        "ctor_end": "0x021816a4",
+        "file_id": 11,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x001d7e00",
+        "parent_rom_offset": "0x001d7e00",
+        "file_bytes": 61440,
+        "hashes": {
+          "sha1": "fbaf2bd7cda3f9a23a3fbea95cd922c9b361444b",
+          "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9",
+          "crc32": "0856c11e"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 12,
+        "base": "0x021ac1c0",
+        "bytes": 167776,
+        "bss_bytes": 10976,
+        "ctor_start": "0x021d0598",
+        "ctor_end": "0x021d05a8",
+        "file_id": 12,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x001e6e00",
+        "parent_rom_offset": "0x001e6e00",
+        "file_bytes": 167776,
+        "hashes": {
+          "sha1": "5272bcdf0c19bdcff7eba857e1ea0dc8bf58536e",
+          "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f",
+          "crc32": "bd0be7a6"
+        },
+        "zero_filled_stub": false,
+        "build_status": "arm9_baseline_build_target"
+      },
+      {
+        "id": 13,
+        "base": "0x021ac1c0",
+        "bytes": 32,
+        "bss_bytes": 0,
+        "ctor_start": "0x021ac1c0",
+        "ctor_end": "0x021ac1c4",
+        "file_id": 13,
+        "flags": "0x00000000",
+        "compressed_size_bytes": 0,
+        "compressed": false,
+        "signed": false,
+        "rom_offset": "0x0020fe00",
+        "parent_rom_offset": "0x0020fe00",
+        "file_bytes": 32,
+        "hashes": {
+          "sha1": "de8a847bff8c343d69b853a215e6ee775ef2ef96",
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+          "crc32": "190a55ad"
+        },
+        "zero_filled_stub": true,
+        "build_status": "arm9_baseline_build_target"
+      }
+    ],
+    "arm7_overlays": []
+  },
+  "nitrofs": {
+    "directory_count": 39,
+    "named_file_count": 379,
+    "fat_entry_count": 393,
+    "unnamed_overlay_file_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "direct_nds_header_candidates": [
+      "ChildRom/JSS2Child.srl"
+    ],
+    "candidate_test": "ARM9 RAM base and entry are plausible, and the executable extent fits inside the named NitroFS file.",
+    "scope_uncertainty": "Named NitroFS files were scanned for direct NDS headers and .srl/.nds extensions. Proprietary containers were not recursively inspected for additional executable code."
+  },
+  "embedded_executables": [
+    {
+      "path": "ChildRom/JSS2Child.srl",
+      "file_id": 79,
+      "rom_offset": "0x0023b800",
+      "bytes": 2141384,
+      "hashes": {
+        "sha1": "7fbf3ba35cdb45fa0903cbd8473b9d0a84e275d3",
+        "sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+        "crc32": "51548293"
+      },
+      "header": {
+        "title": "JUS",
+        "game_code": "AJUJ",
+        "maker_code": "01",
+        "unit_code": 0,
+        "device_capacity": 9,
+        "revision": 0,
+        "arm9_rom_offset": "0x00004000",
+        "arm9_entry": "0x02000850",
+        "arm9_ram_address": "0x02000000",
+        "arm9_size": "0x001dd874",
+        "arm7_rom_offset": "0x001e1a00",
+        "arm7_entry": "0x02380000",
+        "arm7_ram_address": "0x02380000",
+        "arm7_size": "0x000286b0",
+        "fnt_offset": "0x0020a200",
+        "fnt_size": "0x00000009",
+        "fat_offset": "0x0020a400",
+        "fat_size": "0x00000000",
+        "arm9_overlay_offset": "0x00000000",
+        "arm9_overlay_size": "0x00000000",
+        "arm7_overlay_offset": "0x00000000",
+        "arm7_overlay_size": "0x00000000",
+        "used_rom_size": "0x0020ac40",
+        "header_size": "0x00004000"
+      },
+      "regions": {
+        "arm9": {
+          "rom_offset": "0x00004000",
+          "parent_rom_offset": "0x0023f800",
+          "base": "0x02000000",
+          "entry": "0x02000850",
+          "stored_bytes": 1955956,
+          "stored_hashes": {
+            "sha1": "2c09ce86e94bcef468c71e1822f06505d9164063",
+            "sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+            "crc32": "83eec6d5"
+          },
+          "stored_hash_domain": "unmodified bytes from executable extent in the ROM header",
+          "build_status": "currently_unbuilt",
+          "module_params_marker_found": true,
+          "module_params": {
+            "offset": "0x00000ba4",
+            "marker_offset": "0x00000bc0",
+            "autoload_table_start": "0x02281b20",
+            "autoload_table_end": "0x02281b38",
+            "autoload_payload_start": "0x02280b40",
+            "bss_start": "0x02280b40",
+            "bss_end": "0x0229a860",
+            "compressed_static_end": "0x021dd874",
+            "sdk_version": "0x03017534"
+          },
+          "compressed": true,
+          "expanded_bytes": 2628408,
+          "expanded_hashes": {
+            "sha1": "6fb5075984f51c8591f0d6df2064eeb27126459e",
+            "sha256": "409ad5e8b8f62406607db05baf471a0b3f3c870255f6fb135dee773c2ef400fc",
+            "crc32": "672fdefa"
+          },
+          "expanded_hash_domain": "BLZ output with module-parameter compressed_static_end preserved",
+          "blz_validation": {
+            "compressed_length_bytes": 1939572,
+            "header_length_bytes": 8,
+            "extra_size_bytes": 672452,
+            "uncompressed_prefix_bytes": 16384,
+            "compressed_bytes_fully_consumed": true
+          },
+          "main": {
+            "base": "0x02000000",
+            "entry": "0x02000850",
+            "bytes": 2624320,
+            "bss_start": "0x02280b40",
+            "bss_end": "0x0229a860",
+            "bss_bytes": 105760,
+            "hashes": {
+              "sha1": "2f75d50df39c88fcaf7612be490cad2706e2418a",
+              "sha256": "617bec5f0664ca87113abeaf5511433d3be6b42c711f2b936c28d3420f1f6db3",
+              "crc32": "bc0c4518"
+            }
+          },
+          "autoloads": [
+            {
+              "kind": "ITCM",
+              "table_offset_in_expanded_arm9": "0x00281b20",
+              "source_offset_in_expanded_arm9": "0x00280b40",
+              "base": "0x01ff8000",
+              "bytes": 3968,
+              "bss_bytes": 0,
+              "hashes": {
+                "sha1": "1e9508daf2731b26a07ba5c1e3f1474b31c87c3a",
+                "sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+                "crc32": "38858e4d"
+              }
+            },
+            {
+              "kind": "DTCM",
+              "table_offset_in_expanded_arm9": "0x00281b2c",
+              "source_offset_in_expanded_arm9": "0x00281ac0",
+              "base": "0x027c0000",
+              "bytes": 96,
+              "bss_bytes": 32,
+              "hashes": {
+                "sha1": "cf9783ac0439f511acdfcf5a9b63aa12052cb7cc",
+                "sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+                "crc32": "e624e5db"
+              }
+            }
+          ],
+          "autoload_payload_end_equals_table_start": true
+        },
+        "arm7": {
+          "rom_offset": "0x001e1a00",
+          "parent_rom_offset": "0x0041d200",
+          "base": "0x02380000",
+          "entry": "0x02380000",
+          "stored_bytes": 165552,
+          "stored_hashes": {
+            "sha1": "461064dfadccfe3a39a149b8719a11949a7d9d86",
+            "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+            "crc32": "4504aba4"
+          },
+          "stored_hash_domain": "unmodified bytes from executable extent in the ROM header",
+          "build_status": "currently_unbuilt",
+          "module_params_marker_found": false,
+          "compressed": "not_resolved_from_module_parameters",
+          "internal_sections": {
+            "status": "unresolved",
+            "reason": "No standard module-parameter marker was found. No autoload or internal section layout is inferred."
+          }
+        },
+        "arm9_overlays": [],
+        "arm7_overlays": []
+      },
+      "arm7_byte_identical_to_parent": true,
+      "build_status": "currently_unbuilt"
+    }
+  ],
+  "method": {
+    "input_handling": "Read-only ROM access; only hashes, addresses, sizes, and metadata are retained.",
+    "header_tables": "Python standard-library struct parses NDS headers, NitroFS FNT/FAT records, and 32-byte overlay records.",
+    "autoloads": "Standard module-parameter markers locate tables of destination, initialized size, and BSS size. All declared extents fit; autoload payloads end exactly at their table start.",
+    "child_compression": "Backward LZ decoded in memory; all compressed bytes were consumed.",
+    "blz_reference": "https://raw.githubusercontent.com/RoadrunnerWMC/ndspy/master/ndspy/codeCompression.py",
+    "hash_domains": "Stored hashes cover original ROM bytes. Expanded child hashes preserve the compressed_static_end module-parameter word; extractors that clear it produce different hashes.",
+    "emulator_used": false
+  }
+}

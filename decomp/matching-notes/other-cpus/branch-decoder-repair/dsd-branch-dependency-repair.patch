@@ -1,0 +1,3047 @@
+diff --git a/.gitignore b/.gitignore
+index 401a0ab..c653e75 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,3 +6,4 @@
+ /TODO.md
+ /cli/target
+ /temp/
++/local-deps/
+diff --git a/Cargo.lock b/Cargo.lock
+index cb8907d..9e901c9 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -3350,8 +3350,6 @@ checksum = "2896d95c02a80c6d6a5d6e953d479f5ddf2dfdb6a244441010e373ac0fb88971"
+ [[package]]
+ name = "unarm"
+ version = "1.9.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "9ea856cd3ee3abd1b585bbcdc6f8a4b356f43558fae98d76e502be868dc40e90"
+ 
+ [[package]]
+ name = "unicode-ident"
+diff --git a/Cargo.toml b/Cargo.toml
+index e1c3ee9..64b31b8 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -2,6 +2,9 @@
+ members = ["cli", "lib"]
+ resolver = "2"
+ 
++[patch.crates-io]
++unarm = { path = "local-deps/unarm/disasm" }
++
+ [profile.release]
+ lto = true
+ 
+diff --git a/dependency-patches/unarm-1.9.2/.gitattributes b/dependency-patches/unarm-1.9.2/.gitattributes
+new file mode 100644
+index 0000000..6447518
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/.gitattributes
+@@ -0,0 +1,2 @@
++# Unified-diff context lines intentionally begin with a space.
++source.patch -whitespace
+diff --git a/dependency-patches/unarm-1.9.2/.gitignore b/dependency-patches/unarm-1.9.2/.gitignore
+new file mode 100644
+index 0000000..43ae0e2
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/.gitignore
+@@ -0,0 +1,2 @@
++__pycache__/
++*.py[cod]
+diff --git a/dependency-patches/unarm-1.9.2/LICENSE.unarm b/dependency-patches/unarm-1.9.2/LICENSE.unarm
+new file mode 100644
+index 0000000..6306997
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/LICENSE.unarm
+@@ -0,0 +1,21 @@
++MIT License
++
++Copyright (c) 2025 Aetias
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++SOFTWARE.
+diff --git a/dependency-patches/unarm-1.9.2/README.md b/dependency-patches/unarm-1.9.2/README.md
+new file mode 100644
+index 0000000..1333848
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/README.md
+@@ -0,0 +1,97 @@
++# Pinned unarm 1.9.2 branch repair
++
++This workspace uses `source.patch` for the exact unarm 1.9.2 upstream commit
++recorded in `manifest.json`. It fixes direct ARM B/BL and immediate BLX
++displacement sign extension, combined Thumb BL/BLX sign extension at the
++positive boundary, and Thumb immediate BLX PC alignment. The existing DSD
++ARM7 observer normalization remains in place.
++
++The ARM YAML definitions signed a scaled displacement as 24 bits and included
++PC+8 before sign extension. The corrected definitions sign the 26-bit scaled
++displacement before adding 8; the committed ARM accessors are regenerated with
++`cargo run -p unarm-generator --locked --offline`. The generator itself does
++not need a change. The Thumb high-half argument already contains PC+4, so the
++combiner removes that bias before signing the 23-bit combined displacement,
++then restores it. Parser applies Align(PC,4) only to immediate Thumb BLX. The
++address-free half-instruction combiner retains its existing API; it cannot
++apply address-dependent BLX alignment on its own.
++
++The 32 synthetic oracle instructions under `oracle/` include positive and
++negative ARM displacement extremes, ARM BLX H=0/H=1, combined Thumb positive
++and negative boundaries, short and conditional Thumb branches, and BLX/BL at
++both word- and halfword-aligned addresses. Expected destinations come from
++pinned LLVM disassembly, independently of unarm. V4T still rejects immediate
++ARM and Thumb BLX. These checks establish these instruction forms, not an
++exhaustive ARM architecture conformance claim.
++
++## Prepare and build
++
++Run these commands from the DSD workspace. Python 3.11 or newer, Git and the
++pinned Rust toolchain are required. Preparation fetches the public upstream
++repository into the ignored `local-deps/unarm` path. It verifies the exact
++commit, all 46 upstream files, the patch, all 47 patched files, package/version,
++and the MIT license. It scans all untracked files regardless of Git ignore
++rules. Only the added pinned regression test and generated output under the
++checkout's root `target/` directory are permitted. The pinned manifests and
++source do not load inputs from that output directory. Ignored build scripts,
++`.cargo` configuration, other source files and nested `target/` directories
++are rejected. It never resets an existing checkout. No registry source is
++edited.
++
++```sh
++python3 dependency-patches/unarm-1.9.2/prepare.py
++python3 dependency-patches/unarm-1.9.2/prepare.py --check-only
++python3 dependency-patches/unarm-1.9.2/test_prepare.py
++```
++
++The ten real-Git preparation tests include ignored `disasm/build.rs`, ignored
++`.cargo/config.toml`, ignored extra source and nested output directories. After
++dependency setup, this probe additionally creates an ignored build script in a
++separate private copy of the actual pinned upstream source. Cargo metadata
++identifies the script as a build target, while preparation rejects it. The
++script is never executed.
++
++```sh
++python3 dependency-patches/unarm-1.9.2/proofs/ignored-build-probe.py
++```
++
++Use a private Cargo home for dependency setup; fetch is the network setup step.
++Once setup completes, all checks and builds below use the existing lockfile
++and offline resolution. This workspace's only lockfile change removes the
++registry source and checksum for the patched, still-version-1.9.2 unarm entry.
++
++```sh
++dsd_source=$(pwd)
++task_cargo_home="$dsd_source/target/branch-repair/cargo-home"
++export CARGO_HOME="$task_cargo_home"
++export CARGO_TARGET_DIR="$dsd_source/target/branch-repair/cargo-target"
++cargo fetch --locked
++cargo tree -i unarm --locked --offline
++cargo test -p ds-decomp --locked --offline
++cargo clippy -p ds-decomp --all-targets --locked --offline -- -D warnings -A clippy::chunks_exact_to_as_chunks
++```
++
++The clippy allowance is the existing baseline allowance in `ctor.rs` and
++`functions.rs`; it does not suppress new branch-repair diagnostics.
++
++For native release comparison, use the same logical source prefixes for each
++isolated checkout and private Cargo home. Keep the Cargo-home remapping last
++because its physical path is nested within the workspace path.
++
++```sh
++export CARGO_TARGET_DIR="$dsd_source/target/branch-repair/release-target"
++export RUSTFLAGS="--remap-path-prefix=$dsd_source=/dsd-source --remap-path-prefix=$task_cargo_home=/cargo-home"
++cargo build -p ds-decomp-cli --release --locked --offline
++```
++
++`verification.json` records the worker's actual tool hashes, test outcomes,
++release command and fresh legacy parent/child initialization comparison. Root
++independently runs the full 19-stage ARM9/ROM compatibility gate before
++promotion. No ARM7 source, linking, function declarations or executability
++claims are introduced. Existing reconstructed game source credit stays 304
++bytes.
++
++`LICENSE.unarm` preserves the upstream MIT notice. The exact original runtime
++source files match the registry crate's 11 runtime files, recorded in
++`registry-source-equivalence.json`; Cargo's packaged manifest normalization
++is not used as the source identity.
+diff --git a/dependency-patches/unarm-1.9.2/manifest.json b/dependency-patches/unarm-1.9.2/manifest.json
+new file mode 100644
+index 0000000..93ae3c6
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/manifest.json
+@@ -0,0 +1,111 @@
++{
++  "schema_version": 1,
++  "name": "unarm",
++  "version": "1.9.2",
++  "upstream_url": "https://github.com/AetiasHax/unarm",
++  "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++  "repair_commit": "a128db0e7ce3fc1f216f5ab3385523a4e3d9a7da",
++  "registry_checksum": "9ea856cd3ee3abd1b585bbcdc6f8a4b356f43558fae98d76e502be868dc40e90",
++  "license": "MIT",
++  "license_file": "LICENSE",
++  "license_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
++  "patch": "source.patch",
++  "patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
++  "before_files": {
++    ".gitignore": "61b500a95c6e38b82f98a276ea58b80019df57564eba82edae090260c635ec62",
++    "Cargo.lock": "f1521800e42ea8dd1b28d59452dd9654fccad9fc02f08b6acf8233f49e058089",
++    "Cargo.toml": "7b5e47d4716f6764dcf8fc4db98f3a444b438c3230d53081a74c52ce8db6ce02",
++    "LICENSE": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
++    "README.md": "c7f9e7113d1b3988000c1c4840f4a2a3c4aadcd75a528d15a92f723793076e54",
++    "disasm/Cargo.toml": "5a0fbb221708282aefe44fc9da31d7ea950a1ac1521c88ba04844f088f4cf122",
++    "disasm/src/args.rs": "4a5b7ed6b41906d1fae276f89a3c2f5d3ec8bb25f4238afb0f433e748b74eacd",
++    "disasm/src/arm/disasm.rs": "b09ebb8ac22fe5723078c4958ba7b26e6874458da9361aafaed53b8a7e445968",
++    "disasm/src/arm/generated.rs": "af9ca7f07cfa4ff28c0a160a5fecd556abe106ab4c4600c8b04f8d6120999200",
++    "disasm/src/arm/mod.rs": "a8f51a2bbbe9c5f3c84682df663d961cfad6a504057699de317084288f554056",
++    "disasm/src/display.rs": "3b95213bcbead81156587e2c4eb0fc17c9738a777a665316f26eb20adf098477",
++    "disasm/src/lib.rs": "471cf2f41ce2f7195618a7479497cb28276c36975aaa6909dc3753b47d68fd05",
++    "disasm/src/parse.rs": "1180c39f42d352ad3246e730970755d534ac9b181444c8bbd96d648fa05be4a3",
++    "disasm/src/thumb/disasm.rs": "aa2fec55ebe30b86160aafd1f622925b78c95ca8c444206b7cd6837eaf669542",
++    "disasm/src/thumb/generated.rs": "973f85beb97911f06b93b3e7f328720074f78acb5e53438830da538af0b78437",
++    "disasm/src/thumb/mod.rs": "a8f51a2bbbe9c5f3c84682df663d961cfad6a504057699de317084288f554056",
++    "disasm/src/util.rs": "e76a1c38943ac85ae1896cea5bb6fd33bdee60a9a075c3ba40ac82bc8a4522ba",
++    "disasm/tests/test_arm_v4t.rs": "1fcbec18423a046505f5c3f453b106f9d98d0c351a25de1fbe04e77838065e2e",
++    "disasm/tests/test_arm_v5te.rs": "f0ac3f652b9efb35e2cd7aef9028c05b469b74514d4a8866e36ed7ca7d1372b7",
++    "disasm/tests/test_arm_v6k.rs": "21c492faf98f8b1bf6b9b55a4ef607b780c0fe02b89c0ca90e7661ec673668fd",
++    "disasm/tests/test_defs_uses.rs": "b1d2cbdb7827ff59726a833f05fdc735cb86ed80b4c72a1a247ce2f2129dc0f4",
++    "disasm/tests/test_display_options.rs": "103370a776fe3f8b57a5d28f9898fccbd15f828c66d62a1dba3ed755ac8e6f7a",
++    "disasm/tests/test_sbo_sbz.rs": "c5a46416533e0941ea3c10cb3df5e81084ffe25a36fe60b04a727669613656d7",
++    "disasm/tests/test_thumb_v4t.rs": "da48035069514f650b2eb738da64346785ada57f42bec2f5b5eabd0387c78ddd",
++    "disasm/tests/test_thumb_v5te.rs": "c86ff6ac161d2b186933c0fcf3eb77df0383c79c5dab0588449d76b8f386f808",
++    "disasm/tests/test_thumb_v6k.rs": "3432a56e213972d637541efe10e4833c5a058b213676e198e25a1054da0956ed",
++    "disasm/tests/test_ual.rs": "8efb59720c1beedd18e29e54d23167db58c66afd00aba694b2ee109783890658",
++    "fuzz/Cargo.toml": "9294e767e5f199bcb6ddf148cfdbe6058e7d16a2fd9c14dc9669ae839050d066",
++    "fuzz/src/arm.rs": "426c367212caffd0998d0a71ab654f6001dbe967b5ee30306c706945fbaaec3a",
++    "fuzz/src/main.rs": "9d3572ae9c16e35ffe53f50836ffd1dcaa4752a0d1fe2fafe752c27a55eff188",
++    "fuzz/src/thumb.rs": "6b7b0fd20d23fcd472ad19bc9a4efe2ee28b02eaca79dca564a77010301838af",
++    "generator/Cargo.toml": "43a6872ade21699b96e8b3b0f1383e55b49157b5baae07268198104e2f94b14e",
++    "generator/src/args.rs": "990da58b914c22133105c4e175e10276b890b56cca65b0134a32a12c7d5fb3cf",
++    "generator/src/generate/args.rs": "68c396810bed77affe4a127bdb905c5756a9ff68c58f1dfbbb8c76ad804fee39",
++    "generator/src/generate/disasm.rs": "e34f49145b37e2058469003290b501f54714cc3c25313578f47e276c872096e6",
++    "generator/src/generate/mod.rs": "b3907fb977aabc0d227cd86c4bc51f7ab6be7a7f9e225aea929e10bd6eaae477",
++    "generator/src/isa.rs": "f6280e32ce2591e9b3a06b2893d34441193bb338d5ef1168f812d2bd8750ed6b",
++    "generator/src/iter.rs": "879d5fe0280aa41ba3f99693709d5e1b7ed5514d7dcad5b4b0219cfa43e966c2",
++    "generator/src/main.rs": "6c622fc829454088d74ba23808502fb0e6bee0c8ae5a8914bf5e885b3600f536",
++    "generator/src/search.rs": "e8f09f57352f55bc2a1c7c28befeb4010bb603d339028f4bd894f259251e10c8",
++    "generator/src/token.rs": "b67362daa984d9e4fa821a295fe06042cdd23280ea099f69e5a8b8cfde5956bf",
++    "generator/src/util.rs": "acdd09e489ffdb2044e0377e9fd78fa610d2eab6697b7942a2aa834d0001df64",
++    "rustfmt.toml": "baf283aa7bc3279f1c1ae336a25f1da554c0b1901cbc7832a0ab98d240e179f7",
++    "specs/args.yaml": "d03d2561be724bb4a87867e1a1f70410e0858fde0d9885f7bdf8f44da58e9c90",
++    "specs/arm.yaml": "ab96b807118b9a77092b8369b5521ab1dea807aa2d75ad7d451260fac55356b8",
++    "specs/thumb.yaml": "875820e552eb8e9b103e5403f995e90857de6e9b09d767cd70fcd8367ecb63a5"
++  },
++  "after_files": {
++    ".gitignore": "61b500a95c6e38b82f98a276ea58b80019df57564eba82edae090260c635ec62",
++    "Cargo.lock": "f1521800e42ea8dd1b28d59452dd9654fccad9fc02f08b6acf8233f49e058089",
++    "Cargo.toml": "7b5e47d4716f6764dcf8fc4db98f3a444b438c3230d53081a74c52ce8db6ce02",
++    "LICENSE": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
++    "README.md": "c7f9e7113d1b3988000c1c4840f4a2a3c4aadcd75a528d15a92f723793076e54",
++    "disasm/Cargo.toml": "5a0fbb221708282aefe44fc9da31d7ea950a1ac1521c88ba04844f088f4cf122",
++    "disasm/src/args.rs": "4a5b7ed6b41906d1fae276f89a3c2f5d3ec8bb25f4238afb0f433e748b74eacd",
++    "disasm/src/arm/disasm.rs": "b09ebb8ac22fe5723078c4958ba7b26e6874458da9361aafaed53b8a7e445968",
++    "disasm/src/arm/generated.rs": "c38c8a4f708926be7b7f782fff4336f1f9338f34ecf64b895c354d2da8e337a3",
++    "disasm/src/arm/mod.rs": "a8f51a2bbbe9c5f3c84682df663d961cfad6a504057699de317084288f554056",
++    "disasm/src/display.rs": "3b95213bcbead81156587e2c4eb0fc17c9738a777a665316f26eb20adf098477",
++    "disasm/src/lib.rs": "471cf2f41ce2f7195618a7479497cb28276c36975aaa6909dc3753b47d68fd05",
++    "disasm/src/parse.rs": "fc52d2a6f86b1800a05016c17f7ce5dfbd81ef4474aba22f5e5ae48bbd5a6231",
++    "disasm/src/thumb/disasm.rs": "aa2fec55ebe30b86160aafd1f622925b78c95ca8c444206b7cd6837eaf669542",
++    "disasm/src/thumb/generated.rs": "973f85beb97911f06b93b3e7f328720074f78acb5e53438830da538af0b78437",
++    "disasm/src/thumb/mod.rs": "a8f51a2bbbe9c5f3c84682df663d961cfad6a504057699de317084288f554056",
++    "disasm/src/util.rs": "e76a1c38943ac85ae1896cea5bb6fd33bdee60a9a075c3ba40ac82bc8a4522ba",
++    "disasm/tests/test_arm_v4t.rs": "1fcbec18423a046505f5c3f453b106f9d98d0c351a25de1fbe04e77838065e2e",
++    "disasm/tests/test_arm_v5te.rs": "f0ac3f652b9efb35e2cd7aef9028c05b469b74514d4a8866e36ed7ca7d1372b7",
++    "disasm/tests/test_arm_v6k.rs": "21c492faf98f8b1bf6b9b55a4ef607b780c0fe02b89c0ca90e7661ec673668fd",
++    "disasm/tests/test_branch_boundaries.rs": "6ecd4cdef9060a8d1783a4e76d6752a7a09816e75e9bf49218fea9b548069551",
++    "disasm/tests/test_defs_uses.rs": "b1d2cbdb7827ff59726a833f05fdc735cb86ed80b4c72a1a247ce2f2129dc0f4",
++    "disasm/tests/test_display_options.rs": "103370a776fe3f8b57a5d28f9898fccbd15f828c66d62a1dba3ed755ac8e6f7a",
++    "disasm/tests/test_sbo_sbz.rs": "c5a46416533e0941ea3c10cb3df5e81084ffe25a36fe60b04a727669613656d7",
++    "disasm/tests/test_thumb_v4t.rs": "da48035069514f650b2eb738da64346785ada57f42bec2f5b5eabd0387c78ddd",
++    "disasm/tests/test_thumb_v5te.rs": "c86ff6ac161d2b186933c0fcf3eb77df0383c79c5dab0588449d76b8f386f808",
++    "disasm/tests/test_thumb_v6k.rs": "3432a56e213972d637541efe10e4833c5a058b213676e198e25a1054da0956ed",
++    "disasm/tests/test_ual.rs": "8efb59720c1beedd18e29e54d23167db58c66afd00aba694b2ee109783890658",
++    "fuzz/Cargo.toml": "9294e767e5f199bcb6ddf148cfdbe6058e7d16a2fd9c14dc9669ae839050d066",
++    "fuzz/src/arm.rs": "426c367212caffd0998d0a71ab654f6001dbe967b5ee30306c706945fbaaec3a",
++    "fuzz/src/main.rs": "9d3572ae9c16e35ffe53f50836ffd1dcaa4752a0d1fe2fafe752c27a55eff188",
++    "fuzz/src/thumb.rs": "6b7b0fd20d23fcd472ad19bc9a4efe2ee28b02eaca79dca564a77010301838af",
++    "generator/Cargo.toml": "43a6872ade21699b96e8b3b0f1383e55b49157b5baae07268198104e2f94b14e",
++    "generator/src/args.rs": "990da58b914c22133105c4e175e10276b890b56cca65b0134a32a12c7d5fb3cf",
++    "generator/src/generate/args.rs": "68c396810bed77affe4a127bdb905c5756a9ff68c58f1dfbbb8c76ad804fee39",
++    "generator/src/generate/disasm.rs": "e34f49145b37e2058469003290b501f54714cc3c25313578f47e276c872096e6",
++    "generator/src/generate/mod.rs": "b3907fb977aabc0d227cd86c4bc51f7ab6be7a7f9e225aea929e10bd6eaae477",
++    "generator/src/isa.rs": "f6280e32ce2591e9b3a06b2893d34441193bb338d5ef1168f812d2bd8750ed6b",
++    "generator/src/iter.rs": "879d5fe0280aa41ba3f99693709d5e1b7ed5514d7dcad5b4b0219cfa43e966c2",
++    "generator/src/main.rs": "6c622fc829454088d74ba23808502fb0e6bee0c8ae5a8914bf5e885b3600f536",
++    "generator/src/search.rs": "e8f09f57352f55bc2a1c7c28befeb4010bb603d339028f4bd894f259251e10c8",
++    "generator/src/token.rs": "b67362daa984d9e4fa821a295fe06042cdd23280ea099f69e5a8b8cfde5956bf",
++    "generator/src/util.rs": "acdd09e489ffdb2044e0377e9fd78fa610d2eab6697b7942a2aa834d0001df64",
++    "rustfmt.toml": "baf283aa7bc3279f1c1ae336a25f1da554c0b1901cbc7832a0ab98d240e179f7",
++    "specs/args.yaml": "d03d2561be724bb4a87867e1a1f70410e0858fde0d9885f7bdf8f44da58e9c90",
++    "specs/arm.yaml": "a12a02920fb292d647a50ebec7210b2c3a9b7bdd5573f951f89ca46247d2dbdc",
++    "specs/thumb.yaml": "875820e552eb8e9b103e5403f995e90857de6e9b09d767cd70fcd8367ecb63a5"
++  }
++}
+diff --git a/dependency-patches/unarm-1.9.2/oracle/arm-disassembly.txt b/dependency-patches/unarm-1.9.2/oracle/arm-disassembly.txt
+new file mode 100644
+index 0000000..7c9bda9
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/arm-disassembly.txt
+@@ -0,0 +1,46 @@
++
++target/branch-repair/oracle/arm.elf:	file format elf32-littlearm
++
++Disassembly of section .text:
++
++02380000 <b_large_positive>:
++ 2380000: ea51e118     	b	0x37f8468 <blx_min_h1+0x1478434> @ imm = #0x1478460
++
++02380004 <bl_large_positive>:
++ 2380004: eb51e117     	bl	0x37f8468 <blx_min_h1+0x1478434> @ imm = #0x147845c
++
++02380008 <b_large_negative>:
++ 2380008: eabffffc     	b	0x1380000               @ imm = #-0x1000010
++
++0238000c <bl_large_negative>:
++ 238000c: ebbffffb     	bl	0x1380000               @ imm = #-0x1000014
++
++02380010 <b_max_positive>:
++ 2380010: ea7fffff     	b	0x4380014 <blx_min_h1+0x1ffffe0> @ imm = #0x1fffffc
++
++02380014 <bl_max_positive>:
++ 2380014: eb7fffff     	bl	0x4380018 <blx_min_h1+0x1ffffe4> @ imm = #0x1fffffc
++
++02380018 <b_min_negative>:
++ 2380018: ea800000     	b	0x380020                @ imm = #-0x2000000
++
++0238001c <bl_min_negative>:
++ 238001c: eb800000     	bl	0x380024                @ imm = #-0x2000000
++
++02380020 <b_minus_one_word>:
++ 2380020: eaffffff     	b	0x2380024 <bl_zero_displacement> @ imm = #-0x4
++
++02380024 <bl_zero_displacement>:
++ 2380024: eb000000     	bl	0x238002c <blx_max_h1>  @ imm = #0x0
++
++02380028 <blx_max_h0>:
++ 2380028: fa7fffff     	blx	0x438002c <blx_min_h1+0x1fffff8> @ imm = #0x1fffffc
++
++0238002c <blx_max_h1>:
++ 238002c: fb7fffff     	blx	0x4380032 <blx_min_h1+0x1fffffe> @ imm = #0x1fffffe
++
++02380030 <blx_min_h0>:
++ 2380030: fa800000     	blx	0x380038                @ imm = #-0x2000000
++
++02380034 <blx_min_h1>:
++ 2380034: fb800000     	blx	0x38003e                @ imm = #-0x1fffffe
+diff --git a/dependency-patches/unarm-1.9.2/oracle/arm.s b/dependency-patches/unarm-1.9.2/oracle/arm.s
+new file mode 100644
+index 0000000..f249ae9
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/arm.s
+@@ -0,0 +1,33 @@
++.syntax unified
++.arch armv5te
++.arm
++.global _start
++_start:
++b_large_positive:
++ .inst 0xea51e118
++bl_large_positive:
++ .inst 0xeb51e117
++b_large_negative:
++ .inst 0xeabffffc
++bl_large_negative:
++ .inst 0xebbffffb
++b_max_positive:
++ .inst 0xea7fffff
++bl_max_positive:
++ .inst 0xeb7fffff
++b_min_negative:
++ .inst 0xea800000
++bl_min_negative:
++ .inst 0xeb800000
++b_minus_one_word:
++ .inst 0xeaffffff
++bl_zero_displacement:
++ .inst 0xeb000000
++blx_max_h0:
++ .inst 0xfa7fffff
++blx_max_h1:
++ .inst 0xfb7fffff
++blx_min_h0:
++ .inst 0xfa800000
++blx_min_h1:
++ .inst 0xfb800000
+diff --git a/dependency-patches/unarm-1.9.2/oracle/layout.ld b/dependency-patches/unarm-1.9.2/oracle/layout.ld
+new file mode 100644
+index 0000000..a6661cd
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/layout.ld
+@@ -0,0 +1,2 @@
++ENTRY(_start)
++SECTIONS { . = 0x02380000; .text : { *(.text) } }
+diff --git a/dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment-disassembly.txt b/dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment-disassembly.txt
+new file mode 100644
+index 0000000..7d532bc
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment-disassembly.txt
+@@ -0,0 +1,12 @@
++
++target/branch-repair/oracle/thumb-blx-alignment.elf:	file format elf32-littlearm
++
++Disassembly of section .text:
++
++02380000 <_start>:
++ 2380000: 46c0         	mov	r8, r8
++ 2380002: f000 e800    	blx	0x2380004 <_start+0x4>  @ imm = #0x0
++ 2380006: f3ff effe    	blx	0x2780004 <_start+0x400004> @ imm = #0x3ffffc
++ 238000a: f400 e800    	blx	0x1f8000c               @ imm = #-0x400000
++ 238000e: f7ff effe    	blx	0x238000c <_start+0xc>  @ imm = #-0x4
++ 2380012: f000 f800    	bl	0x2380016 <_start+0x16> @ imm = #0x0
+diff --git a/dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment.s b/dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment.s
+new file mode 100644
+index 0000000..b8dd673
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment.s
+@@ -0,0 +1,12 @@
++.syntax unified
++.arch armv5te
++.thumb
++.global _start
++.thumb_func
++_start:
++ nop
++ .inst.w 0xf000e800
++ .inst.w 0xf3ffeffe
++ .inst.w 0xf400e800
++ .inst.w 0xf7ffeffe
++ .inst.w 0xf000f800
+diff --git a/dependency-patches/unarm-1.9.2/oracle/thumb-disassembly.txt b/dependency-patches/unarm-1.9.2/oracle/thumb-disassembly.txt
+new file mode 100644
+index 0000000..6e27df6
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/thumb-disassembly.txt
+@@ -0,0 +1,43 @@
++
++target/branch-repair/oracle/thumb.elf:	file format elf32-littlearm
++
++Disassembly of section .text:
++
++02380000 <bl_positive_pc_boundary_even>:
++ 2380000: f3ff fffe    	bl	0x2780000 <b_cond_min+0x3fffd6> @ imm = #0x3ffffc
++
++02380004 <bl_positive_pc_boundary_halfword>:
++ 2380004: f3ff ffff    	bl	0x2780006 <b_cond_min+0x3fffdc> @ imm = #0x3ffffe
++
++02380008 <bl_min_negative>:
++ 2380008: f400 f800    	bl	0x1f8000c               @ imm = #-0x400000
++
++0238000c <bl_negative_near>:
++ 238000c: f7ff ffff    	bl	0x238000e <bl_negative_near+0x2> @ imm = #-0x2
++
++02380010 <bl_zero>:
++ 2380010: f000 f800    	bl	0x2380014 <blx_positive_pc_boundary> @ imm = #0x0
++
++02380014 <blx_positive_pc_boundary>:
++ 2380014: f3ff effe    	blx	0x2780014 <b_cond_min+0x3fffea> @ imm = #0x3ffffc
++
++02380018 <blx_min_negative>:
++ 2380018: f400 e800    	blx	0x1f8001c               @ imm = #-0x400000
++
++0238001c <blx_negative_near>:
++ 238001c: f7ff effe    	blx	0x238001c <blx_negative_near> @ imm = #-0x4
++
++02380020 <blx_zero>:
++ 2380020: f000 e800    	blx	0x2380024 <b_short_max> @ imm = #0x0
++
++02380024 <b_short_max>:
++ 2380024: e3ff         	b	0x2380826 <b_cond_min+0x7fc> @ imm = #0x7fe
++
++02380026 <b_short_min>:
++ 2380026: e400         	b	0x237f82a               @ imm = #-0x800
++
++02380028 <b_cond_max>:
++ 2380028: d17f         	bne	0x238012a <b_cond_min+0x100> @ imm = #0xfe
++
++0238002a <b_cond_min>:
++ 238002a: d180         	bne	0x237ff2e               @ imm = #-0x100
+diff --git a/dependency-patches/unarm-1.9.2/oracle/thumb.s b/dependency-patches/unarm-1.9.2/oracle/thumb.s
+new file mode 100644
+index 0000000..9fa8cd2
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/thumb.s
+@@ -0,0 +1,32 @@
++.syntax unified
++.arch armv5te
++.thumb
++.global _start
++.thumb_func
++_start:
++bl_positive_pc_boundary_even:
++ .inst.w 0xf3fffffe
++bl_positive_pc_boundary_halfword:
++ .inst.w 0xf3ffffff
++bl_min_negative:
++ .inst.w 0xf400f800
++bl_negative_near:
++ .inst.w 0xf7ffffff
++bl_zero:
++ .inst.w 0xf000f800
++blx_positive_pc_boundary:
++ .inst.w 0xf3ffeffe
++blx_min_negative:
++ .inst.w 0xf400e800
++blx_negative_near:
++ .inst.w 0xf7ffeffe
++blx_zero:
++ .inst.w 0xf000e800
++b_short_max:
++ .inst.n 0xe3ff
++b_short_min:
++ .inst.n 0xe400
++b_cond_max:
++ .inst.n 0xd17f
++b_cond_min:
++ .inst.n 0xd180
+diff --git a/dependency-patches/unarm-1.9.2/oracle/verification.json b/dependency-patches/unarm-1.9.2/oracle/verification.json
+new file mode 100644
+index 0000000..f260c75
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/oracle/verification.json
+@@ -0,0 +1,574 @@
++{
++  "scope": "27 public synthetic instructions, independently decoded by LLVM23.1.2; no ROM input",
++  "records": [
++    {
++      "name": "b_large_positive",
++      "address": 37224448,
++      "encoding": [
++        "ea51e118"
++      ],
++      "expected_address": 58688616,
++      "mnemonic": "b",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        24,
++        225,
++        81,
++        234
++      ]
++    },
++    {
++      "name": "bl_large_positive",
++      "address": 37224452,
++      "encoding": [
++        "eb51e117"
++      ],
++      "expected_address": 58688616,
++      "mnemonic": "bl",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        23,
++        225,
++        81,
++        235
++      ]
++    },
++    {
++      "name": "b_large_negative",
++      "address": 37224456,
++      "encoding": [
++        "eabffffc"
++      ],
++      "expected_address": 20447232,
++      "mnemonic": "b",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        252,
++        255,
++        191,
++        234
++      ]
++    },
++    {
++      "name": "bl_large_negative",
++      "address": 37224460,
++      "encoding": [
++        "ebbffffb"
++      ],
++      "expected_address": 20447232,
++      "mnemonic": "bl",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        251,
++        255,
++        191,
++        235
++      ]
++    },
++    {
++      "name": "b_max_positive",
++      "address": 37224464,
++      "encoding": [
++        "ea7fffff"
++      ],
++      "expected_address": 70778900,
++      "mnemonic": "b",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        255,
++        255,
++        127,
++        234
++      ]
++    },
++    {
++      "name": "bl_max_positive",
++      "address": 37224468,
++      "encoding": [
++        "eb7fffff"
++      ],
++      "expected_address": 70778904,
++      "mnemonic": "bl",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        255,
++        255,
++        127,
++        235
++      ]
++    },
++    {
++      "name": "b_min_negative",
++      "address": 37224472,
++      "encoding": [
++        "ea800000"
++      ],
++      "expected_address": 3670048,
++      "mnemonic": "b",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        0,
++        0,
++        128,
++        234
++      ]
++    },
++    {
++      "name": "bl_min_negative",
++      "address": 37224476,
++      "encoding": [
++        "eb800000"
++      ],
++      "expected_address": 3670052,
++      "mnemonic": "bl",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        0,
++        0,
++        128,
++        235
++      ]
++    },
++    {
++      "name": "b_minus_one_word",
++      "address": 37224480,
++      "encoding": [
++        "eaffffff"
++      ],
++      "expected_address": 37224484,
++      "mnemonic": "b",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        255,
++        255,
++        255,
++        234
++      ]
++    },
++    {
++      "name": "bl_zero_displacement",
++      "address": 37224484,
++      "encoding": [
++        "eb000000"
++      ],
++      "expected_address": 37224492,
++      "mnemonic": "bl",
++      "mode": "arm",
++      "group": "arm_b_bl",
++      "bytes": [
++        0,
++        0,
++        0,
++        235
++      ]
++    },
++    {
++      "name": "blx_max_h0",
++      "address": 37224488,
++      "encoding": [
++        "fa7fffff"
++      ],
++      "expected_address": 70778924,
++      "mnemonic": "blx",
++      "mode": "arm",
++      "group": "arm_blx",
++      "bytes": [
++        255,
++        255,
++        127,
++        250
++      ]
++    },
++    {
++      "name": "blx_max_h1",
++      "address": 37224492,
++      "encoding": [
++        "fb7fffff"
++      ],
++      "expected_address": 70778930,
++      "mnemonic": "blx",
++      "mode": "arm",
++      "group": "arm_blx",
++      "bytes": [
++        255,
++        255,
++        127,
++        251
++      ]
++    },
++    {
++      "name": "blx_min_h0",
++      "address": 37224496,
++      "encoding": [
++        "fa800000"
++      ],
++      "expected_address": 3670072,
++      "mnemonic": "blx",
++      "mode": "arm",
++      "group": "arm_blx",
++      "bytes": [
++        0,
++        0,
++        128,
++        250
++      ]
++    },
++    {
++      "name": "blx_min_h1",
++      "address": 37224500,
++      "encoding": [
++        "fb800000"
++      ],
++      "expected_address": 3670078,
++      "mnemonic": "blx",
++      "mode": "arm",
++      "group": "arm_blx",
++      "bytes": [
++        0,
++        0,
++        128,
++        251
++      ]
++    },
++    {
++      "name": "bl_positive_pc_boundary_even",
++      "address": 37224448,
++      "encoding": [
++        "f3ff",
++        "fffe"
++      ],
++      "expected_address": 41418752,
++      "mnemonic": "bl",
++      "mode": "thumb",
++      "group": "thumb_bl",
++      "bytes": [
++        255,
++        243,
++        254,
++        255
++      ]
++    },
++    {
++      "name": "bl_positive_pc_boundary_halfword",
++      "address": 37224452,
++      "encoding": [
++        "f3ff",
++        "ffff"
++      ],
++      "expected_address": 41418758,
++      "mnemonic": "bl",
++      "mode": "thumb",
++      "group": "thumb_bl",
++      "bytes": [
++        255,
++        243,
++        255,
++        255
++      ]
++    },
++    {
++      "name": "bl_min_negative",
++      "address": 37224456,
++      "encoding": [
++        "f400",
++        "f800"
++      ],
++      "expected_address": 33030156,
++      "mnemonic": "bl",
++      "mode": "thumb",
++      "group": "thumb_bl",
++      "bytes": [
++        0,
++        244,
++        0,
++        248
++      ]
++    },
++    {
++      "name": "bl_negative_near",
++      "address": 37224460,
++      "encoding": [
++        "f7ff",
++        "ffff"
++      ],
++      "expected_address": 37224462,
++      "mnemonic": "bl",
++      "mode": "thumb",
++      "group": "thumb_bl",
++      "bytes": [
++        255,
++        247,
++        255,
++        255
++      ]
++    },
++    {
++      "name": "bl_zero",
++      "address": 37224464,
++      "encoding": [
++        "f000",
++        "f800"
++      ],
++      "expected_address": 37224468,
++      "mnemonic": "bl",
++      "mode": "thumb",
++      "group": "thumb_bl",
++      "bytes": [
++        0,
++        240,
++        0,
++        248
++      ]
++    },
++    {
++      "name": "blx_positive_pc_boundary",
++      "address": 37224468,
++      "encoding": [
++        "f3ff",
++        "effe"
++      ],
++      "expected_address": 41418772,
++      "mnemonic": "blx",
++      "mode": "thumb",
++      "group": "thumb_blx",
++      "bytes": [
++        255,
++        243,
++        254,
++        239
++      ]
++    },
++    {
++      "name": "blx_min_negative",
++      "address": 37224472,
++      "encoding": [
++        "f400",
++        "e800"
++      ],
++      "expected_address": 33030172,
++      "mnemonic": "blx",
++      "mode": "thumb",
++      "group": "thumb_blx",
++      "bytes": [
++        0,
++        244,
++        0,
++        232
++      ]
++    },
++    {
++      "name": "blx_negative_near",
++      "address": 37224476,
++      "encoding": [
++        "f7ff",
++        "effe"
++      ],
++      "expected_address": 37224476,
++      "mnemonic": "blx",
++      "mode": "thumb",
++      "group": "thumb_blx",
++      "bytes": [
++        255,
++        247,
++        254,
++        239
++      ]
++    },
++    {
++      "name": "blx_zero",
++      "address": 37224480,
++      "encoding": [
++        "f000",
++        "e800"
++      ],
++      "expected_address": 37224484,
++      "mnemonic": "blx",
++      "mode": "thumb",
++      "group": "thumb_blx",
++      "bytes": [
++        0,
++        240,
++        0,
++        232
++      ]
++    },
++    {
++      "name": "b_short_max",
++      "address": 37224484,
++      "encoding": [
++        "e3ff"
++      ],
++      "expected_address": 37226534,
++      "mnemonic": "b",
++      "mode": "thumb",
++      "group": "thumb_short",
++      "bytes": [
++        255,
++        227
++      ]
++    },
++    {
++      "name": "b_short_min",
++      "address": 37224486,
++      "encoding": [
++        "e400"
++      ],
++      "expected_address": 37222442,
++      "mnemonic": "b",
++      "mode": "thumb",
++      "group": "thumb_short",
++      "bytes": [
++        0,
++        228
++      ]
++    },
++    {
++      "name": "b_cond_max",
++      "address": 37224488,
++      "encoding": [
++        "d17f"
++      ],
++      "expected_address": 37224746,
++      "mnemonic": "bne",
++      "mode": "thumb",
++      "group": "thumb_short",
++      "bytes": [
++        127,
++        209
++      ]
++    },
++    {
++      "name": "b_cond_min",
++      "address": 37224490,
++      "encoding": [
++        "d180"
++      ],
++      "expected_address": 37224238,
++      "mnemonic": "bne",
++      "mode": "thumb",
++      "group": "thumb_short",
++      "bytes": [
++        128,
++        209
++      ]
++    },
++    {
++      "name": "blx_halfword_pc_2380002",
++      "address": 37224450,
++      "expected_address": 37224452,
++      "mnemonic": "blx",
++      "mode": "Thumb",
++      "group": "halfword_pc_alignment",
++      "encoding": [
++        61440,
++        59392
++      ],
++      "bytes": [
++        0,
++        240,
++        0,
++        232
++      ]
++    },
++    {
++      "name": "blx_halfword_pc_2380006",
++      "address": 37224454,
++      "expected_address": 41418756,
++      "mnemonic": "blx",
++      "mode": "Thumb",
++      "group": "halfword_pc_alignment",
++      "encoding": [
++        62463,
++        61438
++      ],
++      "bytes": [
++        255,
++        243,
++        254,
++        239
++      ]
++    },
++    {
++      "name": "blx_halfword_pc_238000a",
++      "address": 37224458,
++      "expected_address": 33030156,
++      "mnemonic": "blx",
++      "mode": "Thumb",
++      "group": "halfword_pc_alignment",
++      "encoding": [
++        62464,
++        59392
++      ],
++      "bytes": [
++        0,
++        244,
++        0,
++        232
++      ]
++    },
++    {
++      "name": "blx_halfword_pc_238000e",
++      "address": 37224462,
++      "expected_address": 37224460,
++      "mnemonic": "blx",
++      "mode": "Thumb",
++      "group": "halfword_pc_alignment",
++      "encoding": [
++        63487,
++        61438
++      ],
++      "bytes": [
++        255,
++        247,
++        254,
++        239
++      ]
++    },
++    {
++      "name": "bl_halfword_pc_2380012",
++      "address": 37224466,
++      "expected_address": 37224470,
++      "mnemonic": "bl",
++      "mode": "Thumb",
++      "group": "halfword_pc_alignment",
++      "encoding": [
++        61440,
++        63488
++      ],
++      "bytes": [
++        0,
++        240,
++        0,
++        248
++      ]
++    }
++  ],
++  "commands": [
++    "llvm-mc --triple=armv5te-none-eabi --filetype=obj oracle/arm.s -o private/arm.o",
++    "ld.lld -T oracle/layout.ld private/arm.o -o private/arm.elf",
++    "llvm-objdump -d --mcpu=arm946e-s private/arm.elf",
++    "repeat for thumb.s",
++    "/opt/homebrew/opt/llvm/bin/llvm-mc -triple=arm-none-eabi -filetype=obj dependency-patches/unarm-1.9.2/oracle/thumb-blx-alignment.s -o target/branch-repair/oracle/thumb-blx-alignment.o",
++    "/opt/homebrew/bin/ld.lld -T dependency-patches/unarm-1.9.2/oracle/layout.ld target/branch-repair/oracle/thumb-blx-alignment.o -o target/branch-repair/oracle/thumb-blx-alignment.elf",
++    "/opt/homebrew/opt/llvm/bin/llvm-objdump -d --triple=armv5te-none-eabi target/branch-repair/oracle/thumb-blx-alignment.elf"
++  ],
++  "source_hashes": {
++    "layout.ld": "be95da09dc8885d2d2eb9ae198601d4a376bc59e751682743e2de3b619febe72",
++    "thumb-disassembly.txt": "76a8f8d3f7f92b360a5b8b8f2d855fb9354943e83a623865ef5986ad53735767",
++    "arm.s": "129d593c29177a9c95006ec2119ce5f77463e62c7054b2c7afb3881847fd34a9",
++    "thumb.s": "5cbf753f6b5842fcbd999efad3f1e9713bb89bd499ce5f05b05a2431bd13c7fb",
++    "arm-disassembly.txt": "02b545268b34eb1cfae4004b57f0ac31cd784268eb12f36de6a339366bf533ad",
++    "thumb-blx-alignment.s": "aefbd9c7b790465af9c69dca6a542a5795f290cb5d46d0653734d00ee6902449",
++    "thumb-blx-alignment-disassembly.txt": "3a89b0d3a4dbcc677819f5162ac27003e1846a14e333174a762f4296cdf4f5c2"
++  },
++  "failed_first_link_setup": "incorrect /opt/homebrew/opt/llvm/bin/ld.lld path; no binary linked. Correct pinned linker /opt/homebrew/bin/ld.lld used."
++}
+diff --git a/dependency-patches/unarm-1.9.2/prepare.py b/dependency-patches/unarm-1.9.2/prepare.py
+new file mode 100644
+index 0000000..b0988b7
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/prepare.py
+@@ -0,0 +1,103 @@
++#!/usr/bin/env python3
++"""Prepare the pinned local unarm source without modifying a Cargo registry.
++
++All tracked upstream files and the added regression test are pinned before and
++following the patch. An existing checkout is never reset or updated implicitly.
++Git ignore rules do not exempt source or configuration from the inventory.
++Only generated output under the checkout's root target/ is exempt.
++"""
++import argparse
++import hashlib
++import json
++from pathlib import Path
++import subprocess
++import tomllib
++
++BUNDLE = Path(__file__).resolve().parent
++
++
++def git(checkout, *arguments):
++    return subprocess.check_output(['git', '-C', str(checkout), *arguments], stderr=subprocess.STDOUT)
++
++
++def sha256(path):
++    if path.is_symlink() or not path.is_file():
++        raise ValueError(f'source is missing or not a regular file: {path}')
++    return hashlib.sha256(path.read_bytes()).hexdigest()
++
++
++def prepare(checkout, bundle=BUNDLE, check_only=False):
++    checkout, bundle = Path(checkout).resolve(), Path(bundle).resolve()
++    manifest = json.loads((bundle / 'manifest.json').read_text())
++    if manifest['schema_version'] != 1:
++        raise ValueError('unsupported preparation manifest')
++    patch = bundle / manifest['patch']
++    if sha256(patch) != manifest['patch_sha256']:
++        raise ValueError('patch hash mismatch')
++    before, after = manifest['before_files'], manifest['after_files']
++    for name in {*before, *after}:
++        path = Path(name)
++        if path.is_absolute() or '..' in path.parts:
++            raise ValueError('unsafe source path in manifest')
++    if not checkout.exists():
++        if check_only:
++            raise ValueError('prepared source checkout missing')
++        checkout.parent.mkdir(parents=True, exist_ok=True)
++        subprocess.run(['git', 'clone', '--no-checkout', manifest['upstream_url'], str(checkout)], check=True)
++        git(checkout, 'checkout', '--detach', manifest['upstream_commit'])
++    if Path(git(checkout, 'rev-parse', '--show-toplevel').decode().strip()).resolve() != checkout:
++        raise ValueError('source checkout must be the repository root')
++    if git(checkout, 'rev-parse', 'HEAD').decode().strip() != manifest['upstream_commit']:
++        raise ValueError('upstream commit mismatch')
++    if git(checkout, 'diff', '--cached', '--name-only'):
++        raise ValueError('staged source changes are not permitted')
++    tracked = set(git(checkout, 'ls-files', '-z').decode().strip('\0').split('\0'))
++    if tracked != set(before):
++        raise ValueError('tracked source inventory mismatch')
++    untracked = set(filter(None, git(checkout, 'ls-files', '--others', '-z').decode().split('\0')))
++    added = set(after) - set(before)
++    # The pinned workspace uses root target/ only for generated Cargo output.
++    # Ignored build.rs, .cargo configuration and other source remain inputs.
++    if any(not name.startswith('target/') for name in untracked - added):
++        raise ValueError('unexpected untracked source files')
++    if sha256(checkout / manifest['license_file']) != manifest['license_sha256']:
++        raise ValueError('upstream license hash mismatch')
++    package = tomllib.loads((checkout / 'disasm/Cargo.toml').read_text())['package']
++    if (package['name'], package['version']) != (manifest['name'], manifest['version']):
++        raise ValueError('upstream package/version mismatch')
++
++    def matches(files):
++        return all((checkout / name).is_file() and not (checkout / name).is_symlink()
++                   and sha256(checkout / name) == expected for name, expected in files.items())
++
++    if matches(after) and not any((checkout / name).exists() for name in set(before) - set(after)):
++        status = 'already_prepared'
++    elif matches(before) and not any((checkout / name).exists() for name in added):
++        if check_only:
++            raise ValueError('source patch has not been applied')
++        git(checkout, 'apply', '--check', str(patch))
++        git(checkout, 'apply', str(patch))
++        if not matches(after):
++            raise ValueError('patched source hash mismatch')
++        status = 'prepared'
++    else:
++        raise ValueError('source hashes match neither pinned upstream nor pinned repair')
++    return {'status': status, 'checkout': str(checkout), 'version': manifest['version'],
++            'upstream_commit': manifest['upstream_commit'], 'patch_sha256': manifest['patch_sha256'],
++            'verified_source_files': len(after), 'license_sha256': manifest['license_sha256'],
++            'untracked_output_allowance': ['target/']}
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('--checkout', type=Path, default=BUNDLE.parents[1] / 'local-deps/unarm')
++    parser.add_argument('--check-only', action='store_true')
++    args = parser.parse_args()
++    try:
++        print(json.dumps(prepare(args.checkout, check_only=args.check_only), indent=2))
++    except (ValueError, OSError, subprocess.CalledProcessError) as error:
++        parser.exit(1, f'Error: {error}\n')
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/dependency-patches/unarm-1.9.2/proofs/dsd-red-ready.log b/dependency-patches/unarm-1.9.2/proofs/dsd-red-ready.log
+new file mode 100644
+index 0000000..9f7fb00
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/dsd-red-ready.log
+@@ -0,0 +1,135 @@
++   Compiling proc-macro2 v1.0.106
++   Compiling quote v1.0.45
++   Compiling unicode-ident v1.0.24
++   Compiling cfg-if v1.0.4
++   Compiling version_check v0.9.5
++   Compiling libc v0.2.182
++   Compiling memchr v2.8.0
++   Compiling typenum v1.19.0
++   Compiling simd-adler32 v0.3.8
++   Compiling adler2 v2.0.1
++   Compiling autocfg v1.5.0
++   Compiling serde_core v1.0.228
++   Compiling miniz_oxide v0.8.9
++   Compiling crc32fast v1.5.0
++   Compiling generic-array v0.14.7
++   Compiling num-traits v0.2.19
++   Compiling getrandom v0.3.4
++   Compiling object v0.37.3
++   Compiling thiserror v2.0.18
++   Compiling zerocopy v0.8.40
++   Compiling zmij v1.0.21
++   Compiling syn v2.0.117
++   Compiling aho-corasick v1.1.4
++   Compiling block-buffer v0.10.4
++   Compiling crypto-common v0.1.7
++   Compiling ahash v0.8.12
++   Compiling unicode-segmentation v1.13.3
++   Compiling gimli v0.32.3
++   Compiling regex-syntax v0.8.10
++   Compiling heck v0.5.0
++   Compiling serde v1.0.228
++   Compiling convert_case v0.10.0
++   Compiling digest v0.10.7
++   Compiling cpufeatures v0.2.17
++   Compiling flate2 v1.1.9
++   Compiling fdeflate v0.3.7
++   Compiling encoding_rs v0.8.35
++   Compiling bitflags v2.13.1
++   Compiling once_cell v1.21.3
++   Compiling unicode-xid v0.2.6
++   Compiling anstyle v1.0.13
++   Compiling smallvec v1.15.1
++   Compiling rustc-demangle v0.1.27
++   Compiling pxfm v0.1.28
++   Compiling unicode-width v0.2.2
++   Compiling arraydeque v0.5.1
++   Compiling encoding_rs_io v0.1.7
++   Compiling regex-automata v0.4.14
++   Compiling annotate-snippets v0.12.13
++   Compiling png v0.18.1
++   Compiling addr2line v0.25.1
++   Compiling byteorder-lite v0.1.0
++   Compiling crc-catalog v2.4.0
++   Compiling nohash-hasher v0.2.0
++   Compiling base64 v0.22.1
++   Compiling crc v3.4.0
++   Compiling sha1 v0.10.6
++   Compiling bitreader v0.3.11
++   Compiling rust-bitwriter v0.0.1
++   Compiling serde_json v1.0.149
++   Compiling log v0.4.29
++   Compiling thiserror-impl v2.0.18
++   Compiling bytemuck_derive v1.10.2
++   Compiling serde_derive v1.0.228
++   Compiling snafu-derive v0.8.9
++   Compiling derive_more-impl v2.1.1
++   Compiling bitfield-struct v0.12.1
++   Compiling backtrace v0.3.76
++   Compiling moxcms v0.7.11
++   Compiling bytemuck v1.25.0
++   Compiling saphyr-parser-bw v0.0.608
++   Compiling regex v1.12.3
++   Compiling strum_macros v0.28.0
++   Compiling derive_more v2.1.1
++   Compiling sha2 v0.10.9
++   Compiling strum v0.28.0
++   Compiling snafu v0.8.9
++   Compiling unarm v1.9.2
++   Compiling itoa v1.0.17
++   Compiling serde-saphyr v0.0.21
++   Compiling image v0.25.9
++   Compiling ds-rom v0.8.0
++   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-branch-dependency-repair-dsd/lib)
++    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.34s
++     Running tests/branch_boundaries.rs (target/branch-repair/cargo-target/debug/deps/branch_boundaries-2a877920deda5c31)
++
++running 6 tests
++test thumb_short_llvm_boundaries ... ok
++test thumb_blx_llvm_boundaries ... FAILED
++test arm_blx_llvm_boundaries ... FAILED
++test v4t_rejects_arm_and_thumb_blx ... ok
++test thumb_bl_llvm_boundaries ... FAILED
++test arm_b_bl_llvm_boundaries ... FAILED
++
++failures:
++
++---- thumb_blx_llvm_boundaries stdout ----
++
++thread 'thumb_blx_llvm_boundaries' (250638718) panicked at lib/tests/branch_boundaries.rs:11:5:
++assertion `left == right` failed: blx at 0x02380014
++  left: 33030164
++ right: 41418772
++note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
++
++---- arm_blx_llvm_boundaries stdout ----
++
++thread 'arm_blx_llvm_boundaries' (250638716) panicked at lib/tests/branch_boundaries.rs:11:5:
++assertion `left == right` failed: blx at 0x02380028
++  left: 37224492
++ right: 70778924
++
++---- thumb_bl_llvm_boundaries stdout ----
++
++thread 'thumb_bl_llvm_boundaries' (250638717) panicked at lib/tests/branch_boundaries.rs:11:5:
++assertion `left == right` failed: bl at 0x02380000
++  left: 33030144
++ right: 41418752
++
++---- arm_b_bl_llvm_boundaries stdout ----
++
++thread 'arm_b_bl_llvm_boundaries' (250638715) panicked at lib/tests/branch_boundaries.rs:11:5:
++assertion `left == right` failed: b at 0x02380000
++  left: 41911400
++ right: 58688616
++
++
++failures:
++    arm_b_bl_llvm_boundaries
++    arm_blx_llvm_boundaries
++    thumb_bl_llvm_boundaries
++    thumb_blx_llvm_boundaries
++
++test result: FAILED. 2 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
++
++error: test failed, to rerun pass `-p ds-decomp --test branch_boundaries`
+diff --git a/dependency-patches/unarm-1.9.2/proofs/ignored-build-probe.py b/dependency-patches/unarm-1.9.2/proofs/ignored-build-probe.py
+new file mode 100644
+index 0000000..848deba
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/ignored-build-probe.py
+@@ -0,0 +1,26 @@
++from pathlib import Path
++import importlib.util,json,os,subprocess,hashlib
++root=Path(__file__).resolve().parents[3]; bundle=root/'dependency-patches/unarm-1.9.2'; out=root/'target/branch-repair'; checkout=out/'unarm-ignored-build-probe'
++if not checkout.exists():
++ subprocess.run(['git','clone','--no-hardlinks',str(root/'local-deps/unarm'),str(checkout)],check=True,capture_output=True)
++spec=importlib.util.spec_from_file_location('prepare_unarm',bundle/'prepare.py'); module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
++build=checkout/'disasm/build.rs'; exclude=checkout/'.git/info/exclude'
++if not build.exists():
++ module.prepare(checkout,bundle)
++ build.write_text('fn main() { compile_error!("unpinned build script must be rejected"); }\n')
++ with exclude.open('a') as f:f.write('\n/disasm/build.rs\n')
++try:
++ report=module.prepare(checkout,bundle,check_only=True)
++ acceptance={'accepted':True,'report':report}
++except ValueError as error:
++ acceptance={'accepted':False,'error':str(error)}
++environment=os.environ.copy(); environment['CARGO_HOME']=str(out/'cargo-home'); environment['CARGO_TARGET_DIR']=str(out/'ignored-build-probe-target')
++command=['cargo','metadata','--manifest-path',str(checkout/'disasm/Cargo.toml'),'--format-version','1','--no-deps','--locked','--offline']
++metadata=subprocess.run(command,env=environment,text=True,capture_output=True,check=True)
++package=next(p for p in json.loads(metadata.stdout)['packages'] if p['name']=='unarm')
++custom=[t['src_path'] for t in package['targets'] if 'custom-build' in t['kind']]
++assert custom==[str(build)],custom
++proof={'case':'ignored unpinned disasm/build.rs on actual prepared upstream1.9.2','upstream_commit':subprocess.check_output(['git','-C',str(checkout),'rev-parse','HEAD'],text=True).strip(),'check_only':acceptance,'cargo_metadata_command':command,'custom_build_targets':custom,'build_script_sha256':hashlib.sha256(build.read_bytes()).hexdigest(),'build_script_executed':False}
++print(json.dumps(proof,indent=2))
++
++assert not proof["check_only"]["accepted"], "unpinned ignored build script accepted"
+diff --git a/dependency-patches/unarm-1.9.2/proofs/prepare-green.log b/dependency-patches/unarm-1.9.2/proofs/prepare-green.log
+new file mode 100644
+index 0000000..7cce05b
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/prepare-green.log
+@@ -0,0 +1,5 @@
++......
++----------------------------------------------------------------------
++Ran 6 tests in 0.773s
++
++OK
+diff --git a/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-actual-green.json b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-actual-green.json
+new file mode 100644
+index 0000000..f1e9abc
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-actual-green.json
+@@ -0,0 +1,24 @@
++{
++  "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
++  "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++  "check_only": {
++    "accepted": false,
++    "error": "unexpected untracked source files"
++  },
++  "cargo_metadata_command": [
++    "cargo",
++    "metadata",
++    "--manifest-path",
++    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
++    "--format-version",
++    "1",
++    "--no-deps",
++    "--locked",
++    "--offline"
++  ],
++  "custom_build_targets": [
++    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
++  ],
++  "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
++  "build_script_executed": false
++}
+diff --git a/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-actual-red.json b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-actual-red.json
+new file mode 100644
+index 0000000..7c2aff7
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-actual-red.json
+@@ -0,0 +1,32 @@
++{
++  "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
++  "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++  "check_only": {
++    "accepted": true,
++    "report": {
++      "status": "already_prepared",
++      "checkout": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe",
++      "version": "1.9.2",
++      "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++      "patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
++      "verified_source_files": 47,
++      "license_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b"
++    }
++  },
++  "cargo_metadata_command": [
++    "cargo",
++    "metadata",
++    "--manifest-path",
++    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
++    "--format-version",
++    "1",
++    "--no-deps",
++    "--locked",
++    "--offline"
++  ],
++  "custom_build_targets": [
++    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
++  ],
++  "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
++  "build_script_executed": false
++}
+diff --git a/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-green.log b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-green.log
+new file mode 100644
+index 0000000..cdb05c5
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-green.log
+@@ -0,0 +1,5 @@
++..........
++----------------------------------------------------------------------
++Ran 10 tests in 1.557s
++
++OK
+diff --git a/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-red.log b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-red.log
+new file mode 100644
+index 0000000..03d44d7
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/prepare-ignored-red.log
+@@ -0,0 +1,41 @@
++FFFF......
++======================================================================
++FAIL: test_ignored_build_script_rejected_after_preparation (__main__.PrepareTests.test_ignored_build_script_rejected_after_preparation)
++----------------------------------------------------------------------
++Traceback (most recent call last):
++  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 100, in test_ignored_build_script_rejected_after_preparation
++    with self.assertRaisesRegex(ValueError, 'untracked'):
++         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
++AssertionError: ValueError not raised
++
++======================================================================
++FAIL: test_ignored_cargo_configuration_rejected (__main__.PrepareTests.test_ignored_cargo_configuration_rejected)
++----------------------------------------------------------------------
++Traceback (most recent call last):
++  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 108, in test_ignored_cargo_configuration_rejected
++    with self.assertRaisesRegex(ValueError, 'untracked'):
++         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
++AssertionError: ValueError not raised
++
++======================================================================
++FAIL: test_ignored_source_rejected_before_patch (__main__.PrepareTests.test_ignored_source_rejected_before_patch)
++----------------------------------------------------------------------
++Traceback (most recent call last):
++  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 114, in test_ignored_source_rejected_before_patch
++    with self.assertRaisesRegex(ValueError, 'untracked'):
++         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
++AssertionError: ValueError not raised
++
++======================================================================
++FAIL: test_only_root_target_output_is_allowed (__main__.PrepareTests.test_only_root_target_output_is_allowed)
++----------------------------------------------------------------------
++Traceback (most recent call last):
++  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 127, in test_only_root_target_output_is_allowed
++    with self.assertRaisesRegex(ValueError, 'untracked'):
++         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
++AssertionError: ValueError not raised
++
++----------------------------------------------------------------------
++Ran 10 tests in 2.628s
++
++FAILED (failures=4)
+diff --git a/dependency-patches/unarm-1.9.2/proofs/unarm-alignment-red.log b/dependency-patches/unarm-1.9.2/proofs/unarm-alignment-red.log
+new file mode 100644
+index 0000000..8c54e9b
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/unarm-alignment-red.log
+@@ -0,0 +1,30 @@
++   Compiling unarm v1.9.2 (/private/tmp/jus-unarm-branch-repair/disasm)
++    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.91s
++     Running tests/test_branch_boundaries.rs (/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/cargo-target/debug/deps/test_branch_boundaries-6adac5fa070bca30)
++
++running 7 tests
++test thumb_blx_llvm_boundaries ... ok
++test thumb_bl_llvm_boundaries ... ok
++test thumb_short_llvm_boundaries ... ok
++test arm_blx_llvm_boundaries ... ok
++test v4t_rejects_arm_and_thumb_blx ... ok
++test arm_b_bl_llvm_boundaries ... ok
++test thumb_blx_halfword_aligned_pc_llvm ... FAILED
++
++failures:
++
++---- thumb_blx_halfword_aligned_pc_llvm stdout ----
++
++thread 'thumb_blx_halfword_aligned_pc_llvm' (250722137) panicked at disasm/tests/test_branch_boundaries.rs:13:5:
++assertion `left == right` failed: blx at 0x02380002
++  left: 37224454
++ right: 37224452
++note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
++
++
++failures:
++    thumb_blx_halfword_aligned_pc_llvm
++
++test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
++
++error: test failed, to rerun pass `-p unarm --test test_branch_boundaries`
+diff --git a/dependency-patches/unarm-1.9.2/proofs/unarm-red-complete.log b/dependency-patches/unarm-1.9.2/proofs/unarm-red-complete.log
+new file mode 100644
+index 0000000..5e1cc71
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/proofs/unarm-red-complete.log
+@@ -0,0 +1,53 @@
++   Compiling unarm v1.9.2 (/private/tmp/jus-unarm-branch-repair/disasm)
++    Finished `test` profile [unoptimized + debuginfo] target(s) in 17.09s
++     Running tests/test_branch_boundaries.rs (target/branch-repair/cargo-target/debug/deps/test_branch_boundaries-6adac5fa070bca30)
++
++running 6 tests
++test thumb_short_llvm_boundaries ... ok
++test v4t_rejects_arm_and_thumb_blx ... ok
++test arm_b_bl_llvm_boundaries ... FAILED
++test thumb_blx_llvm_boundaries ... FAILED
++test arm_blx_llvm_boundaries ... FAILED
++test thumb_bl_llvm_boundaries ... FAILED
++
++failures:
++
++---- arm_b_bl_llvm_boundaries stdout ----
++
++thread 'arm_b_bl_llvm_boundaries' (250628274) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
++assertion `left == right` failed: b at 0x02380000
++  left: 41911400
++ right: 58688616
++note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
++
++---- thumb_blx_llvm_boundaries stdout ----
++
++thread 'thumb_blx_llvm_boundaries' (250628277) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
++assertion `left == right` failed: blx at 0x02380014
++  left: 33030164
++ right: 41418772
++
++---- arm_blx_llvm_boundaries stdout ----
++
++thread 'arm_blx_llvm_boundaries' (250628275) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
++assertion `left == right` failed: blx at 0x02380028
++  left: 37224492
++ right: 70778924
++
++---- thumb_bl_llvm_boundaries stdout ----
++
++thread 'thumb_bl_llvm_boundaries' (250628276) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
++assertion `left == right` failed: bl at 0x02380000
++  left: 33030144
++ right: 41418752
++
++
++failures:
++    arm_b_bl_llvm_boundaries
++    arm_blx_llvm_boundaries
++    thumb_bl_llvm_boundaries
++    thumb_blx_llvm_boundaries
++
++test result: FAILED. 2 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
++
++error: test failed, to rerun pass `-p unarm --test test_branch_boundaries`
+diff --git a/dependency-patches/unarm-1.9.2/registry-source-equivalence.json b/dependency-patches/unarm-1.9.2/registry-source-equivalence.json
+new file mode 100644
+index 0000000..5b0ed39
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/registry-source-equivalence.json
+@@ -0,0 +1,17 @@
++{
++  "registry_checksum": "9ea856cd3ee3abd1b585bbcdc6f8a4b356f43558fae98d76e502be868dc40e90",
++  "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++  "files": {
++    "disasm/src/args.rs": true,
++    "disasm/src/arm/disasm.rs": true,
++    "disasm/src/arm/generated.rs": true,
++    "disasm/src/arm/mod.rs": true,
++    "disasm/src/display.rs": true,
++    "disasm/src/lib.rs": true,
++    "disasm/src/parse.rs": true,
++    "disasm/src/thumb/disasm.rs": true,
++    "disasm/src/thumb/generated.rs": true,
++    "disasm/src/thumb/mod.rs": true,
++    "disasm/src/util.rs": true
++  }
++}
+diff --git a/dependency-patches/unarm-1.9.2/source.patch b/dependency-patches/unarm-1.9.2/source.patch
+new file mode 100644
+index 0000000..27dbef6
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/source.patch
+@@ -0,0 +1,467 @@
++diff --git a/disasm/src/arm/generated.rs b/disasm/src/arm/generated.rs
++index 8501ac4..e5a7e99 100644
++--- a/disasm/src/arm/generated.rs
+++++ b/disasm/src/arm/generated.rs
++@@ -6690,16 +6690,16 @@ impl Ins {
++     pub fn field_dbg_option(&self) -> u32 {
++         (self.code & 0x0000000f)
++     }
++-    /// branch_offset: 24-bit signed B/BL target offset
+++    /// branch_offset: Signed scaled imm24 B/BL displacement plus PC bias
++     #[inline(always)]
++     pub fn field_branch_offset(&self) -> i32 {
++-        ((((((self.code & 0x00ffffff) << 2) + 8) as i32) << 8 >> 8)) as i32
+++        (((((self.code & 0x00ffffff) << 2) as i32) << 6 >> 6) + 8) as i32
++     }
++-    /// blx_offset: 24-bit signed BLX target offset
+++    /// blx_offset: Signed scaled imm24 and H BLX displacement plus PC bias
++     #[inline(always)]
++     pub fn field_blx_offset(&self) -> i32 {
++-        ((((((self.code & 0x00ffffff) << 2 | ((self.code >> 24) & 0x00000001) << 1) + 8)
++-            as i32) << 8 >> 8)) as i32
+++        (((((self.code & 0x00ffffff) << 2 | ((self.code >> 24) & 0x00000001) << 1)
+++            as i32) << 6 >> 6) + 8) as i32
++     }
++     /// immed_16: 16-bit immediate in bits 0..4 and 8..20
++     #[inline(always)]
++diff --git a/disasm/src/parse.rs b/disasm/src/parse.rs
++index bc0ab67..4e9b8e7 100644
++--- a/disasm/src/parse.rs
+++++ b/disasm/src/parse.rs
++@@ -75,14 +75,20 @@ macro_rules! parse_arm {
++ }
++ 
++ macro_rules! parse_thumb {
++-    ($self:expr, $code:expr) => {{
+++    ($self:expr, $code:expr, $address:expr) => {{
++         let ins = thumb::Ins::new($code, &$self.flags);
++         let parsed = ins.parse(&$self.flags);
++         if ins.is_half_bl() {
++             let (_, code) = $self.read_code()?;
++             let ins = thumb::Ins::new(code, &$self.flags);
++             let second = ins.parse(&$self.flags);
++-            let combined = parsed.combine_thumb_bl(&second);
+++            let mut combined = parsed.combine_thumb_bl(&second);
+++            if ins.op == thumb::Opcode::BlxI {
+++                // Immediate Thumb BLX uses Align(PC, 4), unlike Thumb BL.
+++                if let Argument::BranchDest(dest) = &mut combined.args[0] {
+++                    *dest -= ($address & 2) as i32;
+++                }
+++            }
++             (Ins::Thumb(ins), combined)
++         } else {
++             (Ins::Thumb(ins), parsed)
++@@ -101,7 +107,7 @@ impl Iterator for Parser<'_> {
++             #[cfg(feature = "arm")]
++             ParseMode::Arm => parse_arm!(self, code),
++             #[cfg(feature = "thumb")]
++-            ParseMode::Thumb => parse_thumb!(self, code),
+++            ParseMode::Thumb => parse_thumb!(self, code, address),
++             ParseMode::Data => {
++                 let mut args = Arguments::default();
++                 args[0] = Argument::UImm(code);
++@@ -201,7 +207,9 @@ impl ParsedIns {
++     pub fn combine_thumb_bl(&self, second: &Self) -> Self {
++         match (self.args[0], second.args[0]) {
++             (Argument::SImm(high), Argument::UImm(low)) => {
++-                let dest = (high + (low as i32)) << 9 >> 9;
+++                // The high half already includes the PC bias. Sign-extend only
+++                // the combined 23-bit displacement, then restore that bias.
+++                let dest = ((high - 4 + (low as i32)) << 9 >> 9) + 4;
++                 let mut args = Arguments::default();
++                 args[0] = Argument::BranchDest(dest);
++                 Self {
++diff --git a/disasm/tests/test_branch_boundaries.rs b/disasm/tests/test_branch_boundaries.rs
++new file mode 100644
++index 0000000..4908c20
++--- /dev/null
+++++ b/disasm/tests/test_branch_boundaries.rs
++@@ -0,0 +1,366 @@
+++// Synthetic expected addresses come from the committed independent LLVM23.1.2 oracle.
+++use unarm::{args::Argument, ArmVersion, Endian, ParseFlags, ParseMode, Parser};
+++
+++fn check(bytes: &[u8], source: u32, mode: ParseMode, version: ArmVersion, expected: u32, mnemonic: &str) {
+++    let flags = ParseFlags { version, ual: false };
+++    let mut parser = Parser::new(mode, source, Endian::Little, flags, bytes);
+++    let (address, _, parsed) = parser.next().expect("complete fixture");
+++    assert_eq!(address, source);
+++    assert_eq!(parsed.mnemonic, mnemonic);
+++    let Argument::BranchDest(displacement) = parsed.args[0] else {
+++        panic!("no direct branch destination");
+++    };
+++    assert_eq!(
+++        address.wrapping_add_signed(displacement),
+++        expected,
+++        "{mnemonic} at {source:#010x}"
+++    );
+++    assert!(parser.next().is_none());
+++}
+++
+++#[test]
+++fn arm_b_bl_llvm_boundaries() {
+++    // b_large_positive
+++    check(
+++        &[0x18, 0xe1, 0x51, 0xea],
+++        0x02380000,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x037f8468,
+++        "b",
+++    );
+++    // bl_large_positive
+++    check(
+++        &[0x17, 0xe1, 0x51, 0xeb],
+++        0x02380004,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x037f8468,
+++        "bl",
+++    );
+++    // b_large_negative
+++    check(
+++        &[0xfc, 0xff, 0xbf, 0xea],
+++        0x02380008,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x01380000,
+++        "b",
+++    );
+++    // bl_large_negative
+++    check(
+++        &[0xfb, 0xff, 0xbf, 0xeb],
+++        0x0238000c,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x01380000,
+++        "bl",
+++    );
+++    // b_max_positive
+++    check(
+++        &[0xff, 0xff, 0x7f, 0xea],
+++        0x02380010,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x04380014,
+++        "b",
+++    );
+++    // bl_max_positive
+++    check(
+++        &[0xff, 0xff, 0x7f, 0xeb],
+++        0x02380014,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x04380018,
+++        "bl",
+++    );
+++    // b_min_negative
+++    check(
+++        &[0x00, 0x00, 0x80, 0xea],
+++        0x02380018,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x00380020,
+++        "b",
+++    );
+++    // bl_min_negative
+++    check(
+++        &[0x00, 0x00, 0x80, 0xeb],
+++        0x0238001c,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x00380024,
+++        "bl",
+++    );
+++    // b_minus_one_word
+++    check(
+++        &[0xff, 0xff, 0xff, 0xea],
+++        0x02380020,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x02380024,
+++        "b",
+++    );
+++    // bl_zero_displacement
+++    check(
+++        &[0x00, 0x00, 0x00, 0xeb],
+++        0x02380024,
+++        ParseMode::Arm,
+++        ArmVersion::V4T,
+++        0x0238002c,
+++        "bl",
+++    );
+++}
+++
+++#[test]
+++fn arm_blx_llvm_boundaries() {
+++    // blx_max_h0
+++    check(
+++        &[0xff, 0xff, 0x7f, 0xfa],
+++        0x02380028,
+++        ParseMode::Arm,
+++        ArmVersion::V5Te,
+++        0x0438002c,
+++        "blx",
+++    );
+++    // blx_max_h1
+++    check(
+++        &[0xff, 0xff, 0x7f, 0xfb],
+++        0x0238002c,
+++        ParseMode::Arm,
+++        ArmVersion::V5Te,
+++        0x04380032,
+++        "blx",
+++    );
+++    // blx_min_h0
+++    check(
+++        &[0x00, 0x00, 0x80, 0xfa],
+++        0x02380030,
+++        ParseMode::Arm,
+++        ArmVersion::V5Te,
+++        0x00380038,
+++        "blx",
+++    );
+++    // blx_min_h1
+++    check(
+++        &[0x00, 0x00, 0x80, 0xfb],
+++        0x02380034,
+++        ParseMode::Arm,
+++        ArmVersion::V5Te,
+++        0x0038003e,
+++        "blx",
+++    );
+++}
+++
+++#[test]
+++fn thumb_bl_llvm_boundaries() {
+++    // bl_positive_pc_boundary_even
+++    check(
+++        &[0xff, 0xf3, 0xfe, 0xff],
+++        0x02380000,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x02780000,
+++        "bl",
+++    );
+++    // bl_positive_pc_boundary_halfword
+++    check(
+++        &[0xff, 0xf3, 0xff, 0xff],
+++        0x02380004,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x02780006,
+++        "bl",
+++    );
+++    // bl_min_negative
+++    check(
+++        &[0x00, 0xf4, 0x00, 0xf8],
+++        0x02380008,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x01f8000c,
+++        "bl",
+++    );
+++    // bl_negative_near
+++    check(
+++        &[0xff, 0xf7, 0xff, 0xff],
+++        0x0238000c,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x0238000e,
+++        "bl",
+++    );
+++    // bl_zero
+++    check(
+++        &[0x00, 0xf0, 0x00, 0xf8],
+++        0x02380010,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x02380014,
+++        "bl",
+++    );
+++}
+++
+++#[test]
+++fn thumb_blx_llvm_boundaries() {
+++    // blx_positive_pc_boundary
+++    check(
+++        &[0xff, 0xf3, 0xfe, 0xef],
+++        0x02380014,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x02780014,
+++        "blx",
+++    );
+++    // blx_min_negative
+++    check(
+++        &[0x00, 0xf4, 0x00, 0xe8],
+++        0x02380018,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x01f8001c,
+++        "blx",
+++    );
+++    // blx_negative_near
+++    check(
+++        &[0xff, 0xf7, 0xfe, 0xef],
+++        0x0238001c,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x0238001c,
+++        "blx",
+++    );
+++    // blx_zero
+++    check(
+++        &[0x00, 0xf0, 0x00, 0xe8],
+++        0x02380020,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x02380024,
+++        "blx",
+++    );
+++}
+++
+++#[test]
+++fn thumb_short_llvm_boundaries() {
+++    // b_short_max
+++    check(&[0xff, 0xe3], 0x02380024, ParseMode::Thumb, ArmVersion::V4T, 0x02380826, "b");
+++    // b_short_min
+++    check(&[0x00, 0xe4], 0x02380026, ParseMode::Thumb, ArmVersion::V4T, 0x0237f82a, "b");
+++    // b_cond_max
+++    check(
+++        &[0x7f, 0xd1],
+++        0x02380028,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x0238012a,
+++        "bne",
+++    );
+++    // b_cond_min
+++    check(
+++        &[0x80, 0xd1],
+++        0x0238002a,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x0237ff2e,
+++        "bne",
+++    );
+++}
+++
+++#[test]
+++fn v4t_rejects_arm_and_thumb_blx() {
+++    let flags = ParseFlags {
+++        version: ArmVersion::V4T,
+++        ual: false,
+++    };
+++    let bytes = [0xff, 0xff, 0x7f, 0xfa];
+++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380028, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++    let bytes = [0xff, 0xff, 0x7f, 0xfb];
+++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x0238002c, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++    let bytes = [0x00, 0x00, 0x80, 0xfa];
+++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380030, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++    let bytes = [0x00, 0x00, 0x80, 0xfb];
+++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380034, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++    let bytes = [0xff, 0xf3, 0xfe, 0xef];
+++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380014, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++    let bytes = [0x00, 0xf4, 0x00, 0xe8];
+++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380018, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++    let bytes = [0xff, 0xf7, 0xfe, 0xef];
+++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x0238001c, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++    let bytes = [0x00, 0xf0, 0x00, 0xe8];
+++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380020, Endian::Little, flags, &bytes)
+++        .next()
+++        .unwrap();
+++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
+++}
+++
+++#[test]
+++fn thumb_blx_halfword_aligned_pc_llvm() {
+++    // Unlike BL, BLX uses Align(PC, 4). These expected targets come from
+++    // thumb-blx-alignment-disassembly.txt, including both displacement edges.
+++    check(
+++        &[0x00, 0xf0, 0x00, 0xe8],
+++        0x02380002,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x02380004,
+++        "blx",
+++    );
+++    check(
+++        &[0xff, 0xf3, 0xfe, 0xef],
+++        0x02380006,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x02780004,
+++        "blx",
+++    );
+++    check(
+++        &[0x00, 0xf4, 0x00, 0xe8],
+++        0x0238000a,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x01f8000c,
+++        "blx",
+++    );
+++    check(
+++        &[0xff, 0xf7, 0xfe, 0xef],
+++        0x0238000e,
+++        ParseMode::Thumb,
+++        ArmVersion::V5Te,
+++        0x0238000c,
+++        "blx",
+++    );
+++}
+++
+++#[test]
+++fn thumb_bl_keeps_halfword_aligned_pc_llvm() {
+++    check(
+++        &[0x00, 0xf0, 0x00, 0xf8],
+++        0x02380012,
+++        ParseMode::Thumb,
+++        ArmVersion::V4T,
+++        0x02380016,
+++        "bl",
+++    );
+++}
++diff --git a/specs/arm.yaml b/specs/arm.yaml
++index c58a5d4..3110512 100644
++--- a/specs/arm.yaml
+++++ b/specs/arm.yaml
++@@ -265,13 +265,13 @@ fields:
++ 
++   - name: branch_offset
++     arg: branch_dest
++-    desc: 24-bit signed B/BL target offset
++-    value: !Expr ((self.code.bits(0,24) << 2) + 8).sign_extend(8)
+++    desc: Signed scaled imm24 B/BL displacement plus PC bias
+++    value: !Expr (self.code.bits(0,24) << 2).sign_extend(6) + 8
++ 
++   - name: blx_offset
++     arg: branch_dest
++-    desc: 24-bit signed BLX target offset
++-    value: !Expr ((self.code.bits(0,24) << 2 | self.code.bits(24,25) << 1) + 8).sign_extend(8)
+++    desc: Signed scaled imm24 and H BLX displacement plus PC bias
+++    value: !Expr (self.code.bits(0,24) << 2 | self.code.bits(24,25) << 1).sign_extend(6) + 8
++ 
++   - name: immed_16
++     arg: u_imm
+diff --git a/dependency-patches/unarm-1.9.2/test_prepare.py b/dependency-patches/unarm-1.9.2/test_prepare.py
+new file mode 100644
+index 0000000..908d0c9
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/test_prepare.py
+@@ -0,0 +1,132 @@
++"""Real-git preparation tests; no registry cache or network access."""
++import hashlib
++import importlib.util
++import json
++from pathlib import Path
++import subprocess
++import tempfile
++import unittest
++
++BUNDLE = Path(__file__).resolve().parent
++
++
++def git(root, *args):
++    return subprocess.check_output(['git', '-C', str(root), *args], stderr=subprocess.STDOUT)
++
++
++def digest(path):
++    return hashlib.sha256(path.read_bytes()).hexdigest()
++
++
++class PrepareTests(unittest.TestCase):
++    def setUp(self):
++        self.temp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temp.cleanup)
++        self.root = Path(self.temp.name)
++        self.checkout = self.root / 'checkout'
++        self.bundle = self.root / 'bundle'
++        self.checkout.mkdir()
++        self.bundle.mkdir()
++        git(self.checkout, 'init', '-q')
++        (self.checkout / 'disasm').mkdir()
++        (self.checkout / 'disasm/Cargo.toml').write_text('[package]\nname="unarm"\nversion="1.9.2"\n')
++        (self.checkout / 'LICENSE').write_text('MIT fixture license\n')
++        (self.checkout / 'source.txt').write_text('before\n')
++        git(self.checkout, 'add', '.')
++        git(self.checkout, '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'fixture')
++        commit = git(self.checkout, 'rev-parse', 'HEAD').decode().strip()
++        names = git(self.checkout, 'ls-files').decode().splitlines()
++        before = {name: digest(self.checkout / name) for name in names}
++        (self.checkout / 'source.txt').write_text('after\n')
++        patch = git(self.checkout, 'diff', '--binary', 'HEAD')
++        after = {name: digest(self.checkout / name) for name in names}
++        git(self.checkout, 'checkout', '--', 'source.txt')
++        (self.bundle / 'source.patch').write_bytes(patch)
++        self.manifest = dict(schema_version=1, name='unarm', version='1.9.2', upstream_commit=commit,
++                             upstream_url='unused-by-existing-checkout', patch='source.patch',
++                             patch_sha256=hashlib.sha256(patch).hexdigest(),
++                             license_file='LICENSE', license_sha256=before['LICENSE'],
++                             before_files=before, after_files=after)
++        self.save_manifest()
++        spec = importlib.util.spec_from_file_location('prepare_unarm', BUNDLE / 'prepare.py')
++        self.module = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(self.module)
++
++    def save_manifest(self):
++        (self.bundle / 'manifest.json').write_text(json.dumps(self.manifest))
++
++    def prepare(self):
++        return self.module.prepare(self.checkout, self.bundle)
++
++    def test_pinned_patch_is_applied_and_idempotent(self):
++        self.assertEqual(self.prepare()['status'], 'prepared')
++        self.assertEqual((self.checkout / 'source.txt').read_text(), 'after\n')
++        self.assertEqual(self.prepare()['status'], 'already_prepared')
++
++    def test_wrong_revision_rejected_without_patch(self):
++        self.manifest['upstream_commit'] = '0' * 40
++        self.save_manifest()
++        with self.assertRaisesRegex(ValueError, 'commit'):
++            self.prepare()
++        self.assertEqual((self.checkout / 'source.txt').read_text(), 'before\n')
++
++    def test_unrelated_tracked_edit_rejected(self):
++        (self.checkout / 'LICENSE').write_text('tampered\n')
++        with self.assertRaisesRegex(ValueError, 'source|license'):
++            self.prepare()
++        self.assertEqual((self.checkout / 'source.txt').read_text(), 'before\n')
++
++    def test_patch_tampering_rejected_before_checkout_mutation(self):
++        (self.bundle / 'source.patch').write_text('tampered\n')
++        with self.assertRaisesRegex(ValueError, 'patch'):
++            self.prepare()
++        self.assertEqual((self.checkout / 'source.txt').read_text(), 'before\n')
++
++    def test_unexpected_source_file_rejected(self):
++        (self.checkout / 'unexpected.rs').write_text('unreviewed\n')
++        with self.assertRaisesRegex(ValueError, 'untracked'):
++            self.prepare()
++
++    def test_post_patch_mutation_rejected(self):
++        self.prepare()
++        (self.checkout / 'source.txt').write_text('different repair\n')
++        with self.assertRaisesRegex(ValueError, 'source'):
++            self.prepare()
++
++    def test_ignored_build_script_rejected_after_preparation(self):
++        self.prepare()
++        (self.checkout / 'disasm/build.rs').write_text('compile_error!("unpinned build script");\n')
++        (self.checkout / '.git/info/exclude').write_text('/disasm/build.rs\n')
++        with self.assertRaisesRegex(ValueError, 'untracked'):
++            self.module.prepare(self.checkout, self.bundle, check_only=True)
++
++    def test_ignored_cargo_configuration_rejected(self):
++        self.prepare()
++        (self.checkout / '.cargo').mkdir()
++        (self.checkout / '.cargo/config.toml').write_text('[build]\nrustflags=["--cfg=unpinned"]\n')
++        (self.checkout / '.git/info/exclude').write_text('/.cargo/\n')
++        with self.assertRaisesRegex(ValueError, 'untracked'):
++            self.module.prepare(self.checkout, self.bundle, check_only=True)
++
++    def test_ignored_source_rejected_before_patch(self):
++        (self.checkout / 'disasm/extra.rs').write_text('unreviewed\n')
++        (self.checkout / '.git/info/exclude').write_text('/disasm/extra.rs\n')
++        with self.assertRaisesRegex(ValueError, 'untracked'):
++            self.prepare()
++        self.assertEqual((self.checkout / 'source.txt').read_text(), 'before\n')
++
++    def test_only_root_target_output_is_allowed(self):
++        self.prepare()
++        (self.checkout / 'target/debug').mkdir(parents=True)
++        (self.checkout / 'target/debug/build-output').write_text('generated\n')
++        (self.checkout / '.git/info/exclude').write_text('/target/\n/disasm/target/\n')
++        self.assertEqual(self.module.prepare(self.checkout, self.bundle, check_only=True)['status'],
++                         'already_prepared')
++        (self.checkout / 'disasm/target').mkdir()
++        (self.checkout / 'disasm/target/unknown.rs').write_text('unreviewed\n')
++        with self.assertRaisesRegex(ValueError, 'untracked'):
++            self.module.prepare(self.checkout, self.bundle, check_only=True)
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/dependency-patches/unarm-1.9.2/verification.json b/dependency-patches/unarm-1.9.2/verification.json
+new file mode 100644
+index 0000000..4c1e2a8
+--- /dev/null
++++ b/dependency-patches/unarm-1.9.2/verification.json
+@@ -0,0 +1,420 @@
++{
++  "status": "worker_verified_pending_independent_full_rom",
++  "dsd_base_commit": "67e9a8bc65fba0e5cdc3ab784c77de28253ee3dc",
++  "unarm_upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++  "unarm_repair_commit": "a128db0e7ce3fc1f216f5ab3385523a4e3d9a7da",
++  "unarm_patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
++  "source_files_verified": 47,
++  "registry_runtime_files_equal": 11,
++  "license_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
++  "tests": {
++    "original_upstream_parser_red": {
++      "passed": 2,
++      "failed": 4,
++      "command": "cargo test -p unarm --test test_branch_boundaries --locked --offline"
++    },
++    "original_shared_dsd_parser_red": {
++      "passed": 2,
++      "failed": 4,
++      "command": "cargo test -p ds-decomp --test branch_boundaries --locked --offline"
++    },
++    "signed_fixed_but_alignment_red": {
++      "passed": 6,
++      "failed": 1
++    },
++    "final_upstream_suite": 532,
++    "final_shared_dsd_suite": 63,
++    "direct_parser_groups": 8,
++    "llvm_oracle_instructions": 32,
++    "preparation_tests": 10,
++    "clippy": "passed with existing chunks_exact_to_as_chunks allowance",
++    "generator_idempotence": "clean upstream git status after second regeneration",
++    "feature_checks": {
++      "arm_thumb_v4t": "passed",
++      "thumb_only_v4t": "pre-existing failure: util.rs unconditionally imports ARM; independently reproduced on exact unpatched commit; unchanged and outside repair scope"
++    }
++  },
++  "observer_normalization": {
++    "unchanged": true,
++    "sha256": "d3912e9e11ea29e594277d9cae9d2fd16693d592a2c2a9d134acdc23f1905d4b"
++  },
++  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01) (Homebrew)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8",
++  "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05) (Homebrew)",
++  "tools": {
++    "llvm-mc": {
++      "path": "/opt/homebrew/opt/llvm/bin/llvm-mc",
++      "sha256": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
++      "version": "Homebrew LLVM version 23.1.2\n  Optimized build.\n\n  Registered Targets:\n    aarch64     - AArch64 (little endian)\n    aarch64_32  - AArch64 (little endian ILP32)\n    aarch64_be  - AArch64 (big endian)\n    amdgcn      - legacy name for amdgpu\n    amdgpu      - AMDGPU gfx6+\n    arm         - ARM\n    arm64       - ARM64 (little endian)\n    arm64_32    - ARM64 (little endian ILP32)\n    armeb       - ARM (big endian)\n    avr         - Atmel AVR Microcontroller\n    bpf         - BPF (host endian)\n    bpfeb       - BPF (big endian)\n    bpfel       - BPF (little endian)\n    hexagon     - Hexagon\n    lanai       - Lanai\n    loongarch32 - 32-bit LoongArch\n    loongarch64 - 64-bit LoongArch\n    mips        - MIPS (32-bit big endian)\n    mips64      - MIPS (64-bit big endian)\n    mips64el    - MIPS (64-bit little endian)\n    mipsel      - MIPS (32-bit little endian)\n    msp430      - MSP430 [experimental]\n    nvptx       - NVIDIA PTX 32-bit\n    nvptx64     - NVIDIA PTX 64-bit\n    ppc32       - PowerPC 32\n    ppc32le     - PowerPC 32 LE\n    ppc64       - PowerPC 64\n    ppc64le     - PowerPC 64 LE\n    r600        - AMD GPUs HD2XXX-HD6XXX\n    riscv32     - 32-bit RISC-V\n    riscv32be   - 32-bit big endian RISC-V\n    riscv64     - 64-bit RISC-V\n    riscv64be   - 64-bit big endian RISC-V\n    sparc       - Sparc\n    sparcel     - Sparc LE\n    sparcv9     - Sparc V9\n    spirv       - SPIR-V Logical\n    spirv32     - SPIR-V 32-bit\n    spirv64     - SPIR-V 64-bit\n    systemz     - SystemZ\n    thumb       - Thumb\n    thumbeb     - Thumb (big endian)\n    ve          - VE\n    wasm32      - WebAssembly 32-bit\n    wasm64      - WebAssembly 64-bit\n    x86         - 32-bit X86: Pentium-Pro and above\n    x86-64      - 64-bit X86: EM64T and AMD64\n    xcore       - XCore"
++    },
++    "ld.lld": {
++      "path": "/opt/homebrew/bin/ld.lld",
++      "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
++      "version": "Homebrew LLD 23.1.2 (compatible with GNU linkers)"
++    },
++    "llvm-objdump": {
++      "path": "/opt/homebrew/opt/llvm/bin/llvm-objdump",
++      "sha256": "a4498b0883383a2653530a8575b53c3058dfbfd9aeb36e9d0e77df1c77fde2f6",
++      "version": "Homebrew LLVM version 23.1.2\n  Optimized build.\n\n\n  Registered Targets:\n    aarch64     - AArch64 (little endian)\n    aarch64_32  - AArch64 (little endian ILP32)\n    aarch64_be  - AArch64 (big endian)\n    amdgcn      - legacy name for amdgpu\n    amdgpu      - AMDGPU gfx6+\n    arm         - ARM\n    arm64       - ARM64 (little endian)\n    arm64_32    - ARM64 (little endian ILP32)\n    armeb       - ARM (big endian)\n    avr         - Atmel AVR Microcontroller\n    bpf         - BPF (host endian)\n    bpfeb       - BPF (big endian)\n    bpfel       - BPF (little endian)\n    hexagon     - Hexagon\n    lanai       - Lanai\n    loongarch32 - 32-bit LoongArch\n    loongarch64 - 64-bit LoongArch\n    mips        - MIPS (32-bit big endian)\n    mips64      - MIPS (64-bit big endian)\n    mips64el    - MIPS (64-bit little endian)\n    mipsel      - MIPS (32-bit little endian)\n    msp430      - MSP430 [experimental]\n    nvptx       - NVIDIA PTX 32-bit\n    nvptx64     - NVIDIA PTX 64-bit\n    ppc32       - PowerPC 32\n    ppc32le     - PowerPC 32 LE\n    ppc64       - PowerPC 64\n    ppc64le     - PowerPC 64 LE\n    r600        - AMD GPUs HD2XXX-HD6XXX\n    riscv32     - 32-bit RISC-V\n    riscv32be   - 32-bit big endian RISC-V\n    riscv64     - 64-bit RISC-V\n    riscv64be   - 64-bit big endian RISC-V\n    sparc       - Sparc\n    sparcel     - Sparc LE\n    sparcv9     - Sparc V9\n    spirv       - SPIR-V Logical\n    spirv32     - SPIR-V 32-bit\n    spirv64     - SPIR-V 64-bit\n    systemz     - SystemZ\n    thumb       - Thumb\n    thumbeb     - Thumb (big endian)\n    ve          - VE\n    wasm32      - WebAssembly 32-bit\n    wasm64      - WebAssembly 64-bit\n    x86         - 32-bit X86: Pentium-Pro and above\n    x86-64      - 64-bit X86: EM64T and AMD64\n    xcore       - XCore"
++    }
++  },
++  "build": {
++    "environment": {
++      "CARGO_HOME": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/cargo-home",
++      "CARGO_TARGET_DIR": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target",
++      "RUSTFLAGS": "--remap-path-prefix=/private/tmp/jus-arm7-branch-dependency-repair-dsd=/dsd-source --remap-path-prefix=/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/cargo-home=/cargo-home"
++    },
++    "command": [
++      "cargo",
++      "build",
++      "-p",
++      "ds-decomp-cli",
++      "--release",
++      "--locked",
++      "--offline"
++    ],
++    "binary": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target/release/dsd",
++    "binary_sha256": "ddae743f29432dc5d057292fd1f25dde716e352c2da133f9bb7abe68dc6213b3"
++  },
++  "strict_legacy_init": [
++    {
++      "program": "parent",
++      "command": [
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target/release/dsd",
++        "init",
++        "--rom-config",
++        "/private/tmp/jus-track-a-arm7-observation-proof/build/arm7-observer-root-compat/extract/config.yaml",
++        "--output-path",
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/parent/analysis",
++        "--build-path",
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/parent/build"
++      ],
++      "exit_code": 0,
++      "expected_files": 51,
++      "actual_files": 51,
++      "metadata_sha256": {
++        "arm9/symbols.txt": "ccc3fa562fed0190cb09fcffb3c46c32ea70e146546a35b876f3c8899ee104e5",
++        "arm9/relocs.txt": "584b525e1a4928a4614c27aa940c619bc7fa9218892762a4052070d417ff6710",
++        "arm9/delinks.txt": "733dfbbf90a0e4afe65032fd8346e546749ea8c4a519ef9576116b2f737148cd",
++        "arm9/itcm/symbols.txt": "74d8a4e833aec321b8bbb4592bb0fe435bbc385d6cf13ccec21859e6c130ad39",
++        "arm9/itcm/relocs.txt": "e30c7eef1fb0a35371db763914986ae04d8aaa436b544a769d49a32e047a9280",
++        "arm9/itcm/delinks.txt": "ec221c2e910f8606319f2cbef6caaa21903ded058a1bad04273b2980c2790e65",
++        "arm9/dtcm/symbols.txt": "07492b2585c01882faba65762cf8e8508aeba42c7d885744fcac24029a39b5b3",
++        "arm9/dtcm/relocs.txt": "133709383864974086925aeb48f007d89bde8c4ce0262e8e096c5e5559629df2",
++        "arm9/dtcm/delinks.txt": "0e35390e706c9b88262661558f2ffe5ce029110a8e29863bdb23d2ba66f8e3f2",
++        "arm9/overlays/ov012/symbols.txt": "48176a82575afe0da85c69b05a8bb6fb51f876c2989b59036a37b404a2979fab",
++        "arm9/overlays/ov012/relocs.txt": "948894cb28c678de2485ce2c9f26da640e458a79547a7d9e932a411e530a788a",
++        "arm9/overlays/ov012/delinks.txt": "996b95018796b9919f6f128c126dae85c4bb9eefce6eefa6d03576fd7a65e5d5",
++        "arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov013/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov013/delinks.txt": "de8416591b0c413f2156e851261e7562b6f75c076d9cfa350ca8df3c3b6bebb2",
++        "arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov009/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov009/delinks.txt": "dde359d800f71c8b0134a3e4dfc5c60a07431da498ddf170a1eb51ee7a7fe3d8",
++        "arm9/overlays/ov000/symbols.txt": "89bd122511a38d21e7bcd51432112dac68f00e424a45e9fca3500bb0d6ea6a45",
++        "arm9/overlays/ov000/relocs.txt": "52a6f9bf7d4f1c219abeb65085b3e2f47bf5dac61f28945508a8e8364e2bcb60",
++        "arm9/overlays/ov000/delinks.txt": "0a8a652366fcde77eb698af96519b05752a7981aeddda1b35940f4efe8cfd8ad",
++        "arm9/overlays/ov007/symbols.txt": "c60775713dc15576cdacf88458410eb5676e42903b246d78b2af8e01c9d1e534",
++        "arm9/overlays/ov007/relocs.txt": "4fd9efa87ac14c8a82d592d6e87b480d34b1e22da5edd717eb31b5a719a5dbfd",
++        "arm9/overlays/ov007/delinks.txt": "0807efd4c5bafb39ec1b00cee1d183afdf6d701f9c48a28015b219332e1b1a6b",
++        "arm9/overlays/ov006/symbols.txt": "ebc8dbcdf670c29953e5de797ce52c341aedd6c6fd3e4ef3b755f9bd1c1b1e5f",
++        "arm9/overlays/ov006/relocs.txt": "76e8bf9e8f1677369f12d71b7e676e37bf40341f3f652079c230e930ed209a34",
++        "arm9/overlays/ov006/delinks.txt": "35e289724006a9d98e8c266d30e5e3c0560474f0a1c8699244459f1fc3e971d5",
++        "arm9/overlays/ov001/symbols.txt": "e63a1de70690af915c31e5ac35bb529443e17e453743927a0d0a83094a2dea2f",
++        "arm9/overlays/ov001/relocs.txt": "f61746c70a915c5c5227af31d57f53356a137c3e6b8a32f6bae6ad12f89d2127",
++        "arm9/overlays/ov001/delinks.txt": "e4dcab9859cc17225dba2c567ea30880a3b7e509af44aac5bc829c9450d5eee4",
++        "arm9/overlays/ov008/symbols.txt": "f3b6d9610d25a0ee0b50a6557aa1556ea3f68bd2112d66ad7f2c7f2c7b747976",
++        "arm9/overlays/ov008/relocs.txt": "06c470ddfedb9dbd30065c24de662cd2825c5d1db51bc05d6f69edd07c2fb714",
++        "arm9/overlays/ov008/delinks.txt": "17d303b96bf4aaffc89a8b8c6db9436161f7e4b0df922dd44ab34b0efb377e6a",
++        "arm9/overlays/ov011/symbols.txt": "97866f92a78a5f134c0b46590f229cc9ceda6765a5944a430539ec49708970cc",
++        "arm9/overlays/ov011/relocs.txt": "23272997f41166a09facf5f92737534821f9309399cc703e8c2630e63c48a150",
++        "arm9/overlays/ov011/delinks.txt": "964e5b941443914ad339b7b5c854157f5981a145403da75306ce98ea9bb41364",
++        "arm9/overlays/ov010/symbols.txt": "dfe7cffe30fbd0ea6993a7f94604785cb119f7d6720259f664b354ae8fb7ea65",
++        "arm9/overlays/ov010/relocs.txt": "63c903cfe5208f87b2d13e1aed1d00e8537fae55bec89613130f20474a2c1f7c",
++        "arm9/overlays/ov010/delinks.txt": "6124a7ab3258aeca73dd0ae54d04e3558d545f2056175532d665740f419b1a41",
++        "arm9/overlays/ov004/symbols.txt": "48a7005aa2f56ba5ed118de3e6316f6e86d0377be1a84e5dd3360c75e05d6b1f",
++        "arm9/overlays/ov004/relocs.txt": "6b8f93b01baf2fe8082239638d78c2c9e9ac06b09e6c41f09d530e6bcfcd8993",
++        "arm9/overlays/ov004/delinks.txt": "ef5d1bceaa61484daa9fc4e0712224afa93ca603cb68558a2401b0d54bdfa097",
++        "arm9/overlays/ov003/symbols.txt": "18ede8163b51498eb8076f97438c5560e087c6dbea9ad2c51dc83327e2618e91",
++        "arm9/overlays/ov003/relocs.txt": "07f14c387ac72640dc3e4a32370811cec4872204ea6b300a66221c5032534d58",
++        "arm9/overlays/ov003/delinks.txt": "7ca4a4bc4ac5251945507fd2a7f937e1949f05cb957d2963514cfef2e460e55b",
++        "arm9/overlays/ov002/symbols.txt": "4b74e5d4b4ccecf0738e7dc360ecdd69268f2134bb8809e526aa199bb111f327",
++        "arm9/overlays/ov002/relocs.txt": "b7680d69d6e0aa07e1b4e979591ab68e905300242bd1d86e7212e509bc13faf6",
++        "arm9/overlays/ov002/delinks.txt": "e28cc7f950e1bd620bd664f23a8367c84059d4fab99ef4fa34a6796831d90e71",
++        "arm9/overlays/ov005/symbols.txt": "ba10661ac95c8dc1b0533226f6725d007d91fb8a6c4b1ffead132b600dd00311",
++        "arm9/overlays/ov005/relocs.txt": "d866c7ee4ae929f10aeb224a04d0e6bcc0e812cc9ba0f2a53eca31cb45605580",
++        "arm9/overlays/ov005/delinks.txt": "70da09a04e76111f0f0082dc3df4fdc77e74f60f7374a5bc1aa4e6437fde3028"
++      },
++      "reference_metadata_sha256": {
++        "arm9/symbols.txt": "ccc3fa562fed0190cb09fcffb3c46c32ea70e146546a35b876f3c8899ee104e5",
++        "arm9/relocs.txt": "584b525e1a4928a4614c27aa940c619bc7fa9218892762a4052070d417ff6710",
++        "arm9/delinks.txt": "733dfbbf90a0e4afe65032fd8346e546749ea8c4a519ef9576116b2f737148cd",
++        "arm9/itcm/symbols.txt": "74d8a4e833aec321b8bbb4592bb0fe435bbc385d6cf13ccec21859e6c130ad39",
++        "arm9/itcm/relocs.txt": "e30c7eef1fb0a35371db763914986ae04d8aaa436b544a769d49a32e047a9280",
++        "arm9/itcm/delinks.txt": "ec221c2e910f8606319f2cbef6caaa21903ded058a1bad04273b2980c2790e65",
++        "arm9/dtcm/symbols.txt": "07492b2585c01882faba65762cf8e8508aeba42c7d885744fcac24029a39b5b3",
++        "arm9/dtcm/relocs.txt": "133709383864974086925aeb48f007d89bde8c4ce0262e8e096c5e5559629df2",
++        "arm9/dtcm/delinks.txt": "0e35390e706c9b88262661558f2ffe5ce029110a8e29863bdb23d2ba66f8e3f2",
++        "arm9/overlays/ov012/symbols.txt": "48176a82575afe0da85c69b05a8bb6fb51f876c2989b59036a37b404a2979fab",
++        "arm9/overlays/ov012/relocs.txt": "948894cb28c678de2485ce2c9f26da640e458a79547a7d9e932a411e530a788a",
++        "arm9/overlays/ov012/delinks.txt": "996b95018796b9919f6f128c126dae85c4bb9eefce6eefa6d03576fd7a65e5d5",
++        "arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov013/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov013/delinks.txt": "de8416591b0c413f2156e851261e7562b6f75c076d9cfa350ca8df3c3b6bebb2",
++        "arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov009/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        "arm9/overlays/ov009/delinks.txt": "dde359d800f71c8b0134a3e4dfc5c60a07431da498ddf170a1eb51ee7a7fe3d8",
++        "arm9/overlays/ov000/symbols.txt": "89bd122511a38d21e7bcd51432112dac68f00e424a45e9fca3500bb0d6ea6a45",
++        "arm9/overlays/ov000/relocs.txt": "52a6f9bf7d4f1c219abeb65085b3e2f47bf5dac61f28945508a8e8364e2bcb60",
++        "arm9/overlays/ov000/delinks.txt": "0a8a652366fcde77eb698af96519b05752a7981aeddda1b35940f4efe8cfd8ad",
++        "arm9/overlays/ov007/symbols.txt": "c60775713dc15576cdacf88458410eb5676e42903b246d78b2af8e01c9d1e534",
++        "arm9/overlays/ov007/relocs.txt": "4fd9efa87ac14c8a82d592d6e87b480d34b1e22da5edd717eb31b5a719a5dbfd",
++        "arm9/overlays/ov007/delinks.txt": "0807efd4c5bafb39ec1b00cee1d183afdf6d701f9c48a28015b219332e1b1a6b",
++        "arm9/overlays/ov006/symbols.txt": "ebc8dbcdf670c29953e5de797ce52c341aedd6c6fd3e4ef3b755f9bd1c1b1e5f",
++        "arm9/overlays/ov006/relocs.txt": "76e8bf9e8f1677369f12d71b7e676e37bf40341f3f652079c230e930ed209a34",
++        "arm9/overlays/ov006/delinks.txt": "35e289724006a9d98e8c266d30e5e3c0560474f0a1c8699244459f1fc3e971d5",
++        "arm9/overlays/ov001/symbols.txt": "e63a1de70690af915c31e5ac35bb529443e17e453743927a0d0a83094a2dea2f",
++        "arm9/overlays/ov001/relocs.txt": "f61746c70a915c5c5227af31d57f53356a137c3e6b8a32f6bae6ad12f89d2127",
++        "arm9/overlays/ov001/delinks.txt": "e4dcab9859cc17225dba2c567ea30880a3b7e509af44aac5bc829c9450d5eee4",
++        "arm9/overlays/ov008/symbols.txt": "f3b6d9610d25a0ee0b50a6557aa1556ea3f68bd2112d66ad7f2c7f2c7b747976",
++        "arm9/overlays/ov008/relocs.txt": "06c470ddfedb9dbd30065c24de662cd2825c5d1db51bc05d6f69edd07c2fb714",
++        "arm9/overlays/ov008/delinks.txt": "17d303b96bf4aaffc89a8b8c6db9436161f7e4b0df922dd44ab34b0efb377e6a",
++        "arm9/overlays/ov011/symbols.txt": "97866f92a78a5f134c0b46590f229cc9ceda6765a5944a430539ec49708970cc",
++        "arm9/overlays/ov011/relocs.txt": "23272997f41166a09facf5f92737534821f9309399cc703e8c2630e63c48a150",
++        "arm9/overlays/ov011/delinks.txt": "964e5b941443914ad339b7b5c854157f5981a145403da75306ce98ea9bb41364",
++        "arm9/overlays/ov010/symbols.txt": "dfe7cffe30fbd0ea6993a7f94604785cb119f7d6720259f664b354ae8fb7ea65",
++        "arm9/overlays/ov010/relocs.txt": "63c903cfe5208f87b2d13e1aed1d00e8537fae55bec89613130f20474a2c1f7c",
++        "arm9/overlays/ov010/delinks.txt": "6124a7ab3258aeca73dd0ae54d04e3558d545f2056175532d665740f419b1a41",
++        "arm9/overlays/ov004/symbols.txt": "48a7005aa2f56ba5ed118de3e6316f6e86d0377be1a84e5dd3360c75e05d6b1f",
++        "arm9/overlays/ov004/relocs.txt": "6b8f93b01baf2fe8082239638d78c2c9e9ac06b09e6c41f09d530e6bcfcd8993",
++        "arm9/overlays/ov004/delinks.txt": "ef5d1bceaa61484daa9fc4e0712224afa93ca603cb68558a2401b0d54bdfa097",
++        "arm9/overlays/ov003/symbols.txt": "18ede8163b51498eb8076f97438c5560e087c6dbea9ad2c51dc83327e2618e91",
++        "arm9/overlays/ov003/relocs.txt": "07f14c387ac72640dc3e4a32370811cec4872204ea6b300a66221c5032534d58",
++        "arm9/overlays/ov003/delinks.txt": "7ca4a4bc4ac5251945507fd2a7f937e1949f05cb957d2963514cfef2e460e55b",
++        "arm9/overlays/ov002/symbols.txt": "4b74e5d4b4ccecf0738e7dc360ecdd69268f2134bb8809e526aa199bb111f327",
++        "arm9/overlays/ov002/relocs.txt": "b7680d69d6e0aa07e1b4e979591ab68e905300242bd1d86e7212e509bc13faf6",
++        "arm9/overlays/ov002/delinks.txt": "e28cc7f950e1bd620bd664f23a8367c84059d4fab99ef4fa34a6796831d90e71",
++        "arm9/overlays/ov005/symbols.txt": "ba10661ac95c8dc1b0533226f6725d007d91fb8a6c4b1ffead132b600dd00311",
++        "arm9/overlays/ov005/relocs.txt": "d866c7ee4ae929f10aeb224a04d0e6bcc0e812cc9ba0f2a53eca31cb45605580",
++        "arm9/overlays/ov005/delinks.txt": "70da09a04e76111f0f0082dc3df4fdc77e74f60f7374a5bc1aa4e6437fde3028"
++      },
++      "metadata_equal": true,
++      "input_config_sha256": "34856fad6210c35f749a85435fd30155e3bae801c639ac90959042efc8a006a3",
++      "input_config_unchanged": true
++    },
++    {
++      "program": "child",
++      "command": [
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/release-target/release/dsd",
++        "init",
++        "--rom-config",
++        "/private/tmp/jus-track-a-arm7-observation-proof/build/arm7-observer-root-init/child/extract/config.yaml",
++        "--output-path",
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/child/analysis",
++        "--build-path",
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/init/child/build"
++      ],
++      "exit_code": 0,
++      "expected_files": 9,
++      "actual_files": 9,
++      "metadata_sha256": {
++        "arm9/symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
++        "arm9/relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
++        "arm9/delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36",
++        "arm9/itcm/symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
++        "arm9/itcm/relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
++        "arm9/itcm/delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148",
++        "arm9/dtcm/symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
++        "arm9/dtcm/relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
++        "arm9/dtcm/delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82"
++      },
++      "reference_metadata_sha256": {
++        "arm9/symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
++        "arm9/relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
++        "arm9/delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36",
++        "arm9/itcm/symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
++        "arm9/itcm/relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
++        "arm9/itcm/delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148",
++        "arm9/dtcm/symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
++        "arm9/dtcm/relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
++        "arm9/dtcm/delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82"
++      },
++      "metadata_equal": true,
++      "input_config_sha256": "fc1e0caa2a41208ec39e8a80b95bed97f85367dcf3e53aa5a6f51505007d8ab4",
++      "input_config_unchanged": true
++    }
++  ],
++  "logs": {
++    "dsd-red-ready.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-red-ready.log",
++      "sha256": "db708f70183c1c8b6dabd42b80bbf309171bb21c19e91f96caa2c11144e90fe5"
++    },
++    "unarm-red-complete.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-red-complete.log",
++      "sha256": "b80b6a7b6ae193ba2ade169e6d0f38e49a74c3db87641e830608d63198a4fb1d"
++    },
++    "unarm-alignment-red.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-alignment-red.log",
++      "sha256": "c2a54864208f03fa31107341d47da5b655f8e30336fcb674e9513310715cbb0b"
++    },
++    "unarm-suite-final.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-suite-final.log",
++      "sha256": "d58721d125d71164cc0ddec4e626a65fa6165167b4ab18d4150e3cc0707819d0"
++    },
++    "dsd-green.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-green.log",
++      "sha256": "85ec7506b5f2c961bf5b7c11ade9162315d584923554e648b18c537ecf6a541d"
++    },
++    "prepare-red.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-red.log",
++      "sha256": "4019f20616cac83852534448a0270bb353d3d600c7c9f18ed0040d3591ad3fed"
++    },
++    "prepare-green.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-green.log",
++      "sha256": "99dc4c8447148fad25b4f2ae80ad168b932bfe6df7cbe495fbf2a54920f3c079"
++    },
++    "generator.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/generator.log",
++      "sha256": "1b8ae11fb263afc24b05882720fa4b9c530e1d630ffa7517d3378ed3e104cf9e"
++    },
++    "generator-idempotence.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/generator-idempotence.log",
++      "sha256": "183c0dd6d9f2b870fdce4a7bd3813fd5a43dde317d4194f85f88768f32c3e12c"
++    },
++    "dsd-clippy.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-clippy.log",
++      "sha256": "b211d7cf74026f59a93f323f8242f971ff076e2b6dda4ce6cb2df56de956c395"
++    },
++    "dsd-release.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/dsd-release.log",
++      "sha256": "fe03b0c3d20a76f60e829818ea2796a65c519392a86347f675d0b629a07bf0de"
++    },
++    "unarm-thumb-v4t-check.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-thumb-v4t-check.log",
++      "sha256": "fc2a6ae519aadd6a3cab9a2da5be18bccdf6ef20e77106cc734e4a44e4c7cb80"
++    },
++    "unarm-thumb-v4t-baseline.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-thumb-v4t-baseline.log",
++      "sha256": "329e4727694baa38b4f84591caa0faa6558c1cab603b7a1fc1fe6b79944ec3dc"
++    },
++    "unarm-arm-thumb-v4t-check.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-arm-thumb-v4t-check.log",
++      "sha256": "8f721c970333b979141a7481bc76d5e05e87d8503bb0fed343295b599876680f"
++    },
++    "parent-init.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/parent-init.log",
++      "sha256": "a749dc8842051778f10e19b1f3884df94b794060d940a8ff2cc426b9c90a6b32"
++    },
++    "child-init.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/child-init.log",
++      "sha256": "fca49d2c6cbf43ddf1e4424e0896a0b26b5e129f63bc5c459bcc3533f95481dd"
++    },
++    "prepare-ignored-red.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-red.log",
++      "sha256": "967822796e465afb1b8661d06260d1a4af8384509da18d3e3b5bf539aa24d6eb"
++    },
++    "prepare-ignored-green.log": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-green.log",
++      "sha256": "75ea11b2e059fb291cdccd81de09de1bc1933af828e56e0fb9004bf055980bfe"
++    },
++    "prepare-ignored-actual-red.json": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-actual-red.json",
++      "sha256": "d12419b2bc0f4976a1645a862e9247d68d1d57bd4539d2140d4d07c3ba9bc71f"
++    },
++    "prepare-ignored-actual-green.json": {
++      "path": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/prepare-ignored-actual-green.json",
++      "sha256": "995932eb48292365d7594b4aefd707e313a099644a4a4ca6c9a74a7cf243b70f"
++    }
++  },
++  "source_bytes": 304,
++  "arm7_source_bytes": 0,
++  "full_19_rom": "pending independent root run",
++  "global_cargo_cache_mutated": false,
++  "source_context": {
++    "Cargo.toml": "61bdd32c51732eb8bc8cb982b8d3ad0f8d34a550ff7603fc57f5bf7543df1afe",
++    "Cargo.lock": "ac5b52e79117df8da34e6d5b1678e69580b4170c80ca9b6b8abfc586ba0166d5",
++    "lib/tests/branch_boundaries.rs": "6ecd4cdef9060a8d1783a4e76d6752a7a09816e75e9bf49218fea9b548069551",
++    "dependency-patches/unarm-1.9.2/prepare.py": "5fde56ada52911a52aa0cddb08e593ac9c8f0ce9e98c0ba776ab11b646eb1d63",
++    "dependency-patches/unarm-1.9.2/manifest.json": "3174b5660dcc9eec7d6d7783fe611ab80645e4832cd412b6eb9ea958ef0a4950",
++    "dependency-patches/unarm-1.9.2/test_prepare.py": "137a249afe8538463444cbcc683b011271f73f8d00f5e8d8f10aa5a4b18ce3a2",
++    "dependency-patches/unarm-1.9.2/proofs/ignored-build-probe.py": "b13e55ca783a5d641c6973dc655308c9b8d71c6559ec370d64a3f46fc272f789"
++  },
++  "preparation_inventory_hardening": {
++    "reviewer_counterexample": "ignored disasm/build.rs accepted because git --exclude-standard concealed it",
++    "red": {
++      "passed": 6,
++      "failed": 4
++    },
++    "green": {
++      "passed": 10,
++      "failed": 0
++    },
++    "untracked_scan": [
++      "git",
++      "ls-files",
++      "--others",
++      "-z"
++    ],
++    "only_output_allowance": [
++      "target/"
++    ],
++    "ignored_build_script_actual_red": {
++      "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
++      "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++      "check_only": {
++        "accepted": true,
++        "report": {
++          "status": "already_prepared",
++          "checkout": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe",
++          "version": "1.9.2",
++          "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++          "patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
++          "verified_source_files": 47,
++          "license_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b"
++        }
++      },
++      "cargo_metadata_command": [
++        "cargo",
++        "metadata",
++        "--manifest-path",
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
++        "--format-version",
++        "1",
++        "--no-deps",
++        "--locked",
++        "--offline"
++      ],
++      "custom_build_targets": [
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
++      ],
++      "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
++      "build_script_executed": false
++    },
++    "ignored_build_script_actual_green": {
++      "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
++      "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
++      "check_only": {
++        "accepted": false,
++        "error": "unexpected untracked source files"
++      },
++      "cargo_metadata_command": [
++        "cargo",
++        "metadata",
++        "--manifest-path",
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
++        "--format-version",
++        "1",
++        "--no-deps",
++        "--locked",
++        "--offline"
++      ],
++      "custom_build_targets": [
++        "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
++      ],
++      "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
++      "build_script_executed": false
++    },
++    "upstream_source_patch_changed": false,
++    "rust_source_changed": false,
++    "release_cli_changed": false
++  }
++}
+diff --git a/lib/tests/branch_boundaries.rs b/lib/tests/branch_boundaries.rs
+new file mode 100644
+index 0000000..4908c20
+--- /dev/null
++++ b/lib/tests/branch_boundaries.rs
+@@ -0,0 +1,366 @@
++// Synthetic expected addresses come from the committed independent LLVM23.1.2 oracle.
++use unarm::{args::Argument, ArmVersion, Endian, ParseFlags, ParseMode, Parser};
++
++fn check(bytes: &[u8], source: u32, mode: ParseMode, version: ArmVersion, expected: u32, mnemonic: &str) {
++    let flags = ParseFlags { version, ual: false };
++    let mut parser = Parser::new(mode, source, Endian::Little, flags, bytes);
++    let (address, _, parsed) = parser.next().expect("complete fixture");
++    assert_eq!(address, source);
++    assert_eq!(parsed.mnemonic, mnemonic);
++    let Argument::BranchDest(displacement) = parsed.args[0] else {
++        panic!("no direct branch destination");
++    };
++    assert_eq!(
++        address.wrapping_add_signed(displacement),
++        expected,
++        "{mnemonic} at {source:#010x}"
++    );
++    assert!(parser.next().is_none());
++}
++
++#[test]
++fn arm_b_bl_llvm_boundaries() {
++    // b_large_positive
++    check(
++        &[0x18, 0xe1, 0x51, 0xea],
++        0x02380000,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x037f8468,
++        "b",
++    );
++    // bl_large_positive
++    check(
++        &[0x17, 0xe1, 0x51, 0xeb],
++        0x02380004,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x037f8468,
++        "bl",
++    );
++    // b_large_negative
++    check(
++        &[0xfc, 0xff, 0xbf, 0xea],
++        0x02380008,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x01380000,
++        "b",
++    );
++    // bl_large_negative
++    check(
++        &[0xfb, 0xff, 0xbf, 0xeb],
++        0x0238000c,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x01380000,
++        "bl",
++    );
++    // b_max_positive
++    check(
++        &[0xff, 0xff, 0x7f, 0xea],
++        0x02380010,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x04380014,
++        "b",
++    );
++    // bl_max_positive
++    check(
++        &[0xff, 0xff, 0x7f, 0xeb],
++        0x02380014,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x04380018,
++        "bl",
++    );
++    // b_min_negative
++    check(
++        &[0x00, 0x00, 0x80, 0xea],
++        0x02380018,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x00380020,
++        "b",
++    );
++    // bl_min_negative
++    check(
++        &[0x00, 0x00, 0x80, 0xeb],
++        0x0238001c,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x00380024,
++        "bl",
++    );
++    // b_minus_one_word
++    check(
++        &[0xff, 0xff, 0xff, 0xea],
++        0x02380020,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x02380024,
++        "b",
++    );
++    // bl_zero_displacement
++    check(
++        &[0x00, 0x00, 0x00, 0xeb],
++        0x02380024,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x0238002c,
++        "bl",
++    );
++}
++
++#[test]
++fn arm_blx_llvm_boundaries() {
++    // blx_max_h0
++    check(
++        &[0xff, 0xff, 0x7f, 0xfa],
++        0x02380028,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x0438002c,
++        "blx",
++    );
++    // blx_max_h1
++    check(
++        &[0xff, 0xff, 0x7f, 0xfb],
++        0x0238002c,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x04380032,
++        "blx",
++    );
++    // blx_min_h0
++    check(
++        &[0x00, 0x00, 0x80, 0xfa],
++        0x02380030,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x00380038,
++        "blx",
++    );
++    // blx_min_h1
++    check(
++        &[0x00, 0x00, 0x80, 0xfb],
++        0x02380034,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x0038003e,
++        "blx",
++    );
++}
++
++#[test]
++fn thumb_bl_llvm_boundaries() {
++    // bl_positive_pc_boundary_even
++    check(
++        &[0xff, 0xf3, 0xfe, 0xff],
++        0x02380000,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02780000,
++        "bl",
++    );
++    // bl_positive_pc_boundary_halfword
++    check(
++        &[0xff, 0xf3, 0xff, 0xff],
++        0x02380004,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02780006,
++        "bl",
++    );
++    // bl_min_negative
++    check(
++        &[0x00, 0xf4, 0x00, 0xf8],
++        0x02380008,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x01f8000c,
++        "bl",
++    );
++    // bl_negative_near
++    check(
++        &[0xff, 0xf7, 0xff, 0xff],
++        0x0238000c,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x0238000e,
++        "bl",
++    );
++    // bl_zero
++    check(
++        &[0x00, 0xf0, 0x00, 0xf8],
++        0x02380010,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02380014,
++        "bl",
++    );
++}
++
++#[test]
++fn thumb_blx_llvm_boundaries() {
++    // blx_positive_pc_boundary
++    check(
++        &[0xff, 0xf3, 0xfe, 0xef],
++        0x02380014,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02780014,
++        "blx",
++    );
++    // blx_min_negative
++    check(
++        &[0x00, 0xf4, 0x00, 0xe8],
++        0x02380018,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x01f8001c,
++        "blx",
++    );
++    // blx_negative_near
++    check(
++        &[0xff, 0xf7, 0xfe, 0xef],
++        0x0238001c,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x0238001c,
++        "blx",
++    );
++    // blx_zero
++    check(
++        &[0x00, 0xf0, 0x00, 0xe8],
++        0x02380020,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02380024,
++        "blx",
++    );
++}
++
++#[test]
++fn thumb_short_llvm_boundaries() {
++    // b_short_max
++    check(&[0xff, 0xe3], 0x02380024, ParseMode::Thumb, ArmVersion::V4T, 0x02380826, "b");
++    // b_short_min
++    check(&[0x00, 0xe4], 0x02380026, ParseMode::Thumb, ArmVersion::V4T, 0x0237f82a, "b");
++    // b_cond_max
++    check(
++        &[0x7f, 0xd1],
++        0x02380028,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x0238012a,
++        "bne",
++    );
++    // b_cond_min
++    check(
++        &[0x80, 0xd1],
++        0x0238002a,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x0237ff2e,
++        "bne",
++    );
++}
++
++#[test]
++fn v4t_rejects_arm_and_thumb_blx() {
++    let flags = ParseFlags {
++        version: ArmVersion::V4T,
++        ual: false,
++    };
++    let bytes = [0xff, 0xff, 0x7f, 0xfa];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380028, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0xff, 0xff, 0x7f, 0xfb];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x0238002c, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0x00, 0x80, 0xfa];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380030, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0x00, 0x80, 0xfb];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380034, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0xff, 0xf3, 0xfe, 0xef];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380014, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0xf4, 0x00, 0xe8];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380018, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0xff, 0xf7, 0xfe, 0xef];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x0238001c, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0xf0, 0x00, 0xe8];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380020, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++}
++
++#[test]
++fn thumb_blx_halfword_aligned_pc_llvm() {
++    // Unlike BL, BLX uses Align(PC, 4). These expected targets come from
++    // thumb-blx-alignment-disassembly.txt, including both displacement edges.
++    check(
++        &[0x00, 0xf0, 0x00, 0xe8],
++        0x02380002,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02380004,
++        "blx",
++    );
++    check(
++        &[0xff, 0xf3, 0xfe, 0xef],
++        0x02380006,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02780004,
++        "blx",
++    );
++    check(
++        &[0x00, 0xf4, 0x00, 0xe8],
++        0x0238000a,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x01f8000c,
++        "blx",
++    );
++    check(
++        &[0xff, 0xf7, 0xfe, 0xef],
++        0x0238000e,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x0238000c,
++        "blx",
++    );
++}
++
++#[test]
++fn thumb_bl_keeps_halfword_aligned_pc_llvm() {
++    check(
++        &[0x00, 0xf0, 0x00, 0xf8],
++        0x02380012,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02380016,
++        "bl",
++    );
++}

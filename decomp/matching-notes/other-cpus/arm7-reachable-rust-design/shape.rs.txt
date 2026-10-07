@@ -1,0 +1,162 @@
+// Design sketch, not a compiled or implemented module.
+// Proposed lib/src/analysis/arm7_reachable.rs.
+use crate::{
+    analysis::arm7_observation::{InstructionObservation, SpanObservation, TransferObservation},
+    rom::arm7::ProgramIdentity,
+};
+use std::ops::Range;
+
+/// A caller assumption tied to an existing checked observation.
+/// Mode and full program/CPU/region identity are inherited from observation.
+/// connect validates address as an instruction start and records assumption.
+/// The header can justify an address; it does not certify mode or execution.
+#[derive(Clone, Copy)]
+pub struct RootRequest<'o, 'm: 'o> {
+    pub observation: &'o SpanObservation<'m>,
+    pub address: u32,
+    pub assumption: &'o str,
+}
+
+/// Why an original transfer could not join a selected instruction interpretation.
+/// This classifies supplied evidence, never actual execution or function ends.
+#[derive(Debug, PartialEq, Eq)]
+pub enum FrontierReason {
+    OutsideSelection,
+    InstructionInterior,
+    ModeConflict,
+    Bss,
+    Unmapped,
+    Indirect,
+}
+
+#[derive(Debug)]
+pub enum ConnectError {
+    EmptyObservations,
+    EmptyRoots,
+    ForeignProgram,
+    WrongTargetPolicy,
+    DuplicateOrOverlappingSameModeSelection,
+    ForeignRoot,
+    RootNotInstructionStart,
+    EmptyRootAssumption,
+    DuplicateRoot,
+    InconsistentMappedIdentity,
+    CapacityOverflow,
+}
+
+/// Owns graph structure; borrows immutable checked evidence.
+/// No public fields, Deserialize, raw-JSON constructor, or mutation methods.
+/// Serde report serialization is a read-only custom implementation.
+pub struct CandidateGraph<'o, 'm: 'o> {
+    observations: &'o [SpanObservation<'m>],
+    nodes: Vec<SelectedInstruction<'o, 'm>>,
+    edges: Vec<SelectedEdge<'o, 'm>>,
+    roots: Vec<RootTraversal<'o, 'm>>,
+}
+
+// Private construction data. Indexes never become caller-controlled graph handles.
+struct SelectedInstruction<'o, 'm: 'o> {
+    observation: &'o SpanObservation<'m>,
+    instruction: &'o InstructionObservation,
+    outgoing: Range<usize>,
+    mode_conflict: bool,
+}
+struct SelectedEdge<'o, 'm: 'o> {
+    source_node: usize,
+    original: &'o TransferObservation<'m>,
+    destination: Destination,
+}
+enum Destination {
+    SelectedNode(usize),
+    Frontier(FrontierReason),
+}
+struct RootTraversal<'o, 'm: 'o> {
+    request: RootRequest<'o, 'm>,
+    visits: Vec<Visit>,
+    frontier_sites: Vec<FrontierSite>,
+}
+enum Visit {
+    Unvisited,
+    Root,
+    ViaEdge(usize),
+}
+enum FrontierSite {
+    Root(FrontierReason),
+    Edge(usize),
+}
+
+/// Complete pure operation. Callers supply all observations and roots at once.
+/// Identical evidence and requests produce identical ordering and witnesses.
+pub fn connect<'o, 'm: 'o>(
+    observations: &'o [SpanObservation<'m>],
+    roots: &[RootRequest<'o, 'm>],
+) -> Result<CandidateGraph<'o, 'm>, ConnectError> {
+    // TODO Validate one full program identity and fixed ARM7/V4T policy.
+    // TODO Check each root references this exact observation slice, uses a start,
+    //      and has a nonempty explicit assumption; copy requests into graph.
+    // TODO Reject same-mode overlaps and duplicates; index cross-mode conflicts.
+    // TODO Build one sorted instruction index and selected byte-interval index.
+    // TODO Retain original edges; resolve numeric targets using mapped identity,
+    //      requested mode and global selected starts/interiors/conflicts.
+    //      Unknown, BSS and omitted mappings never acquire selected successors.
+    // TODO BFS once per root over admissible selected nodes. Each node is visited
+    //      at most once; record predecessor edge and frontier sites. Retain cycle
+    //      edges even when the destination was previously visited.
+    // TODO A root touching a conflicting interpretation yields a root frontier.
+    //      Do not traverse that root or any other conflicted instruction.
+    // No instruction decoding, literal propagation, header reading, JSON parsing,
+    // path feasibility solving, recursive expansion or function construction.
+    unimplemented!("design sketch")
+}
+
+impl<'o, 'm: 'o> CandidateGraph<'o, 'm> {
+    /// Taken from checked observation identity, never a caller-supplied label.
+    pub fn program(&self) -> &ProgramIdentity {
+        unimplemented!("design sketch")
+    }
+    /// Root views cannot outlive their owning graph.
+    pub fn roots(&self) -> impl Iterator<Item = RootView<'_, 'o, 'm>> {
+        unimplemented!("design sketch")
+    }
+}
+
+/// Read-only view of one explicitly rooted candidate traversal.
+pub struct RootView<'g, 'o, 'm: 'o> {
+    graph: &'g CandidateGraph<'o, 'm>,
+    root_index: usize,
+}
+impl<'g, 'o, 'm: 'o> RootView<'g, 'o, 'm> {
+    pub fn request(&self) -> &RootRequest<'o, 'm> {
+        unimplemented!("design sketch")
+    }
+    pub fn frontiers(&self) -> impl Iterator<Item = FrontierView<'g, 'o, 'm>> {
+        unimplemented!("design sketch")
+    }
+}
+
+/// Carries its owning graph/root; no caller passes numeric frontier/node handles.
+pub struct FrontierView<'g, 'o, 'm: 'o> {
+    graph: &'g CandidateGraph<'o, 'm>,
+    root_index: usize,
+    frontier_index: usize,
+}
+impl<'g, 'o, 'm: 'o> FrontierView<'g, 'o, 'm> {
+    pub fn reason(&self) -> &FrontierReason {
+        unimplemented!("design sketch")
+    }
+    /// Includes the terminal frontier edge. Root conflict has an empty witness.
+    /// Each original transfer retains its exact kind, guard, condition source,
+    /// target and checked mapping. One witness is not a feasibility certificate.
+    pub fn witness(&self) -> Vec<&'o TransferObservation<'m>> {
+        // TODO Walk the predecessor vector back to this root, reverse the path,
+        //      and append the original frontier transfer. Length is at most N.
+        unimplemented!("design sketch")
+    }
+}
+
+// impl serde::Serialize for CandidateGraph<'_, '_> uses a private report format
+// containing full identity/policy, original selected instructions and edges,
+// roots with assumptions, join/frontier results and root predecessor evidence.
+// It includes original per-source condition text and all TransferGuard values.
+// JSON is never accepted back into connect. Existing observation types and their
+// authority-bearing private fields need no changes.

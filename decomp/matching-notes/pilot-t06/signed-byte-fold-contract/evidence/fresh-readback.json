@@ -1,0 +1,151 @@
+{
+  "status": "passed",
+  "scope": "original-only static grounding",
+  "target": {
+    "object": "_dsd_gap@main_5.o",
+    "object_sha256": "248e6844754b8c07c9d8b037ca7c01600dfc7566ec61a168aab69c8d238696c3",
+    "symbol": {
+      "name": "func_020326b0",
+      "value": 206512,
+      "size": 44,
+      "info": 18,
+      "section_index": 10
+    },
+    "payload_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+    "allocated_sections": [
+      {
+        "name": ".bss",
+        "type": 8,
+        "flags": 3,
+        "address": 0,
+        "size": 706400
+      },
+      {
+        "name": ".data",
+        "type": 1,
+        "flags": 3,
+        "address": 0,
+        "size": 55008
+      },
+      {
+        "name": ".ctor",
+        "type": 1,
+        "flags": 2,
+        "address": 0,
+        "size": 16
+      },
+      {
+        "name": ".rodata",
+        "type": 1,
+        "flags": 2,
+        "address": 0,
+        "size": 23196
+      },
+      {
+        "name": ".init",
+        "type": 1,
+        "flags": 6,
+        "address": 0,
+        "size": 3632
+      },
+      {
+        "name": ".text",
+        "type": 1,
+        "flags": 6,
+        "address": 0,
+        "size": 574948
+      }
+    ],
+    "outgoing_relocations": []
+  },
+  "incoming_sites": 62,
+  "region_qualified_callers": 42,
+  "loaded44_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+  "commands": [
+    {
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "rom",
+        "extract",
+        "-r",
+        "/Users/djdjo/Documents/mine/rom/jus.nds",
+        "-o",
+        "/private/tmp/jus-38-public-fresh-02/extract"
+      ],
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "[INFO ] Extracting from JUS\n[INFO ] Saving ROM to directory /private/tmp/jus-38-public-fresh-02/extract\n[INFO ] Saving ROM assets\n"
+    },
+    {
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "delink",
+        "-c",
+        "/private/tmp/jus-38-public-fresh-02/config/config.yaml"
+      ],
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "[INFO ] Loading ROM from /private/tmp/jus-38-public-fresh-02/config/../extract/config.yaml\n[INFO ] Function at 0x0205046c was adjusted to include pre-code constant pool at 0x02050458\n"
+    }
+  ],
+  "arithmetic": {
+    "independent_one_step_cases": 66300,
+    "vectors": [
+      {
+        "input_hex": "00",
+        "predicted_return": "0x0000",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "4100",
+        "predicted_return": "0x0041",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "414200",
+        "predicted_return": "0x0083",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "7f00",
+        "predicted_return": "0x007f",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "8000",
+        "predicted_return": "0xff80",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "ff00",
+        "predicted_return": "0xffff",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "804100",
+        "predicted_return": "0x00c1",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "ffff00",
+        "predicted_return": "0x0000",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "410042",
+        "predicted_return": "0x0041",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "414141414141414141414141414141414100",
+        "predicted_return": "0x0041",
+        "status": "static mathematical prediction; not original runtime measurement"
+      }
+    ],
+    "classification": "derived mathematical predictions; no original-runtime execution"
+  },
+  "compiler_or_original_runtime_invoked": false,
+  "actual_readback_sha256": "04adc5d96ecb8a221391d2c8e1fc94fcd08d9bf1ccbdfead7c3a823678b3723e",
+  "pinned_input_and_artifact_count": 539,
+  "inventory_sha256": "4b78fd9fcc26dcd9fc71e1bc76a0ffecbee0522d9549c9e585b57a590bf97a1b"
+}

@@ -1,0 +1,977 @@
+diff --git a/lib/examples/arm7_observation_probe.rs b/lib/examples/arm7_observation_probe.rs
+new file mode 100644
+index 0000000..c742068
+--- /dev/null
++++ b/lib/examples/arm7_observation_probe.rs
+@@ -0,0 +1,86 @@
++//! Read-only bounded ARM7 observations selected by independently pinned manifests.
++use ds_decomp::{
++    analysis::arm7_observation::{Selection, observe},
++    config::symbol::InstructionMode,
++    rom::arm7::{Arm7Layout, Arm7RegionKind, ProgramIdentity},
++};
++use serde::Deserialize;
++use serde_json::json;
++use sha2::{Digest, Sha256};
++use std::{error::Error, fs, io, ops::Range};
++
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct SelectedSpan {
++    program: ProgramIdentity,
++    region: Arm7RegionKind,
++    mode: InstructionMode,
++    extent: Range<u32>,
++}
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++fn main() -> Result<(), Box<dyn Error>> {
++    let args: Vec<_> = std::env::args().skip(1).collect();
++    if args.len() != 5 {
++        return Err(
++            "usage: arm7_observation_probe ROM LAYOUT_JSON LAYOUT_SHA256 SPANS_JSON SPANS_SHA256"
++                .into(),
++        );
++    }
++    let parent = fs::read(&args[0])?;
++    let sidecar = fs::read(&args[1])?;
++    let span_sidecar = fs::read(&args[3])?;
++    if sha(&sidecar) != args[2] || sha(&span_sidecar) != args[4] {
++        return Err("independent layout/span sidecar hash mismatch".into());
++    }
++    let layouts: Vec<Arm7Layout> = serde_json::from_slice(&sidecar)?;
++    let spans: Vec<SelectedSpan> = serde_json::from_slice(&span_sidecar)?;
++    if layouts.is_empty() || spans.is_empty() {
++        return Err("no physical layouts or explicit span observations supplied".into());
++    }
++    let mut programs = Vec::new();
++    let mut observed = vec![false; spans.len()];
++    for layout in layouts {
++        let view = layout.checked(&parent)?;
++        let modules: Vec<_> = view.module_inputs().collect();
++        let mut observations = Vec::new();
++        for module in &modules {
++            for (index, span) in spans.iter().enumerate() {
++                if module.identity().program() != &span.program
++                    || module.identity().region() != &span.region
++                {
++                    continue;
++                }
++                if observed[index] {
++                    return Err("span identity matched more than one selected module".into());
++                }
++                observations.push(observe(
++                    module,
++                    Selection { span: span.extent.clone(), mode: span.mode },
++                    &modules,
++                )?);
++                observed[index] = true;
++            }
++        }
++        programs.push(json!({"identity":view.identity(),"observations":observations}));
++    }
++    if observed.iter().any(|matched| !matched) {
++        return Err("explicit span did not match a checked program/region identity".into());
++    }
++    if fs::read(&args[0])? != parent
++        || fs::read(&args[1])? != sidecar
++        || fs::read(&args[3])? != span_sidecar
++    {
++        return Err("input changed during bounded observation".into());
++    }
++    serde_json::to_writer_pretty(
++        io::stdout().lock(),
++        &json!({"schema_version":1,"status":"bounded_arm7_observations_verified",
++            "parent_rom_sha256":sha(&parent),"layout_sidecar_sha256":sha(&sidecar),
++            "span_sidecar_sha256":sha(&span_sidecar),"inputs_unchanged":true,
++            "programs":programs,"source_bytes":0,"arm7_binary_baseline_complete":false,
++            "function_extents_established":false,"executable_coverage_established":false}),
++    )?;
++    Ok(())
++}
+diff --git a/lib/src/analysis/arm7_observation.rs b/lib/src/analysis/arm7_observation.rs
+new file mode 100644
+index 0000000..fb2db21
+--- /dev/null
++++ b/lib/src/analysis/arm7_observation.rs
+@@ -0,0 +1,348 @@
++//! Bounded ARMv4T observations of checked physical inputs, without function discovery.
++use crate::{
++    config::symbol::InstructionMode,
++    rom::{
++        arm7::TargetPolicy,
++        arm7_modules::{Arm7ModuleIdentity, Arm7ModuleInput, DecodeSpanError},
++    },
++};
++use serde::Serialize;
++use std::{error::Error, fmt, ops::Range};
++use unarm::{
++    ArmVersion, DisplayOptions, Ins, ParseFlags,
++    args::{Argument, Register},
++    arm, thumb,
++};
++
++/// Initialized bytes to interpret in one explicit mode, without an entrypoint claim.
++#[derive(Debug, Serialize)]
++pub struct Selection {
++    pub span: Range<u32>,
++    pub mode: InstructionMode,
++}
++/// Complete, immutable interpretation of a selected span under fixed ARMv4T.
++///
++/// Executability is unknown for the source span and every transfer target.
++/// Stored text and serialization do not reconstruct a parser or change ISA.
++#[derive(Debug, Serialize)]
++pub struct SpanObservation<'a> {
++    identity: &'a Arm7ModuleIdentity<'a>,
++    target: TargetPolicy,
++    selection: Selection,
++    executability: Executability,
++    instructions: Vec<InstructionObservation>,
++    transfers: Vec<TransferObservation<'a>>,
++}
++#[derive(Debug, Serialize)]
++pub struct InstructionObservation {
++    address: u32,
++    byte_len: u8,
++    text: String,
++    condition: Option<String>,
++}
++/// A possible transfer if this instruction executes, not evidence of reachability.
++#[derive(Debug, Serialize)]
++pub struct TransferObservation<'a> {
++    source: u32,
++    kind: TransferKind,
++    guard: TransferGuard,
++    target: Target<'a>,
++}
++#[derive(Debug, PartialEq, Eq, Serialize)]
++#[serde(rename_all = "snake_case")]
++pub enum Executability {
++    Unknown,
++}
++#[derive(Debug, PartialEq, Eq, Serialize)]
++#[serde(rename_all = "snake_case")]
++pub enum TransferKind {
++    Branch,
++    Call,
++    Fallthrough,
++    CallContinuation,
++    Exchange,
++    PcWrite,
++    Exception,
++}
++#[derive(Debug, PartialEq, Eq, Serialize)]
++#[serde(rename_all = "snake_case")]
++pub enum TransferGuard {
++    Always,
++    /// The source instruction's recorded condition holds.
++    ConditionPassed,
++    /// The source instruction's recorded condition does not hold.
++    ConditionFailed,
++    /// Continuation only if the unconditionally invoked call returns.
++    CallReturned,
++    /// Continuation only if the call was taken and then returns.
++    ConditionPassedAndCallReturned,
++}
++#[derive(Debug, Serialize)]
++#[serde(tag = "kind", rename_all = "snake_case")]
++pub enum Target<'a> {
++    Address {
++        address: u32,
++        /// Mode required by this transfer, not an independently known target mode.
++        mode: InstructionMode,
++        mapping: Mapping<'a>,
++        boundary: ObservationBoundary,
++    },
++    /// Destination address and mode remain unknown, including state-restoring writes.
++    Unknown,
++}
++/// Byte ownership in the supplied context; none of these variants proves execution.
++#[derive(Debug, Serialize)]
++#[serde(tag = "kind", content = "identity", rename_all = "snake_case")]
++pub enum Mapping<'a> {
++    Initialized(&'a Arm7ModuleIdentity<'a>),
++    Bss(&'a Arm7ModuleIdentity<'a>),
++    UnresolvedBytes,
++}
++#[derive(Debug, PartialEq, Eq, Serialize)]
++#[serde(rename_all = "snake_case")]
++pub enum ObservationBoundary {
++    InstructionStart,
++    InstructionInterior,
++    OutsideSelection,
++}
++#[derive(Debug, PartialEq, Eq)]
++pub enum ObservationError {
++    Decode(DecodeSpanError),
++    ForeignProgram,
++    MissingSource,
++    DuplicateOrOverlappingMapping,
++}
++impl fmt::Display for ObservationError {
++    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        write!(f, "ARM7 observation: {self:?}")
++    }
++}
++impl Error for ObservationError {}
++/// Observe every instruction in the selected initialized span atomically.
++///
++/// The context must contain the source and only checked modules from its exact
++/// program and CPU. Omitted mappings remain unresolved. Numeric targets share
++/// one classifier; no transfer triggers recursive decoding or function discovery.
++/// The selected end bounds decoding only and is never a discovered function end.
++pub fn observe<'a>(
++    source: &'a Arm7ModuleInput<'a>,
++    selection: Selection,
++    modules: &'a [Arm7ModuleInput<'a>],
++) -> Result<SpanObservation<'a>, ObservationError> {
++    for (index, module) in modules.iter().enumerate() {
++        if module.identity().program() != source.identity().program()
++            || module.identity().cpu() != source.identity().cpu()
++        {
++            return Err(ObservationError::ForeignProgram);
++        }
++        let extent = module.initialized().start..module.bss().end;
++        if modules[..index].iter().any(|prior| {
++            prior.identity() == module.identity()
++                || (prior.initialized().start < extent.end && extent.start < prior.bss().end)
++        }) {
++            return Err(ObservationError::DuplicateOrOverlappingMapping);
++        }
++    }
++    if !modules.iter().any(|module| {
++        module.identity() == source.identity()
++            && module.initialized() == source.initialized()
++            && module.bss() == source.bss()
++            && module.bytes() == source.bytes()
++    }) {
++        return Err(ObservationError::MissingSource);
++    }
++    let decoded = source
++        .decode_span(selection.mode, selection.span.clone())
++        .map_err(ObservationError::Decode)?;
++    let starts: Vec<_> = decoded.iter().map(|(address, _, _)| *address).collect();
++    let destination = |address| {
++        let mapping = modules
++            .iter()
++            .find_map(|module| {
++                if module.initialized().contains(&address) {
++                    Some(Mapping::Initialized(module.identity()))
++                } else if module.bss().contains(&address) {
++                    Some(Mapping::Bss(module.identity()))
++                } else {
++                    None
++                }
++            })
++            .unwrap_or(Mapping::UnresolvedBytes);
++        let boundary = if !selection.span.contains(&address) {
++            ObservationBoundary::OutsideSelection
++        } else if starts.binary_search(&address).is_ok() {
++            ObservationBoundary::InstructionStart
++        } else {
++            ObservationBoundary::InstructionInterior
++        };
++        Target::Address { address, mode: selection.mode, mapping, boundary }
++    };
++    let flags = ParseFlags { version: ArmVersion::V4T, ual: false };
++    let mut instructions = Vec::with_capacity(decoded.len());
++    let mut transfers = Vec::new();
++    for (index, (address, ins, parsed)) in decoded.iter().enumerate() {
++        let next = starts.get(index + 1).copied().unwrap_or(selection.span.end);
++        let mut parsed = parsed.clone();
++        // unarm 1.9.2 truncates ARM displacements and applies Thumb BL's PC
++        // bias before sign extension. Normalize every direct branch from bytes.
++        let branch_offset = match ins {
++            Ins::Arm(ins) if matches!(ins.op, arm::Opcode::B | arm::Opcode::Bl) => {
++                Some(((ins.code << 8) as i32 >> 6) + 8)
++            }
++            Ins::Thumb(ins) => match ins.op {
++                thumb::Opcode::B => Some(((ins.code << 24) as i32 >> 23) + 4),
++                thumb::Opcode::BLong => Some(((ins.code << 21) as i32 >> 20) + 4),
++                thumb::Opcode::Bl => {
++                    // Complete-span decoding already validated both halfwords.
++                    let offset = (address - source.initialized().start) as usize;
++                    let bytes = source.bytes();
++                    let prefix = u16::from_le_bytes([bytes[offset], bytes[offset + 1]]) as u32;
++                    Some(((prefix << 21) as i32 >> 9) + ((ins.code & 0x7ff) << 1) as i32 + 4)
++                }
++                _ => None,
++            },
++            _ => None,
++        };
++        if let Some(offset) = branch_offset {
++            parsed.args[0] = Argument::BranchDest(offset);
++        }
++        let (condition, defs, exchange, exception, call) = match ins {
++            Ins::Arm(ins) => (
++                ins.is_conditional()
++                    .then(|| format!("{:?}", ins.modifier_cond()).to_ascii_lowercase()),
++                ins.defs(&flags),
++                ins.op == arm::Opcode::Bx,
++                ins.op == arm::Opcode::Swi,
++                ins.op == arm::Opcode::Bl,
++            ),
++            Ins::Thumb(ins) => (
++                ins.is_conditional()
++                    .then(|| format!("{:?}", ins.modifier_cond()).to_ascii_lowercase()),
++                ins.defs(&flags),
++                ins.op == thumb::Opcode::BxR,
++                ins.op == thumb::Opcode::Swi,
++                ins.op == thumb::Opcode::Bl,
++            ),
++            Ins::Data => unreachable!("checked instruction decoding excludes data"),
++        };
++        let conditional = condition.is_some();
++        instructions.push(InstructionObservation {
++            address: *address,
++            byte_len: (next - address) as u8,
++            text: parsed.display(DisplayOptions::default()).to_string(),
++            condition,
++        });
++        let mut emit = |kind, guard, target| {
++            transfers.push(TransferObservation { source: *address, kind, guard, target });
++        };
++        let taken = if conditional {
++            TransferGuard::ConditionPassed
++        } else {
++            TransferGuard::Always
++        };
++        if let Some(offset) = branch_offset {
++            emit(
++                if call { TransferKind::Call } else { TransferKind::Branch },
++                taken,
++                destination(address.wrapping_add_signed(offset)),
++            );
++            if call {
++                emit(
++                    TransferKind::CallContinuation,
++                    if conditional {
++                        TransferGuard::ConditionPassedAndCallReturned
++                    } else {
++                        TransferGuard::CallReturned
++                    },
++                    destination(next),
++                );
++            }
++            if conditional {
++                emit(TransferKind::Fallthrough, TransferGuard::ConditionFailed, destination(next));
++            }
++        } else {
++            let writes_pc = defs.iter().any(|arg| match arg {
++                Argument::Reg(reg) => reg.reg == Register::Pc,
++                Argument::RegList(list) => list.regs & (1 << Register::Pc as u8) != 0,
++                _ => false,
++            });
++            if exchange || exception || writes_pc {
++                let kind = if exchange {
++                    TransferKind::Exchange
++                } else if exception {
++                    TransferKind::Exception
++                } else {
++                    TransferKind::PcWrite
++                };
++                emit(kind, taken, Target::Unknown);
++                if conditional {
++                    emit(
++                        TransferKind::Fallthrough,
++                        TransferGuard::ConditionFailed,
++                        destination(next),
++                    );
++                }
++            } else {
++                emit(TransferKind::Fallthrough, TransferGuard::Always, destination(next));
++            }
++        }
++    }
++    Ok(SpanObservation {
++        identity: source.identity(),
++        target: source.target(),
++        selection,
++        executability: Executability::Unknown,
++        instructions,
++        transfers,
++    })
++}
++
++impl SpanObservation<'_> {
++    pub fn identity(&self) -> &Arm7ModuleIdentity<'_> {
++        self.identity
++    }
++    pub fn target(&self) -> &TargetPolicy {
++        &self.target
++    }
++    pub fn selection(&self) -> &Selection {
++        &self.selection
++    }
++    pub fn executability(&self) -> &Executability {
++        &self.executability
++    }
++    pub fn instructions(&self) -> &[InstructionObservation] {
++        &self.instructions
++    }
++    pub fn transfers(&self) -> &[TransferObservation<'_>] {
++        &self.transfers
++    }
++}
++impl InstructionObservation {
++    pub fn address(&self) -> u32 {
++        self.address
++    }
++    pub fn byte_len(&self) -> u8 {
++        self.byte_len
++    }
++    /// Stored assembly text; direct operands are signed offsets from this address.
++    pub fn text(&self) -> &str {
++        &self.text
++    }
++    pub fn condition(&self) -> Option<&str> {
++        self.condition.as_deref()
++    }
++}
++impl TransferObservation<'_> {
++    pub fn source(&self) -> u32 {
++        self.source
++    }
++    pub fn kind(&self) -> &TransferKind {
++        &self.kind
++    }
++    pub fn guard(&self) -> &TransferGuard {
++        &self.guard
++    }
++    pub fn target(&self) -> &Target<'_> {
++        &self.target
++    }
++}
+diff --git a/lib/src/analysis/mod.rs b/lib/src/analysis/mod.rs
+index 1492c0e..3991ed5 100644
+--- a/lib/src/analysis/mod.rs
++++ b/lib/src/analysis/mod.rs
+@@ -1,3 +1,4 @@
++pub mod arm7_observation;
+ pub(crate) mod ctor;
+ pub(crate) mod data;
+ pub mod exception;
+diff --git a/lib/tests/arm7_module_inputs.rs b/lib/tests/arm7_module_inputs.rs
+index 07c2381..0a88076 100644
+--- a/lib/tests/arm7_module_inputs.rs
++++ b/lib/tests/arm7_module_inputs.rs
+@@ -17,85 +17,13 @@ fn locked_parser_distinguishes_v4t_and_explicit_legacy_v5te() {
+ use ds_decomp::{
+     config::symbol::InstructionMode,
+     rom::{
+-        arm7::{Arm7Layout, Cpu, InstructionSet, Processor, ProgramSelector},
++        arm7::{Cpu, InstructionSet, Processor, ProgramSelector},
+         arm7_modules::DecodeSpanError,
+     },
+ };
+-use serde_json::json;
+-use sha2::{Digest, Sha256};
+ 
+-fn sha(bytes: &[u8]) -> String {
+-    format!("{:x}", Sha256::digest(bytes))
+-}
+-fn put(bytes: &mut [u8], offset: usize, value: u32) {
+-    bytes[offset..offset + 4].copy_from_slice(&value.to_le_bytes());
+-}
+-struct Fixture {
+-    parent: Vec<u8>,
+-    parent_layout: Arm7Layout,
+-    child_layout: Arm7Layout,
+-}
+-impl Fixture {
+-    fn new(code: &[u8]) -> Self {
+-        let base = 0x02380000u32;
+-        let mut image = vec![0; 120];
+-        image[..code.len()].copy_from_slice(code);
+-        for (index, value) in
+-            [base + 96, base + 120, base + 64, base + 64, base + 64].into_iter().enumerate()
+-        {
+-            put(&mut image, 32 + index * 4, value);
+-        }
+-        for (index, value) in [0x037f8000, 16, 8, 0x027e0000, 16, 4].into_iter().enumerate() {
+-            put(&mut image, 96 + index * 4, value);
+-        }
+-        fn program(size: usize, image: &[u8]) -> Vec<u8> {
+-            let mut bytes = vec![0; size];
+-            for (index, value) in
+-                [0x4000, 0x02380000, 0x02380000, image.len() as u32].into_iter().enumerate()
+-            {
+-                put(&mut bytes, 0x30 + index * 4, value);
+-            }
+-            bytes[0x4000..0x4078].copy_from_slice(image);
+-            bytes
+-        }
+-        let child = program(0x5000, &image);
+-        let mut parent = program(0xf000, &image);
+-        parent[0x8000..0xd000].copy_from_slice(&child);
+-        for (index, value) in [0x5000, 49, 0x5100, 16].into_iter().enumerate() {
+-            put(&mut parent, 0x40 + index * 4, value);
+-        }
+-        put(&mut parent, 0x5000, 16);
+-        parent[0x5006..0x5008].copy_from_slice(&2u16.to_le_bytes());
+-        put(&mut parent, 0x5008, 28);
+-        parent[0x500e..0x5010].copy_from_slice(&0xf000u16.to_le_bytes());
+-        parent[0x5010..0x501c].copy_from_slice(b"\x88ChildRom\x01\xf0\0");
+-        parent[0x501c..0x5031].copy_from_slice(b"\x0apublic.srl\x08copy.srl\0");
+-        for offset in [0x5100, 0x5108] {
+-            put(&mut parent, offset, 0x8000);
+-            put(&mut parent, offset + 4, 0xd000);
+-        }
+-        let layout = |program_sha, selector, header_sha| {
+-            serde_json::from_value(json!({
+-            "identity":{"parent_rom_sha256":sha(&parent),"program":selector,"program_sha256":program_sha},
+-            "target":{"cpu":"arm7","isa":"armv4t","processor":"arm7tdmi"},"header_sha256":header_sha,
+-            "image_offset":0x4000,"image_bytes":120,"image_sha256":sha(&image),"base":base,"entry":base,
+-            "params_offset":32,"params_sha256":sha(&image[32..52]),"table_extent":{"start":96,"end":120},"table_sha256":sha(&image[96..]),
+-            "regions":[
+-                {"kind":"startup","stored_extent":{"start":0,"end":64},"runtime_base":base,"bss_bytes":0,"sha256":sha(&image[..64])},
+-                {"kind":{"autoload":0},"stored_extent":{"start":64,"end":80},"runtime_base":0x037f8000,"bss_bytes":8,"sha256":sha(&image[64..80])},
+-                {"kind":{"autoload":1},"stored_extent":{"start":80,"end":96},"runtime_base":0x027e0000,"bss_bytes":4,"sha256":sha(&image[80..96])}
+-            ]
+-        })).unwrap()
+-        };
+-        let parent_layout = layout(sha(&parent), json!({"kind":"parent"}), sha(&parent[..0x4000]));
+-        let child_layout = layout(
+-            sha(&child),
+-            json!({"kind":"nitro_fs","path":"ChildRom/public.srl"}),
+-            sha(&child[..0x4000]),
+-        );
+-        Self { parent, parent_layout, child_layout }
+-    }
+-}
++mod common;
++use common::Fixture;
+ 
+ #[test]
+ fn checked_descriptors_preserve_physical_ranges_and_exclude_table() {
+diff --git a/lib/tests/arm7_observation.rs b/lib/tests/arm7_observation.rs
+new file mode 100644
+index 0000000..d5e6ab6
+--- /dev/null
++++ b/lib/tests/arm7_observation.rs
+@@ -0,0 +1,341 @@
++mod common;
++use common::Fixture;
++use ds_decomp::{
++    analysis::arm7_observation::{ObservationError, Selection, observe},
++    config::symbol::InstructionMode::{Arm, Thumb},
++    rom::{arm7::ProgramSelector, arm7_modules::DecodeSpanError},
++};
++use serde_json::{Value, json};
++const BASE: u32 = 0x02380000;
++fn arm_bytes(words: &[u32]) -> Vec<u8> {
++    words.iter().flat_map(|w| w.to_le_bytes()).collect()
++}
++fn branch(from: u32, to: u32, link: bool, condition: u32) -> u32 {
++    condition << 28
++        | if link { 0x0b000000 } else { 0x0a000000 }
++        | (to.wrapping_sub(from).wrapping_sub(8) >> 2 & 0xffffff)
++}
++fn report(bytes: &[u8], mode: ds_decomp::config::symbol::InstructionMode) -> Value {
++    let f = Fixture::new(bytes);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let modules: Vec<_> = view.module_inputs().collect();
++    serde_json::to_value(
++        observe(&modules[0], Selection { span: BASE..BASE + bytes.len() as u32, mode }, &modules)
++            .unwrap(),
++    )
++    .unwrap()
++}
++#[test]
++fn observations_store_complete_span_text_identity_and_fixed_policy() {
++    let value = report(&arm_bytes(&[0xe1a00000, 0xe1a01001]), Arm);
++    assert_eq!(value["target"], json!({"cpu":"arm7","isa":"armv4t","processor":"arm7tdmi"}));
++    assert_eq!(value["executability"], "unknown");
++    assert_eq!(value["identity"]["cpu"], "arm7");
++    assert_eq!(value["identity"]["program"]["program"]["kind"], "parent");
++    assert_eq!(value["selection"]["span"], json!({"start":BASE,"end":BASE+8}));
++    assert_eq!(value["instructions"].as_array().unwrap().len(), 2);
++    assert_eq!(value["instructions"][0]["text"], "mov r0, r0");
++    assert_eq!(value["instructions"][0]["byte_len"], 4);
++    assert_eq!(value["transfers"][1]["target"]["boundary"], "outside_selection");
++    assert_eq!(value["transfers"][1]["target"]["address"], BASE + 8);
++}
++#[test]
++fn isa_rejection_and_truncated_thumb_bl_are_atomic() {
++    for (bytes, mode, error) in [
++        (
++            arm_bytes(&[0xe1a00000, 0xe12fff30]),
++            Arm,
++            DecodeSpanError::IllegalInstruction { address: BASE + 4 },
++        ),
++        (
++            vec![0x50, 0x47, 0xd0, 0x47],
++            Thumb,
++            DecodeSpanError::IllegalInstruction { address: BASE + 2 },
++        ),
++        (vec![0, 0xf0, 0, 0xe8], Thumb, DecodeSpanError::IllegalInstruction { address: BASE }),
++        (
++            vec![0x50, 0x47, 0, 0xf0],
++            Thumb,
++            DecodeSpanError::TruncatedInstruction { address: BASE + 2 },
++        ),
++    ] {
++        let f = Fixture::new(&bytes);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let modules: Vec<_> = view.module_inputs().collect();
++        assert_eq!(
++            observe(
++                &modules[0],
++                Selection { span: BASE..BASE + bytes.len() as u32, mode },
++                &modules
++            )
++            .unwrap_err(),
++            ObservationError::Decode(error)
++        );
++    }
++}
++#[test]
++fn invalid_selections_fail_without_panics() {
++    let f = Fixture::new(&arm_bytes(&[0xe1a00000]));
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let modules: Vec<_> = view.module_inputs().collect();
++    for span in [
++        BASE..BASE,
++        std::ops::Range { start: BASE + 4, end: BASE },
++        BASE - 4..BASE + 4,
++        BASE + 2..BASE + 6,
++        BASE + 60..BASE + 68,
++        BASE + 96..BASE + 120,
++    ] {
++        assert!(observe(&modules[0], Selection { span, mode: Arm }, &modules).is_err());
++    }
++    assert!(
++        observe(&modules[1], Selection { span: 0x037f8010..0x037f8018, mode: Arm }, &modules)
++            .is_err()
++    );
++}
++#[test]
++fn exact_program_identity_rejects_foreign_context_and_preserves_child_paths() {
++    let f = Fixture::new(&arm_bytes(&[0xe1a00000]));
++    let parent = f.parent_layout.checked(&f.parent).unwrap();
++    let child = f.child_layout.checked(&f.parent).unwrap();
++    let mut other = f.child_layout.clone();
++    other.identity.program = ProgramSelector::NitroFs { path: "ChildRom/copy.srl".into() };
++    let copy = other.checked(&f.parent).unwrap();
++    let p: Vec<_> = parent.module_inputs().collect();
++    let c: Vec<_> = child.module_inputs().collect();
++    let x: Vec<_> = copy.module_inputs().collect();
++    let selection = || Selection { span: BASE..BASE + 4, mode: Arm };
++    assert_eq!(observe(&p[0], selection(), &c).unwrap_err(), ObservationError::ForeignProgram);
++    assert_eq!(observe(&c[0], selection(), &x).unwrap_err(), ObservationError::ForeignProgram);
++    assert_eq!(observe(&p[0], selection(), &p[1..]).unwrap_err(), ObservationError::MissingSource);
++    let mut duplicate: Vec<_> = parent.module_inputs().collect();
++    duplicate.extend(parent.module_inputs());
++    assert_eq!(
++        observe(&p[0], selection(), &duplicate).unwrap_err(),
++        ObservationError::DuplicateOrOverlappingMapping
++    );
++    let values = [(&p[0], &p), (&c[0], &c), (&x[0], &x)].map(|(source, modules)| {
++        serde_json::to_value(observe(source, selection(), modules).unwrap()).unwrap()
++    });
++    assert_ne!(values[0]["identity"], values[1]["identity"]);
++    assert_ne!(values[1]["identity"], values[2]["identity"]);
++}
++#[test]
++fn b_and_bl_share_mapping_including_arm7_autoload_range() {
++    for (to, kind) in
++        [(0x037f8468, "initialized"), (0x037f8478, "bss"), (0x03808000, "unresolved_bytes")]
++    {
++        let bytes = arm_bytes(&[branch(BASE, to, false, 14), branch(BASE + 4, to, true, 14)]);
++        let f = Fixture::at(&bytes, BASE, 0x037f8468);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let modules: Vec<_> = view.module_inputs().collect();
++        let v = serde_json::to_value(
++            observe(&modules[0], Selection { span: BASE..BASE + 8, mode: Arm }, &modules).unwrap(),
++        )
++        .unwrap();
++        for edge in v["transfers"]
++            .as_array()
++            .unwrap()
++            .iter()
++            .filter(|e| e["kind"] == "branch" || e["kind"] == "call")
++        {
++            assert_eq!(edge["target"]["address"], to);
++            assert_eq!(edge["target"]["mapping"]["kind"], kind);
++            assert_eq!(edge["target"]["mode"], "Arm");
++        }
++        assert_eq!(v["instructions"].as_array().unwrap().len(), 2);
++    }
++}
++#[test]
++fn branch_offsets_wrap_without_double_pipeline_bias() {
++    for (base, to) in [(0xffff0000, 0x1000), (0x1000, 0xffff0000)] {
++        let f = Fixture::at(&arm_bytes(&[branch(base, to, false, 14)]), base, 0x037f8000);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let modules: Vec<_> = view.module_inputs().collect();
++        let v = serde_json::to_value(
++            observe(&modules[0], Selection { span: base..base + 4, mode: Arm }, &modules).unwrap(),
++        )
++        .unwrap();
++        assert_eq!(v["transfers"][0]["target"]["address"], to);
++    }
++}
++#[test]
++fn conditional_calls_separate_untaken_and_returned_paths() {
++    let v = report(&arm_bytes(&[branch(BASE, BASE + 8, true, 0)]), Arm);
++    let edges = v["transfers"].as_array().unwrap();
++    assert_eq!(edges.len(), 3);
++    assert!(edges.iter().any(|e| e["kind"] == "call" && e["guard"] == "condition_passed"));
++    assert!(edges.iter().any(|e| e["kind"] == "fallthrough"
++        && e["guard"] == "condition_failed"
++        && e["target"]["address"] == BASE + 4));
++    assert!(
++        edges.iter().any(|e| e["kind"] == "call_continuation"
++            && e["guard"] == "condition_passed_and_call_returned")
++    );
++    assert_eq!(v["instructions"][0]["condition"], "eq");
++    let b = report(&arm_bytes(&[branch(BASE, BASE, false, 1)]), Arm);
++    assert_eq!(b["transfers"].as_array().unwrap().len(), 2);
++}
++#[test]
++fn thumb_bl_width_and_interior_destinations_remain_explicit() {
++    // B at base targets the second half of the BL at base+2.
++    let v = report(&[0, 0xe0, 0, 0xf0, 0, 0xf8, 0x50, 0x47], Thumb);
++    assert_eq!(v["instructions"][1]["byte_len"], 4);
++    assert_eq!(v["instructions"][2]["address"], BASE + 6);
++    assert_eq!(v["transfers"][0]["target"]["boundary"], "instruction_interior");
++    assert_eq!(v["transfers"][0]["target"]["address"], BASE + 4);
++    let call = v["transfers"].as_array().unwrap().iter().find(|e| e["kind"] == "call").unwrap();
++    assert_eq!(call["target"]["address"], BASE + 6);
++    assert_eq!(call["target"]["boundary"], "instruction_start");
++    assert_eq!(call["target"]["mode"], "Thumb");
++}
++#[test]
++fn indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode() {
++    for (word, kind) in [
++        (0xe12fff10, "exchange"),
++        (0xe1a0f00e, "pc_write"),
++        (0xe8bd8000, "pc_write"),
++        (0xe1b0f00e, "pc_write"),
++        (0xef000000, "exception"),
++    ] {
++        let v = report(&arm_bytes(&[word]), Arm);
++        let edges = v["transfers"].as_array().unwrap();
++        assert_eq!(edges.len(), 1, "{word:08x}");
++        assert_eq!(edges[0]["kind"], kind);
++        assert_eq!(edges[0]["target"], json!({"kind":"unknown"}));
++    }
++    for bytes in [[0x50, 0x47], [0, 0xbd], [0, 0xdf]] {
++        let v = report(&bytes, Thumb);
++        assert_eq!(v["transfers"].as_array().unwrap().len(), 1);
++        assert_eq!(v["transfers"][0]["target"], json!({"kind":"unknown"}));
++    }
++    let conditional = report(&arm_bytes(&[0x01a0f00e]), Arm);
++    assert_eq!(conditional["transfers"].as_array().unwrap().len(), 2);
++    assert!(
++        conditional["transfers"]
++            .as_array()
++            .unwrap()
++            .iter()
++            .any(|e| e["kind"] == "fallthrough" && e["guard"] == "condition_failed")
++    );
++}
++
++#[test]
++fn raw_arm_imm24_sign_boundaries_and_formatted_offsets_agree() {
++    // Encoded immediate, signed byte offset including PC bias, stored operand.
++    for (imm24, offset, operand) in [
++        (0x000000, 8, "#0x8"),
++        (0x1fffff, 0x800004, "#0x800004"),
++        (0x200000, 0x800008, "#0x800008"),
++        (0x3fffff, 0x1000004, "#0x1000004"),
++        (0x7fffff, 0x2000004, "#0x2000004"),
++        (0x800000, -0x1fffff8, "#-0x1fffff8"),
++        (0xbfffff, -0xfffffc, "#-0xfffffc"),
++        (0xffffff, 4, "#0x4"),
++    ] {
++        for (opcode, mnemonic) in [(0xea000000, "b"), (0xeb000000, "bl")] {
++            let v = report(&arm_bytes(&[opcode | imm24]), Arm);
++            assert_eq!(
++                v["transfers"][0]["target"]["address"],
++                BASE.wrapping_add_signed(offset),
++                "{opcode:08x} {imm24:06x}"
++            );
++            assert_eq!(v["instructions"][0]["text"], format!("{mnemonic} {operand}"));
++        }
++    }
++}
++#[test]
++fn readonly_accessors_match_serialized_observations_without_redecoding() {
++    use ds_decomp::{
++        analysis::arm7_observation::{Executability, Target, TransferGuard, TransferKind},
++        rom::arm7::InstructionSet,
++    };
++    let f = Fixture::new(&arm_bytes(&[branch(BASE, BASE + 8, true, 0)]));
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let modules: Vec<_> = view.module_inputs().collect();
++    let out =
++        observe(&modules[0], Selection { span: BASE..BASE + 4, mode: Arm }, &modules).unwrap();
++    assert_eq!(out.identity(), modules[0].identity());
++    assert_eq!(out.target().isa, InstructionSet::ArmV4T);
++    assert_eq!(out.selection().span, BASE..BASE + 4);
++    assert_eq!(out.executability(), &Executability::Unknown);
++    let ins = &out.instructions()[0];
++    assert_eq!(ins.address(), BASE);
++    assert_eq!(ins.byte_len(), 4);
++    assert_eq!(ins.text(), "bleq #0x8");
++    assert_eq!(ins.condition(), Some("eq"));
++    let edge = &out.transfers()[0];
++    assert_eq!(edge.source(), BASE);
++    assert_eq!(edge.kind(), &TransferKind::Call);
++    assert_eq!(edge.guard(), &TransferGuard::ConditionPassed);
++    assert!(matches!(edge.target(),Target::Address{address,..} if *address==BASE+8));
++    let once = serde_json::to_string(&out).unwrap();
++    assert_eq!(once, serde_json::to_string(&out).unwrap());
++}
++#[test]
++fn thumb_halfword_selection_and_conditional_branch_keep_thumb_mode() {
++    let f = Fixture::new(&[0, 0, 0, 0xd0]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let modules: Vec<_> = view.module_inputs().collect();
++    let v = serde_json::to_value(
++        observe(&modules[0], Selection { span: BASE + 2..BASE + 4, mode: Thumb }, &modules)
++            .unwrap(),
++    )
++    .unwrap();
++    assert_eq!(v["instructions"][0]["condition"], "eq");
++    assert_eq!(v["transfers"][0]["target"]["address"], BASE + 6);
++    assert_eq!(v["transfers"][0]["target"]["mode"], "Thumb");
++    assert_eq!(v["transfers"][1]["guard"], "condition_failed");
++}
++
++#[test]
++fn thumb_bl_signed_boundary_adds_pipeline_bias_after_sign_extension() {
++    for (prefix, suffix, offset, operand) in [
++        (0xf000u16, 0xf800u16, 4, "#0x4"),
++        (0xf3ff, 0xfffd, 0x3ffffe, "#0x3ffffe"),
++        (0xf3ff, 0xfffe, 0x400000, "#0x400000"),
++        (0xf3ff, 0xffff, 0x400002, "#0x400002"),
++        (0xf400, 0xf800, -0x3ffffc, "#-0x3ffffc"),
++        (0xf7ff, 0xffff, 2, "#0x2"),
++    ] {
++        let bytes: Vec<_> = [prefix, suffix].into_iter().flat_map(u16::to_le_bytes).collect();
++        let v = report(&bytes, Thumb);
++        assert_eq!(
++            v["transfers"][0]["target"]["address"],
++            BASE.wrapping_add_signed(offset),
++            "{prefix:04x} {suffix:04x}"
++        );
++        assert_eq!(v["instructions"][0]["text"], format!("bl {operand}"));
++    }
++}
++
++#[test]
++fn thumb_short_branches_use_signed_payload_then_pc_bias() {
++    for (word, offset, operand) in [
++        (0xe3ffu16, 0x802, "#0x802"),
++        (0xe400, -0x7fc, "#-0x7fc"),
++        (0xe7ff, 2, "#0x2"),
++        (0xd07f, 0x102, "#0x102"),
++        (0xd080, -0xfc, "#-0xfc"),
++        (0xd0ff, 2, "#0x2"),
++    ] {
++        let v = report(&word.to_le_bytes(), Thumb);
++        assert_eq!(
++            v["transfers"][0]["target"]["address"],
++            BASE.wrapping_add_signed(offset),
++            "{word:04x}"
++        );
++        assert!(v["instructions"][0]["text"].as_str().unwrap().ends_with(operand));
++    }
++    for (base, word, to) in [(0x20, 0xe7ecu16, 0xffff_fffcu32), (0xffff_ff80, 0xe07fu16, 0x82)] {
++        let f = Fixture::at(&word.to_le_bytes(), base, 0x037f8000);
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let modules: Vec<_> = view.module_inputs().collect();
++        let v = serde_json::to_value(
++            observe(&modules[0], Selection { span: base..base + 2, mode: Thumb }, &modules)
++                .unwrap(),
++        )
++        .unwrap();
++        assert_eq!(v["transfers"][0]["target"]["address"], to);
++    }
++}
+diff --git a/lib/tests/common/mod.rs b/lib/tests/common/mod.rs
+new file mode 100644
+index 0000000..47072dd
+--- /dev/null
++++ b/lib/tests/common/mod.rs
+@@ -0,0 +1,76 @@
++use ds_decomp::rom::arm7::Arm7Layout;
++use serde_json::json;
++use sha2::{Digest, Sha256};
++
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++fn put(bytes: &mut [u8], offset: usize, value: u32) {
++    bytes[offset..offset + 4].copy_from_slice(&value.to_le_bytes());
++}
++pub struct Fixture {
++    pub parent: Vec<u8>,
++    pub parent_layout: Arm7Layout,
++    pub child_layout: Arm7Layout,
++}
++impl Fixture {
++    pub fn new(code: &[u8]) -> Self {
++        Self::at(code, 0x02380000, 0x037f8000)
++    }
++    pub fn at(code: &[u8], base: u32, autoload_base: u32) -> Self {
++        let mut image = vec![0; 120];
++        image[..code.len()].copy_from_slice(code);
++        for (index, value) in
++            [base + 96, base + 120, base + 64, base + 64, base + 64].into_iter().enumerate()
++        {
++            put(&mut image, 32 + index * 4, value);
++        }
++        for (index, value) in [autoload_base, 16, 8, 0x027e0000, 16, 4].into_iter().enumerate() {
++            put(&mut image, 96 + index * 4, value);
++        }
++        fn program(size: usize, image: &[u8], base: u32) -> Vec<u8> {
++            let mut bytes = vec![0; size];
++            for (index, value) in [0x4000, base, base, image.len() as u32].into_iter().enumerate() {
++                put(&mut bytes, 0x30 + index * 4, value);
++            }
++            bytes[0x4000..0x4078].copy_from_slice(image);
++            bytes
++        }
++        let child = program(0x5000, &image, base);
++        let mut parent = program(0xf000, &image, base);
++        parent[0x8000..0xd000].copy_from_slice(&child);
++        for (index, value) in [0x5000, 49, 0x5100, 16].into_iter().enumerate() {
++            put(&mut parent, 0x40 + index * 4, value);
++        }
++        put(&mut parent, 0x5000, 16);
++        parent[0x5006..0x5008].copy_from_slice(&2u16.to_le_bytes());
++        put(&mut parent, 0x5008, 28);
++        parent[0x500e..0x5010].copy_from_slice(&0xf000u16.to_le_bytes());
++        parent[0x5010..0x501c].copy_from_slice(b"\x88ChildRom\x01\xf0\0");
++        parent[0x501c..0x5031].copy_from_slice(b"\x0apublic.srl\x08copy.srl\0");
++        for offset in [0x5100, 0x5108] {
++            put(&mut parent, offset, 0x8000);
++            put(&mut parent, offset + 4, 0xd000);
++        }
++        let layout = |program_sha, selector, header_sha| {
++            serde_json::from_value(json!({
++            "identity":{"parent_rom_sha256":sha(&parent),"program":selector,"program_sha256":program_sha},
++            "target":{"cpu":"arm7","isa":"armv4t","processor":"arm7tdmi"},"header_sha256":header_sha,
++            "image_offset":0x4000,"image_bytes":120,"image_sha256":sha(&image),"base":base,"entry":base,
++            "params_offset":32,"params_sha256":sha(&image[32..52]),"table_extent":{"start":96,"end":120},"table_sha256":sha(&image[96..]),
++            "regions":[
++                {"kind":"startup","stored_extent":{"start":0,"end":64},"runtime_base":base,"bss_bytes":0,"sha256":sha(&image[..64])},
++                {"kind":{"autoload":0},"stored_extent":{"start":64,"end":80},"runtime_base":autoload_base,"bss_bytes":8,"sha256":sha(&image[64..80])},
++                {"kind":{"autoload":1},"stored_extent":{"start":80,"end":96},"runtime_base":0x027e0000,"bss_bytes":4,"sha256":sha(&image[80..96])}
++            ]
++        })).unwrap()
++        };
++        let parent_layout = layout(sha(&parent), json!({"kind":"parent"}), sha(&parent[..0x4000]));
++        let child_layout = layout(
++            sha(&child),
++            json!({"kind":"nitro_fs","path":"ChildRom/public.srl"}),
++            sha(&child[..0x4000]),
++        );
++        Self { parent, parent_layout, child_layout }
++    }
++}

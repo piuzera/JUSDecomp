@@ -1,0 +1,13 @@
+{
+  "reviewer": "gpt-6-astra",
+  "checkpoint": "0d7ed70",
+  "result": "No flags",
+  "root_tests": 229,
+  "skips": 0,
+  "source_bytes": 304,
+  "accepted_contexts": 0,
+  "register_role_documentation_corrected": true,
+  "post_call_instruction_words_matched": 7,
+  "canonical_source_hashes_unchanged": 72,
+  "source_aliases_and_comparison_rules_unchanged": true
+}

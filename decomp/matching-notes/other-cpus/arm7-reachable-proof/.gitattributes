@@ -1,0 +1,4 @@
+*.log text eol=lf
+*.txt text eol=lf
+*.patch -text
+*.log whitespace=-blank-at-eof

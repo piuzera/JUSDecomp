@@ -1,0 +1,69 @@
+[
+  {
+    "path": "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/physical_initializer.c",
+    "actual_sha256": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+    "wrong_expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rejected": true,
+    "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/physical_initializer.c"
+  },
+  {
+    "path": "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/reference-shape.json",
+    "actual_sha256": "d4e9794bc8b159f28fb969617169ef8159cb4302d6c9b29f25b016913e46a97b",
+    "wrong_expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rejected": true,
+    "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/reference-shape.json"
+  },
+  {
+    "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+    "actual_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "wrong_expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rejected": true,
+    "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe"
+  },
+  {
+    "path": "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+    "actual_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "wrong_expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rejected": true,
+    "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/wibo/wibo-macos"
+  },
+  {
+    "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll",
+    "actual_sha256": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "wrong_expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rejected": true,
+    "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll"
+  },
+  {
+    "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll",
+    "actual_sha256": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "wrong_expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rejected": true,
+    "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll"
+  },
+  {
+    "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll",
+    "actual_sha256": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+    "wrong_expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "rejected": true,
+    "diagnostic": "changed or missing pinned input/artifact: /private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll"
+  },
+  {
+    "control": "-O",
+    "exit_status": 1,
+    "output_absent": true,
+    "stderr": "Optimized Python disables verification checks; run without -O or -OO.\n"
+  },
+  {
+    "control": "-OO",
+    "exit_status": 1,
+    "output_absent": true,
+    "stderr": "Optimized Python disables verification checks; run without -O or -OO.\n"
+  },
+  {
+    "control": "existing_output",
+    "exit_status": 1,
+    "marker_unchanged": true,
+    "stderr": "blocked: output already exists; supply a fresh directory\n"
+  }
+]

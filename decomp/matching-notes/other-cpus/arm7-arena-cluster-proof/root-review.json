@@ -1,0 +1,489 @@
+{
+  "status": "passed",
+  "public_replay": "fresh committed package, original ROM and pinned tools",
+  "tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "root_trial_receipt_sha256": "2e86b315be1ad70fe35554bad8eda084eb5d4504f44aea5c94f69ee58eeb0d73",
+  "candidates": [
+    {
+      "role": "lower_store",
+      "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+      "vma": 58707716,
+      "bytes": 20,
+      "recipe": "build82_O4s",
+      "original_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488"
+    },
+    {
+      "role": "upper_store",
+      "source_sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+      "vma": 58707736,
+      "bytes": 20,
+      "recipe": "build114_O4p",
+      "original_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe"
+    },
+    {
+      "role": "lower_getter",
+      "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+      "vma": 58707756,
+      "bytes": 88,
+      "recipe": "build82_O4s",
+      "original_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2"
+    },
+    {
+      "role": "upper_getter",
+      "source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+      "vma": 58707844,
+      "bytes": 128,
+      "recipe": "build82_O4s",
+      "original_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4"
+    }
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "positive": {
+        "linked_elf_sha256": "dbf07694b3d6b50643c1a348dfe0b93844cd7ff46345ff0fcf1ccbaaef54efca",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "BSS_bytes": 21424,
+        "candidates": [
+          {
+            "role": "lower_store",
+            "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "map_input": "lower_store.o:(.text)",
+            "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+            "map_vma": 58707716,
+            "map_lma": 37245108,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_low_store_trial",
+              "vma": 58707716,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20660,
+            "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+            "linked_wram_word": null
+          },
+          {
+            "role": "upper_store",
+            "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "map_input": "upper_store.o:(.text)",
+            "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+            "map_vma": 58707736,
+            "map_lma": 37245128,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_store_trial",
+              "vma": 58707736,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20680,
+            "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+            "linked_wram_word": null
+          },
+          {
+            "role": "lower_getter",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "lower_getter.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+            "linked_wram_word": 58768528
+          },
+          {
+            "role": "upper_getter",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "upper_getter.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+            "linked_wram_word": 58768528
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0
+      },
+      "load_segments": 6,
+      "independent_elf_sha256": "c24aed47166192ebef56a5ec52a206df372a6fcdd98ab71d2ac074faeef88384",
+      "different_boundary_symbol_names": true,
+      "wrong_shared_WRAM_offsets": [
+        20784,
+        20908
+      ],
+      "all_four_omitted_roles_rejected": true,
+      "store_swap": {
+        "strict_role_rejection": "lower_store map placement (58707736, 37245128, 20) differs from contract",
+        "actual_store_functions": [
+          {
+            "name": "arm7_low_store_trial",
+            "vma": 58707736,
+            "size": 20,
+            "section": 5
+          },
+          {
+            "name": "arm7_store_trial",
+            "vma": 58707716,
+            "size": 20,
+            "section": 5
+          }
+        ],
+        "linked_elf_sha256": "f5055a4b6cd21b7e73818cba47027118c25652f3c597727d3c18acf57d9edf1b"
+      },
+      "store_swap_native_returncode": 0,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "positive": {
+        "linked_elf_sha256": "dbf07694b3d6b50643c1a348dfe0b93844cd7ff46345ff0fcf1ccbaaef54efca",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "BSS_bytes": 21424,
+        "candidates": [
+          {
+            "role": "lower_store",
+            "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "map_input": "lower_store.o:(.text)",
+            "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+            "map_vma": 58707716,
+            "map_lma": 37245108,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_low_store_trial",
+              "vma": 58707716,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20660,
+            "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+            "linked_wram_word": null
+          },
+          {
+            "role": "upper_store",
+            "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "map_input": "upper_store.o:(.text)",
+            "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+            "map_vma": 58707736,
+            "map_lma": 37245128,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_store_trial",
+              "vma": 58707736,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20680,
+            "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+            "linked_wram_word": null
+          },
+          {
+            "role": "lower_getter",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "lower_getter.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+            "linked_wram_word": 58768528
+          },
+          {
+            "role": "upper_getter",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "upper_getter.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+            "linked_wram_word": 58768528
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0
+      },
+      "load_segments": 6,
+      "independent_elf_sha256": "c24aed47166192ebef56a5ec52a206df372a6fcdd98ab71d2ac074faeef88384",
+      "different_boundary_symbol_names": true,
+      "wrong_shared_WRAM_offsets": [
+        20784,
+        20908
+      ],
+      "all_four_omitted_roles_rejected": true,
+      "store_swap": {
+        "strict_role_rejection": "lower_store map placement (58707736, 37245128, 20) differs from contract",
+        "actual_store_functions": [
+          {
+            "name": "arm7_low_store_trial",
+            "vma": 58707736,
+            "size": 20,
+            "section": 5
+          },
+          {
+            "name": "arm7_store_trial",
+            "vma": 58707716,
+            "size": 20,
+            "section": 5
+          }
+        ],
+        "linked_elf_sha256": "f5055a4b6cd21b7e73818cba47027118c25652f3c597727d3c18acf57d9edf1b"
+      },
+      "store_swap_native_returncode": 0,
+      "malformed_load_rejected": true
+    }
+  ],
+  "root_independent_physical_load_readback_sha256": "e66841286282f272c92cd64e8d58def8c53bfee1a6b2b536fffe7b239c6333fc",
+  "git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/checked-layouts.json",
+      "bytes": 3685,
+      "sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/cluster.py",
+      "bytes": 28958,
+      "sha256": "01356d36d046a4da261f3a66ef822896a73758bb3d187409380250507c844ee6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/contract.json",
+      "bytes": 2680,
+      "sha256": "fde2d099b5cb03d21b000563002aebd24fb49d7bd37fd1d748bb042f7dd7611a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/evidence-pins.json",
+      "bytes": 6383,
+      "sha256": "3ac295e33b58dd61d71939ab0705b829c5a5850c09e2b538f04c9e03da1ae4c9"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/first-compile.json",
+      "bytes": 3118,
+      "sha256": "1715f4524279276a1064d1e65fa319d9926df6db87db60af7631115ff00b33b7"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/high_getter_trial.c",
+      "bytes": 904,
+      "sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/low_getter_trial.c",
+      "bytes": 609,
+      "sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/low_store_trial.c",
+      "bytes": 138,
+      "sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/lower_getter-compiled-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/lower_getter-elf-readback.txt",
+      "bytes": 3298,
+      "sha256": "a3e46f39fe86128ca0b7640b7c6b6b3f0da4888b57b33b297b70faab59cbd354"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/lower_store-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/lower_store-elf-readback.txt",
+      "bytes": 2476,
+      "sha256": "91e3c3e50a97c34456e76c9bdb6f0074281862fa86ef8554dbec165ad00e8268"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-0-lower_getter-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-0-lower_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-0-upper_getter-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-0-upper_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-1-lower_getter-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-1-lower_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-1-upper_getter-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-1-upper_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/original-manifest.json",
+      "bytes": 6911,
+      "sha256": "c6ab4b6b982bfc98af67d5e11f39c6dc50d7f11a84c473aebece78b98a16c88e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/public-replay.log",
+      "bytes": 86,
+      "sha256": "2076551d1f635b9a0868a0073142dc184f10869b10a835a86d59f33e2df15369"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/public-tests.log",
+      "bytes": 788,
+      "sha256": "0f3af80100f1e2a38b568e8dbf9f873523cc531689bb4ccbbfdb6cb3525c634d"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/recipes.json",
+      "bytes": 2493,
+      "sha256": "069c9eaf14c89c115bfb2f88d0e2c9f59697ce4b674059ceceee8f3d676bd080"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/reproduce.py",
+      "bytes": 4495,
+      "sha256": "ad6730d52bd044d4ea4940ed94612d6eec0c8f0080e07c012d55629fc3f2163c"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/store_trial.c",
+      "bytes": 134,
+      "sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/tdd-green.log",
+      "bytes": 102,
+      "sha256": "468ba3da8dea727696c393dce5bc875a1724f660b99684778d3125b48a4712ff"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/tdd-red.log",
+      "bytes": 4127,
+      "sha256": "c411088d74c8daa6f96349944e9fe93ee1f4f5489c1238d96815d04d6669f2c4"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py",
+      "bytes": 7289,
+      "sha256": "f86b46b1b9115b131568b6131834fcc1c9ab53fe98d9970ceafea40a7f1dbb46"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/trial-proof.json",
+      "bytes": 108450,
+      "sha256": "567b0dd0cdc85e7096b599e9903631f8bace1806bc393c02a88767aff4b53711"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/upper_getter-compiled-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/upper_getter-elf-readback.txt",
+      "bytes": 3514,
+      "sha256": "8d175475fc20dd06b64f9f59110271379e5312c272e22e8e8b252e5e96e548a6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/upper_store-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/upper_store-elf-readback.txt",
+      "bytes": 2472,
+      "sha256": "943f5a6bf249b65cf8dc3ce214909e82e46d36a1e6d203ac36f45410667d739a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-arena-cluster-trial.md",
+      "bytes": 9553,
+      "sha256": "961fc1a2d12f03d796710285531580712b7f270d8fd26f8464d83152b50e1b7d"
+    }
+  ],
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T10_complete": false
+}

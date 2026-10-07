@@ -1,0 +1,18 @@
+{
+  "reviewer": "gpt-6-astra",
+  "reviewed_integration_commit": "c1857bf",
+  "status": "cleared",
+  "attention_flags": [],
+  "base_function_bodies_verified": 25,
+  "configuration_related_bodies_verified": 8,
+  "configuration_relocations_verified": 22,
+  "canonical_source_hashes_verified": 72,
+  "canonical_source_bytes": 304,
+  "source_credit_added": 0,
+  "unresolved": [
+    "Native ownership types",
+    "Live failure reachability",
+    "Caller success invariant"
+  ],
+  "task_complete": false
+}

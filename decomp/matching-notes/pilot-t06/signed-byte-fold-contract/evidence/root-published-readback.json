@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "scope": "Root actual committed checker replay, original objects and every input/output byte, no runtime/compiler execution",
+  "source_commit": "2e7be731c894043b81b8db492e172cb4b17e80cc",
+  "writer_commit": "47b04132290261aa94695300ae4a212305dbdaa9",
+  "receipt_path": "/private/tmp/jus-38-root-published-fresh/readback.json",
+  "receipt_sha256": "f2194831ff4d28c9edabe50338fc3b54269f4b70e72a54d85963b72117c0e56a",
+  "checked_input_and_artifact_count": 539,
+  "exact_regular_output_count": 478,
+  "actual_incoming_sites": 62,
+  "region_qualified_callers": 42,
+  "helper_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+  "predictions": {
+    "independent_one_step_cases": 66300,
+    "vectors": [
+      {
+        "input_hex": "00",
+        "predicted_return": "0x0000",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "4100",
+        "predicted_return": "0x0041",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "414200",
+        "predicted_return": "0x0083",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "7f00",
+        "predicted_return": "0x007f",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "8000",
+        "predicted_return": "0xff80",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "ff00",
+        "predicted_return": "0xffff",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "804100",
+        "predicted_return": "0x00c1",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "ffff00",
+        "predicted_return": "0x0000",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "410042",
+        "predicted_return": "0x0041",
+        "status": "static mathematical prediction; not original runtime measurement"
+      },
+      {
+        "input_hex": "414141414141414141414141414141414100",
+        "predicted_return": "0x0041",
+        "status": "static mathematical prediction; not original runtime measurement"
+      }
+    ],
+    "classification": "derived mathematical predictions; no original-runtime execution"
+  },
+  "repository_provenance": {
+    "actual_input_pins": 57,
+    "exact_subset_of_old119": true,
+    "raw": 10,
+    "typed_LF_CRLF": 47,
+    "owner_sha256": "0bbbc6b52c63eeb16d08e08725d31c72c2cd9922514a0ae1d74d05a3c96a8cb7"
+  },
+  "committed_13_capsule_file_sha256": {
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py": "fff857a21ff72c38e1a04e38e7718df082fc6c9e2b65bf2d8dcc212cf8970c29",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/README.md": "9e3c50004f881b2d1e0c9b9e806939bdfb3df963f9f1b756b68e1882949b1005",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/test_original.py": "543d044c137018a3b00b36b83ac7f4575bf8dcae4dacdec5ddcb986531118d89",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/contract.json": "29a0b37e813ab9f7cdda7499d69af8873b4e496c1cf14ce5b38c06a3b7b48eeb",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/fresh-readback.json": "1907ad3577bfd0c6ee49238d558ef0dc48fa95155886b21900fadfd9bf541942",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/cli-controls.json": "55821f8558fc8ed6234e5ccff479c6ab609be7e194a5b62f11105f82fe96354e",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/boundary-history.json": "5fd56c4ec37ef151df1d749f3931e618aa5a5c6e2e1d9d55be68486f1e835b9c",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/original-boundary-corrected-red.log": "330e37596d49d2df87d54fbe32e1c0c4333a62dbed55a7cfaa91c88548f30837",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/original-boundary-green.log": "1faafe3365cfec2e6f2b5f74278db37742c458d240624226fccb8a8721884a95",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/independent-incoming-review.json": "8bfffb943168c5fc9cd7e69449b6851ac3427f990033ff385cba449a92b13a02",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/original-boundary-red.log": "baeb02b8691099cbf47a99df44ce5658fbe79018e84b6394b91a4cb2c397063e",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/independent-static-review.json": "f229161f22e7617c46693f8439970975f4c4bf073b0bb0aa319c781495480544",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/evidence/static-contract-review.json": "3971e1fdd5f1e7dbbbfbd6d90611285265658fc1330b459e3eec1965c0e1918f"
+  },
+  "canonical_source_bytes": 304,
+  "ARM7_accepted_source_bytes": 0,
+  "global_denominator": "unknown"
+}

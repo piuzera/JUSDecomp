@@ -1,0 +1,4 @@
+ACCEPTED 4c087a58bc00120ec56ee8769d8c38f1c5cbb2c9; tree d5d39af1ef49ceaf57b04c5ed5a5b35d391016e5
+Git closure 25 files, manifest 24 pins; four tests pass
+Both direct ELFs 6298ed9bc7214942ac6fbf6fefedf26c5dafd65a7806c53f14e75083783597c8; full original image 0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139; shared WRAM offsets 20784,20908
+Receipt 8611 bytes SHA256 4888a5e5fc0c9da99b959e482f7feede92b5049c1d6bdd685e2d4b0a9ca91c1d

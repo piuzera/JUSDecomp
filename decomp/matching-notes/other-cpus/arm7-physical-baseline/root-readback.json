@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "child_fat": {
+    "file_id": 79,
+    "start": 2340864,
+    "end": 4482248
+  },
+  "programs": [
+    {
+      "program": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "whole_program_bytes": 67108864,
+      "original_header": {
+        "offset": 2162688,
+        "entry": 37224448,
+        "base": 37224448,
+        "size": 165552
+      },
+      "elf_only_image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "artifact_image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "exact_original_image": true
+    },
+    {
+      "program": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "whole_program_bytes": 2141384,
+      "original_header": {
+        "offset": 1972736,
+        "entry": 37224448,
+        "base": 37224448,
+        "size": 165552
+      },
+      "elf_only_image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "artifact_image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "exact_original_image": true
+    }
+  ],
+  "source_bytes": 0,
+  "t10_complete": false
+}

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.10",
+  "status": "candidate_binary_roundtrip_verified",
+  "scope": "ChildRom/JSS2Child.srl ARM9 main/ITCM/DTCM reference binary roundtrip only",
+  "production_pipeline_integrated": false,
+  "task_complete": false,
+  "source_complete": false,
+  "source_bytes": 0,
+  "source_functions": 0,
+  "global_source_percent": null,
+  "arm7": "preserved_binary; linked baseline and source unresolved",
+  "original_compiler_abi_sdk_match": "unresolved",
+  "program": {
+    "path": "ChildRom/JSS2Child.srl",
+    "bytes": 2141384,
+    "sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+  },
+  "compression": {
+    "algorithm": "backward LZ77 / BLZ",
+    "input_bytes": 2628408,
+    "input_sha256": "d93722d85fbedc22fd09d8a35471a051b0dc19d8876bba91947f08ac4236d2fa",
+    "stored_bytes": 1955956,
+    "stored_sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+    "raw_encoder_sha256": "2fb27c4561c916b69b6fb323cf6e6df625d8c7178db9e0ae1fbe074329637239",
+    "compression_start": 16384,
+    "pointer_offset": "0xbb8",
+    "generated_pointer": "0x21dd874",
+    "footer_packed": "0x81d9874",
+    "expansion_bytes": 672452,
+    "different_original_stored_bytes": 0,
+    "codec_repair_required": false
+  },
+  "encoder": {
+    "library": "ds-rom",
+    "version": "0.8.0",
+    "source_revision": "3bfef542191764df2afa39254bbf18f68c621d22",
+    "crate_checksum": "1198474d0a87563e36273f87278d1fddf595e88f8c4c5fe4c51ca28e264409e1",
+    "build_context_dsd_parent": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+    "build_context_dsd_repair": "78630f8f54835e0e627cd4e45a9626d88c307f8b",
+    "example_source": "child_compression_probe.rs",
+    "example_source_sha256": "9baf8ab864540b9eaca6b7916f57074459ce89b5b95bb98d62bfa2c3180783c6",
+    "cargo_lock_sha256": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+    "native_example_sha256": "99f89606cc359780861c44416cf7b6bae8fc2af1afa8a29e9ecb94914d1c3c51",
+    "profile": "release-fast",
+    "target": "aarch64-apple-darwin",
+    "rustc": "1.98.1",
+    "production_tool_pin_changed": false
+  },
+  "native_modules": {
+    "main": {
+      "status": "passed",
+      "bytes": 2624320,
+      "raw_extracted_sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+      "compared_sha256": "617bec5f0664ca87113abeaf5511433d3be6b42c711f2b936c28d3420f1f6db3",
+      "hash_domain": "original pointer restored from pinned metadata",
+      "matched_source_bytes": 0
+    },
+    "ITCM": {
+      "status": "passed",
+      "bytes": 3968,
+      "raw_extracted_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "compared_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    },
+    "DTCM": {
+      "status": "passed",
+      "bytes": 96,
+      "raw_extracted_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "compared_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    }
+  },
+  "live_input_hashes": {
+    "original_child": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+    "encoder": "99f89606cc359780861c44416cf7b6bae8fc2af1afa8a29e9ecb94914d1c3c51",
+    "native/main": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "native/ITCM": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+    "native/DTCM": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf"
+  },
+  "checks": {
+    "fresh_codec_output": "passed",
+    "live_inputs_unchanged": "passed",
+    "actual_link_provenance": "passed; verify_link_record with independent LLVM tool pins",
+    "expanded_encoder_output_equals_joined_native_images": "passed",
+    "stored_arm9_byte_equality": "passed",
+    "whole_child_byte_equality": "passed",
+    "public_codec_fixture": "256 invented A bytes: compress/decompress passed under original Cargo.lock",
+    "public_packer_regressions": 11,
+    "matching_tests": {
+      "passed": 149,
+      "skipped": 1,
+      "total": 150
+    }
+  },
+  "preservation": {
+    "arm9_initialized_bytes_from_linked_files": 2628384,
+    "autoload_layout_metadata_bytes": 24,
+    "other_child_bytes_preserved": 185428,
+    "header_tables_assets_padding_signature": "exact original whole hash; no layout reconstruction",
+    "fnt": {
+      "offset": "0x20a200",
+      "bytes": 9,
+      "root_subtable_offset": 8,
+      "first_file_id": 0,
+      "directory_count": 1,
+      "entries": 0
+    },
+    "fat": {
+      "offset": "0x20a400",
+      "bytes": 0,
+      "entries": 0
+    },
+    "header_bytes": 16384,
+    "used_rom_size": "0x20ac40",
+    "multiboot_signature_bytes": 136
+  },
+  "generic_dsd_rom_build": {
+    "status": "failed",
+    "initial_failure": "Configured empty files/ directory omitted by extraction",
+    "after_empty_directory_created": "ds-rom src/rom/file.rs:238 panics: No first file ID found, directory is empty",
+    "additional_source_obstructions": [
+      "Rom::build places ARM9 at first aligned address after raw header rather than preserving original 0x4000 offset",
+      "Rom::build pads the complete image to next power of two rather than preserving trimmed child length",
+      "Rom::build derives FAT length from max_file_id + 1; the empty original FAT has zero entries"
+    ],
+    "source_evidence": {
+      "filesystem": "ds-rom0.8.0/src/rom/file.rs:237",
+      "builder": "ds-rom0.8.0/src/rom/rom.rs:846",
+      "encoder": "ds-rom0.8.0/src/rom/arm9.rs:472"
+    },
+    "tested_tools": [
+      {
+        "kind": "original_pinned",
+        "sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5"
+      },
+      {
+        "kind": "child_swi_candidate",
+        "sha256": "d1117b6126a27c3c1f8d429840c61671f492d7bcb22bedc84e42ed8509a5041f"
+      }
+    ]
+  }
+}

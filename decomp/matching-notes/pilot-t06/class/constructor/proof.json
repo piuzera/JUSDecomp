@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.6",
+  "status": "passed",
+  "scope": "one additional CommonEffect constructor ABI entry; physical storage view only",
+  "source_commit": "18aa5ab27c56362d31124ada721e93c082fda9d7",
+  "private_full_report_sha256": "203d3e38c6cf335138e68a27eb3742fc582cc6718b164d3fa6d4cc4b71a580ac",
+  "identity": {
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "cpu": "arm9",
+    "module": "main",
+    "section": ".text",
+    "address": "0x0206ca4c",
+    "mode": "arm",
+    "extent_bytes": 64,
+    "instruction_bytes": 56,
+    "literal_bytes": 8,
+    "original_name": "func_0206ca4c",
+    "generated_name": "func_0206ca4c",
+    "new_aliases": []
+  },
+  "source": {
+    "path": "decomp/src/main/common_effect_construct.cpp",
+    "sha256": "359261ad131044ed47c8785c54bf5d3bf8f91dd77afe9667b6b078b17aeedd22",
+    "flags": [
+      "-proc",
+      "arm946e",
+      "-Cpp_exceptions",
+      "off",
+      "-nostdinc",
+      "-O2"
+    ],
+    "abi": {
+      "language": "C++",
+      "instruction_mode": "arm",
+      "endianness": "little",
+      "pointer_bits": 32,
+      "settings": "pinned compiler defaults"
+    },
+    "headers": {},
+    "opaque_contract": "CommonEffectAbi stays forward declared here. Distinct CommonEffectStorage models only the observed ARM physical storage; no divergent CommonEffectAbi definition or shared header added.",
+    "physical_assertions": {
+      "pointer_bytes": 4,
+      "word_bytes": 4,
+      "halfword_bytes": 2,
+      "storage_bytes": 132,
+      "vptr_offset": 0,
+      "halfword_offset": 128,
+      "opaque_regions": [
+        "0x04..0x7f",
+        "0x82..0x83"
+      ]
+    },
+    "call_contracts": [
+      {
+        "symbol": "func_02015d0c",
+        "arguments": [
+          "self",
+          "incoming unchanged callback/address token",
+          "zero third word"
+        ],
+        "result": "ignored"
+      },
+      {
+        "symbol": "func_0202f81c",
+        "arguments": [
+          "self",
+          "word loaded at data_020afc40 + 8"
+        ],
+        "result": "ignored"
+      }
+    ],
+    "writes": [
+      "install data_0209e114 address at self + 0",
+      "zero halfword at self + 0x80"
+    ],
+    "return_contract": "Return original incoming self regardless of either callee result. Callback token is forwarded, not invoked by this entry."
+  },
+  "object": {
+    "raw_sha256": "9b5a025a12cef36c56b000fee8f58eff01f3c13365b3a38df447299f948cc497",
+    "reference_sha256": "d7da4586375e7902aec6748d6e68149ebc36a7dc237dbb58b95706e6ae2a83e1",
+    "normalized_sha256": "2c2a47e545095a3566e7b3c2bf70c7025e0186a59beb79b045b803960befb6e8",
+    "actual_link_kind": "source",
+    "filename": "common_effect_construct.o",
+    "checks": {
+      "status": "passed",
+      "sections": [
+        {
+          "name": ".text",
+          "size": 64,
+          "flags": 6,
+          "kind": "initialized"
+        }
+      ],
+      "functions": [
+        {
+          "name": "func_0206ca4c",
+          "offset": 0,
+          "size": 64,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ],
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 12,
+          "type": 1,
+          "symbol": "func_02015d0c",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 44,
+          "type": 1,
+          "symbol": "func_0202f81c",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 56,
+          "type": 2,
+          "symbol": "data_0209e114",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 60,
+          "type": 2,
+          "symbol": "data_020afc40",
+          "addend": 0
+        }
+      ]
+    }
+  },
+  "tools": {
+    "dsd": {
+      "sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+      "version": "0.12.0"
+    },
+    "lld": {
+      "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "version": "23.1.2"
+    },
+    "clang": {
+      "sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+      "version": "23.1.2"
+    },
+    "source_compiler": {
+      "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "version": "3.0 build 114"
+    },
+    "compiler_runner": {
+      "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "version": "1.2.0"
+    }
+  },
+  "compiler_dll_hashes": {
+    "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "negative_trials": {
+    "wrong_offset": {
+      "status": "failed",
+      "accepted_units": 0,
+      "published_override_count": 0,
+      "failure": "source compilation failed or produced no fresh object",
+      "flags": [
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2",
+        "-DT06_UNKNOWN_BASE_BYTES=0x7a"
+      ],
+      "reference_sha256": "d7da4586375e7902aec6748d6e68149ebc36a7dc237dbb58b95706e6ae2a83e1",
+      "compiled_sha256": null,
+      "reference_unchanged": true,
+      "functions": []
+    },
+    "wrong_base_callee": {
+      "status": "failed",
+      "accepted_units": 0,
+      "published_override_count": 0,
+      "failure": "relocation identities/offsets/types/symbols/addends differ",
+      "flags": [
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2",
+        "-Dfunc_02015d0c=func_02015d70"
+      ],
+      "reference_sha256": "d7da4586375e7902aec6748d6e68149ebc36a7dc237dbb58b95706e6ae2a83e1",
+      "compiled_sha256": "6520d784897ab37550a2df37343d317dd22154a2da2667377170689914e8d772",
+      "reference_unchanged": true,
+      "functions": [
+        {
+          "name": "func_0206ca4c",
+          "offset": 0,
+          "size": 64,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ]
+    },
+    "default_context": {
+      "status": "failed",
+      "accepted_units": 0,
+      "published_override_count": 0,
+      "failure": "function identities/extents/modes differ from declared reference TU",
+      "flags": [
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc"
+      ],
+      "reference_sha256": "d7da4586375e7902aec6748d6e68149ebc36a7dc237dbb58b95706e6ae2a83e1",
+      "compiled_sha256": "6a56bb6a81aea74d6c6ec0b83396d41796732ea89a934a085eb75e2598229b45",
+      "reference_unchanged": true,
+      "functions": [
+        {
+          "name": "func_0206ca4c",
+          "offset": 0,
+          "size": 88,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ]
+    }
+  },
+  "stages": [
+    {
+      "name": "intake",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "tool_versions",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "prepare_config",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "extract",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "delink",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_config",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_delink",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_build",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "lcf",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "native_link",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "link_inputs",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "check_modules",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "check_symbols",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "direct_comparison",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "relocation_check",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_ownership",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "freshness",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "rom_roundtrip",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "rom_freshness",
+      "status": "passed",
+      "exit_status": 0
+    }
+  ],
+  "direct_comparison": {
+    "status": "passed",
+    "modules": 17,
+    "initialized_bytes": 2141728,
+    "bss_bytes": 928544
+  },
+  "original_relocations": {
+    "status": "passed",
+    "counts": {
+      "total": 87493,
+      "validated": 87493,
+      "failed": 0,
+      "unresolved": 0
+    },
+    "relocation_types": {
+      "2": 32552,
+      "1": 31038,
+      "10": 23903
+    }
+  },
+  "ownership": {
+    "status": "passed",
+    "intervals": [
+      {
+        "module": "ARM9",
+        "section": ".text",
+        "start": 33999436,
+        "end": 33999492,
+        "category": "instructions",
+        "implementation_category": "game"
+      },
+      {
+        "module": "ARM9",
+        "section": ".text",
+        "start": 33999492,
+        "end": 33999496,
+        "category": "literals",
+        "implementation_category": "game"
+      },
+      {
+        "module": "ARM9",
+        "section": ".text",
+        "start": 33999496,
+        "end": 33999500,
+        "category": "literals",
+        "implementation_category": "game"
+      }
+    ],
+    "function": {
+      "module": "ARM9",
+      "name": "func_0206ca4c",
+      "start": 33999436,
+      "end": 33999500,
+      "mode": "a",
+      "implementation_category": "game"
+    }
+  },
+  "rom_roundtrip": {
+    "status": "passed",
+    "rom": {
+      "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+      "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "size_bytes": 67108864
+    },
+    "arm9_modules_checked": 17,
+    "preserved_arm7_source_bytes": 0,
+    "preserved_asset_source_bytes": 0
+  },
+  "source_coverage": {
+    "status": "credited",
+    "matched_source_bytes": 224,
+    "matched_instruction_bytes": 192,
+    "matched_literal_bytes": 32,
+    "matched_functions": 6,
+    "implementation_categories": {
+      "game": {
+        "matched_source_bytes": 192,
+        "matched_functions": 5
+      },
+      "sdk": {
+        "matched_source_bytes": 32,
+        "matched_functions": 1
+      },
+      "unknown": {
+        "matched_source_bytes": 0,
+        "matched_functions": 0
+      }
+    },
+    "global_percent": null,
+    "added_function_instruction_bytes": 56,
+    "added_function_literal_bytes": 8
+  },
+  "effort": {
+    "bounded_compiler_contexts": 2,
+    "default_context_result": "rejected: 88-byte function",
+    "accepted_context": "2.0/base with -O2, this TU only",
+    "source_body_revision_loops": 1,
+    "fresh_full_pipeline_attempts": 1,
+    "pipeline_elapsed_seconds": 5.139,
+    "human_minutes": "not independently timed"
+  },
+  "remaining_unknowns": [
+    "Native virtual-class declaration and ownership semantics",
+    "Clone, initializer and virtual object-configuration method source matching",
+    "Original base constructor/helper C++ return types and callback types elsewhere",
+    "Runtime behavior checks queued for T07; no emulator work performed"
+  ]
+}

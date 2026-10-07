@@ -1,0 +1,80 @@
+# Design sketch only. No production imports or implementation.
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Mapping
+
+@dataclass(frozen=True)
+class CurrentBuild:
+    directory: Path
+    build_id: str
+    started_ns: int
+
+@dataclass(frozen=True)
+class ChildApprovals:
+    # Private approval loader verifies role-specific pins and complete source context.
+    analyzer_approval: Path
+    codec_approval: Path
+    native_tools_approval: Path
+
+@dataclass(frozen=True)
+class ProgramIdentity:
+    parent_sha256: str
+    nitrofs_path: str | None
+    file_id: int | None
+    start: int
+    end: int
+    original_sha256: str
+
+@dataclass(frozen=True)
+class ExecutableWrite:
+    identity: ProgramIdentity
+    cpu: str
+    rom_offset: int
+    data: bytes
+    expected_sha256: str
+    source_file: Path
+    source_file_sha256: str
+    source_slice_offset: int
+    linked_elf: Path
+    linked_elf_sha256: str
+    source_bytes: int = 0
+
+@dataclass(frozen=True)
+class VerifiedProgramWrites:
+    # Private constructor; built only by a successful live recheck.
+    writes: tuple[ExecutableWrite, ExecutableWrite, ExecutableWrite]
+    child_identity: ProgramIdentity
+
+    def verify_child(self, rebuilt_parent: bytes) -> None:
+        raise NotImplementedError
+
+class LiveNativePrograms:
+    # Private constructor. Immutable capture includes report serialization,
+    # artifact/input digests, expectations, and subordinate ARM7 live operation.
+    # Neither a JSON constructor nor report-based load exists.
+    @property
+    def report(self) -> dict:
+        raise NotImplementedError  # Return a detached copy.
+
+    @property
+    def input_snapshot(self) -> Mapping[Path, str]:
+        raise NotImplementedError  # Read-only digest inventory.
+
+    @property
+    def artifact_inventory(self) -> Mapping[Path, str]:
+        raise NotImplementedError
+
+    def recheck(self, build: CurrentBuild, original: bytes) -> VerifiedProgramWrites:
+        raise NotImplementedError
+
+
+def build_programs(*, original: Path, build: CurrentBuild,
+                   approvals: ChildApprovals, arm7: "ExistingLiveARM7") -> LiveNativePrograms:
+    raise NotImplementedError
+
+# Private within native_program_baseline.py:
+# _build_child_reference: exact live row; strict extract/init/delink/lcf/native link.
+# _verify_child_reference: input inventory, ELF/BSS, original relocations, diagnostics.
+# _encode_child: approved existing repack_child_arm9; bind retained output expectations.
+# _collect_program_writes: recheck subordinate ARM7, join identities, derive slices.
+# These private functions share one captured domain record; they are not public stages.

@@ -1,0 +1,27 @@
+{
+  "status": "No flags",
+  "reviewer_model": "gpt-6-astra",
+  "scope": "Task36 manually selected transcript excerpt items1-9, published tracker, actual capsule and decision trail; not complete conversation or API transcript",
+  "source_commit": "a7bb98ca941d525df862e9bfb0fc4be235f49014",
+  "tracker_commit": "d4952a6aa7f7672c59489a7b373537de02fecc61",
+  "recorded_origin_refs_match": true,
+  "strict_HEAD_working_artifact_pins_verified": 26,
+  "new_scope_files": 14,
+  "existing_files_changed": "append-only decisions.tsv only",
+  "fixed_checker_contract_and_integrity_bytes_match_frozen_review": true,
+  "late_generator_diff_hash_verified": true,
+  "prior_findings_resolved": [
+    "Optimized Python assertion bypass",
+    "Unsupported embedded/subobject-storage wording"
+  ],
+  "task36_status": "closed",
+  "task37_status": "in_progress; separately scoped design work; not reviewed here",
+  "source_credit": {
+    "canonical": 304,
+    "arm7": 0,
+    "added": 0,
+    "global_percent": null
+  },
+  "task36_source_trial_authorized": false,
+  "pending_followup": "The new36accepted decision row is still uncommitted; root plans final audit/trail publication. Future followup commit bytes are outside this review."
+}

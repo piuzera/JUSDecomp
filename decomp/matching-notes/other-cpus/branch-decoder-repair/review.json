@@ -1,0 +1,29 @@
+{
+  "model": "gpt-6.1-sol",
+  "reviewed_commit": "a86f78b",
+  "status": "No flags",
+  "scope": [
+    "Shared decoder/spec/generated source and direct Parser regressions.",
+    "Exact dependency source/license preparation and resolved ignored build-script counterexample.",
+    "Root native binary/test/oracle/fresh metadata/full19 compatibility evidence.",
+    "Append-only trail count correction and counterexample findings.",
+    "Truthful native-baseline design scope; unfinished baseline implementation is not accepted."
+  ],
+  "verified": {
+    "upstream_tests": 532,
+    "dsd_tests": 63,
+    "preparation_tests": 10,
+    "llvm_cases": 32,
+    "metadata_files": {
+      "parent": 51,
+      "child": 9
+    },
+    "stages": 19,
+    "relocations": 87493,
+    "rom_bytes": 67108864,
+    "source_hashes": 72,
+    "only_changed_hash": "isolated experimental toolchain.lock.json",
+    "production_pin_changed": false
+  },
+  "attention": []
+}

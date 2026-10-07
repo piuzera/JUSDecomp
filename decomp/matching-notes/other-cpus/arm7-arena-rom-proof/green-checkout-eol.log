@@ -1,0 +1,6 @@
+test_declared_checkout_bytes_match_git_blobs (test_rom.CheckoutPins.test_declared_checkout_bytes_match_git_blobs) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.513s
+
+OK

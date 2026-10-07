@@ -1,0 +1,135 @@
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling cfg-if v1.0.4
+   Compiling version_check v0.9.5
+   Compiling libc v0.2.182
+   Compiling memchr v2.8.0
+   Compiling typenum v1.19.0
+   Compiling simd-adler32 v0.3.8
+   Compiling adler2 v2.0.1
+   Compiling autocfg v1.5.0
+   Compiling serde_core v1.0.228
+   Compiling miniz_oxide v0.8.9
+   Compiling crc32fast v1.5.0
+   Compiling generic-array v0.14.7
+   Compiling num-traits v0.2.19
+   Compiling getrandom v0.3.4
+   Compiling object v0.37.3
+   Compiling thiserror v2.0.18
+   Compiling zerocopy v0.8.40
+   Compiling zmij v1.0.21
+   Compiling syn v2.0.117
+   Compiling aho-corasick v1.1.4
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling ahash v0.8.12
+   Compiling unicode-segmentation v1.13.3
+   Compiling gimli v0.32.3
+   Compiling regex-syntax v0.8.10
+   Compiling heck v0.5.0
+   Compiling serde v1.0.228
+   Compiling convert_case v0.10.0
+   Compiling digest v0.10.7
+   Compiling cpufeatures v0.2.17
+   Compiling flate2 v1.1.9
+   Compiling fdeflate v0.3.7
+   Compiling encoding_rs v0.8.35
+   Compiling bitflags v2.13.1
+   Compiling once_cell v1.21.3
+   Compiling unicode-xid v0.2.6
+   Compiling anstyle v1.0.13
+   Compiling smallvec v1.15.1
+   Compiling rustc-demangle v0.1.27
+   Compiling pxfm v0.1.28
+   Compiling unicode-width v0.2.2
+   Compiling arraydeque v0.5.1
+   Compiling encoding_rs_io v0.1.7
+   Compiling regex-automata v0.4.14
+   Compiling annotate-snippets v0.12.13
+   Compiling png v0.18.1
+   Compiling addr2line v0.25.1
+   Compiling byteorder-lite v0.1.0
+   Compiling crc-catalog v2.4.0
+   Compiling nohash-hasher v0.2.0
+   Compiling base64 v0.22.1
+   Compiling crc v3.4.0
+   Compiling sha1 v0.10.6
+   Compiling bitreader v0.3.11
+   Compiling rust-bitwriter v0.0.1
+   Compiling serde_json v1.0.149
+   Compiling log v0.4.29
+   Compiling thiserror-impl v2.0.18
+   Compiling bytemuck_derive v1.10.2
+   Compiling serde_derive v1.0.228
+   Compiling snafu-derive v0.8.9
+   Compiling derive_more-impl v2.1.1
+   Compiling bitfield-struct v0.12.1
+   Compiling backtrace v0.3.76
+   Compiling moxcms v0.7.11
+   Compiling bytemuck v1.25.0
+   Compiling saphyr-parser-bw v0.0.608
+   Compiling regex v1.12.3
+   Compiling strum_macros v0.28.0
+   Compiling derive_more v2.1.1
+   Compiling sha2 v0.10.9
+   Compiling strum v0.28.0
+   Compiling snafu v0.8.9
+   Compiling unarm v1.9.2
+   Compiling itoa v1.0.17
+   Compiling serde-saphyr v0.0.21
+   Compiling image v0.25.9
+   Compiling ds-rom v0.8.0
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-branch-dependency-repair-dsd/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.34s
+     Running tests/branch_boundaries.rs (target/branch-repair/cargo-target/debug/deps/branch_boundaries-2a877920deda5c31)
+
+running 6 tests
+test thumb_short_llvm_boundaries ... ok
+test thumb_blx_llvm_boundaries ... FAILED
+test arm_blx_llvm_boundaries ... FAILED
+test v4t_rejects_arm_and_thumb_blx ... ok
+test thumb_bl_llvm_boundaries ... FAILED
+test arm_b_bl_llvm_boundaries ... FAILED
+
+failures:
+
+---- thumb_blx_llvm_boundaries stdout ----
+
+thread 'thumb_blx_llvm_boundaries' (250638718) panicked at lib/tests/branch_boundaries.rs:11:5:
+assertion `left == right` failed: blx at 0x02380014
+  left: 33030164
+ right: 41418772
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- arm_blx_llvm_boundaries stdout ----
+
+thread 'arm_blx_llvm_boundaries' (250638716) panicked at lib/tests/branch_boundaries.rs:11:5:
+assertion `left == right` failed: blx at 0x02380028
+  left: 37224492
+ right: 70778924
+
+---- thumb_bl_llvm_boundaries stdout ----
+
+thread 'thumb_bl_llvm_boundaries' (250638717) panicked at lib/tests/branch_boundaries.rs:11:5:
+assertion `left == right` failed: bl at 0x02380000
+  left: 33030144
+ right: 41418752
+
+---- arm_b_bl_llvm_boundaries stdout ----
+
+thread 'arm_b_bl_llvm_boundaries' (250638715) panicked at lib/tests/branch_boundaries.rs:11:5:
+assertion `left == right` failed: b at 0x02380000
+  left: 41911400
+ right: 58688616
+
+
+failures:
+    arm_b_bl_llvm_boundaries
+    arm_blx_llvm_boundaries
+    thumb_bl_llvm_boundaries
+    thumb_blx_llvm_boundaries
+
+test result: FAILED. 2 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p ds-decomp --test branch_boundaries`

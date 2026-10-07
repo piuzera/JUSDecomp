@@ -1,0 +1,56 @@
+[
+  {
+    "control": "exact_copy",
+    "expected": "passed",
+    "actual": "passed",
+    "reason": ""
+  },
+  {
+    "control": "extent84",
+    "expected": "rejected",
+    "actual": "rejected",
+    "reason": "function identities/extents/modes differ from declared reference TU"
+  },
+  {
+    "control": "thumb_mode",
+    "expected": "rejected",
+    "actual": "rejected",
+    "reason": "function identities/extents/modes differ from declared reference TU"
+  },
+  {
+    "control": "instruction",
+    "expected": "rejected",
+    "actual": "rejected",
+    "reason": "initialized section bytes differ: .text"
+  },
+  {
+    "control": "pool_extent",
+    "expected": "rejected",
+    "actual": "rejected",
+    "reason": "section type/flags/size differ: .text"
+  },
+  {
+    "control": "helper_symbol",
+    "expected": "rejected",
+    "actual": "rejected",
+    "reason": "relocation identities/offsets/types/symbols/addends differ"
+  },
+  {
+    "control": "helper_addend",
+    "expected": "rejected",
+    "actual": "rejected",
+    "reason": "relocation identities/offsets/types/symbols/addends differ"
+  },
+  {
+    "control": "pool_placeholder",
+    "expected": "passed",
+    "actual": "passed",
+    "reason": ""
+  },
+  {
+    "control": "extra_allocated",
+    "expected": "rejected",
+    "actual": "rejected",
+    "reason": "allocated section inventory differs; unexpected BSS/extra sections"
+  }
+]

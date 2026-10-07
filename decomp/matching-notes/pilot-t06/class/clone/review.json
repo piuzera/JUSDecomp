@@ -1,0 +1,17 @@
+{
+  "reviewer": "gpt-6-astra",
+  "reviewed_integration_commit": "6450c79",
+  "source_producer_commit": "4d84b69a9e3109cbcf75643572a3a98c76e1cacd",
+  "status": "cleared",
+  "attention_flags": [],
+  "artifacts_verified": 209,
+  "current_source_hashes_verified": 72,
+  "verified_source_bytes": 304,
+  "verified_functions": 7,
+  "tests_passed": 216,
+  "tests_skipped": 0,
+  "relocations_verified": 87493,
+  "whole_rom": "byte-identical",
+  "negative_trials": "All three reject atomically with zero overrides and unchanged reference",
+  "task_complete": false
+}

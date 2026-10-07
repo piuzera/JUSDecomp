@@ -1,0 +1,41 @@
+{
+  "status": "accepted",
+  "reviewed_worker_commit": "c957abd3a1ee3191903e344d03a376892fd7da5e",
+  "published_research_commit": "972a50554761e8e30b43507fc663b293b580eeb3",
+  "root_public_replay": "passed",
+  "complete_report_sha256": "dd61b9d34b443128375a6cddf4bff87dca6844c331b6ac0d3b740fc1d7d7f288",
+  "independent_original_review": "accepted_no_flags",
+  "independent_citation_review": "accepted_no_concrete_citation_flags",
+  "graphs_per_exact_program": {
+    "nodes": 34,
+    "edges": 41,
+    "frontiers": 8
+  },
+  "artifact_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/.gitattributes": "667b93be6ede617192a0c6ac9e3664b1727402239531277b6cd47b53e73a6535",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/citation-review.json": "52ff3bde7f3f55ee0a8322c7ee5995ae4f66e2335ce8608724327090813b2750",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/commands.json": "34ad8d205d0c893039b06c42464a691376666fe7de591ea0cc3aee5b2e092a32",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/external-sources.json": "cf4446494570f4ea137e44d513fa886de6d4a1b4ac67477d46ed0c3909ec017a",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/graph-summary.json": "ae8b2b393ff79a6c40d8f59e359be8552d980a672d0b729fd5556ea7eec457d7",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/check_arena.py": "8a095f2574ebd6dadd381ddcaba1030b63cb20ee3cb5b3ed1920550731401e25",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/independent-receipt.json": "1927c7da74aa77b85f27176362ed9a09b3503c49c1b886e446d4118ac5ffbadb",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/input-snapshot-after.json": "2fe6dd2cf0a0cc9121ba13b05b490826afbc4414af2a167e10d3d9f27b5f0b78",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/input-snapshot-before.json": "2fe6dd2cf0a0cc9121ba13b05b490826afbc4414af2a167e10d3d9f27b5f0b78",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/program-0-span-0-llvm.txt": "370aa2e2f757251590e6f9187028dce9a2762e75f9c398af22466788716cdb3e",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/program-0-span-1-llvm.txt": "0b8879efb4474348105bfcb442f9c8bd971db102c8f985361f9079d653014531",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/program-1-span-0-llvm.txt": "370aa2e2f757251590e6f9187028dce9a2762e75f9c398af22466788716cdb3e",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/independent/program-1-span-1-llvm.txt": "0b8879efb4474348105bfcb442f9c8bd971db102c8f985361f9079d653014531",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/llvm-caller-tail.txt": "0b8879efb4474348105bfcb442f9c8bd971db102c8f985361f9079d653014531",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/llvm-setter-pair.txt": "370aa2e2f757251590e6f9187028dce9a2762e75f9c398af22466788716cdb3e",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/original-read.json": "7d5968f6e4795aeaebf086bf17c6a4a1759e61e8a3cd8a719e10062b0845e46e",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/read_original.py": "703ba5b3011d37f5de25c557876d9f56aea0bf80158d3f4a287318f095d10426",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/reproduce.py": "849b30785479ca24fdf757ca20a9f675f9f1f693d3883d1c12f7b847db384959",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/requests.json": "681a5260c40c031a2fcd4161863a45d7ef3d61af36639a293a17176818141f5d",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-proof/summarize_report.py": "b3dad1b12e295360d9415be4efa431a7910d54e364fd20e9c6a49ba2bdafb716",
+    "decomp/matching-notes/other-cpus/arm7-sdk-arena-hypothesis.md": "c438b0860baf5429b85df1bfc57e381024a4a43a1f4e3597cc8569b6cc81c16e"
+  },
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "canonical_update": false,
+  "T10_complete": false
+}

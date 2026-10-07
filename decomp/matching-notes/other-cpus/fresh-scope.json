@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.10",
+  "status": "preserved_binary_verified",
+  "linked_baseline": false,
+  "source_complete": false,
+  "task_complete": false,
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "executables": [
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": "parent",
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm7"
+      },
+      "module": "arm7",
+      "base": 37224448,
+      "entry": 37224448,
+      "stored_bytes": 165552,
+      "stored_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "rom_offset_in_program": 2162688,
+      "cpu": "arm7",
+      "processor": "arm7tdmi",
+      "isa": "armv4t",
+      "compression": "not_resolved_from_module_parameters",
+      "source_bytes": 0,
+      "source_functions": 0,
+      "linked_baseline": false,
+      "remaining_symbols": null,
+      "symbol_inventory_status": "unresolved",
+      "fallback_stored_bytes": 165552,
+      "internal_sections": {
+        "status": "unresolved",
+        "reason": "No standard module-parameter marker was found. No autoload or internal section layout is inferred."
+      },
+      "compiler_match": "unresolved",
+      "link_metadata": "unresolved",
+      "remaining_intervals": [
+        {
+          "module": "unclassified",
+          "load_base": 37224448,
+          "stored_offset_start": 0,
+          "stored_offset_end": 165552,
+          "expanded_layout": "unresolved",
+          "stored_bytes": 165552,
+          "source_bytes": 0,
+          "remaining_symbols": null,
+          "kind": "unknown"
+        }
+      ]
+    },
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": "ChildRom/JSS2Child.srl",
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+        "cpu": "arm9"
+      },
+      "module": "arm9",
+      "base": 33554432,
+      "entry": 33556560,
+      "stored_bytes": 1955956,
+      "stored_sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+      "rom_offset_in_program": 16384,
+      "cpu": "arm9",
+      "processor": "arm946e",
+      "isa": "armv5te",
+      "compression": true,
+      "source_bytes": 0,
+      "source_functions": 0,
+      "linked_baseline": false,
+      "remaining_symbols": null,
+      "symbol_inventory_status": "unresolved",
+      "fallback_stored_bytes": 1955956,
+      "internal_sections": {},
+      "compiler_match": "unresolved",
+      "link_metadata": "unresolved",
+      "expanded_bytes": 2628408,
+      "expanded_sha256": "409ad5e8b8f62406607db05baf471a0b3f3c870255f6fb135dee773c2ef400fc",
+      "remaining_intervals": [
+        {
+          "base": "0x02000000",
+          "entry": "0x02000850",
+          "bytes": 2624320,
+          "bss_start": "0x02280b40",
+          "bss_end": "0x0229a860",
+          "bss_bytes": 105760,
+          "hashes": {
+            "sha1": "2f75d50df39c88fcaf7612be490cad2706e2418a",
+            "sha256": "617bec5f0664ca87113abeaf5511433d3be6b42c711f2b936c28d3420f1f6db3",
+            "crc32": "bc0c4518"
+          },
+          "module": "main",
+          "source_offset": 0,
+          "source_bytes": 0,
+          "remaining_symbols": null
+        },
+        {
+          "kind": "ITCM",
+          "table_offset_in_expanded_arm9": "0x00281b20",
+          "source_offset_in_expanded_arm9": "0x00280b40",
+          "base": "0x01ff8000",
+          "bytes": 3968,
+          "bss_bytes": 0,
+          "hashes": {
+            "sha1": "1e9508daf2731b26a07ba5c1e3f1474b31c87c3a",
+            "sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+            "crc32": "38858e4d"
+          },
+          "module": "ITCM",
+          "source_offset": 2624320,
+          "source_bytes": 0,
+          "remaining_symbols": null
+        },
+        {
+          "kind": "DTCM",
+          "table_offset_in_expanded_arm9": "0x00281b2c",
+          "source_offset_in_expanded_arm9": "0x00281ac0",
+          "base": "0x027c0000",
+          "bytes": 96,
+          "bss_bytes": 32,
+          "hashes": {
+            "sha1": "cf9783ac0439f511acdfcf5a9b63aa12052cb7cc",
+            "sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+            "crc32": "e624e5db"
+          },
+          "module": "DTCM",
+          "source_offset": 2628288,
+          "source_bytes": 0,
+          "remaining_symbols": null
+        },
+        {
+          "module": "autoload_table_or_footer",
+          "kind": "layout_metadata",
+          "source_offset": 2628384,
+          "bytes": 24,
+          "hashes": {
+            "sha256": "4299a7bada43641ff3e42284bfd976fddf6e0b9fd004b07868a094c1ff6629ea"
+          },
+          "source_bytes": 0,
+          "remaining_symbols": null
+        }
+      ],
+      "module_params": {
+        "offset": "0x00000ba4",
+        "marker_offset": "0x00000bc0",
+        "autoload_table_start": "0x02281b20",
+        "autoload_table_end": "0x02281b38",
+        "autoload_payload_start": "0x02280b40",
+        "bss_start": "0x02280b40",
+        "bss_end": "0x0229a860",
+        "compressed_static_end": "0x021dd874",
+        "sdk_version": "0x03017534"
+      }
+    },
+    {
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": "ChildRom/JSS2Child.srl",
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+        "cpu": "arm7"
+      },
+      "module": "arm7",
+      "base": 37224448,
+      "entry": 37224448,
+      "stored_bytes": 165552,
+      "stored_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "rom_offset_in_program": 1972736,
+      "cpu": "arm7",
+      "processor": "arm7tdmi",
+      "isa": "armv4t",
+      "compression": "not_resolved_from_module_parameters",
+      "source_bytes": 0,
+      "source_functions": 0,
+      "linked_baseline": false,
+      "remaining_symbols": null,
+      "symbol_inventory_status": "unresolved",
+      "fallback_stored_bytes": 165552,
+      "internal_sections": {
+        "status": "unresolved",
+        "reason": "No standard module-parameter marker was found. No autoload or internal section layout is inferred."
+      },
+      "compiler_match": "unresolved",
+      "link_metadata": "unresolved",
+      "remaining_intervals": [
+        {
+          "module": "unclassified",
+          "load_base": 37224448,
+          "stored_offset_start": 0,
+          "stored_offset_end": 165552,
+          "expanded_layout": "unresolved",
+          "stored_bytes": 165552,
+          "source_bytes": 0,
+          "remaining_symbols": null,
+          "kind": "unknown"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "matched_source_bytes": 0,
+    "matched_source_functions": 0,
+    "known_stored_fallback_bytes": 2287060,
+    "global_percent": null,
+    "scope_uncertainty": "Named NitroFS files were scanned for direct NDS headers and .srl/.nds extensions. Proprietary containers were not recursively inspected for additional executable code."
+  },
+  "remaining_work": [
+    "CPU-specific ARM7 section/function/relocation discovery and link baseline",
+    "Independently matched compiler/ABI policy for each CPU and program",
+    "Source promotion of every residual executable interval",
+    "Recursive executable discovery in proprietary asset containers"
+  ]
+}

@@ -1,0 +1,1370 @@
+diff --git a/lib/examples/arm7_physical_baseline.rs b/lib/examples/arm7_physical_baseline.rs
+new file mode 100644
+index 0000000000000000000000000000000000000000..a239d133aca67f8e84f337ab2883c56e7d3e5abf
+--- /dev/null
++++ b/lib/examples/arm7_physical_baseline.rs
+@@ -0,0 +1,202 @@
++use ds_decomp::rom::{
++    arm7::Arm7Layout,
++    arm7_physical_baseline::{NativePins, build},
++};
++use sha2::{Digest, Sha256};
++use std::{error::Error, fs, io, path::Path};
++
++fn digest(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++fn reject(reason: &'static str) -> Box<dyn Error> {
++    Box::new(io::Error::other(reason))
++}
++fn execute(args: &[String]) -> Result<serde_json::Value, Box<dyn Error>> {
++    if args.len() != 6 {
++        return Err(reject(
++            "expected parent ROM, layout sidecar, layout SHA256, native pins, pins SHA256, fresh output directory",
++        ));
++    }
++    let parent = fs::read(&args[0])?;
++    let layout_bytes = fs::read(&args[1])?;
++    let native_bytes = fs::read(&args[3])?;
++    if digest(&layout_bytes) != args[2] || digest(&native_bytes) != args[4] {
++        return Err(reject("sidecar digest mismatch"));
++    }
++    let layouts: Vec<Arm7Layout> = serde_json::from_slice(&layout_bytes)?;
++    if layouts.is_empty() {
++        return Err(reject("no selected programs"));
++    }
++    for (i, layout) in layouts.iter().enumerate() {
++        if layouts[..i].iter().any(|other| other.identity == layout.identity) {
++            return Err(reject("duplicate selected program identity"));
++        }
++    }
++    let native: NativePins = serde_json::from_slice(&native_bytes)?;
++    let views =
++        layouts.iter().map(|layout| layout.checked(&parent)).collect::<Result<Vec<_>, _>>()?;
++    let executable = std::env::current_exe()?;
++    let executable_hash = digest(&fs::read(&executable)?);
++    let parent_hash = digest(&parent);
++    let output = Path::new(&args[5]);
++    fs::create_dir(output)?;
++    let mut programs = Vec::new();
++    for (i, view) in views.iter().enumerate() {
++        let directory = output.join(format!("program-{i}"));
++        fs::create_dir(&directory)?;
++        let mut report = serde_json::to_value(build(view, &native, &directory)?)?;
++        report["layout_sidecar_sha256"] = args[2].clone().into();
++        report["native_pins_sidecar_sha256"] = args[4].clone().into();
++        programs.push(report);
++    }
++    for (i, program) in programs.iter().enumerate() {
++        let artifacts =
++            program["artifacts"].as_array().ok_or_else(|| reject("missing artifact inventory"))?;
++        for artifact in artifacts {
++            let name = artifact["name"].as_str().ok_or_else(|| reject("missing artifact name"))?;
++            let bytes = fs::read(output.join(format!("program-{i}")).join(name))?;
++            if artifact["bytes"].as_u64() != Some(bytes.len() as u64)
++                || artifact["sha256"].as_str() != Some(digest(&bytes).as_str())
++            {
++                return Err(reject("native artifact changed before publication"));
++            }
++        }
++    }
++    for tool in [&native.clang, &native.lld] {
++        if digest(&fs::read(&tool.executable)?) != tool.sha256 {
++            return Err(reject("native tool changed before publication"));
++        }
++    }
++    if digest(&fs::read(&args[0])?) != parent_hash
++        || digest(&fs::read(&args[1])?) != args[2]
++        || digest(&fs::read(&args[3])?) != args[4]
++        || digest(&fs::read(executable)?) != executable_hash
++    {
++        return Err(reject("input changed during native build"));
++    }
++    Ok(serde_json::json!({"status":"opaque_physical_baselines_verified","programs":programs,
++        "parent_rom_sha256":parent_hash,"layout_sidecar_sha256":args[2],"native_pins_sidecar_sha256":args[4],
++        "producer_binary_sha256":executable_hash,"inputs_unchanged":true,"source_bytes":0,"t10_complete":false}))
++}
++fn main() {
++    match execute(&std::env::args().skip(1).collect::<Vec<_>>()) {
++        Ok(report) => println!("{}", serde_json::to_string_pretty(&report).unwrap()),
++        Err(error) => {
++            eprintln!("{error}");
++            std::process::exit(1);
++        }
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use sha2::{Digest, Sha256};
++    use std::{
++        fs,
++        path::PathBuf,
++        sync::atomic::{AtomicUsize, Ordering},
++    };
++    mod common {
++        include!(concat!(env!("CARGO_MANIFEST_DIR"), "/tests/common/mod.rs"));
++    }
++    use common::Fixture;
++    static NEXT: AtomicUsize = AtomicUsize::new(0);
++    fn sha(b: &[u8]) -> String {
++        format!("{:x}", Sha256::digest(b))
++    }
++    fn setup(duplicates: bool) -> Vec<String> {
++        let f = Fixture::new(&[1, 2, 3, 4]);
++        let root = PathBuf::from(std::env::var_os("CARGO_TARGET_DIR").unwrap()).join(format!(
++            "example-test-{}-{}",
++            std::process::id(),
++            NEXT.fetch_add(1, Ordering::Relaxed)
++        ));
++        fs::create_dir_all(&root).unwrap();
++        let layouts = if duplicates {
++            serde_json::to_vec(&vec![&f.parent_layout, &f.parent_layout]).unwrap()
++        } else {
++            serde_json::to_vec(&vec![&f.parent_layout, &f.child_layout]).unwrap()
++        };
++        let tools=serde_json::to_vec(&serde_json::json!({"clang":{"executable":"/opt/homebrew/opt/llvm/bin/clang","sha256":"d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5","version":"Homebrew clang version 23.1.2"},"lld":{"executable":"/opt/homebrew/bin/ld.lld","sha256":"3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54","version":"Homebrew LLD 23.1.2 (compatible with GNU linkers)"}})).unwrap();
++        fs::write(root.join("parent.nds"), f.parent).unwrap();
++        fs::write(root.join("layouts.json"), &layouts).unwrap();
++        fs::write(root.join("tools.json"), &tools).unwrap();
++        vec![
++            root.join("parent.nds").display().to_string(),
++            root.join("layouts.json").display().to_string(),
++            sha(&layouts),
++            root.join("tools.json").display().to_string(),
++            sha(&tools),
++            root.join("output").display().to_string(),
++        ]
++    }
++    #[test]
++    fn example_consumes_pinned_bytes_and_retains_per_program_identity_and_pin() {
++        let args = setup(false);
++        let result = execute(&args).unwrap();
++        let programs = result["programs"].as_array().unwrap();
++        assert_eq!(programs.len(), 2);
++        assert_ne!(programs[0]["identity"], programs[1]["identity"]);
++        for p in programs {
++            assert_eq!(p["layout_sidecar_sha256"], args[2]);
++            assert_eq!(p["source_bytes"], 0);
++        }
++        assert_eq!(result["inputs_unchanged"], true);
++    }
++    #[test]
++    fn original_file_changed_after_snapshot_rejects_native_success() {
++        let args = setup(false);
++        let watched = PathBuf::from(&args[5]).join("program-0/startup.bin");
++        let original = args[0].clone();
++        let writer = std::thread::spawn(move || {
++            let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
++            while !watched.exists() {
++                assert!(std::time::Instant::now() < deadline, "native build did not start");
++                std::thread::sleep(std::time::Duration::from_millis(1));
++            }
++            fs::write(original, b"mutated original after checked snapshot").unwrap();
++        });
++        let result = execute(&args);
++        writer.join().unwrap();
++        assert!(result.is_err(), "native success credited changed original file");
++    }
++    #[test]
++    fn first_program_output_changed_during_second_build_rejects_publication() {
++        let args = setup(false);
++        let watched = PathBuf::from(&args[5]).join("program-1/startup.bin");
++        let output = PathBuf::from(&args[5]).join("program-0/linked.elf");
++        let writer = std::thread::spawn(move || {
++            let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
++            while !watched.exists() {
++                assert!(std::time::Instant::now() < deadline, "second native build did not start");
++                std::thread::sleep(std::time::Duration::from_millis(1));
++            }
++            let mut bytes = fs::read(&output).unwrap();
++            bytes[18..20].copy_from_slice(&[0, 0]);
++            fs::write(output, bytes).unwrap();
++        });
++        let result = execute(&args);
++        writer.join().unwrap();
++        assert!(result.is_err(), "published stale first-program artifact");
++    }
++    #[test]
++    fn duplicate_selected_identity_rejects_before_artifact_creation() {
++        let args = setup(true);
++        assert!(execute(&args).is_err());
++        assert!(!std::path::Path::new(&args[5]).exists());
++    }
++    #[test]
++    fn changed_sidecar_or_wrong_digest_rejects_before_artifact_creation() {
++        for index in [2, 4] {
++            let mut args = setup(false);
++            args[index] = "0".repeat(64);
++            assert!(execute(&args).is_err());
++            assert!(!std::path::Path::new(&args[5]).exists());
++        }
++        let args = setup(false);
++        fs::write(&args[1], b"[]").unwrap();
++        assert!(execute(&args).is_err());
++        assert!(!std::path::Path::new(&args[5]).exists());
++    }
++}
+diff --git a/lib/src/rom/arm7.rs b/lib/src/rom/arm7.rs
+index d3d36d9ce50b5ef20c24fd887c4fee630cdfaa80..98922dfbbe8703943e6b61783755ade50814d850 100644
+--- a/lib/src/rom/arm7.rs
++++ b/lib/src/rom/arm7.rs
+@@ -111,15 +111,33 @@ impl<'a> Arm7RegionView<'a> {
+         self.bss_end
+     }
+ }
++// Retain only metadata already validated by checked(); never borrow the mutable layout.
++#[derive(Debug, Clone)]
++pub(crate) struct CheckedArm7Envelope {
++    pub image_offset: u32,
++    pub image_bytes: u32,
++    pub image_sha256: String,
++    pub header_sha256: String,
++    pub base: u32,
++    pub entry: u32,
++    pub params_offset: u32,
++    pub params_sha256: String,
++    pub table_extent: Range<u32>,
++    pub table_sha256: String,
++}
+ /// Startup, ordered autoloads and original table for one checked ARM7 program.
+ #[derive(Debug)]
+ pub struct Arm7View<'a> {
++    checked: CheckedArm7Envelope,
+     identity: ProgramIdentity,
+     startup: Arm7RegionView<'a>,
+     autoloads: Vec<Arm7RegionView<'a>>,
+     table: &'a [u8],
+ }
+ impl<'a> Arm7View<'a> {
++    pub(crate) fn checked_envelope(&self) -> &CheckedArm7Envelope {
++        &self.checked
++    }
+     /// Complete checked program identity.
+     pub fn identity(&self) -> &ProgramIdentity {
+         &self.identity
+@@ -314,7 +332,7 @@ impl Arm7Layout {
+         let count: u32 =
+             (self.regions.len() - 1).try_into().map_err(|_| Arm7LayoutError::Overflow)?;
+         if count.checked_mul(12).ok_or(Arm7LayoutError::Overflow)?
+-            != table.len().try_into().map_err(|_| Arm7LayoutError::Overflow)?
++            != u32::try_from(table.len()).map_err(|_| Arm7LayoutError::Overflow)?
+         {
+             return Err(Arm7LayoutError::Table);
+         }
+@@ -348,7 +366,16 @@ impl Arm7Layout {
+             });
+         }
+         let startup = views.remove(0);
+-        Ok(Arm7View { identity: self.identity.clone(), startup, autoloads: views, table })
++        Ok(Arm7View {
++            checked: CheckedArm7Envelope {
++                image_offset: self.image_offset, image_bytes: self.image_bytes,
++                image_sha256: self.image_sha256.clone(), header_sha256: self.header_sha256.clone(),
++                base: self.base, entry: self.entry, params_offset: self.params_offset,
++                params_sha256: self.params_sha256.clone(), table_extent: self.table_extent.clone(),
++                table_sha256: self.table_sha256.clone(),
++            },
++            identity: self.identity.clone(), startup, autoloads: views, table,
++        })
+     }
+ }
+ 
+diff --git a/lib/src/rom/arm7_physical_baseline.rs b/lib/src/rom/arm7_physical_baseline.rs
+new file mode 100644
+index 0000000000000000000000000000000000000000..5e14db0ed551c3ded836af7222f617459ad120ae
+--- /dev/null
++++ b/lib/src/rom/arm7_physical_baseline.rs
+@@ -0,0 +1,725 @@
++//! Native opaque physical ARM7 payload/layout preservation. No source or code classification.
++use super::arm7::{Arm7Region, Arm7View, ProgramIdentity};
++use serde::{Deserialize, Serialize};
++use sha2::{Digest, Sha256};
++use std::{
++    fmt, fs, io,
++    ops::Range,
++    path::{Path, PathBuf},
++    process::Command,
++};
++
++#[derive(Debug)]
++pub enum PhysicalBaselineError {
++    Io(io::Error),
++    Rejected(&'static str),
++    ToolFailed,
++}
++impl fmt::Display for PhysicalBaselineError {
++    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        write!(f, "ARM7 physical baseline: {self:?}")
++    }
++}
++impl std::error::Error for PhysicalBaselineError {}
++impl From<io::Error> for PhysicalBaselineError {
++    fn from(e: io::Error) -> Self {
++        Self::Io(e)
++    }
++}
++type Result<T> = std::result::Result<T, PhysicalBaselineError>;
++fn require(ok: bool, reason: &'static str) -> Result<()> {
++    if ok { Ok(()) } else { Err(PhysicalBaselineError::Rejected(reason)) }
++}
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++
++#[derive(Debug, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct NativeToolPin {
++    pub executable: PathBuf,
++    pub sha256: String,
++    pub version: String,
++}
++#[derive(Debug, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct NativePins {
++    pub clang: NativeToolPin,
++    pub lld: NativeToolPin,
++}
++#[derive(Debug, Clone, Serialize)]
++struct Artifact {
++    name: String,
++    bytes: usize,
++    sha256: String,
++}
++#[derive(Debug, Serialize)]
++struct Segment {
++    section: String,
++    vma: u32,
++    lma: u32,
++    file_bytes: u32,
++    memory_bytes: u32,
++    file_offset: u32,
++    alignment: u32,
++    flags: u32,
++}
++#[derive(Debug, Serialize)]
++struct Invocation {
++    tool_sha256: String,
++    arguments: Vec<String>,
++    return_code: i32,
++}
++#[derive(Debug, Serialize)]
++pub struct VerifiedOpaqueBaseline {
++    identity: ProgramIdentity,
++    status: &'static str,
++    source_bytes: u64,
++    functions: &'static str,
++    executability: &'static str,
++    original_relocations: &'static str,
++    arm7_source_complete: bool,
++    t10_complete: bool,
++    bootable_elf: bool,
++    entry: u32,
++    image_offset: u32,
++    image_bytes: u32,
++    image_sha256: String,
++    header_sha256: String,
++    params_offset: u32,
++    params_sha256: String,
++    table_extent: Range<u32>,
++    table_sha256: String,
++    regions: Vec<Arm7Region>,
++    generated_cpu_arch: &'static str,
++    generated_elf_abi_flags: u32,
++    commands: Vec<Invocation>,
++    selected_inputs: Vec<Artifact>,
++    segments: Vec<Segment>,
++    artifacts: Vec<Artifact>,
++    clang_sha256: String,
++    lld_sha256: String,
++}
++impl VerifiedOpaqueBaseline {
++    pub fn identity(&self) -> &ProgramIdentity {
++        &self.identity
++    }
++    pub fn source_bytes(&self) -> u64 {
++        self.source_bytes
++    }
++}
++// Borrow checked descriptions; this private representation describes native sections only.
++struct Part<'a> {
++    name: String,
++    vma: u32,
++    lma: u32,
++    stored: Range<u32>,
++    bytes: &'a [u8],
++    bss: u32,
++}
++fn parts<'a>(view: &'a Arm7View<'_>) -> Result<Vec<Part<'a>>> {
++    let mut parts = Vec::new();
++    for (i, region) in std::iter::once(view.startup()).chain(view.autoloads()).enumerate() {
++        let d = region.description();
++        let name = if i == 0 { "startup".into() } else { format!("autoload{}", i - 1) };
++        parts.push(Part {
++            name,
++            vma: d.runtime_base,
++            lma: view
++                .checked_envelope()
++                .base
++                .checked_add(d.stored_extent.start)
++                .ok_or(PhysicalBaselineError::Rejected("LMA overflow"))?,
++            stored: d.stored_extent.clone(),
++            bytes: region.bytes(),
++            bss: d.bss_bytes,
++        });
++    }
++    parts.push(Part {
++        name: "table".into(),
++        vma: view
++            .checked_envelope()
++            .base
++            .checked_add(view.checked_envelope().table_extent.start)
++            .ok_or(PhysicalBaselineError::Rejected("table overflow"))?,
++        lma: view
++            .checked_envelope()
++            .base
++            .checked_add(view.checked_envelope().table_extent.start)
++            .ok_or(PhysicalBaselineError::Rejected("table overflow"))?,
++        stored: view.checked_envelope().table_extent.clone(),
++        bytes: view.table(),
++        bss: 0,
++    });
++    Ok(parts)
++}
++fn verify_tool(pin: &NativeToolPin) -> Result<()> {
++    require(sha(&fs::read(&pin.executable)?) == pin.sha256, "native tool hash")?;
++    let result = Command::new(&pin.executable).arg("--version").output()?;
++    require(
++        result.status.success()
++            && !pin.version.is_empty()
++            && String::from_utf8_lossy(&result.stdout).lines().next() == Some(&pin.version),
++        "native tool version",
++    )
++}
++fn run(tool: &Path, args: &[&str], out: &Path) -> Result<()> {
++    let result = Command::new(tool).args(args).current_dir(out).output()?;
++    if result.status.success() {
++        Ok(())
++    } else {
++        Err(PhysicalBaselineError::ToolFailed)
++    }
++}
++
++/// One operation on immutable checked ownership. All binary artifacts remain private.
++pub fn build(
++    view: &Arm7View<'_>,
++    tools: &NativePins,
++    out: &Path,
++) -> Result<VerifiedOpaqueBaseline> {
++    verify_tool(&tools.clang)?;
++    verify_tool(&tools.lld)?;
++    let meta = fs::symlink_metadata(out)?;
++    require(
++        meta.is_dir() && !meta.file_type().is_symlink() && fs::read_dir(out)?.next().is_none(),
++        "output must be empty directory",
++    )?;
++    let parts = parts(view)?;
++    let mut commands = Vec::new();
++    let mut selected_snapshot = Vec::new();
++    let mut layout = Vec::new();
++    for part in &parts {
++        let data_name = format!("{}.bin", part.name);
++        fs::write(out.join(&data_name), part.bytes)?;
++        selected_snapshot.push(Artifact {
++            name: data_name.clone(),
++            bytes: part.bytes.len(),
++            sha256: sha(part.bytes),
++        });
++        let source_name = format!("{}.s", part.name);
++        let mut source = format!(
++            ".cpu arm7tdmi\n.section .arm7.{},\"a\",%progbits\n.balign 4\n.incbin \"{}.bin\"\n",
++            part.name, part.name
++        );
++        if part.bss != 0 {
++            source.push_str(&format!(
++                ".section .arm7.bss.{},\"aw\",%nobits\n.balign 4\n.space {}\n",
++                part.name, part.bss
++            ));
++        }
++        fs::write(out.join(&source_name), &source)?;
++        selected_snapshot.push(Artifact {
++            name: source_name.clone(),
++            bytes: source.len(),
++            sha256: sha(source.as_bytes()),
++        });
++        let object_name = format!("{}.o", part.name);
++        let args =
++            ["--target=arm-none-eabi", "-mcpu=arm7tdmi", "-c", &source_name, "-o", &object_name];
++        run(&tools.clang.executable, &args, out)?;
++        commands.push(Invocation {
++            tool_sha256: tools.clang.sha256.clone(),
++            arguments: args.iter().map(|a| (*a).to_owned()).collect(),
++            return_code: 0,
++        });
++        let object = fs::read(out.join(&object_name))?;
++        validate_object(part, &object)?;
++        selected_snapshot.push(Artifact {
++            name: object_name.clone(),
++            bytes: object.len(),
++            sha256: sha(&object),
++        });
++        layout.push((
++            part.vma,
++            format!(".arm7.{}", part.name),
++            part.lma,
++            part.bytes.len() as u32,
++            object_name.clone(),
++            false,
++        ));
++        if part.bss != 0 {
++            let vma = part
++                .vma
++                .checked_add(part.bytes.len() as u32)
++                .ok_or(PhysicalBaselineError::Rejected("BSS overflow"))?;
++            layout.push((
++                vma,
++                format!(".arm7.bss.{}", part.name),
++                vma,
++                part.bss,
++                object_name,
++                true,
++            ));
++        }
++    }
++    layout.sort_by_key(|p| p.0);
++    let mut script = format!(
++        "ARM7_HEADER_ENTRY = {};\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {{\n",
++        view.checked_envelope().entry
++    );
++    for (i, part) in layout.iter().enumerate() {
++        script.push_str(&format!("p{i} PT_LOAD FLAGS({});\n", if part.5 { 6 } else { 4 }));
++    }
++    script.push_str("}\nSECTIONS {\n");
++    for (i, p) in layout.iter().enumerate() {
++        script.push_str(&format!(
++            "{} {} {} : AT({}) {{ {}({}) }} :p{}\nASSERT(SIZEOF({}) == {}, \"size\")\n",
++            p.1,
++            p.0,
++            if p.5 { "(NOLOAD)" } else { "" },
++            p.2,
++            p.4,
++            p.1,
++            i,
++            p.1,
++            p.3
++        ));
++    }
++    script.push_str("}\n");
++    fs::write(out.join("physical.ld"), &script)?;
++    selected_snapshot.push(Artifact {
++        name: "physical.ld".into(),
++        bytes: script.len(),
++        sha256: sha(script.as_bytes()),
++    });
++    let mut args = vec![
++        "-m",
++        "armelf",
++        "--nmagic",
++        "-T",
++        "physical.ld",
++        "-Map",
++        "physical.map",
++        "-o",
++        "linked.elf",
++    ];
++    let objects: Vec<_> = parts.iter().map(|p| format!("{}.o", p.name)).collect();
++    args.extend(objects.iter().map(String::as_str));
++    run(&tools.lld.executable, &args, out)?;
++    commands.push(Invocation {
++        tool_sha256: tools.lld.sha256.clone(),
++        arguments: args.iter().map(|a| (*a).to_owned()).collect(),
++        return_code: 0,
++    });
++    for a in &selected_snapshot {
++        require(
++            sha(&fs::read(out.join(&a.name))?) == a.sha256,
++            "selected input changed during link",
++        )?;
++    }
++    let elf = fs::read(out.join("linked.elf"))?;
++    let linked_artifact =
++        Artifact { name: "linked.elf".into(), bytes: elf.len(), sha256: sha(&elf) };
++    let (segments, image) = validate_linked(view, &elf)?;
++    let image_artifact =
++        Artifact { name: "arm7.bin".into(), bytes: image.len(), sha256: sha(&image) };
++    fs::write(out.join("arm7.bin"), &image)?;
++    let map = fs::read(out.join("physical.map"))?;
++    let mut artifacts = selected_snapshot.clone();
++    artifacts.extend([
++        Artifact { name: "physical.map".into(), bytes: map.len(), sha256: sha(&map) },
++        linked_artifact,
++        image_artifact,
++    ]);
++    verify_tool(&tools.clang)?;
++    verify_tool(&tools.lld)?;
++    for a in &artifacts {
++        let actual = fs::read(out.join(&a.name))?;
++        require(actual.len() == a.bytes && sha(&actual) == a.sha256, "artifact changed")?;
++    }
++    let c = view.checked_envelope();
++    Ok(VerifiedOpaqueBaseline {
++        identity: view.identity().clone(),
++        status: "opaque_physical_baseline_verified",
++        source_bytes: 0,
++        functions: "unknown",
++        executability: "unknown",
++        original_relocations: "unknown",
++        arm7_source_complete: false,
++        t10_complete: false,
++        bootable_elf: false,
++        entry: c.entry,
++        image_offset: c.image_offset,
++        image_bytes: c.image_bytes,
++        image_sha256: c.image_sha256.clone(),
++        header_sha256: c.header_sha256.clone(),
++        params_offset: c.params_offset,
++        params_sha256: c.params_sha256.clone(),
++        table_extent: c.table_extent.clone(),
++        table_sha256: c.table_sha256.clone(),
++        regions: std::iter::once(view.startup())
++            .chain(view.autoloads())
++            .map(|r| r.description().clone())
++            .collect(),
++        generated_cpu_arch: "ARMv4T",
++        generated_elf_abi_flags: word(&elf, 36)?,
++        commands,
++        selected_inputs: selected_snapshot
++            .into_iter()
++            .filter(|a| a.name.ends_with(".o") || a.name == "physical.ld")
++            .collect(),
++        segments,
++        artifacts,
++        clang_sha256: tools.clang.sha256.clone(),
++        lld_sha256: tools.lld.sha256.clone(),
++    })
++}
++fn bytes(data: &[u8], offset: u32, size: u32) -> Result<&[u8]> {
++    let end =
++        offset.checked_add(size).ok_or(PhysicalBaselineError::Rejected("ELF extent overflow"))?;
++    data.get(offset as usize..end as usize).ok_or(PhysicalBaselineError::Rejected("ELF bounds"))
++}
++fn word(data: &[u8], offset: u32) -> Result<u32> {
++    Ok(u32::from_le_bytes(bytes(data, offset, 4)?.try_into().unwrap()))
++}
++fn half(data: &[u8], offset: u32) -> Result<u16> {
++    Ok(u16::from_le_bytes(bytes(data, offset, 2)?.try_into().unwrap()))
++}
++fn name(data: &[u8], offset: u32) -> Result<&str> {
++    let tail =
++        data.get(offset as usize..).ok_or(PhysicalBaselineError::Rejected("ELF name offset"))?;
++    let end = tail
++        .iter()
++        .position(|b| *b == 0)
++        .ok_or(PhysicalBaselineError::Rejected("ELF name terminator"))?;
++    std::str::from_utf8(&tail[..end])
++        .map_err(|_| PhysicalBaselineError::Rejected("ELF name encoding"))
++}
++struct Section {
++    name: String,
++    kind: u32,
++    flags: u32,
++    address: u32,
++    offset: u32,
++    size: u32,
++    link: u32,
++    align: u32,
++    entry_size: u32,
++}
++fn read_sections(elf: &[u8], expected_type: u16) -> Result<Vec<Section>> {
++    require(bytes(elf, 0, 7)? == b"\x7fELF\x01\x01\x01", "ELF32 little endian")?;
++    require(
++        half(elf, 16)? == expected_type && half(elf, 18)? == 40 && word(elf, 20)? == 1,
++        "ELF machine/type",
++    )?;
++    require(bytes(elf, 7, 9)? == [0; 9], "ELF ABI header")?;
++    require(
++        word(elf, 36)? == if expected_type == 2 { 0x05000200 } else { 0x05000000 },
++        "generated ELF ABI flags",
++    )?;
++    require(half(elf, 40)? == 52 && half(elf, 46)? == 40, "ELF table entry size")?;
++    if expected_type == 2 {
++        require(half(elf, 42)? == 32, "ELF program entry size")?;
++    } else {
++        require(
++            word(elf, 24)? == 0
++                && word(elf, 28)? == 0
++                && half(elf, 42)? == 0
++                && half(elf, 44)? == 0,
++            "object program header",
++        )?;
++    }
++    let shoff = word(elf, 32)?;
++    let shnum = half(elf, 48)? as u32;
++    let stridx = half(elf, 50)? as u32;
++    require(shnum > 0 && stridx > 0 && stridx < shnum, "ELF section count")?;
++    bytes(
++        elf,
++        shoff,
++        shnum.checked_mul(40).ok_or(PhysicalBaselineError::Rejected("ELF section overflow"))?,
++    )?;
++    require(bytes(elf, shoff, 40)? == [0; 40], "null ELF section")?;
++    let string_header = shoff + stridx * 40;
++    require(
++        word(elf, string_header + 4)? == 3 && word(elf, string_header + 8)? == 0,
++        "section names table type",
++    )?;
++    let strings = bytes(elf, word(elf, string_header + 16)?, word(elf, string_header + 20)?)?;
++    let mut sections = Vec::new();
++    for i in 0..shnum {
++        let h = shoff + i * 40;
++        let s = Section {
++            name: name(strings, word(elf, h)?)?.into(),
++            kind: word(elf, h + 4)?,
++            flags: word(elf, h + 8)?,
++            address: word(elf, h + 12)?,
++            offset: word(elf, h + 16)?,
++            size: word(elf, h + 20)?,
++            link: word(elf, h + 24)?,
++            align: word(elf, h + 32)?,
++            entry_size: word(elf, h + 36)?,
++        };
++        if s.kind != 8 {
++            bytes(elf, s.offset, s.size)?;
++        }
++        require(
++            (s.flags & 4 == 0 || (s.name == ".text" && s.size == 0 && s.kind == 1 && s.flags == 6))
++                && s.kind != 4
++                && s.kind != 9,
++            "ELF executable/relocation section",
++        )?;
++        if !s.name.is_empty() {
++            require(!sections.iter().any(|p: &Section| p.name == s.name), "ELF duplicate section")?;
++        }
++        sections.push(s);
++    }
++    for (i, s) in sections.iter().enumerate() {
++        require(
++            s.align <= 1
++                || (s.align.is_power_of_two()
++                    && s.address.is_multiple_of(s.align)
++                    && (s.kind == 8 || s.offset.is_multiple_of(s.align))),
++            "ELF section alignment",
++        )?;
++        if s.kind != 8 && s.size != 0 {
++            let end = s
++                .offset
++                .checked_add(s.size)
++                .ok_or(PhysicalBaselineError::Rejected("section overflow"))?;
++            let she = shoff + shnum * 40;
++            require(
++                s.offset >= 52 && !(s.offset < she && shoff < end),
++                "ELF section/header overlap",
++            )?;
++            for other in &sections[..i] {
++                if other.kind != 8 && other.size != 0 {
++                    require(
++                        !(s.offset < other.offset + other.size && other.offset < end),
++                        "ELF file section overlap",
++                    )?;
++                }
++            }
++        }
++    }
++    validate_metadata(elf, &sections, expected_type)?;
++    Ok(sections)
++}
++fn validate_linked(view: &Arm7View<'_>, elf: &[u8]) -> Result<(Vec<Segment>, Vec<u8>)> {
++    let sections = read_sections(elf, 2)?;
++    require(word(elf, 24)? == view.checked_envelope().entry, "ELF entry")?;
++    let parts = parts(view)?;
++    let mut expected = Vec::new();
++    for p in &parts {
++        expected.push((format!(".arm7.{}", p.name), p.vma, p.lma, p.bytes.len() as u32, false));
++        if p.bss != 0 {
++            let b = p.vma + p.bytes.len() as u32;
++            expected.push((format!(".arm7.bss.{}", p.name), b, b, p.bss, true));
++        }
++    }
++    expected.sort_by_key(|p| p.1);
++    require(
++        sections.iter().filter(|s| s.flags & 2 != 0 && s.size != 0).count() == expected.len(),
++        "ELF allocated section count",
++    )?;
++    let phoff = word(elf, 28)?;
++    let phnum = half(elf, 44)? as u32;
++    require(phnum as usize == expected.len(), "ELF segment count")?;
++    bytes(elf, phoff, phnum * 32)?;
++    require(
++        phoff == 52
++            && sections
++                .iter()
++                .all(|s| s.kind == 8 || s.size == 0 || s.offset >= phoff + phnum * 32),
++        "ELF segment/header overlap",
++    )?;
++    let mut segments = Vec::new();
++    for (i, p) in expected.iter().enumerate() {
++        let s = sections
++            .iter()
++            .find(|s| s.name == p.0)
++            .ok_or(PhysicalBaselineError::Rejected("ELF missing section"))?;
++        require(
++            s.address == p.1
++                && s.size == p.3
++                && s.kind == if p.4 { 8 } else { 1 }
++                && s.flags == if p.4 { 3 } else { 2 }
++                && s.align == 4,
++            "ELF physical section",
++        )?;
++        let h = phoff + i as u32 * 32;
++        let offset = word(elf, h + 4)?;
++        let vma = word(elf, h + 8)?;
++        let lma = word(elf, h + 12)?;
++        let file = word(elf, h + 16)?;
++        let memory = word(elf, h + 20)?;
++        let flags = word(elf, h + 24)?;
++        let align = word(elf, h + 28)?;
++        require(
++            word(elf, h)? == 1
++                && vma == p.1
++                && lma == p.2
++                && file == if p.4 { 0 } else { p.3 }
++                && memory == p.3
++                && flags == if p.4 { 6 } else { 4 },
++            "ELF physical segment",
++        )?;
++        require(
++            align <= 1 || (align.is_power_of_two() && vma % align == offset % align),
++            "ELF segment alignment",
++        )?;
++        if !p.4 {
++            require(
++                offset == s.offset && bytes(elf, offset, file)? == bytes(elf, s.offset, s.size)?,
++                "ELF segment bytes",
++            )?;
++        }
++        segments.push(Segment {
++            section: p.0.clone(),
++            vma,
++            lma,
++            file_bytes: file,
++            memory_bytes: memory,
++            file_offset: offset,
++            alignment: align,
++            flags,
++        });
++    }
++    let mut image = Vec::new();
++    for p in &parts {
++        require(image.len() as u32 == p.stored.start, "stored ordering")?;
++        let s = sections.iter().find(|s| s.name == format!(".arm7.{}", p.name)).unwrap();
++        let content = bytes(elf, s.offset, s.size)?;
++        require(content == p.bytes, "ELF original bytes")?;
++        image.extend_from_slice(content);
++        require(image.len() as u32 == p.stored.end, "stored extent")?;
++    }
++    require(
++        image.len() as u32 == view.checked_envelope().image_bytes
++            && sha(&image) == view.checked_envelope().image_sha256,
++        "stored image hash",
++    )?;
++    require(
++        sha(bytes(&image, view.checked_envelope().params_offset, 20)?)
++            == view.checked_envelope().params_sha256,
++        "stored parameter hash",
++    )?;
++    Ok((segments, image))
++}
++
++fn uleb(data: &[u8], cursor: &mut usize) -> Result<u32> {
++    let mut value = 0u32;
++    for shift in (0..35).step_by(7) {
++        let b =
++            *data.get(*cursor).ok_or(PhysicalBaselineError::Rejected("ELF attribute bounds"))?;
++        *cursor += 1;
++        require(shift != 28 || b & 0xf0 == 0, "ELF attribute overflow")?;
++        value |= (b as u32 & 127) << shift;
++        if b & 128 == 0 {
++            return Ok(value);
++        }
++    }
++    Err(PhysicalBaselineError::Rejected("ELF attribute encoding"))
++}
++fn validate_metadata(elf: &[u8], sections: &[Section], kind: u16) -> Result<()> {
++    let attr = sections
++        .iter()
++        .find(|s| s.name == ".ARM.attributes")
++        .ok_or(PhysicalBaselineError::Rejected("missing ARM attributes"))?;
++    require(attr.kind == 0x70000003 && attr.flags == 0, "ARM attributes section")?;
++    let data = bytes(elf, attr.offset, attr.size)?;
++    require(
++        data.first() == Some(&b'A')
++            && word(data, 1)?.checked_add(1) == Some(data.len() as u32)
++            && bytes(data, 5, 6)? == b"aeabi\0"
++            && bytes(data, 11, 1)? == [1]
++            && word(data, 12)?.checked_add(11) == Some(data.len() as u32),
++        "ARM attributes structure",
++    )?;
++    let mut cursor = 16;
++    let mut tags = Vec::new();
++    while cursor < data.len() {
++        let tag = uleb(data, &mut cursor)?;
++        require(!tags.contains(&tag), "duplicate ARM attribute")?;
++        tags.push(tag);
++        if tag == 5 {
++            let cpu = name(data, cursor as u32)?;
++            require(cpu == "arm7tdmi", "ARM CPU attribute")?;
++            cursor += cpu.len() + 1;
++        } else {
++            let value = uleb(data, &mut cursor)?;
++            require(
++                matches!((tag, value), (6, 2) | (8, 1) | (9, 1) | (34, 0)),
++                "ARMv4T attributes",
++            )?;
++        }
++    }
++    tags.sort();
++    require(tags == [5, 6, 8, 9, 34], "missing ARMv4T attribute")?;
++    let symbols = sections
++        .iter()
++        .find(|s| s.name == ".symtab")
++        .ok_or(PhysicalBaselineError::Rejected("missing symbol table"))?;
++    require(
++        symbols.kind == 2 && symbols.entry_size == 16 && symbols.size.is_multiple_of(16),
++        "symbol table shape",
++    )?;
++    let strings = sections
++        .get(symbols.link as usize)
++        .ok_or(PhysicalBaselineError::Rejected("symbol strings index"))?;
++    require(strings.kind == 3, "symbol strings type")?;
++    let names = bytes(elf, strings.offset, strings.size)?;
++    let data = bytes(elf, symbols.offset, symbols.size)?;
++    require(data.len() >= 16 && data[..16] == [0; 16], "null ELF symbol")?;
++    let mut entry_anchors = 0;
++    for offset in (16..data.len()).step_by(16) {
++        let off = offset as u32;
++        let name = name(names, word(data, off)?)?;
++        let info = data[offset + 12];
++        let index = half(data, off + 14)?;
++        require(info & 15 != 2 && (index != 0 || name.is_empty()), "function/undefined symbol")?;
++        if name == "ARM7_HEADER_ENTRY" {
++            entry_anchors += 1;
++        }
++        require(
++            (kind == 2
++                && name == "ARM7_HEADER_ENTRY"
++                && info == 0x10
++                && index == 0xfff1
++                && word(data, off + 4)? == word(elf, 24)?
++                && word(data, off + 8)? == 0)
++                || (name.is_empty() && info == 3 && (index as usize) < sections.len()),
++            "unexpected generated symbol",
++        )?;
++    }
++    require(entry_anchors == usize::from(kind == 2), "generated entry anchor count")?;
++    Ok(())
++}
++fn validate_object(part: &Part<'_>, elf: &[u8]) -> Result<()> {
++    let sections = read_sections(elf, 1)?;
++    let expected = 1 + usize::from(part.bss != 0);
++    require(
++        sections.iter().filter(|s| s.flags & 2 != 0 && s.size != 0).count() == expected,
++        "object allocated sections",
++    )?;
++    let section = sections
++        .iter()
++        .find(|s| s.name == format!(".arm7.{}", part.name))
++        .ok_or(PhysicalBaselineError::Rejected("object missing initialized section"))?;
++    require(
++        section.kind == 1
++            && section.flags == 2
++            && section.address == 0
++            && section.align == 4
++            && bytes(elf, section.offset, section.size)? == part.bytes,
++        "object initialized payload",
++    )?;
++    if part.bss != 0 {
++        let section = sections
++            .iter()
++            .find(|s| s.name == format!(".arm7.bss.{}", part.name))
++            .ok_or(PhysicalBaselineError::Rejected("object missing BSS"))?;
++        require(
++            section.kind == 8
++                && section.flags == 3
++                && section.address == 0
++                && section.align == 4
++                && section.size == part.bss,
++            "object BSS",
++        )?;
++    }
++    Ok(())
++}
++
++#[cfg(test)]
++mod tests;
+diff --git a/lib/src/rom/arm7_physical_baseline/tests.rs b/lib/src/rom/arm7_physical_baseline/tests.rs
+new file mode 100644
+index 0000000000000000000000000000000000000000..4355850348f1adacc3ee6e035609017c4715b866
+--- /dev/null
++++ b/lib/src/rom/arm7_physical_baseline/tests.rs
+@@ -0,0 +1,182 @@
++use super::*;
++mod common {
++    use crate as ds_decomp;
++    include!(concat!(env!("CARGO_MANIFEST_DIR"), "/tests/common/mod.rs"));
++}
++use common::Fixture;
++use std::sync::atomic::{AtomicUsize, Ordering};
++static NEXT: AtomicUsize = AtomicUsize::new(0);
++fn pins() -> NativePins {
++    NativePins {
++        clang: NativeToolPin {
++            executable: "/opt/homebrew/opt/llvm/bin/clang".into(),
++            sha256: "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5".into(),
++            version: "Homebrew clang version 23.1.2".into(),
++        },
++        lld: NativeToolPin {
++            executable: "/opt/homebrew/bin/ld.lld".into(),
++            sha256: "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54".into(),
++            version: "Homebrew LLD 23.1.2 (compatible with GNU linkers)".into(),
++        },
++    }
++}
++fn out() -> PathBuf {
++    let p = PathBuf::from(std::env::var_os("CARGO_TARGET_DIR").unwrap()).join(format!(
++        "elf-mutations-{}-{}",
++        std::process::id(),
++        NEXT.fetch_add(1, Ordering::Relaxed)
++    ));
++    fs::create_dir_all(&p).unwrap();
++    p
++}
++fn set(data: &mut [u8], pos: u32, value: u32) {
++    data[pos as usize..pos as usize + 4].copy_from_slice(&value.to_le_bytes());
++}
++fn section(elf: &[u8], wanted: &str) -> u32 {
++    let sh = word(elf, 32).unwrap();
++    let strings = sh + half(elf, 50).unwrap() as u32 * 40;
++    let names =
++        bytes(elf, word(elf, strings + 16).unwrap(), word(elf, strings + 20).unwrap()).unwrap();
++    (0..half(elf, 48).unwrap() as u32)
++        .map(|i| sh + i * 40)
++        .find(|h| name(names, word(elf, *h).unwrap()).unwrap() == wanted)
++        .unwrap()
++}
++#[test]
++fn actual_linked_elf_attribute_mutation_rejects_with_original_inputs_unchanged() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    assert_ne!(f.parent_layout.identity, f.child_layout.identity);
++    let original = f.parent.clone();
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let p = out();
++    build(&view, &pins(), &p).unwrap();
++    let elf = fs::read(p.join("linked.elf")).unwrap();
++    let mut mutant = elf.clone();
++    let attr = section(&elf, ".ARM.attributes");
++    let start = word(&elf, attr + 16).unwrap();
++    let size = word(&elf, attr + 20).unwrap();
++    let pos = bytes(&elf, start, size).unwrap().windows(2).position(|b| b == [6, 2]).unwrap()
++        as u32
++        + start;
++    mutant[(pos + 1) as usize] = 3;
++    assert!(validate_linked(&view, &mutant).is_err(), "V5 architecture mutation accepted");
++    assert_eq!(f.parent, original);
++    assert_eq!(fs::read(p.join("linked.elf")).unwrap(), elf);
++}
++#[test]
++fn actual_linked_elf_function_symbol_mutation_rejects() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let p = out();
++    build(&view, &pins(), &p).unwrap();
++    let mut elf = fs::read(p.join("linked.elf")).unwrap();
++    let s = section(&elf, ".symtab");
++    let off = word(&elf, s + 16).unwrap();
++    elf[(off + 16 + 12) as usize] = 0x12;
++    assert!(validate_linked(&view, &elf).is_err(), "function declaration accepted");
++}
++#[test]
++fn actual_linked_elf_header_section_segment_and_byte_mutations_reject_without_panics() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    assert_ne!(f.parent_layout.identity, f.child_layout.identity);
++    let original = f.parent.clone();
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let p = out();
++    build(&view, &pins(), &p).unwrap();
++    let elf = fs::read(p.join("linked.elf")).unwrap();
++    let sh = word(&elf, 32).unwrap();
++    let ph = word(&elf, 28).unwrap();
++    let auto0 = section(&elf, ".arm7.autoload0");
++    let bss = section(&elf, ".arm7.bss.autoload0");
++    let table = section(&elf, ".arm7.table");
++    let payload = word(&elf, auto0 + 16).unwrap();
++    let tab = word(&elf, table + 16).unwrap();
++    for (label, offset, value) in [
++        ("header table", 32, u32::MAX),
++        ("entry", 24, 0x02380004),
++        ("machine", 16, 0),
++        ("section VMA", auto0 + 12, 0x037f8004),
++        ("section size", auto0 + 20, 20),
++        ("section type", auto0 + 4, 8),
++        ("section flags", auto0 + 8, 6),
++        ("BSS bytes", bss + 4, 1),
++        ("BSS extent", bss + 20, 12),
++        ("LMA", ph + 12, 0x02380004),
++        ("segment filesz", ph + 16, 68),
++        ("segment memsz", ph + 20, 68),
++        ("segment flags", ph + 24, 5),
++        ("alignment", ph + 28, 3),
++        ("segment membership", ph + 4, word(&elf, ph + 4).unwrap() + 4),
++        ("payload", payload, 0x01020304),
++        ("table", tab, 0),
++        ("missing input section", auto0, 0),
++        ("section overflow", sh + 40 + 16, u32::MAX),
++    ] {
++        let mut mutant = elf.clone();
++        set(&mut mutant, offset, value);
++        assert!(
++            matches!(std::panic::catch_unwind(|| validate_linked(&view, &mutant)), Ok(Err(_))),
++            "{label} accepted/panicked"
++        );
++    }
++    for length in [0, 7, 51, 100, elf.len() - 1] {
++        assert!(matches!(
++            std::panic::catch_unwind(|| validate_linked(&view, &elf[..length])),
++            Ok(Err(_))
++        ));
++    }
++    assert_eq!(f.parent, original);
++}
++#[test]
++fn actual_omitted_or_swapped_object_fails_normal_native_link_checks() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let p = out();
++    let pins = pins();
++    build(&view, &pins, &p).unwrap();
++    let objects = ["startup.o", "autoload0.o", "autoload1.o", "table.o"];
++    let args = [
++        "-m",
++        "armelf",
++        "--nmagic",
++        "-T",
++        "physical.ld",
++        "-o",
++        "bad.elf",
++        objects[0],
++        objects[1],
++        objects[2],
++        objects[3],
++    ];
++    let original = fs::read(p.join("autoload0.o")).unwrap();
++    fs::write(p.join("autoload0.o"), fs::read(p.join("autoload1.o")).unwrap()).unwrap();
++    assert!(run(&pins.lld.executable, &args, &p).is_err());
++    fs::write(p.join("autoload0.o"), original).unwrap();
++    fs::remove_file(p.join("autoload0.o")).unwrap();
++    assert!(run(&pins.lld.executable, &args, &p).is_err());
++}
++
++#[test]
++fn actual_elf_section_directory_and_entry_anchor_mutations_reject() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let p = out();
++    build(&view, &pins(), &p).unwrap();
++    let elf = fs::read(p.join("linked.elf")).unwrap();
++    let sh = word(&elf, 32).unwrap();
++    let strings = sh + half(&elf, 50).unwrap() as u32 * 40;
++    let sym = section(&elf, ".symtab");
++    let mut accepted = Vec::new();
++    for (label, offset, value) in [
++        ("section names type", strings + 4, 1),
++        ("null section", sh + 4, 3),
++        ("missing entry anchor", sym + 20, 16),
++    ] {
++        let mut mutant = elf.clone();
++        set(&mut mutant, offset, value);
++        if validate_linked(&view, &mutant).is_ok() {
++            accepted.push(label);
++        }
++    }
++    assert!(accepted.is_empty(), "accepted malformed metadata: {accepted:?}");
++}
+diff --git a/lib/src/rom/mod.rs b/lib/src/rom/mod.rs
+index 970910a74dc7c72dc0d3d21bf3fc1a0241e6502e..fbc8ac1d47d44dcd84bba5f7cbdb62d68ea0ba7d 100644
+--- a/lib/src/rom/mod.rs
++++ b/lib/src/rom/mod.rs
+@@ -1,3 +1,4 @@
+ pub mod arm7;
+ pub mod rom;
+ pub mod arm7_modules;
++pub mod arm7_physical_baseline;
+diff --git a/lib/tests/arm7_physical_baseline.rs b/lib/tests/arm7_physical_baseline.rs
+new file mode 100644
+index 0000000000000000000000000000000000000000..052c2b72cf078dbfde2a26bf227f48f6437eb08c
+--- /dev/null
++++ b/lib/tests/arm7_physical_baseline.rs
+@@ -0,0 +1,163 @@
++use ds_decomp::rom::arm7_physical_baseline::{NativePins, NativeToolPin, build};
++use sha2::{Digest, Sha256};
++use std::{
++    fs,
++    path::PathBuf,
++    sync::atomic::{AtomicUsize, Ordering},
++};
++mod common;
++use common::Fixture;
++
++fn pins() -> NativePins {
++    NativePins {
++        clang: NativeToolPin {
++            executable: PathBuf::from("/opt/homebrew/opt/llvm/bin/clang"),
++            sha256: "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5".into(),
++            version: "Homebrew clang version 23.1.2".into(),
++        },
++        lld: NativeToolPin {
++            executable: PathBuf::from("/opt/homebrew/bin/ld.lld"),
++            sha256: "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54".into(),
++            version: "Homebrew LLD 23.1.2 (compatible with GNU linkers)".into(),
++        },
++    }
++}
++static NEXT: AtomicUsize = AtomicUsize::new(0);
++fn output() -> PathBuf {
++    let root = PathBuf::from(std::env::var_os("CARGO_TARGET_DIR").unwrap());
++    let path = root.join(format!(
++        "physical-test-{}-{}",
++        std::process::id(),
++        NEXT.fetch_add(1, Ordering::Relaxed)
++    ));
++    fs::create_dir_all(&path).unwrap();
++    path
++}
++#[test]
++fn native_fixture_preserves_loader_order_with_distinct_vmas_lmas_and_bss() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let original = f.parent.clone();
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let out = output();
++    let result = build(&view, &pins(), &out).unwrap();
++    assert_eq!(result.identity(), view.identity());
++    assert_eq!(result.source_bytes(), 0);
++    let rebuilt = fs::read(out.join("arm7.bin")).unwrap();
++    assert_eq!(rebuilt, f.parent[0x4000..0x4078]);
++    let report = serde_json::to_value(&result).unwrap();
++    assert_eq!(report["image_sha256"], format!("{:x}", Sha256::digest(&rebuilt)));
++    let segments = report["segments"].as_array().unwrap();
++    assert_eq!(segments.len(), 6);
++    assert!(segments.windows(2).all(|p| p[0]["vma"].as_u64() < p[1]["vma"].as_u64()));
++    let auto0 = segments.iter().find(|p| p["section"] == ".arm7.autoload0").unwrap();
++    assert_eq!(auto0["vma"], 0x037f8000u32);
++    assert_eq!(auto0["lma"], 0x02380040u32);
++    assert_eq!(auto0["file_bytes"], 16);
++    assert_eq!(auto0["memory_bytes"], 16);
++    let bss0 = segments.iter().find(|p| p["section"] == ".arm7.bss.autoload0").unwrap();
++    assert_eq!(bss0["file_bytes"], 0);
++    assert_eq!(bss0["memory_bytes"], 8);
++    assert_eq!(f.parent, original);
++}
++#[test]
++fn checked_metadata_and_entry_survive_original_layout_mutation() {
++    let mut f = Fixture::new(&[1, 2, 3, 4]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    f.parent_layout.entry += 4;
++    f.parent_layout.params_offset += 4;
++    f.parent_layout.table_extent.start += 4;
++    f.parent_layout.image_sha256 = "0".repeat(64);
++    let report = serde_json::to_value(build(&view, &pins(), &output()).unwrap()).unwrap();
++    assert_eq!(report["entry"], 0x02380000u32);
++    assert_eq!(report["params_offset"], 32);
++    assert_eq!(report["table_extent"]["start"], 96);
++}
++#[test]
++fn valid_child_view_builds_its_own_identity_report() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let child = f.child_layout.checked(&f.parent).unwrap();
++    let result = build(&child, &pins(), &output()).unwrap();
++    assert_eq!(result.identity(), &f.child_layout.identity);
++    assert_ne!(result.identity(), &f.parent_layout.identity);
++}
++#[test]
++fn reported_provenance_includes_original_regions_and_actual_native_invocations() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let out = output();
++    let report = serde_json::to_value(build(&view, &pins(), &out).unwrap()).unwrap();
++    let regions = report["regions"].as_array().expect("original checked region metadata");
++    assert_eq!(regions.len(), 3);
++    assert_eq!(regions[1]["stored_extent"]["start"], 64);
++    assert_eq!(regions[1]["runtime_base"], 0x037f8000u32);
++    assert_eq!(regions[1]["sha256"], f.parent_layout.regions[1].sha256);
++    assert_eq!(report["commands"].as_array().expect("actual native commands").len(), 5);
++    assert_eq!(
++        report["selected_inputs"].as_array().expect("actual linked input snapshot").len(),
++        5
++    );
++    for artifact in report["artifacts"].as_array().unwrap() {
++        let bytes = fs::read(out.join(artifact["name"].as_str().unwrap())).unwrap();
++        assert_eq!(artifact["sha256"], format!("{:x}", Sha256::digest(bytes)));
++    }
++}
++#[test]
++fn wrong_native_pin_or_nonempty_output_does_not_publish_success() {
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let out = output();
++    let mut pin = pins();
++    pin.clang.sha256 = "0".repeat(64);
++    assert!(build(&view, &pin, &out).is_err());
++    assert!(fs::read_dir(&out).unwrap().next().is_none());
++    fs::write(out.join("stale"), b"stale").unwrap();
++    assert!(build(&view, &pins(), &out).is_err());
++    assert!(!out.join("linked.elf").exists());
++}
++
++#[cfg(unix)]
++#[test]
++fn assembler_input_changed_after_compilation_rejects_success() {
++    use std::os::unix::fs::PermissionsExt;
++    let f = Fixture::new(&[1, 2, 3, 4]);
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let directory = output();
++    let wrapper = directory.with_extension("clang-wrapper");
++    fs::write(&wrapper,b"#!/bin/sh\n/opt/homebrew/opt/llvm/bin/clang \"$@\"\nresult=$?\nif [ \"$4\" = \"startup.s\" ]; then printf 'changed after assembly' > startup.bin; fi\nexit \"$result\"\n").unwrap();
++    fs::set_permissions(&wrapper, fs::Permissions::from_mode(0o755)).unwrap();
++    let mut tools = pins();
++    tools.clang.executable = wrapper.clone();
++    tools.clang.sha256 = format!("{:x}", Sha256::digest(fs::read(&wrapper).unwrap()));
++    assert!(
++        build(&view, &tools, &directory).is_err(),
++        "changed consumed .incbin artifact accepted"
++    );
++}
++
++#[cfg(unix)]
++#[test]
++fn validated_elf_and_reconstructed_image_cannot_be_replaced_before_publication() {
++    use std::os::unix::fs::PermissionsExt;
++    let mut accepted = Vec::new();
++    for target in ["linked.elf", "arm7.bin"] {
++        let f = Fixture::new(&[1, 2, 3, 4]);
++        let original = f.parent.clone();
++        let view = f.parent_layout.checked(&f.parent).unwrap();
++        let directory = output();
++        let wrapper = directory.with_extension("lld.py");
++        let mutator = wrapper.with_extension("mutate.py");
++        fs::write(&wrapper,b"#!/usr/bin/env python3\nimport subprocess,sys,pathlib\ns=subprocess.run(['/opt/homebrew/bin/ld.lld',*sys.argv[1:]])\nif s.returncode==0 and '--version' not in sys.argv:\n p=pathlib.Path.cwd();(p/'physical.map').write_bytes(b'x'*128000000)\n subprocess.Popen([sys.executable,str(pathlib.Path(__file__).with_suffix('.mutate.py')),str(p)],stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)\nsys.exit(s.returncode)\n").unwrap();
++        fs::write(&mutator,format!("import pathlib,time,sys\np=pathlib.Path(sys.argv[1])\nfor _ in range(10000):\n if (p/'arm7.bin').exists():\n  f=p/'{target}';b=bytearray(f.read_bytes())\n  if '{target}'=='linked.elf': b[18:20]=b'\\x00\\x00'\n  else: b[0]^=1\n  f.write_bytes(b);(p/'mutation-ran').write_text('{target}');break\n time.sleep(.001)\n")).unwrap();
++        fs::set_permissions(&wrapper, fs::Permissions::from_mode(0o755)).unwrap();
++        let mut tools = pins();
++        tools.lld.executable = wrapper.clone();
++        tools.lld.sha256 = format!("{:x}", Sha256::digest(fs::read(&wrapper).unwrap()));
++        let result = build(&view, &tools, &directory);
++        assert!(directory.join("mutation-ran").exists(), "mutation did not run");
++        assert_eq!(f.parent, original);
++        if result.is_ok() {
++            accepted.push(target);
++        }
++    }
++    assert!(accepted.is_empty(), "published success for replaced artifacts: {accepted:?}");
++}

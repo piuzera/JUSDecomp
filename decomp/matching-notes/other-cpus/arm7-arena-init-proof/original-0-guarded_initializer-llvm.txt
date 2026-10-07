@@ -1,0 +1,40 @@
+	stmdb	sp!, {lr}
+	sub	sp, sp, #4
+	ldr	r1, [pc, #144]
+	ldr	r0, [r1]
+	cmp	r0, #0
+	bne	#120
+	mov	r0, #1
+	str	r0, [r1]
+	bl	#-208
+	mov	r1, r0
+	mov	r0, #1
+	bl	#-328
+	mov	r0, #1
+	bl	#-316
+	mov	r1, r0
+	mov	r0, #1
+	bl	#-368
+	mov	r0, #7
+	bl	#-248
+	mov	r1, r0
+	mov	r0, #7
+	bl	#-368
+	mov	r0, #7
+	bl	#-356
+	mov	r1, r0
+	mov	r0, #7
+	bl	#-408
+	mov	r0, #8
+	bl	#-288
+	mov	r1, r0
+	mov	r0, #8
+	bl	#-408
+	mov	r0, #8
+	bl	#-396
+	mov	r1, r0
+	mov	r0, #8
+	bl	#-448
+	add	sp, sp, #4
+	ldm	sp!, {lr}
+	bx	lr

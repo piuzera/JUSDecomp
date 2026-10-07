@@ -1,0 +1,1155 @@
+{
+  "status": "actual_MW_RELA_native_exact_original_images",
+  "source_credit_bytes": 0,
+  "tool_sha256": {
+    "/opt/homebrew/opt/llvm/bin/clang": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+    "/opt/homebrew/bin/ld.lld": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54"
+  },
+  "actual_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "opaque_objects_sha256": {
+        "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+        "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+        "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+        "prefix.o": "b3a7639dba6b44c60cf261dfc15cf728af7ba50f035b2b74bb5bfbc193b44d0f",
+        "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+        "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+      },
+      "opaque_parts_sha256": {
+        "startup": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+        "table": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "autoload1": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+        "prefix": "9f6a7a2cedb0251b3a5437a9f4601b5c175813047ac218173d5c31dfb7d12abf",
+        "suffix": "4b2ab8e15336aeea81eed2e167e4911c9445dacfe37c281d1bd4372d7f5343ba"
+      },
+      "assembly_commands": [
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "f181b22af07c9e4595b37965ec0ede2137d7cea75d56e4e9bcb29f8a9235c632"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "9f7798987f3e10565bab6936b1dac4fb16c293a8dd801138bfd3bd48557e1ebf"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "e75ba4335ef7bd31a2339c0a601b50198be5a7d0f4121a352cfd332d53642d7e"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "prefix.s",
+            "-o",
+            "prefix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "e6d90f9076de81689797c59fecbba173b76081360f0292aa527e973d07837244"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "suffix.s",
+            "-o",
+            "suffix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "d41b0a0835ee82a7a9117ba788bd1577c845330676a8fa911653bd3a11f4100d"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "bss0.s",
+            "-o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "5475c12ac017a8e389073f5b6882161fefaec923e3f30f96091f2a8d39937458"
+        }
+      ],
+      "positive": {
+        "actual_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "binding": 1024,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "physical.ld",
+            "-Map",
+            "positive.map",
+            "-o",
+            "positive.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "compiled.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "9ad8841f09446c0172e778bc99da4d091fb8d4f688fc0bce8bdcc18659a23ca4"
+        },
+        "linker_script_sha256": "3c9cfd439fa1ba4726099ed73770b0dbf061d6a5771e2e767b6f03027879f93b",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_irq_stack_size = 0x00000400;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"size\")\n}\nASSERT(__candidate_start == 0x037fcf84, \"candidate start\")\nASSERT(__candidate_end == 0x037fd004, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 128, \"candidate size\")\n",
+        "map_sha256": "567f92f22114d65b34d124403c02fe8cadbad9c514894a852321269a3316698a",
+        "readback": {
+          "linked_elf_sha256": "d90a255d1193d31f0c4b322250e2b4de85608dbf59b855975a25ad499332c059",
+          "elf_header": {
+            "entry": 37224448,
+            "flags": 83886592,
+            "bytes": 166872
+          },
+          "sections": [
+            {
+              "name": ".arm7.startup",
+              "type": 1,
+              "flags": 2,
+              "vma": 37224448,
+              "offset": 244,
+              "size": 432,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.table",
+              "type": 1,
+              "flags": 2,
+              "vma": 37389976,
+              "offset": 676,
+              "size": 24,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload1",
+              "type": 1,
+              "flags": 2,
+              "vma": 41811968,
+              "offset": 700,
+              "size": 98976,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload1",
+              "type": 8,
+              "flags": 3,
+              "vma": 41910944,
+              "offset": 99676,
+              "size": 6504,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload0",
+              "type": 1,
+              "flags": 6,
+              "vma": 58687488,
+              "offset": 99676,
+              "size": 66120,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload0",
+              "type": 8,
+              "flags": 3,
+              "vma": 58753608,
+              "offset": 165796,
+              "size": 14920,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            }
+          ],
+          "segments": [
+            {
+              "type": 1,
+              "offset": 244,
+              "vma": 37224448,
+              "lma": 37224448,
+              "file_bytes": 432,
+              "memory_bytes": 432,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 676,
+              "vma": 37389976,
+              "lma": 37389976,
+              "file_bytes": 24,
+              "memory_bytes": 24,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 700,
+              "vma": 41811968,
+              "lma": 37291000,
+              "file_bytes": 98976,
+              "memory_bytes": 98976,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 41910944,
+              "lma": 41910944,
+              "file_bytes": 0,
+              "memory_bytes": 6504,
+              "flags": 6,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 58687488,
+              "lma": 37224880,
+              "file_bytes": 66120,
+              "memory_bytes": 66120,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 165796,
+              "vma": 58753608,
+              "lma": 58753608,
+              "file_bytes": 0,
+              "memory_bytes": 14920,
+              "flags": 6,
+              "align": 4
+            }
+          ],
+          "candidate_and_binding_symbols": [
+            {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            {
+              "name": "hyp_irq_stack_size",
+              "vma": 1024,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_wram_arena_lo",
+              "vma": 58768528,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_system_stack_size",
+              "vma": 1024,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "__candidate_start",
+              "vma": 58707844,
+              "size": 0,
+              "section": 5
+            },
+            {
+              "name": "__candidate_end",
+              "vma": 58707972,
+              "size": 0,
+              "section": 5
+            }
+          ],
+          "image_bytes": 165552,
+          "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+          "image_mismatch_offsets": [],
+          "exact_original_ELF_only": true,
+          "BSS_bytes": 21424,
+          "noncandidate_bytes_unchanged": true,
+          "linked_relocation_sections": 0,
+          "linked_candidate_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+          "linked_literal_words": [
+            "0x027ff000",
+            "0x00000400",
+            "0x0380ff80",
+            "0x0380bc90",
+            "0x00000400"
+          ]
+        },
+        "image_mismatch_offsets": []
+      },
+      "wrong_binding": {
+        "actual_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "binding": 2048,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "physical.ld",
+            "-Map",
+            "wrong_binding.map",
+            "-o",
+            "wrong_binding.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "compiled.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "2d9e985907b1a0a6d32829813086b38d355fc4a18c8647d72eea3f92cc847c1c"
+        },
+        "linker_script_sha256": "4a5da6bb8cdb3268944b170c9b14d25ac95132e196ec1255eb5ff8b0ec9841cd",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_irq_stack_size = 0x00000800;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"size\")\n}\nASSERT(__candidate_start == 0x037fcf84, \"candidate start\")\nASSERT(__candidate_end == 0x037fd004, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 128, \"candidate size\")\n",
+        "map_sha256": "d55336de52e459668079b6cc01b789f56ef2ffc0e3e478e3945406cbbc41fd0e",
+        "readback": {
+          "linked_elf_sha256": "4fa87c3125517d5fda127c49ce320c61c12f0f4026ded33b82b901c7e860337e",
+          "elf_header": {
+            "entry": 37224448,
+            "flags": 83886592,
+            "bytes": 166872
+          },
+          "sections": [
+            {
+              "name": ".arm7.startup",
+              "type": 1,
+              "flags": 2,
+              "vma": 37224448,
+              "offset": 244,
+              "size": 432,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.table",
+              "type": 1,
+              "flags": 2,
+              "vma": 37389976,
+              "offset": 676,
+              "size": 24,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload1",
+              "type": 1,
+              "flags": 2,
+              "vma": 41811968,
+              "offset": 700,
+              "size": 98976,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload1",
+              "type": 8,
+              "flags": 3,
+              "vma": 41910944,
+              "offset": 99676,
+              "size": 6504,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload0",
+              "type": 1,
+              "flags": 6,
+              "vma": 58687488,
+              "offset": 99676,
+              "size": 66120,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload0",
+              "type": 8,
+              "flags": 3,
+              "vma": 58753608,
+              "offset": 165796,
+              "size": 14920,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            }
+          ],
+          "segments": [
+            {
+              "type": 1,
+              "offset": 244,
+              "vma": 37224448,
+              "lma": 37224448,
+              "file_bytes": 432,
+              "memory_bytes": 432,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 676,
+              "vma": 37389976,
+              "lma": 37389976,
+              "file_bytes": 24,
+              "memory_bytes": 24,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 700,
+              "vma": 41811968,
+              "lma": 37291000,
+              "file_bytes": 98976,
+              "memory_bytes": 98976,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 41910944,
+              "lma": 41910944,
+              "file_bytes": 0,
+              "memory_bytes": 6504,
+              "flags": 6,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 58687488,
+              "lma": 37224880,
+              "file_bytes": 66120,
+              "memory_bytes": 66120,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 165796,
+              "vma": 58753608,
+              "lma": 58753608,
+              "file_bytes": 0,
+              "memory_bytes": 14920,
+              "flags": 6,
+              "align": 4
+            }
+          ],
+          "candidate_and_binding_symbols": [
+            {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            {
+              "name": "hyp_irq_stack_size",
+              "vma": 2048,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_wram_arena_lo",
+              "vma": 58768528,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_system_stack_size",
+              "vma": 1024,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "__candidate_start",
+              "vma": 58707844,
+              "size": 0,
+              "section": 5
+            },
+            {
+              "name": "__candidate_end",
+              "vma": 58707972,
+              "size": 0,
+              "section": 5
+            }
+          ],
+          "image_bytes": 165552,
+          "image_sha256": "35865f328f7ac1a1fce99bca5d7c3ad1855ce32ccd3495d448a99e9ca9cf594a",
+          "image_mismatch_offsets": [
+            20901
+          ],
+          "exact_original_ELF_only": false,
+          "BSS_bytes": 21424,
+          "noncandidate_bytes_unchanged": true,
+          "linked_relocation_sections": 0,
+          "linked_candidate_sha256": "f36815183ff073a81ba889b53b9c06be079589bca05639a632a7b71ade7f8ef0",
+          "linked_literal_words": [
+            "0x027ff000",
+            "0x00000800",
+            "0x0380ff80",
+            "0x0380bc90",
+            "0x00000400"
+          ]
+        },
+        "image_mismatch_offsets": [
+          20901
+        ],
+        "original_comparison_rejection": "original image mismatch at stored offsets [20901]"
+      },
+      "malformed_load_offset_rejected": true,
+      "malformed_elf_sha256": "d69284bc8f9e512dec9f1c88a573d1c9ab6c02f6baf8810d2f99e071206e88a4"
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "opaque_objects_sha256": {
+        "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+        "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+        "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+        "prefix.o": "b3a7639dba6b44c60cf261dfc15cf728af7ba50f035b2b74bb5bfbc193b44d0f",
+        "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+        "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+      },
+      "opaque_parts_sha256": {
+        "startup": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+        "table": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "autoload1": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+        "prefix": "9f6a7a2cedb0251b3a5437a9f4601b5c175813047ac218173d5c31dfb7d12abf",
+        "suffix": "4b2ab8e15336aeea81eed2e167e4911c9445dacfe37c281d1bd4372d7f5343ba"
+      },
+      "assembly_commands": [
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "f181b22af07c9e4595b37965ec0ede2137d7cea75d56e4e9bcb29f8a9235c632"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "9f7798987f3e10565bab6936b1dac4fb16c293a8dd801138bfd3bd48557e1ebf"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "e75ba4335ef7bd31a2339c0a601b50198be5a7d0f4121a352cfd332d53642d7e"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "prefix.s",
+            "-o",
+            "prefix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "e6d90f9076de81689797c59fecbba173b76081360f0292aa527e973d07837244"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "suffix.s",
+            "-o",
+            "suffix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "d41b0a0835ee82a7a9117ba788bd1577c845330676a8fa911653bd3a11f4100d"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "bss0.s",
+            "-o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "5475c12ac017a8e389073f5b6882161fefaec923e3f30f96091f2a8d39937458"
+        }
+      ],
+      "positive": {
+        "actual_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "binding": 1024,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "physical.ld",
+            "-Map",
+            "positive.map",
+            "-o",
+            "positive.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "compiled.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "9ad8841f09446c0172e778bc99da4d091fb8d4f688fc0bce8bdcc18659a23ca4"
+        },
+        "linker_script_sha256": "3c9cfd439fa1ba4726099ed73770b0dbf061d6a5771e2e767b6f03027879f93b",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_irq_stack_size = 0x00000400;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"size\")\n}\nASSERT(__candidate_start == 0x037fcf84, \"candidate start\")\nASSERT(__candidate_end == 0x037fd004, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 128, \"candidate size\")\n",
+        "map_sha256": "567f92f22114d65b34d124403c02fe8cadbad9c514894a852321269a3316698a",
+        "readback": {
+          "linked_elf_sha256": "d90a255d1193d31f0c4b322250e2b4de85608dbf59b855975a25ad499332c059",
+          "elf_header": {
+            "entry": 37224448,
+            "flags": 83886592,
+            "bytes": 166872
+          },
+          "sections": [
+            {
+              "name": ".arm7.startup",
+              "type": 1,
+              "flags": 2,
+              "vma": 37224448,
+              "offset": 244,
+              "size": 432,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.table",
+              "type": 1,
+              "flags": 2,
+              "vma": 37389976,
+              "offset": 676,
+              "size": 24,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload1",
+              "type": 1,
+              "flags": 2,
+              "vma": 41811968,
+              "offset": 700,
+              "size": 98976,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload1",
+              "type": 8,
+              "flags": 3,
+              "vma": 41910944,
+              "offset": 99676,
+              "size": 6504,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload0",
+              "type": 1,
+              "flags": 6,
+              "vma": 58687488,
+              "offset": 99676,
+              "size": 66120,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload0",
+              "type": 8,
+              "flags": 3,
+              "vma": 58753608,
+              "offset": 165796,
+              "size": 14920,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            }
+          ],
+          "segments": [
+            {
+              "type": 1,
+              "offset": 244,
+              "vma": 37224448,
+              "lma": 37224448,
+              "file_bytes": 432,
+              "memory_bytes": 432,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 676,
+              "vma": 37389976,
+              "lma": 37389976,
+              "file_bytes": 24,
+              "memory_bytes": 24,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 700,
+              "vma": 41811968,
+              "lma": 37291000,
+              "file_bytes": 98976,
+              "memory_bytes": 98976,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 41910944,
+              "lma": 41910944,
+              "file_bytes": 0,
+              "memory_bytes": 6504,
+              "flags": 6,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 58687488,
+              "lma": 37224880,
+              "file_bytes": 66120,
+              "memory_bytes": 66120,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 165796,
+              "vma": 58753608,
+              "lma": 58753608,
+              "file_bytes": 0,
+              "memory_bytes": 14920,
+              "flags": 6,
+              "align": 4
+            }
+          ],
+          "candidate_and_binding_symbols": [
+            {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            {
+              "name": "hyp_irq_stack_size",
+              "vma": 1024,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_wram_arena_lo",
+              "vma": 58768528,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_system_stack_size",
+              "vma": 1024,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "__candidate_start",
+              "vma": 58707844,
+              "size": 0,
+              "section": 5
+            },
+            {
+              "name": "__candidate_end",
+              "vma": 58707972,
+              "size": 0,
+              "section": 5
+            }
+          ],
+          "image_bytes": 165552,
+          "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+          "image_mismatch_offsets": [],
+          "exact_original_ELF_only": true,
+          "BSS_bytes": 21424,
+          "noncandidate_bytes_unchanged": true,
+          "linked_relocation_sections": 0,
+          "linked_candidate_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+          "linked_literal_words": [
+            "0x027ff000",
+            "0x00000400",
+            "0x0380ff80",
+            "0x0380bc90",
+            "0x00000400"
+          ]
+        },
+        "image_mismatch_offsets": []
+      },
+      "wrong_binding": {
+        "actual_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "binding": 2048,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "physical.ld",
+            "-Map",
+            "wrong_binding.map",
+            "-o",
+            "wrong_binding.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "compiled.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "log_sha256": "2d9e985907b1a0a6d32829813086b38d355fc4a18c8647d72eea3f92cc847c1c"
+        },
+        "linker_script_sha256": "4a5da6bb8cdb3268944b170c9b14d25ac95132e196ec1255eb5ff8b0ec9841cd",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_irq_stack_size = 0x00000800;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"size\")\n}\nASSERT(__candidate_start == 0x037fcf84, \"candidate start\")\nASSERT(__candidate_end == 0x037fd004, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 128, \"candidate size\")\n",
+        "map_sha256": "d55336de52e459668079b6cc01b789f56ef2ffc0e3e478e3945406cbbc41fd0e",
+        "readback": {
+          "linked_elf_sha256": "4fa87c3125517d5fda127c49ce320c61c12f0f4026ded33b82b901c7e860337e",
+          "elf_header": {
+            "entry": 37224448,
+            "flags": 83886592,
+            "bytes": 166872
+          },
+          "sections": [
+            {
+              "name": ".arm7.startup",
+              "type": 1,
+              "flags": 2,
+              "vma": 37224448,
+              "offset": 244,
+              "size": 432,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.table",
+              "type": 1,
+              "flags": 2,
+              "vma": 37389976,
+              "offset": 676,
+              "size": 24,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload1",
+              "type": 1,
+              "flags": 2,
+              "vma": 41811968,
+              "offset": 700,
+              "size": 98976,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload1",
+              "type": 8,
+              "flags": 3,
+              "vma": 41910944,
+              "offset": 99676,
+              "size": 6504,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.autoload0",
+              "type": 1,
+              "flags": 6,
+              "vma": 58687488,
+              "offset": 99676,
+              "size": 66120,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            },
+            {
+              "name": ".arm7.bss.autoload0",
+              "type": 8,
+              "flags": 3,
+              "vma": 58753608,
+              "offset": 165796,
+              "size": 14920,
+              "link": 0,
+              "entry_size": 0,
+              "align": 4
+            }
+          ],
+          "segments": [
+            {
+              "type": 1,
+              "offset": 244,
+              "vma": 37224448,
+              "lma": 37224448,
+              "file_bytes": 432,
+              "memory_bytes": 432,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 676,
+              "vma": 37389976,
+              "lma": 37389976,
+              "file_bytes": 24,
+              "memory_bytes": 24,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 700,
+              "vma": 41811968,
+              "lma": 37291000,
+              "file_bytes": 98976,
+              "memory_bytes": 98976,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 41910944,
+              "lma": 41910944,
+              "file_bytes": 0,
+              "memory_bytes": 6504,
+              "flags": 6,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 99676,
+              "vma": 58687488,
+              "lma": 37224880,
+              "file_bytes": 66120,
+              "memory_bytes": 66120,
+              "flags": 4,
+              "align": 4
+            },
+            {
+              "type": 1,
+              "offset": 165796,
+              "vma": 58753608,
+              "lma": 58753608,
+              "file_bytes": 0,
+              "memory_bytes": 14920,
+              "flags": 6,
+              "align": 4
+            }
+          ],
+          "candidate_and_binding_symbols": [
+            {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            {
+              "name": "hyp_irq_stack_size",
+              "vma": 2048,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_wram_arena_lo",
+              "vma": 58768528,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "hyp_system_stack_size",
+              "vma": 1024,
+              "size": 0,
+              "section": 65521
+            },
+            {
+              "name": "__candidate_start",
+              "vma": 58707844,
+              "size": 0,
+              "section": 5
+            },
+            {
+              "name": "__candidate_end",
+              "vma": 58707972,
+              "size": 0,
+              "section": 5
+            }
+          ],
+          "image_bytes": 165552,
+          "image_sha256": "35865f328f7ac1a1fce99bca5d7c3ad1855ce32ccd3495d448a99e9ca9cf594a",
+          "image_mismatch_offsets": [
+            20901
+          ],
+          "exact_original_ELF_only": false,
+          "BSS_bytes": 21424,
+          "noncandidate_bytes_unchanged": true,
+          "linked_relocation_sections": 0,
+          "linked_candidate_sha256": "f36815183ff073a81ba889b53b9c06be079589bca05639a632a7b71ade7f8ef0",
+          "linked_literal_words": [
+            "0x027ff000",
+            "0x00000800",
+            "0x0380ff80",
+            "0x0380bc90",
+            "0x00000400"
+          ]
+        },
+        "image_mismatch_offsets": [
+          20901
+        ],
+        "original_comparison_rejection": "original image mismatch at stored offsets [20901]"
+      },
+      "malformed_load_offset_rejected": true,
+      "malformed_elf_sha256": "d69284bc8f9e512dec9f1c88a573d1c9ab6c02f6baf8810d2f99e071206e88a4"
+    }
+  ],
+  "inputs_unchanged": true
+}

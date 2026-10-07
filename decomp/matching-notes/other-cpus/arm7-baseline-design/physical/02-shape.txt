@@ -1,0 +1,95 @@
+# Candidate type and module sketch; bodies not implemented
+
+lib/src/rom/arm7.rs retains checked metadata privately; it alone constructs it.
+All fields private; no Deserialize/Default/public constructor or layout setter.
+
+struct CheckedArm7Envelope {
+    image_offset: u32, image_bytes: u32, image_sha256: String,
+    header_sha256: String, base: u32, entry: u32,
+    params_offset: u32, params_sha256: String,
+    table_extent: Range<u32>, table_sha256: String,
+}
+struct Arm7View<'a> {
+    // Existing identity, immutable region views and table remain authoritative.
+    // New private checked: CheckedArm7Envelope copied inside checked() only after validation.
+}
+impl Arm7View<'_> {
+    pub(crate) fn envelope(&self) -> &CheckedArm7Envelope { unimplemented!() }
+}
+// The accessor/type remain crate-private. Native runner needs no public transport export.
+
+lib/src/rom/arm7_physical_baseline.rs owns native tools, opaque layout and verification.
+
+pub struct NativeToolPin {                   // expected values supplied independently
+    pub executable: PathBuf,
+    pub sha256: String,
+    pub version: String,
+}
+pub struct NativePins { pub clang: NativeToolPin, pub lld: NativeToolPin }
+
+#[derive(Debug, Serialize)]                 // immutable result, never Deserialize
+pub struct VerifiedOpaqueBaseline {         // private fields, construction only by build
+    identity: ProgramIdentity,
+    scope: PhysicalBaselineScope,           // fixed opaque-physical-only enum variant
+    checked: PublicCheckedMetadata,
+    regions: Vec<VerifiedRegion>,           // original loader order; no functions/modes
+    table: VerifiedTable,
+    elf: VerifiedElfMetadata,               // sections + PHDRs, generated artifact policy
+    artifacts: Vec<ArtifactDigest>,         // fixed relative names + actual hashes/sizes
+    tools: VerifiedNativePins,
+    source_bytes: u64,                       // internally always 0
+}
+impl VerifiedOpaqueBaseline {
+    pub fn identity(&self) -> &ProgramIdentity { unimplemented!() }
+    pub fn source_bytes(&self) -> u64 { unimplemented!() }
+}
+
+pub fn build(view: &Arm7View<'_>, tools: &NativePins, empty_private_output: &Path)
+    -> Result<VerifiedOpaqueBaseline, PhysicalBaselineError> { unimplemented!() }
+// Verify tool/version pins; reject nonempty/symlink output. Derive a private NativeLayout
+// solely from checked view/envelope. Write fixed-name original region/table files and
+// four opaque assembly objects. Invoke pinned clang/lld via Command arguments, no shell.
+// Hash actual selected files/commands/script/map/ELF. Validate object and final ELF
+// sections/attributes/PHDRs/entry. Reconstruct by checked stored offsets, not VMA order.
+// Compare all linked bytes to view bytes and checked hashes/params/table; rehash artifacts
+// and native tools, then privately construct VerifiedOpaqueBaseline. No partial success.
+
+Internal NativeLayout:
+    identity: borrowed ProgramIdentity
+    entry: checked header entry
+    regions: ordered Vec<NativeRegion>
+    table: separate TableLayout
+    stored_bytes: checked image size
+
+Internal NativeRegion:
+    kind: Startup | Autoload(original_index)
+    stored_extent: checked image-relative Range<u32>
+    vma: checked initialized runtime range
+    lma: checked base + stored extent, checked arithmetic
+    bss: checked runtime range
+    initialized_bytes: borrowed original bytes
+
+Internal Elf32PhysicalView<'a>:              // bounded reader, not general ELF toolkit
+    // Checked ELF32LE header, section headers/string table, program headers,
+    // fixed symbol table and ARM attributes.
+    // Checked arithmetic/slices for all counts/offsets; reject extended numbering,
+    // unsupported machine/type/entry/section/segment forms and duplicate names.
+    // Expose only our expected PROGBITS/NOBITS bytes, actual ranges and attributes.
+    // Never treat a NOBITS section as a file byte slice.
+
+New lib/examples/arm7_physical_baseline.rs:
+// Existing serde_json dev dependency parses independently pinned layout/native-tool
+// sidecars in this experimental example. Exact selected identities are the layouts'
+// checked values, not arbitrary copied report fields. Hash original parent and sidecars
+// before/after, build checked views from owned immutable bytes, call build(), serialize
+// metadata-only aggregate after all requested programs pass. No original payload in JSON.
+
+Module map:
+- lib/src/rom/arm7.rs: minimal immutable checked envelope retention.
+- lib/src/rom/arm7_physical_baseline.rs: one deep public build operation and private
+  bounded ELF32 parsing, section/segment layout, tool execution and reconstruction.
+- lib/src/rom/mod.rs: export new bounded module.
+- lib/examples/arm7_physical_baseline.rs: pinned metadata-only experimental caller.
+- lib/tests/arm7_physical_baseline.rs: public invented checked-view/native ELF fixtures.
+- No new runtime crate, Python trust capsule, ARM9 Module/Config/Function adaptation,
+  arbitrary LCF/script intake, compiler inference, relocation normalization or pin update.

@@ -1,0 +1,210 @@
+{
+  "status": "passed",
+  "scope": "Child ARM9 main/ITCM/DTCM native reference baseline only",
+  "task_complete": false,
+  "source_complete": false,
+  "source_bytes": 0,
+  "source_functions": 0,
+  "child_rom_roundtrip": "candidate_binary_verified; see child-rom-roundtrip.json",
+  "modules": [
+    {
+      "module": "ARM9",
+      "status": "passed",
+      "base": "0x2000000",
+      "initialized_bytes": 2624320,
+      "bss_bytes": 105760,
+      "sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+      "source_bytes": 0
+    },
+    {
+      "module": "ITCM",
+      "status": "passed",
+      "base": "0x1ff8000",
+      "initialized_bytes": 3968,
+      "bss_bytes": 0,
+      "sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "source_bytes": 0
+    },
+    {
+      "module": "DTCM",
+      "status": "passed",
+      "base": "0x27c0000",
+      "initialized_bytes": 96,
+      "bss_bytes": 32,
+      "sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "source_bytes": 0
+    }
+  ],
+  "original_domain_comparison": {
+    "main": {
+      "status": "passed",
+      "bytes": 2624320,
+      "raw_extracted_sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+      "compared_sha256": "617bec5f0664ca87113abeaf5511433d3be6b42c711f2b936c28d3420f1f6db3",
+      "hash_domain": "original pointer restored from pinned metadata",
+      "matched_source_bytes": 0
+    },
+    "ITCM": {
+      "status": "passed",
+      "bytes": 3968,
+      "raw_extracted_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "compared_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    },
+    "DTCM": {
+      "status": "passed",
+      "bytes": 96,
+      "raw_extracted_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "compared_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    }
+  },
+  "relocations": {
+    "status": "passed",
+    "counts": {
+      "total": 35092,
+      "validated": 35092,
+      "failed": 0,
+      "unresolved": 0
+    },
+    "relocation_types": {
+      "2": 20440,
+      "1": 10755,
+      "10": 3897
+    },
+    "modules": {
+      "DTCM": {
+        "total": 22,
+        "validated": 22,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ITCM": {
+        "total": 78,
+        "validated": 78,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ARM9": {
+        "total": 34992,
+        "validated": 34992,
+        "failed": 0,
+        "unresolved": 0
+      }
+    },
+    "findings": [],
+    "findings_truncated": false,
+    "placement_scope": "one_original_gap_object_per_module",
+    "source_mode_fallbacks": {
+      "count": 0,
+      "contexts": []
+    }
+  },
+  "strict_dsd_module_checks": "passed",
+  "strict_dsd_symbol_checks": "passed",
+  "actual_link_input_provenance": "passed",
+  "arm7_baseline": false,
+  "compression_encoder_match": "exact_original_stored_bytes; see child-rom-roundtrip.json",
+  "schema_version": 1,
+  "task": "jus-bjry.10",
+  "tools": {
+    "dsd": {
+      "source_revision": "78630f8f54835e0e627cd4e45a9626d88c307f8b",
+      "sha256": "d1117b6126a27c3c1f8d429840c61671f492d7bcb22bedc84e42ed8509a5041f"
+    },
+    "lld": {
+      "command": [
+        "/opt/homebrew/opt/lld/bin/ld.lld"
+      ],
+      "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54"
+    },
+    "clang": {
+      "command": [
+        "/opt/homebrew/opt/llvm/bin/clang"
+      ],
+      "sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5"
+    }
+  },
+  "cpu": {
+    "processor": "arm946e",
+    "isa": "armv5te",
+    "original_compiler_match": "unresolved"
+  },
+  "program": {
+    "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "embedded_path": "ChildRom/JSS2Child.srl",
+    "sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+    "entry": "0x02000850"
+  },
+  "original_binary_only": true,
+  "artifact_hashes": {
+    "config/arm9/symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
+    "config/arm9/config.yaml": "b7b786e68c5fe267b2d3e8b856c5ffc4edd0d30dddcd1535fb71ce9994e38667",
+    "config/arm9/relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
+    "config/arm9/delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36",
+    "config/arm9/itcm/symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
+    "config/arm9/itcm/relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
+    "config/arm9/itcm/delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148",
+    "config/arm9/dtcm/symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
+    "config/arm9/dtcm/relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
+    "config/arm9/dtcm/delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82",
+    "delinks/_dsd_gap@dtcm_1.o": "3ec07f932dad9dd0c9feca25118791f7316c1918f81b077efc8f3501ab450f0c",
+    "delinks/_dsd_gap@main_5.o": "c9e2f351a5f6eef6590742f2c8877e691648ad6844938c05f783c2473cf9d838",
+    "delinks/_dsd_gap@itcm_0.o": "bd12f8834e85564215011c4d054de82675d7835d4ed795e0ceaa00241996d733",
+    "linked/arm9.lcf": "af1d76e1e1b6d61ab28d575e013da194a82d1509419b9b1439411445cf8e0756",
+    "linked/objects.txt": "d041446b068a5952d06cceee7a1564f62d89fbf8ee276f69339d183443ccbc43",
+    "linked/build/arm9.bin": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "linked/build/dtcm.bin": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+    "linked/build/itcm.bin": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+    "native-link/arm9.bin": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "native-link/native.ld": "83aa24bf278e482250c581819aa2f084a196aa02d1930db280608e2ee8c876fb",
+    "native-link/linked.elf": "08125b52761f5361787add20bc38832230b83a8a774302cdfc51ad32ed652e8b",
+    "native-link/dtcm.bin": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+    "native-link/attributes.s": "61d4d37bd3e66dfc5e39fc7314f52e5d2bb88cb7942d47bd29bd4b770a2c09be",
+    "native-link/attributes.o": "6ee87b49ca01d518a67a46bcd207bb9d46f054cb64b5adcd2c6e1802273b8898",
+    "native-link/itcm.bin": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+    "native-link/modules.json": "a487ee0f49371e029f4799bc28e7ea5b963cb8d5dde1be2ef3e43f1bab97f153",
+    "native-link/link-inputs.json": "0d5a1fc584d39c15fbcfdfcb1ae099fe44e1d8023cca5d88cfadf85b0e423464",
+    "native-link/link.map": "f2a60d2972b3515c5016eb9dd3b8cfa92f5ebdff4985a4ac194cec55ede59134",
+    "native-link/dsd-check.elf": "9555faf9e5285686cbc69f131d8dd8ff5279d46721944a0cf60579f5fa036bf0",
+    "native-link/link.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-link/objects/_dsd_gap@dtcm_1.o": "0e572a68fcd70e06cdff939a47fe2b2e8c539dbd9152e4a215242de079e593bc",
+    "native-link/objects/_dsd_gap@main_5.o": "2c43a01e8535149079c031fbda7eb7019629b418988356ce6a0c3d862fee881c",
+    "native-link/objects/_dsd_gap@itcm_0.o": "db1d24867f63dcf7438af0f80c844556bf27fb46cc3c9be1a8206566df81be4d"
+  },
+  "provenance": {
+    "lcf_sha256": "af1d76e1e1b6d61ab28d575e013da194a82d1509419b9b1439411445cf8e0756",
+    "native_script_sha256": "83aa24bf278e482250c581819aa2f084a196aa02d1930db280608e2ee8c876fb",
+    "objects": [
+      {
+        "filename": "_dsd_gap@main_5.o",
+        "kind": "reference",
+        "reference_sha256": "c9e2f351a5f6eef6590742f2c8877e691648ad6844938c05f783c2473cf9d838",
+        "normalized_sha256": "2c43a01e8535149079c031fbda7eb7019629b418988356ce6a0c3d862fee881c"
+      },
+      {
+        "filename": "_dsd_gap@itcm_0.o",
+        "kind": "reference",
+        "reference_sha256": "bd12f8834e85564215011c4d054de82675d7835d4ed795e0ceaa00241996d733",
+        "normalized_sha256": "db1d24867f63dcf7438af0f80c844556bf27fb46cc3c9be1a8206566df81be4d"
+      },
+      {
+        "filename": "_dsd_gap@dtcm_1.o",
+        "kind": "reference",
+        "reference_sha256": "3ec07f932dad9dd0c9feca25118791f7316c1918f81b077efc8f3501ab450f0c",
+        "normalized_sha256": "0e572a68fcd70e06cdff939a47fe2b2e8c539dbd9152e4a215242de079e593bc"
+      }
+    ],
+    "attributes_sha256": "6ee87b49ca01d518a67a46bcd207bb9d46f054cb64b5adcd2c6e1802273b8898",
+    "selected_objects": 3,
+    "link_map_sha256": "f2a60d2972b3515c5016eb9dd3b8cfa92f5ebdff4985a4ac194cec55ede59134",
+    "source_overrides": 0
+  },
+  "warnings": {
+    "generated_main_overlapping_function_records": 13,
+    "original_human_function_count": "unresolved",
+    "scope": "Analyzer records may represent aliases or return tails; no source-function denominator claimed"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "status": "No flags",
+  "reviewed_commit": "0f2cbc9d28d963e9cf162d62f6d63e9670d02fba",
+  "receipt_sha256": "e4275bea75229f09dcbaa07a3b151f63b17030363145960614cc22f713df0c29",
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "parent_stages": 19,
+  "checkpoint_stages": 19,
+  "experiment_stages": 7,
+  "artifact_count": 916,
+  "trial_artifacts": 198,
+  "input_pins": 153,
+  "writes": 20,
+  "programs": [
+    {
+      "program_index": 0,
+      "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "calls": 12,
+      "bindings": {
+        "subpriv": 41917448,
+        "wram": 58768528,
+        "irq": 1024,
+        "system": 1024,
+        "guard": 58754096
+      },
+      "rom_offset": 2162688
+    },
+    {
+      "program_index": 1,
+      "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "calls": 12,
+      "bindings": {
+        "subpriv": 41917448,
+        "wram": 58768528,
+        "irq": 1024,
+        "system": 1024,
+        "guard": 58754096
+      },
+      "rom_offset": 4313600
+    }
+  ],
+  "source_credit": {
+    "canonical": 304,
+    "arm7": 0
+  },
+  "t06_complete": false,
+  "t10_complete": false,
+  "new_only_files": 16,
+  "published_raw_git_pins": 88,
+  "converted_git_checkout_inputs": 47,
+  "tests": {
+    "passed": 12,
+    "log_sha256": "00daf647a0730683a69e1997ce736d79496a65034e53db4fea8ba0aa8e416636"
+  },
+  "review_script_sha256": "88f09c8bc3fa5aa47b7b3f800c3bf42d555a8197a93e88a4605d27710b04b3f9",
+  "old_capsules_unchanged": true,
+  "authorization": "separate research experiment only; no canonical ARM7 approval or source promotion"
+}

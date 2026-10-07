@@ -1,0 +1,32 @@
+{
+  "case": "ignored unpinned disasm/build.rs on actual prepared upstream1.9.2",
+  "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+  "check_only": {
+    "accepted": true,
+    "report": {
+      "status": "already_prepared",
+      "checkout": "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe",
+      "version": "1.9.2",
+      "upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+      "patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
+      "verified_source_files": 47,
+      "license_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b"
+    }
+  },
+  "cargo_metadata_command": [
+    "cargo",
+    "metadata",
+    "--manifest-path",
+    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/Cargo.toml",
+    "--format-version",
+    "1",
+    "--no-deps",
+    "--locked",
+    "--offline"
+  ],
+  "custom_build_targets": [
+    "/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/unarm-ignored-build-probe/disasm/build.rs"
+  ],
+  "build_script_sha256": "f26a066a6ef97f3833f29158dfe1bd221144d3196e8923ea9af29c240ea842ed",
+  "build_script_executed": false
+}

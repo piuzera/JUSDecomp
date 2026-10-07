@@ -1,0 +1,25 @@
+{
+  "status": "accepted_independent_original_and_graph_replay",
+  "worker_commit": "59760663c617c589d7c7d253595f64a02a8b7da3",
+  "publication_commit": "c5e17b7",
+  "independent_receipt_sha256": "88e01a6fe82a86c9add32389095f27202e8ecc1dbb8b097c046d95ba7c323bf6",
+  "complete_report_sha256": "e3920a2a353cbfb5c9a35a0d0e2a01f23cfe4a75e3580215f38de62f389b8bf7",
+  "evidence_sha256": {
+    ".gitattributes": "7657ca55d84344f7d627d4d543c2fff6a967eec82830f63f101c9bd86581e415",
+    "commands.json": "1777bb8628f4d06d48a727e8cbc387e43d3fa8add3f7e93e345b0c4e67005b12",
+    "graph-summary.json": "e4f093dea8b00ec0ad704f715fd4bc930b041f03ff0cb41ec663f1453397eb52",
+    "independent/commands.json": "3a55fc05f4b418ac6b4d5ca293f2379360f4e9ee9a62ec37536b2b5a37373804",
+    "independent/independent-receipt.json": "88e01a6fe82a86c9add32389095f27202e8ecc1dbb8b097c046d95ba7c323bf6",
+    "independent/llvm-program-0.txt": "ff801ec399a5e3f333ef9337ae2d64520aad9a94bd03a330b6d0f6c90604cd2a",
+    "independent/llvm-program-1.txt": "ff801ec399a5e3f333ef9337ae2d64520aad9a94bd03a330b6d0f6c90604cd2a",
+    "independent/probe-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "independent/verify_independent.py": "0e20e89faa076adf106f77e9092e975572aaa0b1e41c6d8a4227a1148247370b",
+    "llvm-decode.txt": "ff801ec399a5e3f333ef9337ae2d64520aad9a94bd03a330b6d0f6c90604cd2a",
+    "original-read.json": "f3357064a764e2a74d0930f06aee9fc30e1b0f27800777d61acdd15791d487b5",
+    "read_original.py": "de29a02abcbe418d8345ab529379440a456fb98be6ac14333adcd11ffd11cc84",
+    "requests.json": "91fc7b3da7000d67be18042a49e513a4d5ac474cb4430bb13a13ea21f33296ef",
+    "independent/.gitattributes": "667b93be6ede617192a0c6ac9e3664b1727402239531277b6cd47b53e73a6535"
+  },
+  "source_bytes": 0,
+  "T10_complete": false
+}

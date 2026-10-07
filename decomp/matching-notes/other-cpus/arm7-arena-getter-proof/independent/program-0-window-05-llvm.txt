@@ -1,0 +1,7 @@
+	cmp	r0, #1
+	beq	#16
+	cmp	r0, #7
+	beq	#16
+	cmp	r0, #8
+	beq	#16
+	b	#68

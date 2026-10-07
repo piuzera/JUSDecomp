@@ -1,0 +1,2 @@
+Both exact identities, frozen instruction ownership, separate literal words/PC arithmetic, checked mapping, and LLVM pass.
+Exact 80 instructions, two native symbolic literals, both full original images; all three negative controls rejected. Source credit 0.

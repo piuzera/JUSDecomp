@@ -1,0 +1,6 @@
+	stmdb	sp!, {lr}
+	sub	sp, sp, #4
+	ldr	r1, [pc, #144]
+	ldr	r0, [r1]
+	cmp	r0, #0
+	bne	#120
