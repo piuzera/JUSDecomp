@@ -1,0 +1,40 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-reachable-dsd/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.67s
+     Running tests/arm7_reachable.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/arm7_reachable-a3ba8b202a421675)
+
+running 17 tests
+test local_interior_is_not_promoted_by_opposite_mode_start ... ok
+test direct_call_joins_separately_selected_checked_span ... ok
+test equal_bytes_in_foreign_programs_do_not_join ... ok
+test conflicting_root_has_empty_witness_and_zero_work ... ok
+test finite_cycle_retains_back_edge_counts_and_deterministic_scope ... ok
+test conditional_call_preserves_all_guards_source_condition_and_original_mapping ... ok
+test cross_selection_thumb_interior_does_not_join ... ok
+test empty_inputs_and_roots_reject ... ok
+test complete_thumb_bl_interior_is_not_a_selected_start ... ok
+test omitted_mapping_cannot_be_repaired_by_another_observation ... ok
+test same_mode_duplicate_and_partial_overlap_reject ... ok
+test target_selected_only_in_opposite_mode_is_frontier ... ok
+test root_requires_exact_borrowed_membership_start_assumption_and_uniqueness ... ok
+test opposite_mode_overlap_quarantines_whole_instruction_and_root ... ok
+test same_child_payload_under_distinct_nitrofs_paths_is_foreign ... ok
+test witness_views_keep_guarded_terminal_edge_and_bounded_counts ... FAILED
+test bss_unmapped_and_indirect_pc_writes_stay_frontiers ... ok
+
+failures:
+
+---- witness_views_keep_guarded_terminal_edge_and_bounded_counts stdout ----
+
+thread 'witness_views_keep_guarded_terminal_edge_and_bounded_counts' (252174668) panicked at lib/tests/arm7_reachable.rs:193:5:
+assertion `left == right` failed
+  left: []
+ right: [37224448, 37224452]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    witness_views_keep_guarded_terminal_edge_and_bounded_counts
+
+test result: FAILED. 16 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_reachable`

@@ -1,0 +1,12 @@
+test_actual_native_link_and_three_original_evidence_negatives (test_native.NativeRelocationRecipeTests.test_actual_native_link_and_three_original_evidence_negatives) ... ok
+test_link_script_consumes_actual_object_and_pins_bindings (test_native.NativeRelocationRecipeTests.test_link_script_consumes_actual_object_and_pins_bindings) ... ok
+test_split_preserves_all_original_noncandidate_bytes (test_native.NativeRelocationRecipeTests.test_split_preserves_all_original_noncandidate_bytes) ... ok
+test_fresh_checkout_inputs_compile_real_objects_and_link_both_originals (test_reproduce.PublicReplayTests.test_fresh_checkout_inputs_compile_real_objects_and_link_both_originals) ... ok
+test_reads_real_arm_object_relocations (test_verify.ObjectReadbackTests.test_reads_real_arm_object_relocations) ... ok
+test_wrong_binding_changes_a_real_relocated_literal (test_verify.ObjectReadbackTests.test_wrong_binding_changes_a_real_relocated_literal) ... ok
+test_wrong_binding_is_rejected_against_original_literal_words (test_verify.ObjectReadbackTests.test_wrong_binding_is_rejected_against_original_literal_words) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.530s
+
+OK

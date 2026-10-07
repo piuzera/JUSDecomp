@@ -1,0 +1,9 @@
+test_every_omitted_role_and_real_equal_size_store_swap_reject (test_cluster.ActualFourRoleTests.test_every_omitted_role_and_real_equal_size_store_swap_reject) ... ok
+test_four_real_inputs_keep_each_recipe_map_function_bytes_and_complete_images (test_cluster.ActualFourRoleTests.test_four_real_inputs_keep_each_recipe_map_function_bytes_and_complete_images) ... ok
+test_native_section_offsets_flags_and_malformed_load_reject (test_cluster.ActualFourRoleTests.test_native_section_offsets_flags_and_malformed_load_reject) ... ok
+test_shared_wram_changes_both_getter_pools_and_neither_store (test_cluster.ActualFourRoleTests.test_shared_wram_changes_both_getter_pools_and_neither_store) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.219s
+
+OK

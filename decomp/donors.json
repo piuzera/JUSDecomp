@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "bead": "jus-bjry.5",
+  "families": [
+    {
+      "id": "musl-strings",
+      "repository": "https://git.musl-libc.org/git/musl",
+      "revision": "9b2d8a1646391d5217f9a358555aebcaab5b8aaf",
+      "sources": [
+        {
+          "path": "src/string/memcmp.c",
+          "sha256": "826b1b5e84d3c0fb68be827c051f6dc0d67da17ee3a444e94be0e5360586916f",
+          "license": {
+            "spdx": "MIT",
+            "path": "COPYRIGHT",
+            "sha256": "b870108ec5e7790e9f9919064f1b9421d62d5f9b0e6c230c6adf7ea2da62e97b",
+            "review": "musl COPYRIGHT explicitly covers no-notice original string files",
+            "import_allowed": true
+          },
+          "consumed_headers": {
+            "arm-O2p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "arm-O4p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "thumb-O2p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "thumb-O4p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            }
+          }
+        },
+        {
+          "path": "src/string/strcmp.c",
+          "sha256": "3e1793ea2dd358e5c884c4dd232083605d0f6775f7ebe19d03d64fe97068a78f",
+          "license": {
+            "spdx": "MIT",
+            "path": "COPYRIGHT",
+            "sha256": "b870108ec5e7790e9f9919064f1b9421d62d5f9b0e6c230c6adf7ea2da62e97b",
+            "review": "musl COPYRIGHT explicitly covers no-notice original string files",
+            "import_allowed": true
+          },
+          "consumed_headers": {
+            "arm-O2p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "arm-O4p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "thumb-O2p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "thumb-O4p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            }
+          }
+        },
+        {
+          "path": "src/string/strncmp.c",
+          "sha256": "df801c43304b27dcda67f219a7a3ca34a8fb06f4e63d21e8a6bcb36b03c3c012",
+          "license": {
+            "spdx": "MIT",
+            "path": "COPYRIGHT",
+            "sha256": "b870108ec5e7790e9f9919064f1b9421d62d5f9b0e6c230c6adf7ea2da62e97b",
+            "review": "musl COPYRIGHT explicitly covers no-notice original string files",
+            "import_allowed": true
+          },
+          "consumed_headers": {
+            "arm-O2p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "arm-O4p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "thumb-O2p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            },
+            "thumb-O4p": {
+              "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+            }
+          }
+        }
+      ],
+      "headers": {},
+      "context_headers": {
+        "decomp/matching-notes/donor-t05/context/string.h": "871d8934aa0341ebf4546a0538cd538356d29316e031e8fc979134ab2e9f91f4"
+      },
+      "compile_defines": [],
+      "source_imports": 0,
+      "checkout": "build/donor-research/musl"
+    },
+    {
+      "id": "zlib-checksums",
+      "repository": "https://github.com/madler/zlib.git",
+      "revision": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+      "sources": [
+        {
+          "path": "adler32.c",
+          "sha256": "d7f1b6e44fee20ab41cef1d650776a039a2348935eb96bcbd294a4096139be3a",
+          "license": {
+            "spdx": "Zlib",
+            "path": "zlib.h",
+            "sha256": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+            "review": "file notice explicitly refers to zlib.h retained license",
+            "import_allowed": true
+          },
+          "consumed_headers": {
+            "arm-O2p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360"
+            },
+            "arm-O4p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360"
+            },
+            "thumb-O2p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360"
+            },
+            "thumb-O4p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360"
+            }
+          }
+        },
+        {
+          "path": "crc32.c",
+          "sha256": "a04af273e83ecc351bf3794974ab2098d8d960df4044b7b44734c41443ee26d0",
+          "license": {
+            "spdx": "Zlib",
+            "path": "zlib.h",
+            "sha256": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+            "review": "file notice explicitly refers to zlib.h retained license",
+            "import_allowed": true
+          },
+          "consumed_headers": {
+            "arm-O2p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360",
+              "build/donor-research/zlib/crc32.h": "407af59d0abfea84a6507c603eb29809411797f98249614fe76a661def783ce1"
+            },
+            "arm-O4p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360",
+              "build/donor-research/zlib/crc32.h": "407af59d0abfea84a6507c603eb29809411797f98249614fe76a661def783ce1"
+            },
+            "thumb-O2p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360",
+              "build/donor-research/zlib/crc32.h": "407af59d0abfea84a6507c603eb29809411797f98249614fe76a661def783ce1"
+            },
+            "thumb-O4p": {
+              "build/donor-research/zlib/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+              "build/donor-research/zlib/zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+              "build/donor-research/zlib/zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360",
+              "build/donor-research/zlib/crc32.h": "407af59d0abfea84a6507c603eb29809411797f98249614fe76a661def783ce1"
+            }
+          }
+        }
+      ],
+      "headers": {
+        "zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+        "zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360",
+        "zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159",
+        "crc32.h": "407af59d0abfea84a6507c603eb29809411797f98249614fe76a661def783ce1"
+      },
+      "context_headers": {},
+      "compile_defines": [
+        "-DZ_SOLO",
+        "-DNO_DIVIDE",
+        "-DNOBYFOUR"
+      ],
+      "source_imports": 0,
+      "checkout": "build/donor-research/zlib"
+    }
+  ],
+  "contexts": [
+    {
+      "id": "arm-O2p",
+      "cpu": "arm946e",
+      "mode": "arm",
+      "flags": [
+        "-nostdinc",
+        "-I-",
+        "-Cpp_exceptions",
+        "off",
+        "-nothumb",
+        "-O2,p"
+      ],
+      "abi": {
+        "language": "C",
+        "int_bits": 32,
+        "long_bits": 32,
+        "pointer_bits": 32,
+        "endianness": "little",
+        "defaults": "pinned Metrowerks package defaults"
+      },
+      "include_order": [
+        "independent_string_context",
+        "pinned_family_source_root"
+      ]
+    },
+    {
+      "id": "arm-O4p",
+      "cpu": "arm946e",
+      "mode": "arm",
+      "flags": [
+        "-nostdinc",
+        "-I-",
+        "-Cpp_exceptions",
+        "off",
+        "-nothumb",
+        "-O4,p"
+      ],
+      "abi": {
+        "language": "C",
+        "int_bits": 32,
+        "long_bits": 32,
+        "pointer_bits": 32,
+        "endianness": "little",
+        "defaults": "pinned Metrowerks package defaults"
+      },
+      "include_order": [
+        "independent_string_context",
+        "pinned_family_source_root"
+      ]
+    },
+    {
+      "id": "thumb-O2p",
+      "cpu": "arm946e",
+      "mode": "thumb",
+      "flags": [
+        "-nostdinc",
+        "-I-",
+        "-Cpp_exceptions",
+        "off",
+        "-thumb",
+        "-O2,p"
+      ],
+      "abi": {
+        "language": "C",
+        "int_bits": 32,
+        "long_bits": 32,
+        "pointer_bits": 32,
+        "endianness": "little",
+        "defaults": "pinned Metrowerks package defaults"
+      },
+      "include_order": [
+        "independent_string_context",
+        "pinned_family_source_root"
+      ]
+    },
+    {
+      "id": "thumb-O4p",
+      "cpu": "arm946e",
+      "mode": "thumb",
+      "flags": [
+        "-nostdinc",
+        "-I-",
+        "-Cpp_exceptions",
+        "off",
+        "-thumb",
+        "-O4,p"
+      ],
+      "abi": {
+        "language": "C",
+        "int_bits": 32,
+        "long_bits": 32,
+        "pointer_bits": 32,
+        "endianness": "little",
+        "defaults": "pinned Metrowerks package defaults"
+      },
+      "include_order": [
+        "independent_string_context",
+        "pinned_family_source_root"
+      ]
+    }
+  ],
+  "compiler": {
+    "package": "2.0/base",
+    "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "binaries": {
+      "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+      "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+      "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+      "mwasmarm.exe": "e928cbcce71d687fadf25cf426280f23252e2aaae897fc2ce4e5570d8554dc8c",
+      "mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "mwldarm.exe": "bd8a36a81d79af96f02fdd06e114ae97ea47acc801775a0701f93b7be139fa74"
+    },
+    "reported_version": "ARM/Thumb C/C++ Compiler and Embedded Assembler for ARM; Version 3.0 build 114; package directory 2.0/base",
+    "archive": {
+      "repository": "https://github.com/decompme/compilers",
+      "asset": "mwccarm.zip",
+      "sha256": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace",
+      "size_bytes": 51684965
+    }
+  },
+  "runner": {
+    "version": "1.2.0",
+    "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+  },
+  "objdump": {
+    "version": "23.1.2",
+    "sha256": "a4498b0883383a2653530a8575b53c3058dfbfd9aeb36e9d0e77df1c77fde2f6"
+  },
+  "dsd": {
+    "version": "0.12.0",
+    "sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5"
+  },
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "reviewed_destination_correspondence": {},
+  "search_scope": "ARM9 original whole-module references plus final native ELF",
+  "crc_lead": {
+    "module": "ov008",
+    "symbol": "func_ov008_0214d154",
+    "address": 34918740,
+    "size": 60,
+    "mode": "thumb",
+    "evidence": "256 words generated, 8 shift/XOR steps per word, reflected CRC polynomial0xedb88320",
+    "origin": "unresolved"
+  },
+  "promotions": 0,
+  "header_helper": {
+    "sha256": "c03237d6dda4792b7edc016dcd88d04337b22d5ad17fc7b5d7e0c0e5bd34b278",
+    "commit": "d8a258a",
+    "policy": "mw_make_preflight_and_compile"
+  },
+  "context_policy": "headers pins describe the broader corpus; sources.consumed_headers pins exact compiler-reported dependencies separately for every context",
+  "metadata_policy": "reports contain identities, hashes, ranges and relocation metadata only; ROM, game/donor instruction payloads, objects and signature YAML remain ignored/private"
+}

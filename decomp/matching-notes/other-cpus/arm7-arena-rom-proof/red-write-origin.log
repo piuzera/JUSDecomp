@@ -1,0 +1,15 @@
+test_actual_fixture_pack_and_parent_outputs (test_rom.LiveControls.test_actual_fixture_pack_and_parent_outputs) ... FAIL
+
+======================================================================
+FAIL: test_actual_fixture_pack_and_parent_outputs (test_rom.LiveControls.test_actual_fixture_pack_and_parent_outputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-rom-trial/decomp/matching-notes/other-cpus/arm7-arena-rom-proof/test_rom.py", line 78, in test_actual_fixture_pack_and_parent_outputs
+    self.assertIn(field,result['writes'][17],'actual child slice origin must be retained')
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'image_slice_offset' not found in {'module': 'ARM9', 'identity': {'parent_rom_sha256': 'a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27', 'program': {'kind': 'nitro_fs', 'path': 'ChildRom/JSS2Child.srl'}, 'program_sha256': '1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986', 'cpu': 'arm9', 'processor': 'arm946e', 'isa': 'armv5te'}, 'input_file': '/private/tmp/jus-arm7-arena-rom-worker-proof/origin-red/controls/parent/child-arm9/rebuilt.srl', 'rom_offset': 2357248, 'size_bytes': 1955956, 'sha256': 'af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7', 'source_bytes': 0} : actual child slice origin must be retained
+
+----------------------------------------------------------------------
+Ran 1 test in 38.746s
+
+FAILED (failures=1)

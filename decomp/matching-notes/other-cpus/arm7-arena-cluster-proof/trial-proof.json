@@ -1,0 +1,2762 @@
+{
+  "status": "actual_four_MW_arena_cluster_exact_original_images",
+  "candidates": [
+    {
+      "role": "lower_store",
+      "source": "low_store_trial.c",
+      "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+      "vma": 58707716,
+      "bytes": 20,
+      "recipe": "build82_O4s",
+      "original_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+      "compile_command": {
+        "argv": [
+          "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+          "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+          "-proc",
+          "arm7tdmi",
+          "-nothumb",
+          "-interworking",
+          "-nostdinc",
+          "-O4,s",
+          "-c",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/low_store_trial.c",
+          "-o",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/lower_store.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "elf": {
+        "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "object_bytes": 512,
+        "flags": 34603008,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "flags": 0,
+            "offset": 0,
+            "size": 0,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 1,
+            "name": ".symtab",
+            "type": 2,
+            "flags": 0,
+            "offset": 64,
+            "size": 48,
+            "link": 2,
+            "info": 2,
+            "alignment": 0,
+            "entry_size": 16
+          },
+          {
+            "index": 2,
+            "name": ".strtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 112,
+            "size": 25,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 3,
+            "name": ".shstrtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 144,
+            "size": 42,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 4,
+            "name": ".comment",
+            "type": 1,
+            "flags": 0,
+            "offset": 192,
+            "size": 34,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 5,
+            "name": ".text",
+            "type": 1,
+            "flags": 6,
+            "offset": 240,
+            "size": 20,
+            "link": 0,
+            "info": 0,
+            "alignment": 4,
+            "entry_size": 0
+          }
+        ],
+        "symbols": [
+          {
+            "name": "",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "arm7_low_store_trial",
+            "value": 0,
+            "size": 20,
+            "binding": 1,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_low_store_trial",
+          "value": 0,
+          "size": 20,
+          "binding": 1,
+          "type": 2,
+          "other": 0,
+          "section_index": 5
+        },
+        "mode": "Arm",
+        "mode_evidence": [
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "instruction_bytes": 20,
+        "pool_bytes": 0,
+        "text_hex": "0001a0e1270680e2ff0a80e2a01d80e51eff2fe1",
+        "relocations": []
+      }
+    },
+    {
+      "role": "upper_store",
+      "source": "store_trial.c",
+      "source_sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+      "vma": 58707736,
+      "bytes": 20,
+      "recipe": "build114_O4p",
+      "original_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+      "compile_command": {
+        "argv": [
+          "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+          "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+          "-proc",
+          "arm7tdmi",
+          "-nothumb",
+          "-interworking",
+          "-nostdinc",
+          "-O4,p",
+          "-c",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/store_trial.c",
+          "-o",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/upper_store.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "elf": {
+        "object_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+        "object_bytes": 512,
+        "flags": 34603008,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "flags": 0,
+            "offset": 0,
+            "size": 0,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 1,
+            "name": ".symtab",
+            "type": 2,
+            "flags": 0,
+            "offset": 64,
+            "size": 48,
+            "link": 2,
+            "info": 2,
+            "alignment": 0,
+            "entry_size": 16
+          },
+          {
+            "index": 2,
+            "name": ".strtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 112,
+            "size": 21,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 3,
+            "name": ".shstrtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 144,
+            "size": 42,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 4,
+            "name": ".comment",
+            "type": 1,
+            "flags": 0,
+            "offset": 192,
+            "size": 35,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 5,
+            "name": ".text",
+            "type": 1,
+            "flags": 6,
+            "offset": 240,
+            "size": 20,
+            "link": 0,
+            "info": 0,
+            "alignment": 4,
+            "entry_size": 0
+          }
+        ],
+        "symbols": [
+          {
+            "name": "",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "arm7_store_trial",
+            "value": 0,
+            "size": 20,
+            "binding": 1,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_store_trial",
+          "value": 0,
+          "size": 20,
+          "binding": 1,
+          "type": 2,
+          "other": 0,
+          "section_index": 5
+        },
+        "mode": "Arm",
+        "mode_evidence": [
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "instruction_bytes": 20,
+        "pool_bytes": 0,
+        "text_hex": "0001a0e1270680e2ff0a80e2c41d80e51eff2fe1",
+        "relocations": []
+      }
+    },
+    {
+      "role": "lower_getter",
+      "source": "low_getter_trial.c",
+      "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+      "vma": 58707756,
+      "bytes": 88,
+      "recipe": "build82_O4s",
+      "original_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+      "compile_command": {
+        "argv": [
+          "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+          "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+          "-proc",
+          "arm7tdmi",
+          "-nothumb",
+          "-interworking",
+          "-nostdinc",
+          "-O4,s",
+          "-c",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/low_getter_trial.c",
+          "-o",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/lower_getter.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "elf": {
+        "object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+        "object_bytes": 760,
+        "flags": 34603008,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "flags": 0,
+            "offset": 0,
+            "size": 0,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 1,
+            "name": ".symtab",
+            "type": 2,
+            "flags": 0,
+            "offset": 64,
+            "size": 96,
+            "link": 2,
+            "info": 3,
+            "alignment": 0,
+            "entry_size": 16
+          },
+          {
+            "index": 2,
+            "name": ".strtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 160,
+            "size": 68,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 3,
+            "name": ".shstrtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 240,
+            "size": 53,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 4,
+            "name": ".comment",
+            "type": 1,
+            "flags": 0,
+            "offset": 304,
+            "size": 34,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 5,
+            "name": ".text",
+            "type": 1,
+            "flags": 6,
+            "offset": 352,
+            "size": 88,
+            "link": 0,
+            "info": 0,
+            "alignment": 4,
+            "entry_size": 0
+          },
+          {
+            "index": 6,
+            "name": ".rela.text",
+            "type": 4,
+            "flags": 0,
+            "offset": 448,
+            "size": 24,
+            "link": 1,
+            "info": 5,
+            "alignment": 0,
+            "entry_size": 12
+          }
+        ],
+        "symbols": [
+          {
+            "name": "",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "$d",
+            "value": 80,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "arm7_low_getter_trial",
+            "value": 0,
+            "size": 88,
+            "binding": 1,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "hyp_subpriv_arena_lo",
+            "value": 0,
+            "size": 0,
+            "binding": 1,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "hyp_wram_arena_lo",
+            "value": 0,
+            "size": 0,
+            "binding": 1,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_low_getter_trial",
+          "value": 0,
+          "size": 88,
+          "binding": 1,
+          "type": 2,
+          "other": 0,
+          "section_index": 5
+        },
+        "mode": "Arm",
+        "mode_evidence": [
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "$d",
+            "value": 80,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "instruction_bytes": 80,
+        "pool_bytes": 8,
+        "text_hex": "010050e30400000a070050e30400000a080050e30600000a0a0000ea2c009fe51eff2fe128009fe50e0550e30e05a0831eff2fe10e05a0e314109fe50e0551e30100a0811eff2fe10000a0e31eff2fe10000000000000000",
+        "relocations": [
+          {
+            "section": ".rela.text",
+            "offset": 80,
+            "type": 2,
+            "symbol": "hyp_subpriv_arena_lo",
+            "addend": 0
+          },
+          {
+            "section": ".rela.text",
+            "offset": 84,
+            "type": 2,
+            "symbol": "hyp_wram_arena_lo",
+            "addend": 0
+          }
+        ]
+      }
+    },
+    {
+      "role": "upper_getter",
+      "source": "high_getter_trial.c",
+      "source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+      "vma": 58707844,
+      "bytes": 128,
+      "recipe": "build82_O4s",
+      "original_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+      "compile_command": {
+        "argv": [
+          "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+          "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+          "-proc",
+          "arm7tdmi",
+          "-nothumb",
+          "-interworking",
+          "-nostdinc",
+          "-O4,s",
+          "-c",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/high_getter_trial.c",
+          "-o",
+          "/private/tmp/jus-arm7-arena-cluster-worker-proof/public-fresh-replay/upper_getter.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "elf": {
+        "object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "object_bytes": 840,
+        "flags": 34603008,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "flags": 0,
+            "offset": 0,
+            "size": 0,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 1,
+            "name": ".symtab",
+            "type": 2,
+            "flags": 0,
+            "offset": 64,
+            "size": 112,
+            "link": 2,
+            "info": 3,
+            "alignment": 0,
+            "entry_size": 16
+          },
+          {
+            "index": 2,
+            "name": ".strtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 176,
+            "size": 89,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 3,
+            "name": ".shstrtab",
+            "type": 3,
+            "flags": 0,
+            "offset": 272,
+            "size": 53,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 4,
+            "name": ".comment",
+            "type": 1,
+            "flags": 0,
+            "offset": 336,
+            "size": 34,
+            "link": 0,
+            "info": 0,
+            "alignment": 0,
+            "entry_size": 0
+          },
+          {
+            "index": 5,
+            "name": ".text",
+            "type": 1,
+            "flags": 6,
+            "offset": 384,
+            "size": 128,
+            "link": 0,
+            "info": 0,
+            "alignment": 4,
+            "entry_size": 0
+          },
+          {
+            "index": 6,
+            "name": ".rela.text",
+            "type": 4,
+            "flags": 0,
+            "offset": 512,
+            "size": 36,
+            "link": 1,
+            "info": 5,
+            "alignment": 0,
+            "entry_size": 12
+          }
+        ],
+        "symbols": [
+          {
+            "name": "",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "$d",
+            "value": 108,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "arm7_high_getter_trial",
+            "value": 0,
+            "size": 128,
+            "binding": 1,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "hyp_irq_stack_size",
+            "value": 0,
+            "size": 0,
+            "binding": 1,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "hyp_wram_arena_lo",
+            "value": 0,
+            "size": 0,
+            "binding": 1,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          },
+          {
+            "name": "hyp_system_stack_size",
+            "value": 0,
+            "size": 0,
+            "binding": 1,
+            "type": 0,
+            "other": 0,
+            "section_index": 0
+          }
+        ],
+        "trial_symbol": {
+          "name": "arm7_high_getter_trial",
+          "value": 0,
+          "size": 128,
+          "binding": 1,
+          "type": 2,
+          "other": 0,
+          "section_index": 5
+        },
+        "mode": "Arm",
+        "mode_evidence": [
+          {
+            "name": "$a",
+            "value": 0,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          },
+          {
+            "name": "$d",
+            "value": 108,
+            "size": 0,
+            "binding": 0,
+            "type": 2,
+            "other": 0,
+            "section_index": 5
+          }
+        ],
+        "instruction_bytes": 108,
+        "pool_bytes": 20,
+        "text_hex": "010050e30400000a070050e30400000a080050e30400000a110000ea48009fe51eff2fe10e05a0e31eff2fe13c109fe53c009fe5012040e00e05a0e334109fe50e0551e30100a0812c109fe5000051e31eff2f01000051e3010040b0010042a01eff2fe10000a0e31eff2fe100f07f020000000080ff80030000000000000000",
+        "relocations": [
+          {
+            "section": ".rela.text",
+            "offset": 112,
+            "type": 2,
+            "symbol": "hyp_irq_stack_size",
+            "addend": 0
+          },
+          {
+            "section": ".rela.text",
+            "offset": 120,
+            "type": 2,
+            "symbol": "hyp_wram_arena_lo",
+            "addend": 0
+          },
+          {
+            "section": ".rela.text",
+            "offset": 124,
+            "type": 2,
+            "symbol": "hyp_system_stack_size",
+            "addend": 0
+          }
+        ]
+      }
+    }
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "opaque_ranges": {
+        "prefix_bytes": 20228,
+        "candidate_bytes": 256,
+        "suffix_bytes": 45636
+      },
+      "input_sha256": {
+        "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+        "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+        "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+        "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+        "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+        "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+        "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+        "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+      },
+      "opaque_parts_sha256": {
+        "startup": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+        "table": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "autoload1": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+        "prefix": "37711ce0f3d43858869fcab0ff8ff3f3bd39219f79bc7232124ddc6517cf7264",
+        "suffix": "4b2ab8e15336aeea81eed2e167e4911c9445dacfe37c281d1bd4372d7f5343ba"
+      },
+      "assembly_commands": [
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "prefix.s",
+            "-o",
+            "prefix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "suffix.s",
+            "-o",
+            "suffix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "bss0.s",
+            "-o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "omitted": {
+        "lower_store": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_lower_store.ld",
+            "-Map",
+            "omitted_lower_store.map",
+            "-o",
+            "omitted_lower_store.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter lower_store end\nld.lld: error: getter lower_store size\nld.lld: error: getter upper_store start\nld.lld: error: getter upper_store end\nld.lld: error: getter lower_getter start\nld.lld: error: getter lower_getter end\nld.lld: error: getter upper_getter start\nld.lld: error: getter upper_getter end\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        },
+        "upper_store": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_upper_store.ld",
+            "-Map",
+            "omitted_upper_store.map",
+            "-o",
+            "omitted_upper_store.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter upper_store end\nld.lld: error: getter upper_store size\nld.lld: error: getter lower_getter start\nld.lld: error: getter lower_getter end\nld.lld: error: getter upper_getter start\nld.lld: error: getter upper_getter end\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        },
+        "lower_getter": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_lower_getter.ld",
+            "-Map",
+            "omitted_lower_getter.map",
+            "-o",
+            "omitted_lower_getter.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter lower_getter end\nld.lld: error: getter lower_getter size\nld.lld: error: getter upper_getter start\nld.lld: error: getter upper_getter end\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        },
+        "upper_getter": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_upper_getter.ld",
+            "-Map",
+            "omitted_upper_getter.map",
+            "-o",
+            "omitted_upper_getter.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter upper_getter end\nld.lld: error: getter upper_getter size\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        }
+      },
+      "positive": {
+        "linked_elf_sha256": "dbf07694b3d6b50643c1a348dfe0b93844cd7ff46345ff0fcf1ccbaaef54efca",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 167412
+        },
+        "sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "offset": 244,
+            "size": 432,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "offset": 676,
+            "size": 24,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "offset": 700,
+            "size": 98976,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "offset": 99676,
+            "size": 6504,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "offset": 99676,
+            "size": 66120,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "offset": 165796,
+            "size": 14920,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          }
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "candidates": [
+          {
+            "role": "lower_store",
+            "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "map_input": "lower_store.o:(.text)",
+            "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+            "map_vma": 58707716,
+            "map_lma": 37245108,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_low_store_trial",
+              "vma": 58707716,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20660,
+            "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+            "linked_wram_word": null
+          },
+          {
+            "role": "upper_store",
+            "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "map_input": "upper_store.o:(.text)",
+            "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+            "map_vma": 58707736,
+            "map_lma": 37245128,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_store_trial",
+              "vma": 58707736,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20680,
+            "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+            "linked_wram_word": null
+          },
+          {
+            "role": "lower_getter",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "lower_getter.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+            "linked_wram_word": 58768528
+          },
+          {
+            "role": "upper_getter",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "upper_getter.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+            "linked_wram_word": 58768528
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_mismatch_offsets": [],
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "positive.ld",
+            "-Map",
+            "positive.map",
+            "-o",
+            "positive.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "actual_inputs_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "map_sha256": "e0ed3fb2f4f7f96c025887fb97ff8171f240513aee867be4f35ba311b2592d4a",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; lower_store.o(.text) __lower_store_end = .; __upper_store_start = .; upper_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\n",
+        "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+      },
+      "wrong_shared_wram": {
+        "linked_elf_sha256": "545dc8ce8d649d7e0be2b72386dacca55aa8a146442f4cd2b6f7049730f4c766",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 167412
+        },
+        "sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "offset": 244,
+            "size": 432,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "offset": 676,
+            "size": 24,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "offset": 700,
+            "size": 98976,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "offset": 99676,
+            "size": 6504,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "offset": 99676,
+            "size": 66120,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "offset": 165796,
+            "size": 14920,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          }
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768532,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768532,
+          "irq": 1024,
+          "system": 1024
+        },
+        "candidates": [
+          {
+            "role": "lower_store",
+            "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "map_input": "lower_store.o:(.text)",
+            "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+            "map_vma": 58707716,
+            "map_lma": 37245108,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_low_store_trial",
+              "vma": 58707716,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20660,
+            "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+            "linked_wram_word": null
+          },
+          {
+            "role": "upper_store",
+            "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "map_input": "upper_store.o:(.text)",
+            "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+            "map_vma": 58707736,
+            "map_lma": 37245128,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_store_trial",
+              "vma": 58707736,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20680,
+            "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+            "linked_wram_word": null
+          },
+          {
+            "role": "lower_getter",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "lower_getter.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "720603b75c3718e8b542485281b8d21b99a560abb867ab9e2538815ce3af549e",
+            "linked_wram_word": 58768532
+          },
+          {
+            "role": "upper_getter",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "upper_getter.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "26ff2e7bb6df026174c51787447376357997439b1d5e26ab2224d507c3e7eadf",
+            "linked_wram_word": 58768532
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "dc9bcedeabe58216760ca04dac8919ce561ee8ae582601b83e3e3eb89f59876b",
+        "image_mismatch_offsets": [
+          20784,
+          20908
+        ],
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "wrong_shared_wram.ld",
+            "-Map",
+            "wrong_shared_wram.map",
+            "-o",
+            "wrong_shared_wram.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "actual_inputs_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "map_sha256": "6a14ee9af3175c5827124b1a6dcd812cf6588fab050633deb34d056859e34361",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc94;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; lower_store.o(.text) __lower_store_end = .; __upper_store_start = .; upper_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\n",
+        "linker_script_sha256": "f632775ec60f14439293f883903bdf92ef9e1e9291ec75782c2b91aa256ecc0e",
+        "derived_mismatch_offsets": [
+          20784,
+          20908
+        ],
+        "strict_rejection": "original image mismatch at stored offsets [20784, 20908]"
+      },
+      "swapped_stores": {
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "swapped_stores.ld",
+            "-Map",
+            "swapped_stores.map",
+            "-o",
+            "swapped_stores.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "actual_inputs_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "strict_role_rejection": "lower_store map placement (58707736, 37245128, 20) differs from contract",
+        "actual_store_functions": [
+          {
+            "name": "arm7_low_store_trial",
+            "vma": 58707736,
+            "size": 20,
+            "section": 5
+          },
+          {
+            "name": "arm7_store_trial",
+            "vma": 58707716,
+            "size": 20,
+            "section": 5
+          }
+        ],
+        "map_sha256": "3933bbc90b19a7b44b118685adc55869d2fcaa51ff9281729d9e8af8bca6c161",
+        "linked_elf_sha256": "f5055a4b6cd21b7e73818cba47027118c25652f3c597727d3c18acf57d9edf1b",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; upper_store.o(.text) __lower_store_end = .; __upper_store_start = .; lower_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\n"
+      },
+      "malformed_load": {
+        "rejected": true,
+        "old_offset": 244,
+        "wrong_offset": 248,
+        "elf_sha256": "ad9fe7c4762178795d4d8ddd9c06f79c2acaaa3cf048c1ea15eadebf13110246"
+      }
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "opaque_ranges": {
+        "prefix_bytes": 20228,
+        "candidate_bytes": 256,
+        "suffix_bytes": 45636
+      },
+      "input_sha256": {
+        "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+        "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+        "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+        "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+        "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+        "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+        "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+        "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+        "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+      },
+      "opaque_parts_sha256": {
+        "startup": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+        "table": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "autoload1": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+        "prefix": "37711ce0f3d43858869fcab0ff8ff3f3bd39219f79bc7232124ddc6517cf7264",
+        "suffix": "4b2ab8e15336aeea81eed2e167e4911c9445dacfe37c281d1bd4372d7f5343ba"
+      },
+      "assembly_commands": [
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "prefix.s",
+            "-o",
+            "prefix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "suffix.s",
+            "-o",
+            "suffix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "bss0.s",
+            "-o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "omitted": {
+        "lower_store": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_lower_store.ld",
+            "-Map",
+            "omitted_lower_store.map",
+            "-o",
+            "omitted_lower_store.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter lower_store end\nld.lld: error: getter lower_store size\nld.lld: error: getter upper_store start\nld.lld: error: getter upper_store end\nld.lld: error: getter lower_getter start\nld.lld: error: getter lower_getter end\nld.lld: error: getter upper_getter start\nld.lld: error: getter upper_getter end\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        },
+        "upper_store": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_upper_store.ld",
+            "-Map",
+            "omitted_upper_store.map",
+            "-o",
+            "omitted_upper_store.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter upper_store end\nld.lld: error: getter upper_store size\nld.lld: error: getter lower_getter start\nld.lld: error: getter lower_getter end\nld.lld: error: getter upper_getter start\nld.lld: error: getter upper_getter end\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        },
+        "lower_getter": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_lower_getter.ld",
+            "-Map",
+            "omitted_lower_getter.map",
+            "-o",
+            "omitted_lower_getter.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter lower_getter end\nld.lld: error: getter lower_getter size\nld.lld: error: getter upper_getter start\nld.lld: error: getter upper_getter end\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        },
+        "upper_getter": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "omitted_upper_getter.ld",
+            "-Map",
+            "omitted_upper_getter.map",
+            "-o",
+            "omitted_upper_getter.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "ld.lld: error: section size\nld.lld: error: getter upper_getter end\nld.lld: error: getter upper_getter size\n",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+        }
+      },
+      "positive": {
+        "linked_elf_sha256": "dbf07694b3d6b50643c1a348dfe0b93844cd7ff46345ff0fcf1ccbaaef54efca",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 167412
+        },
+        "sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "offset": 244,
+            "size": 432,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "offset": 676,
+            "size": 24,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "offset": 700,
+            "size": 98976,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "offset": 99676,
+            "size": 6504,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "offset": 99676,
+            "size": 66120,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "offset": 165796,
+            "size": 14920,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          }
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "candidates": [
+          {
+            "role": "lower_store",
+            "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "map_input": "lower_store.o:(.text)",
+            "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+            "map_vma": 58707716,
+            "map_lma": 37245108,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_low_store_trial",
+              "vma": 58707716,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20660,
+            "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+            "linked_wram_word": null
+          },
+          {
+            "role": "upper_store",
+            "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "map_input": "upper_store.o:(.text)",
+            "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+            "map_vma": 58707736,
+            "map_lma": 37245128,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_store_trial",
+              "vma": 58707736,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20680,
+            "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+            "linked_wram_word": null
+          },
+          {
+            "role": "lower_getter",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "lower_getter.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+            "linked_wram_word": 58768528
+          },
+          {
+            "role": "upper_getter",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "upper_getter.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+            "linked_wram_word": 58768528
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_mismatch_offsets": [],
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "positive.ld",
+            "-Map",
+            "positive.map",
+            "-o",
+            "positive.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "actual_inputs_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "map_sha256": "e0ed3fb2f4f7f96c025887fb97ff8171f240513aee867be4f35ba311b2592d4a",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; lower_store.o(.text) __lower_store_end = .; __upper_store_start = .; upper_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\n",
+        "linker_script_sha256": "7490f37c9cb666d98e346b489112b3a8f6825afa3bddb342b96873349a4f9f7b"
+      },
+      "wrong_shared_wram": {
+        "linked_elf_sha256": "545dc8ce8d649d7e0be2b72386dacca55aa8a146442f4cd2b6f7049730f4c766",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 167412
+        },
+        "sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "offset": 244,
+            "size": 432,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "offset": 676,
+            "size": 24,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "offset": 700,
+            "size": 98976,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "offset": 99676,
+            "size": 6504,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "offset": 99676,
+            "size": 66120,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "offset": 165796,
+            "size": 14920,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          }
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768532,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768532,
+          "irq": 1024,
+          "system": 1024
+        },
+        "candidates": [
+          {
+            "role": "lower_store",
+            "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "map_input": "lower_store.o:(.text)",
+            "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+            "map_vma": 58707716,
+            "map_lma": 37245108,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_low_store_trial",
+              "vma": 58707716,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20660,
+            "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+            "linked_wram_word": null
+          },
+          {
+            "role": "upper_store",
+            "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "map_input": "upper_store.o:(.text)",
+            "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+            "map_vma": 58707736,
+            "map_lma": 37245128,
+            "map_bytes": 20,
+            "function": {
+              "name": "arm7_store_trial",
+              "vma": 58707736,
+              "size": 20,
+              "section": 5
+            },
+            "stored_image_offset": 20680,
+            "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+            "linked_wram_word": null
+          },
+          {
+            "role": "lower_getter",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "lower_getter.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "720603b75c3718e8b542485281b8d21b99a560abb867ab9e2538815ce3af549e",
+            "linked_wram_word": 58768532
+          },
+          {
+            "role": "upper_getter",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "upper_getter.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "26ff2e7bb6df026174c51787447376357997439b1d5e26ab2224d507c3e7eadf",
+            "linked_wram_word": 58768532
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "dc9bcedeabe58216760ca04dac8919ce561ee8ae582601b83e3e3eb89f59876b",
+        "image_mismatch_offsets": [
+          20784,
+          20908
+        ],
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "wrong_shared_wram.ld",
+            "-Map",
+            "wrong_shared_wram.map",
+            "-o",
+            "wrong_shared_wram.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "actual_inputs_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "map_sha256": "6a14ee9af3175c5827124b1a6dcd812cf6588fab050633deb34d056859e34361",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc94;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; lower_store.o(.text) __lower_store_end = .; __upper_store_start = .; upper_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\n",
+        "linker_script_sha256": "f632775ec60f14439293f883903bdf92ef9e1e9291ec75782c2b91aa256ecc0e",
+        "derived_mismatch_offsets": [
+          20784,
+          20908
+        ],
+        "strict_rejection": "original image mismatch at stored offsets [20784, 20908]"
+      },
+      "swapped_stores": {
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "swapped_stores.ld",
+            "-Map",
+            "swapped_stores.map",
+            "-o",
+            "swapped_stores.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "lower_store.o",
+            "upper_store.o",
+            "lower_getter.o",
+            "upper_getter.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "actual_inputs_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "suffix.o": "116d61672ef80f053c64c0c5ea50c04414543e6dc47f9b3a7d732b0a4e05f162",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "strict_role_rejection": "lower_store map placement (58707736, 37245128, 20) differs from contract",
+        "actual_store_functions": [
+          {
+            "name": "arm7_low_store_trial",
+            "vma": 58707736,
+            "size": 20,
+            "section": 5
+          },
+          {
+            "name": "arm7_store_trial",
+            "vma": 58707716,
+            "size": 20,
+            "section": 5
+          }
+        ],
+        "map_sha256": "3933bbc90b19a7b44b118685adc55869d2fcaa51ff9281729d9e8af8bca6c161",
+        "linked_elf_sha256": "f5055a4b6cd21b7e73818cba47027118c25652f3c597727d3c18acf57d9edf1b",
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; upper_store.o(.text) __lower_store_end = .; __upper_store_start = .; lower_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\n"
+      },
+      "malformed_load": {
+        "rejected": true,
+        "old_offset": 244,
+        "wrong_offset": 248,
+        "elf_sha256": "ad9fe7c4762178795d4d8ddd9c06f79c2acaaa3cf048c1ea15eadebf13110246"
+      }
+    }
+  ],
+  "originals": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "candidate_reads": [
+        {
+          "role": "lower_store",
+          "stored_image_offset": 20660,
+          "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "pool_words": [],
+          "bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "bytes_hex": "0001a0e1270680e2ff0a80e2a01d80e51eff2fe1",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+        },
+        {
+          "role": "upper_store",
+          "stored_image_offset": 20680,
+          "code_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "pool_words": [],
+          "bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "bytes_hex": "0001a0e1270680e2ff0a80e2c41d80e51eff2fe1",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+        },
+        {
+          "role": "lower_getter",
+          "stored_image_offset": 20700,
+          "code_sha256": "4439515ba3e13f1224622048ec17be7c238aaba35b5ec4d254209e7fb7df7564",
+          "pool_words": [
+            "0x027f9c08",
+            "0x0380bc90"
+          ],
+          "bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+          "bytes_hex": "010050e30400000a070050e30400000a080050e30600000a0a0000ea2c009fe51eff2fe128009fe50e0550e30e05a0831eff2fe10e05a0e314109fe50e0551e30100a0811eff2fe10000a0e31eff2fe1089c7f0290bc8003",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+        },
+        {
+          "role": "upper_getter",
+          "stored_image_offset": 20788,
+          "code_sha256": "85a5352a73e4cf800fe0ef88137d78afbdf6289d0dd369d839daa007c7c016ce",
+          "pool_words": [
+            "0x027ff000",
+            "0x00000400",
+            "0x0380ff80",
+            "0x0380bc90",
+            "0x00000400"
+          ],
+          "bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+          "bytes_hex": "010050e30400000a070050e30400000a080050e30400000a110000ea48009fe51eff2fe10e05a0e31eff2fe13c109fe53c009fe5012040e00e05a0e334109fe50e0551e30100a0812c109fe5000051e31eff2f01000051e3010040b0010042a01eff2fe10000a0e31eff2fe100f07f020004000080ff800390bc800300040000",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+        }
+      ]
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "candidate_reads": [
+        {
+          "role": "lower_store",
+          "stored_image_offset": 20660,
+          "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "pool_words": [],
+          "bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "bytes_hex": "0001a0e1270680e2ff0a80e2a01d80e51eff2fe1",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+        },
+        {
+          "role": "upper_store",
+          "stored_image_offset": 20680,
+          "code_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "pool_words": [],
+          "bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "bytes_hex": "0001a0e1270680e2ff0a80e2c41d80e51eff2fe1",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+        },
+        {
+          "role": "lower_getter",
+          "stored_image_offset": 20700,
+          "code_sha256": "4439515ba3e13f1224622048ec17be7c238aaba35b5ec4d254209e7fb7df7564",
+          "pool_words": [
+            "0x027f9c08",
+            "0x0380bc90"
+          ],
+          "bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+          "bytes_hex": "010050e30400000a070050e30400000a080050e30600000a0a0000ea2c009fe51eff2fe128009fe50e0550e30e05a0831eff2fe10e05a0e314109fe50e0551e30100a0811eff2fe10000a0e31eff2fe1089c7f0290bc8003",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+        },
+        {
+          "role": "upper_getter",
+          "stored_image_offset": 20788,
+          "code_sha256": "85a5352a73e4cf800fe0ef88137d78afbdf6289d0dd369d839daa007c7c016ce",
+          "pool_words": [
+            "0x027ff000",
+            "0x00000400",
+            "0x0380ff80",
+            "0x0380bc90",
+            "0x00000400"
+          ],
+          "bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+          "bytes_hex": "010050e30400000a070050e30400000a080050e30400000a110000ea48009fe51eff2fe10e05a0e31eff2fe13c109fe53c009fe5012040e00e05a0e334109fe50e0551e30100a0812c109fe5000051e31eff2f01000051e3010040b0010042a01eff2fe10000a0e31eff2fe100f07f020004000080ff800390bc800300040000",
+          "llvm_command": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ],
+          "llvm_sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+        }
+      ]
+    }
+  ],
+  "checked_layout_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "input_sha256": {
+    "reproduce.py": "ad6730d52bd044d4ea4940ed94612d6eec0c8f0080e07c012d55629fc3f2163c",
+    "cluster.py": "01356d36d046a4da261f3a66ef822896a73758bb3d187409380250507c844ee6",
+    "contract.json": "fde2d099b5cb03d21b000563002aebd24fb49d7bd37fd1d748bb042f7dd7611a",
+    "recipes.json": "069c9eaf14c89c115bfb2f88d0e2c9f59697ce4b674059ceceee8f3d676bd080",
+    "original-manifest.json": "c6ab4b6b982bfc98af67d5e11f39c6dc50d7f11a84c473aebece78b98a16c88e",
+    "checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "low_store_trial.c": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+    "store_trial.c": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+    "low_getter_trial.c": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "high_getter_trial.c": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e"
+  },
+  "tool_sha256": {
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe": "a0db9f5dd49ceb619dbc64993660b39f96cca10821a698a9859824e2d4ae2a81",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+    "/opt/homebrew/opt/llvm/bin/llvm-readobj": "cf8c2b665ea0a064bad08c2fe3f6ba3a21fd3fd368ea5643f0c35e12fcac5540",
+    "/opt/homebrew/opt/llvm/bin/llvm-mc": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+    "/opt/homebrew/opt/llvm/bin/clang": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+    "/opt/homebrew/bin/ld.lld": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "inputs_unchanged": true,
+  "source_credit_bytes": 0,
+  "original_names_types_ABI_extent_version_ownership_established": false
+}

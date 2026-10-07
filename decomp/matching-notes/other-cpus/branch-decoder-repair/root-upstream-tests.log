@@ -1,0 +1,612 @@
+    Blocking waiting for file lock on package cache
+   Compiling unarm v1.9.2 (/private/tmp/jus-arm7-branch-repair-root-check/local-deps/unarm/disasm)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 40.62s
+     Running unittests src/lib.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/unarm-1fb6db7fa8c6ec3d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_arm_v4t.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_arm_v4t-2a83c5a0575d4d8e)
+
+running 55 tests
+test tests::test_adc ... ok
+test tests::test_add ... ok
+test tests::test_and ... ok
+test tests::test_asr ... ok
+test tests::test_b ... ok
+test tests::test_bic ... ok
+test tests::test_bl ... ok
+test tests::test_bx ... ok
+test tests::test_cdp ... ok
+test tests::test_cmn ... ok
+test tests::test_cmp ... ok
+test tests::test_eor ... ok
+test tests::test_ldc ... ok
+test tests::test_ldm ... ok
+test tests::test_ldr ... ok
+test tests::test_ldrb ... ok
+test tests::test_ldrbt ... ok
+test tests::test_ldrh ... ok
+test tests::test_ldrsb ... ok
+test tests::test_ldrsh ... ok
+test tests::test_ldrt ... ok
+test tests::test_lsl ... ok
+test tests::test_lsr ... ok
+test tests::test_mcr ... ok
+test tests::test_mla ... ok
+test tests::test_mov ... ok
+test tests::test_mrc ... ok
+test tests::test_mrs ... ok
+test tests::test_msr ... ok
+test tests::test_mul ... ok
+test tests::test_mvn ... ok
+test tests::test_orr ... ok
+test tests::test_pop ... ok
+test tests::test_push ... ok
+test tests::test_ror ... ok
+test tests::test_rrx ... ok
+test tests::test_rsb ... ok
+test tests::test_rsc ... ok
+test tests::test_smull ... ok
+test tests::test_stc ... ok
+test tests::test_stm ... ok
+test tests::test_str ... ok
+test tests::test_strb ... ok
+test tests::test_strbt ... ok
+test tests::test_strh ... ok
+test tests::test_strt ... ok
+test tests::test_sub ... ok
+test tests::test_svc ... ok
+test tests::test_swp ... ok
+test tests::test_swpb ... ok
+test tests::test_teq ... ok
+test tests::test_tst ... ok
+test tests::test_udf ... ok
+test tests::test_umlal ... ok
+test tests::test_umull ... ok
+
+test result: ok. 55 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/test_arm_v5te.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_arm_v5te-6f7867d524c543ff)
+
+running 78 tests
+test tests::test_adc ... ok
+test tests::test_b ... ok
+test tests::test_bl ... ok
+test tests::test_asr ... ok
+test tests::test_bx ... ok
+test tests::test_blx ... ok
+test tests::test_bic ... ok
+test tests::test_bkpt ... ok
+test tests::test_add ... ok
+test tests::test_and ... ok
+test tests::test_cdp ... ok
+test tests::test_cdp2 ... ok
+test tests::test_clz ... ok
+test tests::test_cmn ... ok
+test tests::test_cmp ... ok
+test tests::test_eor ... ok
+test tests::test_ldc ... ok
+test tests::test_ldc2 ... ok
+test tests::test_ldr ... ok
+test tests::test_ldm ... ok
+test tests::test_ldrb ... ok
+test tests::test_ldrbt ... ok
+test tests::test_ldrd ... ok
+test tests::test_lsl ... ok
+test tests::test_ldrh ... ok
+test tests::test_ldrsb ... ok
+test tests::test_lsr ... ok
+test tests::test_mcr ... ok
+test tests::test_ldrt ... ok
+test tests::test_ldrsh ... ok
+test tests::test_mcr2 ... ok
+test tests::test_mcrr ... ok
+test tests::test_mla ... ok
+test tests::test_mov ... ok
+test tests::test_mrc2 ... ok
+test tests::test_mrc ... ok
+test tests::test_mrrc ... ok
+test tests::test_mrs ... ok
+test tests::test_msr ... ok
+test tests::test_mul ... ok
+test tests::test_mvn ... ok
+test tests::test_orr ... ok
+test tests::test_pld ... ok
+test tests::test_push ... ok
+test tests::test_qadd ... ok
+test tests::test_qdadd ... ok
+test tests::test_pop ... ok
+test tests::test_qdsub ... ok
+test tests::test_qsub ... ok
+test tests::test_ror ... ok
+test tests::test_rrx ... ok
+test tests::test_rsb ... ok
+test tests::test_rsc ... ok
+test tests::test_stc ... ok
+test tests::test_smul ... ok
+test tests::test_smlaw ... ok
+test tests::test_smla ... ok
+test tests::test_smull ... ok
+test tests::test_stc2 ... ok
+test tests::test_sbc ... ok
+test tests::test_smlal ... ok
+test tests::test_smulw ... ok
+test tests::test_strb ... ok
+test tests::test_strt ... ok
+test tests::test_str ... ok
+test tests::test_strd ... ok
+test tests::test_strh ... ok
+test tests::test_strbt ... ok
+test tests::test_svc ... ok
+test tests::test_sub ... ok
+test tests::test_swpb ... ok
+test tests::test_swp ... ok
+test tests::test_teq ... ok
+test tests::test_udf ... ok
+test tests::test_stm ... ok
+test tests::test_tst ... ok
+test tests::test_umlal ... ok
+test tests::test_umull ... ok
+
+test result: ok. 78 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/test_arm_v6k.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_arm_v6k-afc2a72b30eae06b)
+
+running 165 tests
+test tests::test_b ... ok
+test tests::test_asr ... ok
+test tests::test_bl ... ok
+test tests::test_bkpt ... ok
+test tests::test_bx ... ok
+test tests::test_and ... ok
+test tests::test_cdp ... ok
+test tests::test_bxj ... ok
+test tests::test_blx ... ok
+test tests::test_cdp2 ... ok
+test tests::test_adc ... ok
+test tests::test_add ... ok
+test tests::test_bic ... ok
+test tests::test_clrex ... ok
+test tests::test_clz ... ok
+test tests::test_cmn ... ok
+test tests::test_cmp ... ok
+test tests::test_cps ... ok
+test tests::test_csdb ... ok
+test tests::test_dbg ... ok
+test tests::test_ldc2 ... ok
+test tests::test_ldc ... ok
+test tests::test_eor ... ok
+test tests::test_ldr ... ok
+test tests::test_ldrb ... ok
+test tests::test_ldrex ... ok
+test tests::test_ldrd ... ok
+test tests::test_ldrbt ... ok
+test tests::test_lsl ... ok
+test tests::test_ldrt ... ok
+test tests::test_lsr ... ok
+test tests::test_ldrsb ... ok
+test tests::test_mcr ... ok
+test tests::test_ldrsh ... ok
+test tests::test_ldrh ... ok
+test tests::test_mcr2 ... ok
+test tests::test_mcrr ... ok
+test tests::test_mcrr2 ... ok
+test tests::test_ldm ... ok
+test tests::test_mla ... ok
+test tests::test_mrc2 ... ok
+test tests::test_mov ... ok
+test tests::test_mrc ... ok
+test tests::test_mrrc ... ok
+test tests::test_mrrc2 ... ok
+test tests::test_mrs ... ok
+test tests::test_msr ... ok
+test tests::test_mul ... ok
+test tests::test_nop ... ok
+test tests::test_pkhbt ... ok
+test tests::test_mvn ... ok
+test tests::test_pop ... ok
+test tests::test_pkhtb ... ok
+test tests::test_qadd ... ok
+test tests::test_orr ... ok
+test tests::test_push ... ok
+test tests::test_pld ... ok
+test tests::test_qadd16 ... ok
+test tests::test_qadd8 ... ok
+test tests::test_qasx ... ok
+test tests::test_qdadd ... ok
+test tests::test_qdsub ... ok
+test tests::test_qsax ... ok
+test tests::test_qsub ... ok
+test tests::test_qsub16 ... ok
+test tests::test_qsub8 ... ok
+test tests::test_rev ... ok
+test tests::test_rev16 ... ok
+test tests::test_revsh ... ok
+test tests::test_rfe ... ok
+test tests::test_ror ... ok
+test tests::test_rrx ... ok
+test tests::test_sadd16 ... ok
+test tests::test_sasx ... ok
+test tests::test_sadd8 ... ok
+test tests::test_rsb ... ok
+test tests::test_rsc ... ok
+test tests::test_setend ... ok
+test tests::test_sel ... ok
+test tests::test_sev ... ok
+test tests::test_shadd16 ... ok
+test tests::test_shadd8 ... ok
+test tests::test_sbc ... ok
+test tests::test_shasx ... ok
+test tests::test_shsax ... ok
+test tests::test_shsub16 ... ok
+test tests::test_shsub8 ... ok
+test tests::test_smla ... ok
+test tests::test_smlad ... ok
+test tests::test_smlald ... ok
+test tests::test_smlal ... ok
+test tests::test_smlaw ... ok
+test tests::test_smlsd ... ok
+test tests::test_smlsld ... ok
+test tests::test_smmla ... ok
+test tests::test_smmul ... ok
+test tests::test_smuad ... ok
+test tests::test_smmls ... ok
+test tests::test_smul ... ok
+test tests::test_srs ... ok
+test tests::test_smull ... ok
+test tests::test_smulw ... ok
+test tests::test_ssat ... ok
+test tests::test_smusd ... ok
+test tests::test_ssat16 ... ok
+test tests::test_ssax ... ok
+test tests::test_ssub16 ... ok
+test tests::test_ssub8 ... ok
+test tests::test_stc2 ... ok
+test tests::test_stc ... ok
+test tests::test_strex ... ok
+test tests::test_str ... ok
+test tests::test_strb ... ok
+test tests::test_stm ... ok
+test tests::test_strh ... ok
+test tests::test_svc ... ok
+test tests::test_strbt ... ok
+test tests::test_swp ... ok
+test tests::test_strt ... ok
+test tests::test_swpb ... ok
+test tests::test_strd ... ok
+test tests::test_sxtab ... ok
+test tests::test_sxtab16 ... ok
+test tests::test_sub ... ok
+test tests::test_sxtah ... ok
+test tests::test_sxtb ... ok
+test tests::test_sxtb16 ... ok
+test tests::test_sxth ... ok
+test tests::test_teq ... ok
+test tests::test_uadd16 ... ok
+test tests::test_tst ... ok
+test tests::test_uadd8 ... ok
+test tests::test_uasx ... ok
+test tests::test_udf ... ok
+test tests::test_uhadd16 ... ok
+test tests::test_uhadd8 ... ok
+test tests::test_uhasx ... ok
+test tests::test_uhsax ... ok
+test tests::test_uhsub16 ... ok
+test tests::test_uhsub8 ... ok
+test tests::test_umaal ... ok
+test tests::test_umlal ... ok
+test tests::test_uqadd16 ... ok
+test tests::test_umull ... ok
+test tests::test_uqadd8 ... ok
+test tests::test_uqasx ... ok
+test tests::test_uqsax ... ok
+test tests::test_uqsub16 ... ok
+test tests::test_uqsub8 ... ok
+test tests::test_usad8 ... ok
+test tests::test_usada8 ... ok
+test tests::test_usat ... ok
+test tests::test_usat16 ... ok
+test tests::test_usax ... ok
+test tests::test_usub16 ... ok
+test tests::test_usub8 ... ok
+test tests::test_uxtab ... ok
+test tests::test_uxtab16 ... ok
+test tests::test_uxtah ... ok
+test tests::test_uxtb ... ok
+test tests::test_uxtb16 ... ok
+test tests::test_uxth ... ok
+test tests::test_wfe ... ok
+test tests::test_wfi ... ok
+test tests::test_yield ... ok
+
+test result: ok. 165 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_branch_boundaries.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_branch_boundaries-228ea4b8a86d6387)
+
+running 8 tests
+test arm_b_bl_llvm_boundaries ... ok
+test arm_blx_llvm_boundaries ... ok
+test thumb_bl_keeps_halfword_aligned_pc_llvm ... ok
+test thumb_bl_llvm_boundaries ... ok
+test thumb_blx_halfword_aligned_pc_llvm ... ok
+test thumb_blx_llvm_boundaries ... ok
+test thumb_short_llvm_boundaries ... ok
+test v4t_rejects_arm_and_thumb_blx ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_defs_uses.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_defs_uses-f3d820d95dc2e1b6)
+
+running 2 tests
+test tests::test_thumb ... ok
+test tests::test_arm ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_display_options.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_display_options-9393e8634a5c39c2)
+
+running 5 tests
+test test_r10 ... ok
+test test_r9 ... ok
+test test_r11 ... ok
+test test_r12 ... ok
+test test_av ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_sbo_sbz.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_sbo_sbz-9019d92e9d117c3a)
+
+running 89 tests
+test tests::test_clz ... ok
+test tests::test_cps ... ok
+test tests::test_bxj ... ok
+test tests::test_clrex ... ok
+test tests::test_cmn ... ok
+test tests::test_bx ... ok
+test tests::test_cmp ... ok
+test tests::test_csdb ... ok
+test tests::test_dbg ... ok
+test tests::test_blx ... ok
+test tests::test_ldrex ... ok
+test tests::test_mrs ... ok
+test tests::test_msr ... ok
+test tests::test_mul ... ok
+test tests::test_mov ... ok
+test tests::test_nop ... ok
+test tests::test_mvn ... ok
+test tests::test_qadd ... ok
+test tests::test_qadd16 ... ok
+test tests::test_qasx ... ok
+test tests::test_qdadd ... ok
+test tests::test_qadd8 ... ok
+test tests::test_qsax ... ok
+test tests::test_qdsub ... ok
+test tests::test_qsub ... ok
+test tests::test_qsub8 ... ok
+test tests::test_qsub16 ... ok
+test tests::test_rev ... ok
+test tests::test_revsh ... ok
+test tests::test_rev16 ... ok
+test tests::test_rfe ... ok
+test tests::test_sadd16 ... ok
+test tests::test_sasx ... ok
+test tests::test_sadd8 ... ok
+test tests::test_setend ... ok
+test tests::test_sel ... ok
+test tests::test_sev ... ok
+test tests::test_shadd16 ... ok
+test tests::test_shasx ... ok
+test tests::test_shadd8 ... ok
+test tests::test_shsax ... ok
+test tests::test_shsub8 ... ok
+test tests::test_shsub16 ... ok
+test tests::test_srs ... ok
+test tests::test_smul ... ok
+test tests::test_smulw ... ok
+test tests::test_ssub16 ... ok
+test tests::test_ssat16 ... ok
+test tests::test_strex ... ok
+test tests::test_swp ... ok
+test tests::test_ssub8 ... ok
+test tests::test_ssax ... ok
+test tests::test_swpb ... ok
+test tests::test_sxtab ... ok
+test tests::test_sxtab16 ... ok
+test tests::test_sxtb ... ok
+test tests::test_sxtb16 ... ok
+test tests::test_sxth ... ok
+test tests::test_sxtah ... ok
+test tests::test_teq ... ok
+test tests::test_uadd16 ... ok
+test tests::test_uadd8 ... ok
+test tests::test_tst ... ok
+test tests::test_uasx ... ok
+test tests::test_uhadd16 ... ok
+test tests::test_uhadd8 ... ok
+test tests::test_uhasx ... ok
+test tests::test_uhsax ... ok
+test tests::test_uhsub16 ... ok
+test tests::test_uhsub8 ... ok
+test tests::test_uqadd16 ... ok
+test tests::test_uqadd8 ... ok
+test tests::test_uqasx ... ok
+test tests::test_uqsax ... ok
+test tests::test_uqsub16 ... ok
+test tests::test_uqsub8 ... ok
+test tests::test_usat16 ... ok
+test tests::test_usub16 ... ok
+test tests::test_usax ... ok
+test tests::test_usub8 ... ok
+test tests::test_uxtab ... ok
+test tests::test_uxtab16 ... ok
+test tests::test_uxtb16 ... ok
+test tests::test_uxtb ... ok
+test tests::test_uxth ... ok
+test tests::test_uxtah ... ok
+test tests::test_wfe ... ok
+test tests::test_wfi ... ok
+test tests::test_yield ... ok
+
+test result: ok. 89 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_thumb_v4t.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_thumb_v4t-2693bee7cbfb3f06)
+
+running 37 tests
+test tests::test_bl ... ok
+test tests::test_bx ... ok
+test tests::test_asr ... ok
+test tests::test_adr ... ok
+test tests::test_cmn ... ok
+test tests::test_b ... ok
+test tests::test_and ... ok
+test tests::test_bic ... ok
+test tests::test_add ... ok
+test tests::test_adc ... ok
+test tests::test_cmp ... ok
+test tests::test_eor ... ok
+test tests::test_ldm ... ok
+test tests::test_ldr ... ok
+test tests::test_ldrb ... ok
+test tests::test_ldrh ... ok
+test tests::test_ldrsb ... ok
+test tests::test_ldrsh ... ok
+test tests::test_lsl ... ok
+test tests::test_lsr ... ok
+test tests::test_mov ... ok
+test tests::test_mul ... ok
+test tests::test_mvn ... ok
+test tests::test_orr ... ok
+test tests::test_pop ... ok
+test tests::test_push ... ok
+test tests::test_ror ... ok
+test tests::test_rsb ... ok
+test tests::test_sbc ... ok
+test tests::test_stm ... ok
+test tests::test_str ... ok
+test tests::test_strb ... ok
+test tests::test_strh ... ok
+test tests::test_svc ... ok
+test tests::test_sub ... ok
+test tests::test_tst ... ok
+test tests::test_udf ... ok
+
+test result: ok. 37 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_thumb_v5te.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_thumb_v5te-8d761bf1cb5bdcfe)
+
+running 39 tests
+test tests::test_bl ... ok
+test tests::test_bkpt ... ok
+test tests::test_adr ... ok
+test tests::test_adc ... ok
+test tests::test_bic ... ok
+test tests::test_and ... ok
+test tests::test_blx ... ok
+test tests::test_b ... ok
+test tests::test_add ... ok
+test tests::test_asr ... ok
+test tests::test_bx ... ok
+test tests::test_cmn ... ok
+test tests::test_cmp ... ok
+test tests::test_eor ... ok
+test tests::test_ldm ... ok
+test tests::test_ldrb ... ok
+test tests::test_ldr ... ok
+test tests::test_ldrh ... ok
+test tests::test_ldrsb ... ok
+test tests::test_ldrsh ... ok
+test tests::test_lsl ... ok
+test tests::test_lsr ... ok
+test tests::test_mov ... ok
+test tests::test_mul ... ok
+test tests::test_mvn ... ok
+test tests::test_orr ... ok
+test tests::test_pop ... ok
+test tests::test_push ... ok
+test tests::test_rsb ... ok
+test tests::test_ror ... ok
+test tests::test_sbc ... ok
+test tests::test_stm ... ok
+test tests::test_str ... ok
+test tests::test_strb ... ok
+test tests::test_sub ... ok
+test tests::test_svc ... ok
+test tests::test_tst ... ok
+test tests::test_strh ... ok
+test tests::test_udf ... ok
+
+test result: ok. 39 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_thumb_v6k.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_thumb_v6k-d63e4d944f791a19)
+
+running 48 tests
+test tests::test_adc ... ok
+test tests::test_bl ... ok
+test tests::test_asr ... ok
+test tests::test_adr ... ok
+test tests::test_b ... ok
+test tests::test_bic ... ok
+test tests::test_bkpt ... ok
+test tests::test_blx ... ok
+test tests::test_add ... ok
+test tests::test_and ... ok
+test tests::test_bx ... ok
+test tests::test_cmn ... ok
+test tests::test_cmp ... ok
+test tests::test_cps ... ok
+test tests::test_eor ... ok
+test tests::test_ldm ... ok
+test tests::test_ldr ... ok
+test tests::test_ldrb ... ok
+test tests::test_ldrh ... ok
+test tests::test_ldrsb ... ok
+test tests::test_ldrsh ... ok
+test tests::test_lsl ... ok
+test tests::test_lsr ... ok
+test tests::test_mov ... ok
+test tests::test_mul ... ok
+test tests::test_mvn ... ok
+test tests::test_orr ... ok
+test tests::test_pop ... ok
+test tests::test_rev ... ok
+test tests::test_push ... ok
+test tests::test_rev16 ... ok
+test tests::test_revsh ... ok
+test tests::test_ror ... ok
+test tests::test_rsb ... ok
+test tests::test_sbc ... ok
+test tests::test_setend ... ok
+test tests::test_stm ... ok
+test tests::test_str ... ok
+test tests::test_strh ... ok
+test tests::test_strb ... ok
+test tests::test_sub ... ok
+test tests::test_svc ... ok
+test tests::test_sxtb ... ok
+test tests::test_sxth ... ok
+test tests::test_tst ... ok
+test tests::test_udf ... ok
+test tests::test_uxtb ... ok
+test tests::test_uxth ... ok
+
+test result: ok. 48 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_ual.rs (/private/tmp/jus-arm7-branch-repair-root-cache/upstream-target/debug/deps/test_ual-bb40228ec7d58af6)
+
+running 6 tests
+test test_svc_swi ... ok
+test test_data ... ok
+test test_ldm_stm ... ok
+test test_push_pop ... ok
+test test_shift ... ok
+test test_ldr_str ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests unarm
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

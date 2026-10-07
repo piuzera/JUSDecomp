@@ -1,0 +1,41 @@
+FFFF......
+======================================================================
+FAIL: test_ignored_build_script_rejected_after_preparation (__main__.PrepareTests.test_ignored_build_script_rejected_after_preparation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 100, in test_ignored_build_script_rejected_after_preparation
+    with self.assertRaisesRegex(ValueError, 'untracked'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_ignored_cargo_configuration_rejected (__main__.PrepareTests.test_ignored_cargo_configuration_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 108, in test_ignored_cargo_configuration_rejected
+    with self.assertRaisesRegex(ValueError, 'untracked'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_ignored_source_rejected_before_patch (__main__.PrepareTests.test_ignored_source_rejected_before_patch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 114, in test_ignored_source_rejected_before_patch
+    with self.assertRaisesRegex(ValueError, 'untracked'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_only_root_target_output_is_allowed (__main__.PrepareTests.test_only_root_target_output_is_allowed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-branch-dependency-repair-dsd/dependency-patches/unarm-1.9.2/test_prepare.py", line 127, in test_only_root_target_output_is_allowed
+    with self.assertRaisesRegex(ValueError, 'untracked'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.628s
+
+FAILED (failures=4)

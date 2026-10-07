@@ -1,0 +1,25 @@
+test_late_same_byte_receipt_symlink_rejects (__main__.BoundaryTests.test_late_same_byte_receipt_symlink_rejects) ... FAIL
+test_late_same_byte_artifact_symlink_rejects (__main__.BoundaryTests.test_late_same_byte_artifact_symlink_rejects) ... FAIL
+
+======================================================================
+FAIL: test_late_same_byte_receipt_symlink_rejects (__main__.BoundaryTests.test_late_same_byte_receipt_symlink_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/test_boundaries.py", line 68, in test_late_same_byte_receipt_symlink_rejects
+    with self.assertRaises(ValueError): r.publish_receipt(receipt,b'new',{})
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_late_same_byte_artifact_symlink_rejects (__main__.BoundaryTests.test_late_same_byte_artifact_symlink_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/test_boundaries.py", line 84, in test_late_same_byte_artifact_symlink_rejects
+    with self.assertRaises(ValueError): r.publish_receipt(receipt,b'new',snapshot)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

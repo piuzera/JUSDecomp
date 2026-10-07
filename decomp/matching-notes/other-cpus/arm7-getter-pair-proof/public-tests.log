@@ -1,0 +1,9 @@
+test_actual_omitted_and_swapped_roles_fail_native_placement (test_pair.ActualPairProofTests.test_actual_omitted_and_swapped_roles_fail_native_placement) ... ok
+test_actual_shared_wram_binding_changes_both_derived_pool_bytes (test_pair.ActualPairProofTests.test_actual_shared_wram_binding_changes_both_derived_pool_bytes) ... ok
+test_actual_two_objects_five_relas_and_linked_individual_functions (test_pair.ActualPairProofTests.test_actual_two_objects_five_relas_and_linked_individual_functions) ... ok
+test_native_file_offsets_follow_actual_sections_and_malformed_load_rejects (test_pair.ActualPairProofTests.test_native_file_offsets_follow_actual_sections_and_malformed_load_rejects) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.971s
+
+OK

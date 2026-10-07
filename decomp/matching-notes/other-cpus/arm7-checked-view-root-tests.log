@@ -1,0 +1,43 @@
+   Compiling ds-decomp v0.12.0 (<isolated-tool-checkout>/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.19s
+     Running unittests src/lib.rs (target/debug/deps/ds_decomp-f4d3c53cb2f86f88)
+
+running 5 tests
+test config::test_iter_comma_separated ... ok
+test analysis::functions::tests::adjacent_swi_wrappers_each_produce_a_function ... ok
+test analysis::functions::tests::startup_swi_scan_is_bounded_to_actual_module_bytes ... ok
+test analysis::functions::tests::arm_self_loop_ends_function ... ok
+test analysis::functions::tests::startup_swi_prefix_includes_halfword_aligned_wrapper_before_entry ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/arm7_checked_view.rs (target/debug/deps/arm7_checked_view-7e3d20e796ef18bd)
+
+running 24 tests
+test arm9_cpu_isa_and_processor_reject ... ok
+test image_out_of_bounds_and_short_header_reject_without_panics ... ok
+test main_entry_outside_startup_and_bad_bss_reject ... ok
+test changed_region_hash_rejects ... ok
+test identical_image_cannot_authorize_other_program ... ok
+test header_and_parameter_hash_domains_are_pinned ... ok
+test missing_or_ambiguous_nitrofs_path_rejects ... ok
+test omitted_target_fields_do_not_default_to_arm9 ... ok
+test nitrofs_decoding_errors_and_decoded_sibling_aliases_reject ... ok
+test nitrofs_valid_overlay_reservation_remains_selectable ... ok
+test nitrofs_overlay_reserved_file_id_rejects_without_panic ... ok
+test nitrofs_duplicate_names_and_cycles_reject ... ok
+test nitrofs_valid_shift_jis_name_remains_selectable ... ok
+test parent_and_child_views_use_distinct_program_identity ... ok
+test parameter_block_outside_startup_rejects ... ok
+test malformed_nitrofs_extents_reject_without_panics ... ok
+test wrong_parent_program_and_image_pins_reject ... ok
+test changed_header_rejects_even_after_program_repinned ... ok
+test region_gap_overlap_order_missing_and_table_tail_reject ... ok
+test unaligned_and_overflowing_runtime_extent_reject ... ok
+test runtime_initialized_or_bss_overlap_reject ... ok
+test changed_parameter_tuple_rejects_after_image_repinned ... ok
+test nitrofs_overlay_extent_and_count_arithmetic_rejects ... ok
+test record_destination_size_bss_and_table_hash_reject ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+

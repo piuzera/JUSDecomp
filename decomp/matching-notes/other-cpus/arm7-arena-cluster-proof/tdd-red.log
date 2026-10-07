@@ -1,0 +1,49 @@
+FFFF
+======================================================================
+FAIL: test_every_omitted_role_and_real_equal_size_store_swap_reject (__main__.ActualFourRoleTests.test_every_omitted_role_and_real_equal_size_store_swap_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 80, in test_every_omitted_role_and_real_equal_size_store_swap_reject
+    r=self.completed();cluster=importlib.import_module('cluster')
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'fixed four-role native replay not implemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : fixed four-role native replay not implemented
+
+======================================================================
+FAIL: test_four_real_inputs_keep_each_recipe_map_function_bytes_and_complete_images (__main__.ActualFourRoleTests.test_four_real_inputs_keep_each_recipe_map_function_bytes_and_complete_images)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 32, in test_four_real_inputs_keep_each_recipe_map_function_bytes_and_complete_images
+    r=self.completed();cluster=importlib.import_module('cluster')
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'fixed four-role native replay not implemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : fixed four-role native replay not implemented
+
+======================================================================
+FAIL: test_native_section_offsets_flags_and_malformed_load_reject (__main__.ActualFourRoleTests.test_native_section_offsets_flags_and_malformed_load_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 92, in test_native_section_offsets_flags_and_malformed_load_reject
+    r=self.completed()
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'fixed four-role native replay not implemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : fixed four-role native replay not implemented
+
+======================================================================
+FAIL: test_shared_wram_changes_both_getter_pools_and_neither_store (__main__.ActualFourRoleTests.test_shared_wram_changes_both_getter_pools_and_neither_store)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 63, in test_shared_wram_changes_both_getter_pools_and_neither_store
+    r=self.completed();cluster=importlib.import_module('cluster')
+  File "/private/tmp/jus-arm7-arena-cluster-trial/decomp/matching-notes/other-cpus/arm7-arena-cluster-proof/test_cluster.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'fixed four-role native replay not implemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : fixed four-role native replay not implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)

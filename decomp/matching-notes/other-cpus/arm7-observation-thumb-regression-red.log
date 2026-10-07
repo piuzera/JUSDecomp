@@ -1,0 +1,24 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-analysis-design-bounded/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.57s
+     Running tests/arm7_observation.rs (target/debug/deps/arm7_observation-1456a410174b4427)
+
+running 1 test
+test thumb_bl_signed_boundary_adds_pipeline_bias_after_sign_extension ... FAILED
+
+failures:
+
+---- thumb_bl_signed_boundary_adds_pipeline_bias_after_sign_extension stdout ----
+
+thread 'thumb_bl_signed_boundary_adds_pipeline_bias_after_sign_extension' (250256799) panicked at lib/tests/arm7_observation.rs:303:9:
+assertion `left == right` failed: f3ff fffe
+  left: Number(33030144)
+ right: 41418752
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    thumb_bl_signed_boundary_adds_pipeline_bias_after_sign_extension
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 12 filtered out; finished in 0.07s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_observation`

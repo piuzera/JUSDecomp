@@ -1,0 +1,22 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.08s
+     Running tests/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/deps/arm7_physical_baseline-af6a7e4b2a3cc3c0)
+
+running 1 test
+test assembler_input_changed_after_compilation_rejects_success ... FAILED
+
+failures:
+
+---- assembler_input_changed_after_compilation_rejects_success stdout ----
+
+thread 'assembler_input_changed_after_compilation_rejects_success' (251246917) panicked at lib/tests/arm7_physical_baseline.rs:127:5:
+changed consumed .incbin artifact accepted
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    assembler_input_changed_after_compilation_rejects_success
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.65s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_physical_baseline`

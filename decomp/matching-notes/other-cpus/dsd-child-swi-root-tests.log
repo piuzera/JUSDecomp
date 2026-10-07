@@ -1,0 +1,13 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-dsd-root-check/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.15s
+     Running unittests src/lib.rs (target/debug/deps/ds_decomp-bdef371b4a2a0f37)
+
+running 5 tests
+test config::test_iter_comma_separated ... ok
+test analysis::functions::tests::startup_swi_scan_is_bounded_to_actual_module_bytes ... ok
+test analysis::functions::tests::adjacent_swi_wrappers_each_produce_a_function ... ok
+test analysis::functions::tests::startup_swi_prefix_includes_halfword_aligned_wrapper_before_entry ... ok
+test analysis::functions::tests::arm_self_loop_ends_function ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

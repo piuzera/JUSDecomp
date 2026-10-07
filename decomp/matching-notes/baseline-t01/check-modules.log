@@ -1,0 +1,18 @@
+[INFO ] Check ARM9 main: checksum failed
+[INFO ] Check ITCM: checksum failed
+[INFO ] Check DTCM: checksum failed
+[INFO ] Check overlay 0: checksum failed
+[INFO ] Check overlay 1: checksum failed
+[INFO ] Check overlay 2: checksum failed
+[INFO ] Check overlay 3: checksum failed
+[INFO ] Check overlay 4: checksum failed
+[INFO ] Check overlay 5: checksum failed
+[INFO ] Check overlay 6: checksum failed
+[INFO ] Check overlay 7: checksum failed
+[INFO ] Check overlay 8: checksum failed
+[INFO ] Check overlay 9: checksum failed
+[INFO ] Check overlay 10: checksum failed
+[INFO ] Check overlay 11: checksum failed
+[INFO ] Check overlay 12: checksum failed
+[INFO ] Check overlay 13: checksum failed
+Error: Some module(s) didn't pass the checks.

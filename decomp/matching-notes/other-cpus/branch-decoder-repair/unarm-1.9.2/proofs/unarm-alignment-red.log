@@ -1,0 +1,30 @@
+   Compiling unarm v1.9.2 (/private/tmp/jus-unarm-branch-repair/disasm)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.91s
+     Running tests/test_branch_boundaries.rs (/private/tmp/jus-arm7-branch-dependency-repair-dsd/target/branch-repair/cargo-target/debug/deps/test_branch_boundaries-6adac5fa070bca30)
+
+running 7 tests
+test thumb_blx_llvm_boundaries ... ok
+test thumb_bl_llvm_boundaries ... ok
+test thumb_short_llvm_boundaries ... ok
+test arm_blx_llvm_boundaries ... ok
+test v4t_rejects_arm_and_thumb_blx ... ok
+test arm_b_bl_llvm_boundaries ... ok
+test thumb_blx_halfword_aligned_pc_llvm ... FAILED
+
+failures:
+
+---- thumb_blx_halfword_aligned_pc_llvm stdout ----
+
+thread 'thumb_blx_halfword_aligned_pc_llvm' (250722137) panicked at disasm/tests/test_branch_boundaries.rs:13:5:
+assertion `left == right` failed: blx at 0x02380002
+  left: 37224454
+ right: 37224452
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    thumb_blx_halfword_aligned_pc_llvm
+
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p unarm --test test_branch_boundaries`

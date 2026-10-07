@@ -1,0 +1,1102 @@
+{
+  "schema_version": 1,
+  "status": "candidate_not_promoted",
+  "runtime_source_credit": 0,
+  "blocker": "cross-object NOTYPE branch target definition lacks mode/type normalization after splitting main",
+  "canonical_source_manifest_unchanged": true,
+  "original_relocation_slots": 87493,
+  "reference": {
+    "report_sha256": "11e3f968b3ea3ea9144f8fa23018a00462e5cde0e79b073761b8af10743e1314",
+    "status": "passed",
+    "stages": [
+      {
+        "name": "intake",
+        "status": "passed"
+      },
+      {
+        "name": "tool_versions",
+        "status": "passed"
+      },
+      {
+        "name": "prepare_config",
+        "status": "passed"
+      },
+      {
+        "name": "extract",
+        "status": "passed"
+      },
+      {
+        "name": "delink",
+        "status": "passed"
+      },
+      {
+        "name": "lcf",
+        "status": "passed"
+      },
+      {
+        "name": "native_link",
+        "status": "passed"
+      },
+      {
+        "name": "link_inputs",
+        "status": "passed"
+      },
+      {
+        "name": "check_modules",
+        "status": "passed"
+      },
+      {
+        "name": "check_symbols",
+        "status": "passed"
+      },
+      {
+        "name": "direct_comparison",
+        "status": "passed"
+      },
+      {
+        "name": "relocation_check",
+        "status": "passed"
+      },
+      {
+        "name": "freshness",
+        "status": "passed"
+      },
+      {
+        "name": "rom_roundtrip",
+        "status": "passed"
+      },
+      {
+        "name": "rom_freshness",
+        "status": "passed"
+      }
+    ],
+    "source_coverage": {
+      "matched_source_bytes": 0,
+      "percent": 0
+    },
+    "failure": null,
+    "rom_roundtrip": {
+      "status": "passed",
+      "rom": {
+        "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+        "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "size_bytes": 67108864
+      },
+      "checks": [
+        {
+          "name": "header",
+          "status": "passed",
+          "sha256": "afa321ff2d0b6d7c793c10ed7aa810755175fde894349b13f08eff9c80abd3de"
+        },
+        {
+          "name": "arm9_overlay_table",
+          "status": "passed",
+          "offset": 709120,
+          "size_bytes": 448,
+          "sha256": "985c926dc85d0161b3fb7d0965fc13c90b5ead4e7a4a77472d142cc010a972e3"
+        },
+        {
+          "name": "arm7_overlay_table",
+          "status": "passed",
+          "offset": 0,
+          "size_bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "fnt",
+          "status": "passed",
+          "offset": 2328576,
+          "size_bytes": 5813,
+          "sha256": "b1d678306304b5aeaf193395f34b8d0c647f75d8624888dfb04b5971e0a4b194"
+        },
+        {
+          "name": "fat",
+          "status": "passed",
+          "offset": 2334720,
+          "size_bytes": 3144,
+          "sha256": "571ced1ba03e47135da381cffdaedb8f89943790a4a4dd460b5d17e541c13fae"
+        },
+        {
+          "name": "compression_encoding",
+          "status": "passed"
+        },
+        {
+          "name": "arm9_payloads",
+          "status": "passed"
+        },
+        {
+          "name": "autoload_table",
+          "status": "passed"
+        },
+        {
+          "name": "arm7",
+          "status": "passed"
+        },
+        {
+          "name": "raw_assets",
+          "status": "passed"
+        },
+        {
+          "name": "padding",
+          "status": "passed"
+        },
+        {
+          "name": "whole_rom_hash",
+          "status": "passed"
+        }
+      ],
+      "arm9_modules_checked": 17,
+      "preserved_source_bytes": 0,
+      "preserved_arm7": {
+        "size_bytes": 165552,
+        "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "source_bytes": 0
+      },
+      "preserved_raw_assets": {
+        "file_count": 379,
+        "size_bytes": 63545489,
+        "source_bytes": 0
+      },
+      "smoke_checks": "queued for T07; not performed",
+      "provenance": {
+        "producer_build_id": "ab81c52a-621f-4ef1-8327-216c04f05a9b",
+        "source_enabled": false,
+        "linked_elf_sha256": "69763182b4a16539ccddb45611fe3724e0f680ee6294f37434aa0f73534ea0fe",
+        "link_inputs_sha256": "3854907c51191c69271b167c74c8d56323b0c4deacedf54fc7ffbbc447f629fd",
+        "artifact_count": 110
+      },
+      "writes": [
+        {
+          "module": "ARM9",
+          "input_file": "arm9.bin",
+          "rom_offset": 16384,
+          "size_bytes": 656832,
+          "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e"
+        },
+        {
+          "module": "ITCM",
+          "input_file": "itcm.bin",
+          "rom_offset": 673216,
+          "size_bytes": 31552,
+          "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3"
+        },
+        {
+          "module": "DTCM",
+          "input_file": "dtcm.bin",
+          "rom_offset": 704768,
+          "size_bytes": 4160,
+          "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487"
+        },
+        {
+          "module": "OV000",
+          "input_file": "arm9_ov000.bin",
+          "rom_offset": 709632,
+          "size_bytes": 85760,
+          "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6"
+        },
+        {
+          "module": "OV001",
+          "input_file": "arm9_ov001.bin",
+          "rom_offset": 795648,
+          "size_bytes": 135456,
+          "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b"
+        },
+        {
+          "module": "OV002",
+          "input_file": "arm9_ov002.bin",
+          "rom_offset": 931328,
+          "size_bytes": 65152,
+          "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b"
+        },
+        {
+          "module": "OV003",
+          "input_file": "arm9_ov003.bin",
+          "rom_offset": 996864,
+          "size_bytes": 73472,
+          "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a"
+        },
+        {
+          "module": "OV004",
+          "input_file": "arm9_ov004.bin",
+          "rom_offset": 1070592,
+          "size_bytes": 86208,
+          "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3"
+        },
+        {
+          "module": "OV005",
+          "input_file": "arm9_ov005.bin",
+          "rom_offset": 1157120,
+          "size_bytes": 152928,
+          "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6"
+        },
+        {
+          "module": "OV006",
+          "input_file": "arm9_ov006.bin",
+          "rom_offset": 1310208,
+          "size_bytes": 154688,
+          "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984"
+        },
+        {
+          "module": "OV007",
+          "input_file": "arm9_ov007.bin",
+          "rom_offset": 1465344,
+          "size_bytes": 122816,
+          "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30"
+        },
+        {
+          "module": "OV008",
+          "input_file": "arm9_ov008.bin",
+          "rom_offset": 1588224,
+          "size_bytes": 128160,
+          "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7"
+        },
+        {
+          "module": "OV009",
+          "input_file": "arm9_ov009.bin",
+          "rom_offset": 1716736,
+          "size_bytes": 32,
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+        },
+        {
+          "module": "OV010",
+          "input_file": "arm9_ov010.bin",
+          "rom_offset": 1717248,
+          "size_bytes": 215264,
+          "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99"
+        },
+        {
+          "module": "OV011",
+          "input_file": "arm9_ov011.bin",
+          "rom_offset": 1932800,
+          "size_bytes": 61440,
+          "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9"
+        },
+        {
+          "module": "OV012",
+          "input_file": "arm9_ov012.bin",
+          "rom_offset": 1994240,
+          "size_bytes": 167776,
+          "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f"
+        },
+        {
+          "module": "OV013",
+          "input_file": "arm9_ov013.bin",
+          "rom_offset": 2162176,
+          "size_bytes": 32,
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+        }
+      ],
+      "repacker_source_sha256": "c3d84bd29758ef96e57ac0c052562ce8ecf0949174740cf51d7430615927f262",
+      "started_ns": 1791176248013683000,
+      "finished_ns": 1791176248634188000
+    }
+  },
+  "source_attempt": {
+    "report_sha256": "47fc420f8c107e47c9fe2909f88a89fbe2d189fba5a3372dc645438875042dae",
+    "status": "failed",
+    "stages": [
+      {
+        "name": "intake",
+        "status": "passed"
+      },
+      {
+        "name": "tool_versions",
+        "status": "passed"
+      },
+      {
+        "name": "prepare_config",
+        "status": "passed"
+      },
+      {
+        "name": "extract",
+        "status": "passed"
+      },
+      {
+        "name": "delink",
+        "status": "passed"
+      },
+      {
+        "name": "source_config",
+        "status": "passed"
+      },
+      {
+        "name": "source_delink",
+        "status": "passed"
+      },
+      {
+        "name": "source_build",
+        "status": "passed"
+      },
+      {
+        "name": "lcf",
+        "status": "passed"
+      },
+      {
+        "name": "native_link",
+        "status": "passed"
+      },
+      {
+        "name": "link_inputs",
+        "status": "passed"
+      },
+      {
+        "name": "check_modules",
+        "status": "failed"
+      }
+    ],
+    "source_coverage": {
+      "matched_source_bytes": 0,
+      "percent": 0
+    },
+    "failure": "check_modules exited 1: [INFO ] Check ARM9 main: checksum failed\n[INFO ] Check ITCM: OK\n[INFO ] Check DTCM: OK\n[INFO ] Check overlay 0: OK\n[INFO ] Check overlay 1: OK\n[INFO ] Check overlay 2: OK\n[INFO ] Check overlay 3: OK\n[INFO ] Check overlay 4: OK\n[INFO ] Check overlay 5: OK\n[INFO ] Check overlay 6: OK\n[INFO ] Check overlay 7: OK\n[INFO ] Check overlay 8: OK\n[INFO ] Check overlay 9: OK\n[INFO ] Check overlay 10: OK\n[INFO ] Check overlay 11: OK\n[INFO ] Check overlay 12: OK\n[INFO ] Check overlay 13: OK\nError: Some module(s) didn't pass the checks.",
+    "source_build": {
+      "status": "passed",
+      "accepted_units": 2,
+      "objects": {
+        "test_trampoline.o": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/ov000/test_trampoline.o",
+        "find_exception_table.o": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/runtime/find_exception_table.o"
+      },
+      "units": [
+        {
+          "module": "ov000",
+          "object": "src/ov000/test_trampoline.o",
+          "source": "decomp/src/ov000/test_trampoline.c",
+          "functions": [
+            "func_ov000_0214de00"
+          ],
+          "category": "game",
+          "cpu": "arm946e",
+          "flags": [
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc"
+          ],
+          "include_paths": [],
+          "compiler": {
+            "package": "2.0/base",
+            "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "selection_scope": "this TU only"
+          },
+          "abi": {
+            "language": "C",
+            "instruction_mode": "arm",
+            "endianness": "little",
+            "pointer_bits": 32,
+            "settings": "pinned compiler defaults"
+          },
+          "headers": {},
+          "experimental_overrides": [],
+          "link_name": "test_trampoline.o",
+          "status": "passed",
+          "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+          "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+          "source_sha256": "f638c8bf21f22951a6111db463d804ac8fc61b261369f0927f13a93bfd064982",
+          "reference": {
+            "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/src/ov000/test_trampoline.o",
+            "sha256": "1fca855358e76ed7268ca339f1b8b6e0b0137e26f1c54f512536e52ea546d4a3"
+          },
+          "include_hashes": {},
+          "cpu_flags": [
+            "-proc",
+            "arm946e",
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc"
+          ],
+          "command": [
+            "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+            "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+            "-c",
+            "-proc",
+            "arm946e",
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc",
+            "-o",
+            "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/ov000/test_trampoline.o",
+            "/private/tmp/jus-track-a-runtime/decomp/src/ov000/test_trampoline.c"
+          ],
+          "dependencies": {
+            "schema_version": 1,
+            "policy": "header_free",
+            "status": "passed",
+            "ordered_dependencies": [
+              "decomp/src/ov000/test_trampoline.c"
+            ],
+            "headers": {},
+            "include_paths": [],
+            "forced_headers": [],
+            "source_credit": 0
+          },
+          "stdout": "",
+          "stderr": "",
+          "exit_status": 0,
+          "compiled": {
+            "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/ov000/test_trampoline.o",
+            "sha256": "9bbeff924c067e61d03021ddf7ee2953dd385da6d82a00f2021c1027f3deb323"
+          },
+          "checks": {
+            "status": "passed",
+            "sections": [
+              {
+                "name": ".text",
+                "size": 24,
+                "flags": 6,
+                "kind": "initialized"
+              }
+            ],
+            "functions": [
+              {
+                "name": "func_ov000_0214de00",
+                "offset": 0,
+                "size": 24,
+                "mode": "arm",
+                "section": ".text"
+              }
+            ],
+            "relocations": [
+              {
+                "section": ".text",
+                "offset": 20,
+                "type": 2,
+                "symbol": "data_020a0e18",
+                "addend": 0
+              }
+            ]
+          }
+        },
+        {
+          "module": "main",
+          "object": "src/runtime/find_exception_table.o",
+          "source": "decomp/src/runtime/find_exception_table.c",
+          "functions": [
+            "__FindExceptionTable"
+          ],
+          "category": "sdk",
+          "cpu": "arm946e",
+          "flags": [
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc",
+            "-interworking",
+            "-O2,p"
+          ],
+          "include_paths": [],
+          "compiler": {
+            "package": "2.0/base",
+            "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "selection_scope": "this TU only"
+          },
+          "abi": {
+            "language": "C",
+            "instruction_mode": "arm",
+            "endianness": "little",
+            "pointer_bits": 32,
+            "settings": "pinned compiler defaults"
+          },
+          "headers": {},
+          "experimental_overrides": [],
+          "link_name": "find_exception_table.o",
+          "status": "passed",
+          "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+          "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+          "source_sha256": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+          "reference": {
+            "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/src/runtime/find_exception_table.o",
+            "sha256": "66c84fab3b62d955b9e7c1fd67b275b5f1ad03b13c1e90880382712682509f86"
+          },
+          "include_hashes": {},
+          "cpu_flags": [
+            "-proc",
+            "arm946e",
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc",
+            "-interworking",
+            "-O2,p"
+          ],
+          "command": [
+            "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+            "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+            "-c",
+            "-proc",
+            "arm946e",
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc",
+            "-interworking",
+            "-O2,p",
+            "-o",
+            "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/runtime/find_exception_table.o",
+            "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c"
+          ],
+          "dependencies": {
+            "schema_version": 1,
+            "policy": "header_free",
+            "status": "passed",
+            "ordered_dependencies": [
+              "decomp/src/runtime/find_exception_table.c"
+            ],
+            "headers": {},
+            "include_paths": [],
+            "forced_headers": [],
+            "source_credit": 0
+          },
+          "stdout": "",
+          "stderr": "",
+          "exit_status": 0,
+          "compiled": {
+            "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/runtime/find_exception_table.o",
+            "sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819"
+          },
+          "checks": {
+            "status": "passed",
+            "sections": [
+              {
+                "name": ".text",
+                "size": 32,
+                "flags": 6,
+                "kind": "initialized"
+              }
+            ],
+            "functions": [
+              {
+                "name": "__FindExceptionTable",
+                "offset": 0,
+                "size": 32,
+                "mode": "arm",
+                "section": ".text"
+              }
+            ],
+            "relocations": [
+              {
+                "section": ".text",
+                "offset": 24,
+                "type": 2,
+                "symbol": "__exception_table_start__",
+                "addend": 0
+              },
+              {
+                "section": ".text",
+                "offset": 28,
+                "type": 2,
+                "symbol": "__exception_table_end__",
+                "addend": 0
+              }
+            ]
+          }
+        }
+      ],
+      "input_hashes": {
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+        "/private/tmp/jus-track-a-runtime/decomp/src/ov000/test_trampoline.c": "f638c8bf21f22951a6111db463d804ac8fc61b261369f0927f13a93bfd064982",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/src/ov000/test_trampoline.o": "1fca855358e76ed7268ca339f1b8b6e0b0137e26f1c54f512536e52ea546d4a3",
+        "/private/tmp/jus-track-a-runtime/decomp/src/runtime/find_exception_table.c": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/src/runtime/find_exception_table.o": "66c84fab3b62d955b9e7c1fd67b275b5f1ad03b13c1e90880382712682509f86"
+      }
+    },
+    "link_inputs": {
+      "schema_version": 1,
+      "command": [
+        "/opt/homebrew/bin/ld.lld",
+        "-m",
+        "armelf",
+        "--no-check-sections",
+        "--entry=ARM9_TEXT_START",
+        "-T",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/native.ld",
+        "-Map",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/link.map",
+        "-o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/linked.elf",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@main_6.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/find_exception_table.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@main_1.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@itcm_0.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@dtcm_1.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov000_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/test_trampoline.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov000_1.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov001_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov002_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov003_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov004_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov005_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov006_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov007_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov008_3.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov010_3.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov011_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov012_5.o",
+        "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/attributes.o"
+      ],
+      "returncode": 0,
+      "objects": [
+        {
+          "filename": "_dsd_gap@main_6.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@main_6.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@main_6.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@main_6.o",
+          "reference_sha256": "f529f0556025a4f0dda469c07ee7e1ae8ecc0d142b20e15f53c9c84e690ca078",
+          "normalized_sha256": "f42284fef4f12d75365307964d1f27340d09ab4625b1802746e5ee4cde45df42"
+        },
+        {
+          "filename": "find_exception_table.o",
+          "kind": "source",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/runtime/find_exception_table.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/src/runtime/find_exception_table.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/find_exception_table.o",
+          "reference_sha256": "66c84fab3b62d955b9e7c1fd67b275b5f1ad03b13c1e90880382712682509f86",
+          "normalized_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819",
+          "compiled": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/runtime/find_exception_table.o",
+          "compiled_sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819"
+        },
+        {
+          "filename": "_dsd_gap@main_1.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@main_1.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@main_1.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@main_1.o",
+          "reference_sha256": "b4dee69c7e017812649c01676feaea07853e7ef795251cafa8a33f602606d0bc",
+          "normalized_sha256": "6fa86b121f3f4b385e0024f142d2beba0c0d2be24e4eb3596748a7b939deb78f"
+        },
+        {
+          "filename": "_dsd_gap@itcm_0.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@itcm_0.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@itcm_0.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@itcm_0.o",
+          "reference_sha256": "52051c163374bfc0e472d7e7da565c5dc9cb1c06b88dbb565a954845a1106a84",
+          "normalized_sha256": "3ea1571c0f00b46e4bd694145bec19b025fed8ef5271cb9fd1d9cab9f08a6321"
+        },
+        {
+          "filename": "_dsd_gap@dtcm_1.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@dtcm_1.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@dtcm_1.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@dtcm_1.o",
+          "reference_sha256": "5ccb7fe8a9752f702d8c64ab1af13e3408c6c89c356436b53cb9a47fe2a89026",
+          "normalized_sha256": "f12513035216304fc68403445a7965fa429b6a404b5149e1b4d19b30be4db762"
+        },
+        {
+          "filename": "_dsd_gap@ov000_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov000_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov000_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov000_5.o",
+          "reference_sha256": "4924f42eb473057464e8594daef93826bc5fce455f0b6533cd23c812b47445dc",
+          "normalized_sha256": "d57f11600ab04344aa6aa93229c5b8da84088a7b10808379187f4b5e61392506"
+        },
+        {
+          "filename": "test_trampoline.o",
+          "kind": "source",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/ov000/test_trampoline.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/src/ov000/test_trampoline.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/test_trampoline.o",
+          "reference_sha256": "1fca855358e76ed7268ca339f1b8b6e0b0137e26f1c54f512536e52ea546d4a3",
+          "normalized_sha256": "9bbeff924c067e61d03021ddf7ee2953dd385da6d82a00f2021c1027f3deb323",
+          "compiled": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/source-build/src/ov000/test_trampoline.o",
+          "compiled_sha256": "9bbeff924c067e61d03021ddf7ee2953dd385da6d82a00f2021c1027f3deb323"
+        },
+        {
+          "filename": "_dsd_gap@ov000_1.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov000_1.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov000_1.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov000_1.o",
+          "reference_sha256": "28d161280c47b58a9a8a99adb2fae65c08f19b5109483075f0e8c9b6dd15e5bf",
+          "normalized_sha256": "6cda02226709e305e4a18bd21e46ec5185d40dcdc92bd8742b62b0d6f2b4bb0c"
+        },
+        {
+          "filename": "_dsd_gap@ov001_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov001_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov001_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov001_5.o",
+          "reference_sha256": "81d2df74fef7ae7cdfe08caecfe9ba8c0544d63762bbf70a9792c97d68fed3d7",
+          "normalized_sha256": "5bd0536985e066a3bd820e365c7daa9768274b1e4fb3400a59a32818d033f6e8"
+        },
+        {
+          "filename": "_dsd_gap@ov002_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov002_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov002_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov002_5.o",
+          "reference_sha256": "bbf679310a2e1f97ce8bc6db763f71ac528f8acc9b20e2af1e07dc6d7f9fc7bb",
+          "normalized_sha256": "433f3d48ac07ea0f4e69afb2911568e3fb200dcc242b5924ec878e8d174c6de2"
+        },
+        {
+          "filename": "_dsd_gap@ov003_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov003_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov003_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov003_5.o",
+          "reference_sha256": "e342b3afd351e946b447988e50807cc59beb50396c559a0a0f0849012df6b628",
+          "normalized_sha256": "4f295f0ff217ce1c63a7b1339b9d42e918e11d44e21a62a3e8f071c08ab810fc"
+        },
+        {
+          "filename": "_dsd_gap@ov004_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov004_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov004_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov004_5.o",
+          "reference_sha256": "8de2c7ce1bd974aaa288eb43d93face104cb8cac2181b22ff85d0886ba85f543",
+          "normalized_sha256": "c32c5c840d8f96d819305681e4cc88d2f0243218a4ca16af7367e0cebab3288d"
+        },
+        {
+          "filename": "_dsd_gap@ov005_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov005_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov005_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov005_5.o",
+          "reference_sha256": "b78de161984f5a7fd2f98ef503c4e6a6900d1bfed19915d52e761f401436c01b",
+          "normalized_sha256": "e7804cd2e98838700a70e837d3f2e455ce1e99a19e0aa3f56518d5d5be810e09"
+        },
+        {
+          "filename": "_dsd_gap@ov006_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov006_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov006_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov006_5.o",
+          "reference_sha256": "9056f0313d862cf6d9636db3f534786bb84534fa4b32f82240c82cefce25652d",
+          "normalized_sha256": "a510da8679d1bcb5457eb694486208e8453452ed0071294f7fee921e0c01ffbe"
+        },
+        {
+          "filename": "_dsd_gap@ov007_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov007_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov007_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov007_5.o",
+          "reference_sha256": "ff27de96f31f6cf90329ecd38a7a31bbef49d96c9fab028c8d694e3e4d84ba26",
+          "normalized_sha256": "a28a5830d4fe7bea33fe823a0c7590be9e1c342934922d7aa8b332fcf9466551"
+        },
+        {
+          "filename": "_dsd_gap@ov008_3.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov008_3.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov008_3.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov008_3.o",
+          "reference_sha256": "f3f5cf8d3452224b928391694f7bcf616a398c86e65a125cea82ff09a4d8a36b",
+          "normalized_sha256": "83bc9f901c11890283c6b0202635a4140f83c1e5bf53e299c9ffa948cee337ec"
+        },
+        {
+          "filename": "_dsd_gap@ov010_3.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov010_3.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov010_3.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov010_3.o",
+          "reference_sha256": "b184f31ba190d6331ab8c3304cd5fb5c9f8a4f627b350e08f9b89004ac0f8748",
+          "normalized_sha256": "95fce6dc597b62de160196ee27321998fb54890977b74cecfc5a34ce4479a88c"
+        },
+        {
+          "filename": "_dsd_gap@ov011_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov011_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov011_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov011_5.o",
+          "reference_sha256": "08327138e749b877a2e8ec7a4e636c01a6c50429a98a19a8dba1a860ce536ee2",
+          "normalized_sha256": "6394ccffaa0449e12581d5240e77f1904c4f8d77cab475f181a7c122242ab9a7"
+        },
+        {
+          "filename": "_dsd_gap@ov012_5.o",
+          "kind": "reference",
+          "source": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov012_5.o",
+          "reference": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/candidate-delinks/_dsd_gap@ov012_5.o",
+          "normalized": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov012_5.o",
+          "reference_sha256": "63c39a8f03c8aa20b35a5a3e81096bb4b076aa044b9f4557a7a0be3601c82375",
+          "normalized_sha256": "5ea4ee342a6bd88a7bfcf50879f6f87109bae5d4903aaeb00ca753ca134c765d"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@main_6.o",
+          "sha256": "f42284fef4f12d75365307964d1f27340d09ab4625b1802746e5ee4cde45df42"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/find_exception_table.o",
+          "sha256": "c75500cc14c4eb6918ace29c6bd63dec474cdd36f2885d363af3115270dba819"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@main_1.o",
+          "sha256": "6fa86b121f3f4b385e0024f142d2beba0c0d2be24e4eb3596748a7b939deb78f"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@itcm_0.o",
+          "sha256": "3ea1571c0f00b46e4bd694145bec19b025fed8ef5271cb9fd1d9cab9f08a6321"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@dtcm_1.o",
+          "sha256": "f12513035216304fc68403445a7965fa429b6a404b5149e1b4d19b30be4db762"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov000_5.o",
+          "sha256": "d57f11600ab04344aa6aa93229c5b8da84088a7b10808379187f4b5e61392506"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/test_trampoline.o",
+          "sha256": "9bbeff924c067e61d03021ddf7ee2953dd385da6d82a00f2021c1027f3deb323"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov000_1.o",
+          "sha256": "6cda02226709e305e4a18bd21e46ec5185d40dcdc92bd8742b62b0d6f2b4bb0c"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov001_5.o",
+          "sha256": "5bd0536985e066a3bd820e365c7daa9768274b1e4fb3400a59a32818d033f6e8"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov002_5.o",
+          "sha256": "433f3d48ac07ea0f4e69afb2911568e3fb200dcc242b5924ec878e8d174c6de2"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov003_5.o",
+          "sha256": "4f295f0ff217ce1c63a7b1339b9d42e918e11d44e21a62a3e8f071c08ab810fc"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov004_5.o",
+          "sha256": "c32c5c840d8f96d819305681e4cc88d2f0243218a4ca16af7367e0cebab3288d"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov005_5.o",
+          "sha256": "e7804cd2e98838700a70e837d3f2e455ce1e99a19e0aa3f56518d5d5be810e09"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov006_5.o",
+          "sha256": "a510da8679d1bcb5457eb694486208e8453452ed0071294f7fee921e0c01ffbe"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov007_5.o",
+          "sha256": "a28a5830d4fe7bea33fe823a0c7590be9e1c342934922d7aa8b332fcf9466551"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov008_3.o",
+          "sha256": "83bc9f901c11890283c6b0202635a4140f83c1e5bf53e299c9ffa948cee337ec"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov010_3.o",
+          "sha256": "95fce6dc597b62de160196ee27321998fb54890977b74cecfc5a34ce4479a88c"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov011_5.o",
+          "sha256": "6394ccffaa0449e12581d5240e77f1904c4f8d77cab475f181a7c122242ab9a7"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/objects/_dsd_gap@ov012_5.o",
+          "sha256": "5ea4ee342a6bd88a7bfcf50879f6f87109bae5d4903aaeb00ca753ca134c765d"
+        },
+        {
+          "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/attributes.o",
+          "sha256": "6ee87b49ca01d518a67a46bcd207bb9d46f054cb64b5adcd2c6e1802273b8898"
+        }
+      ],
+      "attributes": {
+        "sha256": "6ee87b49ca01d518a67a46bcd207bb9d46f054cb64b5adcd2c6e1802273b8898",
+        "compiler_command": [
+          "/opt/homebrew/opt/llvm/bin/clang",
+          "--target=arm-none-eabi",
+          "-march=armv5te",
+          "-c",
+          "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/attributes.s",
+          "-o",
+          "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/attributes.o"
+        ]
+      },
+      "lcf_sha256": "7ad3a9e1545d88868cf05fc1fe0c8218a6bea3e4db59347b538aa1cafd9d5bac",
+      "native_script_sha256": "4f31389565342282ef9f9ce310edb5f0a4e6c2e909ee37324e4dfccd4e39829e",
+      "lld_sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "clang_sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+      "link_map": {
+        "path": "/private/tmp/jus-track-a-runtime/build/runtime-source-final/native-link/link.map",
+        "sha256": "0b6c835c13a271c8aebc9b803e5cc8d47f4a4af211d7231f3259e4c85b44ef81"
+      },
+      "input_domain": "compiled C and normalized reference binary objects"
+    }
+  },
+  "independent_final_relocation_check": {
+    "status": "failed",
+    "counts": {
+      "total": 87493,
+      "validated": 87490,
+      "failed": 3,
+      "unresolved": 0
+    },
+    "relocation_types": {
+      "2": 32552,
+      "1": 31038,
+      "10": 23903
+    },
+    "modules": {
+      "DTCM": {
+        "total": 43,
+        "validated": 43,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ITCM": {
+        "total": 476,
+        "validated": 476,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "ARM9": {
+        "total": 25957,
+        "validated": 25954,
+        "failed": 3,
+        "unresolved": 0
+      },
+      "OV000": {
+        "total": 3292,
+        "validated": 3292,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV001": {
+        "total": 6925,
+        "validated": 6925,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV002": {
+        "total": 2484,
+        "validated": 2484,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV003": {
+        "total": 2905,
+        "validated": 2905,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV004": {
+        "total": 3651,
+        "validated": 3651,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV005": {
+        "total": 5509,
+        "validated": 5509,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV006": {
+        "total": 4659,
+        "validated": 4659,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV007": {
+        "total": 5974,
+        "validated": 5974,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV008": {
+        "total": 6602,
+        "validated": 6602,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV010": {
+        "total": 9513,
+        "validated": 9513,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV011": {
+        "total": 1233,
+        "validated": 1233,
+        "failed": 0,
+        "unresolved": 0
+      },
+      "OV012": {
+        "total": 8270,
+        "validated": 8270,
+        "failed": 0,
+        "unresolved": 0
+      }
+    },
+    "findings": [
+      {
+        "object": "_dsd_gap@main_5.o",
+        "module": "ARM9",
+        "offset": 419682,
+        "type": 10,
+        "addend": -4,
+        "source": 33974114,
+        "symbol": ".L_0200cf14",
+        "target_module": "ARM9",
+        "expected": 33607444,
+        "actual": 33607444,
+        "expected_mode": "a",
+        "actual_mode": "t",
+        "reason": "direct branch destination/mode differs; veneers unsupported",
+        "status": "failed"
+      },
+      {
+        "object": "_dsd_gap@main_5.o",
+        "module": "ARM9",
+        "offset": 419776,
+        "type": 10,
+        "addend": -4,
+        "source": 33974208,
+        "symbol": ".L_0200cf14",
+        "target_module": "ARM9",
+        "expected": 33607444,
+        "actual": 33607444,
+        "expected_mode": "a",
+        "actual_mode": "t",
+        "reason": "direct branch destination/mode differs; veneers unsupported",
+        "status": "failed"
+      },
+      {
+        "object": "_dsd_gap@main_5.o",
+        "module": "ARM9",
+        "offset": 419846,
+        "type": 10,
+        "addend": -4,
+        "source": 33974278,
+        "symbol": ".L_0200cf14",
+        "target_module": "ARM9",
+        "expected": 33607444,
+        "actual": 33607444,
+        "expected_mode": "a",
+        "actual_mode": "t",
+        "reason": "direct branch destination/mode differs; veneers unsupported",
+        "status": "failed"
+      }
+    ],
+    "findings_truncated": false,
+    "placement_scope": "one_original_gap_object_per_module",
+    "source_mode_fallbacks": {
+      "count": 1,
+      "contexts": [
+        {
+          "object": "_dsd_gap@ov007_5.o",
+          "module": "OV007",
+          "offset": 35358,
+          "type": 10,
+          "addend": -4,
+          "source": 34953022,
+          "symbol": "func_ov007_021552b0",
+          "target_module": "OV007",
+          "mapping_mode": "d",
+          "function_mode": "t"
+        }
+      ]
+    }
+  },
+  "linked_runtime_region_exact": true,
+  "far_mismatch_addresses": [
+    "0x02066764",
+    "0x02066765",
+    "0x020667c3",
+    "0x02066808",
+    "0x02066809"
+  ]
+}

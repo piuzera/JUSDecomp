@@ -1,0 +1,692 @@
+{
+  "schema_version": 1,
+  "runner": {
+    "name": "wibo-macos",
+    "version": "1.2.0",
+    "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+  },
+  "compilers": [
+    {
+      "package": "1.2/base",
+      "sha256": "87b4f748825ded418355e4ae35e032ce8b27c083cc4c60598ce2a75d346e4399",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "594267b3567c1ea9945abac5a752697a262adec3259e4bad35aecd9c724e908a",
+        "mwccarm.exe": "87b4f748825ded418355e4ae35e032ce8b27c083cc4c60598ce2a75d346e4399",
+        "mwldarm.exe": "2fcfacd7b33f364affb99f6dcdc541c65c70c866bec2dfcded6084709a4429a3"
+      }
+    },
+    {
+      "package": "1.2/sp2",
+      "sha256": "bfd6a72247c34abbea607a140a62c5e8df93e957c921ac91ec782b61eb969f80",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "594267b3567c1ea9945abac5a752697a262adec3259e4bad35aecd9c724e908a",
+        "mwccarm.exe": "bfd6a72247c34abbea607a140a62c5e8df93e957c921ac91ec782b61eb969f80",
+        "mwldarm.exe": "5c2f9806679bef2ef88f09c13dec9b34c19dfd60de9ca9bd91a6d6d928032150"
+      }
+    },
+    {
+      "package": "1.2/sp2p3",
+      "sha256": "a0db9f5dd49ceb619dbc64993660b39f96cca10821a698a9859824e2d4ae2a81",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "594267b3567c1ea9945abac5a752697a262adec3259e4bad35aecd9c724e908a",
+        "mwccarm.exe": "a0db9f5dd49ceb619dbc64993660b39f96cca10821a698a9859824e2d4ae2a81",
+        "mwldarm.exe": "eada466d4f0c309fbcf061ff5791a2c98a92d8b0e2364c53a0a9d0fe42100a7f"
+      }
+    },
+    {
+      "package": "1.2/sp3",
+      "sha256": "6e253a8fcc9102a1b24ec0b4c856a89958bf693370792f06727c5b1e6cecab28",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "594267b3567c1ea9945abac5a752697a262adec3259e4bad35aecd9c724e908a",
+        "mwccarm.exe": "6e253a8fcc9102a1b24ec0b4c856a89958bf693370792f06727c5b1e6cecab28",
+        "mwldarm.exe": "dc332b035dc324dd381564ad1fd4ab54279d7bc67acbfbae067225a95a553878"
+      }
+    },
+    {
+      "package": "1.2/sp4",
+      "sha256": "875edcddbc579a41625ac2fb7398520f9e4698301f6876e3141cea0ee9f3024d",
+      "binaries": {
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "569caace5bcb34bd4687046c230bcc3f300d3f570ad9a29a527c5ba290f6b2dc",
+        "mwccarm.exe": "875edcddbc579a41625ac2fb7398520f9e4698301f6876e3141cea0ee9f3024d",
+        "mwldarm.exe": "dc332b035dc324dd381564ad1fd4ab54279d7bc67acbfbae067225a95a553878"
+      }
+    },
+    {
+      "package": "2.0/base",
+      "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "e928cbcce71d687fadf25cf426280f23252e2aaae897fc2ce4e5570d8554dc8c",
+        "mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "mwldarm.exe": "bd8a36a81d79af96f02fdd06e114ae97ea47acc801775a0701f93b7be139fa74"
+      }
+    },
+    {
+      "package": "2.0/sp1",
+      "sha256": "e76c86fa13ae71594c42f7b12b96b8bfd687632a2fe4a3d91e9d72a3cdc22c71",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "e76c86fa13ae71594c42f7b12b96b8bfd687632a2fe4a3d91e9d72a3cdc22c71",
+        "mwldarm.exe": "f15b28ab500dd4052cd4c9be91adc1d6d38097253f8d1fd0be3f6fa2999cc425"
+      }
+    },
+    {
+      "package": "2.0/sp1p2",
+      "sha256": "e66b7495f596d18f8fcc82cdfc3a4af77f15790d96f1aace93e4502ff439a87a",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "e66b7495f596d18f8fcc82cdfc3a4af77f15790d96f1aace93e4502ff439a87a",
+        "mwldarm.exe": "f15b28ab500dd4052cd4c9be91adc1d6d38097253f8d1fd0be3f6fa2999cc425"
+      }
+    },
+    {
+      "package": "2.0/sp1p5",
+      "sha256": "89b2fc16c7f1f29ede1e52bdee5bc8ae4d63fe7e50d8074354dfd92c43d47aca",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "89b2fc16c7f1f29ede1e52bdee5bc8ae4d63fe7e50d8074354dfd92c43d47aca",
+        "mwldarm.exe": "caa99f378d41fd988d5dfcdcc40fcb36edbfaa778deade1542f3d2d2efad7446"
+      }
+    },
+    {
+      "package": "2.0/sp1p6",
+      "sha256": "2819dea7ae847ff83699d18bbc567238abe2804b6783b3bcc5893c5e546b0334",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "2819dea7ae847ff83699d18bbc567238abe2804b6783b3bcc5893c5e546b0334",
+        "mwldarm.exe": "a41aea5f282041e16dcd6c3570328009cb1eefb32b0cd05f60a8fdb365aec47c"
+      }
+    },
+    {
+      "package": "2.0/sp1p7",
+      "sha256": "478baf43c1966d547ecb501475217f42ce38983810eccdec4260def9a58e2e5a",
+      "binaries": {
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "478baf43c1966d547ecb501475217f42ce38983810eccdec4260def9a58e2e5a",
+        "mwldarm.exe": "a41aea5f282041e16dcd6c3570328009cb1eefb32b0cd05f60a8fdb365aec47c"
+      }
+    },
+    {
+      "package": "2.0/sp2",
+      "sha256": "3d97f6ed0a43d131173fc3b15cd3442f38d85fc6059b3fa709139be70fe8532e",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "3d97f6ed0a43d131173fc3b15cd3442f38d85fc6059b3fa709139be70fe8532e",
+        "mwldarm.exe": "a41aea5f282041e16dcd6c3570328009cb1eefb32b0cd05f60a8fdb365aec47c"
+      }
+    },
+    {
+      "package": "2.0/sp2p2",
+      "sha256": "b1da5a2f191d1cdea3fd078cedc9c504de46609642ae8e44c015014cef5419a7",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "b1da5a2f191d1cdea3fd078cedc9c504de46609642ae8e44c015014cef5419a7",
+        "mwldarm.exe": "a41aea5f282041e16dcd6c3570328009cb1eefb32b0cd05f60a8fdb365aec47c"
+      }
+    },
+    {
+      "package": "2.0/sp2p3",
+      "sha256": "900e6b2ce072b5c178e98d47468f83caa8156eda7fb2e1efa786535b73cf86f2",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "900e6b2ce072b5c178e98d47468f83caa8156eda7fb2e1efa786535b73cf86f2",
+        "mwldarm.exe": "a41aea5f282041e16dcd6c3570328009cb1eefb32b0cd05f60a8fdb365aec47c"
+      }
+    },
+    {
+      "package": "2.0/sp2p4",
+      "sha256": "6026d180647c2edce21901135e638960567277f615db318ec461be7e2d23c914",
+      "binaries": {
+        "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+        "mwasmarm.exe": "f68e9567fc966c03e1cd6b1f5b0aa85db9a239996ee1824960b45192beaca6e2",
+        "mwccarm.exe": "6026d180647c2edce21901135e638960567277f615db318ec461be7e2d23c914",
+        "mwldarm.exe": "a41aea5f282041e16dcd6c3570328009cb1eefb32b0cd05f60a8fdb365aec47c"
+      }
+    },
+    {
+      "package": "dsi/1.1",
+      "sha256": "fb50f5082ba4a2176e370f5c584dde1e066b7a5a12a795a8ebdb368e18773013",
+      "binaries": {
+        "ELFIO.dll": "0aa03523e3faf36fc348c539d4ba3d9c01e4e715258811feaa22c2d6696b1209",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "5bced4008b43549209db3ff8198214936f35a059a5e32d394b548f9af486389d",
+        "mwccarm.exe": "fb50f5082ba4a2176e370f5c584dde1e066b7a5a12a795a8ebdb368e18773013",
+        "mwldarm.exe": "3bd2e1a4dc7f68291eee08fef8bd8f46998b1b0940cba5d720ac88feac5e8de2"
+      }
+    },
+    {
+      "package": "dsi/1.1p1",
+      "sha256": "bcc7d0579ccbb8635ede2d61861bd4599ada44aa4478ebc9d03e6affe2eefe41",
+      "binaries": {
+        "ELFIO.dll": "0aa03523e3faf36fc348c539d4ba3d9c01e4e715258811feaa22c2d6696b1209",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "5bced4008b43549209db3ff8198214936f35a059a5e32d394b548f9af486389d",
+        "mwccarm.exe": "bcc7d0579ccbb8635ede2d61861bd4599ada44aa4478ebc9d03e6affe2eefe41",
+        "mwldarm.exe": "3bd2e1a4dc7f68291eee08fef8bd8f46998b1b0940cba5d720ac88feac5e8de2"
+      }
+    },
+    {
+      "package": "dsi/1.2",
+      "sha256": "deaed5a32b035b81c735e43b4c01d657e8f639a027d8e27541098e29071aea3d",
+      "binaries": {
+        "ELFIO.dll": "3688c55a2b3f638b6091ad2f31121f9dbfa0c9b5f461828ad7141558b99332e4",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "a1bb8d1b1db5e55c331d0d76ecb8e12797b0ffcc0ecb45fdce00d574401643a0",
+        "mwccarm.exe": "deaed5a32b035b81c735e43b4c01d657e8f639a027d8e27541098e29071aea3d",
+        "mwldarm.exe": "98a6c30d10be61b3b466c6ec67dae142228572bdf9fb67ba67d480fddfdc5375"
+      }
+    },
+    {
+      "package": "dsi/1.2p1",
+      "sha256": "d913ce6989b9536e70f1ae60b14f26f11a0b32d80f389d18ac1065e6c89908e9",
+      "binaries": {
+        "ELFIO.dll": "3688c55a2b3f638b6091ad2f31121f9dbfa0c9b5f461828ad7141558b99332e4",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "a1bb8d1b1db5e55c331d0d76ecb8e12797b0ffcc0ecb45fdce00d574401643a0",
+        "mwccarm.exe": "d913ce6989b9536e70f1ae60b14f26f11a0b32d80f389d18ac1065e6c89908e9",
+        "mwldarm.exe": "4931f3ede42c6c92d95e25e2b7eb0ac5e17fc6846c22bd6155a6d89737a679f8"
+      }
+    },
+    {
+      "package": "dsi/1.2p2",
+      "sha256": "b0409415cccd1f3a7525989bedf0e493820a0ec2002e4ed5c8abfdad51fadf7f",
+      "binaries": {
+        "ELFIO.dll": "3688c55a2b3f638b6091ad2f31121f9dbfa0c9b5f461828ad7141558b99332e4",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "a1bb8d1b1db5e55c331d0d76ecb8e12797b0ffcc0ecb45fdce00d574401643a0",
+        "mwccarm.exe": "b0409415cccd1f3a7525989bedf0e493820a0ec2002e4ed5c8abfdad51fadf7f",
+        "mwldarm.exe": "4931f3ede42c6c92d95e25e2b7eb0ac5e17fc6846c22bd6155a6d89737a679f8"
+      }
+    },
+    {
+      "package": "dsi/1.3",
+      "sha256": "8d166db5ea8218188f4ee925f82ef3d09419cf91cf773e103fd8bdc958180e66",
+      "binaries": {
+        "ELFIO.dll": "709629a602ba5819445eaf5633d212d1a613efd36f0af56a6fc998a6dc3e2f28",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "25be1e828d7d62bd0635e42148005af9dc1fe2d3565b98bd270503c87ebca8e4",
+        "mwccarm.exe": "8d166db5ea8218188f4ee925f82ef3d09419cf91cf773e103fd8bdc958180e66",
+        "mwldarm.exe": "9953a92d6ed7d1b6e1e320c3a82e5a947818389b6b4c5e19e907982cd93e7fce"
+      }
+    },
+    {
+      "package": "dsi/1.3p1",
+      "sha256": "968c7e88bd049ddd4941861b12d599d993f1040921b6fa1b0a39f4ed049a16bf",
+      "binaries": {
+        "ELFIO.dll": "709629a602ba5819445eaf5633d212d1a613efd36f0af56a6fc998a6dc3e2f28",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "25be1e828d7d62bd0635e42148005af9dc1fe2d3565b98bd270503c87ebca8e4",
+        "mwccarm.exe": "968c7e88bd049ddd4941861b12d599d993f1040921b6fa1b0a39f4ed049a16bf",
+        "mwldarm.exe": "9953a92d6ed7d1b6e1e320c3a82e5a947818389b6b4c5e19e907982cd93e7fce"
+      }
+    },
+    {
+      "package": "dsi/1.6sp1",
+      "sha256": "38f406daf43a2834a91b59ece2a670df1363e09aba89337c12254cc47ea3b63d",
+      "binaries": {
+        "ELFIO.dll": "81005940b8822e1233b3c8fb9de8fc28754742ca136cec3fad3300f5cd983543",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "bd5d2610807c61b0334405531076704e858c32a0f7ce519049a08dd040ca632d",
+        "mwccarm.exe": "38f406daf43a2834a91b59ece2a670df1363e09aba89337c12254cc47ea3b63d",
+        "mwldarm.exe": "3f21ea0499d9f9efdb83fef6541257497460404f54207d0608928d627094be94"
+      }
+    },
+    {
+      "package": "dsi/1.6sp2",
+      "sha256": "38f406daf43a2834a91b59ece2a670df1363e09aba89337c12254cc47ea3b63d",
+      "binaries": {
+        "ELFIO.dll": "81005940b8822e1233b3c8fb9de8fc28754742ca136cec3fad3300f5cd983543",
+        "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+        "MSL_All-DLL90_x86.dll": "8c4a5d27f1cdec9b9e08bc26fc3b90e352d862b5c9b2b2acc5342481e3ec432d",
+        "lmgr8c.dll": "996041141858fd4724ec36add0913755a0067498b93271d7d26e4a1bfa04a561",
+        "mwasmarm.exe": "bd5d2610807c61b0334405531076704e858c32a0f7ce519049a08dd040ca632d",
+        "mwccarm.exe": "38f406daf43a2834a91b59ece2a670df1363e09aba89337c12254cc47ea3b63d",
+        "mwldarm.exe": "3f21ea0499d9f9efdb83fef6541257497460404f54207d0608928d627094be94"
+      }
+    }
+  ],
+  "target_provenance": {
+    "bead": "jus-bjry.4",
+    "dsd_version": "0.12.0",
+    "dsd_sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+    "upstream_commit": "6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b",
+    "range_source": "decomp/arm9/symbols.txt and overlays/ov000/symbols.txt",
+    "method": "dsd whole-function TU split, ordinary C reconstructed from pinned native ELF instruction semantics",
+    "native_elf_sha256": "c3af16faa0f70bc806a1b48ce17bdc683ad12b6ee258e6d76443bc32142a7726",
+    "linker": "separately pinned in decomp/toolchain.lock.json"
+  },
+  "translation_units": [
+    {
+      "source": "decomp/matching-notes/compiler-t04/clear_record.c",
+      "source_sha256": "8ed36c5d4c2fa56618429c59a8614eea4e519f1b1757a4b87c00607f823c6f77",
+      "object": "src/experiments/clear_record.o",
+      "reference_sha256": "326efa2ed4837af243f39eaf657c60e8cb5c4b3bbd87e8e0378a62a9fa9967dd",
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".text",
+        "address": 34048672,
+        "size": 48,
+        "mode": "arm",
+        "symbol": "func_02078aa0"
+      },
+      "scope": "experimental_per_symbol_override",
+      "compiler_selection": "unresolved",
+      "contexts": [
+        {
+          "id": "default",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "6506299f4953068a08df4c997df8f6f383c7d8e47da44eaa2adcad5174e4f6b9"
+        },
+        {
+          "id": "O4p",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb",
+            "-O4,p"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "4bdaeb5f53672309174e68cbda1dbd06023560e0b719ff8521b1debaa1ddf0f4"
+        },
+        {
+          "id": "O0",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb",
+            "-O0"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "503ec5166d9a5f043ebe5144044a756909f8beb3222490615b310361e25545a6"
+        }
+      ]
+    },
+    {
+      "source": "decomp/matching-notes/compiler-t04/compare_record.c",
+      "source_sha256": "aa195704d1145a12c5ae611359f2d13f53753c9e7e9893dcadee3b04ba9d28ae",
+      "object": "src/experiments/compare_record.o",
+      "reference_sha256": "9373205cf6d9f428a90e4c8641f3a58baf18565a4af57eeaae44c6339f5079f2",
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".text",
+        "address": 34048720,
+        "size": 56,
+        "mode": "arm",
+        "symbol": "func_02078ad0"
+      },
+      "scope": "experimental_per_symbol_override",
+      "compiler_selection": "unresolved",
+      "contexts": [
+        {
+          "id": "default",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "6506299f4953068a08df4c997df8f6f383c7d8e47da44eaa2adcad5174e4f6b9"
+        },
+        {
+          "id": "O4p",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb",
+            "-O4,p"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "4bdaeb5f53672309174e68cbda1dbd06023560e0b719ff8521b1debaa1ddf0f4"
+        },
+        {
+          "id": "O0",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb",
+            "-O0"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "503ec5166d9a5f043ebe5144044a756909f8beb3222490615b310361e25545a6"
+        }
+      ]
+    },
+    {
+      "source": "decomp/matching-notes/compiler-t04/copy_record.c",
+      "source_sha256": "27783f5ad49ef724f5e9897b0a63c4b048f3ba38010615dfd2d692972302b493",
+      "object": "src/experiments/copy_record.o",
+      "reference_sha256": "3038768f8a71ff5a2b1f3e8d79b9a77e812570037195cdb5d0acf639072f07a7",
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "main",
+        "section": ".text",
+        "address": 34021216,
+        "size": 68,
+        "mode": "thumb",
+        "symbol": "func_02071f60"
+      },
+      "scope": "experimental_per_symbol_override",
+      "compiler_selection": "unresolved",
+      "contexts": [
+        {
+          "id": "default",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-thumb"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "df95a9cb22feedaedd073ab11f7227d8e0f8189d8cf6e88087db6baea6bc7415"
+        },
+        {
+          "id": "O4p",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-thumb",
+            "-O4,p"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "93f97cbcc50b0c2bfc793469937aca5ae1aa27e82c8647847989934a6bfbf2b8"
+        },
+        {
+          "id": "O0",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-thumb",
+            "-O0"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "f76ba1fdcc84dcbe69e186ac165c1fe8440470828de673aaf3fe55bdc8604914"
+        }
+      ]
+    },
+    {
+      "source": "decomp/matching-notes/compiler-t04/lazy_field.c",
+      "source_sha256": "7f45dead5d840e8de66a1c4fd5a6fe4226334ba3acfcc206ffdb2d9b22885e8d",
+      "object": "src/experiments/lazy_field.o",
+      "reference_sha256": "8df3a4af0730d6d08a787ecd97e4f98202ec0bfacc0974d72d31485da8d2b94d",
+      "identity": {
+        "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "cpu": "arm9",
+        "module": "ov000",
+        "section": ".text",
+        "address": 34918620,
+        "size": 44,
+        "mode": "arm",
+        "symbol": "func_ov000_0214d0dc"
+      },
+      "scope": "experimental_per_symbol_override",
+      "compiler_selection": "unresolved",
+      "contexts": [
+        {
+          "id": "default",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "6506299f4953068a08df4c997df8f6f383c7d8e47da44eaa2adcad5174e4f6b9"
+        },
+        {
+          "id": "O4p",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb",
+            "-O4,p"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "4bdaeb5f53672309174e68cbda1dbd06023560e0b719ff8521b1debaa1ddf0f4"
+        },
+        {
+          "id": "O0",
+          "cpu": "arm946e",
+          "flags": [
+            "-nostdinc",
+            "-Cpp_exceptions",
+            "off",
+            "-nothumb",
+            "-O0"
+          ],
+          "abi": {
+            "language": "C",
+            "unsigned_int_bits": 32,
+            "pointer_bits": 32,
+            "short_bits": 16,
+            "endianness": "little",
+            "char_sign": "compiler_default_unsigned",
+            "enum": "compiler_default_min",
+            "structure_alignment": "compiler_default",
+            "calling_convention": "compiler_default_ARM_interworking"
+          },
+          "include_paths": [],
+          "headers": {},
+          "sha256": "503ec5166d9a5f043ebe5144044a756909f8beb3222490615b310361e25545a6"
+        }
+      ]
+    }
+  ]
+}

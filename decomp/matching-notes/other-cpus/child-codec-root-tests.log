@@ -1,0 +1,9 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-dsd-root-check/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.21s
+     Running unittests examples/t10_compression_probe.rs (target/debug/examples/t10_compression_probe-aae3a7f5249313d5)
+
+running 1 test
+test tests::invented_repeat_roundtrip_and_encoding ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

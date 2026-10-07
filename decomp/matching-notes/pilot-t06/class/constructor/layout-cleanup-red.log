@@ -1,0 +1,19 @@
+test_layout_and_complete_object_preserve_original_constructor_contract (test_common_effect_constructor.CommonEffectConstructor.test_layout_and_complete_object_preserve_original_constructor_contract) ... FAIL
+test_published_constructor_source_exists (test_common_effect_constructor.CommonEffectConstructor.test_published_constructor_source_exists) ... ok
+
+======================================================================
+FAIL: test_layout_and_complete_object_preserve_original_constructor_contract (test_common_effect_constructor.CommonEffectConstructor.test_layout_and_complete_object_preserve_original_constructor_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-track-a-constructor-proof/tests/matching/test_common_effect_constructor.py", line 50, in test_layout_and_complete_object_preserve_original_constructor_contract
+    compile('wrong-offset.o', ['-O2'], False, wrong_offset)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/jus-track-a-constructor-proof/tests/matching/test_common_effect_constructor.py", line 33, in compile
+    self.assertNotEqual(completed.returncode, 0, 'wrong member offset compiled successfully')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0 : wrong member offset compiled successfully
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.155s
+
+FAILED (failures=1)

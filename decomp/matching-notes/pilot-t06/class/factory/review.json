@@ -1,0 +1,28 @@
+{
+  "reviewer_model": "gpt-6-astra",
+  "producer_commit": "4457e49f76ac0003b59d7525d16b68049d46bb6d",
+  "proof_commit": "eadf653",
+  "status": "cleared",
+  "flags": [],
+  "verified": {
+    "stages": 19,
+    "tests": 208,
+    "test_skips": 0,
+    "live_relocation_slots": 87493,
+    "artifact_hashes": 203,
+    "source_hashes": 70,
+    "matched_source_bytes": 160,
+    "game_source_bytes": 128,
+    "sdk_source_bytes": 32,
+    "whole_rom_exact": true,
+    "payload_bytes_unchanged": true,
+    "negative_trials_publish_no_overrides": true
+  },
+  "limits": [
+    "T06 remains open: four published class targets remain fallback",
+    "Callback original C++ type and native ownership remain unknown",
+    "T10 remains open: no child or ARM7 source credit",
+    "Global source percentage remains unknown"
+  ],
+  "audit": "Actual source and artifact hashes, rejected compiler trials, selected input provenance, own transcript and decision trail agree."
+}

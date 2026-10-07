@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "synthetic_reference_only": true,
+  "jus_source_credit": 0,
+  "good_status": "passed",
+  "changed_context_status": "failed",
+  "changed_context_accepted_units": 0,
+  "reference_unchanged": true,
+  "ordered_dependencies": [
+    "decomp/matching-notes/header-dependencies/fixture/public.c",
+    "decomp/matching-notes/header-dependencies/fixture/forced.h",
+    "decomp/matching-notes/header-dependencies/fixture/record.h",
+    "decomp/matching-notes/header-dependencies/fixture/include/constants.h"
+  ],
+  "before_sha256": {
+    "decomp/matching-notes/header-dependencies/fixture/public.c": "6663f6af9e65048b4e7091c9bf2288d3098ef25b08f71954b304304b14b265ed",
+    "decomp/matching-notes/header-dependencies/fixture/record.h": "e6227c7311a00dcf9874c9d0bd1be38446c32e20b2e3cd0e733df8d66a16a4b0",
+    "decomp/matching-notes/header-dependencies/fixture/include/constants.h": "516de1b587d0971f031f4966ee9f662c0a1405e493e11ecab418cb1f4db4130f",
+    "decomp/matching-notes/header-dependencies/fixture/forced.h": "c1f15230bf8adcba27381445e1d7d95db83d3fdb875700b4f98e8db8cc5af871"
+  },
+  "after_sha256": {
+    "decomp/matching-notes/header-dependencies/fixture/public.c": "6663f6af9e65048b4e7091c9bf2288d3098ef25b08f71954b304304b14b265ed",
+    "decomp/matching-notes/header-dependencies/fixture/record.h": "e6227c7311a00dcf9874c9d0bd1be38446c32e20b2e3cd0e733df8d66a16a4b0",
+    "decomp/matching-notes/header-dependencies/fixture/include/constants.h": "516de1b587d0971f031f4966ee9f662c0a1405e493e11ecab418cb1f4db4130f",
+    "decomp/matching-notes/header-dependencies/fixture/forced.h": "c1f15230bf8adcba27381445e1d7d95db83d3fdb875700b4f98e8db8cc5af871"
+  },
+  "tool_hashes": {
+    "mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  }
+}
