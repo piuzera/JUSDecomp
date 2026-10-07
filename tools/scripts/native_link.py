@@ -2,7 +2,7 @@
 """Bounded experiment: translate dsd 0.12 ARM9 LCF/delinks for native LLVM.
 
 Copies objects into the output directory before normalizing legacy ELF metadata.
-This rebuilds binary-backed baseline objects, not reconstructed source coverage.
+Source overrides select compiled complete TUs explicitly; source coverage is checked separately.
 """
 import argparse
 import bisect
@@ -169,6 +169,42 @@ def translate_lcf(lcf, object_dir):
     return '\n'.join(output), modules
 
 
+def prepare_objects(lcf, reference_dir, object_dir, overrides):
+    """Select only named LCF inputs, rejecting ambiguous reference basenames."""
+    names = list(dict.fromkeys(re.findall(r'(\S+\.o)\(\.\w+\)', lcf)))
+    if not names:
+        raise ValueError('LCF selects no objects')
+    unused = set(overrides) - set(names)
+    if unused:
+        raise ValueError(f'unused source override: {sorted(unused)}')
+    candidates = {}
+    for path in reference_dir.rglob('*.o'):
+        candidates.setdefault(path.name, []).append(path)
+    records = []
+    for name in names:
+        if Path(name).name != name:
+            raise ValueError(f'unsupported LCF object path: {name}')
+        matches = candidates.get(name, [])
+        if len(matches) != 1:
+            raise ValueError(f'LCF object {name} needs one reference; found {len(matches)}')
+        reference = matches[0].resolve()
+        source = overrides.get(name, reference).resolve()
+        original = reference.read_bytes()
+        selected = source.read_bytes()
+        normalized = normalize_object(selected)
+        destination = object_dir / name
+        destination.write_bytes(normalized)
+        record = {'filename': name, 'kind': 'source' if name in overrides else 'reference',
+                  'source': str(source), 'reference': str(reference),
+                  'normalized': str(destination),
+                  'reference_sha256': hashlib.sha256(original).hexdigest(),
+                  'normalized_sha256': hashlib.sha256(normalized).hexdigest()}
+        if name in overrides:
+            record.update(compiled=str(source), compiled_sha256=hashlib.sha256(selected).hexdigest())
+        records.append(record)
+    return records
+
+
 def emit_modules(elf_data, modules, directory):
     elf = Elf32(elf_data)
     symbols = {elf.symbol_name(s): s[1] for s in elf.symbols()}
@@ -217,23 +253,23 @@ def main():
     parser.add_argument('--lcf', type=Path, required=True)
     parser.add_argument('--objects', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--source-objects', type=Path, help='JSON mapping LCF filenames to compiled objects')
     parser.add_argument('--lld', default='ld.lld')
     parser.add_argument('--clang', default='clang')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     objects = (args.output / 'objects').resolve()
     objects.mkdir(exist_ok=True)
-    reference_objects = []
-    for source in sorted(args.objects.glob('*.o')):
-        original = source.read_bytes()
-        normalized = normalize_object(original)
-        destination = objects / source.name
-        destination.write_bytes(normalized)
-        reference_objects.append({'filename': source.name, 'source': str(source.resolve()),
-                                  'normalized': str(destination),
-                                  'reference_sha256': hashlib.sha256(original).hexdigest(),
-                                  'normalized_sha256': hashlib.sha256(normalized).hexdigest()})
-    script, modules = translate_lcf(args.lcf.read_text(), objects.resolve())
+    overrides = {}
+    if args.source_objects:
+        mapping = json.loads(args.source_objects.read_text())
+        if not isinstance(mapping, dict) or not all(isinstance(k, str) and isinstance(v, str)
+                                                    for k, v in mapping.items()):
+            raise ValueError('source objects must map filenames to paths')
+        overrides = {name: args.source_objects.resolve().parent / path for name, path in mapping.items()}
+    lcf = args.lcf.read_text()
+    reference_objects = prepare_objects(lcf, args.objects, objects, overrides)
+    script, modules = translate_lcf(lcf, objects)
     (args.output / 'native.ld').write_text(script)
     attributes = args.output / 'attributes.s'
     attributes.write_text('.arch armv5te\n')
@@ -242,9 +278,10 @@ def main():
                         str(attributes), '-o', str(attr_object)]
     subprocess.run(compiler_command, check=True)
     linked = args.output / 'linked.elf'
-    selected = [*sorted(objects.glob('*.o')), attr_object]
+    selected = [*(Path(record['normalized']) for record in reference_objects), attr_object]
+    link_map = (args.output / 'link.map').resolve()
     command = [args.lld, '-m', 'armelf', '--no-check-sections', '--entry=ARM9_TEXT_START', '-T',
-               str(args.output / 'native.ld'), '-o', str(linked),
+               str(args.output / 'native.ld'), '-Map', str(link_map), '-o', str(linked),
                *map(str, selected)]
     provenance = {
         'schema_version': 1, 'command': command, 'returncode': None,
@@ -262,6 +299,9 @@ def main():
     provenance_path.write_text(json.dumps(provenance, indent=2) + '\n')
     result = subprocess.run(command, capture_output=True, text=True)
     provenance['returncode'] = result.returncode
+    if link_map.is_file():
+        provenance['link_map'] = {'path': str(link_map),
+                                  'sha256': hashlib.sha256(link_map.read_bytes()).hexdigest()}
     provenance_path.write_text(json.dumps(provenance, indent=2) + '\n')
     (args.output / 'link.log').write_text(result.stdout + result.stderr)
     result.check_returncode()

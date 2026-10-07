@@ -1,0 +1,28 @@
+{
+  "reviewer": "gpt-6-astra",
+  "source_commit": "47ed91d1f733cb1fcbc8e19c28ed001807c6b79c",
+  "scope": "Strict native ARM9 baseline verification; source promotion excluded",
+  "flags": [],
+  "verified": {
+    "required_stages": 13,
+    "modules": 17,
+    "initialized_bytes": 2141728,
+    "relocations": 87493,
+    "failed": 0,
+    "unresolved": 0,
+    "public_tests": 40,
+    "artifact_hashes": 57,
+    "source_hashes": 60
+  },
+  "bounds": {
+    "reference_objects_per_module": 1,
+    "source_mode_fallback_count": 1,
+    "source_mode_fallback_address": "0x0215573e",
+    "source_coverage_bytes": 0,
+    "arm7_and_child_programs": "unbuilt"
+  },
+  "corrected_findings": [
+    "Malformed RELA sh_link and symbol-table entry size now unresolved",
+    "Unsupported multiple-reference-object placement now unresolved"
+  ]
+}

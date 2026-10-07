@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "translation_units": [
+    {
+      "module": "ov000",
+      "object": "src/ov000/test_trampoline.o",
+      "source": "decomp/src/ov000/test_trampoline.c",
+      "functions": ["func_ov000_0214de00"],
+      "category": "game",
+      "cpu": "arm946e",
+      "flags": ["-Cpp_exceptions", "off"],
+      "include_paths": []
+    }
+  ]
+}

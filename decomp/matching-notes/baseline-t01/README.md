@@ -3,8 +3,13 @@
 The owner-authorized native baseline passes all 17 ARM9 module checks, symbol
 checks, and direct original-ROM byte, load-address, and BSS comparisons.
 The [native result](native-results.json) records the successful LLVM replacement
-for the unavailable private Metrowerks linker. No reconstructed source coverage
+for the Metrowerks linker that was unavailable during the first run. No reconstructed source coverage
 or full-ROM reconstruction is claimed.
+
+The later [original Metrowerks run](original-mw/report.json) also passes all 17
+modules and the original raw-ELF symbol check. A current public compiler archive
+made that pin available. Its payloads, addresses, and BSS boundaries match the
+native baseline. The native linker remains the production backend.
 
 The first run below stopped before linking because Metrowerks was unavailable.
 Its module check returned 1. Those failed-run logs remain as historical evidence.

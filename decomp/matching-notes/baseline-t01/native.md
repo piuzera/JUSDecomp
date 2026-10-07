@@ -40,5 +40,6 @@ load address, and BSS extent. The module check passes all 17 targets, including
 the two empty overlays. The diagnostic-view symbol check also exits 0.
 
 ARM7, Download Play programs, and full-ROM packing remain separate unfinished
-tasks. The original Metrowerks linker is unavailable. This result proves the
-authorized native replacement against original ROM modules.
+tasks. This result proves the authorized native replacement against original ROM
+modules. The later [original Metrowerks run](original-mw/report.json) independently
+matches those payloads and boundaries.

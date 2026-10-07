@@ -1,9 +1,11 @@
 """Strict verifier contract tests; all input bytes are public synthetic fixtures."""
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from pathlib import Path
 
@@ -61,6 +63,45 @@ class VerificationTests(unittest.TestCase):
         next(s for s in stages if s['name'] == 'native_link')['status'] = 'skipped'
         with self.assertRaisesRegex(ValueError, 'native_link'):
             tool.require_stages(stages)
+
+    def test_source_pipeline_requires_compilation_and_ownership_before_credit(self):
+        tool = module()
+        self.assertTrue(hasattr(tool, 'SOURCE_STAGES'), 'source promotion stages missing')
+        stages = [{'name': name, 'status': 'passed'} for name in tool.SOURCE_STAGES]
+        tool.require_stages(stages, source_enabled=True)
+        for name in ('source_build', 'source_ownership'):
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, name):
+                tool.require_stages([s for s in stages if s['name'] != name], source_enabled=True)
+
+    def test_binary_reference_config_and_source_candidate_are_kept_separate(self):
+        tool = module()
+        self.assertTrue(hasattr(tool, 'prepare_source_config'), 'source candidate config missing')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            canonical = root / 'decomp/arm9/overlays/ov000'
+            canonical.mkdir(parents=True)
+            declaration = ('    .text start:0x1000 end:0x1020 kind:code align:4\n'
+                'src/ov000/test.c:\n    complete\n    .text start:0x1008 end:0x1010\n')
+            (canonical / 'delinks.txt').write_text(declaration)
+            output = root / 'fresh'
+            baseline = output / 'config/overlays/ov000'
+            baseline.mkdir(parents=True)
+            (baseline / 'delinks.txt').write_text(declaration.split('src/')[0])
+            (baseline / 'symbols.txt').write_text('public synthetic symbol metadata')
+            os.utime(baseline / 'symbols.txt', ns=(1_000_000, 1_000_000))
+            (output / 'config/config.yaml').write_text('delinks_path: ../delinks\nbuild_path: ../linked\n')
+            manifest = {'schema_version': 1, 'translation_units': [{'module': 'ov000',
+                'source': 'decomp/src/ov000/test.c', 'object': 'src/ov000/test.o'}]}
+            started = time.time_ns()
+            result = tool.prepare_source_config(root, output, manifest)
+            candidate = Path(result['config'])
+            self.assertEqual((baseline / 'delinks.txt').read_text(), declaration.split('src/')[0])
+            self.assertEqual((candidate.parent / 'overlays/ov000/delinks.txt').read_text(), declaration)
+            self.assertIn('delinks_path: ../candidate-delinks', candidate.read_text())
+            self.assertGreaterEqual((candidate.parent / 'overlays/ov000/symbols.txt').stat().st_mtime_ns, started)
+            manifest['translation_units'].append(dict(manifest['translation_units'][0]))
+            with self.assertRaisesRegex(ValueError, 'duplicate|exists'):
+                tool.prepare_source_config(root, output, manifest)
 
     def test_missing_stub_module_fails_even_when_other_outputs_exist(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -135,6 +176,23 @@ class VerificationTests(unittest.TestCase):
             normalized.write_bytes(b'changed input')
             with self.assertRaisesRegex(ValueError, 'hash'):
                 tool.verify_link_record(output, pins)
+
+    def test_source_link_record_cannot_claim_reference_input_as_compiled_source(self):
+        tool = module()
+        self.assertTrue(hasattr(tool, 'require_source_input'), 'compiled input binding missing')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            compiled = root / 'source.o'
+            reference = root / 'reference.o'
+            compiled.write_bytes(b'compiled from public synthetic C')
+            reference.write_bytes(b'original synthetic reference')
+            builds = {'objects': {'test.o': str(compiled)}}
+            record = {'filename': 'test.o', 'kind': 'source', 'source': str(reference),
+                      'compiled': str(reference), 'compiled_sha256': tool.sha256(reference)}
+            with self.assertRaisesRegex(ValueError, 'compiled'):
+                tool.require_source_input(record, builds, root)
+            record.update(source=str(compiled), compiled=str(compiled), compiled_sha256=tool.sha256(compiled))
+            tool.require_source_input(record, builds, root)
 
     def test_relocation_success_requires_every_pinned_slot_to_be_validated(self):
         tool = module()
