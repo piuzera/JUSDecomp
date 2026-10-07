@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "rom": {
+    "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+    "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "size_bytes": 67108864,
+    "header": {
+      "title": "JUS",
+      "game_code": "AJUJ",
+      "maker_code": "01",
+      "unit_code": 0,
+      "device_capacity": 9,
+      "revision": 0,
+      "used_rom_size_bytes": 65983384,
+      "header_size_bytes": 16384,
+      "arm9_overlay_table": {
+        "rom_offset": 709120,
+        "size_bytes": 448
+      },
+      "arm7_overlay_table": {
+        "rom_offset": 0,
+        "size_bytes": 0
+      }
+    }
+  },
+  "modules": [
+    {
+      "cpu": "arm9",
+      "kind": "main",
+      "rom_offset": 16384,
+      "rom_size_bytes": 692568,
+      "ram_address": 33554432,
+      "entry_address": 33556480,
+      "sha256": "6464c6e726cd536756476392bf21996ae7289d16e269863cd0b88c1703d09287",
+      "build_status": "unbuilt"
+    },
+    {
+      "cpu": "arm7",
+      "kind": "main",
+      "rom_offset": 2162688,
+      "rom_size_bytes": 165552,
+      "ram_address": 37224448,
+      "entry_address": 37224448,
+      "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "build_status": "unbuilt"
+    }
+  ],
+  "overlays": {
+    "arm9": [
+      {
+        "id": 0,
+        "cpu": "arm9",
+        "file_id": 0,
+        "ram_address": 34917664,
+        "ram_size_bytes": 85760,
+        "bss_size_bytes": 0,
+        "static_init_start": 34999076,
+        "static_init_end": 34999092,
+        "rom_offset": 709632,
+        "rom_size_bytes": 85760,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 1,
+        "cpu": "arm9",
+        "file_id": 1,
+        "ram_address": 34917664,
+        "ram_size_bytes": 135456,
+        "bss_size_bytes": 320,
+        "static_init_start": 35043652,
+        "static_init_end": 35043712,
+        "rom_offset": 795648,
+        "rom_size_bytes": 135456,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 2,
+        "cpu": "arm9",
+        "file_id": 2,
+        "ram_address": 34917664,
+        "ram_size_bytes": 65152,
+        "bss_size_bytes": 128,
+        "static_init_start": 34978692,
+        "static_init_end": 34978716,
+        "rom_offset": 931328,
+        "rom_size_bytes": 65152,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 3,
+        "cpu": "arm9",
+        "file_id": 3,
+        "ram_address": 34917664,
+        "ram_size_bytes": 73472,
+        "bss_size_bytes": 32,
+        "static_init_start": 34986568,
+        "static_init_end": 34986600,
+        "rom_offset": 996864,
+        "rom_size_bytes": 73472,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 4,
+        "cpu": "arm9",
+        "file_id": 4,
+        "ram_address": 34917664,
+        "ram_size_bytes": 86208,
+        "bss_size_bytes": 32,
+        "static_init_start": 34998392,
+        "static_init_end": 34998408,
+        "rom_offset": 1070592,
+        "rom_size_bytes": 86208,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 5,
+        "cpu": "arm9",
+        "file_id": 5,
+        "ram_address": 34917664,
+        "ram_size_bytes": 152928,
+        "bss_size_bytes": 736,
+        "static_init_start": 35058420,
+        "static_init_end": 35058472,
+        "rom_offset": 1157120,
+        "rom_size_bytes": 152928,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 6,
+        "cpu": "arm9",
+        "file_id": 6,
+        "ram_address": 34917664,
+        "ram_size_bytes": 154688,
+        "bss_size_bytes": 256,
+        "static_init_start": 35068540,
+        "static_init_end": 35068560,
+        "rom_offset": 1310208,
+        "rom_size_bytes": 154688,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 7,
+        "cpu": "arm9",
+        "file_id": 7,
+        "ram_address": 34917664,
+        "ram_size_bytes": 122816,
+        "bss_size_bytes": 6688,
+        "static_init_start": 35033580,
+        "static_init_end": 35033640,
+        "rom_offset": 1465344,
+        "rom_size_bytes": 122816,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 8,
+        "cpu": "arm9",
+        "file_id": 8,
+        "ram_address": 34917664,
+        "ram_size_bytes": 128160,
+        "bss_size_bytes": 9984,
+        "static_init_start": 35041036,
+        "static_init_end": 35041040,
+        "rom_offset": 1588224,
+        "rom_size_bytes": 128160,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 9,
+        "cpu": "arm9",
+        "file_id": 9,
+        "ram_address": 34917664,
+        "ram_size_bytes": 32,
+        "bss_size_bytes": 0,
+        "static_init_start": 34917664,
+        "static_init_end": 34917668,
+        "rom_offset": 1716736,
+        "rom_size_bytes": 32,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 10,
+        "cpu": "arm9",
+        "file_id": 10,
+        "ram_address": 35072608,
+        "ram_size_bytes": 215264,
+        "bss_size_bytes": 19040,
+        "static_init_start": 35272468,
+        "static_init_end": 35272472,
+        "rom_offset": 1717248,
+        "rom_size_bytes": 215264,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 11,
+        "cpu": "arm9",
+        "file_id": 11,
+        "ram_address": 35072608,
+        "ram_size_bytes": 61440,
+        "bss_size_bytes": 173920,
+        "static_init_start": 35133080,
+        "static_init_end": 35133092,
+        "rom_offset": 1932800,
+        "rom_size_bytes": 61440,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 12,
+        "cpu": "arm9",
+        "file_id": 12,
+        "ram_address": 35307968,
+        "ram_size_bytes": 167776,
+        "bss_size_bytes": 10976,
+        "static_init_start": 35456408,
+        "static_init_end": 35456424,
+        "rom_offset": 1994240,
+        "rom_size_bytes": 167776,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f",
+        "build_status": "unbuilt"
+      },
+      {
+        "id": 13,
+        "cpu": "arm9",
+        "file_id": 13,
+        "ram_address": 35307968,
+        "ram_size_bytes": 32,
+        "bss_size_bytes": 0,
+        "static_init_start": 35307968,
+        "static_init_end": 35307972,
+        "rom_offset": 2162176,
+        "rom_size_bytes": 32,
+        "compressed_size_bytes": 0,
+        "flags": 0,
+        "compressed": false,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+        "build_status": "unbuilt"
+      }
+    ],
+    "arm7": []
+  },
+  "embedded_executables": [
+    {
+      "path": "ChildRom/JSS2Child.srl",
+      "file_id": 79,
+      "rom_offset": 2340864,
+      "size_bytes": 2141384,
+      "sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+      "header": {
+        "title": "JUS",
+        "game_code": "AJUJ",
+        "maker_code": "01",
+        "unit_code": 0,
+        "device_capacity": 9,
+        "revision": 0,
+        "used_rom_size_bytes": 2141248,
+        "header_size_bytes": 16384,
+        "arm9_overlay_table": {
+          "rom_offset": 0,
+          "size_bytes": 0
+        },
+        "arm7_overlay_table": {
+          "rom_offset": 0,
+          "size_bytes": 0
+        }
+      },
+      "modules": [
+        {
+          "cpu": "arm9",
+          "kind": "main",
+          "rom_offset": 16384,
+          "rom_size_bytes": 1955956,
+          "ram_address": 33554432,
+          "entry_address": 33556560,
+          "sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+          "build_status": "unbuilt"
+        },
+        {
+          "cpu": "arm7",
+          "kind": "main",
+          "rom_offset": 1972736,
+          "rom_size_bytes": 165552,
+          "ram_address": 37224448,
+          "entry_address": 37224448,
+          "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+          "build_status": "unbuilt"
+        }
+      ],
+      "overlays": {
+        "arm9": [],
+        "arm7": []
+      },
+      "build_status": "unbuilt"
+    }
+  ],
+  "embedded_inventory_status": "known files inventoried",
+  "build_scope": {
+    "arm7": "inventoried only; unbuilt",
+    "embedded_executables": "inventoried only; unbuilt"
+  },
+  "source_coverage": {
+    "reconstructed_bytes": 0,
+    "percent": 0,
+    "scope": "intake only; no reconstructed source linked"
+  },
+  "baseline_verified": false
+}

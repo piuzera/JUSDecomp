@@ -1,0 +1,202 @@
+{
+  "source_commit": "b0a0243",
+  "method": "Owner-authorized native LLVM replacement for unavailable Metrowerks linker",
+  "original_metrowerks_pin_reproduced": false,
+  "native_link_returncode": 0,
+  "module_checks": {
+    "passed": 17,
+    "declared": 17,
+    "initialized_bytes": 2141728
+  },
+  "checks": [
+    {
+      "stage": "native-final-modules",
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "check",
+        "modules",
+        "-c",
+        "/private/tmp/jus-track-a/build/baseline-t01/native-final-config/config.yaml",
+        "-f"
+      ],
+      "returncode": 0
+    },
+    {
+      "stage": "native-final-symbols",
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "check",
+        "symbols",
+        "-c",
+        "/private/tmp/jus-track-a/build/baseline-t01/native-final-config/config.yaml",
+        "-e",
+        "/private/tmp/jus-track-a/build/baseline-t01/native-link-final/dsd-check.elf",
+        "-f"
+      ],
+      "returncode": 0
+    }
+  ],
+  "independent_original_rom_byte_address_bss_comparison": "17 targets passed; native-modules.json",
+  "symbol_view": "dsd-check.elf changes only section names and function-address parity; native linked.elf retained",
+  "source_coverage_percent": 0,
+  "arm7_and_embedded_status": "inventoried_unbuilt",
+  "full_rom_check_status": "not_performed",
+  "artifacts": {
+    "arm9.bin": {
+      "size_bytes": 656832,
+      "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e"
+    },
+    "native.ld": {
+      "size_bytes": 23315,
+      "sha256": "12e1cdc9d5edccab884353b78b88c76149c43e046a8ac6bf281a06680322c096"
+    },
+    "linked.elf": {
+      "size_bytes": 7382620,
+      "sha256": "2bdafb7fedd7984e72dbed38088ee2c531d4b1b950985fbe65aa690df6fd0d49"
+    },
+    "dtcm.bin": {
+      "size_bytes": 4160,
+      "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487"
+    },
+    "attributes.s": {
+      "size_bytes": 14,
+      "sha256": "61d4d37bd3e66dfc5e39fc7314f52e5d2bb88cb7942d47bd29bd4b770a2c09be"
+    },
+    "attributes.o": {
+      "size_bytes": 344,
+      "sha256": "6ee87b49ca01d518a67a46bcd207bb9d46f054cb64b5adcd2c6e1802273b8898"
+    },
+    "arm9_ov009.bin": {
+      "size_bytes": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    "arm9_ov008.bin": {
+      "size_bytes": 128160,
+      "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7"
+    },
+    "arm9_ov005.bin": {
+      "size_bytes": 152928,
+      "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6"
+    },
+    "arm9_ov011.bin": {
+      "size_bytes": 61440,
+      "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9"
+    },
+    "arm9_ov010.bin": {
+      "size_bytes": 215264,
+      "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99"
+    },
+    "arm9_ov004.bin": {
+      "size_bytes": 86208,
+      "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3"
+    },
+    "arm9_ov012.bin": {
+      "size_bytes": 167776,
+      "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f"
+    },
+    "arm9_ov006.bin": {
+      "size_bytes": 154688,
+      "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984"
+    },
+    "arm9_ov007.bin": {
+      "size_bytes": 122816,
+      "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30"
+    },
+    "arm9_ov013.bin": {
+      "size_bytes": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    "itcm.bin": {
+      "size_bytes": 31552,
+      "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3"
+    },
+    "arm9_ov003.bin": {
+      "size_bytes": 73472,
+      "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a"
+    },
+    "arm9_ov002.bin": {
+      "size_bytes": 65152,
+      "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b"
+    },
+    "arm9_ov000.bin": {
+      "size_bytes": 85760,
+      "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6"
+    },
+    "arm9_ov001.bin": {
+      "size_bytes": 135456,
+      "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b"
+    },
+    "modules.json": {
+      "size_bytes": 4482,
+      "sha256": "1fcd3db73fec31268c94045043c3d333604494985f57dba9600e58a1c2ff1af7"
+    },
+    "dsd-check.elf": {
+      "size_bytes": 7382620,
+      "sha256": "c47fa64ba628061d091e182bcf695a12c98e2a6aa549482d750095e1bcae9693"
+    },
+    "link.log": {
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "objects/_dsd_gap@ov000_4.o": {
+      "size_bytes": 224576,
+      "sha256": "ac22f01505a7844bbb9d985db77e0a8e88688e79f002fec283f7acfb46d4fd04"
+    },
+    "objects/_dsd_gap@dtcm_1.o": {
+      "size_bytes": 6212,
+      "sha256": "f12513035216304fc68403445a7965fa429b6a404b5149e1b4d19b30be4db762"
+    },
+    "objects/_dsd_gap@main_5.o": {
+      "size_bytes": 2077160,
+      "sha256": "35f3b4c96c2e08c8c0ea6d6d1891b9f8c29ec6c8c7665c1e0e7f49834f333e74"
+    },
+    "objects/_dsd_gap@itcm_0.o": {
+      "size_bytes": 61720,
+      "sha256": "3ea1571c0f00b46e4bd694145bec19b025fed8ef5271cb9fd1d9cab9f08a6321"
+    },
+    "objects/_dsd_gap@ov010_3.o": {
+      "size_bytes": 885432,
+      "sha256": "95fce6dc597b62de160196ee27321998fb54890977b74cecfc5a34ce4479a88c"
+    },
+    "objects/_dsd_gap@ov008_3.o": {
+      "size_bytes": 560492,
+      "sha256": "83bc9f901c11890283c6b0202635a4140f83c1e5bf53e299c9ffa948cee337ec"
+    },
+    "objects/_dsd_gap@ov002_5.o": {
+      "size_bytes": 176036,
+      "sha256": "433f3d48ac07ea0f4e69afb2911568e3fb200dcc242b5924ec878e8d174c6de2"
+    },
+    "objects/_dsd_gap@ov003_5.o": {
+      "size_bytes": 191852,
+      "sha256": "4f295f0ff217ce1c63a7b1339b9d42e918e11d44e21a62a3e8f071c08ab810fc"
+    },
+    "objects/_dsd_gap@ov001_5.o": {
+      "size_bytes": 431516,
+      "sha256": "5bd0536985e066a3bd820e365c7daa9768274b1e4fb3400a59a32818d033f6e8"
+    },
+    "objects/_dsd_gap@ov004_5.o": {
+      "size_bytes": 235728,
+      "sha256": "c32c5c840d8f96d819305681e4cc88d2f0243218a4ca16af7367e0cebab3288d"
+    },
+    "objects/_dsd_gap@ov005_5.o": {
+      "size_bytes": 411792,
+      "sha256": "e7804cd2e98838700a70e837d3f2e455ce1e99a19e0aa3f56518d5d5be810e09"
+    },
+    "objects/_dsd_gap@ov011_5.o": {
+      "size_bytes": 156564,
+      "sha256": "6394ccffaa0449e12581d5240e77f1904c4f8d77cab475f181a7c122242ab9a7"
+    },
+    "objects/_dsd_gap@ov007_5.o": {
+      "size_bytes": 404640,
+      "sha256": "a28a5830d4fe7bea33fe823a0c7590be9e1c342934922d7aa8b332fcf9466551"
+    },
+    "objects/_dsd_gap@ov012_5.o": {
+      "size_bytes": 624084,
+      "sha256": "5ea4ee342a6bd88a7bfcf50879f6f87109bae5d4903aaeb00ca753ca134c765d"
+    },
+    "objects/_dsd_gap@ov006_5.o": {
+      "size_bytes": 428424,
+      "sha256": "a510da8679d1bcb5457eb694486208e8453452ed0071294f7fee921e0c01ffbe"
+    }
+  }
+}
