@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "rom",
+    "extract",
+    "-r",
+    "/private/tmp/jus-track-a/build/baseline-t01/extract/files/ChildRom/JSS2Child.srl",
+    "-o",
+    "/private/tmp/jus-track-a/build/baseline-t01/child-extract"
+  ],
+  "returncode": 0
+}
