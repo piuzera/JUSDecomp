@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "kind": "autonomous agent elapsed wall-time window; not measured human analyst time",
+  "start_utc": "2026-10-05T04:03:02+00:00",
+  "publication_checkpoint_utc": "2026-10-05T04:37:48.386735+00:00",
+  "elapsed_minutes": 34.77,
+  "machine_run": {
+    "kind": "agent experiment wall time; not measured human analyst effort",
+    "build_seconds": 3.646,
+    "search_and_validation_seconds": 8.451,
+    "total_seconds": 12.524
+  },
+  "accepted_source_matches": 0,
+  "manual_candidate_promotions": 0,
+  "candidate_triage_remaining": 868
+}

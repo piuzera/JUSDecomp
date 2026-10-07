@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "source_credit": 0,
+  "tool_sha256": "d1117b6126a27c3c1f8d429840c61671f492d7bcb22bedc84e42ed8509a5041f",
+  "command": [
+    "/private/tmp/jus-dsd-root-check/target/release-fast/dsd",
+    "init",
+    "--rom-config",
+    "build/verify-t05-reviewed-final-source/extract/config.yaml",
+    "--output-path",
+    "build/dsd-parent-root-proof/analysis",
+    "--build-path",
+    "build/dsd-parent-root-proof/objects"
+  ],
+  "returncode": 0,
+  "log_sha256": "52a6fa0004026ba901f0c0be2a4d7f5fbf158fd6630b329fd79c5a1026dc776c",
+  "strict_missing_call_checks": true
+}

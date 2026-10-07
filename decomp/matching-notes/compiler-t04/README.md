@@ -97,9 +97,8 @@ different destinations do not form one equivalence group.
 
 [Reproduction commands](reproduce.md) regenerate the private references and run
 the saved experiment. The current runner requires header-free C and disables
-ambient standard include paths. Header-bearing source requires dependency
-capture before promotion. Compiler help exposes `-MD` and `-M`: a future gate
-can record every compiler-reported dependency, reject paths outside declared
-include roots, hash dependencies before and after compilation, and preserve
-include order and prefix-header flags. An include directory hash alone cannot
-prove that ambient or relative headers were declared.
+ambient standard include paths. The completed [T13 dependency gate](../header-dependencies/README.md)
+uses actual `-M` and `-MD` output for header-bearing production TUs. It binds
+consumed headers, include order and forced-header context before and after
+compilation. Compiler experiments remain header-free. An include directory hash
+alone cannot prove that ambient or relative headers were declared.

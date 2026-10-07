@@ -1,0 +1,106 @@
+diff --git a/lib/src/analysis/functions.rs b/lib/src/analysis/functions.rs
+index b581215..beb9a30 100644
+--- a/lib/src/analysis/functions.rs
++++ b/lib/src/analysis/functions.rs
+@@ -534,6 +534,18 @@ impl Function {
+         Ok(())
+     }
+
++    pub fn find_startup_swi_functions(
++        module_code: &[u8],
++        base_addr: u32,
++        entry_addr: u32,
++        symbol_map: &mut SymbolMap,
++    ) -> BTreeMap<u32, Function> {
++        // Download Play programs may place BIOS wrappers after the secure area.
++        let pre_entry_size = (entry_addr & !1).saturating_sub(base_addr) as usize;
++        let prefix_size = pre_entry_size.max(0x800).min(module_code.len());
++        Self::find_secure_area_functions(&module_code[..prefix_size], base_addr, symbol_map)
++    }
++
+     pub fn find_secure_area_functions(
+         module_code: &[u8],
+         base_addr: u32,
+@@ -567,6 +579,7 @@ impl Function {
+                 };
+                 symbol_map.add_function(&function);
+                 functions.insert(function.first_instruction_address, function);
++                state = SecureAreaState::default();
+             }
+
+             address += 2;
+@@ -1507,6 +1520,52 @@ impl Display for DisplayIns {
+ #[cfg(test)]
+ mod tests {
+     use super::{Function, FunctionParseOptions};
++    use crate::config::symbol::SymbolMap;
++
++    #[test]
++    fn startup_swi_prefix_includes_halfword_aligned_wrapper_before_entry() {
++        const BASE: u32 = 0x02000000;
++        let mut code = vec![0; 0x800];
++        // Public invented BIOS wrappers: Mod is six bytes, CpuSet is four bytes.
++        code.extend_from_slice(&[0x09, 0xdf, 0x08, 0x1c, 0x70, 0x47]);
++        code.extend_from_slice(&[0x0b, 0xdf, 0x70, 0x47]);
++        // This wrapper is after the entry boundary and must not be scanned.
++        code.extend_from_slice(&[0x0c, 0xdf, 0x70, 0x47]);
++        let mut symbols = SymbolMap::new();
++        let functions =
++            Function::find_startup_swi_functions(&code, BASE, BASE + 0x80a, &mut symbols);
++        assert_eq!(functions.len(), 2);
++        let cpu_set = functions.get(&(BASE + 0x806)).unwrap();
++        assert_eq!(cpu_set.name(), "CpuSet");
++        assert_eq!(cpu_set.start_address(), BASE + 0x806);
++        assert_eq!(cpu_set.end_address(), BASE + 0x80a);
++        assert!(cpu_set.is_thumb());
++        assert_eq!(functions.get(&(BASE + 0x800)).unwrap().name(), "Mod");
++    }
++
++    #[test]
++    fn adjacent_swi_wrappers_each_produce_a_function() {
++        const BASE: u32 = 0x02000000;
++        let code = [0x0b, 0xdf, 0x70, 0x47, 0x0c, 0xdf, 0x70, 0x47];
++        let mut symbols = SymbolMap::new();
++        let functions = Function::find_secure_area_functions(&code, BASE, &mut symbols);
++        assert_eq!(functions.len(), 2);
++        assert_eq!(functions.get(&BASE).unwrap().name(), "CpuSet");
++        assert_eq!(functions.get(&(BASE + 4)).unwrap().name(), "CpuFastSet");
++    }
++
++    #[test]
++    fn startup_swi_scan_is_bounded_to_actual_module_bytes() {
++        const BASE: u32 = 0x02000000;
++        let code = [0x0b, 0xdf, 0x70, 0x47];
++        for entry in [0, BASE, BASE + 4, u32::MAX] {
++            let mut symbols = SymbolMap::new();
++            let functions =
++                Function::find_startup_swi_functions(&code, BASE, entry, &mut symbols);
++            assert_eq!(functions.len(), 1);
++            assert_eq!(functions.get(&BASE).unwrap().end_address(), BASE + 4);
++        }
++    }
+
+     #[test]
+     fn arm_self_loop_ends_function() {
+diff --git a/lib/src/config/module.rs b/lib/src/config/module.rs
+index ba508a5..b595bd6 100644
+--- a/lib/src/config/module.rs
++++ b/lib/src/config/module.rs
+@@ -825,10 +825,13 @@ impl Module {
+             (ctor.start, None)
+         };
+
+-        // Secure area functions (software interrupts)
+-        let secure_area = &self.code[..0x800];
+-        let mut functions =
+-            Function::find_secure_area_functions(secure_area, self.base_address, symbol_map);
++        // BIOS wrappers in the secure area or the prefix before program entry.
++        let mut functions = Function::find_startup_swi_functions(
++            &self.code,
++            self.base_address,
++            arm9.entry_function(),
++            symbol_map,
++        );
+
+         // Build info
+         let build_info_offset = arm9.build_info_offset();

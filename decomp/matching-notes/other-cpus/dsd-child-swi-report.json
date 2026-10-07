@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.10",
+  "task_complete": false,
+  "source_credit": 0,
+  "scope": "Strict child ARM9 initialization with a candidate patched tool; no link or compression roundtrip claim",
+  "upstream": {
+    "url": "https://github.com/AetiasHax/ds-decomp",
+    "source_revision": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe"
+  },
+  "repair": {
+    "source_revision": "78630f8f54835e0e627cd4e45a9626d88c307f8b",
+    "source_tree": "5b6bef54e46e46e08d3243f56c2cb419bbd209d9",
+    "patch": "dsd-child-swi.patch",
+    "patch_sha256": "4a58df420e9d05d52d08f28307b37d9865e87cc0318d332f747065555c203d36",
+    "cargo_lock_sha256": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+    "integration_tool_pins_changed": false,
+    "patch_format": "Unified diff with empty context lines stripped of their space marker; git apply accepts and reverse --check passed"
+  },
+  "diagnosis": {
+    "caller": "0x020ae19e",
+    "target": "0x02000822",
+    "classification": "real Thumb BL to CpuSet BIOS wrapper",
+    "independent_decoder": "LLVM llvm-mc ARMv5TE plus direct Thumb BL target arithmetic",
+    "secure_scan_original_end": "0x02000800",
+    "startup_entry": "0x02000850",
+    "all_first_0x800_bytes_zero": true,
+    "root_causes": [
+      "Specialized SWI scan excluded pre-entry wrappers after secure-area boundary",
+      "Generic discovery aligned function ends to four bytes, skipping two-aligned wrappers",
+      "SWI matcher discarded the next instruction after emitting a valid wrapper"
+    ]
+  },
+  "tests": {
+    "command": "cargo test --locked -p ds-decomp --lib",
+    "passed": 5,
+    "new_regressions": 3,
+    "red_evidence": "Before state reset, adjacent and six-byte-wrapper regressions each found1 function instead of2",
+    "format_check": "Stable cargo fmt rejects pre-existing upstream nightly-style formatting across untouched files; no repository-wide reformat applied"
+  },
+  "build": {
+    "command": "cargo build --locked --profile release-fast -p ds-decomp-cli",
+    "compiler": "rustc1.98.1 (48a229cea2026-09-01), LLVM22.1.8",
+    "target": "aarch64-apple-darwin",
+    "artifact_format": "Mach-O64-bitarm64",
+    "artifact_version": "ds-decomp-cli0.12.0",
+    "artifact_sha256": "d1117b6126a27c3c1f8d429840c61671f492d7bcb22bedc84e42ed8509a5041f"
+  },
+  "fresh_child_init": {
+    "exit_code": 0,
+    "allow_unknown_function_calls": false,
+    "original_failure_resolved": true,
+    "unknown_function_records": 0,
+    "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+    "extracted_main_sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "modules": {
+      "main": {
+        "generated_function_records": 7174,
+        "arm_records": 5807,
+        "thumb_records": 1367,
+        "records_overlapping_prior_function_extent": 13,
+        "original_human_function_count": "unresolved",
+        "metadata": {
+          "symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
+          "config.yaml": "78c2ffd22bdf157a5f50bafb729419dbd068a0a892141b7ae51cdb81504c3226",
+          "relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
+          "delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36"
+        }
+      },
+      "ITCM": {
+        "generated_function_records": 10,
+        "arm_records": 10,
+        "thumb_records": 0,
+        "records_overlapping_prior_function_extent": 0,
+        "original_human_function_count": "unresolved",
+        "metadata": {
+          "symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
+          "relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
+          "delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148"
+        }
+      },
+      "DTCM": {
+        "generated_function_records": 0,
+        "arm_records": 0,
+        "thumb_records": 0,
+        "records_overlapping_prior_function_extent": 0,
+        "original_human_function_count": "unresolved",
+        "metadata": {
+          "symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
+          "relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
+          "delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82"
+        }
+      }
+    },
+    "warnings": "External-label warnings retained; some generated function extents overlap and do not establish original function boundaries"
+  },
+  "remaining_work": [
+    "Child native baseline and symbol/relocation verification",
+    "Matching child compression roundtrip",
+    "ARM7 analysis, linking and source reconstruction",
+    "Original compiler/SDK/ABI matching",
+    "Source reconstruction of every executable and recursive container scope"
+  ]
+}
