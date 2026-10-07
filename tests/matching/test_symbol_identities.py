@@ -5,6 +5,7 @@ import importlib.util
 import json
 import tempfile
 import struct
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -85,6 +86,7 @@ class SymbolIdentityTests(unittest.TestCase):
         result = self.reconcile([self.claim()])
         self.assertEqual(result['records'][0]['dsd_names'], ['func_ov000_0214cd20'])
         self.assertEqual(result['records'][0]['accepted_aliases'], ['DeckProbe'])
+        self.assertEqual(result['provenance_verification'], 'metadata_only')
 
     def test_wrong_scope_mode_extent_and_rom_cannot_match(self):
         for field, value in [('module','main'), ('mode','thumb'), ('section','.data'), ('rom_sha256','d'*64)]:
@@ -128,9 +130,25 @@ class SymbolIdentityTests(unittest.TestCase):
         (root/'docs/public.md').write_text('public reviewed evidence')
         (root/'.beads/issues.jsonl').write_text(json.dumps({'id':'jus-public','status':'closed'})+'\n')
         claim=self.claim();claim['provenance'][0]['sha256']=hashlib.sha256((root/'docs/public.md').read_bytes()).hexdigest()
+        subprocess.run(['git','init','-q',str(root)],check=True)
+        subprocess.run(['git','-C',str(root),'add','.'],check=True)
+        subprocess.run(['git','-C',str(root),'-c','user.name=Fixture','-c','user.email=fixture@example.invalid',
+                        'commit','-qm','Public fixture'],check=True)
+        commit=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
+        claim['provenance'][0]['commit']=commit
         self.assertEqual(self.reconcile([claim],provenance_root=root)['status'],'passed')
+        claim['provenance'][0]['commit']='0'*40
+        result=self.reconcile([claim],provenance_root=root)
+        self.assertEqual(result['status'],'unresolved')
+        self.assertIn('commit',result['records'][0]['reason'])
+        claim['provenance'][0]['commit']=commit
         (root/'docs/public.md').write_text('changed evidence')
         self.assertEqual(self.reconcile([claim],provenance_root=root)['status'],'unresolved')
+        claim['provenance'][0]['sha256']=hashlib.sha256((root/'docs/public.md').read_bytes()).hexdigest()
+        result=self.reconcile([claim],provenance_root=root)
+        self.assertEqual(result['status'],'unresolved')
+        self.assertIn('pinned',result['records'][0]['reason'])
+        claim['provenance'][0]['sha256']=hashlib.sha256(b'public reviewed evidence').hexdigest()
         (root/'docs/public.md').write_text('public reviewed evidence')
         (root/'.beads/issues.jsonl').write_text(json.dumps({'id':'jus-public','status':'open'})+'\n')
         self.assertEqual(self.reconcile([claim],provenance_root=root)['status'],'unresolved')
@@ -139,6 +157,23 @@ class SymbolIdentityTests(unittest.TestCase):
         unit={'module':'ov000','object':'src/probe.o','functions':['func_ov000_0214cd20'],'status':'passed',
               'checks':{'functions':[{'name':'func_ov000_0214cd20','offset':0,'size':16,'mode':'thumb','section':'.text'}]}}
         self.assertEqual(self.reconcile([self.claim()],source_build={'status':'passed','units':[unit]})['status'],'unresolved')
+
+    def test_live_closed_bead_cannot_replace_unclosed_pinned_provenance(self):
+        root=self.root/'pinned';(root/'docs').mkdir(parents=True);(root/'.beads').mkdir()
+        (root/'docs/public.md').write_text('public reviewed evidence')
+        ledger=root/'.beads/issues.jsonl'
+        ledger.write_text(json.dumps({'id':'jus-public','status':'open'})+'\n')
+        subprocess.run(['git','init','-q',str(root)],check=True)
+        subprocess.run(['git','-C',str(root),'add','.'],check=True)
+        subprocess.run(['git','-C',str(root),'-c','user.name=Fixture','-c','user.email=fixture@example.invalid',
+                        'commit','-qm','Unclosed public fixture'],check=True)
+        claim=self.claim();claim['provenance'][0]['commit']=subprocess.check_output(
+            ['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
+        claim['provenance'][0]['sha256']=hashlib.sha256((root/'docs/public.md').read_bytes()).hexdigest()
+        ledger.write_text(json.dumps({'id':'jus-public','status':'closed'})+'\n')
+        result=self.reconcile([claim],provenance_root=root)
+        self.assertEqual(result['status'],'unresolved')
+        self.assertIn('pinned provenance bead',result['records'][0]['reason'])
 
     def test_source_function_cannot_exceed_declared_tu_extent(self):
         self.inventory['translation_units'][0]['sections'][0]['end']=0x0214cd28

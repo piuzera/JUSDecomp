@@ -2,6 +2,7 @@
 """Compile declared source TUs and gate their raw objects against dsd references."""
 import bisect
 import hashlib
+import os
 import re
 import struct
 import subprocess
@@ -32,11 +33,22 @@ def require_unit_context(unit, compiler_hash, runner_hash, source):
             or abi.get('endianness') != 'little' or abi.get('pointer_bits') != 32
             or abi.get('settings') != 'pinned compiler defaults'):
         raise ValueError('TU ABI context missing or unsupported')
-    if unit.get('headers') != {} or unit.get('include_paths'):
+    require_header_free(source, unit.get('flags', []), unit.get('headers'), unit.get('include_paths'))
+
+
+def require_header_free(source, flags, headers, include_paths):
+    if headers != {} or include_paths:
         raise Unresolved('declared header dependencies require compiler dependency capture')
-    if re.search(r'^\s*#\s*include', source.read_text(), re.M):
+    if any(flag.startswith(('-I', '-ir', '-isystem', '-prefix', '-include', '-stdinc',
+                            '-trigraphs', '@')) for flag in flags):
+        raise ValueError('header-free TU cannot force headers or untracked compiler context')
+    text = re.sub(r'\\\r?\n', '', source.read_text())
+    tokens = r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|/\*.*?\*/|//[^\n]*'
+    text = re.sub(tokens, lambda match: re.sub(r'[^\n]', ' ', match[0])
+                  if match[0].startswith(('/*', '//')) else match[0], text, flags=re.S)
+    if re.search(r'^\s*(?:#|%:)\s*include', text, re.M):
         raise ValueError('header-free TU includes an untracked header')
-    if '-nostdinc' not in unit.get('flags', []):
+    if '-nostdinc' not in flags:
         raise ValueError('header-free TU must disable ambient include paths')
 
 
@@ -245,7 +257,9 @@ def build_sources(manifest, root, output, reference_dir, compiler, runner):
             command += ['-o', str(destination), str(source)]
             unit['command'] = command
             destination.parent.mkdir(parents=True, exist_ok=True)
-            completed = subprocess.run(command, cwd=root, capture_output=True, text=True)
+            environment = {key: value for key, value in os.environ.items()
+                           if not key.upper().startswith(('MWC', 'MWARM'))}
+            completed = subprocess.run(command, cwd=root, env=environment, capture_output=True, text=True)
             unit.update(stdout=completed.stdout, stderr=completed.stderr, exit_status=completed.returncode)
             if destination.is_file():
                 unit['compiled'] = {'path': str(destination), 'sha256': sha256(destination)}

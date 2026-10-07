@@ -91,6 +91,29 @@ class SourceBuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'ambient'):
             tool.require_unit_context(unit, 'a' * 64, 'b' * 64, source)
 
+    def test_header_free_context_cannot_force_headers_or_hide_include_directives(self):
+        tool = module()
+        source = self.root / 'public.c'
+        source.write_text('void public_func(void) {}\n')
+        unit = {'compiler': {'package': '2.0/base', 'sha256': 'a' * 64,
+                             'runner_sha256': 'b' * 64},
+                'abi': {'language': 'C', 'instruction_mode': 'arm', 'endianness': 'little',
+                        'pointer_bits': 32, 'settings': 'pinned compiler defaults'},
+                'headers': {}, 'include_paths': [], 'flags': ['-nostdinc']}
+        for extra in (['-prefix', 'untracked.h'], ['-include', 'untracked.h'],
+                      ['-Iuntracked'], ['-stdinc'], ['@untracked.rsp']):
+            unit['flags'] = ['-nostdinc', *extra]
+            with self.subTest(flags=extra), self.assertRaisesRegex(ValueError, 'header'):
+                tool.require_unit_context(unit, 'a' * 64, 'b' * 64, source)
+        unit['flags'] = ['-nostdinc']
+        for text in ('/* prefix */ #include "untracked.h"\n',
+                     '%:include "untracked.h"\n', '#inc\\\nlude "untracked.h"\n',
+                     'const char *a="/*";\n#include "untracked.h"\nconst char *b="*/";\n',
+                     'int x; /*\n */ #include "untracked.h"\n'):
+            source.write_text(text + 'void public_func(void) {}\n')
+            with self.subTest(text=text), self.assertRaisesRegex(ValueError, 'header'):
+                tool.require_unit_context(unit, 'a' * 64, 'b' * 64, source)
+
     def test_matching_sections_functions_and_relocations_pass(self):
         result=self.compare()
         self.assertEqual(result['status'],'passed')

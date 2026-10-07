@@ -4,12 +4,14 @@
 Scope is the declared ARM9 metadata, including ITCM/DTCM and overlays. ARM7 and
 embedded executables remain unclassified. Data extents and C layouts are never
 inferred from adjacent symbols. Evidence snapshots are recorded; optional local
-provenance verification checks the referenced document hashes and closed beads.
+provenance verification checks working documents and closed beads against their
+pinned Git revision. Offline output marks provenance as metadata-only.
 """
 import argparse
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -108,6 +110,25 @@ def _provenance(claim, root):
         if path.is_absolute() or '..' in path.parts or not path.parts:
             raise ValueError('invalid provenance document path')
         if root is not None:
+            kind = subprocess.run(['git', '-C', str(root), 'cat-file', '-t', item['commit']],
+                                  capture_output=True)
+            if kind.returncode or kind.stdout.strip() != b'commit':
+                raise ValueError('provenance commit missing or not a Git commit')
+            document = subprocess.run(['git', '-C', str(root), 'cat-file', 'blob',
+                                       item['commit'] + ':' + path.as_posix()], capture_output=True)
+            if document.returncode or hashlib.sha256(document.stdout).hexdigest() != item['sha256']:
+                raise ValueError('pinned provenance document missing or hash mismatch')
+            ledger = subprocess.run(['git', '-C', str(root), 'cat-file', 'blob',
+                                     item['commit'] + ':.beads/issues.jsonl'], capture_output=True)
+            if ledger.returncode:
+                raise ValueError('pinned provenance bead ledger missing')
+            try:
+                pinned = [json.loads(line) for line in ledger.stdout.splitlines() if line.strip()]
+                matches = [bead for bead in pinned if bead['id'] == item['bead']]
+            except (ValueError, KeyError, TypeError) as error:
+                raise ValueError('pinned provenance bead ledger malformed') from error
+            if len(matches) != 1 or matches[0]['status'] != 'closed':
+                raise ValueError('pinned provenance bead absent or not closed')
             if _hash(Path(root) / path) != item['sha256']:
                 raise ValueError('provenance document hash mismatch')
             beads = [json.loads(line) for line in (Path(root)/'.beads/issues.jsonl').read_text().splitlines() if line.strip()]
@@ -180,7 +201,7 @@ def reconcile_aliases(inventory: dict, manifest: dict, *, provenance_root=None, 
         except (ValueError,KeyError,TypeError): invalid.append(claim)
     result = {'schema_version': 1, 'status': 'passed', 'counts': {'accepted':0,'unresolved':0}, 'records':[],
               'scope': inventory['scope'], 'metadata_sha256': inventory['metadata_sha256'],
-              'provenance_verification': 'local_documents_and_beads' if provenance_root is not None else 'recorded_pins',
+              'provenance_verification': 'working_and_pinned_revision' if provenance_root is not None else 'metadata_only',
               'source_symbols': _source_symbols(inventory,source_build)}
     valid_manifest = manifest.get('schema_version') == 1 and manifest.get('rom_sha256') == inventory['rom_sha256'] and isinstance(manifest.get('claims'),list) and bool(manifest['claims'])
     for key, claims in list(groups.items()) + [(None,[c]) for c in invalid]:
