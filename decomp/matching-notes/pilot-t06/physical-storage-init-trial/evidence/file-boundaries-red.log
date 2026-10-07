@@ -1,0 +1,45 @@
+test_existing_output_rejects_without_changes (__main__.BoundaryTests.test_existing_output_rejects_without_changes) ... FAIL
+test_postpublication_checks_actual_changed_input (__main__.BoundaryTests.test_postpublication_checks_actual_changed_input) ... FAIL
+test_receipt_creation_is_exclusive (__main__.BoundaryTests.test_receipt_creation_is_exclusive) ... FAIL
+test_source_and_tool_pin_changes_reject (__main__.BoundaryTests.test_source_and_tool_pin_changes_reject) ... FAIL
+
+======================================================================
+FAIL: test_existing_output_rejects_without_changes (__main__.BoundaryTests.test_existing_output_rejects_without_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/test_boundaries.py", line 20, in test_existing_output_rejects_without_changes
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_postpublication_checks_actual_changed_input (__main__.BoundaryTests.test_postpublication_checks_actual_changed_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/test_boundaries.py", line 33, in test_postpublication_checks_actual_changed_input
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_receipt_creation_is_exclusive (__main__.BoundaryTests.test_receipt_creation_is_exclusive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/test_boundaries.py", line 26, in test_receipt_creation_is_exclusive
+    with self.assertRaises(FileExistsError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: FileExistsError not raised
+
+======================================================================
+FAIL: test_source_and_tool_pin_changes_reject (__main__.BoundaryTests.test_source_and_tool_pin_changes_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-header-initializer-trial/decomp/matching-notes/pilot-t06/physical-storage-init-trial/test_boundaries.py", line 15, in test_source_and_tool_pin_changes_reject
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+FAILED (failures=4)

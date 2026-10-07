@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/opt/homebrew/bin/ld.lld",
+    "-m",
+    "armelf",
+    "--nmagic",
+    "-T",
+    "physical.ld",
+    "-Map",
+    "physical.map",
+    "-o",
+    "linked.elf",
+    "startup.o",
+    "table.o",
+    "autoload1.o",
+    "prefix.o",
+    "compiled.o",
+    "suffix.o",
+    "bss0.o"
+  ],
+  "return_code": 1
+}
+STDOUT
+
+STDERR
+ld.lld: error: leaf end
+ld.lld: error: leaf size
+ld.lld: error: size
+ld.lld: error: section .arm7.autoload0 virtual address range overlaps with .arm7.bss.autoload0
+>>> .arm7.autoload0 range is [0x37F8000, 0x3808257]
+>>> .arm7.bss.autoload0 range is [0x3808248, 0x380BC8F]
+
+ld.lld: error: section .arm7.autoload0 load address range overlaps with .arm7.autoload1
+>>> .arm7.autoload0 range is [0x23801B0, 0x2390407]
+>>> .arm7.autoload1 range is [0x23903F8, 0x23A8697]

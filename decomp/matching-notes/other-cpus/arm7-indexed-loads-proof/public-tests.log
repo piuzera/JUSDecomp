@@ -1,0 +1,11 @@
+test_actual_call_relocations_and_both_complete_images (test_loads.NativeInitializer.test_actual_call_relocations_and_both_complete_images) ... ok
+test_actual_wrong_guard_and_callee_outputs_are_rejected (test_loads.NativeInitializer.test_actual_wrong_guard_and_callee_outputs_are_rejected) ... ok
+test_actual_wrong_placement_and_malformed_segment_reject (test_loads.NativeInitializer.test_actual_wrong_placement_and_malformed_segment_reject) ... ok
+test_each_actual_omitted_input_rejects (test_loads.NativeInitializer.test_each_actual_omitted_input_rejects) ... ok
+test_successful_actual_load_swap_rejects_real_placements (test_loads.NativeInitializer.test_successful_actual_load_swap_rejects_real_placements) ... ok
+test_finite_split_calls_and_separate_bss_literal (test_loads.OriginalGrounding.test_finite_split_calls_and_separate_bss_literal) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.175s
+
+OK

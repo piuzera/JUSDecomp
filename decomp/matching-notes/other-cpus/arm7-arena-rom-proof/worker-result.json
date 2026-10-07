@@ -1,0 +1,2787 @@
+{
+  "status": "worker_verified_pending_independent_acceptance",
+  "private_replay_receipt": "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial-proof.json",
+  "actual_receipt_sha256": "237a798df8142cd561defb526fd75bd0a58a65cfd2c3fa93b26d975a45c74a54",
+  "build_id": "07952436-1e65-4182-aa99-aba7d8cb307e",
+  "rom": {
+    "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+    "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "size_bytes": 67108864
+  },
+  "source_credit": {
+    "canonical": 304,
+    "arm7": 0,
+    "global_percent": null
+  },
+  "t06_complete": false,
+  "t10_complete": false,
+  "artifact_count": 916,
+  "trial_artifact_count": 198,
+  "input_snapshot_count": 153,
+  "repository_input_count": 119,
+  "distinct_external_tool_paths": 18,
+  "parent_outputs": {
+    "report.json": "ef45bebecef2f574d54dede8d7efc46814953f2cd07524a7d12817c541ca357b",
+    "rebuilt.nds": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+  },
+  "module_checkpoint_stages": [
+    "intake",
+    "tool_versions",
+    "prepare_config",
+    "extract",
+    "delink",
+    "source_config",
+    "source_delink",
+    "source_build",
+    "lcf",
+    "native_link",
+    "link_inputs",
+    "check_modules",
+    "check_symbols",
+    "direct_comparison",
+    "relocation_check",
+    "source_ownership",
+    "arm7_native_baselines",
+    "child_arm9_native_roundtrip",
+    "freshness"
+  ],
+  "experimental_stages": [
+    {
+      "name": "parent_verification",
+      "status": "passed",
+      "exit_status": 0,
+      "started_ns": 1791246418099255000,
+      "finished_ns": 1791246424215560000
+    },
+    {
+      "name": "arm7_native_baselines",
+      "status": "passed",
+      "exit_status": 0,
+      "started_ns": 1791246424239613000,
+      "finished_ns": 1791246425525185000
+    },
+    {
+      "name": "child_arm9_native_roundtrip",
+      "status": "passed",
+      "exit_status": 0,
+      "started_ns": 1791246425525190000,
+      "finished_ns": 1791246436388468000
+    },
+    {
+      "name": "research_trial",
+      "status": "passed",
+      "exit_status": 0,
+      "started_ns": 1791246436388915000,
+      "finished_ns": 1791246438898440000
+    },
+    {
+      "name": "integrated_input_gate",
+      "status": "passed",
+      "exit_status": 0,
+      "started_ns": 1791246438898443000,
+      "finished_ns": 1791246443549449000
+    },
+    {
+      "name": "research_pack",
+      "status": "passed",
+      "exit_status": 0,
+      "started_ns": 1791246443553571000,
+      "finished_ns": 1791246459662596000
+    },
+    {
+      "name": "final_freshness",
+      "status": "passed",
+      "exit_status": 0,
+      "started_ns": 1791246459662598000,
+      "finished_ns": 1791246465116928000
+    }
+  ],
+  "research_pack": {
+    "status": "passed",
+    "rom": {
+      "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+      "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "size_bytes": 67108864
+    },
+    "checks": [
+      {
+        "name": "header",
+        "status": "passed",
+        "sha256": "afa321ff2d0b6d7c793c10ed7aa810755175fde894349b13f08eff9c80abd3de"
+      },
+      {
+        "name": "arm9_overlay_table",
+        "status": "passed",
+        "offset": 709120,
+        "size_bytes": 448,
+        "sha256": "985c926dc85d0161b3fb7d0965fc13c90b5ead4e7a4a77472d142cc010a972e3"
+      },
+      {
+        "name": "arm7_overlay_table",
+        "status": "passed",
+        "offset": 0,
+        "size_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "fnt",
+        "status": "passed",
+        "offset": 2328576,
+        "size_bytes": 5813,
+        "sha256": "b1d678306304b5aeaf193395f34b8d0c647f75d8624888dfb04b5971e0a4b194"
+      },
+      {
+        "name": "fat",
+        "status": "passed",
+        "offset": 2334720,
+        "size_bytes": 3144,
+        "sha256": "571ced1ba03e47135da381cffdaedb8f89943790a4a4dd460b5d17e541c13fae"
+      },
+      {
+        "name": "compression_encoding",
+        "status": "passed"
+      },
+      {
+        "name": "arm9_payloads",
+        "status": "passed"
+      },
+      {
+        "name": "autoload_table",
+        "status": "passed"
+      },
+      {
+        "name": "arm7",
+        "status": "passed"
+      },
+      {
+        "name": "raw_assets",
+        "status": "passed"
+      },
+      {
+        "name": "padding",
+        "status": "passed"
+      },
+      {
+        "name": "whole_rom_hash",
+        "status": "passed"
+      }
+    ],
+    "arm9_modules_checked": 17,
+    "preserved_source_bytes": 0,
+    "preserved_arm7": {
+      "size_bytes": 165552,
+      "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "source_bytes": 0
+    },
+    "preserved_raw_assets": {
+      "file_count": 379,
+      "size_bytes": 63545489,
+      "source_bytes": 0
+    },
+    "smoke_checks": "queued for T07; not performed",
+    "writes": [
+      {
+        "module": "ARM9",
+        "input_file": "parent/native-link/arm9.bin",
+        "rom_offset": 16384,
+        "size_bytes": 656832,
+        "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e"
+      },
+      {
+        "module": "ITCM",
+        "input_file": "parent/native-link/itcm.bin",
+        "rom_offset": 673216,
+        "size_bytes": 31552,
+        "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3"
+      },
+      {
+        "module": "DTCM",
+        "input_file": "parent/native-link/dtcm.bin",
+        "rom_offset": 704768,
+        "size_bytes": 4160,
+        "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487"
+      },
+      {
+        "module": "OV000",
+        "input_file": "parent/native-link/arm9_ov000.bin",
+        "rom_offset": 709632,
+        "size_bytes": 85760,
+        "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6"
+      },
+      {
+        "module": "OV001",
+        "input_file": "parent/native-link/arm9_ov001.bin",
+        "rom_offset": 795648,
+        "size_bytes": 135456,
+        "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b"
+      },
+      {
+        "module": "OV002",
+        "input_file": "parent/native-link/arm9_ov002.bin",
+        "rom_offset": 931328,
+        "size_bytes": 65152,
+        "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b"
+      },
+      {
+        "module": "OV003",
+        "input_file": "parent/native-link/arm9_ov003.bin",
+        "rom_offset": 996864,
+        "size_bytes": 73472,
+        "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a"
+      },
+      {
+        "module": "OV004",
+        "input_file": "parent/native-link/arm9_ov004.bin",
+        "rom_offset": 1070592,
+        "size_bytes": 86208,
+        "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3"
+      },
+      {
+        "module": "OV005",
+        "input_file": "parent/native-link/arm9_ov005.bin",
+        "rom_offset": 1157120,
+        "size_bytes": 152928,
+        "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6"
+      },
+      {
+        "module": "OV006",
+        "input_file": "parent/native-link/arm9_ov006.bin",
+        "rom_offset": 1310208,
+        "size_bytes": 154688,
+        "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984"
+      },
+      {
+        "module": "OV007",
+        "input_file": "parent/native-link/arm9_ov007.bin",
+        "rom_offset": 1465344,
+        "size_bytes": 122816,
+        "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30"
+      },
+      {
+        "module": "OV008",
+        "input_file": "parent/native-link/arm9_ov008.bin",
+        "rom_offset": 1588224,
+        "size_bytes": 128160,
+        "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7"
+      },
+      {
+        "module": "OV009",
+        "input_file": "parent/native-link/arm9_ov009.bin",
+        "rom_offset": 1716736,
+        "size_bytes": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      },
+      {
+        "module": "OV010",
+        "input_file": "parent/native-link/arm9_ov010.bin",
+        "rom_offset": 1717248,
+        "size_bytes": 215264,
+        "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99"
+      },
+      {
+        "module": "OV011",
+        "input_file": "parent/native-link/arm9_ov011.bin",
+        "rom_offset": 1932800,
+        "size_bytes": 61440,
+        "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9"
+      },
+      {
+        "module": "OV012",
+        "input_file": "parent/native-link/arm9_ov012.bin",
+        "rom_offset": 1994240,
+        "size_bytes": 167776,
+        "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f"
+      },
+      {
+        "module": "OV013",
+        "input_file": "parent/native-link/arm9_ov013.bin",
+        "rom_offset": 2162176,
+        "size_bytes": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      },
+      {
+        "module": "ARM9",
+        "identity": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "nitro_fs",
+            "path": "ChildRom/JSS2Child.srl"
+          },
+          "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+          "cpu": "arm9",
+          "processor": "arm946e",
+          "isa": "armv5te"
+        },
+        "input_file": "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/parent/child-arm9/rebuilt.srl",
+        "rom_offset": 2357248,
+        "size_bytes": 1955956,
+        "sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+        "source_bytes": 0,
+        "image_slice_offset": 16384,
+        "image_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+        "elf_sha256": "08125b52761f5361787add20bc38832230b83a8a774302cdfc51ad32ed652e8b"
+      },
+      {
+        "module": "ARM7",
+        "identity": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "parent"
+          },
+          "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+        },
+        "input_file": "trial/native/program-0/positive.elf",
+        "rom_offset": 2162688,
+        "size_bytes": 165552,
+        "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "source_bytes": 0,
+        "research_candidate_bytes": 460,
+        "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+        "native_program_index": 0,
+        "native_readback": "/research_pack/trial/programs/0/actual_readback"
+      },
+      {
+        "module": "ARM7",
+        "identity": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "nitro_fs",
+            "path": "ChildRom/JSS2Child.srl"
+          },
+          "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+        },
+        "input_file": "trial/native/program-1/positive.elf",
+        "rom_offset": 4313600,
+        "size_bytes": 165552,
+        "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "source_bytes": 0,
+        "research_candidate_bytes": 460,
+        "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+        "native_program_index": 1,
+        "native_readback": "/research_pack/trial/programs/1/actual_readback"
+      }
+    ],
+    "trial": {
+      "objects": 7,
+      "distinct_candidate_bytes": 460,
+      "paired_candidate_bytes": 920,
+      "source_credit_bytes": 0,
+      "programs": [
+        {
+          "identity": {
+            "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+            "program": {
+              "kind": "parent"
+            },
+            "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+          },
+          "image_offset": 2162688,
+          "image_bytes": 165552,
+          "bss_bytes": 21424,
+          "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+          "map_sha256": "c5c415e952ec7e1090fcfad089cf47b879ad70e2448fe5bad4f5ccb56e52ae77",
+          "actual_readback": {
+            "linked_elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+            "elf_header": {
+              "entry": 37224448,
+              "flags": 83886592,
+              "bytes": 167948
+            },
+            "sections": [
+              {
+                "name": ".arm7.startup",
+                "type": 1,
+                "flags": 2,
+                "vma": 37224448,
+                "offset": 244,
+                "size": 432,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.table",
+                "type": 1,
+                "flags": 2,
+                "vma": 37389976,
+                "offset": 676,
+                "size": 24,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.autoload1",
+                "type": 1,
+                "flags": 2,
+                "vma": 41811968,
+                "offset": 700,
+                "size": 98976,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.bss.autoload1",
+                "type": 8,
+                "flags": 3,
+                "vma": 41910944,
+                "offset": 99676,
+                "size": 6504,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.autoload0",
+                "type": 1,
+                "flags": 6,
+                "vma": 58687488,
+                "offset": 99676,
+                "size": 66120,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.bss.autoload0",
+                "type": 8,
+                "flags": 3,
+                "vma": 58753608,
+                "offset": 165796,
+                "size": 14920,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              }
+            ],
+            "segments": [
+              {
+                "type": 1,
+                "offset": 244,
+                "vma": 37224448,
+                "lma": 37224448,
+                "file_bytes": 432,
+                "memory_bytes": 432,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 676,
+                "vma": 37389976,
+                "lma": 37389976,
+                "file_bytes": 24,
+                "memory_bytes": 24,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 700,
+                "vma": 41811968,
+                "lma": 37291000,
+                "file_bytes": 98976,
+                "memory_bytes": 98976,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 99676,
+                "vma": 41910944,
+                "lma": 41910944,
+                "file_bytes": 0,
+                "memory_bytes": 6504,
+                "flags": 6,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 99676,
+                "vma": 58687488,
+                "lma": 37224880,
+                "file_bytes": 66120,
+                "memory_bytes": 66120,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 165796,
+                "vma": 58753608,
+                "lma": 58753608,
+                "file_bytes": 0,
+                "memory_bytes": 14920,
+                "flags": 6,
+                "align": 4
+              }
+            ],
+            "bindings": {
+              "subpriv": 41917448,
+              "wram": 58768528,
+              "irq": 1024,
+              "system": 1024,
+              "guard": 58754096
+            },
+            "observed_bindings": {
+              "subpriv": 41917448,
+              "wram": 58768528,
+              "irq": 1024,
+              "system": 1024,
+              "guard": 58754096
+            },
+            "candidates": [
+              {
+                "role": "lower_store",
+                "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+                "map_input": "lower_store.o:(.text)",
+                "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+                "map_vma": 58707716,
+                "map_lma": 37245108,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_low_store_trial",
+                  "vma": 58707716,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20660,
+                "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+                "linked_wram_word": null
+              },
+              {
+                "role": "upper_store",
+                "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+                "map_input": "upper_store.o:(.text)",
+                "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+                "map_vma": 58707736,
+                "map_lma": 37245128,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_store_trial",
+                  "vma": 58707736,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20680,
+                "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+                "linked_wram_word": null
+              },
+              {
+                "role": "lower_getter",
+                "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+                "map_input": "lower_getter.o:(.text)",
+                "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+                "map_vma": 58707756,
+                "map_lma": 37245148,
+                "map_bytes": 88,
+                "function": {
+                  "name": "arm7_low_getter_trial",
+                  "vma": 58707756,
+                  "size": 88,
+                  "section": 5
+                },
+                "stored_image_offset": 20700,
+                "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+                "linked_wram_word": 58768528
+              },
+              {
+                "role": "upper_getter",
+                "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+                "map_input": "upper_getter.o:(.text)",
+                "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+                "map_vma": 58707844,
+                "map_lma": 37245236,
+                "map_bytes": 128,
+                "function": {
+                  "name": "arm7_high_getter_trial",
+                  "vma": 58707844,
+                  "size": 128,
+                  "section": 5
+                },
+                "stored_image_offset": 20788,
+                "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+                "linked_wram_word": 58768528
+              },
+              {
+                "role": "lower_load",
+                "actual_input_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+                "map_input": "lower_load.o:(.text)",
+                "map_row": " 37fd004  23851b4       14     4         lower_load.o:(.text)",
+                "map_vma": 58707972,
+                "map_lma": 37245364,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_low_load_trial",
+                  "vma": 58707972,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20916,
+                "linked_bytes_sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+                "linked_wram_word": null
+              },
+              {
+                "role": "upper_load",
+                "actual_input_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+                "map_input": "upper_load.o:(.text)",
+                "map_row": " 37fd018  23851c8       14     4         upper_load.o:(.text)",
+                "map_vma": 58707992,
+                "map_lma": 37245384,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_high_load_trial",
+                  "vma": 58707992,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20936,
+                "linked_bytes_sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+                "linked_wram_word": null
+              },
+              {
+                "role": "initializer",
+                "actual_input_sha256": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+                "map_input": "initializer.o:(.text)",
+                "map_row": " 37fd02c  23851dc       a4     4         initializer.o:(.text)",
+                "map_vma": 58708012,
+                "map_lma": 37245404,
+                "map_bytes": 164,
+                "function": {
+                  "name": "arm7_arena_init_trial",
+                  "vma": 58708012,
+                  "size": 164,
+                  "section": 5
+                },
+                "stored_image_offset": 20956,
+                "linked_bytes_sha256": "54cb8e8a1a8de738953161cb6b01cc1a534c6de00c293acd6ff115e5373a4e26",
+                "linked_wram_word": null
+              }
+            ],
+            "image_bytes": 165552,
+            "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+            "image_mismatch_offsets": [],
+            "BSS_bytes": 21424,
+            "noncandidate_bytes_unchanged": true,
+            "linked_relocation_sections": 0,
+            "initializer_calls": [
+              {
+                "source": 58708044,
+                "word": "0xebffffcc",
+                "target": 58707844,
+                "symbol": "arm7_high_getter_trial",
+                "resolved_symbol_vma": 58707844,
+                "resolved_symbol_size": 128
+              },
+              {
+                "source": 58708056,
+                "word": "0xebffffae",
+                "target": 58707736,
+                "symbol": "arm7_store_trial",
+                "resolved_symbol_vma": 58707736,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708064,
+                "word": "0xebffffb1",
+                "target": 58707756,
+                "symbol": "arm7_low_getter_trial",
+                "resolved_symbol_vma": 58707756,
+                "resolved_symbol_size": 88
+              },
+              {
+                "source": 58708076,
+                "word": "0xebffffa4",
+                "target": 58707716,
+                "symbol": "arm7_low_store_trial",
+                "resolved_symbol_vma": 58707716,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708084,
+                "word": "0xebffffc2",
+                "target": 58707844,
+                "symbol": "arm7_high_getter_trial",
+                "resolved_symbol_vma": 58707844,
+                "resolved_symbol_size": 128
+              },
+              {
+                "source": 58708096,
+                "word": "0xebffffa4",
+                "target": 58707736,
+                "symbol": "arm7_store_trial",
+                "resolved_symbol_vma": 58707736,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708104,
+                "word": "0xebffffa7",
+                "target": 58707756,
+                "symbol": "arm7_low_getter_trial",
+                "resolved_symbol_vma": 58707756,
+                "resolved_symbol_size": 88
+              },
+              {
+                "source": 58708116,
+                "word": "0xebffff9a",
+                "target": 58707716,
+                "symbol": "arm7_low_store_trial",
+                "resolved_symbol_vma": 58707716,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708124,
+                "word": "0xebffffb8",
+                "target": 58707844,
+                "symbol": "arm7_high_getter_trial",
+                "resolved_symbol_vma": 58707844,
+                "resolved_symbol_size": 128
+              },
+              {
+                "source": 58708136,
+                "word": "0xebffff9a",
+                "target": 58707736,
+                "symbol": "arm7_store_trial",
+                "resolved_symbol_vma": 58707736,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708144,
+                "word": "0xebffff9d",
+                "target": 58707756,
+                "symbol": "arm7_low_getter_trial",
+                "resolved_symbol_vma": 58707756,
+                "resolved_symbol_size": 88
+              },
+              {
+                "source": 58708156,
+                "word": "0xebffff90",
+                "target": 58707716,
+                "symbol": "arm7_low_store_trial",
+                "resolved_symbol_vma": 58707716,
+                "resolved_symbol_size": 20
+              }
+            ],
+            "native_command": {
+              "argv": [
+                "/opt/homebrew/bin/ld.lld",
+                "-m",
+                "armelf",
+                "--nmagic",
+                "-T",
+                "positive.ld",
+                "-Map",
+                "positive.map",
+                "-o",
+                "positive.elf",
+                "startup.o",
+                "table.o",
+                "autoload1.o",
+                "prefix.o",
+                "lower_store.o",
+                "upper_store.o",
+                "lower_getter.o",
+                "upper_getter.o",
+                "lower_load.o",
+                "upper_load.o",
+                "initializer.o",
+                "suffix.o",
+                "bss0.o"
+              ],
+              "returncode": 0,
+              "stdout": "",
+              "stderr": ""
+            },
+            "actual_inputs_sha256": {
+              "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+              "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+              "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+              "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+              "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+              "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+              "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+              "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+              "lower_load.o": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+              "upper_load.o": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+              "initializer.o": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+              "suffix.o": "a31de54e6844ad558eb7c4a7c5637a75e3ec5f6a4220b50b21120a607fcbd37b",
+              "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+            },
+            "map_sha256": "c5c415e952ec7e1090fcfad089cf47b879ad70e2448fe5bad4f5ccb56e52ae77",
+            "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nhyp_arena_initialized = 0x03808430;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; lower_store.o(.text) __lower_store_end = .; __upper_store_start = .; upper_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; __lower_load_start = .; lower_load.o(.text) __lower_load_end = .; __upper_load_start = .; upper_load.o(.text) __upper_load_end = .; __initializer_start = .; initializer.o(.text) __initializer_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n/DISCARD/ : { *(.exceptix) }\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\nASSERT(__lower_load_start == 58707972, \"getter lower_load start\")\nASSERT(__lower_load_end == 58707992, \"getter lower_load end\")\nASSERT(__lower_load_end - __lower_load_start == 20, \"getter lower_load size\")\nASSERT(__upper_load_start == 58707992, \"getter upper_load start\")\nASSERT(__upper_load_end == 58708012, \"getter upper_load end\")\nASSERT(__upper_load_end - __upper_load_start == 20, \"getter upper_load size\")\nASSERT(__initializer_start == 58708012, \"getter initializer start\")\nASSERT(__initializer_end == 58708176, \"getter initializer end\")\nASSERT(__initializer_end - __initializer_start == 164, \"getter initializer size\")\n",
+            "linker_script_sha256": "6df5a38610547aca91a6dec49a8212f8f17a8073d5e27da3aa00804f4eb6be75"
+          }
+        },
+        {
+          "identity": {
+            "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+            "program": {
+              "kind": "nitro_fs",
+              "path": "ChildRom/JSS2Child.srl"
+            },
+            "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+          },
+          "image_offset": 4313600,
+          "image_bytes": 165552,
+          "bss_bytes": 21424,
+          "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+          "map_sha256": "c5c415e952ec7e1090fcfad089cf47b879ad70e2448fe5bad4f5ccb56e52ae77",
+          "actual_readback": {
+            "linked_elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+            "elf_header": {
+              "entry": 37224448,
+              "flags": 83886592,
+              "bytes": 167948
+            },
+            "sections": [
+              {
+                "name": ".arm7.startup",
+                "type": 1,
+                "flags": 2,
+                "vma": 37224448,
+                "offset": 244,
+                "size": 432,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.table",
+                "type": 1,
+                "flags": 2,
+                "vma": 37389976,
+                "offset": 676,
+                "size": 24,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.autoload1",
+                "type": 1,
+                "flags": 2,
+                "vma": 41811968,
+                "offset": 700,
+                "size": 98976,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.bss.autoload1",
+                "type": 8,
+                "flags": 3,
+                "vma": 41910944,
+                "offset": 99676,
+                "size": 6504,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.autoload0",
+                "type": 1,
+                "flags": 6,
+                "vma": 58687488,
+                "offset": 99676,
+                "size": 66120,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              },
+              {
+                "name": ".arm7.bss.autoload0",
+                "type": 8,
+                "flags": 3,
+                "vma": 58753608,
+                "offset": 165796,
+                "size": 14920,
+                "link": 0,
+                "entry_size": 0,
+                "align": 4
+              }
+            ],
+            "segments": [
+              {
+                "type": 1,
+                "offset": 244,
+                "vma": 37224448,
+                "lma": 37224448,
+                "file_bytes": 432,
+                "memory_bytes": 432,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 676,
+                "vma": 37389976,
+                "lma": 37389976,
+                "file_bytes": 24,
+                "memory_bytes": 24,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 700,
+                "vma": 41811968,
+                "lma": 37291000,
+                "file_bytes": 98976,
+                "memory_bytes": 98976,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 99676,
+                "vma": 41910944,
+                "lma": 41910944,
+                "file_bytes": 0,
+                "memory_bytes": 6504,
+                "flags": 6,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 99676,
+                "vma": 58687488,
+                "lma": 37224880,
+                "file_bytes": 66120,
+                "memory_bytes": 66120,
+                "flags": 4,
+                "align": 4
+              },
+              {
+                "type": 1,
+                "offset": 165796,
+                "vma": 58753608,
+                "lma": 58753608,
+                "file_bytes": 0,
+                "memory_bytes": 14920,
+                "flags": 6,
+                "align": 4
+              }
+            ],
+            "bindings": {
+              "subpriv": 41917448,
+              "wram": 58768528,
+              "irq": 1024,
+              "system": 1024,
+              "guard": 58754096
+            },
+            "observed_bindings": {
+              "subpriv": 41917448,
+              "wram": 58768528,
+              "irq": 1024,
+              "system": 1024,
+              "guard": 58754096
+            },
+            "candidates": [
+              {
+                "role": "lower_store",
+                "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+                "map_input": "lower_store.o:(.text)",
+                "map_row": " 37fcf04  23850b4       14     4         lower_store.o:(.text)",
+                "map_vma": 58707716,
+                "map_lma": 37245108,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_low_store_trial",
+                  "vma": 58707716,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20660,
+                "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+                "linked_wram_word": null
+              },
+              {
+                "role": "upper_store",
+                "actual_input_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+                "map_input": "upper_store.o:(.text)",
+                "map_row": " 37fcf18  23850c8       14     4         upper_store.o:(.text)",
+                "map_vma": 58707736,
+                "map_lma": 37245128,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_store_trial",
+                  "vma": 58707736,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20680,
+                "linked_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+                "linked_wram_word": null
+              },
+              {
+                "role": "lower_getter",
+                "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+                "map_input": "lower_getter.o:(.text)",
+                "map_row": " 37fcf2c  23850dc       58     4         lower_getter.o:(.text)",
+                "map_vma": 58707756,
+                "map_lma": 37245148,
+                "map_bytes": 88,
+                "function": {
+                  "name": "arm7_low_getter_trial",
+                  "vma": 58707756,
+                  "size": 88,
+                  "section": 5
+                },
+                "stored_image_offset": 20700,
+                "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+                "linked_wram_word": 58768528
+              },
+              {
+                "role": "upper_getter",
+                "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+                "map_input": "upper_getter.o:(.text)",
+                "map_row": " 37fcf84  2385134       80     4         upper_getter.o:(.text)",
+                "map_vma": 58707844,
+                "map_lma": 37245236,
+                "map_bytes": 128,
+                "function": {
+                  "name": "arm7_high_getter_trial",
+                  "vma": 58707844,
+                  "size": 128,
+                  "section": 5
+                },
+                "stored_image_offset": 20788,
+                "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+                "linked_wram_word": 58768528
+              },
+              {
+                "role": "lower_load",
+                "actual_input_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+                "map_input": "lower_load.o:(.text)",
+                "map_row": " 37fd004  23851b4       14     4         lower_load.o:(.text)",
+                "map_vma": 58707972,
+                "map_lma": 37245364,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_low_load_trial",
+                  "vma": 58707972,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20916,
+                "linked_bytes_sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+                "linked_wram_word": null
+              },
+              {
+                "role": "upper_load",
+                "actual_input_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+                "map_input": "upper_load.o:(.text)",
+                "map_row": " 37fd018  23851c8       14     4         upper_load.o:(.text)",
+                "map_vma": 58707992,
+                "map_lma": 37245384,
+                "map_bytes": 20,
+                "function": {
+                  "name": "arm7_high_load_trial",
+                  "vma": 58707992,
+                  "size": 20,
+                  "section": 5
+                },
+                "stored_image_offset": 20936,
+                "linked_bytes_sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+                "linked_wram_word": null
+              },
+              {
+                "role": "initializer",
+                "actual_input_sha256": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+                "map_input": "initializer.o:(.text)",
+                "map_row": " 37fd02c  23851dc       a4     4         initializer.o:(.text)",
+                "map_vma": 58708012,
+                "map_lma": 37245404,
+                "map_bytes": 164,
+                "function": {
+                  "name": "arm7_arena_init_trial",
+                  "vma": 58708012,
+                  "size": 164,
+                  "section": 5
+                },
+                "stored_image_offset": 20956,
+                "linked_bytes_sha256": "54cb8e8a1a8de738953161cb6b01cc1a534c6de00c293acd6ff115e5373a4e26",
+                "linked_wram_word": null
+              }
+            ],
+            "image_bytes": 165552,
+            "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+            "image_mismatch_offsets": [],
+            "BSS_bytes": 21424,
+            "noncandidate_bytes_unchanged": true,
+            "linked_relocation_sections": 0,
+            "initializer_calls": [
+              {
+                "source": 58708044,
+                "word": "0xebffffcc",
+                "target": 58707844,
+                "symbol": "arm7_high_getter_trial",
+                "resolved_symbol_vma": 58707844,
+                "resolved_symbol_size": 128
+              },
+              {
+                "source": 58708056,
+                "word": "0xebffffae",
+                "target": 58707736,
+                "symbol": "arm7_store_trial",
+                "resolved_symbol_vma": 58707736,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708064,
+                "word": "0xebffffb1",
+                "target": 58707756,
+                "symbol": "arm7_low_getter_trial",
+                "resolved_symbol_vma": 58707756,
+                "resolved_symbol_size": 88
+              },
+              {
+                "source": 58708076,
+                "word": "0xebffffa4",
+                "target": 58707716,
+                "symbol": "arm7_low_store_trial",
+                "resolved_symbol_vma": 58707716,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708084,
+                "word": "0xebffffc2",
+                "target": 58707844,
+                "symbol": "arm7_high_getter_trial",
+                "resolved_symbol_vma": 58707844,
+                "resolved_symbol_size": 128
+              },
+              {
+                "source": 58708096,
+                "word": "0xebffffa4",
+                "target": 58707736,
+                "symbol": "arm7_store_trial",
+                "resolved_symbol_vma": 58707736,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708104,
+                "word": "0xebffffa7",
+                "target": 58707756,
+                "symbol": "arm7_low_getter_trial",
+                "resolved_symbol_vma": 58707756,
+                "resolved_symbol_size": 88
+              },
+              {
+                "source": 58708116,
+                "word": "0xebffff9a",
+                "target": 58707716,
+                "symbol": "arm7_low_store_trial",
+                "resolved_symbol_vma": 58707716,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708124,
+                "word": "0xebffffb8",
+                "target": 58707844,
+                "symbol": "arm7_high_getter_trial",
+                "resolved_symbol_vma": 58707844,
+                "resolved_symbol_size": 128
+              },
+              {
+                "source": 58708136,
+                "word": "0xebffff9a",
+                "target": 58707736,
+                "symbol": "arm7_store_trial",
+                "resolved_symbol_vma": 58707736,
+                "resolved_symbol_size": 20
+              },
+              {
+                "source": 58708144,
+                "word": "0xebffff9d",
+                "target": 58707756,
+                "symbol": "arm7_low_getter_trial",
+                "resolved_symbol_vma": 58707756,
+                "resolved_symbol_size": 88
+              },
+              {
+                "source": 58708156,
+                "word": "0xebffff90",
+                "target": 58707716,
+                "symbol": "arm7_low_store_trial",
+                "resolved_symbol_vma": 58707716,
+                "resolved_symbol_size": 20
+              }
+            ],
+            "native_command": {
+              "argv": [
+                "/opt/homebrew/bin/ld.lld",
+                "-m",
+                "armelf",
+                "--nmagic",
+                "-T",
+                "positive.ld",
+                "-Map",
+                "positive.map",
+                "-o",
+                "positive.elf",
+                "startup.o",
+                "table.o",
+                "autoload1.o",
+                "prefix.o",
+                "lower_store.o",
+                "upper_store.o",
+                "lower_getter.o",
+                "upper_getter.o",
+                "lower_load.o",
+                "upper_load.o",
+                "initializer.o",
+                "suffix.o",
+                "bss0.o"
+              ],
+              "returncode": 0,
+              "stdout": "",
+              "stderr": ""
+            },
+            "actual_inputs_sha256": {
+              "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+              "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+              "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+              "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+              "lower_store.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+              "upper_store.o": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+              "lower_getter.o": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+              "upper_getter.o": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+              "lower_load.o": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+              "upper_load.o": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+              "initializer.o": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+              "suffix.o": "a31de54e6844ad558eb7c4a7c5637a75e3ec5f6a4220b50b21120a607fcbd37b",
+              "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+            },
+            "map_sha256": "c5c415e952ec7e1090fcfad089cf47b879ad70e2448fe5bad4f5ccb56e52ae77",
+            "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nhyp_subpriv_arena_lo = 0x027f9c08;\nhyp_wram_arena_lo = 0x0380bc90;\nhyp_irq_stack_size = 0x00000400;\nhyp_system_stack_size = 0x00000400;\nhyp_arena_initialized = 0x03808430;\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __lower_store_start = .; lower_store.o(.text) __lower_store_end = .; __upper_store_start = .; upper_store.o(.text) __upper_store_end = .; __lower_getter_start = .; lower_getter.o(.text) __lower_getter_end = .; __upper_getter_start = .; upper_getter.o(.text) __upper_getter_end = .; __lower_load_start = .; lower_load.o(.text) __lower_load_end = .; __upper_load_start = .; upper_load.o(.text) __upper_load_end = .; __initializer_start = .; initializer.o(.text) __initializer_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n/DISCARD/ : { *(.exceptix) }\n}\nASSERT(__lower_store_start == 58707716, \"getter lower_store start\")\nASSERT(__lower_store_end == 58707736, \"getter lower_store end\")\nASSERT(__lower_store_end - __lower_store_start == 20, \"getter lower_store size\")\nASSERT(__upper_store_start == 58707736, \"getter upper_store start\")\nASSERT(__upper_store_end == 58707756, \"getter upper_store end\")\nASSERT(__upper_store_end - __upper_store_start == 20, \"getter upper_store size\")\nASSERT(__lower_getter_start == 58707756, \"getter lower_getter start\")\nASSERT(__lower_getter_end == 58707844, \"getter lower_getter end\")\nASSERT(__lower_getter_end - __lower_getter_start == 88, \"getter lower_getter size\")\nASSERT(__upper_getter_start == 58707844, \"getter upper_getter start\")\nASSERT(__upper_getter_end == 58707972, \"getter upper_getter end\")\nASSERT(__upper_getter_end - __upper_getter_start == 128, \"getter upper_getter size\")\nASSERT(__lower_load_start == 58707972, \"getter lower_load start\")\nASSERT(__lower_load_end == 58707992, \"getter lower_load end\")\nASSERT(__lower_load_end - __lower_load_start == 20, \"getter lower_load size\")\nASSERT(__upper_load_start == 58707992, \"getter upper_load start\")\nASSERT(__upper_load_end == 58708012, \"getter upper_load end\")\nASSERT(__upper_load_end - __upper_load_start == 20, \"getter upper_load size\")\nASSERT(__initializer_start == 58708012, \"getter initializer start\")\nASSERT(__initializer_end == 58708176, \"getter initializer end\")\nASSERT(__initializer_end - __initializer_start == 164, \"getter initializer size\")\n",
+            "linker_script_sha256": "6df5a38610547aca91a6dec49a8212f8f17a8073d5e27da3aa00804f4eb6be75"
+          }
+        }
+      ],
+      "candidates": [
+        {
+          "role": "lower_store",
+          "source": "low_store_trial.c",
+          "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+          "vma": 58707716,
+          "bytes": 20,
+          "recipe": "build82_O4s",
+          "original_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "compile_command": {
+            "argv": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+              "-proc",
+              "arm7tdmi",
+              "-nothumb",
+              "-interworking",
+              "-nostdinc",
+              "-O4,s",
+              "-c",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/low_store_trial.c",
+              "-o",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/lower_store.o"
+            ],
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "elf": {
+            "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "object_bytes": 512,
+            "flags": 34603008,
+            "sections": [
+              {
+                "index": 0,
+                "name": "",
+                "type": 0,
+                "flags": 0,
+                "offset": 0,
+                "size": 0,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 1,
+                "name": ".symtab",
+                "type": 2,
+                "flags": 0,
+                "offset": 64,
+                "size": 48,
+                "link": 2,
+                "info": 2,
+                "alignment": 0,
+                "entry_size": 16
+              },
+              {
+                "index": 2,
+                "name": ".strtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 112,
+                "size": 25,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 3,
+                "name": ".shstrtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 144,
+                "size": 42,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 4,
+                "name": ".comment",
+                "type": 1,
+                "flags": 0,
+                "offset": 192,
+                "size": 34,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 5,
+                "name": ".text",
+                "type": 1,
+                "flags": 6,
+                "offset": 240,
+                "size": 20,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              }
+            ],
+            "symbols": [
+              {
+                "name": "",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "arm7_low_store_trial",
+                "value": 0,
+                "size": 20,
+                "binding": 1,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "trial_symbol": {
+              "name": "arm7_low_store_trial",
+              "value": 0,
+              "size": 20,
+              "binding": 1,
+              "type": 2,
+              "other": 0,
+              "section_index": 5
+            },
+            "mode": "Arm",
+            "mode_evidence": [
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "instruction_bytes": 20,
+            "pool_bytes": 0,
+            "text_hex": "0001a0e1270680e2ff0a80e2a01d80e51eff2fe1",
+            "relocations": [],
+            "discarded_section_relocations": []
+          }
+        },
+        {
+          "role": "upper_store",
+          "source": "store_trial.c",
+          "source_sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+          "vma": 58707736,
+          "bytes": 20,
+          "recipe": "build114_O4p",
+          "original_bytes_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "compile_command": {
+            "argv": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+              "-proc",
+              "arm7tdmi",
+              "-nothumb",
+              "-interworking",
+              "-nostdinc",
+              "-O4,p",
+              "-c",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/store_trial.c",
+              "-o",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/upper_store.o"
+            ],
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "elf": {
+            "object_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+            "object_bytes": 512,
+            "flags": 34603008,
+            "sections": [
+              {
+                "index": 0,
+                "name": "",
+                "type": 0,
+                "flags": 0,
+                "offset": 0,
+                "size": 0,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 1,
+                "name": ".symtab",
+                "type": 2,
+                "flags": 0,
+                "offset": 64,
+                "size": 48,
+                "link": 2,
+                "info": 2,
+                "alignment": 0,
+                "entry_size": 16
+              },
+              {
+                "index": 2,
+                "name": ".strtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 112,
+                "size": 21,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 3,
+                "name": ".shstrtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 144,
+                "size": 42,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 4,
+                "name": ".comment",
+                "type": 1,
+                "flags": 0,
+                "offset": 192,
+                "size": 35,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 5,
+                "name": ".text",
+                "type": 1,
+                "flags": 6,
+                "offset": 240,
+                "size": 20,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              }
+            ],
+            "symbols": [
+              {
+                "name": "",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "arm7_store_trial",
+                "value": 0,
+                "size": 20,
+                "binding": 1,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "trial_symbol": {
+              "name": "arm7_store_trial",
+              "value": 0,
+              "size": 20,
+              "binding": 1,
+              "type": 2,
+              "other": 0,
+              "section_index": 5
+            },
+            "mode": "Arm",
+            "mode_evidence": [
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "instruction_bytes": 20,
+            "pool_bytes": 0,
+            "text_hex": "0001a0e1270680e2ff0a80e2c41d80e51eff2fe1",
+            "relocations": [],
+            "discarded_section_relocations": []
+          }
+        },
+        {
+          "role": "lower_getter",
+          "source": "low_getter_trial.c",
+          "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+          "vma": 58707756,
+          "bytes": 88,
+          "recipe": "build82_O4s",
+          "original_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+          "compile_command": {
+            "argv": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+              "-proc",
+              "arm7tdmi",
+              "-nothumb",
+              "-interworking",
+              "-nostdinc",
+              "-O4,s",
+              "-c",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/low_getter_trial.c",
+              "-o",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/lower_getter.o"
+            ],
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "elf": {
+            "object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "object_bytes": 760,
+            "flags": 34603008,
+            "sections": [
+              {
+                "index": 0,
+                "name": "",
+                "type": 0,
+                "flags": 0,
+                "offset": 0,
+                "size": 0,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 1,
+                "name": ".symtab",
+                "type": 2,
+                "flags": 0,
+                "offset": 64,
+                "size": 96,
+                "link": 2,
+                "info": 3,
+                "alignment": 0,
+                "entry_size": 16
+              },
+              {
+                "index": 2,
+                "name": ".strtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 160,
+                "size": 68,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 3,
+                "name": ".shstrtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 240,
+                "size": 53,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 4,
+                "name": ".comment",
+                "type": 1,
+                "flags": 0,
+                "offset": 304,
+                "size": 34,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 5,
+                "name": ".text",
+                "type": 1,
+                "flags": 6,
+                "offset": 352,
+                "size": 88,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              },
+              {
+                "index": 6,
+                "name": ".rela.text",
+                "type": 4,
+                "flags": 0,
+                "offset": 448,
+                "size": 24,
+                "link": 1,
+                "info": 5,
+                "alignment": 0,
+                "entry_size": 12
+              }
+            ],
+            "symbols": [
+              {
+                "name": "",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "$d",
+                "value": 80,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "arm7_low_getter_trial",
+                "value": 0,
+                "size": 88,
+                "binding": 1,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "hyp_subpriv_arena_lo",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "hyp_wram_arena_lo",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              }
+            ],
+            "trial_symbol": {
+              "name": "arm7_low_getter_trial",
+              "value": 0,
+              "size": 88,
+              "binding": 1,
+              "type": 2,
+              "other": 0,
+              "section_index": 5
+            },
+            "mode": "Arm",
+            "mode_evidence": [
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "$d",
+                "value": 80,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "instruction_bytes": 80,
+            "pool_bytes": 8,
+            "text_hex": "010050e30400000a070050e30400000a080050e30600000a0a0000ea2c009fe51eff2fe128009fe50e0550e30e05a0831eff2fe10e05a0e314109fe50e0551e30100a0811eff2fe10000a0e31eff2fe10000000000000000",
+            "relocations": [
+              {
+                "section": ".rela.text",
+                "offset": 80,
+                "type": 2,
+                "symbol": "hyp_subpriv_arena_lo",
+                "addend": 0
+              },
+              {
+                "section": ".rela.text",
+                "offset": 84,
+                "type": 2,
+                "symbol": "hyp_wram_arena_lo",
+                "addend": 0
+              }
+            ],
+            "discarded_section_relocations": []
+          }
+        },
+        {
+          "role": "upper_getter",
+          "source": "high_getter_trial.c",
+          "source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+          "vma": 58707844,
+          "bytes": 128,
+          "recipe": "build82_O4s",
+          "original_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+          "compile_command": {
+            "argv": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+              "-proc",
+              "arm7tdmi",
+              "-nothumb",
+              "-interworking",
+              "-nostdinc",
+              "-O4,s",
+              "-c",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/high_getter_trial.c",
+              "-o",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/upper_getter.o"
+            ],
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "elf": {
+            "object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "object_bytes": 840,
+            "flags": 34603008,
+            "sections": [
+              {
+                "index": 0,
+                "name": "",
+                "type": 0,
+                "flags": 0,
+                "offset": 0,
+                "size": 0,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 1,
+                "name": ".symtab",
+                "type": 2,
+                "flags": 0,
+                "offset": 64,
+                "size": 112,
+                "link": 2,
+                "info": 3,
+                "alignment": 0,
+                "entry_size": 16
+              },
+              {
+                "index": 2,
+                "name": ".strtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 176,
+                "size": 89,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 3,
+                "name": ".shstrtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 272,
+                "size": 53,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 4,
+                "name": ".comment",
+                "type": 1,
+                "flags": 0,
+                "offset": 336,
+                "size": 34,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 5,
+                "name": ".text",
+                "type": 1,
+                "flags": 6,
+                "offset": 384,
+                "size": 128,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              },
+              {
+                "index": 6,
+                "name": ".rela.text",
+                "type": 4,
+                "flags": 0,
+                "offset": 512,
+                "size": 36,
+                "link": 1,
+                "info": 5,
+                "alignment": 0,
+                "entry_size": 12
+              }
+            ],
+            "symbols": [
+              {
+                "name": "",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "$d",
+                "value": 108,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "arm7_high_getter_trial",
+                "value": 0,
+                "size": 128,
+                "binding": 1,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "hyp_irq_stack_size",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "hyp_wram_arena_lo",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "hyp_system_stack_size",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              }
+            ],
+            "trial_symbol": {
+              "name": "arm7_high_getter_trial",
+              "value": 0,
+              "size": 128,
+              "binding": 1,
+              "type": 2,
+              "other": 0,
+              "section_index": 5
+            },
+            "mode": "Arm",
+            "mode_evidence": [
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "$d",
+                "value": 108,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "instruction_bytes": 108,
+            "pool_bytes": 20,
+            "text_hex": "010050e30400000a070050e30400000a080050e30400000a110000ea48009fe51eff2fe10e05a0e31eff2fe13c109fe53c009fe5012040e00e05a0e334109fe50e0551e30100a0812c109fe5000051e31eff2f01000051e3010040b0010042a01eff2fe10000a0e31eff2fe100f07f020000000080ff80030000000000000000",
+            "relocations": [
+              {
+                "section": ".rela.text",
+                "offset": 112,
+                "type": 2,
+                "symbol": "hyp_irq_stack_size",
+                "addend": 0
+              },
+              {
+                "section": ".rela.text",
+                "offset": 120,
+                "type": 2,
+                "symbol": "hyp_wram_arena_lo",
+                "addend": 0
+              },
+              {
+                "section": ".rela.text",
+                "offset": 124,
+                "type": 2,
+                "symbol": "hyp_system_stack_size",
+                "addend": 0
+              }
+            ],
+            "discarded_section_relocations": []
+          }
+        },
+        {
+          "role": "lower_load",
+          "source": "low_load_trial.c",
+          "source_sha256": "2c264ddcef93585dbd3f0e938feef537eece386c50f899bf9db1b5aa0df92de1",
+          "vma": 58707972,
+          "bytes": 20,
+          "recipe": "build82_O4s",
+          "original_bytes_sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+          "compile_command": {
+            "argv": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+              "-proc",
+              "arm7tdmi",
+              "-nothumb",
+              "-interworking",
+              "-nostdinc",
+              "-O4,s",
+              "-c",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/low_load_trial.c",
+              "-o",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/lower_load.o"
+            ],
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "elf": {
+            "object_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+            "object_bytes": 512,
+            "flags": 34603008,
+            "sections": [
+              {
+                "index": 0,
+                "name": "",
+                "type": 0,
+                "flags": 0,
+                "offset": 0,
+                "size": 0,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 1,
+                "name": ".symtab",
+                "type": 2,
+                "flags": 0,
+                "offset": 64,
+                "size": 48,
+                "link": 2,
+                "info": 2,
+                "alignment": 0,
+                "entry_size": 16
+              },
+              {
+                "index": 2,
+                "name": ".strtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 112,
+                "size": 24,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 3,
+                "name": ".shstrtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 144,
+                "size": 42,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 4,
+                "name": ".comment",
+                "type": 1,
+                "flags": 0,
+                "offset": 192,
+                "size": 34,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 5,
+                "name": ".text",
+                "type": 1,
+                "flags": 6,
+                "offset": 240,
+                "size": 20,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              }
+            ],
+            "symbols": [
+              {
+                "name": "",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "arm7_low_load_trial",
+                "value": 0,
+                "size": 20,
+                "binding": 1,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "trial_symbol": {
+              "name": "arm7_low_load_trial",
+              "value": 0,
+              "size": 20,
+              "binding": 1,
+              "type": 2,
+              "other": 0,
+              "section_index": 5
+            },
+            "mode": "Arm",
+            "mode_evidence": [
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "instruction_bytes": 20,
+            "pool_bytes": 0,
+            "text_hex": "0001a0e1270680e2ff0a80e2a00d90e51eff2fe1",
+            "relocations": [],
+            "discarded_section_relocations": []
+          }
+        },
+        {
+          "role": "upper_load",
+          "source": "high_load_trial.c",
+          "source_sha256": "e6a1f9bb097ff25b1e91c9e14040a90cbebeeb1a0d14248124d116c05a4e0ce8",
+          "vma": 58707992,
+          "bytes": 20,
+          "recipe": "build82_O4s",
+          "original_bytes_sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+          "compile_command": {
+            "argv": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+              "-proc",
+              "arm7tdmi",
+              "-nothumb",
+              "-interworking",
+              "-nostdinc",
+              "-O4,s",
+              "-c",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/high_load_trial.c",
+              "-o",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/upper_load.o"
+            ],
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "elf": {
+            "object_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+            "object_bytes": 512,
+            "flags": 34603008,
+            "sections": [
+              {
+                "index": 0,
+                "name": "",
+                "type": 0,
+                "flags": 0,
+                "offset": 0,
+                "size": 0,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 1,
+                "name": ".symtab",
+                "type": 2,
+                "flags": 0,
+                "offset": 64,
+                "size": 48,
+                "link": 2,
+                "info": 2,
+                "alignment": 0,
+                "entry_size": 16
+              },
+              {
+                "index": 2,
+                "name": ".strtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 112,
+                "size": 25,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 3,
+                "name": ".shstrtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 144,
+                "size": 42,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 4,
+                "name": ".comment",
+                "type": 1,
+                "flags": 0,
+                "offset": 192,
+                "size": 34,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 5,
+                "name": ".text",
+                "type": 1,
+                "flags": 6,
+                "offset": 240,
+                "size": 20,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              }
+            ],
+            "symbols": [
+              {
+                "name": "",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "arm7_high_load_trial",
+                "value": 0,
+                "size": 20,
+                "binding": 1,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "trial_symbol": {
+              "name": "arm7_high_load_trial",
+              "value": 0,
+              "size": 20,
+              "binding": 1,
+              "type": 2,
+              "other": 0,
+              "section_index": 5
+            },
+            "mode": "Arm",
+            "mode_evidence": [
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 5
+              }
+            ],
+            "instruction_bytes": 20,
+            "pool_bytes": 0,
+            "text_hex": "0001a0e1270680e2ff0a80e2c40d90e51eff2fe1",
+            "relocations": [],
+            "discarded_section_relocations": []
+          }
+        },
+        {
+          "role": "initializer",
+          "source": "arena_init_trial.c",
+          "source_sha256": "b014099daa3d3dc1e2a14ca39a434726946067f448ff0e92ae5c2393bb44507e",
+          "vma": 58708012,
+          "bytes": 164,
+          "recipe": "build82_O4s",
+          "original_bytes_sha256": "54cb8e8a1a8de738953161cb6b01cc1a534c6de00c293acd6ff115e5373a4e26",
+          "compile_command": {
+            "argv": [
+              "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+              "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+              "-proc",
+              "arm7tdmi",
+              "-nothumb",
+              "-interworking",
+              "-nostdinc",
+              "-O4,s",
+              "-c",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/arena_init_trial.c",
+              "-o",
+              "/private/tmp/jus-arm7-arena-rom-worker-proof/eol-fresh-replay/trial/initializer.o"
+            ],
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "elf": {
+            "object_sha256": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+            "object_bytes": 1240,
+            "flags": 34603008,
+            "sections": [
+              {
+                "index": 0,
+                "name": "",
+                "type": 0,
+                "flags": 0,
+                "offset": 0,
+                "size": 0,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 1,
+                "name": ".symtab",
+                "type": 2,
+                "flags": 0,
+                "offset": 64,
+                "size": 160,
+                "link": 2,
+                "info": 4,
+                "alignment": 0,
+                "entry_size": 16
+              },
+              {
+                "index": 2,
+                "name": ".strtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 224,
+                "size": 160,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 3,
+                "name": ".shstrtab",
+                "type": 3,
+                "flags": 0,
+                "offset": 384,
+                "size": 78,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 4,
+                "name": ".comment",
+                "type": 1,
+                "flags": 0,
+                "offset": 464,
+                "size": 34,
+                "link": 0,
+                "info": 0,
+                "alignment": 0,
+                "entry_size": 0
+              },
+              {
+                "index": 5,
+                "name": ".exceptix",
+                "type": 1,
+                "flags": 2,
+                "offset": 512,
+                "size": 12,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              },
+              {
+                "index": 6,
+                "name": ".rela.exceptix",
+                "type": 4,
+                "flags": 0,
+                "offset": 528,
+                "size": 12,
+                "link": 1,
+                "info": 5,
+                "alignment": 0,
+                "entry_size": 12
+              },
+              {
+                "index": 7,
+                "name": ".text",
+                "type": 1,
+                "flags": 6,
+                "offset": 544,
+                "size": 164,
+                "link": 0,
+                "info": 0,
+                "alignment": 4,
+                "entry_size": 0
+              },
+              {
+                "index": 8,
+                "name": ".rela.text",
+                "type": 4,
+                "flags": 0,
+                "offset": 720,
+                "size": 156,
+                "link": 1,
+                "info": 7,
+                "alignment": 0,
+                "entry_size": 12
+              }
+            ],
+            "symbols": [
+              {
+                "name": "",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 7
+              },
+              {
+                "name": "$d",
+                "value": 160,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 7
+              },
+              {
+                "name": "@EX@arm7_arena_init_trial",
+                "value": 0,
+                "size": 12,
+                "binding": 0,
+                "type": 1,
+                "other": 0,
+                "section_index": 5
+              },
+              {
+                "name": "arm7_arena_init_trial",
+                "value": 0,
+                "size": 164,
+                "binding": 1,
+                "type": 2,
+                "other": 0,
+                "section_index": 7
+              },
+              {
+                "name": "arm7_high_getter_trial",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "arm7_store_trial",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "arm7_low_getter_trial",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "arm7_low_store_trial",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              },
+              {
+                "name": "hyp_arena_initialized",
+                "value": 0,
+                "size": 0,
+                "binding": 1,
+                "type": 0,
+                "other": 0,
+                "section_index": 0
+              }
+            ],
+            "trial_symbol": {
+              "name": "arm7_arena_init_trial",
+              "value": 0,
+              "size": 164,
+              "binding": 1,
+              "type": 2,
+              "other": 0,
+              "section_index": 7
+            },
+            "mode": "Arm",
+            "mode_evidence": [
+              {
+                "name": "$a",
+                "value": 0,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 7
+              },
+              {
+                "name": "$d",
+                "value": 160,
+                "size": 0,
+                "binding": 0,
+                "type": 2,
+                "other": 0,
+                "section_index": 7
+              }
+            ],
+            "instruction_bytes": 160,
+            "pool_bytes": 4,
+            "text_hex": "00402de904d04de290109fe5000091e5000050e31e00001a0100a0e3000081e5000000eb0010a0e10100a0e3000000eb0100a0e3000000eb0010a0e10100a0e3000000eb0700a0e3000000eb0010a0e10700a0e3000000eb0700a0e3000000eb0010a0e10700a0e3000000eb0800a0e3000000eb0010a0e10800a0e3000000eb0800a0e3000000eb0010a0e10800a0e3000000eb04d08de20040bde81eff2fe100000000",
+            "relocations": [
+              {
+                "section": ".rela.text",
+                "offset": 32,
+                "type": 1,
+                "symbol": "arm7_high_getter_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 44,
+                "type": 1,
+                "symbol": "arm7_store_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 52,
+                "type": 1,
+                "symbol": "arm7_low_getter_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 64,
+                "type": 1,
+                "symbol": "arm7_low_store_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 72,
+                "type": 1,
+                "symbol": "arm7_high_getter_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 84,
+                "type": 1,
+                "symbol": "arm7_store_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 92,
+                "type": 1,
+                "symbol": "arm7_low_getter_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 104,
+                "type": 1,
+                "symbol": "arm7_low_store_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 112,
+                "type": 1,
+                "symbol": "arm7_high_getter_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 124,
+                "type": 1,
+                "symbol": "arm7_store_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 132,
+                "type": 1,
+                "symbol": "arm7_low_getter_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 144,
+                "type": 1,
+                "symbol": "arm7_low_store_trial",
+                "addend": -8
+              },
+              {
+                "section": ".rela.text",
+                "offset": 160,
+                "type": 2,
+                "symbol": "hyp_arena_initialized",
+                "addend": 0
+              }
+            ],
+            "discarded_section_relocations": [
+              {
+                "section": ".rela.exceptix",
+                "offset": 0,
+                "type": 2,
+                "symbol": "arm7_arena_init_trial",
+                "addend": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "started_ns": 1791246443553681000,
+    "finished_ns": 1791246459662584000
+  },
+  "tests": {
+    "count": 11,
+    "seconds": 170.739,
+    "status": "passed",
+    "log": "green-tests.log"
+  },
+  "publication_regression": {
+    "actual_red_failures": 3,
+    "targets": [
+      "research.nds",
+      "module-checkpoint.json",
+      "trial-proof.json"
+    ],
+    "log": "red-late-publication.log",
+    "fixed_control_status": "passed",
+    "published_log_trailing_whitespace_trimmed": true
+  },
+  "replay_reads_saved_worker_result": false,
+  "binaries_and_original_ROM_published": false,
+  "canonical_code_approvals_and_old_capsules_modified": false,
+  "checkout_provenance": {
+    "status": "passed",
+    "converted_inputs": 47,
+    "repository_inputs": 119,
+    "attributes_modified": false,
+    "canonical_input_bytes_modified": false,
+    "readback": "checkout-eol.json",
+    "focused_test_count": 1,
+    "seconds": 1.513,
+    "red_log": "red-checkout-eol.log",
+    "green_log": "green-checkout-eol.log",
+    "original_gate_failure_commit": "bbfae51c3f1843d1d3d79bf95284325e5ba99bf4"
+  }
+}

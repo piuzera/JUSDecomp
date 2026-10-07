@@ -1,0 +1,8 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.42s
+     Running tests/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/deps/arm7_physical_baseline-af6a7e4b2a3cc3c0)
+
+running 1 test
+test validated_elf_and_reconstructed_image_cannot_be_replaced_before_publication ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 20.09s

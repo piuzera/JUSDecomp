@@ -1,0 +1,7 @@
+test_layout_and_complete_object_preserve_original_constructor_contract (test_common_effect_constructor.CommonEffectConstructor.test_layout_and_complete_object_preserve_original_constructor_contract) ... ok
+test_published_constructor_source_exists (test_common_effect_constructor.CommonEffectConstructor.test_published_constructor_source_exists) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.287s
+
+OK

@@ -1,0 +1,15 @@
+test_declared_checkout_bytes_match_git_blobs (test_rom.CheckoutPins.test_declared_checkout_bytes_match_git_blobs) ... FAIL
+
+======================================================================
+FAIL: test_declared_checkout_bytes_match_git_blobs (test_rom.CheckoutPins.test_declared_checkout_bytes_match_git_blobs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-rom-trial/decomp/matching-notes/other-cpus/arm7-arena-rom-proof/test_rom.py", line 204, in test_declared_checkout_bytes_match_git_blobs
+    self.assertTrue(owner.is_file(),'the47 consumed CRLF inputs require explicit Git-blob provenance')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : the47 consumed CRLF inputs require explicit Git-blob provenance
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

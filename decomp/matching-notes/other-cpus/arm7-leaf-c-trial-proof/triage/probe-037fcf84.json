@@ -1,0 +1,3304 @@
+{
+  "arm7_binary_baseline_complete": false,
+  "executable_coverage_established": false,
+  "function_extents_established": false,
+  "inputs_unchanged": true,
+  "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "original_relocations_established": false,
+  "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+  "programs": [
+    {
+      "graph": {
+        "edges": [
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707844,
+              "target": {
+                "address": 58707848,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 1
+            },
+            "source_condition": null,
+            "source_node": 0
+          },
+          {
+            "original": {
+              "guard": "condition_passed",
+              "kind": "branch",
+              "source": 58707848,
+              "target": {
+                "address": 58707872,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 7
+            },
+            "source_condition": "eq",
+            "source_node": 1
+          },
+          {
+            "original": {
+              "guard": "condition_failed",
+              "kind": "fallthrough",
+              "source": 58707848,
+              "target": {
+                "address": 58707852,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 2
+            },
+            "source_condition": "eq",
+            "source_node": 1
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707852,
+              "target": {
+                "address": 58707856,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 3
+            },
+            "source_condition": null,
+            "source_node": 2
+          },
+          {
+            "original": {
+              "guard": "condition_passed",
+              "kind": "branch",
+              "source": 58707856,
+              "target": {
+                "address": 58707880,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": "eq",
+            "source_node": 3
+          },
+          {
+            "original": {
+              "guard": "condition_failed",
+              "kind": "fallthrough",
+              "source": 58707856,
+              "target": {
+                "address": 58707860,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 4
+            },
+            "source_condition": "eq",
+            "source_node": 3
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707860,
+              "target": {
+                "address": 58707864,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 5
+            },
+            "source_condition": null,
+            "source_node": 4
+          },
+          {
+            "original": {
+              "guard": "condition_passed",
+              "kind": "branch",
+              "source": 58707864,
+              "target": {
+                "address": 58707888,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": "eq",
+            "source_node": 5
+          },
+          {
+            "original": {
+              "guard": "condition_failed",
+              "kind": "fallthrough",
+              "source": 58707864,
+              "target": {
+                "address": 58707868,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 6
+            },
+            "source_condition": "eq",
+            "source_node": 5
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "branch",
+              "source": 58707868,
+              "target": {
+                "address": 58707944,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": null,
+            "source_node": 6
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707872,
+              "target": {
+                "address": 58707876,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "parent"
+                      },
+                      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": null,
+            "source_node": 7
+          }
+        ],
+        "nodes": [
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707844,
+              "byte_len": 4,
+              "condition": null,
+              "text": "cmp r0, #0x1"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707848,
+              "byte_len": 4,
+              "condition": "eq",
+              "text": "beq #0x18"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707852,
+              "byte_len": 4,
+              "condition": null,
+              "text": "cmp r0, #0x7"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707856,
+              "byte_len": 4,
+              "condition": "eq",
+              "text": "beq #0x18"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707860,
+              "byte_len": 4,
+              "condition": null,
+              "text": "cmp r0, #0x8"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707864,
+              "byte_len": 4,
+              "condition": "eq",
+              "text": "beq #0x18"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707868,
+              "byte_len": 4,
+              "condition": null,
+              "text": "b #0x4c"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707872,
+              "byte_len": 4,
+              "condition": null,
+              "text": "ldr r0, [pc, #0x48]"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          }
+        ],
+        "observations": [
+          {
+            "executability": "unknown",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instructions": [
+              {
+                "address": 58707844,
+                "byte_len": 4,
+                "condition": null,
+                "text": "cmp r0, #0x1"
+              },
+              {
+                "address": 58707848,
+                "byte_len": 4,
+                "condition": "eq",
+                "text": "beq #0x18"
+              },
+              {
+                "address": 58707852,
+                "byte_len": 4,
+                "condition": null,
+                "text": "cmp r0, #0x7"
+              },
+              {
+                "address": 58707856,
+                "byte_len": 4,
+                "condition": "eq",
+                "text": "beq #0x18"
+              },
+              {
+                "address": 58707860,
+                "byte_len": 4,
+                "condition": null,
+                "text": "cmp r0, #0x8"
+              },
+              {
+                "address": 58707864,
+                "byte_len": 4,
+                "condition": "eq",
+                "text": "beq #0x18"
+              },
+              {
+                "address": 58707868,
+                "byte_len": 4,
+                "condition": null,
+                "text": "b #0x4c"
+              },
+              {
+                "address": 58707872,
+                "byte_len": 4,
+                "condition": null,
+                "text": "ldr r0, [pc, #0x48]"
+              }
+            ],
+            "selection": {
+              "mode": "Arm",
+              "span": {
+                "end": 58707876,
+                "start": 58707844
+              }
+            },
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            },
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707848,
+                "target": {
+                  "address": 58707872,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707856,
+                "target": {
+                  "address": 58707880,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707856,
+                "target": {
+                  "address": 58707860,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707860,
+                "target": {
+                  "address": 58707864,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707864,
+                "target": {
+                  "address": 58707888,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707864,
+                "target": {
+                  "address": 58707868,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "branch",
+                "source": 58707868,
+                "target": {
+                  "address": 58707944,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707872,
+                "target": {
+                  "address": 58707876,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          }
+        ],
+        "program": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "parent"
+          },
+          "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+        },
+        "roots": [
+          {
+            "address": 58707844,
+            "assumption": "Explicit leaf-triage ARM-mode candidate; entry and execution unproven",
+            "edge_examinations": 11,
+            "frontiers": [
+              {
+                "edge": 10,
+                "kind": "edge"
+              },
+              {
+                "edge": 4,
+                "kind": "edge"
+              },
+              {
+                "edge": 7,
+                "kind": "edge"
+              },
+              {
+                "edge": 9,
+                "kind": "edge"
+              }
+            ],
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "parent"
+                },
+                "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "mode": "Arm",
+            "predecessors": [
+              {
+                "kind": "root"
+              },
+              {
+                "edge": 0,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 2,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 3,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 5,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 6,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 8,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 1,
+                "kind": "via_edge"
+              }
+            ],
+            "visited_nodes": [
+              0,
+              1,
+              7,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ],
+        "scope": "root_assumed_selected_interpretations"
+      },
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "witnesses": [
+        [
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707848,
+                "target": {
+                  "address": 58707872,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707872,
+                "target": {
+                  "address": 58707876,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          },
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707856,
+                "target": {
+                  "address": 58707880,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          },
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707856,
+                "target": {
+                  "address": 58707860,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707860,
+                "target": {
+                  "address": 58707864,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707864,
+                "target": {
+                  "address": 58707888,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          },
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707856,
+                "target": {
+                  "address": 58707860,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707860,
+                "target": {
+                  "address": 58707864,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707864,
+                "target": {
+                  "address": 58707868,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "branch",
+                "source": 58707868,
+                "target": {
+                  "address": 58707944,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "parent"
+                        },
+                        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "graph": {
+        "edges": [
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707844,
+              "target": {
+                "address": 58707848,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 1
+            },
+            "source_condition": null,
+            "source_node": 0
+          },
+          {
+            "original": {
+              "guard": "condition_passed",
+              "kind": "branch",
+              "source": 58707848,
+              "target": {
+                "address": 58707872,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 7
+            },
+            "source_condition": "eq",
+            "source_node": 1
+          },
+          {
+            "original": {
+              "guard": "condition_failed",
+              "kind": "fallthrough",
+              "source": 58707848,
+              "target": {
+                "address": 58707852,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 2
+            },
+            "source_condition": "eq",
+            "source_node": 1
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707852,
+              "target": {
+                "address": 58707856,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 3
+            },
+            "source_condition": null,
+            "source_node": 2
+          },
+          {
+            "original": {
+              "guard": "condition_passed",
+              "kind": "branch",
+              "source": 58707856,
+              "target": {
+                "address": 58707880,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": "eq",
+            "source_node": 3
+          },
+          {
+            "original": {
+              "guard": "condition_failed",
+              "kind": "fallthrough",
+              "source": 58707856,
+              "target": {
+                "address": 58707860,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 4
+            },
+            "source_condition": "eq",
+            "source_node": 3
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707860,
+              "target": {
+                "address": 58707864,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 5
+            },
+            "source_condition": null,
+            "source_node": 4
+          },
+          {
+            "original": {
+              "guard": "condition_passed",
+              "kind": "branch",
+              "source": 58707864,
+              "target": {
+                "address": 58707888,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": "eq",
+            "source_node": 5
+          },
+          {
+            "original": {
+              "guard": "condition_failed",
+              "kind": "fallthrough",
+              "source": 58707864,
+              "target": {
+                "address": 58707868,
+                "boundary": "instruction_start",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "selected",
+              "node": 6
+            },
+            "source_condition": "eq",
+            "source_node": 5
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "branch",
+              "source": 58707868,
+              "target": {
+                "address": 58707944,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": null,
+            "source_node": 6
+          },
+          {
+            "original": {
+              "guard": "always",
+              "kind": "fallthrough",
+              "source": 58707872,
+              "target": {
+                "address": 58707876,
+                "boundary": "outside_selection",
+                "kind": "address",
+                "mapping": {
+                  "identity": {
+                    "cpu": "arm7",
+                    "program": {
+                      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                      "program": {
+                        "kind": "nitro_fs",
+                        "path": "ChildRom/JSS2Child.srl"
+                      },
+                      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                    },
+                    "region": {
+                      "autoload": 0
+                    }
+                  },
+                  "kind": "initialized"
+                },
+                "mode": "Arm"
+              }
+            },
+            "resolution": {
+              "kind": "frontier",
+              "reason": "outside_selection"
+            },
+            "source_condition": null,
+            "source_node": 7
+          }
+        ],
+        "nodes": [
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707844,
+              "byte_len": 4,
+              "condition": null,
+              "text": "cmp r0, #0x1"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707848,
+              "byte_len": 4,
+              "condition": "eq",
+              "text": "beq #0x18"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707852,
+              "byte_len": 4,
+              "condition": null,
+              "text": "cmp r0, #0x7"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707856,
+              "byte_len": 4,
+              "condition": "eq",
+              "text": "beq #0x18"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707860,
+              "byte_len": 4,
+              "condition": null,
+              "text": "cmp r0, #0x8"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707864,
+              "byte_len": 4,
+              "condition": "eq",
+              "text": "beq #0x18"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707868,
+              "byte_len": 4,
+              "condition": null,
+              "text": "b #0x4c"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          },
+          {
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instruction": {
+              "address": 58707872,
+              "byte_len": 4,
+              "condition": null,
+              "text": "ldr r0, [pc, #0x48]"
+            },
+            "mode": "Arm",
+            "mode_conflict": false
+          }
+        ],
+        "observations": [
+          {
+            "executability": "unknown",
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "instructions": [
+              {
+                "address": 58707844,
+                "byte_len": 4,
+                "condition": null,
+                "text": "cmp r0, #0x1"
+              },
+              {
+                "address": 58707848,
+                "byte_len": 4,
+                "condition": "eq",
+                "text": "beq #0x18"
+              },
+              {
+                "address": 58707852,
+                "byte_len": 4,
+                "condition": null,
+                "text": "cmp r0, #0x7"
+              },
+              {
+                "address": 58707856,
+                "byte_len": 4,
+                "condition": "eq",
+                "text": "beq #0x18"
+              },
+              {
+                "address": 58707860,
+                "byte_len": 4,
+                "condition": null,
+                "text": "cmp r0, #0x8"
+              },
+              {
+                "address": 58707864,
+                "byte_len": 4,
+                "condition": "eq",
+                "text": "beq #0x18"
+              },
+              {
+                "address": 58707868,
+                "byte_len": 4,
+                "condition": null,
+                "text": "b #0x4c"
+              },
+              {
+                "address": 58707872,
+                "byte_len": 4,
+                "condition": null,
+                "text": "ldr r0, [pc, #0x48]"
+              }
+            ],
+            "selection": {
+              "mode": "Arm",
+              "span": {
+                "end": 58707876,
+                "start": 58707844
+              }
+            },
+            "target": {
+              "cpu": "arm7",
+              "isa": "armv4t",
+              "processor": "arm7tdmi"
+            },
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707848,
+                "target": {
+                  "address": 58707872,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707856,
+                "target": {
+                  "address": 58707880,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707856,
+                "target": {
+                  "address": 58707860,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707860,
+                "target": {
+                  "address": 58707864,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707864,
+                "target": {
+                  "address": 58707888,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707864,
+                "target": {
+                  "address": 58707868,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "branch",
+                "source": 58707868,
+                "target": {
+                  "address": 58707944,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707872,
+                "target": {
+                  "address": 58707876,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          }
+        ],
+        "program": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "nitro_fs",
+            "path": "ChildRom/JSS2Child.srl"
+          },
+          "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+        },
+        "roots": [
+          {
+            "address": 58707844,
+            "assumption": "Explicit leaf-triage ARM-mode candidate; entry and execution unproven",
+            "edge_examinations": 11,
+            "frontiers": [
+              {
+                "edge": 10,
+                "kind": "edge"
+              },
+              {
+                "edge": 4,
+                "kind": "edge"
+              },
+              {
+                "edge": 7,
+                "kind": "edge"
+              },
+              {
+                "edge": 9,
+                "kind": "edge"
+              }
+            ],
+            "identity": {
+              "cpu": "arm7",
+              "program": {
+                "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                "program": {
+                  "kind": "nitro_fs",
+                  "path": "ChildRom/JSS2Child.srl"
+                },
+                "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+              },
+              "region": {
+                "autoload": 0
+              }
+            },
+            "mode": "Arm",
+            "predecessors": [
+              {
+                "kind": "root"
+              },
+              {
+                "edge": 0,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 2,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 3,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 5,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 6,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 8,
+                "kind": "via_edge"
+              },
+              {
+                "edge": 1,
+                "kind": "via_edge"
+              }
+            ],
+            "visited_nodes": [
+              0,
+              1,
+              7,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ],
+        "scope": "root_assumed_selected_interpretations"
+      },
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "witnesses": [
+        [
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707848,
+                "target": {
+                  "address": 58707872,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707872,
+                "target": {
+                  "address": 58707876,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          },
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707856,
+                "target": {
+                  "address": 58707880,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          },
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707856,
+                "target": {
+                  "address": 58707860,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707860,
+                "target": {
+                  "address": 58707864,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_passed",
+                "kind": "branch",
+                "source": 58707864,
+                "target": {
+                  "address": 58707888,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          },
+          {
+            "reason": "outside_selection",
+            "transfers": [
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707844,
+                "target": {
+                  "address": 58707848,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707848,
+                "target": {
+                  "address": 58707852,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707852,
+                "target": {
+                  "address": 58707856,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707856,
+                "target": {
+                  "address": 58707860,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "fallthrough",
+                "source": 58707860,
+                "target": {
+                  "address": 58707864,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "condition_failed",
+                "kind": "fallthrough",
+                "source": 58707864,
+                "target": {
+                  "address": 58707868,
+                  "boundary": "instruction_start",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              },
+              {
+                "guard": "always",
+                "kind": "branch",
+                "source": 58707868,
+                "target": {
+                  "address": 58707944,
+                  "boundary": "outside_selection",
+                  "kind": "address",
+                  "mapping": {
+                    "identity": {
+                      "cpu": "arm7",
+                      "program": {
+                        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+                        "program": {
+                          "kind": "nitro_fs",
+                          "path": "ChildRom/JSS2Child.srl"
+                        },
+                        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+                      },
+                      "region": {
+                        "autoload": 0
+                      }
+                    },
+                    "kind": "initialized"
+                  },
+                  "mode": "Arm"
+                }
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "request_sidecar_sha256": "3d0d70d7888709e891b396f062f0cf745f4017497c437ced67e6e8cf1316ab85",
+  "schema_version": 1,
+  "source_bytes": 0,
+  "status": "bounded_arm7_candidate_graphs_verified"
+}

@@ -1,0 +1,17 @@
+[INFO ] Loading ROM from /private/tmp/jus-track-a-arm7-physical-root-proof/build/arm7-physical-root-init/child/extract/config.yaml
+[WARN ] Local function call from 0x0200182c in ARM9 main to 0x02008d48 goes to middle of function 'func_02008d3c' at 0x02008d3c, adding an external label symbol
+[WARN ] Local function call from 0x02003528 in ARM9 main to 0x02002d1e goes to middle of function 'func_02002c9c' at 0x02002c9c, adding an external label symbol
+[WARN ] Local function call from 0x0200633e in ARM9 main to 0x02008d48 goes to middle of function 'func_02008d3c' at 0x02008d3c, adding an external label symbol
+[WARN ] Local function call from 0x02008d6c in ARM9 main to 0x02008fb8 goes to middle of function 'func_02008fb0' at 0x02008fb0, adding an external label symbol
+[WARN ] Local function call from 0x0209d4da in ARM9 main to 0x0209e55c goes to middle of function 'func_0209d470' at 0x0209d470, adding an external label symbol
+[WARN ] Local function call from 0x0209d5ec in ARM9 main to 0x0209e196 goes to middle of function 'func_0209d470' at 0x0209d470, adding an external label symbol
+[WARN ] Local function call from 0x0209d612 in ARM9 main to 0x0209e55c goes to middle of function 'func_0209d470' at 0x0209d470, adding an external label symbol
+[WARN ] Local function call from 0x0209da20 in ARM9 main to 0x0209e55c goes to middle of function 'func_0209d470' at 0x0209d470, adding an external label symbol
+[WARN ] Local function call from 0x0209db60 in ARM9 main to 0x0209e55c goes to middle of function 'func_0209d470' at 0x0209d470, adding an external label symbol
+[WARN ] Local function call from 0x0209dcd0 in ARM9 main to 0x0209e55c goes to middle of function 'func_0209d470' at 0x0209d470, adding an external label symbol
+[WARN ] Local function call from 0x020a9c5c in ARM9 main to 0x02008b8c goes to middle of function 'func_02008b7c' at 0x02008b7c, adding an external label symbol
+[WARN ] Local function call from 0x020a9c7c in ARM9 main to 0x02008b8c goes to middle of function 'func_02008b7c' at 0x02008b7c, adding an external label symbol
+[WARN ] Local function call from 0x020abdaa in ARM9 main to 0x02008b8c goes to middle of function 'func_02008b7c' at 0x02008b7c, adding an external label symbol
+[WARN ] Local function call from 0x020abe08 in ARM9 main to 0x02008b8c goes to middle of function 'func_02008b7c' at 0x02008b7c, adding an external label symbol
+[WARN ] Local function call from 0x020abe4e in ARM9 main to 0x02008b8c goes to middle of function 'func_02008b7c' at 0x02008b7c, adding an external label symbol
+[WARN ] Local function call from 0x020be5c0 in ARM9 main to 0x020befd2 goes to middle of function 'func_020be5b4' at 0x020be5b4, adding an external label symbol

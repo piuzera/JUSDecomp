@@ -1,0 +1,29 @@
+FFF
+======================================================================
+FAIL: test_actual_native_link_and_three_original_evidence_negatives (__main__.NativeRelocationRecipeTests.test_actual_native_link_and_three_original_evidence_negatives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-donor-recipe-trial-worker-proof/test_native.py", line 39, in test_actual_native_link_and_three_original_evidence_negatives
+    self.assertIsNotNone(native,'native relocation/image verification is not implemented')
+AssertionError: unexpectedly None : native relocation/image verification is not implemented
+
+======================================================================
+FAIL: test_link_script_consumes_actual_object_and_pins_bindings (__main__.NativeRelocationRecipeTests.test_link_script_consumes_actual_object_and_pins_bindings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-donor-recipe-trial-worker-proof/test_native.py", line 27, in test_link_script_consumes_actual_object_and_pins_bindings
+    self.assertIsNotNone(native,'native actual-object linker recipe is not implemented')
+AssertionError: unexpectedly None : native actual-object linker recipe is not implemented
+
+======================================================================
+FAIL: test_split_preserves_all_original_noncandidate_bytes (__main__.NativeRelocationRecipeTests.test_split_preserves_all_original_noncandidate_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-donor-recipe-trial-worker-proof/test_native.py", line 17, in test_split_preserves_all_original_noncandidate_bytes
+    self.assertIsNotNone(native,'native candidate split is not implemented')
+AssertionError: unexpectedly None : native candidate split is not implemented
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+FAILED (failures=3)

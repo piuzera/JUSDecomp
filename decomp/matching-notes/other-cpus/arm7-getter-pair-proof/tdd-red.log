@@ -1,0 +1,49 @@
+FFFF
+======================================================================
+FAIL: test_actual_omitted_and_swapped_roles_fail_native_placement (__main__.ActualPairProofTests.test_actual_omitted_and_swapped_roles_fail_native_placement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 68, in test_actual_omitted_and_swapped_roles_fail_native_placement
+    r=self.completed()
+      ^^^^^^^^^^^^^^^^
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'closed getter-pair replay not implemented')
+AssertionError: unexpectedly None : closed getter-pair replay not implemented
+
+======================================================================
+FAIL: test_actual_shared_wram_binding_changes_both_derived_pool_bytes (__main__.ActualPairProofTests.test_actual_shared_wram_binding_changes_both_derived_pool_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 56, in test_actual_shared_wram_binding_changes_both_derived_pool_bytes
+    r=self.completed()
+      ^^^^^^^^^^^^^^^^
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'closed getter-pair replay not implemented')
+AssertionError: unexpectedly None : closed getter-pair replay not implemented
+
+======================================================================
+FAIL: test_actual_two_objects_five_relas_and_linked_individual_functions (__main__.ActualPairProofTests.test_actual_two_objects_five_relas_and_linked_individual_functions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 34, in test_actual_two_objects_five_relas_and_linked_individual_functions
+    r=self.completed()
+      ^^^^^^^^^^^^^^^^
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'closed getter-pair replay not implemented')
+AssertionError: unexpectedly None : closed getter-pair replay not implemented
+
+======================================================================
+FAIL: test_native_file_offsets_follow_actual_sections_and_malformed_load_rejects (__main__.ActualPairProofTests.test_native_file_offsets_follow_actual_sections_and_malformed_load_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 81, in test_native_file_offsets_follow_actual_sections_and_malformed_load_rejects
+    r=self.completed()
+      ^^^^^^^^^^^^^^^^
+  File "/private/tmp/jus-arm7-getter-pair-trial/decomp/matching-notes/other-cpus/arm7-getter-pair-proof/test_pair.py", line 18, in completed
+    self.assertIsNotNone(reproduce,'closed getter-pair replay not implemented')
+AssertionError: unexpectedly None : closed getter-pair replay not implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=4)

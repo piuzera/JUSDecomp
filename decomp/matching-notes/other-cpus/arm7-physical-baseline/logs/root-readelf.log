@@ -1,0 +1,83 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x2380000
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          166068 (bytes into file)
+  Flags:                             0x5000200
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         6
+  Size of section headers:           40 (bytes)
+  Number of section headers:         13
+  Section header string table index: 11
+
+Elf file type is EXEC (Executable file)
+Entry point 0x2380000
+There are 6 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x0000f4 0x02380000 0x02380000 0x001b0 0x001b0 R   0x4
+  LOAD           0x0002a4 0x023a8698 0x023a8698 0x00018 0x00018 R   0x4
+  LOAD           0x0002bc 0x027e0000 0x023903f8 0x182a0 0x182a0 R   0x4
+  LOAD           0x01855c 0x027f82a0 0x027f82a0 0x00000 0x01968 RW  0x4
+  LOAD           0x01855c 0x037f8000 0x023801b0 0x10248 0x10248 R   0x4
+  LOAD           0x0287a4 0x03808248 0x03808248 0x00000 0x03a48 RW  0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .arm7.startup 
+   01     .arm7.table 
+   02     .arm7.autoload1 
+   03     .arm7.bss.autoload1 
+   04     .arm7.autoload0 
+   05     .arm7.bss.autoload0 
+   None   .text .ARM.attributes .comment .symtab .shstrtab .strtab 
+BuildAttributes {
+  FormatVersion: 0x41
+  Section 1 {
+    SectionLength: 33
+    Vendor: aeabi
+    Tag: Tag_File (0x1)
+    Size: 23
+    FileAttributes {
+      Attribute {
+        Tag: 5
+        TagName: CPU_name
+        Value: arm7tdmi
+      }
+      Attribute {
+        Tag: 6
+        Value: 2
+        TagName: CPU_arch
+        Description: ARM v4T
+      }
+      Attribute {
+        Tag: 8
+        Value: 1
+        TagName: ARM_ISA_use
+        Description: Permitted
+      }
+      Attribute {
+        Tag: 9
+        Value: 1
+        TagName: THUMB_ISA_use
+        Description: Thumb-1
+      }
+      Attribute {
+        Tag: 34
+        Value: 0
+        TagName: CPU_unaligned_access
+        Description: Not Permitted
+      }
+    }
+  }
+}

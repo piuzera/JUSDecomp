@@ -1,0 +1,9 @@
+    Blocking waiting for file lock on build directory
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.08s
+     Running unittests examples/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/examples/arm7_physical_baseline-632963176be198ff)
+
+running 1 test
+test tests::first_program_output_changed_during_second_build_rejects_publication ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 4 filtered out; finished in 0.60s

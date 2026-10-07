@@ -1,0 +1,22 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.78s
+     Running unittests src/lib.rs (target/physical-baseline/cargo-target/debug/deps/ds_decomp-b124f285909ba1e8)
+
+running 1 test
+test rom::arm7_physical_baseline::tests::actual_elf_section_directory_and_entry_anchor_mutations_reject ... FAILED
+
+failures:
+
+---- rom::arm7_physical_baseline::tests::actual_elf_section_directory_and_entry_anchor_mutations_reject stdout ----
+
+thread 'rom::arm7_physical_baseline::tests::actual_elf_section_directory_and_entry_anchor_mutations_reject' (251183956) panicked at lib/src/rom/arm7_physical_baseline/tests.rs:85:5:
+accepted malformed metadata: ["section names type", "null section", "missing entry anchor"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    rom::arm7_physical_baseline::tests::actual_elf_section_directory_and_entry_anchor_mutations_reject
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.47s
+
+error: test failed, to rerun pass `-p ds-decomp --lib`

@@ -1,0 +1,53 @@
+   Compiling unarm v1.9.2 (/private/tmp/jus-unarm-branch-repair/disasm)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 17.09s
+     Running tests/test_branch_boundaries.rs (target/branch-repair/cargo-target/debug/deps/test_branch_boundaries-6adac5fa070bca30)
+
+running 6 tests
+test thumb_short_llvm_boundaries ... ok
+test v4t_rejects_arm_and_thumb_blx ... ok
+test arm_b_bl_llvm_boundaries ... FAILED
+test thumb_blx_llvm_boundaries ... FAILED
+test arm_blx_llvm_boundaries ... FAILED
+test thumb_bl_llvm_boundaries ... FAILED
+
+failures:
+
+---- arm_b_bl_llvm_boundaries stdout ----
+
+thread 'arm_b_bl_llvm_boundaries' (250628274) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
+assertion `left == right` failed: b at 0x02380000
+  left: 41911400
+ right: 58688616
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- thumb_blx_llvm_boundaries stdout ----
+
+thread 'thumb_blx_llvm_boundaries' (250628277) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
+assertion `left == right` failed: blx at 0x02380014
+  left: 33030164
+ right: 41418772
+
+---- arm_blx_llvm_boundaries stdout ----
+
+thread 'arm_blx_llvm_boundaries' (250628275) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
+assertion `left == right` failed: blx at 0x02380028
+  left: 37224492
+ right: 70778924
+
+---- thumb_bl_llvm_boundaries stdout ----
+
+thread 'thumb_bl_llvm_boundaries' (250628276) panicked at disasm/tests/test_branch_boundaries.rs:11:5:
+assertion `left == right` failed: bl at 0x02380000
+  left: 33030144
+ right: 41418752
+
+
+failures:
+    arm_b_bl_llvm_boundaries
+    arm_blx_llvm_boundaries
+    thumb_bl_llvm_boundaries
+    thumb_blx_llvm_boundaries
+
+test result: FAILED. 2 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p unarm --test test_branch_boundaries`

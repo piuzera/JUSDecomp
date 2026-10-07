@@ -1,0 +1,27 @@
+FF
+======================================================================
+FAIL: test_actual_five_instruction_object_and_direct_native_map_function_bytes (__main__.ActualLowerStoreTests.test_actual_five_instruction_object_and_direct_native_map_function_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-low-store-trial/decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/test_store.py", line 32, in test_actual_five_instruction_object_and_direct_native_map_function_bytes
+    r=self.completed()
+      ^^^^^^^^^^^^^^^^
+  File "/private/tmp/jus-arm7-low-store-trial/decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/test_store.py", line 17, in completed
+    self.assertIsNotNone(reproduce,'finite lower-store replay not implemented')
+AssertionError: unexpectedly None : finite lower-store replay not implemented
+
+======================================================================
+FAIL: test_actual_omitted_object_wrong_placement_and_malformed_load_reject (__main__.ActualLowerStoreTests.test_actual_omitted_object_wrong_placement_and_malformed_load_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-low-store-trial/decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/test_store.py", line 58, in test_actual_omitted_object_wrong_placement_and_malformed_load_reject
+    r=self.completed()
+      ^^^^^^^^^^^^^^^^
+  File "/private/tmp/jus-arm7-low-store-trial/decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/test_store.py", line 17, in completed
+    self.assertIsNotNone(reproduce,'finite lower-store replay not implemented')
+AssertionError: unexpectedly None : finite lower-store replay not implemented
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (failures=2)

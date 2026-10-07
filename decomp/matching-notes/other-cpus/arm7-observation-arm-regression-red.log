@@ -1,0 +1,32 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-analysis-design-bounded/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.55s
+     Running tests/arm7_observation.rs (target/debug/deps/arm7_observation-1456a410174b4427)
+
+running 9 tests
+test invalid_selections_fail_without_panics ... ok
+test observations_store_complete_span_text_identity_and_fixed_policy ... ok
+test thumb_bl_width_and_interior_destinations_remain_explicit ... ok
+test b_and_bl_share_mapping_including_arm7_autoload_range ... FAILED
+test exact_program_identity_rejects_foreign_context_and_preserves_child_paths ... ok
+test conditional_calls_separate_untaken_and_returned_paths ... ok
+test branch_offsets_wrap_without_double_pipeline_bias ... ok
+test isa_rejection_and_truncated_thumb_bl_are_atomic ... ok
+test indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode ... ok
+
+failures:
+
+---- b_and_bl_share_mapping_including_arm7_autoload_range stdout ----
+
+thread 'b_and_bl_share_mapping_including_arm7_autoload_range' (250214280) panicked at lib/tests/arm7_observation.rs:75:13:
+assertion `left == right` failed
+  left: Number(41911400)
+ right: 58688616
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    b_and_bl_share_mapping_including_arm7_autoload_range
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_observation`

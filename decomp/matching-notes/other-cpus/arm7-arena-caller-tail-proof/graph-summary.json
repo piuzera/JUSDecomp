@@ -1,0 +1,4707 @@
+{
+  "arm7_binary_baseline_complete": false,
+  "executable_coverage_established": false,
+  "function_extents_established": false,
+  "inputs_unchanged": true,
+  "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "original_relocations_established": false,
+  "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+  "request_sidecar_sha256": "53ace3a3795712f684b2292c14a614ac946a29a7a38274cc38e5f7f26da56e5a",
+  "schema_version": 1,
+  "source_bytes": 0,
+  "status": "bounded_arm7_candidate_graphs_verified",
+  "report_sha256": "06933defa677dcbc353c10face1c13e18afce46dfad3715c302bce233c1498ba",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "root": {
+        "address": 58688616,
+        "assumption": "Grounded explicit ARM root; execution and function extent remain unknown",
+        "edge_examinations": 70,
+        "frontiers": [
+          {
+            "edge": 2,
+            "kind": "edge"
+          },
+          {
+            "edge": 6,
+            "kind": "edge"
+          },
+          {
+            "edge": 27,
+            "kind": "edge"
+          },
+          {
+            "edge": 16,
+            "kind": "edge"
+          },
+          {
+            "edge": 23,
+            "kind": "edge"
+          },
+          {
+            "edge": 37,
+            "kind": "edge"
+          },
+          {
+            "edge": 43,
+            "kind": "edge"
+          },
+          {
+            "edge": 32,
+            "kind": "edge"
+          },
+          {
+            "edge": 50,
+            "kind": "edge"
+          },
+          {
+            "edge": 57,
+            "kind": "edge"
+          },
+          {
+            "edge": 64,
+            "kind": "edge"
+          }
+        ],
+        "identity": {
+          "cpu": "arm7",
+          "program": {
+            "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+            "program": {
+              "kind": "parent"
+            },
+            "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+          },
+          "region": {
+            "autoload": 0
+          }
+        },
+        "mode": "Arm",
+        "predecessors": [
+          {
+            "kind": "root"
+          },
+          {
+            "edge": 0,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 1,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 3,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 4,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 5,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 7,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 8,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 9,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 10,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 11,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 13,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 14,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 15,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 17,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 18,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 19,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 21,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 22,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 12,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 25,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 26,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 40,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 28,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 29,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 30,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 31,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 20,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 33,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 34,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 35,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 36,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 24,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 38,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 39,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 41,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 42,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 44,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 45,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 46,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 48,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 49,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 51,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 52,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 53,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 55,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 56,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 58,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 59,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 60,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 62,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 63,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 65,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 66,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 67,
+            "kind": "via_edge"
+          }
+        ],
+        "visited_nodes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          19,
+          11,
+          20,
+          12,
+          21,
+          13,
+          14,
+          15,
+          16,
+          27,
+          17,
+          28,
+          18,
+          29,
+          32,
+          30,
+          33,
+          31,
+          34,
+          22,
+          35,
+          23,
+          36,
+          24,
+          37,
+          25,
+          38,
+          26,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54
+        ]
+      },
+      "nodes": [
+        {
+          "node": 0,
+          "mode": "Arm",
+          "address": 58688616,
+          "byte_len": 4,
+          "condition": null,
+          "text": "stmdb sp!, {r4, lr}"
+        },
+        {
+          "node": 1,
+          "mode": "Arm",
+          "address": 58688620,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #0x4a60"
+        },
+        {
+          "node": 2,
+          "mode": "Arm",
+          "address": 58707660,
+          "byte_len": 4,
+          "condition": null,
+          "text": "stmdb sp!, {lr}"
+        },
+        {
+          "node": 3,
+          "mode": "Arm",
+          "address": 58707664,
+          "byte_len": 4,
+          "condition": null,
+          "text": "sub sp, sp, #0x4"
+        },
+        {
+          "node": 4,
+          "mode": "Arm",
+          "address": 58707668,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #0x158"
+        },
+        {
+          "node": 5,
+          "mode": "Arm",
+          "address": 58708012,
+          "byte_len": 4,
+          "condition": null,
+          "text": "stmdb sp!, {lr}"
+        },
+        {
+          "node": 6,
+          "mode": "Arm",
+          "address": 58708016,
+          "byte_len": 4,
+          "condition": null,
+          "text": "sub sp, sp, #0x4"
+        },
+        {
+          "node": 7,
+          "mode": "Arm",
+          "address": 58708020,
+          "byte_len": 4,
+          "condition": null,
+          "text": "ldr r1, [pc, #0x90]"
+        },
+        {
+          "node": 8,
+          "mode": "Arm",
+          "address": 58708024,
+          "byte_len": 4,
+          "condition": null,
+          "text": "ldr r0, [r1, #0x0]"
+        },
+        {
+          "node": 9,
+          "mode": "Arm",
+          "address": 58708028,
+          "byte_len": 4,
+          "condition": null,
+          "text": "cmp r0, #0x0"
+        },
+        {
+          "node": 10,
+          "mode": "Arm",
+          "address": 58708032,
+          "byte_len": 4,
+          "condition": "ne",
+          "text": "bne #0x80"
+        },
+        {
+          "node": 11,
+          "mode": "Arm",
+          "address": 58708036,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 12,
+          "mode": "Arm",
+          "address": 58708040,
+          "byte_len": 4,
+          "condition": null,
+          "text": "str r0, [r1, #0x0]"
+        },
+        {
+          "node": 13,
+          "mode": "Arm",
+          "address": 58708044,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0xc8"
+        },
+        {
+          "node": 14,
+          "mode": "Arm",
+          "address": 58708048,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 15,
+          "mode": "Arm",
+          "address": 58708052,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 16,
+          "mode": "Arm",
+          "address": 58708056,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x140"
+        },
+        {
+          "node": 17,
+          "mode": "Arm",
+          "address": 58708060,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 18,
+          "mode": "Arm",
+          "address": 58708064,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x134"
+        },
+        {
+          "node": 19,
+          "mode": "Arm",
+          "address": 58708160,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add sp, sp, #0x4"
+        },
+        {
+          "node": 20,
+          "mode": "Arm",
+          "address": 58708164,
+          "byte_len": 4,
+          "condition": null,
+          "text": "ldmia sp!, {lr}"
+        },
+        {
+          "node": 21,
+          "mode": "Arm",
+          "address": 58708168,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bx lr"
+        },
+        {
+          "node": 22,
+          "mode": "Arm",
+          "address": 58707716,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, r0, lsl #0x2"
+        },
+        {
+          "node": 23,
+          "mode": "Arm",
+          "address": 58707720,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0x2700000"
+        },
+        {
+          "node": 24,
+          "mode": "Arm",
+          "address": 58707724,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0xff000"
+        },
+        {
+          "node": 25,
+          "mode": "Arm",
+          "address": 58707728,
+          "byte_len": 4,
+          "condition": null,
+          "text": "str r1, [r0, #0xda0]"
+        },
+        {
+          "node": 26,
+          "mode": "Arm",
+          "address": 58707732,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bx lr"
+        },
+        {
+          "node": 27,
+          "mode": "Arm",
+          "address": 58707736,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, r0, lsl #0x2"
+        },
+        {
+          "node": 28,
+          "mode": "Arm",
+          "address": 58707740,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0x2700000"
+        },
+        {
+          "node": 29,
+          "mode": "Arm",
+          "address": 58707744,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0xff000"
+        },
+        {
+          "node": 30,
+          "mode": "Arm",
+          "address": 58707748,
+          "byte_len": 4,
+          "condition": null,
+          "text": "str r1, [r0, #0xdc4]"
+        },
+        {
+          "node": 31,
+          "mode": "Arm",
+          "address": 58707752,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bx lr"
+        },
+        {
+          "node": 32,
+          "mode": "Arm",
+          "address": 58708068,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 33,
+          "mode": "Arm",
+          "address": 58708072,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 34,
+          "mode": "Arm",
+          "address": 58708076,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x168"
+        },
+        {
+          "node": 35,
+          "mode": "Arm",
+          "address": 58708080,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 36,
+          "mode": "Arm",
+          "address": 58708084,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0xf0"
+        },
+        {
+          "node": 37,
+          "mode": "Arm",
+          "address": 58708088,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 38,
+          "mode": "Arm",
+          "address": 58708092,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 39,
+          "mode": "Arm",
+          "address": 58708096,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x168"
+        },
+        {
+          "node": 40,
+          "mode": "Arm",
+          "address": 58708100,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 41,
+          "mode": "Arm",
+          "address": 58708104,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x15c"
+        },
+        {
+          "node": 42,
+          "mode": "Arm",
+          "address": 58708108,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 43,
+          "mode": "Arm",
+          "address": 58708112,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 44,
+          "mode": "Arm",
+          "address": 58708116,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x190"
+        },
+        {
+          "node": 45,
+          "mode": "Arm",
+          "address": 58708120,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 46,
+          "mode": "Arm",
+          "address": 58708124,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x118"
+        },
+        {
+          "node": 47,
+          "mode": "Arm",
+          "address": 58708128,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 48,
+          "mode": "Arm",
+          "address": 58708132,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 49,
+          "mode": "Arm",
+          "address": 58708136,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x190"
+        },
+        {
+          "node": 50,
+          "mode": "Arm",
+          "address": 58708140,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 51,
+          "mode": "Arm",
+          "address": 58708144,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x184"
+        },
+        {
+          "node": 52,
+          "mode": "Arm",
+          "address": 58708148,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 53,
+          "mode": "Arm",
+          "address": 58708152,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 54,
+          "mode": "Arm",
+          "address": 58708156,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x1b8"
+        }
+      ],
+      "edges": [
+        {
+          "edge": 0,
+          "source_node": 0,
+          "condition": null,
+          "source": 58688616,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58688620,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 1
+          }
+        },
+        {
+          "edge": 1,
+          "source_node": 1,
+          "condition": null,
+          "source": 58688620,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707660,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 2
+          }
+        },
+        {
+          "edge": 2,
+          "source_node": 1,
+          "condition": null,
+          "source": 58688620,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58688624,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 3,
+          "source_node": 2,
+          "condition": null,
+          "source": 58707660,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707664,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 3
+          }
+        },
+        {
+          "edge": 4,
+          "source_node": 3,
+          "condition": null,
+          "source": 58707664,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707668,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 4
+          }
+        },
+        {
+          "edge": 5,
+          "source_node": 4,
+          "condition": null,
+          "source": 58707668,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58708012,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 5
+          }
+        },
+        {
+          "edge": 6,
+          "source_node": 4,
+          "condition": null,
+          "source": 58707668,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58707672,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 7,
+          "source_node": 5,
+          "condition": null,
+          "source": 58708012,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708016,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 6
+          }
+        },
+        {
+          "edge": 8,
+          "source_node": 6,
+          "condition": null,
+          "source": 58708016,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708020,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 7
+          }
+        },
+        {
+          "edge": 9,
+          "source_node": 7,
+          "condition": null,
+          "source": 58708020,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708024,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 8
+          }
+        },
+        {
+          "edge": 10,
+          "source_node": 8,
+          "condition": null,
+          "source": 58708024,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708028,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 9
+          }
+        },
+        {
+          "edge": 11,
+          "source_node": 9,
+          "condition": null,
+          "source": 58708028,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708032,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 10
+          }
+        },
+        {
+          "edge": 12,
+          "source_node": 10,
+          "condition": "ne",
+          "source": 58708032,
+          "kind": "branch",
+          "guard": "condition_passed",
+          "target": {
+            "address": 58708160,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 19
+          }
+        },
+        {
+          "edge": 13,
+          "source_node": 10,
+          "condition": "ne",
+          "source": 58708032,
+          "kind": "fallthrough",
+          "guard": "condition_failed",
+          "target": {
+            "address": 58708036,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 11
+          }
+        },
+        {
+          "edge": 14,
+          "source_node": 11,
+          "condition": null,
+          "source": 58708036,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708040,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 12
+          }
+        },
+        {
+          "edge": 15,
+          "source_node": 12,
+          "condition": null,
+          "source": 58708040,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708044,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 13
+          }
+        },
+        {
+          "edge": 16,
+          "source_node": 13,
+          "condition": null,
+          "source": 58708044,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707844,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 17,
+          "source_node": 13,
+          "condition": null,
+          "source": 58708044,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708048,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 14
+          }
+        },
+        {
+          "edge": 18,
+          "source_node": 14,
+          "condition": null,
+          "source": 58708048,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708052,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 15
+          }
+        },
+        {
+          "edge": 19,
+          "source_node": 15,
+          "condition": null,
+          "source": 58708052,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708056,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 16
+          }
+        },
+        {
+          "edge": 20,
+          "source_node": 16,
+          "condition": null,
+          "source": 58708056,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707736,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 27
+          }
+        },
+        {
+          "edge": 21,
+          "source_node": 16,
+          "condition": null,
+          "source": 58708056,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708060,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 17
+          }
+        },
+        {
+          "edge": 22,
+          "source_node": 17,
+          "condition": null,
+          "source": 58708060,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708064,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 18
+          }
+        },
+        {
+          "edge": 23,
+          "source_node": 18,
+          "condition": null,
+          "source": 58708064,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707756,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 24,
+          "source_node": 18,
+          "condition": null,
+          "source": 58708064,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708068,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 32
+          }
+        },
+        {
+          "edge": 25,
+          "source_node": 19,
+          "condition": null,
+          "source": 58708160,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708164,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 20
+          }
+        },
+        {
+          "edge": 26,
+          "source_node": 20,
+          "condition": null,
+          "source": 58708164,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708168,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 21
+          }
+        },
+        {
+          "edge": 27,
+          "source_node": 21,
+          "condition": null,
+          "source": 58708168,
+          "kind": "exchange",
+          "guard": "always",
+          "target": {
+            "kind": "unknown"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "indirect"
+          }
+        },
+        {
+          "edge": 28,
+          "source_node": 22,
+          "condition": null,
+          "source": 58707716,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707720,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 23
+          }
+        },
+        {
+          "edge": 29,
+          "source_node": 23,
+          "condition": null,
+          "source": 58707720,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707724,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 24
+          }
+        },
+        {
+          "edge": 30,
+          "source_node": 24,
+          "condition": null,
+          "source": 58707724,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707728,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 25
+          }
+        },
+        {
+          "edge": 31,
+          "source_node": 25,
+          "condition": null,
+          "source": 58707728,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707732,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 26
+          }
+        },
+        {
+          "edge": 32,
+          "source_node": 26,
+          "condition": null,
+          "source": 58707732,
+          "kind": "exchange",
+          "guard": "always",
+          "target": {
+            "kind": "unknown"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "indirect"
+          }
+        },
+        {
+          "edge": 33,
+          "source_node": 27,
+          "condition": null,
+          "source": 58707736,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707740,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 28
+          }
+        },
+        {
+          "edge": 34,
+          "source_node": 28,
+          "condition": null,
+          "source": 58707740,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707744,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 29
+          }
+        },
+        {
+          "edge": 35,
+          "source_node": 29,
+          "condition": null,
+          "source": 58707744,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707748,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 30
+          }
+        },
+        {
+          "edge": 36,
+          "source_node": 30,
+          "condition": null,
+          "source": 58707748,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707752,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 31
+          }
+        },
+        {
+          "edge": 37,
+          "source_node": 31,
+          "condition": null,
+          "source": 58707752,
+          "kind": "exchange",
+          "guard": "always",
+          "target": {
+            "kind": "unknown"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "indirect"
+          }
+        },
+        {
+          "edge": 38,
+          "source_node": 32,
+          "condition": null,
+          "source": 58708068,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708072,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 33
+          }
+        },
+        {
+          "edge": 39,
+          "source_node": 33,
+          "condition": null,
+          "source": 58708072,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708076,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 34
+          }
+        },
+        {
+          "edge": 40,
+          "source_node": 34,
+          "condition": null,
+          "source": 58708076,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707716,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 22
+          }
+        },
+        {
+          "edge": 41,
+          "source_node": 34,
+          "condition": null,
+          "source": 58708076,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708080,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 35
+          }
+        },
+        {
+          "edge": 42,
+          "source_node": 35,
+          "condition": null,
+          "source": 58708080,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708084,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 36
+          }
+        },
+        {
+          "edge": 43,
+          "source_node": 36,
+          "condition": null,
+          "source": 58708084,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707844,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 44,
+          "source_node": 36,
+          "condition": null,
+          "source": 58708084,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708088,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 37
+          }
+        },
+        {
+          "edge": 45,
+          "source_node": 37,
+          "condition": null,
+          "source": 58708088,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708092,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 38
+          }
+        },
+        {
+          "edge": 46,
+          "source_node": 38,
+          "condition": null,
+          "source": 58708092,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708096,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 39
+          }
+        },
+        {
+          "edge": 47,
+          "source_node": 39,
+          "condition": null,
+          "source": 58708096,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707736,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 27
+          }
+        },
+        {
+          "edge": 48,
+          "source_node": 39,
+          "condition": null,
+          "source": 58708096,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708100,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 40
+          }
+        },
+        {
+          "edge": 49,
+          "source_node": 40,
+          "condition": null,
+          "source": 58708100,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708104,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 41
+          }
+        },
+        {
+          "edge": 50,
+          "source_node": 41,
+          "condition": null,
+          "source": 58708104,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707756,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 51,
+          "source_node": 41,
+          "condition": null,
+          "source": 58708104,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708108,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 42
+          }
+        },
+        {
+          "edge": 52,
+          "source_node": 42,
+          "condition": null,
+          "source": 58708108,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708112,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 43
+          }
+        },
+        {
+          "edge": 53,
+          "source_node": 43,
+          "condition": null,
+          "source": 58708112,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708116,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 44
+          }
+        },
+        {
+          "edge": 54,
+          "source_node": 44,
+          "condition": null,
+          "source": 58708116,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707716,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 22
+          }
+        },
+        {
+          "edge": 55,
+          "source_node": 44,
+          "condition": null,
+          "source": 58708116,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708120,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 45
+          }
+        },
+        {
+          "edge": 56,
+          "source_node": 45,
+          "condition": null,
+          "source": 58708120,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708124,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 46
+          }
+        },
+        {
+          "edge": 57,
+          "source_node": 46,
+          "condition": null,
+          "source": 58708124,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707844,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 58,
+          "source_node": 46,
+          "condition": null,
+          "source": 58708124,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708128,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 47
+          }
+        },
+        {
+          "edge": 59,
+          "source_node": 47,
+          "condition": null,
+          "source": 58708128,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708132,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 48
+          }
+        },
+        {
+          "edge": 60,
+          "source_node": 48,
+          "condition": null,
+          "source": 58708132,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708136,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 49
+          }
+        },
+        {
+          "edge": 61,
+          "source_node": 49,
+          "condition": null,
+          "source": 58708136,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707736,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 27
+          }
+        },
+        {
+          "edge": 62,
+          "source_node": 49,
+          "condition": null,
+          "source": 58708136,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708140,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 50
+          }
+        },
+        {
+          "edge": 63,
+          "source_node": 50,
+          "condition": null,
+          "source": 58708140,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708144,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 51
+          }
+        },
+        {
+          "edge": 64,
+          "source_node": 51,
+          "condition": null,
+          "source": 58708144,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707756,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 65,
+          "source_node": 51,
+          "condition": null,
+          "source": 58708144,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708148,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 52
+          }
+        },
+        {
+          "edge": 66,
+          "source_node": 52,
+          "condition": null,
+          "source": 58708148,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708152,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 53
+          }
+        },
+        {
+          "edge": 67,
+          "source_node": 53,
+          "condition": null,
+          "source": 58708152,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708156,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 54
+          }
+        },
+        {
+          "edge": 68,
+          "source_node": 54,
+          "condition": null,
+          "source": 58708156,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707716,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 22
+          }
+        },
+        {
+          "edge": 69,
+          "source_node": 54,
+          "condition": null,
+          "source": 58708156,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708160,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 19
+          }
+        }
+      ],
+      "frontier_witnesses": [
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            2
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "reason": "indirect",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23
+          ]
+        },
+        {
+          "reason": "indirect",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            33,
+            34,
+            35,
+            36,
+            37
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "reason": "indirect",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            40,
+            28,
+            29,
+            30,
+            31,
+            32
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            44,
+            45,
+            46,
+            48,
+            49,
+            50
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            44,
+            45,
+            46,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            57
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            44,
+            45,
+            46,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            58,
+            59,
+            60,
+            62,
+            63,
+            64
+          ]
+        }
+      ],
+      "counts": {
+        "observations": 8,
+        "nodes": 55,
+        "edges": 70,
+        "visited_nodes": 55,
+        "edge_examinations": 70,
+        "selected_edges": 59,
+        "frontier_edges": 11,
+        "unknown_target_edges": 3,
+        "mode_conflicts": 0
+      }
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "root": {
+        "address": 58688616,
+        "assumption": "Grounded explicit ARM root; execution and function extent remain unknown",
+        "edge_examinations": 70,
+        "frontiers": [
+          {
+            "edge": 2,
+            "kind": "edge"
+          },
+          {
+            "edge": 6,
+            "kind": "edge"
+          },
+          {
+            "edge": 27,
+            "kind": "edge"
+          },
+          {
+            "edge": 16,
+            "kind": "edge"
+          },
+          {
+            "edge": 23,
+            "kind": "edge"
+          },
+          {
+            "edge": 37,
+            "kind": "edge"
+          },
+          {
+            "edge": 43,
+            "kind": "edge"
+          },
+          {
+            "edge": 32,
+            "kind": "edge"
+          },
+          {
+            "edge": 50,
+            "kind": "edge"
+          },
+          {
+            "edge": 57,
+            "kind": "edge"
+          },
+          {
+            "edge": 64,
+            "kind": "edge"
+          }
+        ],
+        "identity": {
+          "cpu": "arm7",
+          "program": {
+            "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+            "program": {
+              "kind": "nitro_fs",
+              "path": "ChildRom/JSS2Child.srl"
+            },
+            "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+          },
+          "region": {
+            "autoload": 0
+          }
+        },
+        "mode": "Arm",
+        "predecessors": [
+          {
+            "kind": "root"
+          },
+          {
+            "edge": 0,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 1,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 3,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 4,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 5,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 7,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 8,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 9,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 10,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 11,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 13,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 14,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 15,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 17,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 18,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 19,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 21,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 22,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 12,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 25,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 26,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 40,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 28,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 29,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 30,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 31,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 20,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 33,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 34,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 35,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 36,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 24,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 38,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 39,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 41,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 42,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 44,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 45,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 46,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 48,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 49,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 51,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 52,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 53,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 55,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 56,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 58,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 59,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 60,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 62,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 63,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 65,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 66,
+            "kind": "via_edge"
+          },
+          {
+            "edge": 67,
+            "kind": "via_edge"
+          }
+        ],
+        "visited_nodes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          19,
+          11,
+          20,
+          12,
+          21,
+          13,
+          14,
+          15,
+          16,
+          27,
+          17,
+          28,
+          18,
+          29,
+          32,
+          30,
+          33,
+          31,
+          34,
+          22,
+          35,
+          23,
+          36,
+          24,
+          37,
+          25,
+          38,
+          26,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54
+        ]
+      },
+      "nodes": [
+        {
+          "node": 0,
+          "mode": "Arm",
+          "address": 58688616,
+          "byte_len": 4,
+          "condition": null,
+          "text": "stmdb sp!, {r4, lr}"
+        },
+        {
+          "node": 1,
+          "mode": "Arm",
+          "address": 58688620,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #0x4a60"
+        },
+        {
+          "node": 2,
+          "mode": "Arm",
+          "address": 58707660,
+          "byte_len": 4,
+          "condition": null,
+          "text": "stmdb sp!, {lr}"
+        },
+        {
+          "node": 3,
+          "mode": "Arm",
+          "address": 58707664,
+          "byte_len": 4,
+          "condition": null,
+          "text": "sub sp, sp, #0x4"
+        },
+        {
+          "node": 4,
+          "mode": "Arm",
+          "address": 58707668,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #0x158"
+        },
+        {
+          "node": 5,
+          "mode": "Arm",
+          "address": 58708012,
+          "byte_len": 4,
+          "condition": null,
+          "text": "stmdb sp!, {lr}"
+        },
+        {
+          "node": 6,
+          "mode": "Arm",
+          "address": 58708016,
+          "byte_len": 4,
+          "condition": null,
+          "text": "sub sp, sp, #0x4"
+        },
+        {
+          "node": 7,
+          "mode": "Arm",
+          "address": 58708020,
+          "byte_len": 4,
+          "condition": null,
+          "text": "ldr r1, [pc, #0x90]"
+        },
+        {
+          "node": 8,
+          "mode": "Arm",
+          "address": 58708024,
+          "byte_len": 4,
+          "condition": null,
+          "text": "ldr r0, [r1, #0x0]"
+        },
+        {
+          "node": 9,
+          "mode": "Arm",
+          "address": 58708028,
+          "byte_len": 4,
+          "condition": null,
+          "text": "cmp r0, #0x0"
+        },
+        {
+          "node": 10,
+          "mode": "Arm",
+          "address": 58708032,
+          "byte_len": 4,
+          "condition": "ne",
+          "text": "bne #0x80"
+        },
+        {
+          "node": 11,
+          "mode": "Arm",
+          "address": 58708036,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 12,
+          "mode": "Arm",
+          "address": 58708040,
+          "byte_len": 4,
+          "condition": null,
+          "text": "str r0, [r1, #0x0]"
+        },
+        {
+          "node": 13,
+          "mode": "Arm",
+          "address": 58708044,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0xc8"
+        },
+        {
+          "node": 14,
+          "mode": "Arm",
+          "address": 58708048,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 15,
+          "mode": "Arm",
+          "address": 58708052,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 16,
+          "mode": "Arm",
+          "address": 58708056,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x140"
+        },
+        {
+          "node": 17,
+          "mode": "Arm",
+          "address": 58708060,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 18,
+          "mode": "Arm",
+          "address": 58708064,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x134"
+        },
+        {
+          "node": 19,
+          "mode": "Arm",
+          "address": 58708160,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add sp, sp, #0x4"
+        },
+        {
+          "node": 20,
+          "mode": "Arm",
+          "address": 58708164,
+          "byte_len": 4,
+          "condition": null,
+          "text": "ldmia sp!, {lr}"
+        },
+        {
+          "node": 21,
+          "mode": "Arm",
+          "address": 58708168,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bx lr"
+        },
+        {
+          "node": 22,
+          "mode": "Arm",
+          "address": 58707716,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, r0, lsl #0x2"
+        },
+        {
+          "node": 23,
+          "mode": "Arm",
+          "address": 58707720,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0x2700000"
+        },
+        {
+          "node": 24,
+          "mode": "Arm",
+          "address": 58707724,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0xff000"
+        },
+        {
+          "node": 25,
+          "mode": "Arm",
+          "address": 58707728,
+          "byte_len": 4,
+          "condition": null,
+          "text": "str r1, [r0, #0xda0]"
+        },
+        {
+          "node": 26,
+          "mode": "Arm",
+          "address": 58707732,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bx lr"
+        },
+        {
+          "node": 27,
+          "mode": "Arm",
+          "address": 58707736,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, r0, lsl #0x2"
+        },
+        {
+          "node": 28,
+          "mode": "Arm",
+          "address": 58707740,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0x2700000"
+        },
+        {
+          "node": 29,
+          "mode": "Arm",
+          "address": 58707744,
+          "byte_len": 4,
+          "condition": null,
+          "text": "add r0, r0, #0xff000"
+        },
+        {
+          "node": 30,
+          "mode": "Arm",
+          "address": 58707748,
+          "byte_len": 4,
+          "condition": null,
+          "text": "str r1, [r0, #0xdc4]"
+        },
+        {
+          "node": 31,
+          "mode": "Arm",
+          "address": 58707752,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bx lr"
+        },
+        {
+          "node": 32,
+          "mode": "Arm",
+          "address": 58708068,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 33,
+          "mode": "Arm",
+          "address": 58708072,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x1"
+        },
+        {
+          "node": 34,
+          "mode": "Arm",
+          "address": 58708076,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x168"
+        },
+        {
+          "node": 35,
+          "mode": "Arm",
+          "address": 58708080,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 36,
+          "mode": "Arm",
+          "address": 58708084,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0xf0"
+        },
+        {
+          "node": 37,
+          "mode": "Arm",
+          "address": 58708088,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 38,
+          "mode": "Arm",
+          "address": 58708092,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 39,
+          "mode": "Arm",
+          "address": 58708096,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x168"
+        },
+        {
+          "node": 40,
+          "mode": "Arm",
+          "address": 58708100,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 41,
+          "mode": "Arm",
+          "address": 58708104,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x15c"
+        },
+        {
+          "node": 42,
+          "mode": "Arm",
+          "address": 58708108,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 43,
+          "mode": "Arm",
+          "address": 58708112,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x7"
+        },
+        {
+          "node": 44,
+          "mode": "Arm",
+          "address": 58708116,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x190"
+        },
+        {
+          "node": 45,
+          "mode": "Arm",
+          "address": 58708120,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 46,
+          "mode": "Arm",
+          "address": 58708124,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x118"
+        },
+        {
+          "node": 47,
+          "mode": "Arm",
+          "address": 58708128,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 48,
+          "mode": "Arm",
+          "address": 58708132,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 49,
+          "mode": "Arm",
+          "address": 58708136,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x190"
+        },
+        {
+          "node": 50,
+          "mode": "Arm",
+          "address": 58708140,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 51,
+          "mode": "Arm",
+          "address": 58708144,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x184"
+        },
+        {
+          "node": 52,
+          "mode": "Arm",
+          "address": 58708148,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r1, r0"
+        },
+        {
+          "node": 53,
+          "mode": "Arm",
+          "address": 58708152,
+          "byte_len": 4,
+          "condition": null,
+          "text": "mov r0, #0x8"
+        },
+        {
+          "node": 54,
+          "mode": "Arm",
+          "address": 58708156,
+          "byte_len": 4,
+          "condition": null,
+          "text": "bl #-0x1b8"
+        }
+      ],
+      "edges": [
+        {
+          "edge": 0,
+          "source_node": 0,
+          "condition": null,
+          "source": 58688616,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58688620,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 1
+          }
+        },
+        {
+          "edge": 1,
+          "source_node": 1,
+          "condition": null,
+          "source": 58688620,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707660,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 2
+          }
+        },
+        {
+          "edge": 2,
+          "source_node": 1,
+          "condition": null,
+          "source": 58688620,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58688624,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 3,
+          "source_node": 2,
+          "condition": null,
+          "source": 58707660,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707664,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 3
+          }
+        },
+        {
+          "edge": 4,
+          "source_node": 3,
+          "condition": null,
+          "source": 58707664,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707668,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 4
+          }
+        },
+        {
+          "edge": 5,
+          "source_node": 4,
+          "condition": null,
+          "source": 58707668,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58708012,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 5
+          }
+        },
+        {
+          "edge": 6,
+          "source_node": 4,
+          "condition": null,
+          "source": 58707668,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58707672,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 7,
+          "source_node": 5,
+          "condition": null,
+          "source": 58708012,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708016,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 6
+          }
+        },
+        {
+          "edge": 8,
+          "source_node": 6,
+          "condition": null,
+          "source": 58708016,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708020,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 7
+          }
+        },
+        {
+          "edge": 9,
+          "source_node": 7,
+          "condition": null,
+          "source": 58708020,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708024,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 8
+          }
+        },
+        {
+          "edge": 10,
+          "source_node": 8,
+          "condition": null,
+          "source": 58708024,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708028,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 9
+          }
+        },
+        {
+          "edge": 11,
+          "source_node": 9,
+          "condition": null,
+          "source": 58708028,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708032,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 10
+          }
+        },
+        {
+          "edge": 12,
+          "source_node": 10,
+          "condition": "ne",
+          "source": 58708032,
+          "kind": "branch",
+          "guard": "condition_passed",
+          "target": {
+            "address": 58708160,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 19
+          }
+        },
+        {
+          "edge": 13,
+          "source_node": 10,
+          "condition": "ne",
+          "source": 58708032,
+          "kind": "fallthrough",
+          "guard": "condition_failed",
+          "target": {
+            "address": 58708036,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 11
+          }
+        },
+        {
+          "edge": 14,
+          "source_node": 11,
+          "condition": null,
+          "source": 58708036,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708040,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 12
+          }
+        },
+        {
+          "edge": 15,
+          "source_node": 12,
+          "condition": null,
+          "source": 58708040,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708044,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 13
+          }
+        },
+        {
+          "edge": 16,
+          "source_node": 13,
+          "condition": null,
+          "source": 58708044,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707844,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 17,
+          "source_node": 13,
+          "condition": null,
+          "source": 58708044,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708048,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 14
+          }
+        },
+        {
+          "edge": 18,
+          "source_node": 14,
+          "condition": null,
+          "source": 58708048,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708052,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 15
+          }
+        },
+        {
+          "edge": 19,
+          "source_node": 15,
+          "condition": null,
+          "source": 58708052,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708056,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 16
+          }
+        },
+        {
+          "edge": 20,
+          "source_node": 16,
+          "condition": null,
+          "source": 58708056,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707736,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 27
+          }
+        },
+        {
+          "edge": 21,
+          "source_node": 16,
+          "condition": null,
+          "source": 58708056,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708060,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 17
+          }
+        },
+        {
+          "edge": 22,
+          "source_node": 17,
+          "condition": null,
+          "source": 58708060,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708064,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 18
+          }
+        },
+        {
+          "edge": 23,
+          "source_node": 18,
+          "condition": null,
+          "source": 58708064,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707756,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 24,
+          "source_node": 18,
+          "condition": null,
+          "source": 58708064,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708068,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 32
+          }
+        },
+        {
+          "edge": 25,
+          "source_node": 19,
+          "condition": null,
+          "source": 58708160,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708164,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 20
+          }
+        },
+        {
+          "edge": 26,
+          "source_node": 20,
+          "condition": null,
+          "source": 58708164,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708168,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 21
+          }
+        },
+        {
+          "edge": 27,
+          "source_node": 21,
+          "condition": null,
+          "source": 58708168,
+          "kind": "exchange",
+          "guard": "always",
+          "target": {
+            "kind": "unknown"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "indirect"
+          }
+        },
+        {
+          "edge": 28,
+          "source_node": 22,
+          "condition": null,
+          "source": 58707716,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707720,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 23
+          }
+        },
+        {
+          "edge": 29,
+          "source_node": 23,
+          "condition": null,
+          "source": 58707720,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707724,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 24
+          }
+        },
+        {
+          "edge": 30,
+          "source_node": 24,
+          "condition": null,
+          "source": 58707724,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707728,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 25
+          }
+        },
+        {
+          "edge": 31,
+          "source_node": 25,
+          "condition": null,
+          "source": 58707728,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707732,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 26
+          }
+        },
+        {
+          "edge": 32,
+          "source_node": 26,
+          "condition": null,
+          "source": 58707732,
+          "kind": "exchange",
+          "guard": "always",
+          "target": {
+            "kind": "unknown"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "indirect"
+          }
+        },
+        {
+          "edge": 33,
+          "source_node": 27,
+          "condition": null,
+          "source": 58707736,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707740,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 28
+          }
+        },
+        {
+          "edge": 34,
+          "source_node": 28,
+          "condition": null,
+          "source": 58707740,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707744,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 29
+          }
+        },
+        {
+          "edge": 35,
+          "source_node": 29,
+          "condition": null,
+          "source": 58707744,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707748,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 30
+          }
+        },
+        {
+          "edge": 36,
+          "source_node": 30,
+          "condition": null,
+          "source": 58707748,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58707752,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 31
+          }
+        },
+        {
+          "edge": 37,
+          "source_node": 31,
+          "condition": null,
+          "source": 58707752,
+          "kind": "exchange",
+          "guard": "always",
+          "target": {
+            "kind": "unknown"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "indirect"
+          }
+        },
+        {
+          "edge": 38,
+          "source_node": 32,
+          "condition": null,
+          "source": 58708068,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708072,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 33
+          }
+        },
+        {
+          "edge": 39,
+          "source_node": 33,
+          "condition": null,
+          "source": 58708072,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708076,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 34
+          }
+        },
+        {
+          "edge": 40,
+          "source_node": 34,
+          "condition": null,
+          "source": 58708076,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707716,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 22
+          }
+        },
+        {
+          "edge": 41,
+          "source_node": 34,
+          "condition": null,
+          "source": 58708076,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708080,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 35
+          }
+        },
+        {
+          "edge": 42,
+          "source_node": 35,
+          "condition": null,
+          "source": 58708080,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708084,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 36
+          }
+        },
+        {
+          "edge": 43,
+          "source_node": 36,
+          "condition": null,
+          "source": 58708084,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707844,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 44,
+          "source_node": 36,
+          "condition": null,
+          "source": 58708084,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708088,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 37
+          }
+        },
+        {
+          "edge": 45,
+          "source_node": 37,
+          "condition": null,
+          "source": 58708088,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708092,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 38
+          }
+        },
+        {
+          "edge": 46,
+          "source_node": 38,
+          "condition": null,
+          "source": 58708092,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708096,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 39
+          }
+        },
+        {
+          "edge": 47,
+          "source_node": 39,
+          "condition": null,
+          "source": 58708096,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707736,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 27
+          }
+        },
+        {
+          "edge": 48,
+          "source_node": 39,
+          "condition": null,
+          "source": 58708096,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708100,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 40
+          }
+        },
+        {
+          "edge": 49,
+          "source_node": 40,
+          "condition": null,
+          "source": 58708100,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708104,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 41
+          }
+        },
+        {
+          "edge": 50,
+          "source_node": 41,
+          "condition": null,
+          "source": 58708104,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707756,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 51,
+          "source_node": 41,
+          "condition": null,
+          "source": 58708104,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708108,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 42
+          }
+        },
+        {
+          "edge": 52,
+          "source_node": 42,
+          "condition": null,
+          "source": 58708108,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708112,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 43
+          }
+        },
+        {
+          "edge": 53,
+          "source_node": 43,
+          "condition": null,
+          "source": 58708112,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708116,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 44
+          }
+        },
+        {
+          "edge": 54,
+          "source_node": 44,
+          "condition": null,
+          "source": 58708116,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707716,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 22
+          }
+        },
+        {
+          "edge": 55,
+          "source_node": 44,
+          "condition": null,
+          "source": 58708116,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708120,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 45
+          }
+        },
+        {
+          "edge": 56,
+          "source_node": 45,
+          "condition": null,
+          "source": 58708120,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708124,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 46
+          }
+        },
+        {
+          "edge": 57,
+          "source_node": 46,
+          "condition": null,
+          "source": 58708124,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707844,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 58,
+          "source_node": 46,
+          "condition": null,
+          "source": 58708124,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708128,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 47
+          }
+        },
+        {
+          "edge": 59,
+          "source_node": 47,
+          "condition": null,
+          "source": 58708128,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708132,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 48
+          }
+        },
+        {
+          "edge": 60,
+          "source_node": 48,
+          "condition": null,
+          "source": 58708132,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708136,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 49
+          }
+        },
+        {
+          "edge": 61,
+          "source_node": 49,
+          "condition": null,
+          "source": 58708136,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707736,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 27
+          }
+        },
+        {
+          "edge": 62,
+          "source_node": 49,
+          "condition": null,
+          "source": 58708136,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708140,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 50
+          }
+        },
+        {
+          "edge": 63,
+          "source_node": 50,
+          "condition": null,
+          "source": 58708140,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708144,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 51
+          }
+        },
+        {
+          "edge": 64,
+          "source_node": 51,
+          "condition": null,
+          "source": 58708144,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707756,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "frontier",
+            "reason": "outside_selection"
+          }
+        },
+        {
+          "edge": 65,
+          "source_node": 51,
+          "condition": null,
+          "source": 58708144,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708148,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 52
+          }
+        },
+        {
+          "edge": 66,
+          "source_node": 52,
+          "condition": null,
+          "source": 58708148,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708152,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 53
+          }
+        },
+        {
+          "edge": 67,
+          "source_node": 53,
+          "condition": null,
+          "source": 58708152,
+          "kind": "fallthrough",
+          "guard": "always",
+          "target": {
+            "address": 58708156,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "instruction_start"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 54
+          }
+        },
+        {
+          "edge": 68,
+          "source_node": 54,
+          "condition": null,
+          "source": 58708156,
+          "kind": "call",
+          "guard": "always",
+          "target": {
+            "address": 58707716,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 22
+          }
+        },
+        {
+          "edge": 69,
+          "source_node": 54,
+          "condition": null,
+          "source": 58708156,
+          "kind": "call_continuation",
+          "guard": "call_returned",
+          "target": {
+            "address": 58708160,
+            "mode": "Arm",
+            "mapping": "initialized autoload0 in this exact program",
+            "observation_boundary": "outside_selection"
+          },
+          "resolution": {
+            "kind": "selected",
+            "node": 19
+          }
+        }
+      ],
+      "frontier_witnesses": [
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            2
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "reason": "indirect",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23
+          ]
+        },
+        {
+          "reason": "indirect",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            33,
+            34,
+            35,
+            36,
+            37
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "reason": "indirect",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            40,
+            28,
+            29,
+            30,
+            31,
+            32
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            44,
+            45,
+            46,
+            48,
+            49,
+            50
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            44,
+            45,
+            46,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            57
+          ]
+        },
+        {
+          "reason": "outside_selection",
+          "edges": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            22,
+            24,
+            38,
+            39,
+            41,
+            42,
+            44,
+            45,
+            46,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            58,
+            59,
+            60,
+            62,
+            63,
+            64
+          ]
+        }
+      ],
+      "counts": {
+        "observations": 8,
+        "nodes": 55,
+        "edges": 70,
+        "visited_nodes": 55,
+        "edge_examinations": 70,
+        "selected_edges": 59,
+        "frontier_edges": 11,
+        "unknown_target_edges": 3,
+        "mode_conflicts": 0
+      }
+    }
+  ]
+}

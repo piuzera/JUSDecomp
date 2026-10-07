@@ -1,0 +1,11 @@
+test_actual_mutation_after_receipt_write_rejects (__main__.BoundaryTests.test_actual_mutation_after_receipt_write_rejects) ... ok
+test_actual_receipt_mutation_after_write_rejects (__main__.BoundaryTests.test_actual_receipt_mutation_after_write_rejects) ... ok
+test_existing_output_rejects_without_changes (__main__.BoundaryTests.test_existing_output_rejects_without_changes) ... ok
+test_postpublication_checks_actual_changed_input (__main__.BoundaryTests.test_postpublication_checks_actual_changed_input) ... ok
+test_receipt_creation_is_exclusive (__main__.BoundaryTests.test_receipt_creation_is_exclusive) ... ok
+test_source_and_tool_pin_changes_reject (__main__.BoundaryTests.test_source_and_tool_pin_changes_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK

@@ -1,0 +1,29 @@
+FFF
+======================================================================
+FAIL: test_reads_real_arm_object_relocations (__main__.ObjectReadbackTests.test_reads_real_arm_object_relocations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-low-getter-worker-proof/test_verify.py", line 13, in test_reads_real_arm_object_relocations
+    self.assertIsNotNone(verify, 'actual ARM object verifier is not implemented')
+AssertionError: unexpectedly None : actual ARM object verifier is not implemented
+
+======================================================================
+FAIL: test_wrong_binding_changes_a_real_relocated_literal (__main__.ObjectReadbackTests.test_wrong_binding_changes_a_real_relocated_literal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-low-getter-worker-proof/test_verify.py", line 24, in test_wrong_binding_changes_a_real_relocated_literal
+    self.assertIsNotNone(verify, 'actual ARM relocation verifier is not implemented')
+AssertionError: unexpectedly None : actual ARM relocation verifier is not implemented
+
+======================================================================
+FAIL: test_wrong_binding_is_rejected_against_original_literal_words (__main__.ObjectReadbackTests.test_wrong_binding_is_rejected_against_original_literal_words)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-low-getter-worker-proof/test_verify.py", line 37, in test_wrong_binding_is_rejected_against_original_literal_words
+    self.assertIsNotNone(verify, 'actual pool correspondence verifier is not implemented')
+AssertionError: unexpectedly None : actual pool correspondence verifier is not implemented
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+FAILED (failures=3)
