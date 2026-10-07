@@ -1,0 +1,76 @@
+{
+  "status": "mismatch_confirmed",
+  "frozen_inputs_sha256": {
+    "/private/tmp/jus-arm7-low-getter-independent-proof/low_getter_trial.c": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "/private/tmp/jus-arm7-low-getter-worker-proof/low_getter_trial.c": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "/private/tmp/jus-arm7-low-getter-independent-proof/compiled.o": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+    "/private/tmp/jus-arm7-low-getter-worker-proof/compiled.o": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+    "/Users/djdjo/Documents/mine/rom/jus.nds": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+  },
+  "object_text_bytes": 88,
+  "mapping_symbols": [
+    {
+      "name": "$a",
+      "value": 0,
+      "size": 0,
+      "binding": 0,
+      "type": 2,
+      "section": 5
+    },
+    {
+      "name": "$d",
+      "value": 80,
+      "size": 0,
+      "binding": 0,
+      "type": 2,
+      "section": 5
+    }
+  ],
+  "relocations": [
+    {
+      "offset": 80,
+      "type": 2,
+      "symbol": "hyp_subpriv_arena_lo",
+      "addend": 0
+    },
+    {
+      "offset": 84,
+      "type": 2,
+      "symbol": "hyp_wram_arena_lo",
+      "addend": 0
+    }
+  ],
+  "programs": [
+    {
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "original_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+      "instruction_word_differences": [
+        13,
+        14
+      ],
+      "original_pool_words": [
+        "0x027f9c08",
+        "0x0380bc90"
+      ]
+    },
+    {
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+      "original_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+      "instruction_word_differences": [
+        13,
+        14
+      ],
+      "original_pool_words": [
+        "0x027f9c08",
+        "0x0380bc90"
+      ]
+    }
+  ],
+  "source_credit_bytes": 0,
+  "original_function_extent_proven": false,
+  "original_symbol_names_established": false,
+  "native_link_attempted": false
+}

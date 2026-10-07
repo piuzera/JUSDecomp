@@ -1,0 +1,20 @@
+	cmp	r0, #1
+	beq	#16
+	cmp	r0, #7
+	beq	#16
+	cmp	r0, #8
+	beq	#24
+	b	#40
+	ldr	r0, [pc, #44]
+	bx	lr
+	ldr	r0, [pc, #40]
+	cmp	r0, #58720256
+	movhi	r0, #58720256
+	bx	lr
+	ldr	r1, [pc, #24]
+	mov	r0, #58720256
+	cmp	r1, #58720256
+	movhi	r0, r1
+	bx	lr
+	mov	r0, #0
+	bx	lr

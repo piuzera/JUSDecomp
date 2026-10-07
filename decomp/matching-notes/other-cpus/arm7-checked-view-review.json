@@ -1,0 +1,18 @@
+{
+  "reviewer": "gpt-6-astra",
+  "reviewed_integration_commit": "a4f084b",
+  "status": "cleared",
+  "attention_flags": [],
+  "checks": [
+    "Exact patch, sidecar, lock, native probe and applied source pins",
+    "29 Rust tests and clippy",
+    "Independent actual parent and child views",
+    "Preserved control and both review defect reproducers",
+    "Exact-path patch whitespace policy; strict applied-source whitespace",
+    "Final transcript and decision trail"
+  ],
+  "scope": "ARM7 physical views only",
+  "source_bytes": 0,
+  "production_pin_changed": false,
+  "task_complete": false
+}

@@ -1,0 +1,47 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 ARM7_HEADER_ENTRY = 37224448
+ 2380000  2380000      1b0     4 .arm7.startup
+ 2380000  2380000      1b0     4         startup.o:(.arm7.startup)
+ 23801b0  23801b0        0     1 
+ 23a8698  23a8698       18     4 .arm7.table
+ 23a8698  23a8698       18     4         table.o:(.arm7.table)
+ 23a86b0  23a86b0        0     1 
+ 27e0000  23903f8    182a0     4 .arm7.autoload1
+ 27e0000  23903f8    182a0     4         autoload1.o:(.arm7.autoload1)
+ 27f82a0  23a8698        0     1 
+ 27f82a0  27f82a0     1968     4 .arm7.bss.autoload1
+ 27f82a0  27f82a0     1968     4         autoload1.o:(.arm7.bss.autoload1)
+ 27f9c08  27f9c08        0     1 
+ 37f8000  23801b0    10248     4 .arm7.autoload0
+ 37f8000  23801b0     4f18     4         prefix.o:(.arm7.autoload0.prefix)
+ 37fcf18  23850c8        0     1         __leaf_start = .
+ 37fcf18  23850c8       14     4         compiled.o:(.text)
+ 37fcf18  23850c8        0     1                 $a
+ 37fcf18  23850c8       14     1                 arm7_store_trial
+ 37fcf2c  23850dc        0     1         __leaf_end = .
+ 37fcf2c  23850dc     b31c     4         suffix.o:(.arm7.autoload0.suffix)
+ 3808248  23903f8        0     4 .text
+ 3808248  23903f8        0     4         startup.o:(.text)
+ 3808248  23903f8        0     4         table.o:(.text)
+ 3808248  23903f8        0     4         autoload1.o:(.text)
+ 3808248  23903f8        0     4         prefix.o:(.text)
+ 3808248  23903f8        0     4         suffix.o:(.text)
+ 3808248  23903f8        0     4         bss0.o:(.text)
+ 3808248  23903f8        0     1 
+ 3808248  23903f8        0     1 
+ 3808248  23903f8        0     1 
+ 3808248  23903f8        0     1 
+ 3808248  3808248     3a48     4 .arm7.bss.autoload0
+ 3808248  3808248     3a48     4         bss0.o:(.arm7.bss.autoload0)
+ 380bc90  380bc90        0     1 
+       0        0       22     1 .ARM.attributes
+       0        0       22     1         startup.o:(.ARM.attributes)
+       0        0       3f     1 .comment
+       0        0       23     1         compiled.o:(.comment)
+      23       23       1c     1         <internal>:(.comment)
+       0        0       60     4 .symtab
+       0        0       60     4         <internal>:(.symtab)
+       0        0       9c     1 .shstrtab
+       0        0       9c     1         <internal>:(.shstrtab)
+       0        0       3f     1 .strtab
+       0        0       3f     1         <internal>:(.strtab)

@@ -1,0 +1,289 @@
+{
+  "status": "accepted",
+  "findings": [],
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+  "layout_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "request_sha256": "c5e7b7b0911462ddd213dbf60ef25986f64896bb36288e3788743d2bcb1aad63",
+  "report_sha256": "994cadc35863bb4e0f7306a692c4a2a8792cf3064ed69a7b184d23e8de4c8e90",
+  "report_bytes": 370581,
+  "fnt_directory_count": 39,
+  "fnt_file_count": 379,
+  "child_file_id": 79,
+  "child_rom_extent": [
+    2340864,
+    4482248
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "arm7_image_offset": 2162688,
+      "autoloads": [
+        [
+          58687488,
+          66120,
+          14920,
+          432
+        ],
+        [
+          41811968,
+          98976,
+          6504,
+          66552
+        ]
+      ],
+      "spans": [
+        {
+          "start": 58708036,
+          "end": 58708068,
+          "stored_offset": 20980,
+          "original_rom_offset": 2183668,
+          "sha256": "887a11d8e3585472da9e7b810a454d3cf15fd88c3b165c337bb221e91ecad928",
+          "words": [
+            "0xe3a00001",
+            "0xe5810000",
+            "0xebffffcc",
+            "0xe1a01000",
+            "0xe3a00001",
+            "0xebffffae",
+            "0xe3a00001",
+            "0xebffffb1"
+          ],
+          "calls": [
+            {
+              "source": 58708044,
+              "target": 58707844,
+              "guard": "always",
+              "return_continuation": 58708048,
+              "continuation_guard": "call_returned"
+            },
+            {
+              "source": 58708056,
+              "target": 58707736,
+              "guard": "always",
+              "return_continuation": 58708060,
+              "continuation_guard": "call_returned"
+            },
+            {
+              "source": 58708064,
+              "target": 58707756,
+              "guard": "always",
+              "return_continuation": 58708068,
+              "continuation_guard": "call_returned"
+            }
+          ],
+          "llvm_stdout_sha256": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d",
+          "llvm_argv": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ]
+        },
+        {
+          "start": 58708160,
+          "end": 58708168,
+          "stored_offset": 21104,
+          "original_rom_offset": 2183792,
+          "sha256": "89ccd393f43dde6fb4ef3fc4d2c026a16034d4541dc798f74de12bcc0a90a19f",
+          "words": [
+            "0xe28dd004",
+            "0xe8bd4000"
+          ],
+          "calls": [],
+          "llvm_stdout_sha256": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+          "llvm_argv": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ]
+        }
+      ],
+      "literal": {
+        "address": 58708172,
+        "original_rom_offset": 2183804,
+        "word": 58754096,
+        "sha256": "57b0891abc6d6b61a7345b6a995c20fdeb937a1f7ca61ffa06b012074e0e73a4",
+        "target_mapping": "autoload0 BSS only; no stored value",
+        "bss_extent": [
+          58753608,
+          58768528
+        ]
+      },
+      "branch_feasibility": "unknown",
+      "runtime_pointed_to_value": "unknown"
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "arm7_image_offset": 1972736,
+      "autoloads": [
+        [
+          58687488,
+          66120,
+          14920,
+          432
+        ],
+        [
+          41811968,
+          98976,
+          6504,
+          66552
+        ]
+      ],
+      "spans": [
+        {
+          "start": 58708036,
+          "end": 58708068,
+          "stored_offset": 20980,
+          "original_rom_offset": 4334580,
+          "sha256": "887a11d8e3585472da9e7b810a454d3cf15fd88c3b165c337bb221e91ecad928",
+          "words": [
+            "0xe3a00001",
+            "0xe5810000",
+            "0xebffffcc",
+            "0xe1a01000",
+            "0xe3a00001",
+            "0xebffffae",
+            "0xe3a00001",
+            "0xebffffb1"
+          ],
+          "calls": [
+            {
+              "source": 58708044,
+              "target": 58707844,
+              "guard": "always",
+              "return_continuation": 58708048,
+              "continuation_guard": "call_returned"
+            },
+            {
+              "source": 58708056,
+              "target": 58707736,
+              "guard": "always",
+              "return_continuation": 58708060,
+              "continuation_guard": "call_returned"
+            },
+            {
+              "source": 58708064,
+              "target": 58707756,
+              "guard": "always",
+              "return_continuation": 58708068,
+              "continuation_guard": "call_returned"
+            }
+          ],
+          "llvm_stdout_sha256": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d",
+          "llvm_argv": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ]
+        },
+        {
+          "start": 58708160,
+          "end": 58708168,
+          "stored_offset": 21104,
+          "original_rom_offset": 4334704,
+          "sha256": "89ccd393f43dde6fb4ef3fc4d2c026a16034d4541dc798f74de12bcc0a90a19f",
+          "words": [
+            "0xe28dd004",
+            "0xe8bd4000"
+          ],
+          "calls": [],
+          "llvm_stdout_sha256": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+          "llvm_argv": [
+            "/opt/homebrew/opt/llvm/bin/llvm-mc",
+            "--disassemble",
+            "--triple=armv4t-none-eabi"
+          ]
+        }
+      ],
+      "literal": {
+        "address": 58708172,
+        "original_rom_offset": 4334716,
+        "word": 58754096,
+        "sha256": "57b0891abc6d6b61a7345b6a995c20fdeb937a1f7ca61ffa06b012074e0e73a4",
+        "target_mapping": "autoload0 BSS only; no stored value",
+        "bss_extent": [
+          58753608,
+          58768528
+        ]
+      },
+      "branch_feasibility": "unknown",
+      "runtime_pointed_to_value": "unknown"
+    }
+  ],
+  "source_bytes": 0,
+  "branch_feasibility": "unknown",
+  "runtime_pointed_to_value": "unknown",
+  "inputs_unchanged": true,
+  "probe_argv": [
+    "/private/tmp/jus-arm7-reachable-root-cache/target/release/examples/arm7_reachable_probe",
+    "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "/private/tmp/jus-arm7-branch-grounding/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+    "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "/private/tmp/jus-arm7-branch-independent-proof/requests.json",
+    "c5e7b7b0911462ddd213dbf60ef25986f64896bb36288e3788743d2bcb1aad63",
+    "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff"
+  ],
+  "reviewed_commit": "d509e30f334f92f3fccb51d428c6c9c79b0e2c36",
+  "public_git_blobs_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-grounding.md": "77093323ecc6f03f0e0aa353f65c4acf8b89e5a4331f386dd171690d22aa4eea",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/.gitattributes": "667b93be6ede617192a0c6ac9e3664b1727402239531277b6cd47b53e73a6535",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/commands.json": "68df860594c3188cc7cbc7984f3e7fedd11c9b5d0b26776597296054d82bc9f1",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/graph-summary.json": "4aa1d8df6b285037db30181fd410ea84a8fb9007be996df8df0e104145396d92",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/llvm-condition-failed.txt": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/llvm-condition-passed.txt": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/original-read.json": "5147f56522c05daf50c49e97c337ae168e38cd0ab75171b2a1a456ab5129b8b3",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/read_original.py": "b1e015aaf247c1d4d469d16b671712fc48cc6ae6681e402639b21e70b14f8bb2",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/requests.json": "c5e7b7b0911462ddd213dbf60ef25986f64896bb36288e3788743d2bcb1aad63",
+    "decomp/matching-notes/other-cpus/arm7-branch-literal-proof/summarize_report.py": "9816d2954f584a08a0b770c124850f7119222b55f49e834d86d9bcab3cf815b7"
+  },
+  "public_compact_summary_matches_independent_full_report": true,
+  "public_scripts_reproduce_exact_committed_outputs": true,
+  "public_script_replay": [
+    {
+      "argv": [
+        "python3",
+        "/private/tmp/jus-arm7-branch-grounding/decomp/matching-notes/other-cpus/arm7-branch-literal-proof/read_original.py",
+        "/private/tmp/jus-arm7-branch-independent-proof/public-script-replay"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "432dac8209ea6fc5e8893c9219724966201627e4e5df0f152e0fb8c21d7077e6",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "/private/tmp/jus-arm7-branch-grounding/decomp/matching-notes/other-cpus/arm7-branch-literal-proof/summarize_report.py",
+        "/private/tmp/jus-arm7-branch-independent-proof/public-script-replay"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9476a530ec8003bcaff7c9560ea9b662bac4a336e39072cc779983799e69df44",
+      "stderr": ""
+    }
+  ],
+  "guard_witnesses_sha256": "d1cc4a453fdf4cb47f677ce142f9b8a46e3407e63b3958717936a29e26e55aab",
+  "independent_scripts_sha256": {
+    "verify_branch.py": "30ae54ca576484d2317efe9b4ea171e1907f63578ebd92991d27dec8c97f3834",
+    "check_witnesses.py": "fb2e93848d0e799c99d14f5dd1678d6109bd456799b269371ae771124f1d1b05",
+    "check_public.py": "855dd4ff87a5573d77a3ad0a660e553515de1793d273e3c0bb7042dc2a035ed1"
+  },
+  "independent_llvm_stdout_sha256": {
+    "llvm-program-1-span-1.txt": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+    "llvm-program-1-span-0.txt": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d",
+    "llvm-program-0-span-1.txt": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+    "llvm-program-0-span-0.txt": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d"
+  },
+  "scope_review": "Only two explicit ARM selections and one raw initialized literal were added. Literal points into original autoload0 BSS with no original stored contents. All call/condition witnesses remain assumptions; d0c8 remains undecoded frontier. No runtime value, branch feasibility, function extent, executability, relocation, source credit, or T10 completion established."
+}

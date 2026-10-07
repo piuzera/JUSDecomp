@@ -1,0 +1,1762 @@
+{
+  "status": "seven_actual_MW_objects_exact_both_images",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "cluster_objects": {
+        "lowstore": {
+          "sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "text_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "text_bytes": 20,
+          "code_bytes": 20,
+          "relocations": []
+        },
+        "upperstore": {
+          "sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "text_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "code_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "text_bytes": 20,
+          "code_bytes": 20,
+          "relocations": []
+        },
+        "lowgetter": {
+          "sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "text_sha256": "dec903f6504225144a12ee57fc8fbd34b5c30dcf8140af8b954f57d680f62279",
+          "code_sha256": "4439515ba3e13f1224622048ec17be7c238aaba35b5ec4d254209e7fb7df7564",
+          "text_bytes": 88,
+          "code_bytes": 80,
+          "relocations": [
+            {
+              "offset": 80,
+              "type": 2,
+              "symbol": "hyp_subpriv_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 84,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            }
+          ]
+        },
+        "highgetter": {
+          "sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "text_sha256": "89d466e62a0cc66d0a4b2458c080fd62284b2336d30db72f25a2ce8f98bbf28c",
+          "code_sha256": "85a5352a73e4cf800fe0ef88137d78afbdf6289d0dd369d839daa007c7c016ce",
+          "text_bytes": 128,
+          "code_bytes": 108,
+          "relocations": [
+            {
+              "offset": 112,
+              "type": 2,
+              "symbol": "hyp_irq_stack_size",
+              "addend": 0
+            },
+            {
+              "offset": 120,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 124,
+              "type": 2,
+              "symbol": "hyp_system_stack_size",
+              "addend": 0
+            }
+          ]
+        }
+      },
+      "load_objects": {
+        "lowload": {
+          "object_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+          "code_sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+          "vma": 58707972,
+          "stored_image_offset": 20916,
+          "bytes": 20,
+          "function": "arm7_low_load_trial"
+        },
+        "highload": {
+          "object_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+          "code_sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+          "vma": 58707992,
+          "stored_image_offset": 20936,
+          "bytes": 20,
+          "function": "arm7_high_load_trial"
+        }
+      },
+      "initializer_object": {
+        "object_sha256": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+        "text_bytes": 164,
+        "code_bytes": 160,
+        "text_sha256": "35ff79603ccc5afde50cdd183cf0006e3117337853b201488dcdfe8caa2bab22",
+        "call_relocations": [
+          [
+            32,
+            1,
+            "arm7_high_getter_trial",
+            -8
+          ],
+          [
+            44,
+            1,
+            "arm7_store_trial",
+            -8
+          ],
+          [
+            52,
+            1,
+            "arm7_low_getter_trial",
+            -8
+          ],
+          [
+            64,
+            1,
+            "arm7_low_store_trial",
+            -8
+          ],
+          [
+            72,
+            1,
+            "arm7_high_getter_trial",
+            -8
+          ],
+          [
+            84,
+            1,
+            "arm7_store_trial",
+            -8
+          ],
+          [
+            92,
+            1,
+            "arm7_low_getter_trial",
+            -8
+          ],
+          [
+            104,
+            1,
+            "arm7_low_store_trial",
+            -8
+          ],
+          [
+            112,
+            1,
+            "arm7_high_getter_trial",
+            -8
+          ],
+          [
+            124,
+            1,
+            "arm7_store_trial",
+            -8
+          ],
+          [
+            132,
+            1,
+            "arm7_low_getter_trial",
+            -8
+          ],
+          [
+            144,
+            1,
+            "arm7_low_store_trial",
+            -8
+          ]
+        ],
+        "guard_relocation": [
+          160,
+          2,
+          "hyp_arena_initialized",
+          0
+        ],
+        "exceptix_relocation_discarded": true
+      },
+      "positive": {
+        "elf_sha256": "46ce79deda3e6b3aca33f3d0462d76b459f59d1a8c86eecf86758d45bf30feb6",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "mismatch_offsets": [],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "54cb8e8a1a8de738953161cb6b01cc1a534c6de00c293acd6ff115e5373a4e26",
+        "guard_literal": 58754096,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754096
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffae",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa4",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffffa4",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9a",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff9a",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff90",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ]
+      },
+      "wrong_guard": {
+        "elf_sha256": "de992fd2f7e50252b39ab68a7f555b80bc91ccd1eaf55de250c26642824a9813",
+        "image_sha256": "7571282fdf39b2aaaf733c738f0cb76c8e32ff2c0ce1217550e289c7896b254f",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          21116
+        ],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "c669d3fbd535050527458f6e1f607494eec6049c84a81afb0c2ac6a02e89cc86",
+        "guard_literal": 58754100,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754100
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffae",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa4",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffffa4",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9a",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff9a",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff90",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ]
+      },
+      "omissions": {
+        "init": 1,
+        "lowstore": 1,
+        "upperstore": 1,
+        "lowgetter": 1,
+        "highgetter": 1,
+        "lowload": 1,
+        "highload": 1
+      },
+      "swap_rejected_by": "actual_role_map_or_function",
+      "swap_actual": {
+        "elf_sha256": "30036358ec28f125f01a1da6c6edf287eafa415e773853a544857cd1467bc838",
+        "image_sha256": "b9816ac46dcc0c985d874b9353e94a1fcfba63ba18d3ac753b8d2e5161137115",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          20672,
+          20692,
+          21000,
+          21020,
+          21040,
+          21060,
+          21080,
+          21100
+        ],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "0c5ee4358a3c6f7496afab7afe78de9f25fa4ff88a1085b74bc4105799295560",
+        "guard_literal": 58754096,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754096
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffa9",
+            "target": "037fcf04",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa9",
+            "target": "037fcf18",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffff9f",
+            "target": "037fcf04",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9f",
+            "target": "037fcf18",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff95",
+            "target": "037fcf04",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff95",
+            "target": "037fcf18",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ],
+        "actual_function_values": {
+          "lowstore": 58707736,
+          "upperstore": 58707716,
+          "lowgetter": 58707756,
+          "highgetter": 58707844
+        },
+        "map_sha256": "db2126a5d7cf3984f411dcc18423fd55b11b3c24b2b430dd1780d2ba8eec152b",
+        "strict_role_rejection": "actual_role_map_or_function"
+      },
+      "loadswap_actual": {
+        "elf_sha256": "aaa4de4c8b629e43c609555a2bd0050c3f0e03e7b49025988bb7232fee169f83",
+        "image_sha256": "f991b33333b043ec415c7e710851caf2fefe1c13828babcbc3a4fad69fc59b56",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          20928,
+          20948
+        ],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "54cb8e8a1a8de738953161cb6b01cc1a534c6de00c293acd6ff115e5373a4e26",
+        "guard_literal": 58754096,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754096
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffae",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa4",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffffa4",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9a",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff9a",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff90",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ],
+        "actual_function_values": {
+          "lowload": 58707992,
+          "highload": 58707972
+        },
+        "map_sha256": "ddbb0c974f48149cfd2a6290e97337e1cc1d2286c0f86953f3523d2efb00f911",
+        "strict_role_rejection": "actual_load_role_map_or_function"
+      },
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "cluster_objects": {
+        "lowstore": {
+          "sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "text_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+          "text_bytes": 20,
+          "code_bytes": 20,
+          "relocations": []
+        },
+        "upperstore": {
+          "sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+          "text_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "code_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+          "text_bytes": 20,
+          "code_bytes": 20,
+          "relocations": []
+        },
+        "lowgetter": {
+          "sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "text_sha256": "dec903f6504225144a12ee57fc8fbd34b5c30dcf8140af8b954f57d680f62279",
+          "code_sha256": "4439515ba3e13f1224622048ec17be7c238aaba35b5ec4d254209e7fb7df7564",
+          "text_bytes": 88,
+          "code_bytes": 80,
+          "relocations": [
+            {
+              "offset": 80,
+              "type": 2,
+              "symbol": "hyp_subpriv_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 84,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            }
+          ]
+        },
+        "highgetter": {
+          "sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "text_sha256": "89d466e62a0cc66d0a4b2458c080fd62284b2336d30db72f25a2ce8f98bbf28c",
+          "code_sha256": "85a5352a73e4cf800fe0ef88137d78afbdf6289d0dd369d839daa007c7c016ce",
+          "text_bytes": 128,
+          "code_bytes": 108,
+          "relocations": [
+            {
+              "offset": 112,
+              "type": 2,
+              "symbol": "hyp_irq_stack_size",
+              "addend": 0
+            },
+            {
+              "offset": 120,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 124,
+              "type": 2,
+              "symbol": "hyp_system_stack_size",
+              "addend": 0
+            }
+          ]
+        }
+      },
+      "load_objects": {
+        "lowload": {
+          "object_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+          "code_sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+          "vma": 58707972,
+          "stored_image_offset": 20916,
+          "bytes": 20,
+          "function": "arm7_low_load_trial"
+        },
+        "highload": {
+          "object_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+          "code_sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+          "vma": 58707992,
+          "stored_image_offset": 20936,
+          "bytes": 20,
+          "function": "arm7_high_load_trial"
+        }
+      },
+      "initializer_object": {
+        "object_sha256": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+        "text_bytes": 164,
+        "code_bytes": 160,
+        "text_sha256": "35ff79603ccc5afde50cdd183cf0006e3117337853b201488dcdfe8caa2bab22",
+        "call_relocations": [
+          [
+            32,
+            1,
+            "arm7_high_getter_trial",
+            -8
+          ],
+          [
+            44,
+            1,
+            "arm7_store_trial",
+            -8
+          ],
+          [
+            52,
+            1,
+            "arm7_low_getter_trial",
+            -8
+          ],
+          [
+            64,
+            1,
+            "arm7_low_store_trial",
+            -8
+          ],
+          [
+            72,
+            1,
+            "arm7_high_getter_trial",
+            -8
+          ],
+          [
+            84,
+            1,
+            "arm7_store_trial",
+            -8
+          ],
+          [
+            92,
+            1,
+            "arm7_low_getter_trial",
+            -8
+          ],
+          [
+            104,
+            1,
+            "arm7_low_store_trial",
+            -8
+          ],
+          [
+            112,
+            1,
+            "arm7_high_getter_trial",
+            -8
+          ],
+          [
+            124,
+            1,
+            "arm7_store_trial",
+            -8
+          ],
+          [
+            132,
+            1,
+            "arm7_low_getter_trial",
+            -8
+          ],
+          [
+            144,
+            1,
+            "arm7_low_store_trial",
+            -8
+          ]
+        ],
+        "guard_relocation": [
+          160,
+          2,
+          "hyp_arena_initialized",
+          0
+        ],
+        "exceptix_relocation_discarded": true
+      },
+      "positive": {
+        "elf_sha256": "46ce79deda3e6b3aca33f3d0462d76b459f59d1a8c86eecf86758d45bf30feb6",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "mismatch_offsets": [],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "54cb8e8a1a8de738953161cb6b01cc1a534c6de00c293acd6ff115e5373a4e26",
+        "guard_literal": 58754096,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754096
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffae",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa4",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffffa4",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9a",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff9a",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff90",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ]
+      },
+      "wrong_guard": {
+        "elf_sha256": "de992fd2f7e50252b39ab68a7f555b80bc91ccd1eaf55de250c26642824a9813",
+        "image_sha256": "7571282fdf39b2aaaf733c738f0cb76c8e32ff2c0ce1217550e289c7896b254f",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          21116
+        ],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "c669d3fbd535050527458f6e1f607494eec6049c84a81afb0c2ac6a02e89cc86",
+        "guard_literal": 58754100,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754100
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffae",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa4",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffffa4",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9a",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff9a",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff90",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ]
+      },
+      "omissions": {
+        "init": 1,
+        "lowstore": 1,
+        "upperstore": 1,
+        "lowgetter": 1,
+        "highgetter": 1,
+        "lowload": 1,
+        "highload": 1
+      },
+      "swap_rejected_by": "actual_role_map_or_function",
+      "swap_actual": {
+        "elf_sha256": "30036358ec28f125f01a1da6c6edf287eafa415e773853a544857cd1467bc838",
+        "image_sha256": "b9816ac46dcc0c985d874b9353e94a1fcfba63ba18d3ac753b8d2e5161137115",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          20672,
+          20692,
+          21000,
+          21020,
+          21040,
+          21060,
+          21080,
+          21100
+        ],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "0c5ee4358a3c6f7496afab7afe78de9f25fa4ff88a1085b74bc4105799295560",
+        "guard_literal": 58754096,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754096
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffa9",
+            "target": "037fcf04",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa9",
+            "target": "037fcf18",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffff9f",
+            "target": "037fcf04",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9f",
+            "target": "037fcf18",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff95",
+            "target": "037fcf04",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff95",
+            "target": "037fcf18",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ],
+        "actual_function_values": {
+          "lowstore": 58707736,
+          "upperstore": 58707716,
+          "lowgetter": 58707756,
+          "highgetter": 58707844
+        },
+        "map_sha256": "db2126a5d7cf3984f411dcc18423fd55b11b3c24b2b430dd1780d2ba8eec152b",
+        "strict_role_rejection": "actual_role_map_or_function"
+      },
+      "loadswap_actual": {
+        "elf_sha256": "aaa4de4c8b629e43c609555a2bd0050c3f0e03e7b49025988bb7232fee169f83",
+        "image_sha256": "f991b33333b043ec415c7e710851caf2fefe1c13828babcbc3a4fad69fc59b56",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          20928,
+          20948
+        ],
+        "BSS_bytes": 21424,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "init_sha256": "54cb8e8a1a8de738953161cb6b01cc1a534c6de00c293acd6ff115e5373a4e26",
+        "guard_literal": 58754096,
+        "observed_bindings": {
+          "hyp_subpriv_arena_lo": 41917448,
+          "hyp_wram_arena_lo": 58768528,
+          "hyp_irq_stack_size": 1024,
+          "hyp_system_stack_size": 1024,
+          "hyp_arena_initialized": 58754096
+        },
+        "calls": [
+          {
+            "source": "037fd04c",
+            "word": "ebffffcc",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd058",
+            "word": "ebffffae",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd060",
+            "word": "ebffffb1",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd06c",
+            "word": "ebffffa4",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd074",
+            "word": "ebffffc2",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd080",
+            "word": "ebffffa4",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd088",
+            "word": "ebffffa7",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd094",
+            "word": "ebffff9a",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          },
+          {
+            "source": "037fd09c",
+            "word": "ebffffb8",
+            "target": "037fcf84",
+            "symbol": "arm7_high_getter_trial",
+            "role": "highgetter"
+          },
+          {
+            "source": "037fd0a8",
+            "word": "ebffff9a",
+            "target": "037fcf18",
+            "symbol": "arm7_store_trial",
+            "role": "upperstore"
+          },
+          {
+            "source": "037fd0b0",
+            "word": "ebffff9d",
+            "target": "037fcf2c",
+            "symbol": "arm7_low_getter_trial",
+            "role": "lowgetter"
+          },
+          {
+            "source": "037fd0bc",
+            "word": "ebffff90",
+            "target": "037fcf04",
+            "symbol": "arm7_low_store_trial",
+            "role": "lowstore"
+          }
+        ],
+        "actual_function_values": {
+          "lowload": 58707992,
+          "highload": 58707972
+        },
+        "map_sha256": "ddbb0c974f48149cfd2a6290e97337e1cc1d2286c0f86953f3523d2efb00f911",
+        "strict_role_rejection": "actual_load_role_map_or_function"
+      },
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    }
+  ],
+  "source_credit_bytes": 0,
+  "canonical_bytes": 304,
+  "T06_open": true,
+  "T10_open": true
+}

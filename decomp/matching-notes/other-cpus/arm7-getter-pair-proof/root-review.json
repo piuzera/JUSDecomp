@@ -1,0 +1,182 @@
+{
+  "status": "passed",
+  "public_replay": "fresh committed package, original ROM and pinned tools",
+  "tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "root_trial_receipt_sha256": "66e9c15cbc428f55b8b1b89d592c396f3d014b5bf05e276512b88d4a3816f464",
+  "getters": [
+    {
+      "role": "low",
+      "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+      "vma": 58707756,
+      "bytes": 88,
+      "original_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2"
+    },
+    {
+      "role": "high",
+      "source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+      "vma": 58707844,
+      "bytes": 128,
+      "original_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4"
+    }
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "positive": {
+        "linked_elf_sha256": "6298ed9bc7214942ac6fbf6fefedf26c5dafd65a7806c53f14e75083783597c8",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "BSS_bytes": 21424,
+        "getters": [
+          {
+            "role": "low",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "low.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         low.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+            "linked_wram_word": 58768528
+          },
+          {
+            "role": "high",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "high.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         high.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+            "linked_wram_word": 58768528
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0
+      },
+      "load_segments": 6,
+      "wrong_shared_WRAM_offsets": [
+        20784,
+        20908
+      ],
+      "public_omitted_low_rejected": true,
+      "swapped_roles_rejected": true,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "positive": {
+        "linked_elf_sha256": "6298ed9bc7214942ac6fbf6fefedf26c5dafd65a7806c53f14e75083783597c8",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "BSS_bytes": 21424,
+        "getters": [
+          {
+            "role": "low",
+            "actual_input_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+            "map_input": "low.o:(.text)",
+            "map_row": " 37fcf2c  23850dc       58     4         low.o:(.text)",
+            "map_vma": 58707756,
+            "map_lma": 37245148,
+            "map_bytes": 88,
+            "function": {
+              "name": "arm7_low_getter_trial",
+              "vma": 58707756,
+              "size": 88,
+              "section": 5
+            },
+            "stored_image_offset": 20700,
+            "linked_bytes_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+            "linked_wram_word": 58768528
+          },
+          {
+            "role": "high",
+            "actual_input_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+            "map_input": "high.o:(.text)",
+            "map_row": " 37fcf84  2385134       80     4         high.o:(.text)",
+            "map_vma": 58707844,
+            "map_lma": 37245236,
+            "map_bytes": 128,
+            "function": {
+              "name": "arm7_high_getter_trial",
+              "vma": 58707844,
+              "size": 128,
+              "section": 5
+            },
+            "stored_image_offset": 20788,
+            "linked_bytes_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+            "linked_wram_word": 58768528
+          }
+        ],
+        "bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "observed_bindings": {
+          "subpriv": 41917448,
+          "wram": 58768528,
+          "irq": 1024,
+          "system": 1024
+        },
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0
+      },
+      "load_segments": 6,
+      "wrong_shared_WRAM_offsets": [
+        20784,
+        20908
+      ],
+      "public_omitted_low_rejected": true,
+      "swapped_roles_rejected": true,
+      "malformed_load_rejected": true
+    }
+  ],
+  "independent_omitted_high_rejected": true,
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T10_complete": false
+}

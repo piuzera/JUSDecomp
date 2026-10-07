@@ -1,0 +1,133 @@
+{
+  "status": "passed",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "spans": [
+        {
+          "start": 58708080,
+          "end": 58708160,
+          "stored_image_offset": 21024,
+          "sha256": "2682fcfd18c0bdc36ed6547ad546bef1d300ab2a3eea24c1e3c1a2ca7dde3f33",
+          "words": [
+            "e3a00007",
+            "ebffffc2",
+            "e1a01000",
+            "e3a00007",
+            "ebffffa4",
+            "e3a00007",
+            "ebffffa7",
+            "e1a01000",
+            "e3a00007",
+            "ebffff9a",
+            "e3a00008",
+            "ebffffb8",
+            "e1a01000",
+            "e3a00008",
+            "ebffff9a",
+            "e3a00008",
+            "ebffff9d",
+            "e1a01000",
+            "e3a00008",
+            "ebffff90"
+          ],
+          "llvm_stdout_sha256": "508883225420b4e4ea57b61fca31f8c989c83dfd33d849721575a1b3466f3077",
+          "llvm_stdout_file": "program-0-037fd070-llvm.txt"
+        },
+        {
+          "start": 58708160,
+          "end": 58708172,
+          "stored_image_offset": 21104,
+          "sha256": "97e49fab5b2490c4b4977ff23d65446f267880f107a387035c5cf63b97d1d2ad",
+          "words": [
+            "e28dd004",
+            "e8bd4000",
+            "e12fff1e"
+          ],
+          "llvm_stdout_sha256": "2cc8bcd5a0074ff8047de1bee11edc91a69ab4650daa68ef147ef84f1aaa69fe",
+          "llvm_stdout_file": "program-0-037fd0c0-llvm.txt"
+        }
+      ],
+      "excluded_following_literal": {
+        "address": 58708172,
+        "value": 58754096
+      }
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "spans": [
+        {
+          "start": 58708080,
+          "end": 58708160,
+          "stored_image_offset": 21024,
+          "sha256": "2682fcfd18c0bdc36ed6547ad546bef1d300ab2a3eea24c1e3c1a2ca7dde3f33",
+          "words": [
+            "e3a00007",
+            "ebffffc2",
+            "e1a01000",
+            "e3a00007",
+            "ebffffa4",
+            "e3a00007",
+            "ebffffa7",
+            "e1a01000",
+            "e3a00007",
+            "ebffff9a",
+            "e3a00008",
+            "ebffffb8",
+            "e1a01000",
+            "e3a00008",
+            "ebffff9a",
+            "e3a00008",
+            "ebffff9d",
+            "e1a01000",
+            "e3a00008",
+            "ebffff90"
+          ],
+          "llvm_stdout_sha256": "508883225420b4e4ea57b61fca31f8c989c83dfd33d849721575a1b3466f3077",
+          "llvm_stdout_file": "program-1-037fd070-llvm.txt"
+        },
+        {
+          "start": 58708160,
+          "end": 58708172,
+          "stored_image_offset": 21104,
+          "sha256": "97e49fab5b2490c4b4977ff23d65446f267880f107a387035c5cf63b97d1d2ad",
+          "words": [
+            "e28dd004",
+            "e8bd4000",
+            "e12fff1e"
+          ],
+          "llvm_stdout_sha256": "2cc8bcd5a0074ff8047de1bee11edc91a69ab4650daa68ef147ef84f1aaa69fe",
+          "llvm_stdout_file": "program-1-037fd0c0-llvm.txt"
+        }
+      ],
+      "excluded_following_literal": {
+        "address": 58708172,
+        "value": 58754096
+      }
+    }
+  ],
+  "input_sha256_before": {
+    "/Users/djdjo/Documents/mine/rom/jus.nds": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "/opt/homebrew/opt/llvm/bin/llvm-mc": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+    "/private/tmp/jus-track-a-publish/decomp/matching-notes/other-cpus/arm7-checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+  },
+  "input_sha256_after": {
+    "/Users/djdjo/Documents/mine/rom/jus.nds": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "/opt/homebrew/opt/llvm/bin/llvm-mc": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+    "/private/tmp/jus-track-a-publish/decomp/matching-notes/other-cpus/arm7-checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+  },
+  "source_credit_bytes": 0
+}

@@ -1,0 +1,173 @@
+{
+  "status": "passed",
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "layout_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "child_path": "ChildRom/JSS2Child.srl",
+  "child_file_id": 79,
+  "child_rom_extent": {
+    "start": 2340864,
+    "end": 4482248
+  },
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "autoload0": {
+        "runtime": 58687488,
+        "initialized_bytes": 66120,
+        "bss_bytes": 14920,
+        "stored_start": 432
+      },
+      "selections": [
+        {
+          "start": 58707716,
+          "end": 58707756,
+          "stored_image_offset": 20660,
+          "program_offset": 2183348,
+          "sha256": "dba77433134717ea7a8f1fc995279825ca62de53ab0adf7bdb7f8c7f020c2d59",
+          "words": [
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5801da0",
+            "0xe12fff1e",
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5801dc4",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58708068,
+          "end": 58708080,
+          "stored_image_offset": 21012,
+          "program_offset": 2183700,
+          "sha256": "aeb809ad5a9f8c3894e005fff8eadce11ca04cde1cb44a11f157d9dc258c70cf",
+          "words": [
+            "0xe1a01000",
+            "0xe3a00001",
+            "0xebffffa4"
+          ],
+          "raw_call": {
+            "source": 58708076,
+            "signed_displacement": -368,
+            "pc_bias": 8,
+            "target": 58707716,
+            "continuation": 58708080
+          }
+        }
+      ],
+      "case_insensitive_stored_image_token_offsets": {
+        "OS_SetArena": [],
+        "OS_InitArena": [],
+        "NitroSDK": [],
+        "NITRO": [],
+        "SDK_VERSION": []
+      }
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "autoload0": {
+        "runtime": 58687488,
+        "initialized_bytes": 66120,
+        "bss_bytes": 14920,
+        "stored_start": 432
+      },
+      "selections": [
+        {
+          "start": 58707716,
+          "end": 58707756,
+          "stored_image_offset": 20660,
+          "program_offset": 1993396,
+          "sha256": "dba77433134717ea7a8f1fc995279825ca62de53ab0adf7bdb7f8c7f020c2d59",
+          "words": [
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5801da0",
+            "0xe12fff1e",
+            "0xe1a00100",
+            "0xe2800627",
+            "0xe2800aff",
+            "0xe5801dc4",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58708068,
+          "end": 58708080,
+          "stored_image_offset": 21012,
+          "program_offset": 1993748,
+          "sha256": "aeb809ad5a9f8c3894e005fff8eadce11ca04cde1cb44a11f157d9dc258c70cf",
+          "words": [
+            "0xe1a01000",
+            "0xe3a00001",
+            "0xebffffa4"
+          ],
+          "raw_call": {
+            "source": 58708076,
+            "signed_displacement": -368,
+            "pc_bias": 8,
+            "target": 58707716,
+            "continuation": 58708080
+          }
+        }
+      ],
+      "case_insensitive_stored_image_token_offsets": {
+        "OS_SetArena": [],
+        "OS_InitArena": [],
+        "NitroSDK": [],
+        "NITRO": [],
+        "SDK_VERSION": []
+      }
+    }
+  ],
+  "llvm_runs": [
+    {
+      "extent": {
+        "start": 58707716,
+        "end": 58707756
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout_file": "llvm-setter-pair.txt",
+      "stdout_sha256": "370aa2e2f757251590e6f9187028dce9a2762e75f9c398af22466788716cdb3e"
+    },
+    {
+      "extent": {
+        "start": 58708068,
+        "end": 58708080
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout_file": "llvm-caller-tail.txt",
+      "stdout_sha256": "0b8879efb4474348105bfcb442f9c8bd971db102c8f985361f9079d653014531"
+    }
+  ],
+  "inputs_unchanged": true,
+  "source_credit_bytes": 0,
+  "original_names_established": false
+}

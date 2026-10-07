@@ -1,0 +1,98 @@
+[
+  {
+    "role": "lower_store",
+    "recipe": "build82_O4s",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/low_store_trial.c",
+      "-o",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/lower_store.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+    "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+    "object_bytes": 512
+  },
+  {
+    "role": "upper_store",
+    "recipe": "build114_O4p",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,p",
+      "-c",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/store_trial.c",
+      "-o",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/upper_store.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "source_sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+    "object_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+    "object_bytes": 512
+  },
+  {
+    "role": "lower_getter",
+    "recipe": "build82_O4s",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/low_getter_trial.c",
+      "-o",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/lower_getter.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+    "object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+    "object_bytes": 760
+  },
+  {
+    "role": "upper_getter",
+    "recipe": "build82_O4s",
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/high_getter_trial.c",
+      "-o",
+      "/private/tmp/jus-arm7-arena-cluster-worker-proof/first-compile/upper_getter.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+    "object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+    "object_bytes": 840
+  }
+]

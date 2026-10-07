@@ -1,0 +1,20 @@
+{
+  "reviewed_commit": "4e9f6b72aff3a461f5c440b722398d024fed5f3a",
+  "review_model": "gpt-6.1-sol",
+  "verdict": "No flags",
+  "scope": "separate strict child analyzer and unchanged codec source/binary approval only",
+  "independent_evidence": {
+    "independent-build.log": "24a4348fa0f0bfcc81d76fee9cfbe91a001691df9309be266908140b16ffbdc4",
+    "independent-review.json": "8fcf172eece52b31eef41e749fc746ed548b95cca393e8b2ee76eea58f9d0ac2",
+    "independent-tests.log": "8b7e4a3e23da6e33ea8f6d79502f22d6dbf15532f8ce2886061b54c86ed9db5f",
+    "independent-analyzer-review.json": "00573e61f4d3651a9f74ad539a4245beb08bbdaea0ce0a50b833d28b6a93e40d"
+  },
+  "encoder_sha256": "5c04f2668aec35d969036499fd7065ea8c9fe9c6bda457b7042f74f4ff7b6064",
+  "analyzer_sha256": "3f18db59e173ca17e14d29755ac51ce36682896d4df5ca500abcd619f4fd52c1",
+  "codec_local_files": 113,
+  "registry_packages": 116,
+  "registry_source_files": 6352,
+  "source_credit": 0,
+  "canonical_integration_approved": false,
+  "T10_complete": false
+}

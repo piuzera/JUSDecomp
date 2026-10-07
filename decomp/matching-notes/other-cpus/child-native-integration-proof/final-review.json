@@ -1,0 +1,42 @@
+{
+  "result": "No flags",
+  "reviewed_commit": "8b7cc6aaf39df4c3258bb843c53c9db028797f2a",
+  "scope": "Exported child integration proof and decision trail",
+  "root_artifacts_independently_hashed": 302,
+  "initial_sources_independently_hashed": 80,
+  "child_input_tool_pins_independently_hashed": 46,
+  "retained_arm7_artifact_pins": 16,
+  "child_artifacts_independently_hashed_per_run": 59,
+  "root_stages": 21,
+  "default_stages": 19,
+  "root_writes": 20,
+  "default_writes": 17,
+  "parent_relocations": 87493,
+  "child_relocations": 35092,
+  "ROM_bytes": 67108864,
+  "ROM_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "whole_child_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+  "worker_actual_report_sha256": "b4142412766c1286f071d7d4ab2b46a31f4e8cd8c501dd88eb77edbdc5546c4e",
+  "test_counts_each": 257,
+  "skips": 0,
+  "real_mutation_rejections": 21,
+  "source_bytes": 304,
+  "matched_parent_functions": 7,
+  "child_source_bytes": 0,
+  "T10_complete": false,
+  "evidence_hashes_verified": {
+    "root-report.json": "b369ec234e8020a6c7f0c4a1b0696e36c644ce4b0f826086535b675dbb8c6740",
+    "worker-report.json": "b4142412766c1286f071d7d4ab2b46a31f4e8cd8c501dd88eb77edbdc5546c4e",
+    "root-tests.log": "1bea235d337de3f5cf58e8612140d997955d82199c042cd21ad041db1d32cc89",
+    "root-source-comparison.json": "909c27b6ff0fa5fc5419483ab492c338a174ee3e2d8de5383c84f44c3dc4b2b9",
+    "root-standalone-rejection.json": "ef41b8f1d8dfdd68115de957f774741d74bf2c446a82eaba0292bbcff27fb8ed",
+    "worker-proof.json": "0729e1adf5a3fc1cc9d10b912bcd0b35e557de80fc5fb54698ffdcffe435530c",
+    "live-mutations.json": "27a48c83f5d0564246764d669b3273c8d1a6253a25a7e310b0228e991c23b0a1",
+    "root-default-report.json": "eda03b50869c08d53a5bef1f1fa25c633778b72c7be7e5087ede42764920c896"
+  },
+  "prior_actual_source_comparison_verified": {
+    "unchanged": 73,
+    "intentional": 2,
+    "new": 5
+  }
+}

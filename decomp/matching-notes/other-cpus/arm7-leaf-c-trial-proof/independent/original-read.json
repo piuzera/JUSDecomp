@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "child_file_id": 79,
+  "child_rom_extent": [
+    2340864,
+    4482248
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "selection": [
+        58707736,
+        58707756
+      ],
+      "stored_image_offset": 20680,
+      "original_rom_offset": 2183368,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801dc4",
+        "0xe12fff1e"
+      ],
+      "code_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+      "llvm_stdout_sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37",
+      "autoload_regions": [
+        {
+          "initialized": [
+            58687488,
+            58753608
+          ],
+          "bss": [
+            58753608,
+            58768528
+          ],
+          "stored": 432
+        },
+        {
+          "initialized": [
+            41811968,
+            41910944
+          ],
+          "bss": [
+            41910944,
+            41917448
+          ],
+          "stored": 66552
+        }
+      ],
+      "external_store_address_for_index_1": 41942472,
+      "external_to_all_autoload_initialized_and_bss": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "selection": [
+        58707736,
+        58707756
+      ],
+      "stored_image_offset": 20680,
+      "original_rom_offset": 4334280,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801dc4",
+        "0xe12fff1e"
+      ],
+      "code_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+      "llvm_stdout_sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37",
+      "autoload_regions": [
+        {
+          "initialized": [
+            58687488,
+            58753608
+          ],
+          "bss": [
+            58753608,
+            58768528
+          ],
+          "stored": 432
+        },
+        {
+          "initialized": [
+            41811968,
+            41910944
+          ],
+          "bss": [
+            41910944,
+            41917448
+          ],
+          "stored": 66552
+        }
+      ],
+      "external_store_address_for_index_1": 41942472,
+      "external_to_all_autoload_initialized_and_bss": true
+    }
+  ],
+  "inputs_unchanged": true,
+  "source_credit": 0,
+  "original_function_extent": "unknown",
+  "original_return_type": "unknown",
+  "verification_script_sha256": "d7e949f3fe4a35e246037f37ff4171aeef88bc6c3f95c076b7870db2cab7a61b",
+  "external_store_outside_startup": true
+}

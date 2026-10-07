@@ -1,0 +1,126 @@
+{
+  "status": "all malformed requests rejected without success output",
+  "producer_sha256": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+  "cases": [
+    {
+      "case": "empty_requests",
+      "exit_code": 1,
+      "stderr": "Error: \"no layouts or program requests supplied\"",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "duplicate_program",
+      "exit_code": 1,
+      "stderr": "Error: \"duplicate requested program\"",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "foreign_program",
+      "exit_code": 1,
+      "stderr": "Error: \"requested program has no pinned layout\"",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "absent_root_selection",
+      "exit_code": 1,
+      "stderr": "Error: \"root selection index is absent\"",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "interior_root",
+      "exit_code": 1,
+      "stderr": "Error: RootNotInstructionStart",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "empty_assumption",
+      "exit_code": 1,
+      "stderr": "Error: EmptyRootAssumption",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "duplicate_root",
+      "exit_code": 1,
+      "stderr": "Error: DuplicateRoot",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "empty_roots",
+      "exit_code": 1,
+      "stderr": "Error: EmptyRoots",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "empty_selections",
+      "exit_code": 1,
+      "stderr": "Error: EmptyObservations",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "same_mode_overlap",
+      "exit_code": 1,
+      "stderr": "Error: DuplicateOrOverlappingSameModeSelection",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "reversed_span",
+      "exit_code": 1,
+      "stderr": "Error: Decode(EmptyOrReversed)",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "unknown_request_field",
+      "exit_code": 1,
+      "stderr": "Error: Error(\"unknown field `untrusted`, expected one of `program`, `selections`, `roots`\", line: 39, column: 15)",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "unknown_selection_field",
+      "exit_code": 1,
+      "stderr": "Error: Error(\"unknown field `untrusted`, expected one of `region`, `mode`, `extent`\", line: 20, column: 19)",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "unknown_mode",
+      "exit_code": 1,
+      "stderr": "Error: Error(\"unknown variant `ArmV5TE`, expected `Arm` or `Thumb`\", line: 15, column: 25)",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "unknown_region",
+      "exit_code": 1,
+      "stderr": "Error: Error(\"unknown variant `table`, expected `startup` or `autoload`\", line: 12, column: 25)",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "malformed_json",
+      "exit_code": 1,
+      "stderr": "Error: Error(\"EOF while parsing a list\", line: 1, column: 1)",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "layout_pin",
+      "exit_code": 1,
+      "stderr": "Error: \"independent layout/request/producer hash mismatch\"",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "request_pin",
+      "exit_code": 1,
+      "stderr": "Error: \"independent layout/request/producer hash mismatch\"",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "producer_pin",
+      "exit_code": 1,
+      "stderr": "Error: \"independent layout/request/producer hash mismatch\"",
+      "stdout_bytes": 0
+    },
+    {
+      "case": "wrong_argv",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr": "Error: \"usage: arm7_reachable_probe ROM LAYOUT_JSON LAYOUT_SHA256 REQUESTS_JSON REQUESTS_SHA256 SELF_SHA256\""
+    }
+  ]
+}

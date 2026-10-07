@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "status": "worker_verified_pending_independent_review",
+  "source_commit": "320ea2ad796fdd179ce504021436ffbd9394c1f3",
+  "source_commit_evidence": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "stdout": "320ea2ad796fdd179ce504021436ffbd9394c1f3\n",
+    "stderr": "",
+    "exit_status": 0
+  },
+  "actual_report_sha256": "b4142412766c1286f071d7d4ab2b46a31f4e8cd8c501dd88eb77edbdc5546c4e",
+  "stages": [
+    {
+      "name": "intake",
+      "status": "passed"
+    },
+    {
+      "name": "tool_versions",
+      "status": "passed"
+    },
+    {
+      "name": "prepare_config",
+      "status": "passed"
+    },
+    {
+      "name": "extract",
+      "status": "passed"
+    },
+    {
+      "name": "delink",
+      "status": "passed"
+    },
+    {
+      "name": "source_config",
+      "status": "passed"
+    },
+    {
+      "name": "source_delink",
+      "status": "passed"
+    },
+    {
+      "name": "source_build",
+      "status": "passed"
+    },
+    {
+      "name": "lcf",
+      "status": "passed"
+    },
+    {
+      "name": "native_link",
+      "status": "passed"
+    },
+    {
+      "name": "link_inputs",
+      "status": "passed"
+    },
+    {
+      "name": "check_modules",
+      "status": "passed"
+    },
+    {
+      "name": "check_symbols",
+      "status": "passed"
+    },
+    {
+      "name": "direct_comparison",
+      "status": "passed"
+    },
+    {
+      "name": "relocation_check",
+      "status": "passed"
+    },
+    {
+      "name": "source_ownership",
+      "status": "passed"
+    },
+    {
+      "name": "arm7_native_baselines",
+      "status": "passed"
+    },
+    {
+      "name": "child_arm9_native_roundtrip",
+      "status": "passed"
+    },
+    {
+      "name": "freshness",
+      "status": "passed"
+    },
+    {
+      "name": "rom_roundtrip",
+      "status": "passed"
+    },
+    {
+      "name": "rom_freshness",
+      "status": "passed"
+    }
+  ],
+  "initial_source_hashes": {
+    "tools/scripts/verify.py": "d6d91117bb3a3e4a163c153c797b5ba89d37308fc866228de9394e3c5d0a1f90",
+    "tools/scripts/baseline_intake.py": "baa6805e188062e5193983282b51819799b953f841496334bff0e1faeab0df63",
+    "tools/scripts/native_link.py": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+    "tools/scripts/rom_roundtrip.py": "a09e8d2a049c1bfa217dba311fd6ad4ebca5ab01a8bf411daa854ac7009439c4",
+    "decomp/toolchain.lock.json": "9d713539bd7ad25c4d870ec691cd39418173400fb98461b68ac17067c2cdbe94",
+    "decomp/rom-manifest.json": "db2c059e44200bcb7b41f658e7d00fe35a6f7d7e40cf028d62645ce5c9278f3c",
+    "decomp/matching-notes/baseline-t01/executable-regions.json": "6d4d7f88e5edd14c07c449331f6c96dd2597b4d98f8377f253945585f9823610",
+    "decomp/matching-notes/baseline-t01/reference-relocations.json": "f1c1012bcc33fd810a7b5f807ffda4b737f94e21e3d72be784f2e7fc68365844",
+    "decomp/arm9/config.yaml": "e40459bbe3e1dc0edf9f0c7965f6b1b7304b9b88142b04c6418c2e2db281026b",
+    "decomp/arm9/delinks.txt": "23b2e570f703bf03d90045a0f3becd4b7649b6fe0762102fef5132a83430dd3c",
+    "decomp/arm9/dtcm/delinks.txt": "e11b111b8f3ce492d827b58b271583ac85f4706dccc9783679f2cd460c776381",
+    "decomp/arm9/dtcm/relocs.txt": "cb5d04f741c1b02c6c4a6f7b6a2792bae494cf7868b9c08543e1ed2dae1a59b9",
+    "decomp/arm9/dtcm/symbols.txt": "61e2b6d1ad05226dab08b1848852aefcf12f58efc9f164d48e56967728c667f7",
+    "decomp/arm9/itcm/delinks.txt": "9d79d5da7fde19182fd7b4d33757fd6ef34e743eae6e44dce4a4edcac90bd69c",
+    "decomp/arm9/itcm/relocs.txt": "02452987cb8fd39ec64ab30d3100679b7cee6d9608f13fba6efd0d1f5123f983",
+    "decomp/arm9/itcm/symbols.txt": "8abc48ac26b084418654bb6bbb7b53c3c6b046e3b9174917e9fc2b00fe98c0f6",
+    "decomp/arm9/overlays/ov000/delinks.txt": "710aba1f67dac3fb97d4d43f5eeda73b2ed88d1852ba6886f30c79c4896e8f6e",
+    "decomp/arm9/overlays/ov000/relocs.txt": "0d547c7df050545660eb3f73834ca7eda8d0d55a99a5ffb948045539845dd3f7",
+    "decomp/arm9/overlays/ov000/symbols.txt": "2ca0a0be1e4c455bc139290b10525a5feb56b38197ed15ebe7ee5b05289b7804",
+    "decomp/arm9/overlays/ov001/delinks.txt": "7b83e8ccfb9baca6490e4820b258df12d5853ff2cefd486c1e9c2338825b5a12",
+    "decomp/arm9/overlays/ov001/relocs.txt": "30cc2a4ea48bb7ff84f95c37181bdbe04b93c1a08886e3d1773d363d41755afc",
+    "decomp/arm9/overlays/ov001/symbols.txt": "aaa36c5a6f98d9c4bfbd1dfd1cb4c376b25080cc1c22933b56b90d60528ebc2b",
+    "decomp/arm9/overlays/ov002/delinks.txt": "d734638bde51e02c7405a3c97f4e9934272b83a0870db5bba1a6746240d3cb1a",
+    "decomp/arm9/overlays/ov002/relocs.txt": "808292a36c843ea8c842bc333a92b05287ae9e394cfc4491505f1fd48bf56fd3",
+    "decomp/arm9/overlays/ov002/symbols.txt": "5e50aa1dd6817b8db0d9b045e2fc577858aa5e8ff9b1af35130ebcfbc9d85e11",
+    "decomp/arm9/overlays/ov003/delinks.txt": "e74bf4bf2a8057f6df0bee41dfff0d61138db34f249b45baa9b1f302216c9d9a",
+    "decomp/arm9/overlays/ov003/relocs.txt": "3dc8e959d8eb0b84954708fb5cb965bb9b6939dd6f82591248264a434493d040",
+    "decomp/arm9/overlays/ov003/symbols.txt": "4b7bb78f0af632e3f328fb6806f5f69d35638df34867eb360315941a2d5329c2",
+    "decomp/arm9/overlays/ov004/delinks.txt": "9724ea33b471d5ddc729af906b2583525573af6b431fc24c03bd069c9803f9a4",
+    "decomp/arm9/overlays/ov004/relocs.txt": "4f65fa0e1c71bcc8f8649a7fb0f8db3527e409e8b17913d226f2e875be924a58",
+    "decomp/arm9/overlays/ov004/symbols.txt": "59f8b9d592fc0eed2e9195478bc478fd774e1c400fb5167666a8ed75a429f4c5",
+    "decomp/arm9/overlays/ov005/delinks.txt": "ac8fff5cb21f5b9d8cd61e6a27957146f74ec2e6db91979f94f8bbaf9e94fe67",
+    "decomp/arm9/overlays/ov005/relocs.txt": "860e60bb4cb8248d625f61ae32d2c37644c195181b68b71a2fb243e510279137",
+    "decomp/arm9/overlays/ov005/symbols.txt": "1959c534d0368b3368b82b0476f9d4d174d50cc7de7f3a9d0b5471493dffc903",
+    "decomp/arm9/overlays/ov006/delinks.txt": "f0d81b2c7bc7a8ad60f9a34ebce1a36f5d81469d4b666254f927f62cdcb33637",
+    "decomp/arm9/overlays/ov006/relocs.txt": "76b90e5cfb13562e7416b09809319b8cc95d6f810d93f4a928a6e42f1126b3d1",
+    "decomp/arm9/overlays/ov006/symbols.txt": "16ba28e3be97caf1a83a2e4a785ee507b52ad98f4849d6ba0ea9e23a80b02299",
+    "decomp/arm9/overlays/ov007/delinks.txt": "d918089d6667d8b50f4fa34302e3222b053822d0ba3022438a3010b9a61a6cae",
+    "decomp/arm9/overlays/ov007/relocs.txt": "2fde4d3a267c117bd3ccf08198acd25aeb4462d88250e58ebe61d421c25a9619",
+    "decomp/arm9/overlays/ov007/symbols.txt": "829bc7e2ac65d421b6fba7e6153bfee47e1f143522e704dc8210d383f967c3f3",
+    "decomp/arm9/overlays/ov008/delinks.txt": "13bd938d1dbf4c95f20c4013b9375e051eb693dfc20d8e802aadeb514cc1c55f",
+    "decomp/arm9/overlays/ov008/relocs.txt": "103ef4f1d022ebeb90de7beca08af4ea57aadc89cfb441e68a90cc85dca49d68",
+    "decomp/arm9/overlays/ov008/symbols.txt": "cb2cd2d177441ea26b7e85844a4580f78341e3a002776a5f6a173aab3edec2fa",
+    "decomp/arm9/overlays/ov009/delinks.txt": "778d10dd11e3dc0507d11868c8e3201f3e24578126440dbc8e8cac75c86341ca",
+    "decomp/arm9/overlays/ov009/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/overlays/ov009/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/overlays/ov010/delinks.txt": "b8ef24508d73ff2521ffac3d3c6260c38fc24249530d2624d33020f579486a37",
+    "decomp/arm9/overlays/ov010/relocs.txt": "8d9e3d6d47666943f95960b91d3eaa69e4b53d1ced2a127a87086328c0961033",
+    "decomp/arm9/overlays/ov010/symbols.txt": "417defbc3de3dbb2594a1568ccf5d347f70de3487599956a20ab90d3a8c60773",
+    "decomp/arm9/overlays/ov011/delinks.txt": "8a33ca98991daa45f909357976487d2e9a5dfc9dcf64d2d1e8a029cbc3c8085f",
+    "decomp/arm9/overlays/ov011/relocs.txt": "68bd78a3b9c0ece891805b77159beedb44ebd96aa4028b94814dfcb16ad87fd6",
+    "decomp/arm9/overlays/ov011/symbols.txt": "44a2dcc04251c1f4a2109c2c9a092a0aa6f70289d2f0d79a0c9b3568240b23e8",
+    "decomp/arm9/overlays/ov012/delinks.txt": "0c4c72cde626523db37dd21c02a71798610bb13256afb8f03b0443e91ec02958",
+    "decomp/arm9/overlays/ov012/relocs.txt": "34627c8880fe61c35fa010bc444428272a5acb74636dfd7deb78cc2793306a96",
+    "decomp/arm9/overlays/ov012/symbols.txt": "df3b6740b76acfa9db397473a906ec9e83e751340612c60f086bd06b99bfba11",
+    "decomp/arm9/overlays/ov013/delinks.txt": "befc94193f3edeb56fd3860b8642d0f8c75cc3fd0837888cc2bf08d0d153dc3b",
+    "decomp/arm9/overlays/ov013/relocs.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/overlays/ov013/symbols.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "decomp/arm9/relocs.txt": "f78ed8d3d65fd92c992765bec2df24ef557738b05dc1007aef91c4e9db833022",
+    "decomp/arm9/symbols.txt": "d73d18a6183b55ac8d7ee009c81003f6fa273ee674ee4b66a776027fb4a88566",
+    "decomp/matching-notes/other-cpus/arm7-physical-baseline/approval.json": "4deb3610dadfdea50e54034e96c7c930c665c8fdd23edb809fc881d14e93401e",
+    "tools/scripts/arm7_native_baseline.py": "d92a2436ca05ad6d38a79c75c17374354aeea56177155555abf58424ff4dcaf7",
+    "tools/scripts/other_executables.py": "a074eb07419b44ad3bcec2b319774430b2ec893c195d839314ad7dc4aae907b4",
+    "tools/scripts/child_native_baseline.py": "43e9de7245d3db7115f92942e594a99aa31f274664927e075718b41ded57783c",
+    "tools/scripts/child_rom_roundtrip.py": "690e35f99ad582745c71185a4b22cc5a1412df957b90fdb6db62b2c048e6f4a8",
+    "decomp/matching-notes/other-cpus/child-tool-approval/analyzer-approval.json": "cd5f54c8fa5f9fb19e7fcb02c66b1b3c402478148a14ae948c4790987d8b235f",
+    "decomp/matching-notes/other-cpus/child-tool-approval/codec-approval.json": "b64228826f3efc132f2917c979b2ceb28d645863a13965229fe30b95928ff16d",
+    "decomp/matching-notes/other-cpus/child-arm9-native-baseline.json": "12c2adf2a5c71e0f7011482d2038ddb23b46294243df7ceb28b64db08a37016e",
+    "tools/scripts/relocation_check.py": "2a94f69a998e3712b1ec21606ff93a57cff0bc0465f9ec789da55f0c5a65cf9f",
+    "decomp/source-manifest.json": "520a14796723bbc0611a591750ecf3934530337e4718bed92584e29dd74582eb",
+    "tools/scripts/source_build.py": "9e62de2961c3746a09505f3188204fcab29a818b1e1e645ae1bc44f858aeb625",
+    "tools/scripts/source_accounting.py": "9430deaf83c336f7f0ccf9242ede8f1657a2164599bbd2f852bf1527f4d10ef7",
+    "tools/scripts/header_dependencies.py": "c03237d6dda4792b7edc016dcd88d04337b22d5ad17fc7b5d7e0c0e5bd34b278",
+    "decomp/src/ov000/test_trampoline.c": "f638c8bf21f22951a6111db463d804ac8fc61b261369f0927f13a93bfd064982",
+    "decomp/src/runtime/find_exception_table.c": "71c11ea684274c08486e495d24043cfca67b83f9e443d8eaa2c69aeeb732ffd1",
+    "decomp/src/main/common_effect_destroy.cpp": "322b2be2482c0ea9d9305cfe598b9b96ef6b304bf4ea7b17ee17b394547f3791",
+    "decomp/src/main/common_effect_deleting_destroy.cpp": "4fd74197fb60b4df160f415bcd2fc7ec6895526bca4d210e21beec8e04cacab2",
+    "decomp/src/main/common_effect_factory.cpp": "0490e2dd224e479792b3b04e6e14297ebb4588039c998d2bb56ca4606b82dd18",
+    "decomp/src/main/common_effect_construct.cpp": "f7acf168c832ca304e8a6c10742ede2da6c35d1c6b088dcc5de18007fd5b8e28",
+    "decomp/src/main/common_effect_clone.cpp": "156ca5d9fb5727bc7779190cdd467044f32090894aeea5e670d5ad7b8e5ff4d5"
+  },
+  "initial_source_count": 80,
+  "child_input_snapshot": {
+    "$ROM": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "/opt/homebrew/bin/ld.lld": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+    "/opt/homebrew/opt/llvm/bin/clang": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+    "/opt/homebrew/opt/python@3.14/bin/python3.14": "d8f1d508de5acfd500f20d1949528375ff4a1f470efb267f00d1770941cdeee3",
+    "/private/tmp/jus-arm7-physical-root-cache/target/release/dsd": "3f18db59e173ca17e14d29755ac51ce36682896d4df5ca500abcd619f4fd52c1",
+    "/private/tmp/jus-child-codec-root-cache/target/release-fast/examples/t10_compression_probe": "5c04f2668aec35d969036499fd7065ea8c9fe9c6bda457b7042f74f4ff7b6064",
+    "$JUS_ROOT/decomp/matching-notes/baseline-t01/executable-regions.json": "6d4d7f88e5edd14c07c449331f6c96dd2597b4d98f8377f253945585f9823610",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-checked-view.patch": "e0830a0ea25d67e9fd6b35fe9b043a7055851815fd451e3e6ed3f177a65554ad",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-module-input.patch": "0001c73030992c6e8b41f23b32795736c9ee9cabfe19b81a630764b630f7da32",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-observation.patch": "5777c649dad7e92d01091ad1019ce7a1286da57aedd3556f1df3737e49abaad4",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-physical-baseline/README.md": "2346c247cbd82885ccc22ddd68aeccd30946ba04a3cc6158eebd0c4cf45863b5",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-physical-baseline/accepted-review.json": "93f1d25741ce1e6e38f3dfb2c3534edcdc636565a5a5fbc4794d7333b2b7404c",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-physical-baseline/root-proof.json": "356420f5a7129cc7f16fcf5df93487477f12d8956fe22d19f99861c0a03ef2b5",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-physical-baseline/source.patch": "6c2d81d4e37333a0833572a02267526c1119a0210fc82c755873401d84f1894d",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/arm7-physical-baseline/verification.json": "1e2fe8554b6b784ffc915873fb474c8b5e7c51135fb5220f61d7112865704735",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/branch-decoder-repair/dsd-branch-dependency-repair.patch": "1f39c170f15b960076a2e30025bff38ba5ffd0889f5b8d345dd5f82d5f6f8124",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/LICENSE.unarm": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/manifest.json": "3174b5660dcc9eec7d6d7783fe611ab80645e4832cd412b6eb9ea958ef0a4950",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/prepare.py": "5fde56ada52911a52aa0cddb08e593ac9c8f0ce9e98c0ba776ab11b646eb1d63",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/registry-source-equivalence.json": "7f6d4d882c5849ffb13a2530e623e2d73f71a85ff5db8229e95ce9497e449f1e",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/source.patch": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/test_prepare.py": "137a249afe8538463444cbcc683b011271f73f8d00f5e8d8f10aa5a4b18ce3a2",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-arm9-native-baseline.json": "12c2adf2a5c71e0f7011482d2038ddb23b46294243df7ceb28b64db08a37016e",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/Cargo.lock.original": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/LICENSE.ds-decomp": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/LICENSE.ds-rom": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/accepted-review.json": "c4dfc67b06b947f598461cc50edc7b0b6aa248205a8f29efbd31baa0b909817f",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/analyzer-approval.json": "cd5f54c8fa5f9fb19e7fcb02c66b1b3c402478148a14ae948c4790987d8b235f",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/codec-approval.json": "b64228826f3efc132f2917c979b2ceb28d645863a13965229fe30b95928ff16d",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/root-build.json": "31c2af082e1a2e4ea0adb1a5a40fb0ab359da23daf859427d9a30e11709290bf",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child-tool-approval/source-audit.json": "a27012b829e547ed5668d472b2146a86fa75bbfccc4ae3c51db3df890eade203",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/child_compression_probe.rs": "9baf8ab864540b9eaca6b7916f57074459ce89b5b95bb98d62bfa2c3180783c6",
+    "$JUS_ROOT/decomp/matching-notes/other-cpus/dsd-child-swi.patch": "4a58df420e9d05d52d08f28307b37d9865e87cc0318d332f747065555c203d36",
+    "$JUS_ROOT/decomp/toolchain.lock.json": "9d713539bd7ad25c4d870ec691cd39418173400fb98461b68ac17067c2cdbe94",
+    "$JUS_ROOT/tools/scripts/arm7_native_baseline.py": "d92a2436ca05ad6d38a79c75c17374354aeea56177155555abf58424ff4dcaf7",
+    "$JUS_ROOT/tools/scripts/baseline_intake.py": "baa6805e188062e5193983282b51819799b953f841496334bff0e1faeab0df63",
+    "$JUS_ROOT/tools/scripts/child_native_baseline.py": "43e9de7245d3db7115f92942e594a99aa31f274664927e075718b41ded57783c",
+    "$JUS_ROOT/tools/scripts/child_rom_roundtrip.py": "690e35f99ad582745c71185a4b22cc5a1412df957b90fdb6db62b2c048e6f4a8",
+    "$JUS_ROOT/tools/scripts/header_dependencies.py": "c03237d6dda4792b7edc016dcd88d04337b22d5ad17fc7b5d7e0c0e5bd34b278",
+    "$JUS_ROOT/tools/scripts/native_link.py": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+    "$JUS_ROOT/tools/scripts/other_executables.py": "a074eb07419b44ad3bcec2b319774430b2ec893c195d839314ad7dc4aae907b4",
+    "$JUS_ROOT/tools/scripts/relocation_check.py": "2a94f69a998e3712b1ec21606ff93a57cff0bc0465f9ec789da55f0c5a65cf9f",
+    "$JUS_ROOT/tools/scripts/rom_roundtrip.py": "a09e8d2a049c1bfa217dba311fd6ad4ebca5ab01a8bf411daa854ac7009439c4",
+    "$JUS_ROOT/tools/scripts/source_accounting.py": "9430deaf83c336f7f0ccf9242ede8f1657a2164599bbd2f852bf1527f4d10ef7",
+    "$JUS_ROOT/tools/scripts/source_build.py": "9e62de2961c3746a09505f3188204fcab29a818b1e1e645ae1bc44f858aeb625",
+    "$JUS_ROOT/tools/scripts/verify.py": "d6d91117bb3a3e4a163c153c797b5ba89d37308fc866228de9394e3c5d0a1f90"
+  },
+  "child_artifact_hashes": {
+    "command-0.json": "6b2a2536ff7de4163943fdd3025588fd9af62007ef8792971b04545fccfe3d77",
+    "command-1.json": "a18518118209e41838df7a4b302118443c148b106c79cf38074b9015dc0c4401",
+    "command-2.json": "49c7579557d8a142321c350dd75dd4cc845ebfa29c325a3494c181f0a02ab2d1",
+    "command-3.json": "3da2b249233d54072fbfba054d923153116f79d91431e7a8450018a421eaeecb",
+    "command-4.json": "3347547ba93421cc452d8deedd82c357642c6c3679010a50f91945150038e4a7",
+    "command-5.json": "c0917948ff414e6592abaf4553dae5fc02395ca41b93ee1fdfd66bebcea73f99",
+    "command-6.json": "0ebb8020894539597cca35be5aca6543ea13a449a8f6625de5a041c1301db2eb",
+    "config-before.yaml": "4592f3c8a8f1bac9296b51ff21b8c706c889cf27757186432985158eb87adbd9",
+    "config/arm9/config.yaml": "93e7b95ebcc8c3a1cef2ccbf048c9f342f540d75662fb3186f9155159264c464",
+    "config/arm9/delinks.txt": "6304dcde7e4bdab6b351f2e4cfd8c68232272cf534aef5f90f1fc1bee80e9b36",
+    "config/arm9/dtcm/delinks.txt": "af84ce099ee8eeda6751a6482bae31d87e485126c7a4709026fece4b9f433b82",
+    "config/arm9/dtcm/relocs.txt": "c02d3f1fe17206cbc5e67a0f42cc5c61f4a5e77d55a6cac99c3356790a3ace75",
+    "config/arm9/dtcm/symbols.txt": "b09cca40bbf809e06ac778be525e88edf4641bce9d44e39b145d0de73aaf3599",
+    "config/arm9/itcm/delinks.txt": "efd70735f1c53212b29310f21adb2ca1bc496e214d4bdf4b4dbaaa9cd01d1148",
+    "config/arm9/itcm/relocs.txt": "0f634f781cc3ae58f18caae6ab80d33c22ab91070d261f2bebd7ffab2541b682",
+    "config/arm9/itcm/symbols.txt": "87dbc19cc9128ceb051e0085326d80f09e04fc6f96e6720e2cab6a48a74d237c",
+    "config/arm9/relocs.txt": "69f38358812030ceb9d6324e539e2fa388665afb76eea2071de75296918cd165",
+    "config/arm9/symbols.txt": "75be1384d4dddf09afff4456379953ec97f5ba4683c279d00848d3c5e3fcf880",
+    "delinks/_dsd_gap@dtcm_1.o": "3ec07f932dad9dd0c9feca25118791f7316c1918f81b077efc8f3501ab450f0c",
+    "delinks/_dsd_gap@itcm_0.o": "bd12f8834e85564215011c4d054de82675d7835d4ed795e0ceaa00241996d733",
+    "delinks/_dsd_gap@main_5.o": "c9e2f351a5f6eef6590742f2c8877e691648ad6844938c05f783c2473cf9d838",
+    "extract/arm7/arm7.bin": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+    "extract/arm7/arm7.yaml": "11e52cab7da7274523047c65df9e5a406ca235b70dece01e29285d67251effc5",
+    "extract/arm9/arm9.bin": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "extract/arm9/arm9.yaml": "e15cf81e13e7d53a0065ce7605d65077240f85cb7e14077dfd138c981eaff6c9",
+    "extract/arm9/dtcm.bin": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+    "extract/arm9/dtcm.yaml": "d15d7c2baf3ee931ca48ceb41934f0bdc07aa9f1ba19f031c30f84a1c48b0ccf",
+    "extract/arm9/itcm.bin": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+    "extract/arm9/itcm.yaml": "916033a5e7025061aafa68d68680103afc118e78e849117b572bf3551103672e",
+    "extract/banner/banner.yaml": "6d6fdeb3278d1ec34b71959d8a192971a431f54ebed67391033f019f2120c6ea",
+    "extract/banner/bitmap.png": "30e6fe3a97aad67ccf72d68b3862d94df0b8163ba9628c41fd0a4be0ffcd37cf",
+    "extract/banner/palette.png": "f3290189274228f36989e3c6f1379bf1fc6588c175997587914a2aa05b22f844",
+    "extract/config.yaml": "fc1e0caa2a41208ec39e8a80b95bed97f85367dcf3e53aa5a6f51505007d8ab4",
+    "extract/header.yaml": "c795fb829b2a75bb683cabf0c04930cf0d15aa37acdf3eee12dec204fad4f345",
+    "extract/header_logo.png": "ce3d2a587cc4220246a20a65eb1d332c0ed00239d27d266ebfa5a54548906148",
+    "extract/multiboot_signature.yaml": "6880294d7c3014a2f63294ecc53506c6e3c076eb2309af7e6015dcc25a03d163",
+    "extract/path_order.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linked/arm9.lcf": "af1d76e1e1b6d61ab28d575e013da194a82d1509419b9b1439411445cf8e0756",
+    "linked/build/arm9.bin": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "linked/build/dtcm.bin": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+    "linked/build/itcm.bin": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+    "linked/objects.txt": "9ed1b279b0a249ae2dad8fc8e5c9120345aba78f0d9954c5bfb72c59d5ab78d2",
+    "native-link/arm9.bin": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+    "native-link/attributes.o": "6ee87b49ca01d518a67a46bcd207bb9d46f054cb64b5adcd2c6e1802273b8898",
+    "native-link/attributes.s": "61d4d37bd3e66dfc5e39fc7314f52e5d2bb88cb7942d47bd29bd4b770a2c09be",
+    "native-link/dsd-check.elf": "9555faf9e5285686cbc69f131d8dd8ff5279d46721944a0cf60579f5fa036bf0",
+    "native-link/dtcm.bin": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+    "native-link/itcm.bin": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+    "native-link/link-inputs.json": "93af12cf87d677aa0eaf0488c6f5ccba6b83ed314c64f4f2fc7cfa715a41ee34",
+    "native-link/link.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-link/link.map": "bb5c0a87af19ae08300aff601097b56aeffdef4451e96ff5dd3cca63fe243ee0",
+    "native-link/linked.elf": "08125b52761f5361787add20bc38832230b83a8a774302cdfc51ad32ed652e8b",
+    "native-link/modules.json": "a487ee0f49371e029f4799bc28e7ea5b963cb8d5dde1be2ef3e43f1bab97f153",
+    "native-link/native.ld": "3fcf24c4813823f0a5a5913763c026db1637ba0f5f2bb9e07b9186614efdeb7d",
+    "native-link/objects/_dsd_gap@dtcm_1.o": "0e572a68fcd70e06cdff939a47fe2b2e8c539dbd9152e4a215242de079e593bc",
+    "native-link/objects/_dsd_gap@itcm_0.o": "db1d24867f63dcf7438af0f80c844556bf27fb46cc3c9be1a8206566df81be4d",
+    "native-link/objects/_dsd_gap@main_5.o": "2c43a01e8535149079c031fbda7eb7019629b418988356ce6a0c3d862fee881c",
+    "original.srl": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+    "rebuilt.srl": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+  },
+  "child_artifact_count": 59,
+  "child_native_relocations": {
+    "counts": {
+      "failed": 0,
+      "total": 35092,
+      "unresolved": 0,
+      "validated": 35092
+    },
+    "findings": [],
+    "findings_truncated": false,
+    "modules": {
+      "ARM9": {
+        "failed": 0,
+        "total": 34992,
+        "unresolved": 0,
+        "validated": 34992
+      },
+      "DTCM": {
+        "failed": 0,
+        "total": 22,
+        "unresolved": 0,
+        "validated": 22
+      },
+      "ITCM": {
+        "failed": 0,
+        "total": 78,
+        "unresolved": 0,
+        "validated": 78
+      }
+    },
+    "placement_scope": "one_original_gap_object_per_module",
+    "relocation_types": {
+      "1": 10755,
+      "10": 3897,
+      "2": 20440
+    },
+    "source_mode_fallbacks": {
+      "contexts": [],
+      "count": 0
+    },
+    "status": "passed"
+  },
+  "child_initialized_modules": {
+    "DTCM": {
+      "bytes": 96,
+      "compared_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0,
+      "raw_extracted_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "status": "passed"
+    },
+    "ITCM": {
+      "bytes": 3968,
+      "compared_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0,
+      "raw_extracted_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "status": "passed"
+    },
+    "main": {
+      "bytes": 2624320,
+      "compared_sha256": "617bec5f0664ca87113abeaf5511433d3be6b42c711f2b936c28d3420f1f6db3",
+      "hash_domain": "original pointer restored from pinned metadata",
+      "matched_source_bytes": 0,
+      "raw_extracted_sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+      "status": "passed"
+    }
+  },
+  "canonical_dsd_sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+  "child_analyzer_sha256": "3f18db59e173ca17e14d29755ac51ce36682896d4df5ca500abcd619f4fd52c1",
+  "child_codec_sha256": "5c04f2668aec35d969036499fd7065ea8c9fe9c6bda457b7042f74f4ff7b6064",
+  "codec_status": "binary_roundtrip_verified",
+  "child_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+  "stored_arm9_sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+  "physical_writes": [
+    {
+      "module": "ARM9",
+      "input_file": "arm9.bin",
+      "rom_offset": 16384,
+      "size_bytes": 656832,
+      "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e"
+    },
+    {
+      "module": "ITCM",
+      "input_file": "itcm.bin",
+      "rom_offset": 673216,
+      "size_bytes": 31552,
+      "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3"
+    },
+    {
+      "module": "DTCM",
+      "input_file": "dtcm.bin",
+      "rom_offset": 704768,
+      "size_bytes": 4160,
+      "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487"
+    },
+    {
+      "module": "OV000",
+      "input_file": "arm9_ov000.bin",
+      "rom_offset": 709632,
+      "size_bytes": 85760,
+      "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6"
+    },
+    {
+      "module": "OV001",
+      "input_file": "arm9_ov001.bin",
+      "rom_offset": 795648,
+      "size_bytes": 135456,
+      "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b"
+    },
+    {
+      "module": "OV002",
+      "input_file": "arm9_ov002.bin",
+      "rom_offset": 931328,
+      "size_bytes": 65152,
+      "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b"
+    },
+    {
+      "module": "OV003",
+      "input_file": "arm9_ov003.bin",
+      "rom_offset": 996864,
+      "size_bytes": 73472,
+      "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a"
+    },
+    {
+      "module": "OV004",
+      "input_file": "arm9_ov004.bin",
+      "rom_offset": 1070592,
+      "size_bytes": 86208,
+      "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3"
+    },
+    {
+      "module": "OV005",
+      "input_file": "arm9_ov005.bin",
+      "rom_offset": 1157120,
+      "size_bytes": 152928,
+      "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6"
+    },
+    {
+      "module": "OV006",
+      "input_file": "arm9_ov006.bin",
+      "rom_offset": 1310208,
+      "size_bytes": 154688,
+      "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984"
+    },
+    {
+      "module": "OV007",
+      "input_file": "arm9_ov007.bin",
+      "rom_offset": 1465344,
+      "size_bytes": 122816,
+      "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30"
+    },
+    {
+      "module": "OV008",
+      "input_file": "arm9_ov008.bin",
+      "rom_offset": 1588224,
+      "size_bytes": 128160,
+      "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7"
+    },
+    {
+      "module": "OV009",
+      "input_file": "arm9_ov009.bin",
+      "rom_offset": 1716736,
+      "size_bytes": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "module": "OV010",
+      "input_file": "arm9_ov010.bin",
+      "rom_offset": 1717248,
+      "size_bytes": 215264,
+      "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99"
+    },
+    {
+      "module": "OV011",
+      "input_file": "arm9_ov011.bin",
+      "rom_offset": 1932800,
+      "size_bytes": 61440,
+      "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9"
+    },
+    {
+      "module": "OV012",
+      "input_file": "arm9_ov012.bin",
+      "rom_offset": 1994240,
+      "size_bytes": 167776,
+      "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f"
+    },
+    {
+      "module": "OV013",
+      "input_file": "arm9_ov013.bin",
+      "rom_offset": 2162176,
+      "size_bytes": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "module": "ARM9",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+        "cpu": "arm9",
+        "processor": "arm946e",
+        "isa": "armv5te"
+      },
+      "input_file": "$BUILD/child-arm9/rebuilt.srl",
+      "linked_elf": "$BUILD/child-arm9/native-link/linked.elf",
+      "rom_offset": 2357248,
+      "size_bytes": 1955956,
+      "sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+      "source_bytes": 0,
+      "image_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+      "image_slice_offset": 16384,
+      "elf_sha256": "08125b52761f5361787add20bc38832230b83a8a774302cdfc51ad32ed652e8b"
+    },
+    {
+      "module": "ARM7",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "input_file": "$BUILD/arm7-native/artifacts/program-0/arm7.bin",
+      "linked_elf": "$BUILD/arm7-native/artifacts/program-0/linked.elf",
+      "rom_offset": 2162688,
+      "size_bytes": 165552,
+      "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "source_bytes": 0
+    },
+    {
+      "module": "ARM7",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "input_file": "$BUILD/arm7-native/artifacts/program-1/arm7.bin",
+      "linked_elf": "$BUILD/arm7-native/artifacts/program-1/linked.elf",
+      "rom_offset": 4313600,
+      "size_bytes": 165552,
+      "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "source_bytes": 0
+    }
+  ],
+  "whole_rom_equal": true,
+  "whole_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "matched_parent_source_bytes": 304,
+  "matched_parent_functions": 7,
+  "child_source_bytes": 0,
+  "child_source_functions": 0,
+  "global_percent": null,
+  "T10_complete": false,
+  "tests": {
+    "total": 257,
+    "passed": 257,
+    "skipped": 0,
+    "log": "tests.log"
+  },
+  "live_mutation_rejections": 21
+}

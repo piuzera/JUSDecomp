@@ -1,0 +1,58 @@
+{
+  "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+  "static_semantic_check": "unsigned ARM32 address 0x027ffda0 + (index << 2), volatile word store of value; original BX remains unknown",
+  "original_vma": 58707716,
+  "bytes": 20,
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "stored_image_offset": 20660,
+      "program_offset": 2183348,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801da0",
+        "0xe12fff1e"
+      ],
+      "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488"
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "stored_image_offset": 20660,
+      "program_offset": 1993396,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801da0",
+        "0xe12fff1e"
+      ],
+      "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488"
+    }
+  ],
+  "llvm_argv": [
+    "/opt/homebrew/opt/llvm/bin/llvm-mc",
+    "--disassemble",
+    "--triple=armv4t-none-eabi"
+  ],
+  "llvm_stdout": "\tlsl\tr0, r0, #2\n\tadd\tr0, r0, #40894464\n\tadd\tr0, r0, #1044480\n\tstr\tr1, [r0, #3488]\n\tbx\tlr\n",
+  "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+  "ROM_unchanged": true,
+  "layout_unchanged": true,
+  "compiler_invoked": false,
+  "source_credit_bytes": 0
+}

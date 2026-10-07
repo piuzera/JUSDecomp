@@ -1,0 +1,378 @@
+{
+  "status": "accepted",
+  "findings": [],
+  "reviewed_commit": "c072c63e059ab7a04ff806721112e73cb10409c4",
+  "independent_original_read_sha256": "cd998e2d4fdcc78b47ded8766985c0ce6b19dc90ed1fffe1b5cdd6b65c435875",
+  "trials": [
+    {
+      "recipe": "baseline",
+      "object_sha256": "182ebed8e905dd0b2b1eb363d0efefa7864e03ded84db7c1804110c1eea52bff",
+      "code_sha256": "5f8e8cf1dcfb58428f87657c0d7ccf4c75a4aa2dae28e442b0178a04cf22c353",
+      "code_bytes": 36,
+      "elf_flags": 34603008,
+      "global_function": {
+        "name": "arm7_store_trial",
+        "value": 0,
+        "size": 36,
+        "binding": 1,
+        "type": 2,
+        "section": 5
+      },
+      "mapping_symbols": [
+        {
+          "name": "$a",
+          "value": 0,
+          "size": 0,
+          "binding": 0,
+          "type": 2,
+          "section": 5
+        }
+      ],
+      "sections": [
+        {
+          "name_offset": 0,
+          "type": 0,
+          "flags": 0,
+          "address": 0,
+          "offset": 0,
+          "size": 0,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ""
+        },
+        {
+          "name_offset": 1,
+          "type": 2,
+          "flags": 0,
+          "address": 0,
+          "offset": 64,
+          "size": 48,
+          "link": 2,
+          "info": 2,
+          "align": 0,
+          "entry_size": 16,
+          "name": ".symtab"
+        },
+        {
+          "name_offset": 9,
+          "type": 3,
+          "flags": 0,
+          "address": 0,
+          "offset": 112,
+          "size": 21,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ".strtab"
+        },
+        {
+          "name_offset": 17,
+          "type": 3,
+          "flags": 0,
+          "address": 0,
+          "offset": 144,
+          "size": 42,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ".shstrtab"
+        },
+        {
+          "name_offset": 27,
+          "type": 1,
+          "flags": 0,
+          "address": 0,
+          "offset": 192,
+          "size": 35,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ".comment"
+        },
+        {
+          "name_offset": 36,
+          "type": 1,
+          "flags": 6,
+          "address": 0,
+          "offset": 240,
+          "size": 36,
+          "link": 0,
+          "info": 0,
+          "align": 4,
+          "entry_size": 0,
+          "name": ".text"
+        }
+      ],
+      "relocation_sections": [],
+      "exact_original_bytes_both_programs": false,
+      "mismatch_offsets": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "actual_argv": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-proc",
+        "arm7tdmi",
+        "-nothumb",
+        "-interworking",
+        "-nostdinc",
+        "-c",
+        "/private/tmp/jus-arm7-leaf-independent/decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/store_trial.c",
+        "-o",
+        "/private/tmp/jus-arm7-leaf-independent-proof/closed-reproduced/baseline/compiled.o"
+      ],
+      "compiler_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiler_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "llvm_sha256": "2cd7932adc5409fc60279f8c989a6ac75d346bc73c063b9c4c97376555180d81"
+    },
+    {
+      "recipe": "O4p",
+      "object_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+      "code_sha256": "1286c0f7baaf3678f915ee9ef9830ab1a2243c5ea8d41e2a75c0b14fa35eaebe",
+      "code_bytes": 20,
+      "elf_flags": 34603008,
+      "global_function": {
+        "name": "arm7_store_trial",
+        "value": 0,
+        "size": 20,
+        "binding": 1,
+        "type": 2,
+        "section": 5
+      },
+      "mapping_symbols": [
+        {
+          "name": "$a",
+          "value": 0,
+          "size": 0,
+          "binding": 0,
+          "type": 2,
+          "section": 5
+        }
+      ],
+      "sections": [
+        {
+          "name_offset": 0,
+          "type": 0,
+          "flags": 0,
+          "address": 0,
+          "offset": 0,
+          "size": 0,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ""
+        },
+        {
+          "name_offset": 1,
+          "type": 2,
+          "flags": 0,
+          "address": 0,
+          "offset": 64,
+          "size": 48,
+          "link": 2,
+          "info": 2,
+          "align": 0,
+          "entry_size": 16,
+          "name": ".symtab"
+        },
+        {
+          "name_offset": 9,
+          "type": 3,
+          "flags": 0,
+          "address": 0,
+          "offset": 112,
+          "size": 21,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ".strtab"
+        },
+        {
+          "name_offset": 17,
+          "type": 3,
+          "flags": 0,
+          "address": 0,
+          "offset": 144,
+          "size": 42,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ".shstrtab"
+        },
+        {
+          "name_offset": 27,
+          "type": 1,
+          "flags": 0,
+          "address": 0,
+          "offset": 192,
+          "size": 35,
+          "link": 0,
+          "info": 0,
+          "align": 0,
+          "entry_size": 0,
+          "name": ".comment"
+        },
+        {
+          "name_offset": 36,
+          "type": 1,
+          "flags": 6,
+          "address": 0,
+          "offset": 240,
+          "size": 20,
+          "link": 0,
+          "info": 0,
+          "align": 4,
+          "entry_size": 0,
+          "name": ".text"
+        }
+      ],
+      "relocation_sections": [],
+      "exact_original_bytes_both_programs": true,
+      "mismatch_offsets": [],
+      "actual_argv": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-proc",
+        "arm7tdmi",
+        "-nothumb",
+        "-interworking",
+        "-nostdinc",
+        "-O4,p",
+        "-c",
+        "/private/tmp/jus-arm7-leaf-independent/decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/store_trial.c",
+        "-o",
+        "/private/tmp/jus-arm7-leaf-independent-proof/closed-reproduced/O4p/compiled.o"
+      ],
+      "compiler_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiler_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "llvm_sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    }
+  ],
+  "inputs_unchanged": true,
+  "before_input_snapshot_sha256": "76b54077c2ec5606ff6b8e63c73be28391dfa0c2855c5dd7102e881854152dfd",
+  "after_input_snapshot_sha256": "76b54077c2ec5606ff6b8e63c73be28391dfa0c2855c5dd7102e881854152dfd",
+  "public_git_blobs_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/.gitattributes": "667b93be6ede617192a0c6ac9e3664b1727402239531277b6cd47b53e73a6535",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/O4p-elf-readback.txt": "6860266ba902b3992b2b0974cdb93dff8622b6d596c763881e24ec9f395e1d0b",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/O4p-llvm-disassembly.txt": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/baseline-elf-readback.txt": "6a39f45618201e9676c9214ba10157030f19af47369fe192ec76fdbc2e6802f2",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/baseline-llvm-disassembly.txt": "2cd7932adc5409fc60279f8c989a6ac75d346bc73c063b9c4c97376555180d81",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/original-llvm.txt": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/reproduce.py": "75f757fa025dd177fb9fc9995aa4e2cd52a86ed491cd685dbd187116fca185ea",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/store_trial.c": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage.json": "bc8ee39a731209b5a6158f6b2099d3c6ee5ff5a50579938dae9d5d272e374f42",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/probe-037fcf18.json": "bb7acfeaa275037156122c1c6eeb3e3734afd4fb1e2d0f2bd50e0f970a3a3255",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/probe-037fcf2c.json": "d3bbfb1c883ef51b0116efc86111a3f0d7de440ee0a7d152defdf0f7777844c2",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/probe-037fcf84.json": "90681bbfcadd312d0752bc85a7f7297c15668aa75dd2e30f38e8a81a809d5321",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/probe-caller-context.json": "dd0e677b9be8483672fb9a0d556edab6484e485cbaf6132f279d4492b1d2d913",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/probe-cf18-predecessor.json": "012561128d448c9077a6225b957dbd8b41a2b3f408bd4cbf36d10138c7051719",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/request-037fcf18.json": "2f15e6c18c4e1af2122a3cf346ac408c5500875ca1f4cf89cfacad8765d07a97",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/request-037fcf2c.json": "1f20b656d17cc3954923d484569e9c9c9bac034e5664120e8cb38c03b83cc639",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/request-037fcf84.json": "3d0d70d7888709e891b396f062f0cf745f4017497c437ced67e6e8cf1316ab85",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/request-caller-context.json": "caa85b73f08f74c178b41a4ed849f6386916f84f52bb725e2bdc657722b08012",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/triage/request-cf18-predecessor.json": "668497fa776bbe646f529c7a5c7a05db0dc7df66331c9aedf0495a014c798d95",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial-proof/trial-proof.json": "5066f5da410fc6809eac804ae953d24bf6ac0c12d70404df496cba5fac2919f7",
+    "decomp/matching-notes/other-cpus/arm7-leaf-c-trial.md": "5beb8c3c908c3bf52391f09010ca30aacb5e6e51eed6ad7bbcd0667af28e9b7a"
+  },
+  "fresh_trial_proof_sha256": "10568256ccf398a8cfe5bb6a6f06f817c239eeb6cb7b4653f79170b747b31645",
+  "triage_scope": "All five complete triage reports and exact request sidecars are now committed. Independently replayed each published request with frozen producer and pinned original ROM/layout; every full report reproduced byte for byte. Both C recipes reproduced using only the closed local capsule and the documented pinned external tools/ROM/layout.",
+  "rechecked_public_triage_receipts": [
+    {
+      "file": "probe-037fcf18.json",
+      "sha256": "bb7acfeaa275037156122c1c6eeb3e3734afd4fb1e2d0f2bd50e0f970a3a3255",
+      "request_sha256": "2f15e6c18c4e1af2122a3cf346ac408c5500875ca1f4cf89cfacad8765d07a97",
+      "status": "bounded_arm7_candidate_graphs_verified"
+    },
+    {
+      "file": "probe-037fcf2c.json",
+      "sha256": "d3bbfb1c883ef51b0116efc86111a3f0d7de440ee0a7d152defdf0f7777844c2",
+      "request_sha256": "1f20b656d17cc3954923d484569e9c9c9bac034e5664120e8cb38c03b83cc639",
+      "status": "bounded_arm7_candidate_graphs_verified"
+    },
+    {
+      "file": "probe-037fcf84.json",
+      "sha256": "90681bbfcadd312d0752bc85a7f7297c15668aa75dd2e30f38e8a81a809d5321",
+      "request_sha256": "3d0d70d7888709e891b396f062f0cf745f4017497c437ced67e6e8cf1316ab85",
+      "status": "bounded_arm7_candidate_graphs_verified"
+    },
+    {
+      "file": "probe-caller-context.json",
+      "sha256": "dd0e677b9be8483672fb9a0d556edab6484e485cbaf6132f279d4492b1d2d913",
+      "request_sha256": "caa85b73f08f74c178b41a4ed849f6386916f84f52bb725e2bdc657722b08012",
+      "status": "bounded_arm7_candidate_graphs_verified"
+    },
+    {
+      "file": "probe-cf18-predecessor.json",
+      "sha256": "012561128d448c9077a6225b957dbd8b41a2b3f408bd4cbf36d10138c7051719",
+      "request_sha256": "668497fa776bbe646f529c7a5c7a05db0dc7df66331c9aedf0495a014c798d95",
+      "status": "bounded_arm7_candidate_graphs_verified"
+    }
+  ],
+  "triage_replay_receipts_sha256": "5969dc561219a8cfdf18ac697ba4a32dae4266fd5ad052a85bc767b2334ed19d",
+  "resolved_findings": [
+    {
+      "original_commit": "a9947bd89d8a56fc9c8673e6a0e673fbf2157bdb",
+      "issue": "Private-only triage reports prevented closed capsule reproduction.",
+      "resolution_commit": "c072c63e059ab7a04ff806721112e73cb10409c4",
+      "resolution": "Committed all five report/request pairs; reproduction script resolves them relative to its own capsule; fresh compilation and all five frozen-probe replays passed."
+    }
+  ],
+  "scope_review": "Plain C trial name/unsigned32/pointer32/void are hypotheses. Actual ARM7TDMI/ARM/interworking flags and ELF ARM mapping confirmed. Exact optimized bytes are a finite candidate match only; external store ownership and original return ABI/function boundaries/source ownership/link contract/compiler/runtime remain unproven. Zero source credit, no canonical update, T10 remains open.",
+  "source_credit_bytes": 0,
+  "canonical_update": false,
+  "branch_feasibility": "unknown",
+  "independent_scripts_sha256": {
+    "read_leaf.py": "d7e949f3fe4a35e246037f37ff4171aeef88bc6c3f95c076b7870db2cab7a61b",
+    "check_leaf.py": "34357c1d6f7a477ba33275bcf65e5f7ea93d4058d6cb6b8c9ec7c842dfadc3dd",
+    "replay_triage.py": "4fa7fff5204c537477dfa82f1ef93e3eae7e591539e3bbd07ca6e5e91dd9e69a"
+  },
+  "independent_llvm_logs_sha256": {
+    "O4p-independent-llvm.txt": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37",
+    "baseline-independent-llvm.txt": "2cd7932adc5409fc60279f8c989a6ac75d346bc73c063b9c4c97376555180d81",
+    "original-program-0-llvm.txt": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37",
+    "original-program-1-llvm.txt": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "accepted_no_flags",
+  "reviewed_worker_commit": "3629f89c54c3dafef9baecab21acdd94b8a753f8",
+  "root_primary_file_count": 6,
+  "root_independent_connector_reads": "all exact byte lengths, SHA256 and Git blob SHA1 agree",
+  "root_local_version_readbacks": "both stdout SHA256 agree",
+  "root_tool_pins_verified": 9,
+  "source_mode": "ARM_FUNC thumb off",
+  "donor_selector": "1.2/sp2p3",
+  "donor_optimization": "-O4,s",
+  "actual_local_selected_version": "2.0 build82",
+  "C_compile_or_link_attempted": false,
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T10_complete": false
+}

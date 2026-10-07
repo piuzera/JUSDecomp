@@ -1,0 +1,2 @@
+# Unified-diff context lines intentionally begin with a space.
+source.patch -whitespace

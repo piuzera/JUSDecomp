@@ -1,0 +1,23 @@
+[
+  {
+    "case": "control",
+    "actual_exit": 0,
+    "expected_exit": 0,
+    "stderr": "",
+    "status": "physical_views_verified"
+  },
+  {
+    "case": "overlay-file-id",
+    "actual_exit": 1,
+    "expected_exit": 1,
+    "stderr": "Error: NitroFs",
+    "status": null
+  },
+  {
+    "case": "decoded-duplicates",
+    "actual_exit": 1,
+    "expected_exit": 1,
+    "stderr": "Error: NitroFs",
+    "status": null
+  }
+]

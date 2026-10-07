@@ -1,0 +1,30 @@
+{
+  "wrong_layout_digest": {
+    "command": [
+      "/private/tmp/jus-arm7-physical-root-cache/target/release/examples/arm7_physical_baseline",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+      "0000000000000000000000000000000000000000000000000000000000000000",
+      "/private/tmp/jus-arm7-physical-root-native-pins.json",
+      "a7a90669d34d6990bcff4105320dc267ebd70add7926838576e11e472262b504",
+      "/private/tmp/jus-arm7-physical-root-wrong-layout"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "sidecar digest mismatch\n"
+  },
+  "reuse_output": {
+    "command": [
+      "/private/tmp/jus-arm7-physical-root-cache/target/release/examples/arm7_physical_baseline",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+      "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+      "/private/tmp/jus-arm7-physical-root-native-pins.json",
+      "a7a90669d34d6990bcff4105320dc267ebd70add7926838576e11e472262b504",
+      "/private/tmp/jus-arm7-physical-root-actual"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "File exists (os error 17)\n"
+  }
+}

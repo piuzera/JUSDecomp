@@ -1,0 +1,78 @@
+{
+  "status": "root_independently_verified_and_reviewed",
+  "dsd_source_commit": "d38bad627b7074eb4b39a0901fe8e9a36a34756b",
+  "dsd_source_tree": "7ab1b0b019f91be6d8ef9941beca8fd9d6d5952f",
+  "applied_patch_tree_matches": true,
+  "dsd_patch_sha256": "1f39c170f15b960076a2e30025bff38ba5ffd0889f5b8d345dd5f82d5f6f8124",
+  "unarm_upstream_commit": "f1209f1c02f1fe64351944e5fac640a460c45901",
+  "unarm_patch_sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f",
+  "native_release_cli_sha256": "ddae743f29432dc5d057292fd1f25dde716e352c2da133f9bb7abe68dc6213b3",
+  "worker_release_binary_identical": true,
+  "tests": {
+    "dsd": {
+      "passed": 63,
+      "failed": 0,
+      "ignored": 0
+    },
+    "upstream": {
+      "passed": 532,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "preparation_tests": {
+    "passed": 10,
+    "failed": 0,
+    "original_ignored_build_script_counterexample_rejected": true
+  },
+  "clippy": {
+    "status": "passed",
+    "existing_baseline_allowance": "clippy::chunks_exact_to_as_chunks",
+    "unchanged_sites": [
+      "analysis/ctor.rs:155",
+      "analysis/functions.rs:558"
+    ]
+  },
+  "llvm_oracle": {
+    "instructions": 32,
+    "status": "independently_rebuilt_and_decoded",
+    "proof": "root-oracle/root-proof.json"
+  },
+  "fresh_init_metadata": {
+    "parent": 51,
+    "child": 9,
+    "byte_identical": true,
+    "proof": "root-metadata.json"
+  },
+  "fresh_arm9_compatibility": {
+    "producer_commit": "17e244a8c0504809858d80f772a8b6fb991aaf85",
+    "published_branch": "track-a/branch-repair-proof",
+    "stages": 19,
+    "modules": 17,
+    "validated_relocations": 87493,
+    "source_hashes": 72,
+    "unchanged_hashes": 71,
+    "only_changed_hash": "experimental decomp/toolchain.lock.json",
+    "artifact_hashes": 209,
+    "rom_size_bytes": 67108864,
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "matched_source_bytes": 304,
+    "report": "root-arm9-compatibility.json"
+  },
+  "canonical_production_pin_changed": false,
+  "arm7_source_bytes": 0,
+  "arm7_binary_baseline_complete": false,
+  "global_coverage_percent": null,
+  "limitations": [
+    "Observer local normalization intentionally retained.",
+    "Only tested direct branch instruction forms, not exhaustive ISA conformance.",
+    "Standalone thumb-only build has an independently reproduced pre-existing ARM import failure.",
+    "ARM7 function, original relocation and executable classifications remain unresolved."
+  ],
+  "independent_review": {
+    "model": "gpt-6.1-sol",
+    "status": "No flags",
+    "reviewed_commit": "a86f78b",
+    "report": "review.json"
+  }
+}

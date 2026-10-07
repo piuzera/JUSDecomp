@@ -1,0 +1,17 @@
+{
+  "source": "low_store_trial.c",
+  "function": "arm7_low_store_trial",
+  "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+  "vma": 58707716,
+  "bytes": 20,
+  "caller": 58708076,
+  "words": [
+    "0xe1a00100",
+    "0xe2800627",
+    "0xe2800aff",
+    "0xe5801da0",
+    "0xe12fff1e"
+  ],
+  "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+  "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7"
+}

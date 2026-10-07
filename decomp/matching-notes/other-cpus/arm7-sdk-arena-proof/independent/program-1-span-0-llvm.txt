@@ -1,0 +1,10 @@
+	lsl	r0, r0, #2
+	add	r0, r0, #40894464
+	add	r0, r0, #1044480
+	str	r1, [r0, #3488]
+	bx	lr
+	lsl	r0, r0, #2
+	add	r0, r0, #40894464
+	add	r0, r0, #1044480
+	str	r1, [r0, #3524]
+	bx	lr

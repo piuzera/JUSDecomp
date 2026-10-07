@@ -1,0 +1,28 @@
+{
+  "status": "accepted_no_flags",
+  "public_worker_commit": "1f11e25d2d43300a22511c684d9f7210b05ab374",
+  "independent_cherry_commit": "294ebf00320c39dc3a410ae30a19c4286a13cebb",
+  "new_git_blobs": 50,
+  "git_head_pins": 49,
+  "published_receipt_sha256": "26eef5f70b026c28b00ef6757ee79923c6d8b6a61b3133230b513d94fa63dc79",
+  "fresh_public_replay_receipt_sha256": "313b6d619a1db05068edd362ecb5f7daf8461e28b9d7b5a84b9fbd769d03f600",
+  "independent_native_receipt_sha256": "3aa6bea2c9a7de9ce8667996efb39b984c364945238cc0732963e4249abe0439",
+  "programs": [
+    {
+      "identity": 0,
+      "public_elf_sha256": "ce8c2d2566962edb4df29af9bccae294d135656ddca4b46fab7d85163dbc5267",
+      "independent_elf_sha256": "5c3e9f36964f1bb9f40446fa68f5949f76a95472d35b84c169ceb56445ce2739",
+      "entry_flags_six_segments_allocated_payloads_equal": true,
+      "different_linker_marker_names": true
+    },
+    {
+      "identity": 1,
+      "public_elf_sha256": "ce8c2d2566962edb4df29af9bccae294d135656ddca4b46fab7d85163dbc5267",
+      "independent_elf_sha256": "5c3e9f36964f1bb9f40446fa68f5949f76a95472d35b84c169ceb56445ce2739",
+      "entry_flags_six_segments_allocated_payloads_equal": true,
+      "different_linker_marker_names": true
+    }
+  ],
+  "source_credit_bytes": 0,
+  "remaining_boundary": "original names, types, ABI, extent, version, source ownership, call returns and BX unresolved"
+}

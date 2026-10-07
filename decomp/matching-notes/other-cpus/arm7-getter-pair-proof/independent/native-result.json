@@ -1,0 +1,467 @@
+{
+  "status": "two_actual_MW_getter_objects_exact_both_images",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "objects": {
+        "low": {
+          "sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "text_sha256": "dec903f6504225144a12ee57fc8fbd34b5c30dcf8140af8b954f57d680f62279",
+          "code_sha256": "4439515ba3e13f1224622048ec17be7c238aaba35b5ec4d254209e7fb7df7564",
+          "text_bytes": 88,
+          "code_bytes": 80,
+          "relocations": [
+            {
+              "offset": 80,
+              "type": 2,
+              "symbol": "hyp_subpriv_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 84,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            }
+          ]
+        },
+        "high": {
+          "sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "text_sha256": "89d466e62a0cc66d0a4b2458c080fd62284b2336d30db72f25a2ce8f98bbf28c",
+          "code_sha256": "85a5352a73e4cf800fe0ef88137d78afbdf6289d0dd369d839daa007c7c016ce",
+          "text_bytes": 128,
+          "code_bytes": 108,
+          "relocations": [
+            {
+              "offset": 112,
+              "type": 2,
+              "symbol": "hyp_irq_stack_size",
+              "addend": 0
+            },
+            {
+              "offset": 120,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 124,
+              "type": 2,
+              "symbol": "hyp_system_stack_size",
+              "addend": 0
+            }
+          ]
+        }
+      },
+      "positive": {
+        "elf_sha256": "6298ed9bc7214942ac6fbf6fefedf26c5dafd65a7806c53f14e75083783597c8",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "mismatch_offsets": [],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "BSS_bytes": 21424,
+        "low_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+        "high_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+        "linked_low_pool": [
+          41917448,
+          58768528
+        ],
+        "linked_high_pool": [
+          41938944,
+          1024,
+          58785664,
+          58768528,
+          1024
+        ]
+      },
+      "wrong_shared_WRAM": {
+        "elf_sha256": "18ebe19c1af661f7bac51b94b283fc65734bdc635754fe41de0cae808c0b8b92",
+        "image_sha256": "dc9bcedeabe58216760ca04dac8919ce561ee8ae582601b83e3e3eb89f59876b",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          20784,
+          20908
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "BSS_bytes": 21424,
+        "low_sha256": "720603b75c3718e8b542485281b8d21b99a560abb867ab9e2538815ce3af549e",
+        "high_sha256": "26ff2e7bb6df026174c51787447376357997439b1d5e26ab2224d507c3e7eadf",
+        "linked_low_pool": [
+          41917448,
+          58768532
+        ],
+        "linked_high_pool": [
+          41938944,
+          1024,
+          58785664,
+          58768532,
+          1024
+        ]
+      },
+      "omitted_high_rejected": true,
+      "swapped_roles_rejected": true,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "objects": {
+        "low": {
+          "sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+          "text_sha256": "dec903f6504225144a12ee57fc8fbd34b5c30dcf8140af8b954f57d680f62279",
+          "code_sha256": "4439515ba3e13f1224622048ec17be7c238aaba35b5ec4d254209e7fb7df7564",
+          "text_bytes": 88,
+          "code_bytes": 80,
+          "relocations": [
+            {
+              "offset": 80,
+              "type": 2,
+              "symbol": "hyp_subpriv_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 84,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            }
+          ]
+        },
+        "high": {
+          "sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+          "text_sha256": "89d466e62a0cc66d0a4b2458c080fd62284b2336d30db72f25a2ce8f98bbf28c",
+          "code_sha256": "85a5352a73e4cf800fe0ef88137d78afbdf6289d0dd369d839daa007c7c016ce",
+          "text_bytes": 128,
+          "code_bytes": 108,
+          "relocations": [
+            {
+              "offset": 112,
+              "type": 2,
+              "symbol": "hyp_irq_stack_size",
+              "addend": 0
+            },
+            {
+              "offset": 120,
+              "type": 2,
+              "symbol": "hyp_wram_arena_lo",
+              "addend": 0
+            },
+            {
+              "offset": 124,
+              "type": 2,
+              "symbol": "hyp_system_stack_size",
+              "addend": 0
+            }
+          ]
+        }
+      },
+      "positive": {
+        "elf_sha256": "6298ed9bc7214942ac6fbf6fefedf26c5dafd65a7806c53f14e75083783597c8",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "mismatch_offsets": [],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "BSS_bytes": 21424,
+        "low_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2",
+        "high_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+        "linked_low_pool": [
+          41917448,
+          58768528
+        ],
+        "linked_high_pool": [
+          41938944,
+          1024,
+          58785664,
+          58768528,
+          1024
+        ]
+      },
+      "wrong_shared_WRAM": {
+        "elf_sha256": "18ebe19c1af661f7bac51b94b283fc65734bdc635754fe41de0cae808c0b8b92",
+        "image_sha256": "dc9bcedeabe58216760ca04dac8919ce561ee8ae582601b83e3e3eb89f59876b",
+        "image_bytes": 165552,
+        "mismatch_offsets": [
+          20784,
+          20908
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "BSS_bytes": 21424,
+        "low_sha256": "720603b75c3718e8b542485281b8d21b99a560abb867ab9e2538815ce3af549e",
+        "high_sha256": "26ff2e7bb6df026174c51787447376357997439b1d5e26ab2224d507c3e7eadf",
+        "linked_low_pool": [
+          41917448,
+          58768532
+        ],
+        "linked_high_pool": [
+          41938944,
+          1024,
+          58785664,
+          58768532,
+          1024
+        ]
+      },
+      "omitted_high_rejected": true,
+      "swapped_roles_rejected": true,
+      "malformed_load_rejected": true
+    }
+  ],
+  "source_credit_bytes": 0,
+  "canonical_bytes": 304,
+  "T10_open": true
+}

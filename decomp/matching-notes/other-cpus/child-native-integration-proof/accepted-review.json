@@ -1,0 +1,14 @@
+{
+  "status": "accepted",
+  "review_model": "gpt-6.1-sol",
+  "verdict": "No flags",
+  "reviewed_source_commit": "320ea2ad796fdd179ce504021436ffbd9394c1f3",
+  "reviewed_proof_commit": "8b7cc6aaf39df4c3258bb843c53c9db028797f2a",
+  "reviewed_root_proof_sha256": "176a2bb283e25af0340793543f46c45e1a18811a169f1dd0c3029ddd1ec902fd",
+  "published_root_proof_sha256": "ea2274862eeddf70bb08c4816f7edc3e8cadc4070bd32b1bf84339c488f22753",
+  "independent_receipt_sha256": "40db243f53bd1bb1d0e9b9f5607a7c64cd03751d88d1ed66afbc99901ca428d9",
+  "post_review_changes": "acceptance metadata only; native/source inputs and actual evidence unchanged",
+  "source_credit": 304,
+  "child_source_credit": 0,
+  "T10_complete": false
+}

@@ -1,0 +1,126 @@
+{
+  "status": "primary_build_provenance_verified",
+  "repository": "pret/pokediamond",
+  "commit": "38f3650189f8989aed91618745aa74029fa60247",
+  "primary_files": [
+    {
+      "path": "Makefile",
+      "git_blob_sha": "c9be64f8ab053968491ab6c038cb08f93f731f6d",
+      "sha256": "99ef2cdf4b2598ed2f22c4d248667928a3e85d9c9acf101ec1e90f5574988161",
+      "bytes": 8726,
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/Makefile"
+    },
+    {
+      "path": "arm7/Makefile",
+      "git_blob_sha": "d142c079a62aa306bdd2e5e2f02e48b6da2aa812",
+      "sha256": "5677d822f329208e0f29ef02b0e0d885783e27e9f96e8309202afc5fb48532d5",
+      "bytes": 5470,
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/Makefile"
+    },
+    {
+      "path": "config.mk",
+      "git_blob_sha": "f861fdfb8cbeb7a801ecc3f5a17f99fec1adfbdc",
+      "sha256": "16aaa6b0748d85cabb2533be0df2ab1897556eec72d085d4d10999d50efe64d4",
+      "bytes": 930,
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/config.mk"
+    },
+    {
+      "path": "include-mw/function_target.h",
+      "git_blob_sha": "84b7e1cda266528c25c816a718aa033e0650fff6",
+      "sha256": "cb02243104e6519a8526fa6b5d94eb14005c7b7311bb63669977843606fa72e6",
+      "bytes": 407,
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/include-mw/function_target.h"
+    },
+    {
+      "path": "arm7/lib/src/OS_arena.c",
+      "git_blob_sha": "516fc10bda619f59420c404840ba5efe19fddf8c",
+      "sha256": "de7be1a9f42a7c834809686e8315a3a3201ab3a30682437a91f3e88298306ddc",
+      "bytes": 3013,
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c"
+    },
+    {
+      "path": "INSTALL.md",
+      "git_blob_sha": "012a24a4cd5a1ae806a8638c7f61cb916e7f9c09",
+      "sha256": "9381f19a443bd2aa7a7d5bc67ea9caced8a043d7cf9099354248853ab0d21e38",
+      "bytes": 4364,
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/INSTALL.md"
+    }
+  ],
+  "effective_OS_arena_object": "build/lib/src/OS_arena.o",
+  "declared_compiler_selector": "1.2/sp2p3",
+  "declared_compiler_path": "../tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+  "declared_optimization": "-O4,s",
+  "ARM_source_mode": "ARM_FUNC expands to _Pragma(\"thumb off\")",
+  "make_expansion": {
+    "probe_scope": "Minimal private makefile copies exact seven donor assignment/override lines; two print-only targets. Original makefile was not executed because parsing can create directories/run tool recipes. This checks GNU make target-specific recursive-variable expansion, not a donor build.",
+    "argv": [
+      "/usr/bin/make",
+      "--no-print-directory",
+      "-f",
+      "/private/tmp/jus-arm7-donor-build-provenance-proof/variables.mk",
+      "build/lib/src/OS_arena.o",
+      "build/src/main.o"
+    ],
+    "stdout_sha256": "f810d8ef28520d6025cced85a69b5ff112caf17e7308712b7dc9c050bab58f18",
+    "SDK_target_selector": "1.2/sp2p3",
+    "ordinary_target_selector": "2.0/base"
+  },
+  "local_compiler_identities": [
+    {
+      "label": "donor_selected",
+      "path": "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "sha256": "a0db9f5dd49ceb619dbc64993660b39f96cca10821a698a9859824e2d4ae2a81",
+      "version": "2.0 build 82 (0082)",
+      "argv": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+        "-version"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "88caa59e55e560b40a408c56ba8e5d4299bdd1e628b810268b4be0d25ac3399f"
+    },
+    {
+      "label": "previous_trial",
+      "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+      "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "version": "3.0 build 114 (0114)",
+      "argv": [
+        "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+        "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+        "-version"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "bc133b4be3bdf9f0a402ba5b27ed97e4a6d35d3d6102bb74090a42da0f1e221f"
+    }
+  ],
+  "tools_before_sha256": {
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe": "a0db9f5dd49ceb619dbc64993660b39f96cca10821a698a9859824e2d4ae2a81",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "tools_after_sha256": {
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe": "a0db9f5dd49ceb619dbc64993660b39f96cca10821a698a9859824e2d4ae2a81",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "inputs_unchanged": true,
+  "private_audit_script_sha256": "de0108cf1b3ed094544eea631af74d6a69bc96a899e349534212574347ba613f",
+  "private_readback_sha256": "97337edc5da5afac9a7423fcf0e3796713c7a3b80531a6ff6c8a684b677a6048",
+  "C_compile_or_link_attempted": false,
+  "source_credit_bytes": 0,
+  "canonical_update": false,
+  "original_JUS_compiler_or_SDK_identified": false,
+  "next_experiment": "Unchanged original fe3711 low-getter candidate, local build82, -O4,s; other existing target/mode/interworking/no-system-include options fixed. Single controlled comparison, not full donor build."
+}

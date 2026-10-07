@@ -1,0 +1,1021 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 7bfc236..cb8907d 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -706,9 +706,12 @@ version = "0.12.0"
+ dependencies = [
+  "bytemuck",
+  "ds-rom",
++ "encoding_rs",
+  "log",
+  "serde",
+  "serde-saphyr",
++ "serde_json",
++ "sha2",
+  "snafu",
+  "strum",
+  "strum_macros",
+diff --git a/lib/Cargo.toml b/lib/Cargo.toml
+index 5103d56..81f14dd 100644
+--- a/lib/Cargo.toml
++++ b/lib/Cargo.toml
+@@ -11,8 +11,10 @@ description = "Library for ds-decomp, a DS decompilation toolkit."
+ [dependencies]
+ bytemuck = { version = "1.25", features = ["derive"] }
+ ds-rom = "0.8"
++encoding_rs = "=0.8.35"
+ log = "0.4"
+ serde = "1.0"
++sha2 = "=0.10.9"
+ serde-saphyr = "0.0"
+ snafu = { version = "0.8", features = ["backtrace"] }
+ strum = "0.28.0"
+@@ -23,6 +25,9 @@ unarm = { version = "1.8", default-features = false, features = [
+     "v5te",
+ ] }
+ 
++[dev-dependencies]
++serde_json = "1.0"
++
+ [lints.clippy]
+ from_str_radix_10 = "allow"
+ new_without_default = "allow"
+diff --git a/lib/examples/arm7_checked_probe.rs b/lib/examples/arm7_checked_probe.rs
+new file mode 100644
+index 0000000..9db6e8e
+--- /dev/null
++++ b/lib/examples/arm7_checked_probe.rs
+@@ -0,0 +1,47 @@
++//! Read-only proof metadata for an independently pinned ARM7 layout sidecar.
++use std::{error::Error, fs, io};
++
++use ds_decomp::rom::arm7::Arm7Layout;
++use serde_json::json;
++use sha2::{Digest, Sha256};
++
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++
++fn main() -> Result<(), Box<dyn Error>> {
++    let args: Vec<_> = std::env::args().skip(1).collect();
++    if args.len() != 3 {
++        return Err("usage: arm7_checked_probe ROM LAYOUT_JSON EXPECTED_LAYOUT_SHA256".into());
++    }
++    let parent = fs::read(&args[0])?;
++    let sidecar = fs::read(&args[1])?;
++    if sha(&sidecar) != args[2] {
++        return Err("layout sidecar hash mismatch".into());
++    }
++    let layouts: Vec<Arm7Layout> = serde_json::from_slice(&sidecar)?;
++    if layouts.is_empty() {
++        return Err("no ARM7 layouts supplied".into());
++    }
++    let mut programs = Vec::new();
++    for layout in layouts {
++        let view = layout.checked(&parent)?;
++        let regions: Vec<_> = std::iter::once(view.startup()).chain(view.autoloads()).map(|region| {
++            json!({"description": region.description(), "initialized_bytes": region.bytes().len(),
++                "actual_sha256": sha(region.bytes()), "bss_start": region.bss_start(), "bss_end": region.bss_end()})
++        }).collect();
++        programs.push(json!({"layout": layout, "identity": view.identity(), "regions": regions,
++            "table_bytes": view.table().len(), "actual_table_sha256": sha(view.table()),
++            "source_bytes": view.matched_source_bytes(), "linked_binary_baseline": false,
++            "function_and_instruction_modes": "not_analyzed"}));
++    }
++    if fs::read(&args[0])? != parent || fs::read(&args[1])? != sidecar {
++        return Err("input changed during checked-view proof".into());
++    }
++    let report = json!({"schema_version": 1, "status": "physical_views_verified",
++        "parent_rom_sha256": sha(&parent), "layout_sidecar_sha256": sha(&sidecar),
++        "inputs_unchanged": true, "programs": programs,
++        "source_bytes": 0, "all_cpu_baseline_complete": false, "task_complete": false});
++    serde_json::to_writer_pretty(io::stdout().lock(), &report)?;
++    Ok(())
++}
+diff --git a/lib/src/rom/arm7.rs b/lib/src/rom/arm7.rs
+new file mode 100644
+index 0000000..de1bca0
+--- /dev/null
++++ b/lib/src/rom/arm7.rs
+@@ -0,0 +1,490 @@
++//! Checked ARM7 physical views. No function analysis or source credit is inferred.
++use std::{collections::HashSet, error::Error, fmt, ops::Range};
++
++use ds_rom::rom::{FileSystem, raw};
++use encoding_rs::SHIFT_JIS;
++use serde::{Deserialize, Serialize};
++use sha2::{Digest, Sha256};
++
++/// Explicit CPU selection for a checked view.
++#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
++#[serde(rename_all = "lowercase")]
++pub enum Cpu {
++    Arm7,
++    Arm9,
++}
++/// Instruction set declaration. This module does not run an instruction parser.
++#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
++#[serde(rename_all = "lowercase")]
++pub enum InstructionSet {
++    ArmV4T,
++    ArmV5Te,
++}
++/// Explicit processor declaration.
++#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
++#[serde(rename_all = "lowercase")]
++pub enum Processor {
++    Arm7Tdmi,
++    Arm946E,
++}
++/// Required ARM7 policy; no omitted or inherited defaults.
++#[derive(Clone, Debug, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct TargetPolicy {
++    pub cpu: Cpu,
++    pub isa: InstructionSet,
++    pub processor: Processor,
++}
++/// Select a complete program inside a verified parent ROM.
++#[derive(Clone, Debug, Serialize, Deserialize)]
++#[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
++pub enum ProgramSelector {
++    Parent,
++    NitroFs { path: String },
++}
++/// Program identity remains distinct even when executable payloads are identical.
++#[derive(Clone, Debug, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct ProgramIdentity {
++    pub parent_rom_sha256: String,
++    pub program: ProgramSelector,
++    pub program_sha256: String,
++}
++/// Physical region identity, without any code/data or function classification.
++#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
++#[serde(rename_all = "snake_case")]
++pub enum Arm7RegionKind {
++    Startup,
++    Autoload(u32),
++}
++/// Pinned region description. Extents are offsets within the stored ARM7 image.
++#[derive(Clone, Debug, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct Arm7Region {
++    pub kind: Arm7RegionKind,
++    pub stored_extent: Range<u32>,
++    pub runtime_base: u32,
++    pub bss_bytes: u32,
++    pub sha256: String,
++}
++/// Caller-provided pinned layout, validated before any region view is returned.
++#[derive(Clone, Debug, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct Arm7Layout {
++    pub identity: ProgramIdentity,
++    pub target: TargetPolicy,
++    pub header_sha256: String,
++    pub image_offset: u32,
++    pub image_bytes: u32,
++    pub image_sha256: String,
++    pub base: u32,
++    pub entry: u32,
++    pub params_offset: u32,
++    pub params_sha256: String,
++    pub regions: Vec<Arm7Region>,
++    pub table_extent: Range<u32>,
++    pub table_sha256: String,
++}
++/// Checked physical view. Construction is private to [`Arm7Layout::checked`].
++#[derive(Debug)]
++pub struct Arm7RegionView<'a> {
++    description: Arm7Region,
++    bytes: &'a [u8],
++    bss_start: u32,
++    bss_end: u32,
++}
++impl<'a> Arm7RegionView<'a> {
++    /// Original initialized bytes, without classification as instructions or data.
++    pub fn bytes(&self) -> &'a [u8] {
++        self.bytes
++    }
++    /// Checked region description.
++    pub fn description(&self) -> &Arm7Region {
++        &self.description
++    }
++    /// First BSS address.
++    pub fn bss_start(&self) -> u32 {
++        self.bss_start
++    }
++    /// Exclusive BSS end address.
++    pub fn bss_end(&self) -> u32 {
++        self.bss_end
++    }
++}
++/// Startup, ordered autoloads and original table for one checked ARM7 program.
++#[derive(Debug)]
++pub struct Arm7View<'a> {
++    identity: ProgramIdentity,
++    startup: Arm7RegionView<'a>,
++    autoloads: Vec<Arm7RegionView<'a>>,
++    table: &'a [u8],
++}
++impl<'a> Arm7View<'a> {
++    /// Complete checked program identity.
++    pub fn identity(&self) -> &ProgramIdentity {
++        &self.identity
++    }
++    /// Startup initialized bytes and checked BSS extent.
++    pub fn startup(&self) -> &Arm7RegionView<'a> {
++        &self.startup
++    }
++    /// Loader-record order, without inferring a region entrypoint or mode.
++    pub fn autoloads(&self) -> &[Arm7RegionView<'a>] {
++        &self.autoloads
++    }
++    /// Original checked autoload table bytes.
++    pub fn table(&self) -> &'a [u8] {
++        self.table
++    }
++    /// Physical preservation establishes no original source matching.
++    pub fn matched_source_bytes(&self) -> u32 {
++        0
++    }
++}
++/// A checked-view rejection. No partial view is returned after a failed check.
++#[derive(Debug, PartialEq, Eq)]
++pub enum Arm7LayoutError {
++    Hash(&'static str),
++    Target,
++    Header,
++    Bounds,
++    Alignment,
++    Overflow,
++    Parameters,
++    Table,
++    PhysicalLayout,
++    RuntimeOverlap,
++    NitroFs,
++}
++impl fmt::Display for Arm7LayoutError {
++    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        write!(f, "ARM7 checked view: {self:?}")
++    }
++}
++impl Error for Arm7LayoutError {}
++
++fn hash(bytes: &[u8], expected: &str, domain: &'static str) -> Result<(), Arm7LayoutError> {
++    if format!("{:x}", Sha256::digest(bytes)) == expected {
++        Ok(())
++    } else {
++        Err(Arm7LayoutError::Hash(domain))
++    }
++}
++fn add(a: u32, b: u32) -> Result<u32, Arm7LayoutError> {
++    a.checked_add(b).ok_or(Arm7LayoutError::Overflow)
++}
++fn slice(bytes: &[u8], extent: Range<u32>) -> Result<&[u8], Arm7LayoutError> {
++    if extent.end < extent.start {
++        return Err(Arm7LayoutError::Bounds);
++    }
++    bytes.get(extent.start as usize..extent.end as usize).ok_or(Arm7LayoutError::Bounds)
++}
++fn word(bytes: &[u8], offset: u32) -> Result<u32, Arm7LayoutError> {
++    Ok(u32::from_le_bytes(slice(bytes, offset..add(offset, 4)?)?.try_into().unwrap()))
++}
++fn aligned(values: &[u32]) -> Result<(), Arm7LayoutError> {
++    if values.iter().any(|value| value % 4 != 0) {
++        Err(Arm7LayoutError::Alignment)
++    } else {
++        Ok(())
++    }
++}
++
++impl Arm7Layout {
++    /// Select and verify an ARM7 physical view from the actual parent ROM bytes.
++    ///
++    /// All identity, header, parameter, table, extent and hash checks must pass.
++    /// This does not establish analyzer metadata, a linked baseline or source credit.
++    pub fn checked<'a>(&self, parent: &'a [u8]) -> Result<Arm7View<'a>, Arm7LayoutError> {
++        if self.target.cpu != Cpu::Arm7
++            || self.target.isa != InstructionSet::ArmV4T
++            || self.target.processor != Processor::Arm7Tdmi
++        {
++            return Err(Arm7LayoutError::Target);
++        }
++        hash(parent, &self.identity.parent_rom_sha256, "parent ROM")?;
++        let program = match &self.identity.program {
++            ProgramSelector::Parent => parent,
++            ProgramSelector::NitroFs { path } => select_child(parent, path)?,
++        };
++        hash(program, &self.identity.program_sha256, "program")?;
++        let rom = raw::Rom::new(program);
++        let header = rom.header().map_err(|_| Arm7LayoutError::Header)?;
++        if (header.arm7.offset, header.arm7.size, header.arm7.base_addr, header.arm7.entry)
++            != (self.image_offset, self.image_bytes, self.base, self.entry)
++        {
++            return Err(Arm7LayoutError::Header);
++        }
++        hash(
++            slice(program, 0..std::mem::size_of::<raw::Header>() as u32)?,
++            &self.header_sha256,
++            "header",
++        )?;
++        aligned(&[
++            self.image_offset,
++            self.image_bytes,
++            self.base,
++            self.entry,
++            self.params_offset,
++            self.table_extent.start,
++            self.table_extent.end,
++        ])?;
++        let image = slice(program, self.image_offset..add(self.image_offset, self.image_bytes)?)?;
++        if header.arm7_build_info_offset != 0 && header.arm7_build_info_offset < header.arm7.offset
++        {
++            return Err(Arm7LayoutError::Header);
++        }
++        let arm7 = rom.arm7().map_err(|_| Arm7LayoutError::Header)?;
++        if arm7.full_data() != image {
++            return Err(Arm7LayoutError::Header);
++        }
++        hash(image, &self.image_sha256, "image")?;
++        let startup = self.regions.first().ok_or(Arm7LayoutError::PhysicalLayout)?;
++        if startup.kind != Arm7RegionKind::Startup
++            || startup.stored_extent.start != 0
++            || startup.runtime_base != self.base
++            || startup.stored_extent.end == 0
++        {
++            return Err(Arm7LayoutError::PhysicalLayout);
++        }
++        if add(self.params_offset, 20)? > startup.stored_extent.end {
++            return Err(Arm7LayoutError::Parameters);
++        }
++        hash(
++            slice(image, self.params_offset..add(self.params_offset, 20)?)?,
++            &self.params_sha256,
++            "parameters",
++        )?;
++        let main_bss_start = add(self.base, startup.stored_extent.end)?;
++        let main_bss_end = add(main_bss_start, startup.bss_bytes)?;
++        let expected_params = [
++            add(self.base, self.table_extent.start)?,
++            add(self.base, self.table_extent.end)?,
++            add(self.base, startup.stored_extent.end)?,
++            main_bss_start,
++            main_bss_end,
++        ];
++        for (i, expected) in expected_params.into_iter().enumerate() {
++            if word(image, add(self.params_offset, i as u32 * 4)?)? != expected {
++                return Err(Arm7LayoutError::Parameters);
++            }
++        }
++        if self.entry < self.base || self.entry >= main_bss_start {
++            return Err(Arm7LayoutError::Header);
++        }
++        let mut cursor = 0;
++        let mut runtime_extents = Vec::new();
++        for (index, region) in self.regions.iter().enumerate() {
++            let expected_kind = if index == 0 {
++                Arm7RegionKind::Startup
++            } else {
++                Arm7RegionKind::Autoload(
++                    (index - 1).try_into().map_err(|_| Arm7LayoutError::Overflow)?,
++                )
++            };
++            if region.kind != expected_kind
++                || region.stored_extent.start != cursor
++                || region.stored_extent.end <= region.stored_extent.start
++            {
++                return Err(Arm7LayoutError::PhysicalLayout);
++            }
++            aligned(&[
++                region.stored_extent.start,
++                region.stored_extent.end,
++                region.runtime_base,
++                region.bss_bytes,
++            ])?;
++            slice(image, region.stored_extent.clone())?;
++            let runtime_end = add(
++                add(region.runtime_base, region.stored_extent.end - region.stored_extent.start)?,
++                region.bss_bytes,
++            )?;
++            if runtime_extents.iter().any(|extent: &Range<u32>| {
++                region.runtime_base < extent.end && extent.start < runtime_end
++            }) {
++                return Err(Arm7LayoutError::RuntimeOverlap);
++            }
++            runtime_extents.push(region.runtime_base..runtime_end);
++            cursor = region.stored_extent.end;
++        }
++        if cursor != self.table_extent.start || self.table_extent.end != self.image_bytes {
++            return Err(Arm7LayoutError::PhysicalLayout);
++        }
++        let table = slice(image, self.table_extent.clone())?;
++        let count: u32 =
++            (self.regions.len() - 1).try_into().map_err(|_| Arm7LayoutError::Overflow)?;
++        if count.checked_mul(12).ok_or(Arm7LayoutError::Overflow)?
++            != table.len().try_into().map_err(|_| Arm7LayoutError::Overflow)?
++        {
++            return Err(Arm7LayoutError::Table);
++        }
++        hash(table, &self.table_sha256, "table")?;
++        for (index, region) in self.regions.iter().skip(1).enumerate() {
++            let offset = index as u32 * 12;
++            let actual = [word(table, offset)?, word(table, offset + 4)?, word(table, offset + 8)?];
++            if actual
++                != [
++                    region.runtime_base,
++                    region.stored_extent.end - region.stored_extent.start,
++                    region.bss_bytes,
++                ]
++            {
++                return Err(Arm7LayoutError::Table);
++            }
++        }
++        let mut views = Vec::new();
++        for region in &self.regions {
++            let bytes = slice(image, region.stored_extent.clone())?;
++            hash(bytes, &region.sha256, "region")?;
++            let bss_start = add(
++                region.runtime_base,
++                bytes.len().try_into().map_err(|_| Arm7LayoutError::Overflow)?,
++            )?;
++            views.push(Arm7RegionView {
++                description: region.clone(),
++                bytes,
++                bss_start,
++                bss_end: add(bss_start, region.bss_bytes)?,
++            });
++        }
++        let startup = views.remove(0);
++        Ok(Arm7View { identity: self.identity.clone(), startup, autoloads: views, table })
++    }
++}
++
++fn select_child<'a>(parent: &'a [u8], path: &str) -> Result<&'a [u8], Arm7LayoutError> {
++    if path.split('/').any(|part| part.is_empty() || part == "." || part == "..") {
++        return Err(Arm7LayoutError::NitroFs);
++    }
++    let rom = raw::Rom::new(parent);
++    let header = rom.header().map_err(|_| Arm7LayoutError::Header)?;
++    let fnt = slice(
++        parent,
++        header.file_names.offset..add(header.file_names.offset, header.file_names.size)?,
++    )?;
++    let fat = slice(
++        parent,
++        header.file_allocs.offset..add(header.file_allocs.offset, header.file_allocs.size)?,
++    )?;
++    aligned(&[header.file_names.offset, header.file_allocs.offset])?;
++    if fat.len() % 8 != 0 {
++        return Err(Arm7LayoutError::NitroFs);
++    }
++    for record in fat.as_chunks::<8>().0 {
++        slice(parent, word(record, 0)?..word(record, 4)?)?;
++    }
++    let mut reserved_files = 0u32;
++    for overlays in [header.arm9_overlays, header.arm7_overlays] {
++        aligned(&[overlays.offset])?;
++        if overlays.size % 32 != 0 {
++            return Err(Arm7LayoutError::NitroFs);
++        }
++        slice(parent, overlays.offset..add(overlays.offset, overlays.size)?)?;
++        reserved_files = add(reserved_files, overlays.size / 32)?;
++    }
++    let reserved_files = reserved_files as usize;
++    if reserved_files > fat.len() / 8 {
++        return Err(Arm7LayoutError::NitroFs);
++    }
++    preflight_fnt(fnt, fat.len() / 8, reserved_files)?;
++    let fnt = rom.fnt().map_err(|_| Arm7LayoutError::NitroFs)?;
++    let fat = rom.fat().map_err(|_| Arm7LayoutError::NitroFs)?;
++    let files = FileSystem::parse(&fnt, fat, &rom).map_err(|_| Arm7LayoutError::NitroFs)?;
++    let mut directory = 0;
++    let parts: Vec<_> = path.split('/').collect();
++    let mut selected = None;
++    for (index, part) in parts.iter().enumerate() {
++        let entry = fnt.subtables[directory]
++            .iter()
++            .find(|entry| entry.name.as_ref() == *part)
++            .ok_or(Arm7LayoutError::NitroFs)?;
++        if index + 1 == parts.len() {
++            if !FileSystem::is_file(entry.id) {
++                return Err(Arm7LayoutError::NitroFs);
++            }
++            selected = Some(entry.id);
++        } else {
++            if !FileSystem::is_dir(entry.id) {
++                return Err(Arm7LayoutError::NitroFs);
++            }
++            directory = entry.id as usize & 0xfff;
++        }
++    }
++    let id = selected.ok_or(Arm7LayoutError::NitroFs)?;
++    if files.file(id).name() != *parts.last().unwrap() {
++        return Err(Arm7LayoutError::NitroFs);
++    }
++    let record = fat.get(id as usize).ok_or(Arm7LayoutError::NitroFs)?;
++    slice(parent, record.start..record.end)
++}
++
++// ds-rom's raw FNT parser assumes valid ranges and recursive directory structure.
++// Validate those assumptions before passing caller-supplied bytes into it.
++fn preflight_fnt(
++    fnt: &[u8],
++    fat_count: usize,
++    reserved_files: usize,
++) -> Result<(), Arm7LayoutError> {
++    let root = slice(fnt, 0..8)?;
++    let count = u16::from_le_bytes(root[6..8].try_into().unwrap()) as usize;
++    if count == 0 || count >= 0x1000 || count * 8 > fnt.len() {
++        return Err(Arm7LayoutError::NitroFs);
++    }
++    let mut children = vec![Vec::new(); count];
++    for (index, edges) in children.iter_mut().enumerate() {
++        let record = &fnt[index * 8..index * 8 + 8];
++        let mut cursor = word(record, 0)? as usize;
++        let mut file_id = u16::from_le_bytes(record[4..6].try_into().unwrap()) as usize;
++        let mut names = HashSet::new();
++        if cursor < count * 8 {
++            return Err(Arm7LayoutError::NitroFs);
++        }
++        loop {
++            let flags = *fnt.get(cursor).ok_or(Arm7LayoutError::NitroFs)?;
++            cursor += 1;
++            if flags == 0 {
++                break;
++            }
++            let size = (flags & 0x7f) as usize;
++            if size == 0 {
++                return Err(Arm7LayoutError::NitroFs);
++            }
++            let name_start = cursor;
++            cursor = cursor.checked_add(size).ok_or(Arm7LayoutError::Overflow)?;
++            if cursor > fnt.len() {
++                return Err(Arm7LayoutError::NitroFs);
++            }
++            let (name, _, had_errors) = SHIFT_JIS.decode(&fnt[name_start..cursor]);
++            if had_errors || !names.insert(name.into_owned()) {
++                return Err(Arm7LayoutError::NitroFs);
++            }
++            if flags & 0x80 != 0 {
++                let id = fnt.get(cursor..cursor + 2).ok_or(Arm7LayoutError::NitroFs)?;
++                let id = u16::from_le_bytes(id.try_into().unwrap());
++                if id < 0xf000 || id as usize - 0xf000 >= count {
++                    return Err(Arm7LayoutError::NitroFs);
++                }
++                edges.push(id as usize - 0xf000);
++                cursor += 2;
++            } else {
++                if file_id < reserved_files || file_id >= fat_count || file_id >= 0xf000 {
++                    return Err(Arm7LayoutError::NitroFs);
++                }
++                file_id += 1;
++            }
++        }
++    }
++    let mut visited = vec![false; count];
++    let mut pending = vec![0];
++    while let Some(directory) = pending.pop() {
++        if visited[directory] {
++            return Err(Arm7LayoutError::NitroFs);
++        }
++        visited[directory] = true;
++        pending.extend(children[directory].iter());
++    }
++    if visited.iter().any(|seen| !seen) {
++        return Err(Arm7LayoutError::NitroFs);
++    }
++    Ok(())
++}
+diff --git a/lib/src/rom/mod.rs b/lib/src/rom/mod.rs
+index d193c05..6598f56 100644
+--- a/lib/src/rom/mod.rs
++++ b/lib/src/rom/mod.rs
+@@ -1 +1,2 @@
++pub mod arm7;
+ pub mod rom;
+diff --git a/lib/tests/arm7_checked_view.rs b/lib/tests/arm7_checked_view.rs
+new file mode 100644
+index 0000000..174f4f4
+--- /dev/null
++++ b/lib/tests/arm7_checked_view.rs
+@@ -0,0 +1,417 @@
++use ds_decomp::rom::arm7::{
++    Arm7Layout, Arm7LayoutError, Arm7Region, Arm7RegionKind, Cpu, InstructionSet, Processor,
++    ProgramIdentity, ProgramSelector, TargetPolicy,
++};
++use sha2::{Digest, Sha256};
++
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++fn put(bytes: &mut [u8], offset: usize, word: u32) {
++    bytes[offset..offset + 4].copy_from_slice(&word.to_le_bytes());
++}
++
++struct Fixture {
++    parent: Vec<u8>,
++    parent_layout: Arm7Layout,
++    child_layout: Arm7Layout,
++}
++impl Fixture {
++    fn new() -> Self {
++        let base = 0x02380000;
++        let mut image = (0..120).map(|i| i as u8).collect::<Vec<_>>();
++        for (i, value) in
++            [base + 96, base + 120, base + 64, base + 64, base + 64].into_iter().enumerate()
++        {
++            put(&mut image, 32 + i * 4, value);
++        }
++        for (i, value) in [0x037f8000, 16, 8, 0x027e0000, 16, 4].into_iter().enumerate() {
++            put(&mut image, 96 + i * 4, value);
++        }
++        fn program(size: usize, offset: u32, image: &[u8]) -> Vec<u8> {
++            let mut bytes = vec![0; size];
++            for (i, value) in
++                [offset, 0x02380000, 0x02380000, image.len() as u32].into_iter().enumerate()
++            {
++                put(&mut bytes, 0x30 + i * 4, value);
++            }
++            bytes[offset as usize..offset as usize + image.len()].copy_from_slice(image);
++            bytes
++        }
++        let child = program(0x5000, 0x4000, &image);
++        let mut parent = program(0xc000, 0x4000, &image);
++        parent[0x6000..0xb000].copy_from_slice(&child);
++        for (i, value) in [0x5000, 40, 0x5100, 8].into_iter().enumerate() {
++            put(&mut parent, 0x40 + i * 4, value);
++        }
++        put(&mut parent, 0x5000, 16);
++        parent[0x5006..0x5008].copy_from_slice(&2u16.to_le_bytes());
++        put(&mut parent, 0x5008, 28);
++        parent[0x500e..0x5010].copy_from_slice(&0xf000u16.to_le_bytes());
++        parent[0x5010..0x501c].copy_from_slice(b"\x88ChildRom\x01\xf0\0");
++        parent[0x501c..0x5028].copy_from_slice(b"\x0apublic.srl\0");
++        put(&mut parent, 0x5100, 0x6000);
++        put(&mut parent, 0x5104, 0xb000);
++        let layout = |program, program_sha256, image_offset, header_sha256| Arm7Layout {
++            identity: ProgramIdentity { parent_rom_sha256: sha(&parent), program, program_sha256 },
++            target: TargetPolicy {
++                cpu: Cpu::Arm7,
++                isa: InstructionSet::ArmV4T,
++                processor: Processor::Arm7Tdmi,
++            },
++            header_sha256,
++            image_offset,
++            image_bytes: 120,
++            image_sha256: sha(&image),
++            base,
++            entry: base,
++            params_offset: 32,
++            params_sha256: sha(&image[32..52]),
++            table_extent: 96..120,
++            table_sha256: sha(&image[96..]),
++            regions: vec![
++                Arm7Region {
++                    kind: Arm7RegionKind::Startup,
++                    stored_extent: 0..64,
++                    runtime_base: base,
++                    bss_bytes: 0,
++                    sha256: sha(&image[..64]),
++                },
++                Arm7Region {
++                    kind: Arm7RegionKind::Autoload(0),
++                    stored_extent: 64..80,
++                    runtime_base: 0x037f8000,
++                    bss_bytes: 8,
++                    sha256: sha(&image[64..80]),
++                },
++                Arm7Region {
++                    kind: Arm7RegionKind::Autoload(1),
++                    stored_extent: 80..96,
++                    runtime_base: 0x027e0000,
++                    bss_bytes: 4,
++                    sha256: sha(&image[80..96]),
++                },
++            ],
++        };
++        let parent_layout =
++            layout(ProgramSelector::Parent, sha(&parent), 0x4000, sha(&parent[..0x4000]));
++        let child_layout = layout(
++            ProgramSelector::NitroFs { path: "ChildRom/public.srl".into() },
++            sha(&child),
++            0x4000,
++            sha(&child[..0x4000]),
++        );
++        Self { parent, parent_layout, child_layout }
++    }
++    fn image(&mut self) -> &mut [u8] {
++        &mut self.parent[0x4000..0x4078]
++    }
++    fn repin_image(&mut self) {
++        self.parent_layout.params_sha256 = sha(&self.parent[0x4020..0x4034]);
++        self.parent_layout.image_sha256 = sha(&self.parent[0x4000..0x4078]);
++        self.parent_layout.regions[0].sha256 = sha(&self.parent[0x4000..0x4040]);
++        self.parent_layout.identity.parent_rom_sha256 = sha(&self.parent);
++        self.parent_layout.identity.program_sha256 = sha(&self.parent);
++    }
++    fn repin_parent(&mut self) {
++        self.parent_layout.identity.parent_rom_sha256 = sha(&self.parent);
++        self.parent_layout.identity.program_sha256 = sha(&self.parent);
++    }
++}
++
++#[test]
++fn parent_and_child_views_use_distinct_program_identity() {
++    let f = Fixture::new();
++    let parent = f.parent_layout.checked(&f.parent).unwrap();
++    let child = f.child_layout.checked(&f.parent).unwrap();
++    assert_eq!(parent.startup().bytes().len(), 64);
++    assert_eq!(parent.autoloads().len(), 2);
++    assert_eq!(parent.table().len(), 24);
++    assert_eq!(parent.autoloads()[0].bytes(), child.autoloads()[0].bytes());
++    assert_ne!(parent.identity().program_sha256, child.identity().program_sha256);
++    assert_eq!(parent.matched_source_bytes(), 0);
++}
++#[test]
++fn wrong_parent_program_and_image_pins_reject() {
++    let f = Fixture::new();
++    for field in 0..3 {
++        let mut layout = f.parent_layout.clone();
++        match field {
++            0 => layout.identity.parent_rom_sha256 = "0".repeat(64),
++            1 => layout.identity.program_sha256 = "0".repeat(64),
++            _ => layout.image_sha256 = "0".repeat(64),
++        }
++        assert!(layout.checked(&f.parent).is_err());
++    }
++}
++#[test]
++fn identical_image_cannot_authorize_other_program() {
++    let f = Fixture::new();
++    let mut layout = f.child_layout.clone();
++    layout.identity.program_sha256 = f.parent_layout.identity.program_sha256.clone();
++    assert!(matches!(layout.checked(&f.parent), Err(Arm7LayoutError::Hash("program"))));
++}
++#[test]
++fn missing_or_ambiguous_nitrofs_path_rejects() {
++    let f = Fixture::new();
++    for path in [
++        "ChildRom",
++        "missing.srl",
++        "/ChildRom/public.srl",
++        "ChildRom/../public.srl",
++        "ChildRom//public.srl",
++    ] {
++        let mut layout = f.child_layout.clone();
++        layout.identity.program = ProgramSelector::NitroFs { path: path.into() };
++        assert!(layout.checked(&f.parent).is_err(), "accepted selector {path}");
++    }
++}
++#[test]
++fn arm9_cpu_isa_and_processor_reject() {
++    let f = Fixture::new();
++    for field in 0..3 {
++        let mut layout = f.parent_layout.clone();
++        match field {
++            0 => layout.target.cpu = Cpu::Arm9,
++            1 => layout.target.isa = InstructionSet::ArmV5Te,
++            _ => layout.target.processor = Processor::Arm946E,
++        }
++        assert!(matches!(layout.checked(&f.parent), Err(Arm7LayoutError::Target)));
++    }
++}
++#[test]
++fn changed_header_rejects_even_after_program_repinned() {
++    for offset in [0x30, 0x34, 0x38, 0x3c] {
++        let mut f = Fixture::new();
++        f.parent[offset] ^= 4;
++        f.repin_parent();
++        assert!(matches!(f.parent_layout.checked(&f.parent), Err(Arm7LayoutError::Header)));
++    }
++}
++#[test]
++fn image_out_of_bounds_and_short_header_reject_without_panics() {
++    let f = Fixture::new();
++    let mut layout = f.parent_layout.clone();
++    layout.image_offset = u32::MAX;
++    assert!(layout.checked(&f.parent).is_err());
++    let short = vec![0; 12];
++    layout.identity.parent_rom_sha256 = sha(&short);
++    layout.identity.program_sha256 = sha(&short);
++    assert!(layout.checked(&short).is_err());
++}
++#[test]
++fn changed_parameter_tuple_rejects_after_image_repinned() {
++    for offset in [32, 36, 40, 44, 48] {
++        let mut f = Fixture::new();
++        f.image()[offset] ^= 4;
++        f.repin_image();
++        assert!(matches!(f.parent_layout.checked(&f.parent), Err(Arm7LayoutError::Parameters)));
++    }
++}
++#[test]
++fn parameter_block_outside_startup_rejects() {
++    let f = Fixture::new();
++    let mut layout = f.parent_layout.clone();
++    layout.params_offset = 60;
++    assert!(matches!(layout.checked(&f.parent), Err(Arm7LayoutError::Parameters)));
++}
++#[test]
++fn region_gap_overlap_order_missing_and_table_tail_reject() {
++    let f = Fixture::new();
++    for case in 0..5 {
++        let mut layout = f.parent_layout.clone();
++        match case {
++            0 => layout.regions[1].stored_extent.start += 4,
++            1 => layout.regions[1].stored_extent.start -= 4,
++            2 => layout.regions.swap(1, 2),
++            3 => {
++                layout.regions.pop();
++            }
++            _ => layout.table_extent.end -= 4,
++        }
++        assert!(layout.checked(&f.parent).is_err());
++    }
++}
++#[test]
++fn unaligned_and_overflowing_runtime_extent_reject() {
++    let f = Fixture::new();
++    for (base, bss) in [(0x037f8001, 8), (0xfffffff0, 32), (0x037f8000, 3)] {
++        let mut layout = f.parent_layout.clone();
++        layout.regions[1].runtime_base = base;
++        layout.regions[1].bss_bytes = bss;
++        assert!(layout.checked(&f.parent).is_err());
++    }
++}
++#[test]
++fn runtime_initialized_or_bss_overlap_reject() {
++    for base in [0x037f8000, 0x037f8010] {
++        let mut f = Fixture::new();
++        f.parent_layout.regions[2].runtime_base = base;
++        put(f.image(), 108, base);
++        f.parent_layout.table_sha256 = sha(&f.parent[0x4060..0x4078]);
++        f.repin_image();
++        assert!(matches!(f.parent_layout.checked(&f.parent), Err(Arm7LayoutError::RuntimeOverlap)));
++    }
++}
++#[test]
++fn record_destination_size_bss_and_table_hash_reject() {
++    for offset in [96, 100, 104] {
++        let mut f = Fixture::new();
++        f.image()[offset] ^= 4;
++        f.parent_layout.table_sha256 = sha(&f.parent[0x4060..0x4078]);
++        f.repin_image();
++        assert!(matches!(f.parent_layout.checked(&f.parent), Err(Arm7LayoutError::Table)));
++    }
++    let f = Fixture::new();
++    let mut layout = f.parent_layout.clone();
++    layout.table_sha256 = "0".repeat(64);
++    assert!(matches!(layout.checked(&f.parent), Err(Arm7LayoutError::Hash("table"))));
++}
++#[test]
++fn changed_region_hash_rejects() {
++    let f = Fixture::new();
++    let mut layout = f.parent_layout.clone();
++    layout.regions[1].sha256 = "0".repeat(64);
++    assert!(matches!(layout.checked(&f.parent), Err(Arm7LayoutError::Hash("region"))));
++}
++#[test]
++fn main_entry_outside_startup_and_bad_bss_reject() {
++    let f = Fixture::new();
++    for case in 0..2 {
++        let mut layout = f.parent_layout.clone();
++        if case == 0 {
++            layout.entry = layout.base + 64;
++        } else {
++            layout.regions[0].bss_bytes = 4;
++        }
++        assert!(layout.checked(&f.parent).is_err());
++    }
++}
++#[test]
++fn malformed_nitrofs_extents_reject_without_panics() {
++    for (offset, value) in
++        [(0x44, u32::MAX), (0x5004, u32::MAX), (0x5100, u32::MAX), (0x5010, 0xffffffff)]
++    {
++        let mut f = Fixture::new();
++        put(&mut f.parent, offset, value);
++        f.child_layout.identity.parent_rom_sha256 = sha(&f.parent);
++        assert!(f.child_layout.checked(&f.parent).is_err());
++    }
++}
++
++#[test]
++fn omitted_target_fields_do_not_default_to_arm9() {
++    assert!(serde_saphyr::from_str::<TargetPolicy>("cpu: arm7\nisa: armv4t\n").is_err());
++}
++#[test]
++fn nitrofs_duplicate_names_and_cycles_reject() {
++    for duplicate in [false, true] {
++        let mut f = Fixture::new();
++        if duplicate {
++            put(&mut f.parent, 0x44, 51);
++            put(&mut f.parent, 0x4c, 16);
++            f.parent[0x501c..0x5033].copy_from_slice(b"\x0apublic.srl\x0apublic.srl\0");
++            put(&mut f.parent, 0x5108, 0x6000);
++            put(&mut f.parent, 0x510c, 0xb000);
++        } else {
++            f.parent[0x5019..0x501b].copy_from_slice(&0xf000u16.to_le_bytes());
++        }
++        f.child_layout.identity.parent_rom_sha256 = sha(&f.parent);
++        assert!(matches!(f.child_layout.checked(&f.parent), Err(Arm7LayoutError::NitroFs)));
++    }
++}
++
++#[test]
++fn header_and_parameter_hash_domains_are_pinned() {
++    let f = Fixture::new();
++    let mut layout = f.parent_layout.clone();
++    layout.header_sha256 = "0".repeat(64);
++    assert!(matches!(layout.checked(&f.parent), Err(Arm7LayoutError::Hash("header"))));
++    let mut layout = f.parent_layout.clone();
++    layout.params_sha256 = "0".repeat(64);
++    assert!(matches!(layout.checked(&f.parent), Err(Arm7LayoutError::Hash("parameters"))));
++}
++
++#[test]
++fn nitrofs_overlay_reserved_file_id_rejects_without_panic() {
++    for size_word in [0x54, 0x5c] {
++        let mut f = Fixture::new();
++        put(&mut f.parent, size_word, 32);
++        f.child_layout.identity.parent_rom_sha256 = sha(&f.parent);
++        let result = std::panic::catch_unwind(|| f.child_layout.checked(&f.parent));
++        assert!(matches!(result, Ok(Err(Arm7LayoutError::NitroFs))));
++    }
++}
++
++#[test]
++fn nitrofs_decoding_errors_and_decoded_sibling_aliases_reject() {
++    let mut accepted = Vec::new();
++    for (names, selected) in [
++        (vec![1, 0x81, 1, 0x82, 0], "\u{fffd}"),
++        (vec![2, 0x87, 0x90, 2, 0x81, 0xe0, 0], "\u{2252}"),
++    ] {
++        let mut f = Fixture::new();
++        f.parent[0x501c..0x501c + names.len()].copy_from_slice(&names);
++        put(&mut f.parent, 0x4c, 16);
++        put(&mut f.parent, 0x5108, 0x6000);
++        put(&mut f.parent, 0x510c, 0xb000);
++        f.child_layout.identity.parent_rom_sha256 = sha(&f.parent);
++        f.child_layout.identity.program =
++            ProgramSelector::NitroFs { path: format!("ChildRom/{selected}") };
++        if !matches!(f.child_layout.checked(&f.parent), Err(Arm7LayoutError::NitroFs)) {
++            accepted.push(selected);
++        }
++    }
++    assert!(accepted.is_empty(), "accepted decoded names {accepted:?}");
++}
++
++#[test]
++fn nitrofs_overlay_extent_and_count_arithmetic_rejects() {
++    for (offset, size, expected) in [
++        (0xfffffff0, 32, Arm7LayoutError::Overflow),
++        (0xc000, 32, Arm7LayoutError::Bounds),
++        (0x5201, 32, Arm7LayoutError::Alignment),
++        (0x5200, 96, Arm7LayoutError::NitroFs),
++        (0x5200, 33, Arm7LayoutError::NitroFs),
++    ] {
++        let mut f = Fixture::new();
++        put(&mut f.parent, 0x4c, 16);
++        f.parent[0x500c..0x500e].copy_from_slice(&1u16.to_le_bytes());
++        put(&mut f.parent, 0x5108, 0x6000);
++        put(&mut f.parent, 0x510c, 0xb000);
++        put(&mut f.parent, 0x50, offset);
++        put(&mut f.parent, 0x54, size);
++        f.child_layout.identity.parent_rom_sha256 = sha(&f.parent);
++        let result = std::panic::catch_unwind(|| f.child_layout.checked(&f.parent));
++        assert!(
++            matches!(result, Ok(Err(error)) if error == expected),
++            "wrong rejection for overlay offset {offset:x} size {size}"
++        );
++    }
++}
++
++#[test]
++fn nitrofs_valid_overlay_reservation_remains_selectable() {
++    let mut f = Fixture::new();
++    put(&mut f.parent, 0x4c, 16);
++    f.parent[0x500c..0x500e].copy_from_slice(&1u16.to_le_bytes());
++    put(&mut f.parent, 0x5108, 0x6000);
++    put(&mut f.parent, 0x510c, 0xb000);
++    put(&mut f.parent, 0x50, 0x5200);
++    put(&mut f.parent, 0x54, 32);
++    f.child_layout.identity.parent_rom_sha256 = sha(&f.parent);
++    let view = f.child_layout.checked(&f.parent).unwrap();
++    assert_eq!(view.startup().bytes().len(), 64);
++    assert_eq!(view.matched_source_bytes(), 0);
++}
++
++#[test]
++fn nitrofs_valid_shift_jis_name_remains_selectable() {
++    let mut f = Fixture::new();
++    f.parent[0x501c..0x5020].copy_from_slice(&[2, 0x87, 0x90, 0]);
++    f.child_layout.identity.parent_rom_sha256 = sha(&f.parent);
++    f.child_layout.identity.program = ProgramSelector::NitroFs { path: "ChildRom/\u{2252}".into() };
++    let view = f.child_layout.checked(&f.parent).unwrap();
++    assert_eq!(view.startup().bytes().len(), 64);
++    assert_eq!(view.matched_source_bytes(), 0);
++}

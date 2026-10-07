@@ -1,0 +1,854 @@
+diff --git a/lib/examples/arm7_reachable_probe.rs b/lib/examples/arm7_reachable_probe.rs
+new file mode 100644
+index 0000000..22c24da
+--- /dev/null
++++ b/lib/examples/arm7_reachable_probe.rs
+@@ -0,0 +1,121 @@
++//! Read-only selected ARM7 candidate graphs with independently pinned inputs/producer.
++use ds_decomp::{
++    analysis::{
++        arm7_observation::{Selection, observe},
++        arm7_reachable::{RootRequest, connect},
++    },
++    config::symbol::InstructionMode,
++    rom::arm7::{Arm7Layout, Arm7RegionKind, ProgramIdentity},
++};
++use serde::Deserialize;
++use serde_json::json;
++use sha2::{Digest, Sha256};
++use std::{error::Error, fs, io, ops::Range};
++
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct SelectedSpan {
++    region: Arm7RegionKind,
++    mode: InstructionMode,
++    extent: Range<u32>,
++}
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct SelectedRoot {
++    selection: usize,
++    address: u32,
++    assumption: String,
++}
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct ProgramRequest {
++    program: ProgramIdentity,
++    selections: Vec<SelectedSpan>,
++    roots: Vec<SelectedRoot>,
++}
++fn sha(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++fn main() -> Result<(), Box<dyn Error>> {
++    let args: Vec<_> = std::env::args().skip(1).collect();
++    if args.len() != 6 {
++        return Err("usage: arm7_reachable_probe ROM LAYOUT_JSON LAYOUT_SHA256 REQUESTS_JSON REQUESTS_SHA256 SELF_SHA256".into());
++    }
++    let executable = std::env::current_exe()?;
++    let producer = fs::read(&executable)?;
++    let parent = fs::read(&args[0])?;
++    let sidecar = fs::read(&args[1])?;
++    let requests_bytes = fs::read(&args[3])?;
++    if sha(&sidecar) != args[2] || sha(&requests_bytes) != args[4] || sha(&producer) != args[5] {
++        return Err("independent layout/request/producer hash mismatch".into());
++    }
++    let layouts: Vec<Arm7Layout> = serde_json::from_slice(&sidecar)?;
++    let requests: Vec<ProgramRequest> = serde_json::from_slice(&requests_bytes)?;
++    if layouts.is_empty() || requests.is_empty() {
++        return Err("no layouts or program requests supplied".into());
++    }
++    let mut programs = Vec::new();
++    for (index, request) in requests.iter().enumerate() {
++        if requests[..index].iter().any(|prior| prior.program == request.program) {
++            return Err("duplicate requested program".into());
++        }
++        let mut matching = layouts.iter().filter(|l| l.identity == request.program);
++        let layout = matching.next().ok_or("requested program has no pinned layout")?;
++        if matching.next().is_some() {
++            return Err("requested program has duplicate layouts".into());
++        }
++        let view = layout.checked(&parent)?;
++        let modules: Vec<_> = view.module_inputs().collect();
++        let mut observations = Vec::new();
++        for selection in &request.selections {
++            let module = modules
++                .iter()
++                .find(|m| *m.identity().region() == selection.region)
++                .ok_or("selected region has no checked module")?;
++            observations.push(observe(
++                module,
++                Selection { span: selection.extent.clone(), mode: selection.mode },
++                &modules,
++            )?);
++        }
++        let mut roots = Vec::new();
++        for root in &request.roots {
++            roots.push(RootRequest {
++                observation: observations
++                    .get(root.selection)
++                    .ok_or("root selection index is absent")?,
++                address: root.address,
++                assumption: &root.assumption,
++            });
++        }
++        let graph = connect(&observations, &roots)?;
++        let mut witnesses = Vec::new();
++        for root in graph.roots() {
++            let mut sites = Vec::new();
++            for frontier in root.frontiers() {
++                sites.push(json!({"reason":frontier.reason(),"transfers":frontier.witness()?}));
++            }
++            witnesses.push(sites);
++        }
++        programs.push(json!({"identity":view.identity(),"graph":graph,"witnesses":witnesses}));
++    }
++    if sha(&fs::read(&args[0])?) != sha(&parent)
++        || sha(&fs::read(&args[1])?) != args[2]
++        || sha(&fs::read(&args[3])?) != args[4]
++        || sha(&fs::read(&executable)?) != args[5]
++    {
++        return Err("input or producer changed during candidate graph construction".into());
++    }
++    serde_json::to_writer_pretty(
++        io::stdout().lock(),
++        &json!({
++            "schema_version":1,"status":"bounded_arm7_candidate_graphs_verified",
++            "parent_rom_sha256":sha(&parent),"layout_sidecar_sha256":args[2],
++            "request_sidecar_sha256":args[4],"producer_sha256":args[5],"inputs_unchanged":true,
++            "programs":programs,"source_bytes":0,"arm7_binary_baseline_complete":false,
++            "function_extents_established":false,"executable_coverage_established":false,
++            "original_relocations_established":false
++        }),
++    )?;
++    Ok(())
++}
+diff --git a/lib/src/analysis/arm7_reachable.rs b/lib/src/analysis/arm7_reachable.rs
+new file mode 100644
+index 0000000..92005fe
+--- /dev/null
++++ b/lib/src/analysis/arm7_reachable.rs
+@@ -0,0 +1,420 @@
++//! Candidate paths through explicitly selected checked ARM7 interpretations.
++//!
++//! Roots and symbolic guards are assumptions, not execution evidence. No function,
++//! executable coverage, original relocation, or source credit is established.
++use super::arm7_observation::{
++    InstructionObservation, Mapping, ObservationBoundary, SpanObservation, Target,
++    TransferObservation,
++};
++use crate::{
++    config::symbol::InstructionMode,
++    rom::{
++        arm7::{Cpu, InstructionSet, Processor, ProgramIdentity},
++        arm7_modules::Arm7ModuleIdentity,
++    },
++};
++use serde::Serialize;
++use std::{error::Error, fmt, ops::Range};
++
++#[derive(Debug, Clone, Copy)]
++pub struct RootRequest<'o, 'm: 'o> {
++    pub observation: &'o SpanObservation<'m>,
++    pub address: u32,
++    pub assumption: &'o str,
++}
++#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
++#[serde(rename_all = "snake_case")]
++pub enum FrontierReason {
++    OutsideSelection,
++    InstructionInterior,
++    ModeConflict,
++    Bss,
++    Unmapped,
++    Indirect,
++}
++#[derive(Debug, PartialEq, Eq)]
++pub enum ConnectError {
++    EmptyObservations,
++    EmptyRoots,
++    ForeignProgram,
++    WrongTargetPolicy,
++    DuplicateOrOverlappingSameModeSelection,
++    ForeignRoot,
++    RootNotInstructionStart,
++    EmptyRootAssumption,
++    DuplicateRoot,
++    InconsistentMappedIdentity,
++    CapacityOverflow,
++}
++impl fmt::Display for ConnectError {
++    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        write!(f, "ARM7 candidate graph: {self:?}")
++    }
++}
++impl Error for ConnectError {}
++
++/// Immutable owner borrowing checked observations; reports cannot construct one.
++///
++/// ```compile_fail
++/// use ds_decomp::analysis::arm7_reachable::CandidateGraph;
++/// let _: CandidateGraph<'_, '_> = serde_json::from_str("{}").unwrap();
++/// ```
++#[derive(Debug, Serialize)]
++pub struct CandidateGraph<'o, 'm: 'o> {
++    scope: &'static str,
++    program: &'o ProgramIdentity,
++    observations: &'o [SpanObservation<'m>],
++    nodes: Vec<Node<'o>>,
++    edges: Vec<Edge<'o>>,
++    roots: Vec<Traversal<'o, 'm>>,
++}
++#[derive(Debug, Serialize)]
++struct Node<'a> {
++    identity: &'a Arm7ModuleIdentity<'a>,
++    mode: InstructionMode,
++    instruction: &'a InstructionObservation,
++    mode_conflict: bool,
++    #[serde(skip)]
++    outgoing: Range<usize>,
++}
++#[derive(Debug, Serialize)]
++struct Edge<'a> {
++    source_node: usize,
++    source_condition: Option<&'a str>,
++    original: &'a TransferObservation<'a>,
++    resolution: Resolution,
++}
++#[derive(Debug, Serialize)]
++#[serde(tag = "kind", rename_all = "snake_case")]
++enum Resolution {
++    Selected { node: usize },
++    Frontier { reason: FrontierReason },
++}
++#[derive(Debug, Serialize)]
++struct Traversal<'o, 'm: 'o> {
++    #[serde(skip)]
++    request: RootRequest<'o, 'm>,
++    identity: &'o Arm7ModuleIdentity<'o>,
++    mode: InstructionMode,
++    address: u32,
++    assumption: &'o str,
++    visited_nodes: Vec<usize>,
++    edge_examinations: usize,
++    predecessors: Vec<Visit>,
++    frontiers: Vec<FrontierSite>,
++}
++#[derive(Debug, Clone, Copy, Serialize)]
++#[serde(tag = "kind", rename_all = "snake_case")]
++enum Visit {
++    Unvisited,
++    Root,
++    ViaEdge { edge: usize },
++}
++#[derive(Debug, Serialize)]
++#[serde(tag = "kind", rename_all = "snake_case")]
++enum FrontierSite {
++    Root { reason: FrontierReason },
++    Edge { edge: usize },
++}
++
++fn reserved<T>(capacity: usize) -> Result<Vec<T>, ConnectError> {
++    let mut items = Vec::new();
++    items.try_reserve_exact(capacity).map_err(|_| ConnectError::CapacityOverflow)?;
++    Ok(items)
++}
++fn mode_index(mode: InstructionMode) -> usize {
++    match mode {
++        InstructionMode::Arm => 0,
++        InstructionMode::Thumb => 1,
++    }
++}
++fn containing(nodes: &[Node<'_>], index: &[usize], address: u32) -> Option<usize> {
++    let position = index.partition_point(|&id| nodes[id].instruction.address() <= address);
++    let id = *index.get(position.checked_sub(1)?)?;
++    let instruction = nodes[id].instruction;
++    (address - instruction.address() < u32::from(instruction.byte_len())).then_some(id)
++}
++fn resolve(
++    nodes: &[Node<'_>],
++    indexes: &[Vec<usize>; 2],
++    target: &Target<'_>,
++) -> Result<Resolution, ConnectError> {
++    let frontier = |reason| Ok(Resolution::Frontier { reason });
++    let Target::Address { address, mode, mapping, boundary } = target else {
++        return frontier(FrontierReason::Indirect);
++    };
++    let mapped = match mapping {
++        Mapping::Initialized(identity) => identity,
++        Mapping::Bss(_) => return frontier(FrontierReason::Bss),
++        Mapping::UnresolvedBytes => return frontier(FrontierReason::Unmapped),
++    };
++    if *boundary == ObservationBoundary::InstructionInterior {
++        return frontier(FrontierReason::InstructionInterior);
++    }
++    let same = containing(nodes, &indexes[mode_index(*mode)], *address);
++    let other = containing(nodes, &indexes[1 - mode_index(*mode)], *address);
++    if let Some(id) = same {
++        let node = &nodes[id];
++        if node.identity != *mapped {
++            return Err(ConnectError::InconsistentMappedIdentity);
++        }
++        if node.instruction.address() != *address {
++            return frontier(FrontierReason::InstructionInterior);
++        }
++        if node.mode_conflict {
++            return frontier(FrontierReason::ModeConflict);
++        }
++        Ok(Resolution::Selected { node: id })
++    } else if other.is_some() {
++        frontier(FrontierReason::ModeConflict)
++    } else {
++        frontier(FrontierReason::OutsideSelection)
++    }
++}
++
++/// Connect supplied interpretations atomically, without decoding or discovering bytes.
++///
++/// Each root visits at most N supplied instructions and examines at most E original
++/// transfers. Sorted instruction intervals bound joining by O(E log N). Retained
++/// storage is O(N + E + R*N); witnesses are materialized only when requested.
++/// Opposite-mode byte overlap quarantines every intersecting whole instruction.
++pub fn connect<'o, 'm: 'o>(
++    observations: &'o [SpanObservation<'m>],
++    roots: &[RootRequest<'o, 'm>],
++) -> Result<CandidateGraph<'o, 'm>, ConnectError> {
++    let first = observations.first().ok_or(ConnectError::EmptyObservations)?;
++    if roots.is_empty() {
++        return Err(ConnectError::EmptyRoots);
++    }
++    let mut n = 0usize;
++    let mut e = 0usize;
++    for observation in observations {
++        if observation.identity().program() != first.identity().program()
++            || observation.identity().cpu() != first.identity().cpu()
++        {
++            return Err(ConnectError::ForeignProgram);
++        }
++        let target = observation.target();
++        if target.cpu != Cpu::Arm7
++            || target.isa != InstructionSet::ArmV4T
++            || target.processor != Processor::Arm7Tdmi
++        {
++            return Err(ConnectError::WrongTargetPolicy);
++        }
++        n = n
++            .checked_add(observation.instructions().len())
++            .ok_or(ConnectError::CapacityOverflow)?;
++        e = e.checked_add(observation.transfers().len()).ok_or(ConnectError::CapacityOverflow)?;
++    }
++    n.checked_mul(roots.len()).ok_or(ConnectError::CapacityOverflow)?;
++    e.checked_add(1).ok_or(ConnectError::CapacityOverflow)?;
++    let mut nodes = reserved(n)?;
++    let mut edges = reserved(e)?;
++    let mut indexes: [Vec<usize>; 2] = [reserved(n)?, reserved(n)?];
++    for observation in observations {
++        let mut transfers = observation.transfers().iter().peekable();
++        for instruction in observation.instructions() {
++            let source_node = nodes.len();
++            let start = edges.len();
++            while transfers.peek().is_some_and(|t| t.source() == instruction.address()) {
++                edges.push(Edge {
++                    source_node,
++                    source_condition: instruction.condition(),
++                    original: transfers.next().unwrap(),
++                    resolution: Resolution::Frontier { reason: FrontierReason::OutsideSelection },
++                });
++            }
++            indexes[mode_index(observation.selection().mode)].push(source_node);
++            nodes.push(Node {
++                identity: observation.identity(),
++                mode: observation.selection().mode,
++                instruction,
++                mode_conflict: false,
++                outgoing: start..edges.len(),
++            });
++        }
++    }
++    for index in &mut indexes {
++        index.sort_unstable_by_key(|&id| nodes[id].instruction.address());
++        for pair in index.windows(2) {
++            let a = nodes[pair[0]].instruction;
++            let b = nodes[pair[1]].instruction;
++            let end = a
++                .address()
++                .checked_add(u32::from(a.byte_len()))
++                .ok_or(ConnectError::CapacityOverflow)?;
++            if b.address() < end {
++                return Err(ConnectError::DuplicateOrOverlappingSameModeSelection);
++            }
++        }
++    }
++    let (mut a, mut b) = (0, 0);
++    while a < indexes[0].len() && b < indexes[1].len() {
++        let (left, right) = (indexes[0][a], indexes[1][b]);
++        let l = nodes[left].instruction;
++        let r = nodes[right].instruction;
++        let le = l
++            .address()
++            .checked_add(u32::from(l.byte_len()))
++            .ok_or(ConnectError::CapacityOverflow)?;
++        let re = r
++            .address()
++            .checked_add(u32::from(r.byte_len()))
++            .ok_or(ConnectError::CapacityOverflow)?;
++        if l.address() < re && r.address() < le {
++            nodes[left].mode_conflict = true;
++            nodes[right].mode_conflict = true;
++        }
++        if le <= re {
++            a += 1;
++        }
++        if re <= le {
++            b += 1;
++        }
++    }
++    for edge in &mut edges {
++        edge.resolution = resolve(&nodes, &indexes, edge.original.target())?;
++    }
++    let mut traversals = reserved(roots.len())?;
++    for (root_index, request) in roots.iter().enumerate() {
++        if !observations.iter().any(|o| std::ptr::eq(o, request.observation)) {
++            return Err(ConnectError::ForeignRoot);
++        }
++        if request.assumption.trim().is_empty() {
++            return Err(ConnectError::EmptyRootAssumption);
++        }
++        if request
++            .observation
++            .instructions()
++            .binary_search_by_key(&request.address, |i| i.address())
++            .is_err()
++        {
++            return Err(ConnectError::RootNotInstructionStart);
++        }
++        if roots[..root_index].iter().any(|prior| {
++            std::ptr::eq(prior.observation, request.observation) && prior.address == request.address
++        }) {
++            return Err(ConnectError::DuplicateRoot);
++        }
++        let mode = request.observation.selection().mode;
++        let root_node = containing(&nodes, &indexes[mode_index(mode)], request.address).unwrap();
++        let mut traversal = Traversal {
++            request: *request,
++            identity: request.observation.identity(),
++            mode,
++            address: request.address,
++            assumption: request.assumption,
++            visited_nodes: reserved(n)?,
++            edge_examinations: 0,
++            predecessors: reserved(n)?,
++            frontiers: reserved(e.checked_add(1).ok_or(ConnectError::CapacityOverflow)?)?,
++        };
++        traversal.predecessors.resize(n, Visit::Unvisited);
++        if nodes[root_node].mode_conflict {
++            traversal.frontiers.push(FrontierSite::Root { reason: FrontierReason::ModeConflict });
++        } else {
++            traversal.predecessors[root_node] = Visit::Root;
++            traversal.visited_nodes.push(root_node);
++            let mut position = 0;
++            while position < traversal.visited_nodes.len() {
++                let source = traversal.visited_nodes[position];
++                for edge_id in nodes[source].outgoing.clone() {
++                    traversal.edge_examinations += 1;
++                    match edges[edge_id].resolution {
++                        Resolution::Selected { node } => {
++                            if matches!(traversal.predecessors[node], Visit::Unvisited) {
++                                traversal.predecessors[node] = Visit::ViaEdge { edge: edge_id };
++                                traversal.visited_nodes.push(node);
++                            }
++                        }
++                        Resolution::Frontier { .. } => {
++                            traversal.frontiers.push(FrontierSite::Edge { edge: edge_id })
++                        }
++                    }
++                }
++                position += 1;
++            }
++        }
++        traversals.push(traversal);
++    }
++    Ok(CandidateGraph {
++        scope: "root_assumed_selected_interpretations",
++        program: first.identity().program(),
++        observations,
++        nodes,
++        edges,
++        roots: traversals,
++    })
++}
++
++impl<'o, 'm: 'o> CandidateGraph<'o, 'm> {
++    pub fn program(&self) -> &ProgramIdentity {
++        self.program
++    }
++    pub fn node_count(&self) -> usize {
++        self.nodes.len()
++    }
++    pub fn edge_count(&self) -> usize {
++        self.edges.len()
++    }
++    pub fn roots(&self) -> impl Iterator<Item = RootView<'_, 'o, 'm>> {
++        (0..self.roots.len()).map(|root_index| RootView { graph: self, root_index })
++    }
++}
++pub struct RootView<'g, 'o, 'm: 'o> {
++    graph: &'g CandidateGraph<'o, 'm>,
++    root_index: usize,
++}
++impl<'g, 'o, 'm: 'o> RootView<'g, 'o, 'm> {
++    pub fn request(&self) -> &RootRequest<'o, 'm> {
++        &self.graph.roots[self.root_index].request
++    }
++    pub fn visit_count(&self) -> usize {
++        self.graph.roots[self.root_index].visited_nodes.len()
++    }
++    pub fn edge_examinations(&self) -> usize {
++        self.graph.roots[self.root_index].edge_examinations
++    }
++    pub fn frontiers(&self) -> impl Iterator<Item = FrontierView<'g, 'o, 'm>> {
++        (0..self.graph.roots[self.root_index].frontiers.len()).map(|frontier_index| FrontierView {
++            graph: self.graph,
++            root_index: self.root_index,
++            frontier_index,
++        })
++    }
++}
++pub struct FrontierView<'g, 'o, 'm: 'o> {
++    graph: &'g CandidateGraph<'o, 'm>,
++    root_index: usize,
++    frontier_index: usize,
++}
++impl<'o, 'm: 'o> FrontierView<'_, 'o, 'm> {
++    pub fn reason(&self) -> FrontierReason {
++        match self.graph.roots[self.root_index].frontiers[self.frontier_index] {
++            FrontierSite::Root { reason } => reason,
++            FrontierSite::Edge { edge } => match self.graph.edges[edge].resolution {
++                Resolution::Frontier { reason } => reason,
++                Resolution::Selected { .. } => {
++                    unreachable!("frontier sites only reference frontier edges")
++                }
++            },
++        }
++    }
++    /// One shortest candidate witness, including the terminal frontier transfer.
++    /// Root conflicts have an empty witness. Guards are not solved for feasibility.
++    pub fn witness(&self) -> Result<Vec<&'o TransferObservation<'o>>, ConnectError> {
++        let traversal = &self.graph.roots[self.root_index];
++        let FrontierSite::Edge { edge } = traversal.frontiers[self.frontier_index] else {
++            return Ok(Vec::new());
++        };
++        let mut result = reserved(self.graph.nodes.len())?;
++        result.push(self.graph.edges[edge].original);
++        let mut node = self.graph.edges[edge].source_node;
++        while let Visit::ViaEdge { edge } = traversal.predecessors[node] {
++            result.push(self.graph.edges[edge].original);
++            node = self.graph.edges[edge].source_node;
++        }
++        result.reverse();
++        Ok(result)
++    }
++}
+diff --git a/lib/src/analysis/mod.rs b/lib/src/analysis/mod.rs
+index 3991ed5..313db59 100644
+--- a/lib/src/analysis/mod.rs
++++ b/lib/src/analysis/mod.rs
+@@ -1,3 +1,4 @@
++pub mod arm7_reachable;
+ pub mod arm7_observation;
+ pub(crate) mod ctor;
+ pub(crate) mod data;
+diff --git a/lib/tests/arm7_reachable.rs b/lib/tests/arm7_reachable.rs
+new file mode 100644
+index 0000000..bcb8e3b
+--- /dev/null
++++ b/lib/tests/arm7_reachable.rs
+@@ -0,0 +1,286 @@
++mod common;
++use common::Fixture;
++use ds_decomp::{
++    analysis::{
++        arm7_observation::{Selection, observe},
++        arm7_reachable::{RootRequest, connect},
++    },
++    config::symbol::InstructionMode::Arm,
++};
++use serde_json::json;
++const BASE: u32 = 0x02380000;
++fn bytes(words: &[u32]) -> Vec<u8> {
++    words.iter().flat_map(|w| w.to_le_bytes()).collect()
++}
++#[test]
++fn direct_call_joins_separately_selected_checked_span() {
++    let f = Fixture::new(&bytes(&[0xeb000000, 0xe1a00000, 0xe1a01001]));
++    let view = f.parent_layout.checked(&f.parent).unwrap();
++    let modules: Vec<_> = view.module_inputs().collect();
++    let observations = [
++        observe(&modules[0], Selection { span: BASE..BASE + 4, mode: Arm }, &modules).unwrap(),
++        observe(&modules[0], Selection { span: BASE + 8..BASE + 12, mode: Arm }, &modules).unwrap(),
++    ];
++    let graph = connect(
++        &observations,
++        &[RootRequest {
++            observation: &observations[0],
++            address: BASE,
++            assumption: "invented fixture root",
++        }],
++    )
++    .unwrap();
++    let report = serde_json::to_value(graph).unwrap();
++    assert_eq!(report["nodes"].as_array().map(Vec::len), Some(2));
++    assert_eq!(report["edges"].as_array().map(Vec::len), Some(3));
++    assert_eq!(report["edges"][0]["resolution"], json!({"kind":"selected","node":1}));
++    assert_eq!(report["edges"][0]["original"]["target"]["boundary"], "outside_selection");
++    assert_eq!(report["roots"][0]["visited_nodes"], json!([0, 1]));
++}
++
++use ds_decomp::{
++    analysis::arm7_observation::SpanObservation, config::symbol::InstructionMode::Thumb,
++};
++fn error(observations: &[SpanObservation<'_>], roots: &[RootRequest<'_, '_>]) -> String {
++    format!("{:?}", connect(observations, roots).unwrap_err())
++}
++fn root<'a, 'm: 'a>(observation: &'a SpanObservation<'m>, address: u32) -> RootRequest<'a, 'm> {
++    RootRequest { observation, address, assumption: "invented root assumption" }
++}
++#[test]
++fn empty_inputs_and_roots_reject() {
++    assert_eq!(error(&[], &[]), "EmptyObservations");
++    let f = Fixture::new(&bytes(&[0xe1a00000]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [observe(&m[0], Selection { span: BASE..BASE + 4, mode: Arm }, &m).unwrap()];
++    assert_eq!(error(&o, &[]), "EmptyRoots");
++}
++#[test]
++fn root_requires_exact_borrowed_membership_start_assumption_and_uniqueness() {
++    let f = Fixture::new(&bytes(&[0xe1a00000]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let make = || observe(&m[0], Selection { span: BASE..BASE + 4, mode: Arm }, &m).unwrap();
++    let foreign = make();
++    let o = [make()];
++    assert_eq!(error(&o, &[root(&foreign, BASE)]), "ForeignRoot");
++    assert_eq!(error(&o, &[root(&o[0], BASE + 2)]), "RootNotInstructionStart");
++    assert_eq!(
++        error(&o, &[RootRequest { assumption: " \n ", ..root(&o[0], BASE) }]),
++        "EmptyRootAssumption"
++    );
++    assert_eq!(error(&o, &[root(&o[0], BASE), root(&o[0], BASE)]), "DuplicateRoot");
++}
++#[test]
++fn equal_bytes_in_foreign_programs_do_not_join() {
++    let f = Fixture::new(&bytes(&[0xe1a00000]));
++    let p = f.parent_layout.checked(&f.parent).unwrap();
++    let c = f.child_layout.checked(&f.parent).unwrap();
++    let pm: Vec<_> = p.module_inputs().collect();
++    let cm: Vec<_> = c.module_inputs().collect();
++    let o = [
++        observe(&pm[0], Selection { span: BASE..BASE + 4, mode: Arm }, &pm).unwrap(),
++        observe(&cm[0], Selection { span: BASE..BASE + 4, mode: Arm }, &cm).unwrap(),
++    ];
++    assert_eq!(error(&o, &[root(&o[0], BASE)]), "ForeignProgram");
++}
++#[test]
++fn same_mode_duplicate_and_partial_overlap_reject() {
++    let f = Fixture::new(&bytes(&[0xe1a00000; 3]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    for second in [BASE..BASE + 8, BASE + 4..BASE + 12] {
++        let o = [
++            observe(&m[0], Selection { span: BASE..BASE + 8, mode: Arm }, &m).unwrap(),
++            observe(&m[0], Selection { span: second, mode: Arm }, &m).unwrap(),
++        ];
++        assert_eq!(error(&o, &[root(&o[0], BASE)]), "DuplicateOrOverlappingSameModeSelection");
++    }
++}
++#[test]
++fn opposite_mode_overlap_quarantines_whole_instruction_and_root() {
++    // ARM zero is andeq; Thumb zero is lsl. Only the last half of ARM overlaps.
++    let f = Fixture::new(&[0; 8]);
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [
++        observe(&m[0], Selection { span: BASE..BASE + 8, mode: Arm }, &m).unwrap(),
++        observe(&m[0], Selection { span: BASE + 6..BASE + 8, mode: Thumb }, &m).unwrap(),
++    ];
++    let value =
++        serde_json::to_value(connect(&o, &[root(&o[0], BASE), root(&o[0], BASE + 4)]).unwrap())
++            .unwrap();
++    assert_eq!(value["nodes"][1]["mode_conflict"], true);
++    assert_eq!(value["roots"][0]["visited_nodes"], json!([0]));
++    assert_eq!(value["edges"][0]["resolution"]["reason"], "mode_conflict");
++    assert_eq!(value["roots"][1]["visited_nodes"], json!([]));
++    assert_eq!(value["roots"][1]["frontiers"][0], json!({"kind":"root","reason":"mode_conflict"}));
++}
++#[test]
++fn target_selected_only_in_opposite_mode_is_frontier() {
++    let f = Fixture::new(&bytes(&[0xea000000, 0, 0]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [
++        observe(&m[0], Selection { span: BASE..BASE + 4, mode: Arm }, &m).unwrap(),
++        observe(&m[0], Selection { span: BASE + 8..BASE + 10, mode: Thumb }, &m).unwrap(),
++    ];
++    let value = serde_json::to_value(connect(&o, &[root(&o[0], BASE)]).unwrap()).unwrap();
++    assert_eq!(value["edges"][0]["resolution"]["reason"], "mode_conflict");
++}
++#[test]
++fn complete_thumb_bl_interior_is_not_a_selected_start() {
++    // Thumb b at +0 targets +4, the second halfword of BL at +2.
++    let f = Fixture::new(&[0, 0xe0, 0, 0xf0, 0, 0xf8]);
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [observe(&m[0], Selection { span: BASE..BASE + 6, mode: Thumb }, &m).unwrap()];
++    assert_eq!(error(&o, &[root(&o[0], BASE + 4)]), "RootNotInstructionStart");
++    let value = serde_json::to_value(connect(&o, &[root(&o[0], BASE)]).unwrap()).unwrap();
++    assert_eq!(value["nodes"].as_array().unwrap().len(), 2);
++    assert_eq!(value["edges"][0]["resolution"]["reason"], "instruction_interior");
++    assert_eq!(value["edges"][0]["original"]["target"]["boundary"], "instruction_interior");
++}
++#[test]
++fn cross_selection_thumb_interior_does_not_join() {
++    let f = Fixture::new(&[0, 0xe0, 0, 0xf0, 0, 0xf8]);
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [
++        observe(&m[0], Selection { span: BASE..BASE + 2, mode: Thumb }, &m).unwrap(),
++        observe(&m[0], Selection { span: BASE + 2..BASE + 6, mode: Thumb }, &m).unwrap(),
++    ];
++    let value = serde_json::to_value(connect(&o, &[root(&o[0], BASE)]).unwrap()).unwrap();
++    assert_eq!(value["edges"][0]["resolution"]["reason"], "instruction_interior");
++    assert_eq!(value["edges"][0]["original"]["target"]["boundary"], "outside_selection");
++}
++fn branch(from: u32, to: u32) -> u32 {
++    0xea000000 | (to.wrapping_sub(from).wrapping_sub(8) >> 2 & 0xffffff)
++}
++#[test]
++fn omitted_mapping_cannot_be_repaired_by_another_observation() {
++    let f = Fixture::new(&bytes(&[branch(BASE, 0x037f8000)]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [
++        observe(&m[0], Selection { span: BASE..BASE + 4, mode: Arm }, &m[..1]).unwrap(),
++        observe(&m[1], Selection { span: 0x037f8000..0x037f8004, mode: Arm }, &m).unwrap(),
++    ];
++    let value = serde_json::to_value(connect(&o, &[root(&o[0], BASE)]).unwrap()).unwrap();
++    assert_eq!(value["edges"][0]["resolution"]["reason"], "unmapped");
++    assert_eq!(value["edges"][0]["original"]["target"]["mapping"]["kind"], "unresolved_bytes");
++}
++#[test]
++fn bss_unmapped_and_indirect_pc_writes_stay_frontiers() {
++    for (word, reason) in [
++        (branch(BASE, 0x037f8010), "bss"),
++        (branch(BASE, BASE - 4), "unmapped"),
++        (0xe12fff11, "indirect"),
++        (0xe1a0f000, "indirect"),
++    ] {
++        let f = Fixture::new(&bytes(&[word]));
++        let v = f.parent_layout.checked(&f.parent).unwrap();
++        let m: Vec<_> = v.module_inputs().collect();
++        let o = [observe(&m[0], Selection { span: BASE..BASE + 4, mode: Arm }, &m).unwrap()];
++        let value = serde_json::to_value(connect(&o, &[root(&o[0], BASE)]).unwrap()).unwrap();
++        assert_eq!(value["edges"][0]["resolution"]["reason"], reason);
++    }
++}
++#[test]
++fn conditional_call_preserves_all_guards_source_condition_and_original_mapping() {
++    let f = Fixture::new(&bytes(&[0x1b000000, 0xe1a00000, 0xe1a01001]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [observe(&m[0], Selection { span: BASE..BASE + 12, mode: Arm }, &m).unwrap()];
++    let value = serde_json::to_value(connect(&o, &[root(&o[0], BASE)]).unwrap()).unwrap();
++    for (i, guard) in ["condition_passed", "condition_passed_and_call_returned", "condition_failed"]
++        .iter()
++        .enumerate()
++    {
++        assert_eq!(value["edges"][i]["original"]["guard"], *guard);
++        assert_eq!(value["edges"][i]["source_condition"], "ne");
++        assert_eq!(value["edges"][i]["original"]["target"]["mapping"]["kind"], "initialized");
++    }
++}
++#[test]
++fn finite_cycle_retains_back_edge_counts_and_deterministic_scope() {
++    let f = Fixture::new(&bytes(&[0xe1a00000, 0xbafffffd]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [observe(&m[0], Selection { span: BASE..BASE + 8, mode: Arm }, &m).unwrap()];
++    let roots = [root(&o[0], BASE)];
++    let value = serde_json::to_value(connect(&o, &roots).unwrap()).unwrap();
++    assert_eq!(value, serde_json::to_value(connect(&o, &roots).unwrap()).unwrap());
++    assert_eq!(value["scope"], "root_assumed_selected_interpretations");
++    assert_eq!(value["roots"][0]["visited_nodes"], json!([0, 1]));
++    assert_eq!(value["roots"][0]["edge_examinations"], 3);
++    assert_eq!(value["edges"][1]["resolution"], json!({"kind":"selected","node":0}));
++    assert_eq!(value["roots"][0]["identity"], serde_json::to_value(o[0].identity()).unwrap());
++    assert_eq!(value["roots"][0]["mode"], "Arm");
++}
++#[test]
++fn witness_views_keep_guarded_terminal_edge_and_bounded_counts() {
++    let f = Fixture::new(&bytes(&[0xe1a00000, 0xbafffffd]));
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [observe(&m[0], Selection { span: BASE..BASE + 8, mode: Arm }, &m).unwrap()];
++    let graph = connect(&o, &[root(&o[0], BASE)]).unwrap();
++    assert_eq!(graph.program(), o[0].identity().program());
++    let selected = graph.roots().next().unwrap();
++    assert_eq!(selected.visit_count(), graph.node_count());
++    assert_eq!(selected.edge_examinations(), graph.edge_count());
++    assert_eq!(selected.request().address, BASE);
++    let frontier = selected.frontiers().next().unwrap();
++    assert_eq!(format!("{:?}", frontier.reason()), "OutsideSelection");
++    let witness = frontier.witness().unwrap();
++    assert_eq!(witness.iter().map(|t| t.source()).collect::<Vec<_>>(), [BASE, BASE + 4]);
++    assert_eq!(format!("{:?}", witness[1].guard()), "ConditionFailed");
++    assert!(witness.len() <= graph.node_count());
++}
++#[test]
++fn conflicting_root_has_empty_witness_and_zero_work() {
++    let f = Fixture::new(&[0; 4]);
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [
++        observe(&m[0], Selection { span: BASE..BASE + 4, mode: Arm }, &m).unwrap(),
++        observe(&m[0], Selection { span: BASE + 2..BASE + 4, mode: Thumb }, &m).unwrap(),
++    ];
++    let graph = connect(&o, &[root(&o[0], BASE)]).unwrap();
++    let selected = graph.roots().next().unwrap();
++    assert_eq!((selected.visit_count(), selected.edge_examinations()), (0, 0));
++    let frontier = selected.frontiers().next().unwrap();
++    assert_eq!(format!("{:?}", frontier.reason()), "ModeConflict");
++    assert!(frontier.witness().unwrap().is_empty());
++}
++#[test]
++fn same_child_payload_under_distinct_nitrofs_paths_is_foreign() {
++    use ds_decomp::rom::arm7::ProgramSelector;
++    let f = Fixture::new(&bytes(&[0xe1a00000]));
++    let mut alias = f.child_layout.clone();
++    alias.identity.program = ProgramSelector::NitroFs { path: "ChildRom/copy.srl".into() };
++    let v = f.child_layout.checked(&f.parent).unwrap();
++    let a = alias.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let am: Vec<_> = a.module_inputs().collect();
++    let o = [
++        observe(&m[0], Selection { span: BASE..BASE + 4, mode: Arm }, &m).unwrap(),
++        observe(&am[0], Selection { span: BASE..BASE + 4, mode: Arm }, &am).unwrap(),
++    ];
++    assert_eq!(error(&o, &[root(&o[0], BASE)]), "ForeignProgram");
++}
++#[test]
++fn local_interior_is_not_promoted_by_opposite_mode_start() {
++    // Thumb b targets the second half of BL, where a valid ARM interpretation starts.
++    let f = Fixture::new(&[0, 0xe0, 0, 0xf0, 0, 0xf8, 0xa0, 0xe1]);
++    let v = f.parent_layout.checked(&f.parent).unwrap();
++    let m: Vec<_> = v.module_inputs().collect();
++    let o = [
++        observe(&m[0], Selection { span: BASE..BASE + 6, mode: Thumb }, &m).unwrap(),
++        observe(&m[0], Selection { span: BASE + 4..BASE + 8, mode: Arm }, &m).unwrap(),
++    ];
++    let value = serde_json::to_value(connect(&o, &[root(&o[0], BASE)]).unwrap()).unwrap();
++    assert_eq!(value["edges"][0]["resolution"]["reason"], "instruction_interior");
++    assert_eq!(value["roots"][0]["visited_nodes"], json!([0]));
++}

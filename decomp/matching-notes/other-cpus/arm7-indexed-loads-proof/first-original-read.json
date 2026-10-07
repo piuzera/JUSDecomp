@@ -1,0 +1,119 @@
+[
+  {
+    "identity": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "parent"
+      },
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+    "image_bytes": 165552,
+    "child_file_id": 79,
+    "child_rom_extent": [
+      2340864,
+      4482248
+    ],
+    "windows": [
+      {
+        "label": "preceding_lower_load",
+        "start": 58707972,
+        "end": 58707992,
+        "words": [
+          "0xe1a00100",
+          "0xe2800627",
+          "0xe2800aff",
+          "0xe5900da0",
+          "0xe12fff1e"
+        ],
+        "sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+        "stored_image_offset": 20916,
+        "llvm_command": [
+          "/opt/homebrew/opt/llvm/bin/llvm-mc",
+          "--disassemble",
+          "--triple=armv4t-none-eabi"
+        ],
+        "llvm_sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+      },
+      {
+        "label": "preceding_upper_load",
+        "start": 58707992,
+        "end": 58708012,
+        "words": [
+          "0xe1a00100",
+          "0xe2800627",
+          "0xe2800aff",
+          "0xe5900dc4",
+          "0xe12fff1e"
+        ],
+        "sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+        "stored_image_offset": 20936,
+        "llvm_command": [
+          "/opt/homebrew/opt/llvm/bin/llvm-mc",
+          "--disassemble",
+          "--triple=armv4t-none-eabi"
+        ],
+        "llvm_sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+      }
+    ]
+  },
+  {
+    "identity": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "nitro_fs",
+        "path": "ChildRom/JSS2Child.srl"
+      },
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+    },
+    "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+    "image_bytes": 165552,
+    "child_file_id": 79,
+    "child_rom_extent": [
+      2340864,
+      4482248
+    ],
+    "windows": [
+      {
+        "label": "preceding_lower_load",
+        "start": 58707972,
+        "end": 58707992,
+        "words": [
+          "0xe1a00100",
+          "0xe2800627",
+          "0xe2800aff",
+          "0xe5900da0",
+          "0xe12fff1e"
+        ],
+        "sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+        "stored_image_offset": 20916,
+        "llvm_command": [
+          "/opt/homebrew/opt/llvm/bin/llvm-mc",
+          "--disassemble",
+          "--triple=armv4t-none-eabi"
+        ],
+        "llvm_sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+      },
+      {
+        "label": "preceding_upper_load",
+        "start": 58707992,
+        "end": 58708012,
+        "words": [
+          "0xe1a00100",
+          "0xe2800627",
+          "0xe2800aff",
+          "0xe5900dc4",
+          "0xe12fff1e"
+        ],
+        "sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+        "stored_image_offset": 20936,
+        "llvm_command": [
+          "/opt/homebrew/opt/llvm/bin/llvm-mc",
+          "--disassemble",
+          "--triple=armv4t-none-eabi"
+        ],
+        "llvm_sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+      }
+    ]
+  }
+]

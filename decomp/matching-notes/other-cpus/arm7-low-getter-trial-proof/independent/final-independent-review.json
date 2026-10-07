@@ -1,0 +1,166 @@
+{
+  "status": "accepted_no_flags",
+  "reviewed_public_commits": [
+    "bfd4f5345e364139a7b819bde6907a9d66b17ae8",
+    "8e99718c7f0256ecca57eb2a88fd918db444d350"
+  ],
+  "reviewed_tree": "da3d488de37f9ee636208965439c95fc43e06931",
+  "own_cherry_pick_head": "e1f0a62454be23c322ea0342016370e5109bafb4",
+  "scope": "frozen single MW getter C compile mismatch, actual object ELF, relocations, original ROM mapping, public proof and docs-only test setup",
+  "public_git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/.gitattributes",
+      "bytes": 36,
+      "git_blob": "5f5842632834720d8767120a5f786546ac04084f",
+      "sha256": "6998e23cef5b6458e16d6edd2ac74070ac623a2590def3ca2176c55e2ef56364"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/compiled-llvm.txt",
+      "bytes": 259,
+      "git_blob": "f6d7553b65da2ecd93de03ea26aa1971d1b80be3",
+      "sha256": "865e24260f627994b0de05fef50cdfc2010e4f193a29b4c0485275d0b7732378"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/compiler-stderr.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/compiler-stdout.log",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/elf-readback.txt",
+      "bytes": 3294,
+      "git_blob": "28fc93ea7e9c70a5b148f8d2e4dfa2b242801926",
+      "sha256": "2a67bccc5843f62826eb7bb9a017038d526b6befc679fa5ad610ca61e88b09ef"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/llvm-original-low-getter.txt",
+      "bytes": 359,
+      "git_blob": "b78c7fdf47ac1a5afd90d87f8025c3e33017f9ac",
+      "sha256": "32411e7e1f3f35f0df12322c5167be80606209f7386e639a4f3eb9f8536ee9d0"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/low_getter_trial.c",
+      "bytes": 609,
+      "git_blob": "1f92095cb51c057a3f204fd8059ef17c15e20d5e",
+      "sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/original-manifest.json",
+      "bytes": 2870,
+      "git_blob": "14ed70c8de00dd52ebf49d006ae825d38d4576bc",
+      "sha256": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/original-read.json",
+      "bytes": 11319,
+      "git_blob": "023f0ece24960d60820f16e68795fc740d0290c9",
+      "sha256": "25e66aa18cb2f2231b11d591ba6798e21c8981b9e6ce4d6b3804dc6580695a1e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/provenance.json",
+      "bytes": 1020,
+      "git_blob": "433ed3d72e0a32f5185f590da07cbd2fe1695007",
+      "sha256": "6d1a5dcf4363c880988a0220b240d5e04a9d8f1511032606709e187efd374631"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/read_original.py",
+      "bytes": 8731,
+      "git_blob": "fde70dc22d119fb19a32d119895c9a9bfd281ae5",
+      "sha256": "20054901f1a82b9749f97cf891cf6a6535ccc0bdc2c4b503bd956f81c45ff447"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/reproduce.py",
+      "bytes": 7568,
+      "git_blob": "0d6b40a76fb97ae3a106b24a914c9e6db62c2258",
+      "sha256": "43fdfd0ddce853d97c9e85fbdc336a3be323614a2fb1da78f2a9d966381570a0"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-green.log",
+      "bytes": 101,
+      "git_blob": "24da48e77ede684a36fa7f5f3fc13379d2b6313d",
+      "sha256": "921b60a7fd52e978fbb551cacd29df2d6708879400278e1fcc70fceeb0c6f8e0"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-red.log",
+      "bytes": 1989,
+      "git_blob": "9ffd67ee3e009baa4f6db239813cf741a782c7b6",
+      "sha256": "fbf1b3bb4437e0b51d126b0c07dd3fbc6961a457065167d9641d57b41bcdc807"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-replay-green.log",
+      "bytes": 98,
+      "git_blob": "009bdc52a7af2afa6c92ba4de2f4cf0195cd61b7",
+      "sha256": "f47062fbeabe241d110de7e06c849849535b0b7047391c3def376a1a01af23e8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/tdd-replay-red.log",
+      "bytes": 758,
+      "git_blob": "a4ac45a13fc23bf987012b8dffb05288789115e8",
+      "sha256": "34ff2a5b47fbf1ff7cb0bcc16026352515d15c5b85a3263772322ca72c589d13"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/test_reproduce.py",
+      "bytes": 1459,
+      "git_blob": "25c1a279f94f93fe3a7476430892ea3fc5911acf",
+      "sha256": "8bc558b1ff6c19c01a579ec2079b807d34285981decefa44f4b15648731ad413"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/test_verify.py",
+      "bytes": 2337,
+      "git_blob": "6cbd4c8307e5032096eb380e57e9d7c28ba6608a",
+      "sha256": "841fd530cebf7775bf15ad352ca0acb605e92d198fd0e783ef4e3607ad896f89"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/trial-proof.json",
+      "bytes": 10948,
+      "git_blob": "1a375ed7b132b333ebc6782b69ffd7b85ea0ce82",
+      "sha256": "6bd26f0468980f662bd6a5eee4c8f875fe466b06dff4eb3fa04df3fb89c633c6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/verify.py",
+      "bytes": 4154,
+      "git_blob": "da33501335b1d50060cb505a80b931859267953a",
+      "sha256": "d4b282bfbdae3a439ed74fbf88990afba7f7d26ea4e88ee45593888f4672cde2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-getter-trial.md",
+      "bytes": 8743,
+      "git_blob": "dc950539a4bca3381da12420931a2396c208aa35",
+      "sha256": "7ebfb8ca1be1544696ec6239c18b705341a98c582ba81edd480d40543f78e4fa"
+    }
+  ],
+  "independent_object_sha256": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+  "independent_original_result": "Both original identities identical over fixed 80 instructions plus separate 8 pool bytes; only instruction offsets 52..59 mismatch actual candidate.",
+  "relocations": [
+    {
+      "offset": 80,
+      "type": "R_ARM_ABS32",
+      "addend": 0,
+      "symbol": "hyp_subpriv_arena_lo",
+      "hypothesis_binding": "0x027f9c08"
+    },
+    {
+      "offset": 84,
+      "type": "R_ARM_ABS32",
+      "addend": 0,
+      "symbol": "hyp_wram_arena_lo",
+      "hypothesis_binding": "0x0380bc90"
+    }
+  ],
+  "arm_abi_primary_source": "https://github.com/ARM-software/abi-aa/blob/2025Q1/aaelf32/aaelf32.rst#5612-relocation-types",
+  "arm_abi_claim": "R_ARM_ABS32 code 2 is Data class with (S+A)|T; T is 1 only for STT_FUNC Thumb targets, zero for hypothetical data symbols.",
+  "public_replay": "passed; public original readback, LLVM transcripts, ELF readback, stdout/stderr logs all byte-identical; trial-proof differences only source and output absolute paths",
+  "four_tests": "passed with documented TRIAL_OBJECT pointing to fresh replay compiled.o",
+  "docs_only_followup": "Test command added; only note changed from bfd4f534",
+  "limitations": [
+    "No original declarations, entry, ABI, exact function extent, or source ownership established",
+    "No native link or full-image reconstruction attempted",
+    "No source credit"
+  ]
+}

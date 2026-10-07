@@ -1,0 +1,16 @@
+{
+  "command": [
+    "cargo",
+    "build",
+    "--locked",
+    "--offline",
+    "--release",
+    "-p",
+    "ds-decomp",
+    "--example",
+    "arm7_reachable_probe"
+  ],
+  "sha256": "4d404eafc8c730cb69a534c1459fc191a15076f69fdddc67430b865730c06371",
+  "RUSTFLAGS": "--remap-path-prefix=/private/tmp/jus-arm7-reachable-review-dsd=/dsd-source --remap-path-prefix=/private/tmp/jus-arm7-reachable-review-cache/cargo-home=/cargo-home",
+  "feature_context": "standalone library example, excludes CLI feature union"
+}

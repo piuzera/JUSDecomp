@@ -1,0 +1,481 @@
+{
+  "status": "passed",
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "layout_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "child_path": "ChildRom/JSS2Child.srl",
+  "child_file_id": 79,
+  "child_rom_extent": {
+    "start": 2340864,
+    "end": 4482248
+  },
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "checked_autoload_regions": [
+        {
+          "region": {
+            "autoload": 0
+          },
+          "runtime": 58687488,
+          "initialized_bytes": 66120,
+          "bss_bytes": 14920,
+          "stored_start": 432,
+          "initialized_end": 58753608,
+          "bss_end": 58768528
+        },
+        {
+          "region": {
+            "autoload": 1
+          },
+          "runtime": 41811968,
+          "initialized_bytes": 98976,
+          "bss_bytes": 6504,
+          "stored_start": 66552,
+          "initialized_end": 41910944,
+          "bss_end": 41917448
+        }
+      ],
+      "selections": [
+        {
+          "start": 58707844,
+          "end": 58707872,
+          "stored_image_offset": 20788,
+          "program_offset": 2183476,
+          "sha256": "fc773af8408aab5f6223889cf579e8096b40962f6b800a362dd7bfa57a10450a",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000004",
+            "0xea000011"
+          ]
+        },
+        {
+          "start": 58707872,
+          "end": 58707880,
+          "stored_image_offset": 20816,
+          "program_offset": 2183504,
+          "sha256": "9b89d55eab4a0cf40b11c6dd27589af847e9050f9e3cb057b1148db3ebf46a81",
+          "words": [
+            "0xe59f0048",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707880,
+          "end": 58707888,
+          "stored_image_offset": 20824,
+          "program_offset": 2183512,
+          "sha256": "0e586df921c49865830816bf47809f423dde30038a4605f9076fe3b5e7a8b1b3",
+          "words": [
+            "0xe3a0050e",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707888,
+          "end": 58707944,
+          "stored_image_offset": 20832,
+          "program_offset": 2183520,
+          "sha256": "74a9af49da64fc6418fe362b407b16d3325c7e1fe6328546a43495820faf42be",
+          "words": [
+            "0xe59f103c",
+            "0xe59f003c",
+            "0xe0402001",
+            "0xe3a0050e",
+            "0xe59f1034",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe59f102c",
+            "0xe3510000",
+            "0x012fff1e",
+            "0xe3510000",
+            "0xb0400001",
+            "0xa0420001",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707944,
+          "end": 58707952,
+          "stored_image_offset": 20888,
+          "program_offset": 2183576,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ]
+        }
+      ],
+      "literals": [
+        {
+          "address": 58707952,
+          "bytes": 4,
+          "sha256": "f585806e0c36f26f5bb712c65a5c1ff52a9d494fcf4ab39b7110516099222528",
+          "word": "0x027ff000",
+          "load_sources": [
+            58707872
+          ],
+          "stored_image_offset": 20896,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        },
+        {
+          "address": 58707956,
+          "bytes": 4,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "word": "0x00000400",
+          "load_sources": [
+            58707888
+          ],
+          "stored_image_offset": 20900,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        },
+        {
+          "address": 58707960,
+          "bytes": 4,
+          "sha256": "10e90213854ad8d7a3c230a550f02a4f07da0304629e8a793807151e5c33dfd1",
+          "word": "0x0380ff80",
+          "load_sources": [
+            58707892
+          ],
+          "stored_image_offset": 20904,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        },
+        {
+          "address": 58707964,
+          "bytes": 4,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "word": "0x0380bc90",
+          "load_sources": [
+            58707904
+          ],
+          "stored_image_offset": 20908,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": [
+              {
+                "boundary": "exclusive_bss_end",
+                "region": {
+                  "autoload": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "address": 58707968,
+          "bytes": 4,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "word": "0x00000400",
+          "load_sources": [
+            58707916
+          ],
+          "stored_image_offset": 20912,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        }
+      ]
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "checked_autoload_regions": [
+        {
+          "region": {
+            "autoload": 0
+          },
+          "runtime": 58687488,
+          "initialized_bytes": 66120,
+          "bss_bytes": 14920,
+          "stored_start": 432,
+          "initialized_end": 58753608,
+          "bss_end": 58768528
+        },
+        {
+          "region": {
+            "autoload": 1
+          },
+          "runtime": 41811968,
+          "initialized_bytes": 98976,
+          "bss_bytes": 6504,
+          "stored_start": 66552,
+          "initialized_end": 41910944,
+          "bss_end": 41917448
+        }
+      ],
+      "selections": [
+        {
+          "start": 58707844,
+          "end": 58707872,
+          "stored_image_offset": 20788,
+          "program_offset": 1993524,
+          "sha256": "fc773af8408aab5f6223889cf579e8096b40962f6b800a362dd7bfa57a10450a",
+          "words": [
+            "0xe3500001",
+            "0x0a000004",
+            "0xe3500007",
+            "0x0a000004",
+            "0xe3500008",
+            "0x0a000004",
+            "0xea000011"
+          ]
+        },
+        {
+          "start": 58707872,
+          "end": 58707880,
+          "stored_image_offset": 20816,
+          "program_offset": 1993552,
+          "sha256": "9b89d55eab4a0cf40b11c6dd27589af847e9050f9e3cb057b1148db3ebf46a81",
+          "words": [
+            "0xe59f0048",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707880,
+          "end": 58707888,
+          "stored_image_offset": 20824,
+          "program_offset": 1993560,
+          "sha256": "0e586df921c49865830816bf47809f423dde30038a4605f9076fe3b5e7a8b1b3",
+          "words": [
+            "0xe3a0050e",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707888,
+          "end": 58707944,
+          "stored_image_offset": 20832,
+          "program_offset": 1993568,
+          "sha256": "74a9af49da64fc6418fe362b407b16d3325c7e1fe6328546a43495820faf42be",
+          "words": [
+            "0xe59f103c",
+            "0xe59f003c",
+            "0xe0402001",
+            "0xe3a0050e",
+            "0xe59f1034",
+            "0xe351050e",
+            "0x81a00001",
+            "0xe59f102c",
+            "0xe3510000",
+            "0x012fff1e",
+            "0xe3510000",
+            "0xb0400001",
+            "0xa0420001",
+            "0xe12fff1e"
+          ]
+        },
+        {
+          "start": 58707944,
+          "end": 58707952,
+          "stored_image_offset": 20888,
+          "program_offset": 1993624,
+          "sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877",
+          "words": [
+            "0xe3a00000",
+            "0xe12fff1e"
+          ]
+        }
+      ],
+      "literals": [
+        {
+          "address": 58707952,
+          "bytes": 4,
+          "sha256": "f585806e0c36f26f5bb712c65a5c1ff52a9d494fcf4ab39b7110516099222528",
+          "word": "0x027ff000",
+          "load_sources": [
+            58707872
+          ],
+          "stored_image_offset": 20896,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        },
+        {
+          "address": 58707956,
+          "bytes": 4,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "word": "0x00000400",
+          "load_sources": [
+            58707888
+          ],
+          "stored_image_offset": 20900,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        },
+        {
+          "address": 58707960,
+          "bytes": 4,
+          "sha256": "10e90213854ad8d7a3c230a550f02a4f07da0304629e8a793807151e5c33dfd1",
+          "word": "0x0380ff80",
+          "load_sources": [
+            58707892
+          ],
+          "stored_image_offset": 20904,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        },
+        {
+          "address": 58707964,
+          "bytes": 4,
+          "sha256": "d82ce6e778c722baaf700f9143270ffdea1b37898307f08f3f10e409b2501c62",
+          "word": "0x0380bc90",
+          "load_sources": [
+            58707904
+          ],
+          "stored_image_offset": 20908,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": [
+              {
+                "boundary": "exclusive_bss_end",
+                "region": {
+                  "autoload": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "address": 58707968,
+          "bytes": 4,
+          "sha256": "6e1ae50c2c807c6630b5a02ea29761a723e422e503100fc2ee23f2d715d3a001",
+          "word": "0x00000400",
+          "load_sources": [
+            58707916
+          ],
+          "stored_image_offset": 20912,
+          "literal_storage": "initialized autoload0 in this exact program",
+          "value_mapping": {
+            "matches": [],
+            "kind": "unmapped",
+            "exclusive_boundary_matches": []
+          }
+        }
+      ]
+    }
+  ],
+  "llvm_runs": [
+    {
+      "extent": {
+        "start": 58707844,
+        "end": 58707872
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout": "\tcmp\tr0, #1\n\tbeq\t#16\n\tcmp\tr0, #7\n\tbeq\t#16\n\tcmp\tr0, #8\n\tbeq\t#16\n\tb\t#68\n",
+      "stdout_sha256": "788592a75ee7c036ca44649fe28be61e6332a7886a6ef31475d68fc721d155dd"
+    },
+    {
+      "extent": {
+        "start": 58707872,
+        "end": 58707880
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout": "\tldr\tr0, [pc, #72]\n\tbx\tlr\n",
+      "stdout_sha256": "85eb7f3adb437a6ae1251ca3a81d81ae9fdc7426fe8510de0ff689cc74f40231"
+    },
+    {
+      "extent": {
+        "start": 58707880,
+        "end": 58707888
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout": "\tmov\tr0, #58720256\n\tbx\tlr\n",
+      "stdout_sha256": "9160c5420bf39e4bd05f138f970034e4adc20e1fbb5496a408014dd2e56d6d35"
+    },
+    {
+      "extent": {
+        "start": 58707888,
+        "end": 58707944
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout": "\tldr\tr1, [pc, #60]\n\tldr\tr0, [pc, #60]\n\tsub\tr2, r0, r1\n\tmov\tr0, #58720256\n\tldr\tr1, [pc, #52]\n\tcmp\tr1, #58720256\n\tmovhi\tr0, r1\n\tldr\tr1, [pc, #44]\n\tcmp\tr1, #0\n\tbxeq\tlr\n\tcmp\tr1, #0\n\tsublt\tr0, r0, r1\n\tsubge\tr0, r2, r1\n\tbx\tlr\n",
+      "stdout_sha256": "9978fa78b757a69bc9324b0ee1719dd19865d76da81b6856cb32ea6dcbb6a540"
+    },
+    {
+      "extent": {
+        "start": 58707944,
+        "end": 58707952
+      },
+      "argv": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "stdout": "\tmov\tr0, #0\n\tbx\tlr\n",
+      "stdout_sha256": "75b6efeedb5a1e884a68e1f3dc429b631c41775803b70a671fa53bad0a1080fd"
+    }
+  ],
+  "llvm_combined_sha256": "1f95eaeafad852aad7785886a2fb8273d5ce9dce42716e5d2a1cf7b84a6537c7",
+  "inputs_unchanged": true,
+  "source_credit_bytes": 0,
+  "original_names_established": false
+}

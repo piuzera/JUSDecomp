@@ -1,0 +1,8 @@
+	mov	r0, #1
+	str	r0, [r1]
+	bl	#-208
+	mov	r1, r0
+	mov	r0, #1
+	bl	#-328
+	mov	r0, #1
+	bl	#-316

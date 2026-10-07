@@ -1,0 +1,12 @@
+{
+  "clang": {
+    "executable": "/opt/homebrew/opt/llvm/bin/clang",
+    "sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+    "version": "Homebrew clang version 23.1.2"
+  },
+  "lld": {
+    "executable": "/opt/homebrew/bin/ld.lld",
+    "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+    "version": "Homebrew LLD 23.1.2 (compatible with GNU linkers)"
+  }
+}

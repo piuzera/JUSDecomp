@@ -1,0 +1,91 @@
+{
+  "source_base": "bee60e2ee89308616933a391c387928e2dfb5c07",
+  "source_commit": "67e9a8bc65fba0e5cdc3ab784c77de28253ee3dc",
+  "branch": "track-a/t10-arm7-observation",
+  "patch": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/arm7-observation.patch",
+  "patch_sha256": "5777c649dad7e92d01091ad1019ce7a1286da57aedd3556f1df3737e49abaad4",
+  "native_probe": "/private/tmp/jus-arm7-analysis-design-bounded/target/debug/examples/arm7_observation_probe",
+  "native_probe_sha256": "f8bdaed2ee1a891aa37be9d3ba04090d99caa57e8626ba723f6078a36f61a378",
+  "native_probe_format": "/private/tmp/jus-arm7-analysis-design-bounded/target/debug/examples/arm7_observation_probe: Mach-O 64-bit executable arm64",
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01) (Homebrew)",
+  "actual_report": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/actual-observations.json",
+  "actual_report_sha256": "238a6e7fa50fdd06dd7838331ab5c9be12a231a720c50266d350aa12ef6c4ff6",
+  "test_command": "cargo test -p ds-decomp",
+  "tests_passed": 55,
+  "clippy_command": "cargo clippy -p ds-decomp --all-targets -- -D warnings -A clippy::chunks_exact_to_as_chunks",
+  "clippy_allowance": "Pre-existing ARM9 findings only: lib/src/analysis/ctor.rs:155 and lib/src/analysis/functions.rs:558. No source allowance was added.",
+  "build_command": "cargo build -p ds-decomp --example arm7_observation_probe",
+  "probe_check_command": "python3 .audit/arm7-design/probe-check.py",
+  "logs": {
+    "red.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/red.log",
+      "sha256": "708efc839a555235468eb35a311a540bc8ad18c3bbd71637c4691d6f57b78763"
+    },
+    "green-first.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/green-first.log",
+      "sha256": "d2756d356ccc93c774a3507215374ea5e0b0d50b0fe79674f093a997bfe59dd4"
+    },
+    "green.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/green.log",
+      "sha256": "018fcd6bb9e3500d38132d8ca982eda65fca55fd773b7ba331e34910806b7575"
+    },
+    "accessors-red.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/accessors-red.log",
+      "sha256": "49ee6ac926322a2dffa954287d02e9f4174c1f29f01830f2469607b2656b3199"
+    },
+    "accessors-green.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/accessors-green.log",
+      "sha256": "6a0c4ab0140e9abfcc449266bb5664c79f2efaf180fd621768f3dd0d313584d9"
+    },
+    "probe-red.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/probe-red.log",
+      "sha256": "31637a2af9327412256a65e3c06557e24aab55390c830aa49532850af849d77a"
+    },
+    "thumb-boundary-red.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/thumb-boundary-red.log",
+      "sha256": "ed345ef980aea4dc38cfa80108f812c8574b41c85288c7ee53cb701046ef21df"
+    },
+    "thumb-all-red.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/thumb-all-red.log",
+      "sha256": "f439e507b19155f962abb744e8eaed241d8b6849111b82b13ce49448812891be"
+    },
+    "thumb-boundary-green.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/thumb-boundary-green.log",
+      "sha256": "1dc5d5fa3d674522c025af97fb69df844f38d783fc0291dd7bb857f9dff303c5"
+    },
+    "clippy-first.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/clippy-first.log",
+      "sha256": "c7799695e5ee17e21f9effebd65423e999c652a57a315c308e739aac54ec7b96"
+    },
+    "clippy.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/clippy.log",
+      "sha256": "9240b6b0673e95ec0cca62c5b9bf1826c5bd1bdaac529ec787e4ffb1e218455e"
+    },
+    "library-tests-final.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/library-tests-final.log",
+      "sha256": "c3e60b20161f8ec1453ae3536ab9fb44e35384a0710a1baeaf3728707653f869"
+    },
+    "probe-build-final.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/probe-build-final.log",
+      "sha256": "299f16a2c523be18fef769975d2df00e0505521db047540feea3a74b94666887"
+    },
+    "probe-green-final.log": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/probe-green-final.log",
+      "sha256": "48666030193a9c4c6fa822f9e47b7f09e42040a55cf60a91bfe87f2ff3fb3a1a"
+    },
+    "unarm-offset-evidence.txt": {
+      "path": "/private/tmp/jus-arm7-analysis-design-bounded/.audit/arm7-design/unarm-offset-evidence.txt",
+      "sha256": "a1e7cba20b5f1c870dc972810cc6f4fb097eccd00e75656fc5e2f0efdcb27f07"
+    }
+  },
+  "deviations": [
+    "unarm 1.9.2 ARM B/BL scales then sign-extends to 24 rather than 26 bits.",
+    "unarm 1.9.2 combined Thumb BL adds the PC bias before sign extension, flipping the positive extreme.",
+    "Observer derives all direct ARM and Thumb branch offsets from validated raw encoding fields and normalizes stored text. Dependency, decode_span and ARM9 behavior remain unchanged."
+  ],
+  "limitations": [
+    "Bounded syntactic observations, not reachability or function discovery.",
+    "All executability unknown; indirect PC writes, exchanges and exception targets unresolved.",
+    "No CodeDeclaration/ExchangeFact, Config/symbol/relocation/source/link migration."
+  ]
+}

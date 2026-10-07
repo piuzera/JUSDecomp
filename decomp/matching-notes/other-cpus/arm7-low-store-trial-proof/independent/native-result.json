@@ -1,0 +1,171 @@
+{
+  "status": "actual_MW_low_store_two_original_images_exact",
+  "source_credit_bytes": 0,
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "positive": {
+        "elf_sha256": "6d056704dd5ae9cda37c630a936d1c467bfc85dfca1df59c649960c7819d222d",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "BSS_bytes": 21424,
+        "candidate_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+        "candidate_vma": "0x037fcf04"
+      },
+      "omitted_object_rejected": true,
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "positive": {
+        "elf_sha256": "6d056704dd5ae9cda37c630a936d1c467bfc85dfca1df59c649960c7819d222d",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "BSS_bytes": 21424,
+        "candidate_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+        "candidate_vma": "0x037fcf04"
+      },
+      "omitted_object_rejected": true,
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    }
+  ]
+}

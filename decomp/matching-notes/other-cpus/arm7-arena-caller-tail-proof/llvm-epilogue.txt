@@ -1,0 +1,3 @@
+	add	sp, sp, #4
+	ldm	sp!, {lr}
+	bx	lr

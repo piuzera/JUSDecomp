@@ -1,0 +1,613 @@
+{
+  "status": "passed",
+  "tests": {
+    "passed": 6,
+    "failed": 0
+  },
+  "root_trial_receipt_sha256": "6fefd95f37b49d6103550289c67e824905f1c0f97966e2a1ed127ebbc16ba537",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "public_positive_elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "independent_positive_elf_sha256": "46ce79deda3e6b3aca33f3d0462d76b459f59d1a8c86eecf86758d45bf30feb6",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "loads": 6,
+      "BSS_bytes": 21424,
+      "seven_native_source_object_bytes": 460,
+      "all_five_bindings": {
+        "subpriv": 41917448,
+        "wram": 58768528,
+        "irq": 1024,
+        "system": 1024,
+        "guard": 58754096
+      },
+      "initializer_calls": [
+        {
+          "source": 58708044,
+          "word": "0xebffffcc",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708056,
+          "word": "0xebffffae",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708064,
+          "word": "0xebffffb1",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708076,
+          "word": "0xebffffa4",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708084,
+          "word": "0xebffffc2",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708096,
+          "word": "0xebffffa4",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708104,
+          "word": "0xebffffa7",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708116,
+          "word": "0xebffff9a",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708124,
+          "word": "0xebffffb8",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708136,
+          "word": "0xebffff9a",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708144,
+          "word": "0xebffff9d",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708156,
+          "word": "0xebffff90",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        }
+      ],
+      "all_seven_omissions_rejected": true,
+      "load_swap_native_returncode": 0,
+      "load_swap_image_differences": [
+        20928,
+        20948
+      ],
+      "initializer_calls_unchanged_in_load_swap": true,
+      "swap_native_returncode": 0,
+      "swap_image_differences": [
+        20672,
+        20692,
+        21000,
+        21020,
+        21040,
+        21060,
+        21080,
+        21100
+      ],
+      "wrong_guard_image_differences": [
+        21116
+      ],
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "public_positive_elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "independent_positive_elf_sha256": "46ce79deda3e6b3aca33f3d0462d76b459f59d1a8c86eecf86758d45bf30feb6",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "loads": 6,
+      "BSS_bytes": 21424,
+      "seven_native_source_object_bytes": 460,
+      "all_five_bindings": {
+        "subpriv": 41917448,
+        "wram": 58768528,
+        "irq": 1024,
+        "system": 1024,
+        "guard": 58754096
+      },
+      "initializer_calls": [
+        {
+          "source": 58708044,
+          "word": "0xebffffcc",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708056,
+          "word": "0xebffffae",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708064,
+          "word": "0xebffffb1",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708076,
+          "word": "0xebffffa4",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708084,
+          "word": "0xebffffc2",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708096,
+          "word": "0xebffffa4",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708104,
+          "word": "0xebffffa7",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708116,
+          "word": "0xebffff9a",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708124,
+          "word": "0xebffffb8",
+          "target": 58707844,
+          "symbol": "arm7_high_getter_trial",
+          "resolved_symbol_vma": 58707844,
+          "resolved_symbol_size": 128
+        },
+        {
+          "source": 58708136,
+          "word": "0xebffff9a",
+          "target": 58707736,
+          "symbol": "arm7_store_trial",
+          "resolved_symbol_vma": 58707736,
+          "resolved_symbol_size": 20
+        },
+        {
+          "source": 58708144,
+          "word": "0xebffff9d",
+          "target": 58707756,
+          "symbol": "arm7_low_getter_trial",
+          "resolved_symbol_vma": 58707756,
+          "resolved_symbol_size": 88
+        },
+        {
+          "source": 58708156,
+          "word": "0xebffff90",
+          "target": 58707716,
+          "symbol": "arm7_low_store_trial",
+          "resolved_symbol_vma": 58707716,
+          "resolved_symbol_size": 20
+        }
+      ],
+      "all_seven_omissions_rejected": true,
+      "load_swap_native_returncode": 0,
+      "load_swap_image_differences": [
+        20928,
+        20948
+      ],
+      "initializer_calls_unchanged_in_load_swap": true,
+      "swap_native_returncode": 0,
+      "swap_image_differences": [
+        20672,
+        20692,
+        21000,
+        21020,
+        21040,
+        21060,
+        21080,
+        21100
+      ],
+      "wrong_guard_image_differences": [
+        21116
+      ],
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    }
+  ],
+  "root_direct_load_readback_sha256": "dcbd85e9ad75a2bd1388fe3a33b62ca36671a35f58afe7a515b7a2156667f99d",
+  "root_original_object_observation": [
+    {
+      "basename": "low_load_trial",
+      "object_sha256": "f60e827b92c5839f179a1bf32ec1f9a21ec4355f69b4ec31b5b20412e82aea94",
+      "object_bytes": 512,
+      "flags": 34603008,
+      "text_bytes": 20,
+      "text_sha256": "d714db36568f87382608e68dc45eb84a63bfe2d98e3869d5c1562567987e0c6e",
+      "actual_relocations": 0,
+      "both_original_windows_exact": true
+    },
+    {
+      "basename": "high_load_trial",
+      "object_sha256": "b39081472756bbcee780f3658dd8363f4da07a5bc4f86d3aa3aac3504a8e49c8",
+      "object_bytes": 512,
+      "flags": 34603008,
+      "text_bytes": 20,
+      "text_sha256": "b9133a64c254987fd068341728344b7bc29c68411d2334e0744eab80a9dac262",
+      "actual_relocations": 0,
+      "both_original_windows_exact": true
+    }
+  ],
+  "git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/arena_init_trial.c",
+      "bytes": 834,
+      "sha256": "b014099daa3d3dc1e2a14ca39a434726946067f448ff0e92ae5c2393bb44507e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/checked-layouts.json",
+      "bytes": 3685,
+      "sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/contract.json",
+      "bytes": 5663,
+      "sha256": "3f62fdbc879f3eecc3bdf0880a8359b8123d430a3159ccc1b53250cf9f4b8904"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/design.md",
+      "bytes": 3941,
+      "sha256": "a86e3e44350683a77e5030ebb037f23317805bbb1e6940d3e29c60e52bc6856a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/evidence-pins.json",
+      "bytes": 10150,
+      "sha256": "9d9e4d59774272d00a4e64fa029ade3f17ca4e5f2a2fe0e9f31986c471d7992c"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/first-compiles.json",
+      "bytes": 4032,
+      "sha256": "b7b2cb1115abd4c74e6276092a60d6532d641ce63c719bc7971de69cbf34220a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/first-original-read.json",
+      "bytes": 3533,
+      "sha256": "1fb4d020ffe4190cfe0d242a76047f1af2693ed495e033d4a5d4fb9a94e9e2de"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/high_getter_trial.c",
+      "bytes": 904,
+      "sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/high_load_trial.c",
+      "bytes": 125,
+      "sha256": "e6a1f9bb097ff25b1e91c9e14040a90cbebeeb1a0d14248124d116c05a4e0ce8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/initializer-compiled-llvm.txt",
+      "bytes": 441,
+      "sha256": "45de9fed5eabb684af761a51b1854bc3d817356855b6addf61f1164f4fbd1ab3"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/initializer-elf-readback.txt",
+      "bytes": 5109,
+      "sha256": "f5de509ca90fc3bb58a40d5da5042fd608b0f9515e163c3aa337018fa5343d21"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/loads.py",
+      "bytes": 39762,
+      "sha256": "af9c1646b1203229a9c1ef26fe7a95be17151a8b93c8b3d4d09426f819efc535"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/low_getter_trial.c",
+      "bytes": 609,
+      "sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/low_load_trial.c",
+      "bytes": 124,
+      "sha256": "2c264ddcef93585dbd3f0e938feef537eece386c50f899bf9db1b5aa0df92de1"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/low_store_trial.c",
+      "bytes": 138,
+      "sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/lower_getter-compiled-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/lower_getter-elf-readback.txt",
+      "bytes": 3298,
+      "sha256": "a3e46f39fe86128ca0b7640b7c6b6b3f0da4888b57b33b297b70faab59cbd354"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/lower_load-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/lower_load-elf-readback.txt",
+      "bytes": 2474,
+      "sha256": "e7e06484e09636748380db058a2dbe0fd1690d2763875341c9dbe2b4293e878f"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/lower_store-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/lower_store-elf-readback.txt",
+      "bytes": 2476,
+      "sha256": "91e3c3e50a97c34456e76c9bdb6f0074281862fa86ef8554dbec165ad00e8268"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-guarded_initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-lower_getter-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-lower_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-lower_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-preceding_lower_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-preceding_upper_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-upper_getter-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-upper_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-0-upper_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-guarded_initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-initializer-llvm.txt",
+      "bytes": 477,
+      "sha256": "c6c9adceb7c4c08a22635bfe75dd3137cb4ada7be049990397ee33d7910a9a43"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-lower_getter-llvm.txt",
+      "bytes": 259,
+      "sha256": "30df8952b40eb8ddbb71fe49ad246154d3e7acee98c3265bc8f7399cc12a63b8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-lower_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-lower_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-preceding_lower_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "c2c2dfcd5d7a90cce5b6b66c15b8a283c9c5d781435534413a45600855d641f6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-preceding_upper_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-upper_getter-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-upper_load-llvm.txt",
+      "bytes": 89,
+      "sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-1-upper_store-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/original-manifest.json",
+      "bytes": 10365,
+      "sha256": "15b252df959d5324ee9d7d1cfc9fa29cd9d07542dff2790a03565810d6008349"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/public-tests.log",
+      "bytes": 950,
+      "sha256": "477f03c13a7c6fd8030a7353421eb94bfc49173b9eb38470e7138e1f3fb23f8e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/recipes.json",
+      "bytes": 2493,
+      "sha256": "069c9eaf14c89c115bfb2f88d0e2c9f59697ce4b674059ceceee8f3d676bd080"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/reproduce.py",
+      "bytes": 4571,
+      "sha256": "607aa97311c07abbf3a833b4a525fbdfb36c1081afb6f7515de7897699dd9431"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/store_trial.c",
+      "bytes": 134,
+      "sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/tdd-green.log",
+      "bytes": 950,
+      "sha256": "9e7636728d31c65eabb696a573f145336e646732bfaecfadab08d5f5f2713d50"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/tdd-red.log",
+      "bytes": 6392,
+      "sha256": "7b01e398a5d1b866da96e0cfbd28d029d5a07f948c488df8687731496f9bc243"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/test_loads.py",
+      "bytes": 7967,
+      "sha256": "7c68ef51cd8f75c515d5307e8082edacd621149ced7023243f50583d8a3d3284"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/trial-proof.json",
+      "bytes": 221924,
+      "sha256": "58014b589deafe7ab6cea70125d538d2b8bc545d1f2b8007ee00404d517dfd9b"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/upper_getter-compiled-llvm.txt",
+      "bytes": 361,
+      "sha256": "e74a0d880fddb6325a1933353500825b513935e408bf5870c24d737abc4c20ed"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/upper_getter-elf-readback.txt",
+      "bytes": 3514,
+      "sha256": "8d175475fc20dd06b64f9f59110271379e5312c272e22e8e8b252e5e96e548a6"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/upper_load-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "5419313ae1156c59cc6baf3a550af968d594abe1ba10431a6e51b3dec41fb2bd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/upper_load-elf-readback.txt",
+      "bytes": 2475,
+      "sha256": "a5659cd07a0f79a7d752c7a8b34beaaeb22b1969c6a5d7b9fcdb43154be857f2"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/upper_store-compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "547454f15e4a4ce3f80343d118b426e4672f71583c123d79208651a115ba6e37"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-proof/upper_store-elf-readback.txt",
+      "bytes": 2472,
+      "sha256": "943f5a6bf249b65cf8dc3ce214909e82e46d36a1e6d203ac36f45410667d739a"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-indexed-loads-trial.md",
+      "bytes": 10352,
+      "sha256": "70d3f1a7b0a384bd994de79cef6b9b71444edf28f8aa5ba8b10c01a838b66a8b"
+    }
+  ],
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T06_complete": false,
+  "T10_complete": false
+}

@@ -1,0 +1,197 @@
+{
+  "bindings": {
+    "subpriv": {
+      "symbol": "hyp_subpriv_arena_lo",
+      "value": 41917448
+    },
+    "wram": {
+      "symbol": "hyp_wram_arena_lo",
+      "value": 58768528
+    },
+    "irq": {
+      "symbol": "hyp_irq_stack_size",
+      "value": 1024
+    },
+    "system": {
+      "symbol": "hyp_system_stack_size",
+      "value": 1024
+    },
+    "guard": {
+      "symbol": "hyp_arena_initialized",
+      "value": 58754096
+    }
+  },
+  "candidates": [
+    {
+      "role": "lower_store",
+      "source": "low_store_trial.c",
+      "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+      "function": "arm7_low_store_trial",
+      "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+      "vma": 58707716,
+      "bytes": 20,
+      "code_bytes": 20,
+      "recipe": "build82_O4s",
+      "relocations": []
+    },
+    {
+      "role": "upper_store",
+      "source": "store_trial.c",
+      "source_sha256": "a6457f199a58403507cc0262b1187ebccd1df05190d50771c6a9ae9eafa24abb",
+      "function": "arm7_store_trial",
+      "object_sha256": "03aebe3ecc0c8fbbc1466d836bd2b659827b2a078f56c9eed1137d7abc426ccf",
+      "vma": 58707736,
+      "bytes": 20,
+      "code_bytes": 20,
+      "recipe": "build114_O4p",
+      "relocations": []
+    },
+    {
+      "role": "lower_getter",
+      "source": "low_getter_trial.c",
+      "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+      "function": "arm7_low_getter_trial",
+      "object_sha256": "9704c69afb0dcc0a31dd008c8e4f6ce8b6f91537133238b9ecfec7c6958f076b",
+      "vma": 58707756,
+      "bytes": 88,
+      "code_bytes": 80,
+      "relocations": [
+        {
+          "offset": 80,
+          "binding": "subpriv",
+          "type": 2,
+          "addend": 0
+        },
+        {
+          "offset": 84,
+          "binding": "wram",
+          "type": 2,
+          "addend": 0
+        }
+      ],
+      "recipe": "build82_O4s"
+    },
+    {
+      "role": "upper_getter",
+      "source": "high_getter_trial.c",
+      "source_sha256": "342ace7943b49cb8a8fc7e47497ce0ea2a33c88948b877333875744528f0cd0e",
+      "function": "arm7_high_getter_trial",
+      "object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+      "vma": 58707844,
+      "bytes": 128,
+      "code_bytes": 108,
+      "relocations": [
+        {
+          "offset": 112,
+          "binding": "irq",
+          "type": 2,
+          "addend": 0
+        },
+        {
+          "offset": 120,
+          "binding": "wram",
+          "type": 2,
+          "addend": 0
+        },
+        {
+          "offset": 124,
+          "binding": "system",
+          "type": 2,
+          "addend": 0
+        }
+      ],
+      "recipe": "build82_O4s"
+    },
+    {
+      "role": "initializer",
+      "source": "arena_init_trial.c",
+      "source_sha256": "b014099daa3d3dc1e2a14ca39a434726946067f448ff0e92ae5c2393bb44507e",
+      "function": "arm7_arena_init_trial",
+      "object_sha256": "47a79e6c15b3191c2a1d06f8124596ee94e2e42a6defdb4bf270b5820c2b5112",
+      "vma": 58708012,
+      "bytes": 164,
+      "code_bytes": 160,
+      "recipe": "build82_O4s",
+      "relocations": [
+        {
+          "offset": 32,
+          "callee": "upper_getter",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 44,
+          "callee": "upper_store",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 52,
+          "callee": "lower_getter",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 64,
+          "callee": "lower_store",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 72,
+          "callee": "upper_getter",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 84,
+          "callee": "upper_store",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 92,
+          "callee": "lower_getter",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 104,
+          "callee": "lower_store",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 112,
+          "callee": "upper_getter",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 124,
+          "callee": "upper_store",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 132,
+          "callee": "lower_getter",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 144,
+          "callee": "lower_store",
+          "type": 1,
+          "addend": -8
+        },
+        {
+          "offset": 160,
+          "binding": "guard",
+          "type": 2,
+          "addend": 0
+        }
+      ]
+    }
+  ]
+}

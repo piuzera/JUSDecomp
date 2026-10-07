@@ -1,0 +1,13 @@
+{
+  "finding": "Retained-memory bound omits per-root frontier storage",
+  "decision": "clarify_valid_bound_no_implementation_change",
+  "general_bound": "O(N + E + R*(N + E))",
+  "checked_observer_invariant": "At most three transfers per instruction; E <= 3N",
+  "current_API_bound": "O(N + E + R*N)",
+  "evidence": [
+    "arm7_observation::observe emits at most three transfers for conditional direct calls",
+    "SpanObservation constructors are private and the type has no Deserialize",
+    "connect retains E+1 frontier capacity per root"
+  ],
+  "historical_capsules_and_frozen_source_unchanged": true
+}

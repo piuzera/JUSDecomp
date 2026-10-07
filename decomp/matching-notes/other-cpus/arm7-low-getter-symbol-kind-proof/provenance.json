@@ -1,0 +1,25 @@
+{
+  "accepted_base": "b7ec2f1b2a3f0d60b84f26bad5df813fb201d23d",
+  "starting_source_trial": "jus-bjry.23",
+  "starting_source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "source_sha256": "3f7b22c42f4b98cfed84308f2e5b658ae9cecdb8a17d900421e71ed70c496495",
+  "only_change": "hyp_wram_arena_lo external byte-object declaration to external void-function declaration",
+  "original_greater_than_body_preserved": true,
+  "source_candidate_count": 1,
+  "recipe_count": 1,
+  "operand_flip_not_combined": true,
+  "copied_original_trial_readers_identical": {
+    "verify.py": "d4b282bfbdae3a439ed74fbf88990afba7f7d26ea4e88ee45593888f4672cde2",
+    "read_original.py": "20054901f1a82b9749f97cf891cf6a6535ccc0bdc2c4b503bd956f81c45ff447",
+    "test_verify.py": "841fd530cebf7775bf15ad352ca0acb605e92d198fd0e783ef4e3607ad896f89",
+    "original-manifest.json": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f"
+  },
+  "new_replay_TDD": {
+    "red_failures": 1,
+    "green_passes": 1
+  },
+  "native_link_attempted": false,
+  "source_credit_bytes": 0,
+  "canonical_changed": false,
+  "donor_declaration_reference": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c"
+}

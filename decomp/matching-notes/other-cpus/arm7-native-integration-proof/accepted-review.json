@@ -1,0 +1,21 @@
+{
+  "reviewed_JUS_commit": "e38bf84",
+  "model": "gpt-6.1-sol",
+  "result": "No flags",
+  "scope": "canonical paired native ARM7 integration, actual proof and decision trail",
+  "verified": [
+    "live immutable build result and JSON-only rejection",
+    "five exported evidence hashes",
+    "all243 actual build artifact hashes",
+    "all23 ARM7 input/tool/source pins",
+    "identical worker/root67108864-byte ROM",
+    "248 root tests with zero skips",
+    "actual20-stage verifier including17+2 native payload writes"
+  ],
+  "ARM7_source_bytes": 0,
+  "ARM7_functions": "unknown",
+  "ARM7_executability": "unknown",
+  "ARM7_original_relocations": "unknown",
+  "T10_complete": false,
+  "emulator_smoke": "not performed"
+}

@@ -1,0 +1,20 @@
+	mov	r0, #7
+	bl	#-248
+	mov	r1, r0
+	mov	r0, #7
+	bl	#-368
+	mov	r0, #7
+	bl	#-356
+	mov	r1, r0
+	mov	r0, #7
+	bl	#-408
+	mov	r0, #8
+	bl	#-288
+	mov	r1, r0
+	mov	r0, #8
+	bl	#-408
+	mov	r0, #8
+	bl	#-396
+	mov	r1, r0
+	mov	r0, #8
+	bl	#-448

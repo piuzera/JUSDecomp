@@ -1,0 +1,15 @@
+{
+  "compiler_flags": [
+    "-proc",
+    "arm7tdmi",
+    "-nothumb",
+    "-interworking",
+    "-nostdinc",
+    "-O4,p",
+    "-c"
+  ],
+  "original_object_sha256": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+  "original_source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "original_source_trial_accepted_commit": "6ec389ff8ad8e165d408fe7bb089471bf886326a",
+  "accepted_operand_result_and_integrity_base": "b7ec2f1b2a3f0d60b84f26bad5df813fb201d23d"
+}

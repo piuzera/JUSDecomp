@@ -1,0 +1,14 @@
+{
+  "status": "accepted_primary_provenance",
+  "reviewed_worker_commit": "3629f89c54c3dafef9baecab21acdd94b8a753f8",
+  "published_research_commit": "3874b69810d27a2b0831b31f6f50e3a53ebb927f",
+  "artifact_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-donor-build-provenance-proof/primary-audit.json": "6d2d67aaf53be488c2585626dd74f9cd71f618c74ac934184ef6359a7e1efd24",
+    "decomp/matching-notes/other-cpus/arm7-donor-build-provenance.md": "268b8da9b1360818be624cb34d93ee818d55b4909dcd06b141268cbf37dfa593",
+    "decomp/matching-notes/other-cpus/arm7-donor-build-provenance-proof/root-review.json": "2462bddce453f0978d8b3fa11042f6f0ae5967cb5af203f6379768b57887e2c9"
+  },
+  "original_JUS_compiler_or_SDK_identified": false,
+  "source_credit_bytes": 0,
+  "canonical_update": false,
+  "T10_complete": false
+}

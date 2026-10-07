@@ -1,0 +1,25 @@
+{
+  "inspection_date": "2026-10-05",
+  "authority": "community Pok\u00e9mon Diamond reconstruction, not Nintendo official SDK or identified JUS donor",
+  "repository": "pret/pokediamond",
+  "commit": "38f3650189f8989aed91618745aa74029fa60247",
+  "sources": [
+    {
+      "path": "arm7/lib/src/OS_arena.c",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c"
+    },
+    {
+      "path": "arm7/lib/include/mmap.h",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/include/mmap.h",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/include/mmap.h"
+    },
+    {
+      "path": "include/nitro/mmap_shared.h",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/include/nitro/mmap_shared.h",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/include/nitro/mmap_shared.h"
+    }
+  ],
+  "source_files_copied": false,
+  "original_JUS_version_names_signatures_ownership_established": false
+}

@@ -1,0 +1,23 @@
+{
+  "reviewer": "gpt-6-astra",
+  "reviewed_integration_commit": "0fa813d",
+  "status": "cleared",
+  "attention_flags": [],
+  "tool_source_commit": "bee60e2ee89308616933a391c387928e2dfb5c07",
+  "root_tests_passed": 41,
+  "root_native_tools": "Both hashes match candidate",
+  "actual_root_programs": 2,
+  "explicit_root_spans": 4,
+  "strict_parent_metadata_files_verified": 51,
+  "strict_child_metadata_files_verified": 9,
+  "arm9_compatibility_stages": 19,
+  "arm9_compatibility_source_hashes_verified": 72,
+  "arm9_compatibility_artifacts_verified": 209,
+  "relocations_verified": 87493,
+  "whole_rom": "byte-identical",
+  "high_address_debug_observation": "No overflow in bounded decode with relative branch offsets; does not prove hardware-address validity or branch reachability",
+  "source_credit_bytes": 0,
+  "production_pin_changed": false,
+  "arm7_binary_baseline_complete": false,
+  "task_complete": false
+}

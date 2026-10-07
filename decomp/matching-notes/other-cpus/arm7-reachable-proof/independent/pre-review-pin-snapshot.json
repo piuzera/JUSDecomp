@@ -1,0 +1,114 @@
+[
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-checked-view.patch",
+    "sha256": "e0830a0ea25d67e9fd6b35fe9b043a7055851815fd451e3e6ed3f177a65554ad"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-module-input.patch",
+    "sha256": "0001c73030992c6e8b41f23b32795736c9ee9cabfe19b81a630764b630f7da32"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-observation.patch",
+    "sha256": "5777c649dad7e92d01091ad1019ce7a1286da57aedd3556f1df3737e49abaad4"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-physical-baseline/README.md",
+    "sha256": "2346c247cbd82885ccc22ddd68aeccd30946ba04a3cc6158eebd0c4cf45863b5"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-physical-baseline/accepted-review.json",
+    "sha256": "93f1d25741ce1e6e38f3dfb2c3534edcdc636565a5a5fbc4794d7333b2b7404c"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-physical-baseline/approval.json",
+    "sha256": "4deb3610dadfdea50e54034e96c7c930c665c8fdd23edb809fc881d14e93401e"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-physical-baseline/root-proof.json",
+    "sha256": "356420f5a7129cc7f16fcf5df93487477f12d8956fe22d19f99861c0a03ef2b5"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-physical-baseline/source.patch",
+    "sha256": "6c2d81d4e37333a0833572a02267526c1119a0210fc82c755873401d84f1894d"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/arm7-physical-baseline/verification.json",
+    "sha256": "1e2fe8554b6b784ffc915873fb474c8b5e7c51135fb5220f61d7112865704735"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/branch-decoder-repair/dsd-branch-dependency-repair.patch",
+    "sha256": "1f39c170f15b960076a2e30025bff38ba5ffd0889f5b8d345dd5f82d5f6f8124"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/LICENSE.unarm",
+    "sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/manifest.json",
+    "sha256": "3174b5660dcc9eec7d6d7783fe611ab80645e4832cd412b6eb9ea958ef0a4950"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/prepare.py",
+    "sha256": "5fde56ada52911a52aa0cddb08e593ac9c8f0ce9e98c0ba776ab11b646eb1d63"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/registry-source-equivalence.json",
+    "sha256": "7f6d4d882c5849ffb13a2530e623e2d73f71a85ff5db8229e95ce9497e449f1e"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/source.patch",
+    "sha256": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/branch-decoder-repair/unarm-1.9.2/test_prepare.py",
+    "sha256": "137a249afe8538463444cbcc683b011271f73f8d00f5e8d8f10aa5a4b18ce3a2"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/Cargo.lock.original",
+    "sha256": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/LICENSE.ds-decomp",
+    "sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/LICENSE.ds-rom",
+    "sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/accepted-review.json",
+    "sha256": "c4dfc67b06b947f598461cc50edc7b0b6aa248205a8f29efbd31baa0b909817f"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/analyzer-approval.json",
+    "sha256": "cd5f54c8fa5f9fb19e7fcb02c66b1b3c402478148a14ae948c4790987d8b235f"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/codec-approval.json",
+    "sha256": "b64228826f3efc132f2917c979b2ceb28d645863a13965229fe30b95928ff16d"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/root-build.json",
+    "sha256": "31c2af082e1a2e4ea0adb1a5a40fb0ab359da23daf859427d9a30e11709290bf"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child-tool-approval/source-audit.json",
+    "sha256": "a27012b829e547ed5668d472b2146a86fa75bbfccc4ae3c51db3df890eade203"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/child_compression_probe.rs",
+    "sha256": "9baf8ab864540b9eaca6b7916f57074459ce89b5b95bb98d62bfa2c3180783c6"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/dsd-child-swi.patch",
+    "sha256": "4a58df420e9d05d52d08f28307b37d9865e87cc0318d332f747065555c203d36"
+  },
+  {
+    "path": "decomp/matching-notes/other-cpus/patched-parent-toolchain.lock.json",
+    "sha256": "ac0145d591a2efa4af8ceb5309d79fc7ba8e49aad74344d49cc6244b1c9f2455"
+  },
+  {
+    "path": "decomp/toolchain.lock.json",
+    "sha256": "9d713539bd7ad25c4d870ec691cd39418173400fb98461b68ac17067c2cdbe94"
+  }
+]

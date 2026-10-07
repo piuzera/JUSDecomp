@@ -1,0 +1,7 @@
+{
+  "status": "passed_receipt_returned_after_late_ROM_mutation",
+  "receipt_status": "passed",
+  "recorded_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "actual_rom_sha256": "acf90bac90acfac6e64e44d19095feaf00e10ec000ddd0757b8d5324334f2323",
+  "mismatch": true
+}

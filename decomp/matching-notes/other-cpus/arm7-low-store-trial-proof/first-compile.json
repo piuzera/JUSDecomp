@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+    "-proc",
+    "arm7tdmi",
+    "-nothumb",
+    "-interworking",
+    "-nostdinc",
+    "-O4,s",
+    "-c",
+    "/private/tmp/jus-arm7-low-store-worker-proof/low_store_trial.c",
+    "-o",
+    "/private/tmp/jus-arm7-low-store-worker-proof/compiled.o"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+  "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+  "object_bytes": 512,
+  "actual_text_bytes": 20,
+  "text_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+  "text_hex": "0001a0e1270680e2ff0a80e2a01d80e51eff2fe1",
+  "exact_original20": true
+}

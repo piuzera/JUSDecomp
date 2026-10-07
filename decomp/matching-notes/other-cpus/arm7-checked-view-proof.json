@@ -1,0 +1,358 @@
+{
+  "all_cpu_baseline_complete": false,
+  "inputs_unchanged": true,
+  "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+  "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "programs": [
+    {
+      "actual_table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+      "function_and_instruction_modes": "not_analyzed",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "layout": {
+        "base": 37224448,
+        "entry": 37224448,
+        "header_sha256": "afa321ff2d0b6d7c793c10ed7aa810755175fde894349b13f08eff9c80abd3de",
+        "identity": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "parent"
+          },
+          "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+        },
+        "image_bytes": 165552,
+        "image_offset": 2162688,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "params_offset": 408,
+        "params_sha256": "35ee58caed3e0988996effb640208bbd868bba58e1f81ac2cfcd06a32501b1c4",
+        "regions": [
+          {
+            "bss_bytes": 0,
+            "kind": "startup",
+            "runtime_base": 37224448,
+            "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+            "stored_extent": {
+              "end": 432,
+              "start": 0
+            }
+          },
+          {
+            "bss_bytes": 14920,
+            "kind": {
+              "autoload": 0
+            },
+            "runtime_base": 58687488,
+            "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+            "stored_extent": {
+              "end": 66552,
+              "start": 432
+            }
+          },
+          {
+            "bss_bytes": 6504,
+            "kind": {
+              "autoload": 1
+            },
+            "runtime_base": 41811968,
+            "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+            "stored_extent": {
+              "end": 165528,
+              "start": 66552
+            }
+          }
+        ],
+        "table_extent": {
+          "end": 165552,
+          "start": 165528
+        },
+        "table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "target": {
+          "cpu": "arm7",
+          "isa": "armv4t",
+          "processor": "arm7tdmi"
+        }
+      },
+      "linked_binary_baseline": false,
+      "regions": [
+        {
+          "actual_sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+          "bss_end": 37224880,
+          "bss_start": 37224880,
+          "description": {
+            "bss_bytes": 0,
+            "kind": "startup",
+            "runtime_base": 37224448,
+            "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+            "stored_extent": {
+              "end": 432,
+              "start": 0
+            }
+          },
+          "initialized_bytes": 432
+        },
+        {
+          "actual_sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+          "bss_end": 58768528,
+          "bss_start": 58753608,
+          "description": {
+            "bss_bytes": 14920,
+            "kind": {
+              "autoload": 0
+            },
+            "runtime_base": 58687488,
+            "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+            "stored_extent": {
+              "end": 66552,
+              "start": 432
+            }
+          },
+          "initialized_bytes": 66120
+        },
+        {
+          "actual_sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+          "bss_end": 41917448,
+          "bss_start": 41910944,
+          "description": {
+            "bss_bytes": 6504,
+            "kind": {
+              "autoload": 1
+            },
+            "runtime_base": 41811968,
+            "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+            "stored_extent": {
+              "end": 165528,
+              "start": 66552
+            }
+          },
+          "initialized_bytes": 98976
+        }
+      ],
+      "source_bytes": 0,
+      "table_bytes": 24
+    },
+    {
+      "actual_table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+      "function_and_instruction_modes": "not_analyzed",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "layout": {
+        "base": 37224448,
+        "entry": 37224448,
+        "header_sha256": "43eb7b2454d786b0f087f9bc4198e76f8f63b6353eb95af7a39ca063d22dceca",
+        "identity": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "nitro_fs",
+            "path": "ChildRom/JSS2Child.srl"
+          },
+          "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+        },
+        "image_bytes": 165552,
+        "image_offset": 1972736,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "params_offset": 408,
+        "params_sha256": "35ee58caed3e0988996effb640208bbd868bba58e1f81ac2cfcd06a32501b1c4",
+        "regions": [
+          {
+            "bss_bytes": 0,
+            "kind": "startup",
+            "runtime_base": 37224448,
+            "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+            "stored_extent": {
+              "end": 432,
+              "start": 0
+            }
+          },
+          {
+            "bss_bytes": 14920,
+            "kind": {
+              "autoload": 0
+            },
+            "runtime_base": 58687488,
+            "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+            "stored_extent": {
+              "end": 66552,
+              "start": 432
+            }
+          },
+          {
+            "bss_bytes": 6504,
+            "kind": {
+              "autoload": 1
+            },
+            "runtime_base": 41811968,
+            "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+            "stored_extent": {
+              "end": 165528,
+              "start": 66552
+            }
+          }
+        ],
+        "table_extent": {
+          "end": 165552,
+          "start": 165528
+        },
+        "table_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "target": {
+          "cpu": "arm7",
+          "isa": "armv4t",
+          "processor": "arm7tdmi"
+        }
+      },
+      "linked_binary_baseline": false,
+      "regions": [
+        {
+          "actual_sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+          "bss_end": 37224880,
+          "bss_start": 37224880,
+          "description": {
+            "bss_bytes": 0,
+            "kind": "startup",
+            "runtime_base": 37224448,
+            "sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+            "stored_extent": {
+              "end": 432,
+              "start": 0
+            }
+          },
+          "initialized_bytes": 432
+        },
+        {
+          "actual_sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+          "bss_end": 58768528,
+          "bss_start": 58753608,
+          "description": {
+            "bss_bytes": 14920,
+            "kind": {
+              "autoload": 0
+            },
+            "runtime_base": 58687488,
+            "sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349",
+            "stored_extent": {
+              "end": 66552,
+              "start": 432
+            }
+          },
+          "initialized_bytes": 66120
+        },
+        {
+          "actual_sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+          "bss_end": 41917448,
+          "bss_start": 41910944,
+          "description": {
+            "bss_bytes": 6504,
+            "kind": {
+              "autoload": 1
+            },
+            "runtime_base": 41811968,
+            "sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+            "stored_extent": {
+              "end": 165528,
+              "start": 66552
+            }
+          },
+          "initialized_bytes": 98976
+        }
+      ],
+      "source_bytes": 0,
+      "table_bytes": 24
+    }
+  ],
+  "schema_version": 1,
+  "source_bytes": 0,
+  "status": "physical_views_verified",
+  "task_complete": false,
+  "task": "jus-bjry.10",
+  "scope": "Checked ARM7 physical views only; no analyzer, linker, source, or executable classification",
+  "tool_source": {
+    "repository": "https://github.com/AetiasHax/ds-decomp",
+    "upstream_parent_revision": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+    "patch_base_revision": "78630f8f54835e0e627cd4e45a9626d88c307f8b",
+    "revision": "0ef447312649db7412ddd98fe0b2b23beb5bd196",
+    "tree": "69fd15be89fa49f13a8882567a7d561f65493ff7",
+    "patch_file": "arm7-checked-view.patch",
+    "patch_sha256": "e0830a0ea25d67e9fd6b35fe9b043a7055851815fd451e3e6ed3f177a65554ad",
+    "cargo_lock_sha256": "46f889093356a81ac8565ab22423fa91fe39bd3b3a9d5aaa184dcd954fe5f29f",
+    "previous_cargo_lock_sha256": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+    "dependency_delta": "Direct sha2 0.10.9 and encoding_rs 0.8.35; example-only serde_json 1.0.149. All already resolved in the previous lock; no package versions changed"
+  },
+  "build": {
+    "rustc": "1.98.1 (48a229cea 2026-09-01) (Homebrew)",
+    "cargo": "1.98.1 (797e8a9bc 2026-08-05) (Homebrew)",
+    "host": "macOS 26.6.2 build 25G83 arm64",
+    "profile": "release-fast",
+    "native_probe_sha256": "2fab077d22f2aa5e6bac5dba491d777e7206042964a194f13b585876321cc221",
+    "native_dsd_sha256": "717a54f59e162abeb8f146f665ecd8b1e2737cb8c6602199957fb1fb4b33a169",
+    "production_pin_changed": false
+  },
+  "sidecar_provenance": {
+    "path": "arm7-checked-layouts.json",
+    "sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "authority": "The consumed sidecar is independently pinned by the probe caller before deserialization; a rolling scope document is not runtime authority",
+    "inventory_context_sha256": "1900b1c043471997fc856cbb8ed0a6638d5d2f5f82cfb559dca8e7d4ba9b990c",
+    "derivation": "Existing startup/autoload scope tuples; independently read actual pinned parent and selected child headers, image, parameter block, table and region hashes"
+  },
+  "validation": {
+    "new_public_invented_fixture_tests": 24,
+    "existing_library_tests": 5,
+    "failed_tests": 0,
+    "tdd_red_observed": [
+      "Missing checked ARM7 module/API before implementation",
+      "Exact child directory selector incorrectly accepted before repair",
+      "Missing independently pinned header and parameter hash fields before addition",
+      "Review reserved-overlay file-ID mutation panicked before preflight repair",
+      "Review malformed Shift-JIS names 0x81 and 0x82 accepted as duplicate U+FFFD before decoding repair",
+      "Valid Shift-JIS sequences 0x8790 and 0x81e0 both accepted as sibling U+2252 before decoded-name uniqueness repair",
+      "Overlay extent/count mutations reached upstream accessor instead of checked rejection before extent/count preflight"
+    ],
+    "clippy": "Passed with -D warnings and inherited chunks_exact_to_as_chunks lint allowed; existing ctor.rs and functions.rs trigger this newer-toolchain lint",
+    "wrong_sidecar_pin_probe": {
+      "exit_code": 1,
+      "error": "layout sidecar hash mismatch"
+    },
+    "git_diff_check": "Tool source diff passed; published non-patch metadata diff passed. The outer diff flags one standard blank patch context line as trailing whitespace.",
+    "review_reproductions": [
+      {
+        "case": "control",
+        "actual_exit": 0,
+        "expected_exit": 0,
+        "error": null
+      },
+      {
+        "case": "overlay-file-id",
+        "actual_exit": 1,
+        "expected_exit": 1,
+        "error": "Error: NitroFs"
+      },
+      {
+        "case": "decoded-duplicates",
+        "actual_exit": 1,
+        "expected_exit": 1,
+        "error": "Error: NitroFs"
+      }
+    ],
+    "valid_shift_jis_control": "A single correctly decoded U+2252 child name remains selectable and grants zero source bytes",
+    "valid_reserved_overlay_control": "With one reserved slot and child FAT ID1, exact child selection succeeds; extent tests use this valid ID and assert separate overflow, bounds, alignment, and count errors"
+  },
+  "limitations": [
+    "No ARM7 ModuleKind, analyzer/config/delink integration or ARMv4T parser change",
+    "No function boundaries, original symbol/relocation ledger, live relocations or linked ARM7 baseline established",
+    "CPU/ISA/processor fields are a required declaration, not executed instruction parsing or compiler policy proof",
+    "Startup RAM sources 0x023fe940 (352 bytes) and 0x023fe904 (32 bytes) remain outside the stored image; contents and executable status unresolved",
+    "Observed startup-to-autoload0 ARM seed 0x037f8468 does not establish function extent, code/data boundaries, or modes throughout either autoload",
+    "Autoload1 entrypoints and code/data/ARM-Thumb mapping unresolved",
+    "Physical validation grants zero source credit and cannot close T10"
+  ],
+  "smallest_next_step": "Use checked views as explicit program/module inputs; introduce ARM7 identity and per-module ARMv4T policy in a separately tested analyzer adapter, beginning only with grounded startup and autoload0 ARM seeds"
+}

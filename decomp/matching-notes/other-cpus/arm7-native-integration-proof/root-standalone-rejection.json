@@ -1,0 +1,4 @@
+{
+  "status": "failed",
+  "failure": "ARM7 report cannot repack without live producer operation; rerun canonical verifier"
+}

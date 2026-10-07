@@ -1,0 +1,8 @@
+{
+  "old_source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "source_sha256": "92aef5bc8ce408b4d1b19a95e8191b4668a82f335cbcb19302c52faf0668e0bb",
+  "old_expression": "(unsigned int)&hyp_wram_arena_lo > low",
+  "new_expression": "low < (unsigned int)&hyp_wram_arena_lo",
+  "old_expression_offset": 444,
+  "other_C_bytes_unchanged": true
+}

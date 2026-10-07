@@ -1,0 +1,59 @@
+[
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "parent"
+      },
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    "selections": [
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58707844,
+          "end": 58707876
+        }
+      }
+    ],
+    "roots": [
+      {
+        "selection": 0,
+        "address": 58707844,
+        "assumption": "Explicit leaf-triage ARM-mode candidate; entry and execution unproven"
+      }
+    ]
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "nitro_fs",
+        "path": "ChildRom/JSS2Child.srl"
+      },
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+    },
+    "selections": [
+      {
+        "region": {
+          "autoload": 0
+        },
+        "mode": "Arm",
+        "extent": {
+          "start": 58707844,
+          "end": 58707876
+        }
+      }
+    ],
+    "roots": [
+      {
+        "selection": 0,
+        "address": 58707844,
+        "assumption": "Explicit leaf-triage ARM-mode candidate; entry and execution unproven"
+      }
+    ]
+  }
+]

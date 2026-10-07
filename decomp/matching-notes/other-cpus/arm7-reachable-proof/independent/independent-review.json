@@ -1,0 +1,134 @@
+{
+  "decision": "accept bounded research candidate graph",
+  "source_commit": "71e766e562c78d4b0ec404b3b4edbe242a8d1b0f",
+  "source_tree": "75215439eec429f6dd82df8a9f49bba054a16839",
+  "implementation_findings": [],
+  "source_review": "private immutable checked observations; exact-reference roots; full-identity initialized same-mode joins; whole-instruction mode quarantine; Thumb BL interiors; symbolic guarded transfers; finite per-root BFS and predecessor witnesses reviewed",
+  "tests": {
+    "library-tests": 97,
+    "doc-tests": 1,
+    "cli-unit-test": 1
+  },
+  "clippy": {
+    "status": "passed all targets",
+    "command": "cargo clippy --locked --offline -p ds-decomp --all-targets -- -D warnings -A clippy::chunks_exact_to_as_chunks",
+    "baseline_allowance": "only existing chunks_exact_to_as_chunks at unchanged ctor.rs:155/functions.rs:558; raw strict failure retained in library-clippy.log"
+  },
+  "producer_hashes": {
+    "dsd": "0e63e31cd3d3a6b7fc5e551c12ad31e7c86156a30c854497645b5106bb5a4ab0",
+    "examples/arm7_reachable_probe": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff",
+    "examples/arm7_physical_baseline": "e7843875fcf159eb680183d663a99e9338d2a76a1fb5dbebcd91ac3f332f1ba6"
+  },
+  "build_context": "combined CLI/library bin and two examples, exact two path remaps; standalone probe context retained separately",
+  "actual_report_comparison": {
+    "result": "actual reports match pinned observations, rooted candidate paths and guarded frontiers",
+    "program_cases": [
+      {
+        "case": "calls",
+        "program": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "parent"
+          },
+          "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+        },
+        "nodes": 5,
+        "transfers": 7,
+        "root_work": [
+          [
+            5,
+            7
+          ]
+        ],
+        "frontiers": [
+          3
+        ]
+      },
+      {
+        "case": "calls",
+        "program": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "nitro_fs",
+            "path": "ChildRom/JSS2Child.srl"
+          },
+          "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+        },
+        "nodes": 5,
+        "transfers": 7,
+        "root_work": [
+          [
+            5,
+            7
+          ]
+        ],
+        "frontiers": [
+          3
+        ]
+      },
+      {
+        "case": "startup",
+        "program": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "parent"
+          },
+          "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+        },
+        "nodes": 14,
+        "transfers": 15,
+        "root_work": [
+          [
+            11,
+            12
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "frontiers": [
+          1,
+          1
+        ]
+      },
+      {
+        "case": "startup",
+        "program": {
+          "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+          "program": {
+            "kind": "nitro_fs",
+            "path": "ChildRom/JSS2Child.srl"
+          },
+          "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+        },
+        "nodes": 14,
+        "transfers": 15,
+        "root_work": [
+          [
+            11,
+            12
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "frontiers": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "malformed_probe_cases": 20,
+  "all_rejections_without_stdout": true,
+  "deterministic_actual_reports": true,
+  "source_before_after_identical": true,
+  "approved_pins_unchanged": 28,
+  "source_credit": 0,
+  "functions": "unknown",
+  "executable_coverage": "unknown",
+  "original_relocations": "unknown",
+  "T10_complete": false
+}

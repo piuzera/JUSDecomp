@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "public_replay": "fresh committed package, original ROM and pinned tools",
+  "tests": {
+    "passed": 2,
+    "failed": 0
+  },
+  "root_trial_receipt_sha256": "49af654ef0837a1ba28e4354313b83c30cf44b08079ec954991714b93a632542",
+  "root_precompile_static_receipt_sha256": "fa896d90099e656be4666c1ff03575ea0cedeba8059dfe2b800987999e64307d",
+  "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+  "actual_object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "positive": {
+        "linked_elf_sha256": "2f67289e8e24014bfd32a0e06fa91d5334553cd1124b21b269756eaf42e13bb9",
+        "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "function": {
+          "name": "arm7_low_store_trial",
+          "vma": 58707716,
+          "size": 20,
+          "section": 5
+        },
+        "map_row": " 37fcf04  23850b4       14     4         compiled.o:(.text)",
+        "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0
+      },
+      "load_segments": 6,
+      "independent_elf_sha256": "6d056704dd5ae9cda37c630a936d1c467bfc85dfca1df59c649960c7819d222d",
+      "verified_container_difference": "public __candidate_start/end versus independent __store_start/end; allocated sections, segment records, entry, flags, linked image equal",
+      "omitted_object_rejected": true,
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "positive": {
+        "linked_elf_sha256": "2f67289e8e24014bfd32a0e06fa91d5334553cd1124b21b269756eaf42e13bb9",
+        "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "function": {
+          "name": "arm7_low_store_trial",
+          "vma": 58707716,
+          "size": 20,
+          "section": 5
+        },
+        "map_row": " 37fcf04  23850b4       14     4         compiled.o:(.text)",
+        "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_bytes": 165552,
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0
+      },
+      "load_segments": 6,
+      "independent_elf_sha256": "6d056704dd5ae9cda37c630a936d1c467bfc85dfca1df59c649960c7819d222d",
+      "verified_container_difference": "public __candidate_start/end versus independent __store_start/end; allocated sections, segment records, entry, flags, linked image equal",
+      "omitted_object_rejected": true,
+      "wrong_placement_rejected": true,
+      "malformed_load_rejected": true
+    }
+  ],
+  "git_blob_closure": [
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/checked-layouts.json",
+      "bytes": 3685,
+      "sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/compiled-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/elf-readback.txt",
+      "bytes": 2473,
+      "sha256": "7db0c08ad4ce3feae6607787c8718d3bc63c423b001ee9d8bb58300e7add4765"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/evidence-pins.json",
+      "bytes": 3573,
+      "sha256": "e55d01b51e521c7c21d9572badb387db0af2e37e3e2717104b8b6d4830fc956c"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/first-compile.json",
+      "bytes": 836,
+      "sha256": "fc19b4e7ffb7afeb1dd46cd1b2623867fbb66f2d59835875f61f650dd768c6f0"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/low_store_trial.c",
+      "bytes": 138,
+      "sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/original-0-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/original-1-llvm.txt",
+      "bytes": 89,
+      "sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/original-manifest.json",
+      "bytes": 496,
+      "sha256": "66683ae99da40a86c08f6f10960dfcd8ae0d963e302b9458b78430a01a2dc123"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/public-replay.log",
+      "bytes": 82,
+      "sha256": "b8abb3e95e2b0eedc451efa772d37a921463757550d23ae38fbaffaf19b3b859"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/public-tests.log",
+      "bytes": 466,
+      "sha256": "9b93fb36880c172d6114cf2a84b4d9650e01af892359ad7bbd43eb88dc28177d"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/recipe.json",
+      "bytes": 1592,
+      "sha256": "c4bc23d280213371df265485cd12f486a1528363ba93adc3a71dd221d56c18d8"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/reproduce.py",
+      "bytes": 3242,
+      "sha256": "011a6ba768cbcef0d885d8c3394abe2b4d7280264514073c33261db136f26161"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/static-proof.json",
+      "bytes": 1940,
+      "sha256": "edddbed0354f29eea80d0ea59e8561fe2bafac98d857277d8a1088b17378fadd"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/store.py",
+      "bytes": 19587,
+      "sha256": "e7372618fb0db69fae0724d919d2fd2f11029291c704f616f4c03cd61bc2cd76"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/tdd-green.log",
+      "bytes": 100,
+      "sha256": "84a136570e659dce1c9a41b52b6e8ca284af4f8df85b49b4a48db33eb108458e"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/tdd-red.log",
+      "bytes": 1941,
+      "sha256": "46dcc0ee3e06a21d94ffc5105adedb532bf559c0114d806418cfba984066f28b"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/test_store.py",
+      "bytes": 3354,
+      "sha256": "4fd991590b9e3e64be7795ca9a556a4adb0d701c5d66e8cc78554b5be5b36cc4"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial-proof/trial-proof.json",
+      "bytes": 40081,
+      "sha256": "9d111ca13daec1a9f003f4c35979ed126938d5044ec0bf6e7d87ef4cf29b0e7b"
+    },
+    {
+      "path": "decomp/matching-notes/other-cpus/arm7-low-store-trial.md",
+      "bytes": 7447,
+      "sha256": "155abc88463809bd4c6c4ab6e79aca2da56efd291833dd88a58c92b37399e10b"
+    }
+  ],
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T10_complete": false
+}

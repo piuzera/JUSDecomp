@@ -1,0 +1,32 @@
+{
+  "status": "accepted_independent_original_graph_and_public_review",
+  "worker_commit": "d509e30f334f92f3fccb51d428c6c9c79b0e2c36",
+  "publication_commit": "d70cda1",
+  "review_receipt_sha256": "1073e7a16eedeb829893f72a2621a55d0381018a51f85c15de313996acd7990f",
+  "complete_report_sha256": "994cadc35863bb4e0f7306a692c4a2a8792cf3064ed69a7b184d23e8de4c8e90",
+  "evidence_sha256": {
+    ".gitattributes": "667b93be6ede617192a0c6ac9e3664b1727402239531277b6cd47b53e73a6535",
+    "commands.json": "68df860594c3188cc7cbc7984f3e7fedd11c9b5d0b26776597296054d82bc9f1",
+    "graph-summary.json": "4aa1d8df6b285037db30181fd410ea84a8fb9007be996df8df0e104145396d92",
+    "independent/check_public.py": "855dd4ff87a5573d77a3ad0a660e553515de1793d273e3c0bb7042dc2a035ed1",
+    "independent/check_witnesses.py": "fb2e93848d0e799c99d14f5dd1678d6109bd456799b269371ae771124f1d1b05",
+    "independent/independent-receipt.json": "1073e7a16eedeb829893f72a2621a55d0381018a51f85c15de313996acd7990f",
+    "independent/llvm-program-0-span-0.txt": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d",
+    "independent/llvm-program-0-span-1.txt": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+    "independent/llvm-program-1-span-0.txt": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d",
+    "independent/llvm-program-1-span-1.txt": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+    "independent/probe-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "independent/verify_branch.py": "30ae54ca576484d2317efe9b4ea171e1907f63578ebd92991d27dec8c97f3834",
+    "independent/witness-checks.json": "d1cc4a453fdf4cb47f677ce142f9b8a46e3407e63b3958717936a29e26e55aab",
+    "llvm-condition-failed.txt": "33e35bea506255b9382ab724fcfcfb0d7f049a302a371fd22a49e34213a6f93d",
+    "llvm-condition-passed.txt": "7c4d715438ec0d727d7553f146499015f00875dcae74430fc0a59a36fe8a3d7d",
+    "original-read.json": "5147f56522c05daf50c49e97c337ae168e38cd0ab75171b2a1a456ab5129b8b3",
+    "read_original.py": "b1e015aaf247c1d4d469d16b671712fc48cc6ae6681e402639b21e70b14f8bb2",
+    "requests.json": "c5e7b7b0911462ddd213dbf60ef25986f64896bb36288e3788743d2bcb1aad63",
+    "summarize_report.py": "9816d2954f584a08a0b770c124850f7119222b55f49e834d86d9bcab3cf815b7"
+  },
+  "source_bytes": 0,
+  "runtime_value": "unknown",
+  "branch_feasibility": "unknown",
+  "T10_complete": false
+}

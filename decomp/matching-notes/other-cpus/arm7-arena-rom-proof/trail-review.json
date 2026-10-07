@@ -1,0 +1,24 @@
+{
+  "reviewer_model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "scope": "manual bounded task35 transcript excerpt and actual decision trail; not complete transcript",
+  "flags": [
+    {
+      "finding": "trail stopped at provenance gate hold",
+      "resolution": "appended measured final-checks row after actual root/independent replay and Git/EOL success"
+    },
+    {
+      "finding": "independent suite was still running at initial audit",
+      "resolution": "actual final log confirms twelve tests passed in173.405s; no flags in independent artifact review"
+    }
+  ],
+  "final_publication_review_status": "No flags",
+  "reviewed_source_commit": "dc61c14e3c4cb3b0e8466c24522974a1c53f65e8",
+  "reviewed_tracker_commit": "32384ce94ab8c7bd2cace8b2a4e54493833dd569",
+  "actual_remote_refs_match": true,
+  "acceptance_pins_independently_checked": 98,
+  "decision_trail_append_only": true,
+  "published_bead35_closed": true,
+  "t10_complete": false,
+  "review_followup_scope": "This final audit record and acceptance-row commit are outside the inspected publication commits; their current bytes are checked by the unchanged Git gate after commit."
+}

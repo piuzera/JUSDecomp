@@ -1,0 +1,467 @@
+diff --git a/disasm/src/arm/generated.rs b/disasm/src/arm/generated.rs
+index 8501ac4..e5a7e99 100644
+--- a/disasm/src/arm/generated.rs
++++ b/disasm/src/arm/generated.rs
+@@ -6690,16 +6690,16 @@ impl Ins {
+     pub fn field_dbg_option(&self) -> u32 {
+         (self.code & 0x0000000f)
+     }
+-    /// branch_offset: 24-bit signed B/BL target offset
++    /// branch_offset: Signed scaled imm24 B/BL displacement plus PC bias
+     #[inline(always)]
+     pub fn field_branch_offset(&self) -> i32 {
+-        ((((((self.code & 0x00ffffff) << 2) + 8) as i32) << 8 >> 8)) as i32
++        (((((self.code & 0x00ffffff) << 2) as i32) << 6 >> 6) + 8) as i32
+     }
+-    /// blx_offset: 24-bit signed BLX target offset
++    /// blx_offset: Signed scaled imm24 and H BLX displacement plus PC bias
+     #[inline(always)]
+     pub fn field_blx_offset(&self) -> i32 {
+-        ((((((self.code & 0x00ffffff) << 2 | ((self.code >> 24) & 0x00000001) << 1) + 8)
+-            as i32) << 8 >> 8)) as i32
++        (((((self.code & 0x00ffffff) << 2 | ((self.code >> 24) & 0x00000001) << 1)
++            as i32) << 6 >> 6) + 8) as i32
+     }
+     /// immed_16: 16-bit immediate in bits 0..4 and 8..20
+     #[inline(always)]
+diff --git a/disasm/src/parse.rs b/disasm/src/parse.rs
+index bc0ab67..4e9b8e7 100644
+--- a/disasm/src/parse.rs
++++ b/disasm/src/parse.rs
+@@ -75,14 +75,20 @@ macro_rules! parse_arm {
+ }
+ 
+ macro_rules! parse_thumb {
+-    ($self:expr, $code:expr) => {{
++    ($self:expr, $code:expr, $address:expr) => {{
+         let ins = thumb::Ins::new($code, &$self.flags);
+         let parsed = ins.parse(&$self.flags);
+         if ins.is_half_bl() {
+             let (_, code) = $self.read_code()?;
+             let ins = thumb::Ins::new(code, &$self.flags);
+             let second = ins.parse(&$self.flags);
+-            let combined = parsed.combine_thumb_bl(&second);
++            let mut combined = parsed.combine_thumb_bl(&second);
++            if ins.op == thumb::Opcode::BlxI {
++                // Immediate Thumb BLX uses Align(PC, 4), unlike Thumb BL.
++                if let Argument::BranchDest(dest) = &mut combined.args[0] {
++                    *dest -= ($address & 2) as i32;
++                }
++            }
+             (Ins::Thumb(ins), combined)
+         } else {
+             (Ins::Thumb(ins), parsed)
+@@ -101,7 +107,7 @@ impl Iterator for Parser<'_> {
+             #[cfg(feature = "arm")]
+             ParseMode::Arm => parse_arm!(self, code),
+             #[cfg(feature = "thumb")]
+-            ParseMode::Thumb => parse_thumb!(self, code),
++            ParseMode::Thumb => parse_thumb!(self, code, address),
+             ParseMode::Data => {
+                 let mut args = Arguments::default();
+                 args[0] = Argument::UImm(code);
+@@ -201,7 +207,9 @@ impl ParsedIns {
+     pub fn combine_thumb_bl(&self, second: &Self) -> Self {
+         match (self.args[0], second.args[0]) {
+             (Argument::SImm(high), Argument::UImm(low)) => {
+-                let dest = (high + (low as i32)) << 9 >> 9;
++                // The high half already includes the PC bias. Sign-extend only
++                // the combined 23-bit displacement, then restore that bias.
++                let dest = ((high - 4 + (low as i32)) << 9 >> 9) + 4;
+                 let mut args = Arguments::default();
+                 args[0] = Argument::BranchDest(dest);
+                 Self {
+diff --git a/disasm/tests/test_branch_boundaries.rs b/disasm/tests/test_branch_boundaries.rs
+new file mode 100644
+index 0000000..4908c20
+--- /dev/null
++++ b/disasm/tests/test_branch_boundaries.rs
+@@ -0,0 +1,366 @@
++// Synthetic expected addresses come from the committed independent LLVM23.1.2 oracle.
++use unarm::{args::Argument, ArmVersion, Endian, ParseFlags, ParseMode, Parser};
++
++fn check(bytes: &[u8], source: u32, mode: ParseMode, version: ArmVersion, expected: u32, mnemonic: &str) {
++    let flags = ParseFlags { version, ual: false };
++    let mut parser = Parser::new(mode, source, Endian::Little, flags, bytes);
++    let (address, _, parsed) = parser.next().expect("complete fixture");
++    assert_eq!(address, source);
++    assert_eq!(parsed.mnemonic, mnemonic);
++    let Argument::BranchDest(displacement) = parsed.args[0] else {
++        panic!("no direct branch destination");
++    };
++    assert_eq!(
++        address.wrapping_add_signed(displacement),
++        expected,
++        "{mnemonic} at {source:#010x}"
++    );
++    assert!(parser.next().is_none());
++}
++
++#[test]
++fn arm_b_bl_llvm_boundaries() {
++    // b_large_positive
++    check(
++        &[0x18, 0xe1, 0x51, 0xea],
++        0x02380000,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x037f8468,
++        "b",
++    );
++    // bl_large_positive
++    check(
++        &[0x17, 0xe1, 0x51, 0xeb],
++        0x02380004,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x037f8468,
++        "bl",
++    );
++    // b_large_negative
++    check(
++        &[0xfc, 0xff, 0xbf, 0xea],
++        0x02380008,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x01380000,
++        "b",
++    );
++    // bl_large_negative
++    check(
++        &[0xfb, 0xff, 0xbf, 0xeb],
++        0x0238000c,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x01380000,
++        "bl",
++    );
++    // b_max_positive
++    check(
++        &[0xff, 0xff, 0x7f, 0xea],
++        0x02380010,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x04380014,
++        "b",
++    );
++    // bl_max_positive
++    check(
++        &[0xff, 0xff, 0x7f, 0xeb],
++        0x02380014,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x04380018,
++        "bl",
++    );
++    // b_min_negative
++    check(
++        &[0x00, 0x00, 0x80, 0xea],
++        0x02380018,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x00380020,
++        "b",
++    );
++    // bl_min_negative
++    check(
++        &[0x00, 0x00, 0x80, 0xeb],
++        0x0238001c,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x00380024,
++        "bl",
++    );
++    // b_minus_one_word
++    check(
++        &[0xff, 0xff, 0xff, 0xea],
++        0x02380020,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x02380024,
++        "b",
++    );
++    // bl_zero_displacement
++    check(
++        &[0x00, 0x00, 0x00, 0xeb],
++        0x02380024,
++        ParseMode::Arm,
++        ArmVersion::V4T,
++        0x0238002c,
++        "bl",
++    );
++}
++
++#[test]
++fn arm_blx_llvm_boundaries() {
++    // blx_max_h0
++    check(
++        &[0xff, 0xff, 0x7f, 0xfa],
++        0x02380028,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x0438002c,
++        "blx",
++    );
++    // blx_max_h1
++    check(
++        &[0xff, 0xff, 0x7f, 0xfb],
++        0x0238002c,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x04380032,
++        "blx",
++    );
++    // blx_min_h0
++    check(
++        &[0x00, 0x00, 0x80, 0xfa],
++        0x02380030,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x00380038,
++        "blx",
++    );
++    // blx_min_h1
++    check(
++        &[0x00, 0x00, 0x80, 0xfb],
++        0x02380034,
++        ParseMode::Arm,
++        ArmVersion::V5Te,
++        0x0038003e,
++        "blx",
++    );
++}
++
++#[test]
++fn thumb_bl_llvm_boundaries() {
++    // bl_positive_pc_boundary_even
++    check(
++        &[0xff, 0xf3, 0xfe, 0xff],
++        0x02380000,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02780000,
++        "bl",
++    );
++    // bl_positive_pc_boundary_halfword
++    check(
++        &[0xff, 0xf3, 0xff, 0xff],
++        0x02380004,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02780006,
++        "bl",
++    );
++    // bl_min_negative
++    check(
++        &[0x00, 0xf4, 0x00, 0xf8],
++        0x02380008,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x01f8000c,
++        "bl",
++    );
++    // bl_negative_near
++    check(
++        &[0xff, 0xf7, 0xff, 0xff],
++        0x0238000c,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x0238000e,
++        "bl",
++    );
++    // bl_zero
++    check(
++        &[0x00, 0xf0, 0x00, 0xf8],
++        0x02380010,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02380014,
++        "bl",
++    );
++}
++
++#[test]
++fn thumb_blx_llvm_boundaries() {
++    // blx_positive_pc_boundary
++    check(
++        &[0xff, 0xf3, 0xfe, 0xef],
++        0x02380014,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02780014,
++        "blx",
++    );
++    // blx_min_negative
++    check(
++        &[0x00, 0xf4, 0x00, 0xe8],
++        0x02380018,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x01f8001c,
++        "blx",
++    );
++    // blx_negative_near
++    check(
++        &[0xff, 0xf7, 0xfe, 0xef],
++        0x0238001c,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x0238001c,
++        "blx",
++    );
++    // blx_zero
++    check(
++        &[0x00, 0xf0, 0x00, 0xe8],
++        0x02380020,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02380024,
++        "blx",
++    );
++}
++
++#[test]
++fn thumb_short_llvm_boundaries() {
++    // b_short_max
++    check(&[0xff, 0xe3], 0x02380024, ParseMode::Thumb, ArmVersion::V4T, 0x02380826, "b");
++    // b_short_min
++    check(&[0x00, 0xe4], 0x02380026, ParseMode::Thumb, ArmVersion::V4T, 0x0237f82a, "b");
++    // b_cond_max
++    check(
++        &[0x7f, 0xd1],
++        0x02380028,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x0238012a,
++        "bne",
++    );
++    // b_cond_min
++    check(
++        &[0x80, 0xd1],
++        0x0238002a,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x0237ff2e,
++        "bne",
++    );
++}
++
++#[test]
++fn v4t_rejects_arm_and_thumb_blx() {
++    let flags = ParseFlags {
++        version: ArmVersion::V4T,
++        ual: false,
++    };
++    let bytes = [0xff, 0xff, 0x7f, 0xfa];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380028, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0xff, 0xff, 0x7f, 0xfb];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x0238002c, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0x00, 0x80, 0xfa];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380030, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0x00, 0x80, 0xfb];
++    let (_, _, parsed) = Parser::new(ParseMode::Arm, 0x02380034, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0xff, 0xf3, 0xfe, 0xef];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380014, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0xf4, 0x00, 0xe8];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380018, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0xff, 0xf7, 0xfe, 0xef];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x0238001c, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++    let bytes = [0x00, 0xf0, 0x00, 0xe8];
++    let (_, _, parsed) = Parser::new(ParseMode::Thumb, 0x02380020, Endian::Little, flags, &bytes)
++        .next()
++        .unwrap();
++    assert!(!matches!(parsed.args[0], Argument::BranchDest(_)), "V4T accepted BLX");
++}
++
++#[test]
++fn thumb_blx_halfword_aligned_pc_llvm() {
++    // Unlike BL, BLX uses Align(PC, 4). These expected targets come from
++    // thumb-blx-alignment-disassembly.txt, including both displacement edges.
++    check(
++        &[0x00, 0xf0, 0x00, 0xe8],
++        0x02380002,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02380004,
++        "blx",
++    );
++    check(
++        &[0xff, 0xf3, 0xfe, 0xef],
++        0x02380006,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x02780004,
++        "blx",
++    );
++    check(
++        &[0x00, 0xf4, 0x00, 0xe8],
++        0x0238000a,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x01f8000c,
++        "blx",
++    );
++    check(
++        &[0xff, 0xf7, 0xfe, 0xef],
++        0x0238000e,
++        ParseMode::Thumb,
++        ArmVersion::V5Te,
++        0x0238000c,
++        "blx",
++    );
++}
++
++#[test]
++fn thumb_bl_keeps_halfword_aligned_pc_llvm() {
++    check(
++        &[0x00, 0xf0, 0x00, 0xf8],
++        0x02380012,
++        ParseMode::Thumb,
++        ArmVersion::V4T,
++        0x02380016,
++        "bl",
++    );
++}
+diff --git a/specs/arm.yaml b/specs/arm.yaml
+index c58a5d4..3110512 100644
+--- a/specs/arm.yaml
++++ b/specs/arm.yaml
+@@ -265,13 +265,13 @@ fields:
+ 
+   - name: branch_offset
+     arg: branch_dest
+-    desc: 24-bit signed B/BL target offset
+-    value: !Expr ((self.code.bits(0,24) << 2) + 8).sign_extend(8)
++    desc: Signed scaled imm24 B/BL displacement plus PC bias
++    value: !Expr (self.code.bits(0,24) << 2).sign_extend(6) + 8
+ 
+   - name: blx_offset
+     arg: branch_dest
+-    desc: 24-bit signed BLX target offset
+-    value: !Expr ((self.code.bits(0,24) << 2 | self.code.bits(24,25) << 1) + 8).sign_extend(8)
++    desc: Signed scaled imm24 and H BLX displacement plus PC bias
++    value: !Expr (self.code.bits(0,24) << 2 | self.code.bits(24,25) << 1).sign_extend(6) + 8
+ 
+   - name: immed_16
+     arg: u_imm

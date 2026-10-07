@@ -1,0 +1,12 @@
+{
+  "result": "No flags",
+  "source_commit": "7b3513f05adc88a1cca8b0365d3a3607a50a1b25",
+  "source_tree": "42448bc68cd596f36c3c56147988d28b36802ba4",
+  "tracked_files_verified": 154,
+  "accepted_artifact_pins_verified": 16,
+  "analyzer_path": "/private/tmp/jus-arm7-physical-root-cache/target/release/dsd",
+  "analyzer_sha256": "3f18db59e173ca17e14d29755ac51ce36682896d4df5ca500abcd619f4fd52c1",
+  "version": "ds-decomp-cli 0.12.0",
+  "source_credit": 0,
+  "T10_complete": false
+}

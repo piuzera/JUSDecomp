@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "role": "unchanged child ARM9 exact codec; no native link or canonical integration approval",
+  "source_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+  "source_tree": "1d0ccf3e5ccc8f6530fb6181dd526b698eeb99bc",
+  "encoder": {
+    "sha256": "5c04f2668aec35d969036499fd7065ea8c9fe9c6bda457b7042f74f4ff7b6064"
+  },
+  "source_artifacts": {
+    "decomp/matching-notes/other-cpus/child-tool-approval/Cargo.lock.original": "836cf74bb237bf4ca61295c586af6a09564fb8e2620405ff8b863639c97907e2",
+    "decomp/matching-notes/other-cpus/child-tool-approval/LICENSE.ds-decomp": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+    "decomp/matching-notes/other-cpus/child-tool-approval/source-audit.json": "a27012b829e547ed5668d472b2146a86fa75bbfccc4ae3c51db3df890eade203",
+    "decomp/matching-notes/other-cpus/child-tool-approval/root-build.json": "31c2af082e1a2e4ea0adb1a5a40fb0ab359da23daf859427d9a30e11709290bf",
+    "decomp/matching-notes/other-cpus/child_compression_probe.rs": "9baf8ab864540b9eaca6b7916f57074459ce89b5b95bb98d62bfa2c3180783c6",
+    "decomp/matching-notes/other-cpus/child-tool-approval/LICENSE.ds-rom": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+    "decomp/matching-notes/other-cpus/child-tool-approval/accepted-review.json": "c4dfc67b06b947f598461cc50edc7b0b6aa248205a8f29efbd31baa0b909817f"
+  },
+  "source_bytes": 0,
+  "T10_complete": false
+}

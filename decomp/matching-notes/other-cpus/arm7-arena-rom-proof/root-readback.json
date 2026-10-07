@@ -1,0 +1,628 @@
+{
+  "status": "actual_fresh_artifact_readback_passed",
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "rom_bytes": 67108864,
+  "child_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+  "experiment_stages": 7,
+  "parent_stages": 19,
+  "module_checkpoint_stages": 19,
+  "writes": [
+    {
+      "module": "ARM9",
+      "input_file": "parent/native-link/arm9.bin",
+      "rom_offset": 16384,
+      "size_bytes": 656832,
+      "sha256": "87be3fc2f345a81dc947e3462bf0f4cacf439a20ae94884a641f00dee3d5d30e"
+    },
+    {
+      "module": "ITCM",
+      "input_file": "parent/native-link/itcm.bin",
+      "rom_offset": 673216,
+      "size_bytes": 31552,
+      "sha256": "a983413542d5bdeca34009aab087eff945d53cfef7b8873e3a81a92bcf3cb3a3"
+    },
+    {
+      "module": "DTCM",
+      "input_file": "parent/native-link/dtcm.bin",
+      "rom_offset": 704768,
+      "size_bytes": 4160,
+      "sha256": "8b42c55058c20f8fbd22dacc0900e2dda2144e4ed04c4d8ff49fbd80ac1d2487"
+    },
+    {
+      "module": "OV000",
+      "input_file": "parent/native-link/arm9_ov000.bin",
+      "rom_offset": 709632,
+      "size_bytes": 85760,
+      "sha256": "03cb27dc2439ea15fe3bc064bd70768750f37a99f13c7acff0e7440f5427eae6"
+    },
+    {
+      "module": "OV001",
+      "input_file": "parent/native-link/arm9_ov001.bin",
+      "rom_offset": 795648,
+      "size_bytes": 135456,
+      "sha256": "5ee45561c91d68befa42b27c12e1fce8f2b3a2239a0fa0b0d3cb0b0c100fb24b"
+    },
+    {
+      "module": "OV002",
+      "input_file": "parent/native-link/arm9_ov002.bin",
+      "rom_offset": 931328,
+      "size_bytes": 65152,
+      "sha256": "db55d3673f5d7f411044853e3197f8745a1fbd538ed131ff41c78b2aee63ad6b"
+    },
+    {
+      "module": "OV003",
+      "input_file": "parent/native-link/arm9_ov003.bin",
+      "rom_offset": 996864,
+      "size_bytes": 73472,
+      "sha256": "510e1578ceceb9f39fd81cd5310c3841fde74e27cc24640f91841a855423884a"
+    },
+    {
+      "module": "OV004",
+      "input_file": "parent/native-link/arm9_ov004.bin",
+      "rom_offset": 1070592,
+      "size_bytes": 86208,
+      "sha256": "c54872c5db66b5e82bb1d77c069b3a246c8e870cad2acc321b552708946047a3"
+    },
+    {
+      "module": "OV005",
+      "input_file": "parent/native-link/arm9_ov005.bin",
+      "rom_offset": 1157120,
+      "size_bytes": 152928,
+      "sha256": "be8db72cef191d5aa44bf4f7f4147b96a4806b9771d2035f809b02e8c2951ec6"
+    },
+    {
+      "module": "OV006",
+      "input_file": "parent/native-link/arm9_ov006.bin",
+      "rom_offset": 1310208,
+      "size_bytes": 154688,
+      "sha256": "393be20642d854d3d98bea77a4d064aa3589f0a1b69a08943bdfcc9cfa076984"
+    },
+    {
+      "module": "OV007",
+      "input_file": "parent/native-link/arm9_ov007.bin",
+      "rom_offset": 1465344,
+      "size_bytes": 122816,
+      "sha256": "133ee8d537bb436f7b6ca47c81050c416953e532e4ce02591d6b74a9722fff30"
+    },
+    {
+      "module": "OV008",
+      "input_file": "parent/native-link/arm9_ov008.bin",
+      "rom_offset": 1588224,
+      "size_bytes": 128160,
+      "sha256": "4f68cf26adc7a5ecd7ca7f10cf5e383b7af5148b432fa1f470a6094e9d3d9ec7"
+    },
+    {
+      "module": "OV009",
+      "input_file": "parent/native-link/arm9_ov009.bin",
+      "rom_offset": 1716736,
+      "size_bytes": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "module": "OV010",
+      "input_file": "parent/native-link/arm9_ov010.bin",
+      "rom_offset": 1717248,
+      "size_bytes": 215264,
+      "sha256": "50f4e3e5b8ee69d9f3eed30a71d8d0317d468da84bea93c2b2aa061d1fc73a99"
+    },
+    {
+      "module": "OV011",
+      "input_file": "parent/native-link/arm9_ov011.bin",
+      "rom_offset": 1932800,
+      "size_bytes": 61440,
+      "sha256": "1ab547c71612726599ef063d0f5909dff41c03661d97567cca873f8ef2e80db9"
+    },
+    {
+      "module": "OV012",
+      "input_file": "parent/native-link/arm9_ov012.bin",
+      "rom_offset": 1994240,
+      "size_bytes": 167776,
+      "sha256": "fcc2e25369c7b4c3d90a664bf16f18c9f38860a29de60ccaa73439a0b8c9897f"
+    },
+    {
+      "module": "OV013",
+      "input_file": "parent/native-link/arm9_ov013.bin",
+      "rom_offset": 2162176,
+      "size_bytes": 32,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "module": "ARM9",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+        "cpu": "arm9",
+        "processor": "arm946e",
+        "isa": "armv5te"
+      },
+      "input_file": "/private/tmp/jus-arm7-arena-rom-root-replay/parent/child-arm9/rebuilt.srl",
+      "rom_offset": 2357248,
+      "size_bytes": 1955956,
+      "sha256": "af35ea24071b08f50eef9d28cf5ed4686b0110679b5389ac43ce8254d6e13fc7",
+      "source_bytes": 0,
+      "image_slice_offset": 16384,
+      "image_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+      "elf_sha256": "08125b52761f5361787add20bc38832230b83a8a774302cdfc51ad32ed652e8b"
+    },
+    {
+      "module": "ARM7",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "input_file": "trial/native/program-0/positive.elf",
+      "rom_offset": 2162688,
+      "size_bytes": 165552,
+      "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "source_bytes": 0,
+      "research_candidate_bytes": 460,
+      "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "native_program_index": 0,
+      "native_readback": "/research_pack/trial/programs/0/actual_readback"
+    },
+    {
+      "module": "ARM7",
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "input_file": "trial/native/program-1/positive.elf",
+      "rom_offset": 4313600,
+      "size_bytes": 165552,
+      "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "source_bytes": 0,
+      "research_candidate_bytes": 460,
+      "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "native_program_index": 1,
+      "native_readback": "/research_pack/trial/programs/1/actual_readback"
+    }
+  ],
+  "output_artifacts_checked": 916,
+  "inputs_checked": 153,
+  "parent_outputs_checked": {
+    "report.json": "76e9a6bdbe2b29253ea63930763e4c739fcfed1d993bfbb997cb81c837836052",
+    "rebuilt.nds": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+  },
+  "native_elf_readback": [
+    {
+      "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "image_differences": [],
+      "entry": 37224448,
+      "flags": 83886592,
+      "loads": [
+        {
+          "section": ".arm7.startup",
+          "record": [
+            1,
+            244,
+            37224448,
+            37224448,
+            432,
+            432,
+            4,
+            4
+          ],
+          "section_flags": 2,
+          "payload_sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35"
+        },
+        {
+          "section": ".arm7.table",
+          "record": [
+            1,
+            676,
+            37389976,
+            37389976,
+            24,
+            24,
+            4,
+            4
+          ],
+          "section_flags": 2,
+          "payload_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+        },
+        {
+          "section": ".arm7.autoload1",
+          "record": [
+            1,
+            700,
+            41811968,
+            37291000,
+            98976,
+            98976,
+            4,
+            4
+          ],
+          "section_flags": 2,
+          "payload_sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217"
+        },
+        {
+          "section": ".arm7.bss.autoload1",
+          "record": [
+            1,
+            99676,
+            41910944,
+            41910944,
+            0,
+            6504,
+            6,
+            4
+          ],
+          "section_flags": 3,
+          "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "section": ".arm7.autoload0",
+          "record": [
+            1,
+            99676,
+            58687488,
+            37224880,
+            66120,
+            66120,
+            4,
+            4
+          ],
+          "section_flags": 6,
+          "payload_sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349"
+        },
+        {
+          "section": ".arm7.bss.autoload0",
+          "record": [
+            1,
+            165796,
+            58753608,
+            58753608,
+            0,
+            14920,
+            6,
+            4
+          ],
+          "section_flags": 3,
+          "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "BSS_bytes": 21424,
+      "bindings": {
+        "hyp_subpriv_arena_lo": 41917448,
+        "hyp_wram_arena_lo": 58768528,
+        "hyp_irq_stack_size": 1024,
+        "hyp_system_stack_size": 1024,
+        "hyp_arena_initialized": 58754096
+      },
+      "functions": {
+        "arm7_low_store_trial": {
+          "address": 58707716,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_store_trial": {
+          "address": 58707736,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_low_getter_trial": {
+          "address": 58707756,
+          "bytes": 88,
+          "type": 2
+        },
+        "arm7_high_getter_trial": {
+          "address": 58707844,
+          "bytes": 128,
+          "type": 2
+        },
+        "arm7_low_load_trial": {
+          "address": 58707972,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_high_load_trial": {
+          "address": 58707992,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_arena_init_trial": {
+          "address": 58708012,
+          "bytes": 164,
+          "type": 2
+        }
+      },
+      "initializer_calls": [
+        {
+          "source": 58708044,
+          "word": "0xebffffcc",
+          "target": 58707844
+        },
+        {
+          "source": 58708056,
+          "word": "0xebffffae",
+          "target": 58707736
+        },
+        {
+          "source": 58708064,
+          "word": "0xebffffb1",
+          "target": 58707756
+        },
+        {
+          "source": 58708076,
+          "word": "0xebffffa4",
+          "target": 58707716
+        },
+        {
+          "source": 58708084,
+          "word": "0xebffffc2",
+          "target": 58707844
+        },
+        {
+          "source": 58708096,
+          "word": "0xebffffa4",
+          "target": 58707736
+        },
+        {
+          "source": 58708104,
+          "word": "0xebffffa7",
+          "target": 58707756
+        },
+        {
+          "source": 58708116,
+          "word": "0xebffff9a",
+          "target": 58707716
+        },
+        {
+          "source": 58708124,
+          "word": "0xebffffb8",
+          "target": 58707844
+        },
+        {
+          "source": 58708136,
+          "word": "0xebffff9a",
+          "target": 58707736
+        },
+        {
+          "source": 58708144,
+          "word": "0xebffff9d",
+          "target": 58707756
+        },
+        {
+          "source": 58708156,
+          "word": "0xebffff90",
+          "target": 58707716
+        }
+      ],
+      "noncandidate_bytes_unchanged": true,
+      "fixed_load_words": [
+        "0xe5900da0",
+        "0xe5900dc4"
+      ]
+    },
+    {
+      "elf_sha256": "75ae967dce740ec4e0131c6e5af8e0cd709c04c73f2af9fd6c305230ef81ac4e",
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "image_bytes": 165552,
+      "image_differences": [],
+      "entry": 37224448,
+      "flags": 83886592,
+      "loads": [
+        {
+          "section": ".arm7.startup",
+          "record": [
+            1,
+            244,
+            37224448,
+            37224448,
+            432,
+            432,
+            4,
+            4
+          ],
+          "section_flags": 2,
+          "payload_sha256": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35"
+        },
+        {
+          "section": ".arm7.table",
+          "record": [
+            1,
+            676,
+            37389976,
+            37389976,
+            24,
+            24,
+            4,
+            4
+          ],
+          "section_flags": 2,
+          "payload_sha256": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f"
+        },
+        {
+          "section": ".arm7.autoload1",
+          "record": [
+            1,
+            700,
+            41811968,
+            37291000,
+            98976,
+            98976,
+            4,
+            4
+          ],
+          "section_flags": 2,
+          "payload_sha256": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217"
+        },
+        {
+          "section": ".arm7.bss.autoload1",
+          "record": [
+            1,
+            99676,
+            41910944,
+            41910944,
+            0,
+            6504,
+            6,
+            4
+          ],
+          "section_flags": 3,
+          "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "section": ".arm7.autoload0",
+          "record": [
+            1,
+            99676,
+            58687488,
+            37224880,
+            66120,
+            66120,
+            4,
+            4
+          ],
+          "section_flags": 6,
+          "payload_sha256": "7152bdff8bcc4a73503bbb5db8a57ae4ac36eb85bdeab6cbe69b712f9327b349"
+        },
+        {
+          "section": ".arm7.bss.autoload0",
+          "record": [
+            1,
+            165796,
+            58753608,
+            58753608,
+            0,
+            14920,
+            6,
+            4
+          ],
+          "section_flags": 3,
+          "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "BSS_bytes": 21424,
+      "bindings": {
+        "hyp_subpriv_arena_lo": 41917448,
+        "hyp_wram_arena_lo": 58768528,
+        "hyp_irq_stack_size": 1024,
+        "hyp_system_stack_size": 1024,
+        "hyp_arena_initialized": 58754096
+      },
+      "functions": {
+        "arm7_low_store_trial": {
+          "address": 58707716,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_store_trial": {
+          "address": 58707736,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_low_getter_trial": {
+          "address": 58707756,
+          "bytes": 88,
+          "type": 2
+        },
+        "arm7_high_getter_trial": {
+          "address": 58707844,
+          "bytes": 128,
+          "type": 2
+        },
+        "arm7_low_load_trial": {
+          "address": 58707972,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_high_load_trial": {
+          "address": 58707992,
+          "bytes": 20,
+          "type": 2
+        },
+        "arm7_arena_init_trial": {
+          "address": 58708012,
+          "bytes": 164,
+          "type": 2
+        }
+      },
+      "initializer_calls": [
+        {
+          "source": 58708044,
+          "word": "0xebffffcc",
+          "target": 58707844
+        },
+        {
+          "source": 58708056,
+          "word": "0xebffffae",
+          "target": 58707736
+        },
+        {
+          "source": 58708064,
+          "word": "0xebffffb1",
+          "target": 58707756
+        },
+        {
+          "source": 58708076,
+          "word": "0xebffffa4",
+          "target": 58707716
+        },
+        {
+          "source": 58708084,
+          "word": "0xebffffc2",
+          "target": 58707844
+        },
+        {
+          "source": 58708096,
+          "word": "0xebffffa4",
+          "target": 58707736
+        },
+        {
+          "source": 58708104,
+          "word": "0xebffffa7",
+          "target": 58707756
+        },
+        {
+          "source": 58708116,
+          "word": "0xebffff9a",
+          "target": 58707716
+        },
+        {
+          "source": 58708124,
+          "word": "0xebffffb8",
+          "target": 58707844
+        },
+        {
+          "source": 58708136,
+          "word": "0xebffff9a",
+          "target": 58707736
+        },
+        {
+          "source": 58708144,
+          "word": "0xebffff9d",
+          "target": 58707756
+        },
+        {
+          "source": 58708156,
+          "word": "0xebffff90",
+          "target": 58707716
+        }
+      ],
+      "noncandidate_bytes_unchanged": true,
+      "fixed_load_words": [
+        "0xe5900da0",
+        "0xe5900dc4"
+      ]
+    }
+  ],
+  "source_credit": {
+    "canonical": 304,
+    "arm7": 0,
+    "global_percent": null
+  }
+}

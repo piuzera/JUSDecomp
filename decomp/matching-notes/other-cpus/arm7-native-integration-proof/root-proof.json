@@ -1,0 +1,64 @@
+{
+  "status": "root_verified_and_reviewed",
+  "candidate_code_commit": "80209c7",
+  "root_producer_commit": "cef286fcdf12a56669bae4a0fe56c30ab1245113",
+  "worker_producer_commit": "80209c7f90fab21238639ebadf17e05dde98ca73",
+  "root_tests": 248,
+  "root_test_skips": 0,
+  "new_targeted_tests": 19,
+  "all_required_stages": 20,
+  "all_stages_passed": true,
+  "ARM9_modules": 17,
+  "parent_ARM7_native_writes": 1,
+  "child_ARM7_native_writes": 1,
+  "all_native_writes": 19,
+  "ARM7_stored_bytes_per_program": 165552,
+  "original_ARM9_relocations": {
+    "validated": 87493,
+    "failed": 0,
+    "unresolved": 0
+  },
+  "matched_ARM9_source_bytes": 304,
+  "matched_source_functions": 7,
+  "ARM7_source_bytes": 0,
+  "global_source_percent": null,
+  "actual_artifact_hashes": 243,
+  "source_hashes": 75,
+  "prior_canonical_hashes": 72,
+  "unchanged_prior_source_hashes": 70,
+  "intentional_script_changes": [
+    "tools/scripts/verify.py",
+    "tools/scripts/rom_roundtrip.py"
+  ],
+  "new_optional_inputs": [
+    "decomp/matching-notes/other-cpus/arm7-physical-baseline/approval.json",
+    "tools/scripts/arm7_native_baseline.py",
+    "tools/scripts/other_executables.py"
+  ],
+  "production_toolchain_lock_unchanged": true,
+  "ROM_bytes": 67108864,
+  "ROM_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "root_worker_ROM_identical": true,
+  "real_standalone_ARM7_JSON_report_rejected": true,
+  "rejection_created_no_ROM": true,
+  "live_operation_required": true,
+  "default_19_stage_pipeline_preserved": true,
+  "ARM7_functions": "unknown",
+  "ARM7_executability": "unknown",
+  "ARM7_original_relocations": "unknown",
+  "T10_complete": false,
+  "emulator_smoke": "not performed",
+  "evidence_sha256": {
+    "root-report.json": "60fc3be8b5ae255e2f9776b50651473ced3628cacf42a86eed1393f53202c2e8",
+    "worker-report.json": "b58541ee2659e8e4d1a0457331b62277220f8cbe6dbf87e47ae5a3f3afa76fe5",
+    "root-source-comparison.json": "5f07b5c1f66a534a11615bc41855a71a9ef9031bcb8f12f1e36d1c175a8df784",
+    "root-standalone-rejection.json": "5a8b91f8b871f3bc12ef425f7ee2c28c1f9f4d87537ca5ede6eb173bc5a5b77f",
+    "root-tests.log": "3886735d49442c89a885d508504948ecc847e39242194718d01af99714d2eadc"
+  },
+  "review": {
+    "reviewed_JUS_commit": "e38bf84",
+    "model": "gpt-6.1-sol",
+    "result": "No flags",
+    "scope": "canonical paired native ARM7 integration, actual proof and decision trail"
+  }
+}

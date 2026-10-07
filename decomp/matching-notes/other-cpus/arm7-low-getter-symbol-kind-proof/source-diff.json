@@ -1,0 +1,9 @@
+{
+  "old_source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "source_sha256": "3f7b22c42f4b98cfed84308f2e5b658ae9cecdb8a17d900421e71ed70c496495",
+  "old_declaration": "extern unsigned char hyp_wram_arena_lo;",
+  "new_declaration": "extern void hyp_wram_arena_lo(void);",
+  "old_declaration_offset": 43,
+  "other_C_bytes_unchanged": true,
+  "original_greater_than_body_preserved": true
+}

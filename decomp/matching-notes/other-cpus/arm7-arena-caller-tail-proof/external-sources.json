@@ -1,0 +1,71 @@
+{
+  "inspection_date": "2026-10-05",
+  "source_files_copied": false,
+  "sources": [
+    {
+      "repository": "pret/pokediamond",
+      "commit": "38f3650189f8989aed91618745aa74029fa60247",
+      "path": "README.md",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/README.md",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/README.md",
+      "authority": "community reconstruction",
+      "evidence": "Community Pok\u00e9mon Diamond decompilation provenance."
+    },
+    {
+      "repository": "pret/pokediamond",
+      "commit": "38f3650189f8989aed91618745aa74029fa60247",
+      "path": "include/nitro/OS_arena_shared.h",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/include/nitro/OS_arena_shared.h",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/include/nitro/OS_arena_shared.h",
+      "authority": "community reconstruction",
+      "evidence": "Enum IDs 0 through 8, MAX 9; lo[9] followed by hi[9]."
+    },
+    {
+      "repository": "pret/pokediamond",
+      "commit": "38f3650189f8989aed91618745aa74029fa60247",
+      "path": "include/nitro/mmap_shared.h",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/include/nitro/mmap_shared.h",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/include/nitro/mmap_shared.h",
+      "authority": "community reconstruction",
+      "evidence": "HW_MAIN_MEM is 0x02000000; HW_ARENA_INFO_BUF is base plus 0x007ffda0."
+    },
+    {
+      "repository": "pret/pokediamond",
+      "commit": "38f3650189f8989aed91618745aa74029fa60247",
+      "path": "include/nitro/consts_shared.h",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/include/nitro/consts_shared.h",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/include/nitro/consts_shared.h",
+      "authority": "community reconstruction",
+      "evidence": "OSi_GetArenaInfo casts an OSArenaInfo at HW_ARENA_INFO_BUF."
+    },
+    {
+      "repository": "pret/pokediamond",
+      "commit": "38f3650189f8989aed91618745aa74029fa60247",
+      "path": "arm7/lib/include/OS_arena.h",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/include/OS_arena.h",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/include/OS_arena.h",
+      "authority": "community reconstruction",
+      "evidence": "Void setters accept OSArenaId and void pointer; initial-bound getters return pointers."
+    },
+    {
+      "repository": "pret/pokediamond",
+      "commit": "38f3650189f8989aed91618745aa74029fa60247",
+      "path": "arm7/lib/src/OS_arena.c",
+      "url": "https://github.com/pret/pokediamond/blob/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c",
+      "raw_url": "https://raw.githubusercontent.com/pret/pokediamond/38f3650189f8989aed91618745aa74029fa60247/arm7/lib/src/OS_arena.c",
+      "authority": "community reconstruction",
+      "evidence": "Guarded ARM7 initialization for IDs 1, 7, 8, high then low; ID 1 low getter has a Pok\u00e9mon-specific hardcoded value."
+    },
+    {
+      "repository": "devkitPro/libnds",
+      "commit": "5ddb7d9b05ea4cae145da8dbb19401a9387888a9",
+      "path": "include/nds/system.h",
+      "url": "https://github.com/devkitPro/libnds/blob/5ddb7d9b05ea4cae145da8dbb19401a9387888a9/include/nds/system.h",
+      "raw_url": "https://raw.githubusercontent.com/devkitPro/libnds/5ddb7d9b05ea4cae145da8dbb19401a9387888a9/include/nds/system.h",
+      "authority": "official devkitPro libnds library source",
+      "evidence": "Official library ARM9 heap start, end, and limit pointer accessors define a separate contract."
+    }
+  ],
+  "JUS_original_SDK_version_established": false,
+  "JUS_original_symbol_or_type_promoted": false
+}

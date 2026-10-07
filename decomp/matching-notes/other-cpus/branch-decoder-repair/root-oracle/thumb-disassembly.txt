@@ -1,0 +1,43 @@
+
+/private/tmp/jus-arm7-branch-root-oracle-32/thumb.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+02380000 <bl_positive_pc_boundary_even>:
+ 2380000: f3ff fffe    	bl	0x2780000 <b_cond_min+0x3fffd6> @ imm = #0x3ffffc
+
+02380004 <bl_positive_pc_boundary_halfword>:
+ 2380004: f3ff ffff    	bl	0x2780006 <b_cond_min+0x3fffdc> @ imm = #0x3ffffe
+
+02380008 <bl_min_negative>:
+ 2380008: f400 f800    	bl	0x1f8000c               @ imm = #-0x400000
+
+0238000c <bl_negative_near>:
+ 238000c: f7ff ffff    	bl	0x238000e <bl_negative_near+0x2> @ imm = #-0x2
+
+02380010 <bl_zero>:
+ 2380010: f000 f800    	bl	0x2380014 <blx_positive_pc_boundary> @ imm = #0x0
+
+02380014 <blx_positive_pc_boundary>:
+ 2380014: f3ff effe    	blx	0x2780014 <b_cond_min+0x3fffea> @ imm = #0x3ffffc
+
+02380018 <blx_min_negative>:
+ 2380018: f400 e800    	blx	0x1f8001c               @ imm = #-0x400000
+
+0238001c <blx_negative_near>:
+ 238001c: f7ff effe    	blx	0x238001c <blx_negative_near> @ imm = #-0x4
+
+02380020 <blx_zero>:
+ 2380020: f000 e800    	blx	0x2380024 <b_short_max> @ imm = #0x0
+
+02380024 <b_short_max>:
+ 2380024: e3ff         	b	0x2380826 <b_cond_min+0x7fc> @ imm = #0x7fe
+
+02380026 <b_short_min>:
+ 2380026: e400         	b	0x237f82a               @ imm = #-0x800
+
+02380028 <b_cond_max>:
+ 2380028: d17f         	bne	0x238012a <b_cond_min+0x100> @ imm = #0xfe
+
+0238002a <b_cond_min>:
+ 238002a: d180         	bne	0x237ff2e               @ imm = #-0x100

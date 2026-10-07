@@ -1,0 +1,168 @@
+{
+  "status": "passed",
+  "public_replay": "fresh own original inputs, actual object and native links",
+  "tests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "actual_object_sha256": "b392c58eb43db4427e075bf7757181dfc6ea5a16eb6ffb5686292d2c29fc50f1",
+  "root_trial_receipt_sha256": "2d8b30e9239016c255d7b7017527d09af9c25d9879fcbff874b943f057f9eb9a",
+  "root_native_receipt_sha256": "999e3cc63a6df7f9ad8110f9810253d598662d5fb575c6081ab8d6797812d7d2",
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "positive": {
+        "linked_elf_sha256": "d90a255d1193d31f0c4b322250e2b4de85608dbf59b855975a25ad499332c059",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 166872
+        },
+        "candidate_and_binding_symbols": [
+          {
+            "name": "arm7_high_getter_trial",
+            "vma": 58707844,
+            "size": 128,
+            "section": 5
+          },
+          {
+            "name": "hyp_irq_stack_size",
+            "vma": 1024,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "hyp_wram_arena_lo",
+            "vma": 58768528,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "hyp_system_stack_size",
+            "vma": 1024,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "__candidate_start",
+            "vma": 58707844,
+            "size": 0,
+            "section": 5
+          },
+          {
+            "name": "__candidate_end",
+            "vma": 58707972,
+            "size": 0,
+            "section": 5
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_mismatch_offsets": [],
+        "exact_original_ELF_only": true,
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "linked_candidate_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+        "linked_literal_words": [
+          "0x027ff000",
+          "0x00000400",
+          "0x0380ff80",
+          "0x0380bc90",
+          "0x00000400"
+        ]
+      },
+      "public_wrong_IRQ_offsets": [
+        20901
+      ],
+      "malformed_load_rejected": true
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "positive": {
+        "linked_elf_sha256": "d90a255d1193d31f0c4b322250e2b4de85608dbf59b855975a25ad499332c059",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 166872
+        },
+        "candidate_and_binding_symbols": [
+          {
+            "name": "arm7_high_getter_trial",
+            "vma": 58707844,
+            "size": 128,
+            "section": 5
+          },
+          {
+            "name": "hyp_irq_stack_size",
+            "vma": 1024,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "hyp_wram_arena_lo",
+            "vma": 58768528,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "hyp_system_stack_size",
+            "vma": 1024,
+            "size": 0,
+            "section": 65521
+          },
+          {
+            "name": "__candidate_start",
+            "vma": 58707844,
+            "size": 0,
+            "section": 5
+          },
+          {
+            "name": "__candidate_end",
+            "vma": 58707972,
+            "size": 0,
+            "section": 5
+          }
+        ],
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "image_mismatch_offsets": [],
+        "exact_original_ELF_only": true,
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "linked_candidate_sha256": "13b9cdc287f94094ed89582210e0c8d008ca9395b768c3f3fec183882af88fa4",
+        "linked_literal_words": [
+          "0x027ff000",
+          "0x00000400",
+          "0x0380ff80",
+          "0x0380bc90",
+          "0x00000400"
+        ]
+      },
+      "public_wrong_IRQ_offsets": [
+        20901
+      ],
+      "malformed_load_rejected": true
+    }
+  ],
+  "independent_wrong_WRAM_offsets": [
+    20908
+  ],
+  "source_credit_bytes": 0,
+  "canonical_source_credit_bytes": 304,
+  "T10_complete": false
+}

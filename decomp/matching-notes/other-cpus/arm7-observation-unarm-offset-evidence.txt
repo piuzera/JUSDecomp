@@ -1,0 +1,54 @@
+/Users/djdjo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/unarm-1.9.2/src/arm/generated.rs
+sha256 af9ca7f07cfa4ff28c0a160a5fecd556abe106ab4c4600c8b04f8d6120999200
+6693:     /// branch_offset: 24-bit signed B/BL target offset
+6694:     #[inline(always)]
+6695:     pub fn field_branch_offset(&self) -> i32 {
+6696:         ((((((self.code & 0x00ffffff) << 2) + 8) as i32) << 8 >> 8)) as i32
+6697:     }
+6698:     /// blx_offset: 24-bit signed BLX target offset
+6699:     #[inline(always)]
+6700:     pub fn field_blx_offset(&self) -> i32 {
+6701:         ((((((self.code & 0x00ffffff) << 2 | ((self.code >> 24) & 0x00000001) << 1) + 8)
+6702:             as i32) << 8 >> 8)) as i32
+/Users/djdjo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/unarm-1.9.2/src/thumb/generated.rs
+sha256 973f85beb97911f06b93b3e7f328720074f78acb5e53438830da538af0b78437
+1738:     /// branch_offset_8: 9-bit signed B target offset
+1739:     #[inline(always)]
+1740:     pub fn field_branch_offset_8(&self) -> i32 {
+1741:         (((((self.code & 0x000000ff) << 1) as i32) << 23 >> 23) + 4) as i32
+1742:     }
+1743:     /// branch_offset_11: 12-bit signed B target offset
+1744:     #[inline(always)]
+1745:     pub fn field_branch_offset_11(&self) -> i32 {
+1746:         (((((self.code & 0x000007ff) << 1) as i32) << 20 >> 20) + 4) as i32
+1747:     }
+1748:     /// high_branch_offset_11: 23-bit signed BL/BLX target offset (high part)
+1749:     #[inline(always)]
+1750:     pub fn field_high_branch_offset_11(&self) -> i32 {
+1751:         (((self.code & 0x000007ff) << 12) + 4) as i32
+1752:     }
+1753:     /// low_branch_offset_11: 23-bit signed BL target offset (low part)
+1754:     #[inline(always)]
+1755:     pub fn field_low_branch_offset_11(&self) -> u32 {
+1756:         (self.code & 0x000007ff) << 1
+1757:     }
+1758:     /// low_blx_offset_11: 23-bit signed BLX target offset (low part)
+1759:     #[inline(always)]
+1760:     pub fn field_low_blx_offset_11(&self) -> u32 {
+/Users/djdjo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/unarm-1.9.2/src/parse.rs
+sha256 1180c39f42d352ad3246e730970755d534ac9b181444c8bbd96d648fa05be4a3
+204:                 let dest = (high + (low as i32)) << 9 >> 9;
+205:                 let mut args = Arguments::default();
+206:                 args[0] = Argument::BranchDest(dest);
+207:                 Self {
+208:                     mnemonic: second.mnemonic,
+209:                     args,
+210:                 }
+211:             }
+212:             _ => Self {
+213:                 mnemonic: "<illegal>",
+214:                 args: Arguments::default(),
+215:             },
+216:         }
+217:     }
+218: }

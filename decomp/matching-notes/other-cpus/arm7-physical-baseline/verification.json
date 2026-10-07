@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "status": "worker_verified_pending_independent_integration",
+  "scope": "opaque ARM7 physical payload and layout",
+  "source_base_revision": "d38bad627b7074eb4b39a0901fe8e9a36a34756b",
+  "source_revision": "7b3513f05adc88a1cca8b0365d3a3607a50a1b25",
+  "source_tree": "42448bc68cd596f36c3c56147988d28b36802ba4",
+  "source_patch_sha256": "6c2d81d4e37333a0833572a02267526c1119a0210fc82c755873401d84f1894d",
+  "source_files": {
+    "lib/examples/arm7_physical_baseline.rs": "9d6824f65f377dda3b6bb4c2d589f936e1bdc0fa8efa497c83270032ef06bc62",
+    "lib/src/rom/arm7.rs": "a998f239ac01798ba997a1a5e11cf89589b80c4ebfc2d34e161c429a05c95837",
+    "lib/src/rom/arm7_physical_baseline.rs": "2e8b801a9c9c485c5bcb3c85029a443a4750ab11d2661120b3ff3df0b519b9a7",
+    "lib/src/rom/arm7_physical_baseline/tests.rs": "1814045583ff67942dc0e03300ffa44cbafa33eda7f24995e85aa2e40d8cde73",
+    "lib/src/rom/mod.rs": "ed8cc633aa15c0a8c80b0c07874b960dc58b23522eed2ce835a037e7df23f323",
+    "lib/tests/arm7_physical_baseline.rs": "d9d95212573e4e0e306e29730c67cad478896088f798096f83b0355e89d296c4",
+    "Cargo.toml": "61bdd32c51732eb8bc8cb982b8d3ad0f8d34a550ff7603fc57f5bf7543df1afe",
+    "Cargo.lock": "ac5b52e79117df8da34e6d5b1678e69580b4170c80ca9b6b8abfc586ba0166d5",
+    "dependency-patches/unarm-1.9.2/prepare.py": "5fde56ada52911a52aa0cddb08e593ac9c8f0ce9e98c0ba776ab11b646eb1d63",
+    "dependency-patches/unarm-1.9.2/manifest.json": "3174b5660dcc9eec7d6d7783fe611ab80645e4832cd412b6eb9ea958ef0a4950",
+    "dependency-patches/unarm-1.9.2/source.patch": "7bc3175645cba29e54f5d7f13fa6174dafbb44dd6f9aae0ebe4afba23b2da44f"
+  },
+  "dependency_source_files_verified": 47,
+  "preparation_tests": 10,
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01) (Homebrew)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8",
+  "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05) (Homebrew)",
+  "native": {
+    "probe_sha256": "77824ff7fcc60d97b7b5a8c877345178c2ac222c6eeffe31c3ec3c9491366d3b",
+    "cli_sha256": "3f18db59e173ca17e14d29755ac51ce36682896d4df5ca500abcd619f4fd52c1",
+    "pins_sidecar_sha256": "a7a90669d34d6990bcff4105320dc267ebd70add7926838576e11e472262b504",
+    "build_environment": {
+      "CARGO_HOME": "$source/target/physical-baseline/cargo-home",
+      "CARGO_TARGET_DIR": "$source/target/physical-baseline/cargo-target",
+      "RUSTFLAGS": "--remap-path-prefix=$source=/dsd-source --remap-path-prefix=$CARGO_HOME=/cargo-home"
+    },
+    "probe_build": [
+      "cargo",
+      "build",
+      "--locked",
+      "--offline",
+      "--release",
+      "-p",
+      "ds-decomp",
+      "--example",
+      "arm7_physical_baseline"
+    ],
+    "cli_build": [
+      "cargo",
+      "build",
+      "--locked",
+      "--offline",
+      "--release",
+      "-p",
+      "ds-decomp-cli"
+    ]
+  },
+  "tests": {
+    "previous_dsd_tests_preserved": 63,
+    "new_tests": 17,
+    "total_dsd_tests": 80,
+    "physical_unit_mutation_tests": 5,
+    "native_integration_tests": 7,
+    "example_tests": 5,
+    "clippy": "passed with existing chunks_exact_to_as_chunks allowance",
+    "commands": [
+      "cargo test --locked --offline -p ds-decomp --lib --tests --examples",
+      "cargo clippy --locked --offline -p ds-decomp --all-targets -- -D warnings -A clippy::chunks_exact_to_as_chunks"
+    ]
+  },
+  "actual_proof": {
+    "programs": 2,
+    "stored_image_bytes_per_program": 165552,
+    "stored_image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+    "regions_per_program": 3,
+    "table_bytes_per_program": 24,
+    "bss_bytes_per_program": 21424,
+    "load_segments_per_program": 6,
+    "source_bytes": 0,
+    "input_files_unchanged": true,
+    "layout_sidecar_sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "independent_worker_readback": "passed",
+    "artifact_count_per_program": 16,
+    "header_bytes_per_program": 16384
+  },
+  "legacy_arm9_init": {
+    "parent_metadata_files": 51,
+    "child_metadata_files": 9,
+    "all_metadata_equal": true,
+    "all_extracted_inputs_unchanged": true
+  },
+  "scope_limits": {
+    "full_arm7_binary_baseline_complete": false,
+    "original_functions": "unknown",
+    "original_relocations": "unknown",
+    "original_executability": "unknown",
+    "bootable_elf": false,
+    "arm7_source_bytes": 0,
+    "t10_complete": false,
+    "production_pins_changed": false,
+    "full_rom_gate_run_by_worker": false
+  },
+  "logs": {
+    "red-api.log": {
+      "sha256": "d49419c4ae0712ae749fbcbbf09d540930ccd48a9708983555296ade562edb79",
+      "bytes": 3085,
+      "raw_log_sha256": "a844b5e8cfa99c5c484c36917460b83ef649798b01d230357cca1ceb5859d8ce",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "first-native-green.log": {
+      "sha256": "f367997b110eaa94d36aaf755f40d753b561c0bd001f6706fa718973cdc26dad",
+      "bytes": 584,
+      "raw_log_sha256": "7b0d66ca66b3b4dd9151182350887a83a3d41e7363eeb9adaf919affd4c95d58",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "red-mutations.log": {
+      "sha256": "004ede5c5dc668e14263bbf1dab8d889646828ff3a4c86fecb0c68f2c9537fbe",
+      "bytes": 2222,
+      "raw_log_sha256": "0eca9bf89e5f9caf079a7309edc32ab2345c0a38f52b755ae00eef9fd43ec0d3",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "green-mutations.log": {
+      "sha256": "60e25d09f2c99f356caa2e5229e02c821daa3d337b36b145903f65cc229937f5",
+      "bytes": 1429,
+      "raw_log_sha256": "e2570f3d3d4c8683dcd84ed766cb5bfbe7dcd2b45871586d4a3b8fdbeaeaf4a5",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "red-section-directory.log": {
+      "sha256": "00abc37a2c84862ba6469f2eccb71689728cee2e25e808325340c0ca6f6121f0",
+      "bytes": 1116,
+      "raw_log_sha256": "2faf498ef2fafded5f608f3127884aa50c990c177ad550c05246c7caf519becc",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "green-section-directory.log": {
+      "sha256": "d1982067f94849b77f7777e38bd9d58ba6438f0e21033526b6f31e7851691e2e",
+      "bytes": 456,
+      "raw_log_sha256": "9b29fa9fc5d2166c4e36e5fbfb08d515f7eb7f6716f3e687b7364cc5d01e6b5a",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "red-provenance.log": {
+      "sha256": "f23e7ecb1bb4cbc6e3fb42eeab06b5adf8cb77c2c7d15d8c3dec97e65f1545a8",
+      "bytes": 1294,
+      "raw_log_sha256": "eddd21799b9f1344711e0880e5d7e685ba543f5618b52d8188b5c2464ef1819c",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "green-provenance.log": {
+      "sha256": "a70108ee95b1451d90b06e9de82e6ff2800a02167eb08655cfd02d90d0c38234",
+      "bytes": 1833,
+      "raw_log_sha256": "08dae3c35c9fe694dd57cc26afb52bccc49c690d335d1ca76ea0d2034de0899e",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "red-example.log": {
+      "sha256": "8d3bb97f45a845fd6ab3485cc84e23fa94bec800caa64d4432b4a3aa60d99d74",
+      "bytes": 1851,
+      "raw_log_sha256": "d4f7e0a61453beb6e8e859d882d72917eb8e33942524b1c7fb452d88700f7632",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "green-example-freshness.log": {
+      "sha256": "b77050c71d645af774eda3da197fc8acaa93b8e518be04dbca372a2e8e307680",
+      "bytes": 720,
+      "raw_log_sha256": "ba8fae4252edbcd6721e31aeb29976f747722845681018b44d9248709ad374ac",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "red-assembler-freshness.log": {
+      "sha256": "96623e8da7a9a7700ab1d2704da9f3bceec649b4104122ee6e69011706b07c80",
+      "bytes": 944,
+      "raw_log_sha256": "5e0a092b93e4429e943933552144a3eddd96bb505b4f043e9bddd738b2c682ab",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "green-assembler-freshness.log": {
+      "sha256": "66a708111482e245cae57f8e7c7f57694c63aeb05fb06750084688d8d1b07a1a",
+      "bytes": 439,
+      "raw_log_sha256": "8a18fae52b31f12f0ceb9bd265d599474b320785af56449f3db74dd160894ad3",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "red-publication-snapshot.log": {
+      "sha256": "f8ee89289edaf163cec8bcbeda42385ec42ffdecce00fc40c668d098c4319ae8",
+      "bytes": 1043,
+      "raw_log_sha256": "ff8373594807919dcf13acfb0fe18c79daca0f74668d87d5880e9ea7ca4284c8",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "green-publication-snapshot.log": {
+      "sha256": "0b6fb0abb659d1f452de885ed0f5c07aba894c4984cb88d7c4c8a0acc9e27d45",
+      "bytes": 458,
+      "raw_log_sha256": "96535fc06c0f20a6fec1d13afabe00cb09af48577d3f22c84167cf53f8a03b63",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "red-multi-program-publication.log": {
+      "sha256": "c54e60b1d6f5c27629582eb2910fdcb027f81ed939f69151cf96cc0e1bd31c12",
+      "bytes": 1035,
+      "raw_log_sha256": "55388029e17a0f0458cdf73192ae0baf78fd8268ac2909e1883f05351704ec5e",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "green-multi-program-publication.log": {
+      "sha256": "446aedabf9ee81d632b1ca40ecd078a15a0289516092e4465956697615c8c135",
+      "bytes": 528,
+      "raw_log_sha256": "078c5dfae195fa3954c4cbb336a2fcd4b01de183cb66e7ef80e67a60213cf25c",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "full-tests-publication-fixed.log": {
+      "sha256": "261e04d033c06fe4b56c21e6017946050d9abc396255d7aa85231e7f69afcda8",
+      "bytes": 8198,
+      "raw_log_sha256": "689727569e69d0a0a5211a8e32aaa7721f26dbd48c497c49778da32591001668",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "clippy-publication-fixed.log": {
+      "sha256": "a8a4d4817173a99b6515b08a30cf0df556f64511bb80841c6ebc2e7c0a354255",
+      "bytes": 175,
+      "raw_log_sha256": "4cf6502792a608baa0c7f51e8e54d22d113dfccd9b1fd5d9084123266f9b4ea5",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "prepare-fixed.log": {
+      "sha256": "af759c9de985a644767cddc0cf726918d4163b900577ce12ba7848f1d2d5ed7c",
+      "bytes": 426,
+      "raw_log_sha256": "46fb7da40d31ff253f39ccb573b755dc81dd4aa2d52ec4150168f05c08c69db9",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "prepare-fixed-tests.log": {
+      "sha256": "cd5e875b047f39003bf04539db7d06f1683186ac7a573231fe754873348c4bee",
+      "bytes": 109,
+      "raw_log_sha256": "cd5e875b047f39003bf04539db7d06f1683186ac7a573231fe754873348c4bee",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "native-build-publication-fixed.log": {
+      "sha256": "c02bfd4fc148609a963cf083d481311779890eee39bc1a2f68eb942cbec57c5d",
+      "bytes": 112,
+      "raw_log_sha256": "cdc13b4ac9a832bb53dec03c3ee71a2475622e9b96ed86199f3a03a30937b5c3",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    },
+    "native-cli-build-publication-fixed.log": {
+      "sha256": "9e58c1c86033b88f825894d045d80762d566581769b2367eaf2334663f97973c",
+      "bytes": 165,
+      "raw_log_sha256": "3d5794dd465e9c76b851fcd02288848027c4bbe3b37191100db04db07eda8fa3",
+      "normalization": {
+        "source_path_prefix": "/dsd-source",
+        "trailing_blank_lines_removed": true
+      }
+    }
+  },
+  "publication_repair": {
+    "superseded_source_revision": "e01ecfb2eaa225a9fe0022e707b2e92d7ca98640",
+    "counterexamples": [
+      "linked.elf e_machine changed after validation, before inventory",
+      "arm7.bin changed after reconstruction, before inventory",
+      "first-program ELF changed during second-program build"
+    ],
+    "red": "all cases accepted by superseded producer",
+    "green": "all cases rejected by fixed producer",
+    "binding": "inventories retain size/hash from creation or validated buffers; example rechecks complete artifacts before publication",
+    "original_inputs_changed": false
+  }
+}

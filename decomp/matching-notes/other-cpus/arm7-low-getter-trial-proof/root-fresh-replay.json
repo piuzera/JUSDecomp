@@ -1,0 +1,405 @@
+{
+  "status": "fixed_candidate_mismatch_stop",
+  "recipe_count": 1,
+  "source_sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537",
+  "argv": [
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+    "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+    "-proc",
+    "arm7tdmi",
+    "-nothumb",
+    "-interworking",
+    "-nostdinc",
+    "-O4,p",
+    "-c",
+    "/private/tmp/jus-track-a-publish/decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/low_getter_trial.c",
+    "-o",
+    "/private/tmp/jus-arm7-low-getter-root-replay/compiled.o"
+  ],
+  "compile_returncode": 0,
+  "inputs": [
+    {
+      "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+      "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/ELFIO.dll",
+      "sha256": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/MSL_All-DLL80_x86.dll",
+      "sha256": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/lmgr8c.dll",
+      "sha256": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+    },
+    {
+      "path": "/opt/homebrew/opt/llvm/bin/llvm-readobj",
+      "sha256": "cf8c2b665ea0a064bad08c2fe3f6ba3a21fd3fd368ea5643f0c35e12fcac5540"
+    },
+    {
+      "path": "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "sha256": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0"
+    },
+    {
+      "path": "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    {
+      "path": "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+      "sha256": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc"
+    },
+    {
+      "path": "/private/tmp/jus-track-a-publish/decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/low_getter_trial.c",
+      "sha256": "fe3711c03cb2f0e0ee50a0751604766984e4a285a369290f6f159b87019bd537"
+    }
+  ],
+  "original_manifest_sha256": "5def31329f23dea39add3588e2edfccfd49c7fde2831eb4e7c4daac87cf1cf5f",
+  "original_read_sha256": "25e66aa18cb2f2231b11d591ba6798e21c8981b9e6ce4d6b3804dc6580695a1e",
+  "originals": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "fixed_instruction_extent": {
+        "start": 58707756,
+        "end": 58707836
+      },
+      "separate_literal_extents": [
+        {
+          "start": 58707836,
+          "end": 58707840
+        },
+        {
+          "start": 58707840,
+          "end": 58707844
+        }
+      ],
+      "fixed_88_byte_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2"
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "fixed_instruction_extent": {
+        "start": 58707756,
+        "end": 58707836
+      },
+      "separate_literal_extents": [
+        {
+          "start": 58707836,
+          "end": 58707840
+        },
+        {
+          "start": 58707840,
+          "end": 58707844
+        }
+      ],
+      "fixed_88_byte_sha256": "3e92f8f0b8ebb25e84dbe31ad77910309085d7d1def7e4a5821cbf196f62b9c2"
+    }
+  ],
+  "elf": {
+    "format": "elf32-littlearm",
+    "elf_type": 1,
+    "machine": 40,
+    "flags": 34603008,
+    "object_sha256": "a679cbf055b8b78aeddc71612748da0a1244a3b9b2b3a316655ab3385d9e5c20",
+    "sections": [
+      {
+        "index": 0,
+        "name": "",
+        "type": 0,
+        "flags": 0,
+        "offset": 0,
+        "size": 0,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 1,
+        "name": ".symtab",
+        "type": 2,
+        "flags": 0,
+        "offset": 64,
+        "size": 96,
+        "link": 2,
+        "info": 3,
+        "alignment": 0,
+        "entry_size": 16
+      },
+      {
+        "index": 2,
+        "name": ".strtab",
+        "type": 3,
+        "flags": 0,
+        "offset": 160,
+        "size": 68,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 3,
+        "name": ".shstrtab",
+        "type": 3,
+        "flags": 0,
+        "offset": 240,
+        "size": 53,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 4,
+        "name": ".comment",
+        "type": 1,
+        "flags": 0,
+        "offset": 304,
+        "size": 35,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 5,
+        "name": ".text",
+        "type": 1,
+        "flags": 6,
+        "offset": 352,
+        "size": 88,
+        "link": 0,
+        "info": 0,
+        "alignment": 4,
+        "entry_size": 0
+      },
+      {
+        "index": 6,
+        "name": ".rela.text",
+        "type": 4,
+        "flags": 0,
+        "offset": 448,
+        "size": 24,
+        "link": 1,
+        "info": 5,
+        "alignment": 0,
+        "entry_size": 12
+      }
+    ],
+    "symbols": [
+      {
+        "name": "",
+        "value": 0,
+        "size": 0,
+        "binding": 0,
+        "type": 0,
+        "other": 0,
+        "section_index": 0
+      },
+      {
+        "name": "$a",
+        "value": 0,
+        "size": 0,
+        "binding": 0,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      },
+      {
+        "name": "$d",
+        "value": 80,
+        "size": 0,
+        "binding": 0,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      },
+      {
+        "name": "arm7_low_getter_trial",
+        "value": 0,
+        "size": 88,
+        "binding": 1,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      },
+      {
+        "name": "hyp_subpriv_arena_lo",
+        "value": 0,
+        "size": 0,
+        "binding": 1,
+        "type": 0,
+        "other": 0,
+        "section_index": 0
+      },
+      {
+        "name": "hyp_wram_arena_lo",
+        "value": 0,
+        "size": 0,
+        "binding": 1,
+        "type": 0,
+        "other": 0,
+        "section_index": 0
+      }
+    ],
+    "trial_symbol": {
+      "name": "arm7_low_getter_trial",
+      "value": 0,
+      "size": 88,
+      "binding": 1,
+      "type": 2,
+      "other": 0,
+      "section_index": 5
+    },
+    "mode": "Arm",
+    "mode_evidence": [
+      {
+        "name": "$a",
+        "value": 0,
+        "size": 0,
+        "binding": 0,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      },
+      {
+        "name": "$d",
+        "value": 80,
+        "size": 0,
+        "binding": 0,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".rela.text",
+        "offset": 80,
+        "type": 2,
+        "symbol": "hyp_subpriv_arena_lo",
+        "symbol_index": 4,
+        "addend": 0
+      },
+      {
+        "section": ".rela.text",
+        "offset": 84,
+        "type": 2,
+        "symbol": "hyp_wram_arena_lo",
+        "symbol_index": 5,
+        "addend": 0
+      }
+    ],
+    "text_hex": "010050e30400000a070050e30400000a080050e30600000a0a0000ea2c009fe51eff2fe128009fe50e0550e30e05a0831eff2fe118109fe50e05a0e30e0551e30100a0811eff2fe10000a0e31eff2fe10000000000000000",
+    "instruction_bytes": 80,
+    "pool_bytes": 8,
+    "text_sha256": "c8fe9a78b273dce1d14a58262590d046d8700deb3f7d195de217ade269967188"
+  },
+  "hypothesis_bindings": {
+    "hyp_subpriv_arena_lo": 41917448,
+    "hyp_wram_arena_lo": 58768528
+  },
+  "relocation_explanation": "Diagnostic S+A for observed data ABS32 entries; no native linker or patched object is used.",
+  "comparison": {
+    "instruction_mismatch_offsets": [
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "explained_pool_exact_both_programs": true,
+    "full_88_bytes_exact_both_programs": false,
+    "compiled_instruction_sha256": "f1f2ccb1f4b1619bfb76de3f91eec76cff45a2ad8a75244decf47f844ce325b1",
+    "original_instruction_sha256": "4439515ba3e13f1224622048ec17be7c238aaba35b5ec4d254209e7fb7df7564",
+    "explained_88_byte_sha256": "e3948c1e569dc6ac6263d8bd2e7e65b08f72652a228ecfa4261693375fd11270",
+    "different_words": [
+      {
+        "relative_offset": 52,
+        "original": "0xe3a0050e",
+        "compiled": "0xe59f1018"
+      },
+      {
+        "relative_offset": 56,
+        "original": "0xe59f1014",
+        "compiled": "0xe3a0050e"
+      }
+    ]
+  },
+  "negative": {
+    "wrong_bindings": {
+      "hyp_subpriv_arena_lo": 41922508,
+      "hyp_wram_arena_lo": 58768528
+    },
+    "wrong_binding_literal_mismatch_offsets": [
+      80,
+      81
+    ],
+    "verifier_rejection": "literal pool mismatch after actual ABS32 relocation explanation",
+    "native_link_attempted": false
+  },
+  "readback_commands": [
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-readobj",
+      "--file-headers",
+      "--sections",
+      "--symbols",
+      "--relocations",
+      "/private/tmp/jus-arm7-low-getter-root-replay/compiled.o"
+    ],
+    [
+      "/opt/homebrew/opt/llvm/bin/llvm-mc",
+      "--disassemble",
+      "--triple=armv4t-none-eabi"
+    ]
+  ],
+  "logs": [
+    {
+      "name": "compiler-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "compiler-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "elf-readback.txt",
+      "sha256": "2a67bccc5843f62826eb7bb9a017038d526b6befc679fa5ad610ca61e88b09ef"
+    },
+    {
+      "name": "compiled-llvm.txt",
+      "sha256": "865e24260f627994b0de05fef50cdfc2010e4f193a29b4c0485275d0b7732378"
+    },
+    {
+      "name": "llvm-original-low-getter.txt",
+      "sha256": "32411e7e1f3f35f0df12322c5167be80606209f7386e639a4f3eb9f8536ee9d0"
+    }
+  ],
+  "native_link_attempted": false,
+  "native_link_reason": "The single fixed C candidate mismatches eight instruction bytes; stop condition reached.",
+  "full_image_native_link_reconstruction": "not attempted",
+  "inputs_unchanged": true,
+  "original_names_types_ABI_extent_version_ownership_established": false,
+  "source_credit_bytes": 0
+}

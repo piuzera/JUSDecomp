@@ -1,0 +1,6 @@
+{
+  "status": "rejected_as_required",
+  "actual_cli_exit_status": 1,
+  "failure": "child report requires live operation; rerun canonical verifier",
+  "output_rom_created": false
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "parent"
+      },
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    "region": "startup",
+    "mode": "Arm",
+    "extent": {
+      "start": 37224448,
+      "end": 37224492
+    }
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "parent"
+      },
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    "region": "startup",
+    "mode": "Arm",
+    "extent": {
+      "start": 37224640,
+      "end": 37224652
+    }
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "parent"
+      },
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    "region": {
+      "autoload": 0
+    },
+    "mode": "Arm",
+    "extent": {
+      "start": 58688616,
+      "end": 58688624
+    }
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "parent"
+      },
+      "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+    },
+    "region": {
+      "autoload": 0
+    },
+    "mode": "Arm",
+    "extent": {
+      "start": 58707660,
+      "end": 58707672
+    }
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "nitro_fs",
+        "path": "ChildRom/JSS2Child.srl"
+      },
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+    },
+    "region": "startup",
+    "mode": "Arm",
+    "extent": {
+      "start": 37224448,
+      "end": 37224492
+    }
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "nitro_fs",
+        "path": "ChildRom/JSS2Child.srl"
+      },
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+    },
+    "region": "startup",
+    "mode": "Arm",
+    "extent": {
+      "start": 37224640,
+      "end": 37224652
+    }
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "nitro_fs",
+        "path": "ChildRom/JSS2Child.srl"
+      },
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+    },
+    "region": {
+      "autoload": 0
+    },
+    "mode": "Arm",
+    "extent": {
+      "start": 58688616,
+      "end": 58688624
+    }
+  },
+  {
+    "program": {
+      "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "program": {
+        "kind": "nitro_fs",
+        "path": "ChildRom/JSS2Child.srl"
+      },
+      "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+    },
+    "region": {
+      "autoload": 0
+    },
+    "mode": "Arm",
+    "extent": {
+      "start": 58707660,
+      "end": 58707672
+    }
+  }
+]

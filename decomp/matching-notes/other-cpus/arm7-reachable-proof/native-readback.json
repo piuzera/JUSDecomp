@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "command": [
+    "/private/tmp/jus-arm7-reachable-root-cache/target/release/examples/arm7_physical_baseline",
+    "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+    "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-physical-baseline/native-pins.json",
+    "a7a90669d34d6990bcff4105320dc267ebd70add7926838576e11e472262b504",
+    "/private/tmp/jus-arm7-reachable-root-proof/native-actual"
+  ],
+  "programs": [
+    {
+      "program": 0,
+      "original_program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "stored_image_bytes": 165552,
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "elf_sha256": "c722d281b052cf928872bc93898776ffd7227aeecd68b6c55e0262ac8d21ef85",
+      "ELF_only_exact_original": true,
+      "load_segments": 6,
+      "initialized_segments": 4,
+      "BSS_bytes": 21424
+    },
+    {
+      "program": 1,
+      "original_program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986",
+      "stored_image_bytes": 165552,
+      "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+      "elf_sha256": "c722d281b052cf928872bc93898776ffd7227aeecd68b6c55e0262ac8d21ef85",
+      "ELF_only_exact_original": true,
+      "load_segments": 6,
+      "initialized_segments": 4,
+      "BSS_bytes": 21424
+    }
+  ],
+  "source_bytes": 0,
+  "T10_complete": false
+}

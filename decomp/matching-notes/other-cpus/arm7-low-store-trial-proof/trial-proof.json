@@ -1,0 +1,998 @@
+{
+  "status": "actual_lower_store_native_exact_original_images",
+  "source_sha256": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+  "compile_command": {
+    "argv": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-O4,s",
+      "-c",
+      "/private/tmp/jus-arm7-low-store-worker-proof/public-fresh-replay/low_store_trial.c",
+      "-o",
+      "/private/tmp/jus-arm7-low-store-worker-proof/public-fresh-replay/compiled.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "elf": {
+    "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+    "object_bytes": 512,
+    "flags": 34603008,
+    "sections": [
+      {
+        "index": 0,
+        "name": "",
+        "type": 0,
+        "flags": 0,
+        "offset": 0,
+        "size": 0,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 1,
+        "name": ".symtab",
+        "type": 2,
+        "flags": 0,
+        "offset": 64,
+        "size": 48,
+        "link": 2,
+        "info": 2,
+        "alignment": 0,
+        "entry_size": 16
+      },
+      {
+        "index": 2,
+        "name": ".strtab",
+        "type": 3,
+        "flags": 0,
+        "offset": 112,
+        "size": 25,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 3,
+        "name": ".shstrtab",
+        "type": 3,
+        "flags": 0,
+        "offset": 144,
+        "size": 42,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 4,
+        "name": ".comment",
+        "type": 1,
+        "flags": 0,
+        "offset": 192,
+        "size": 34,
+        "link": 0,
+        "info": 0,
+        "alignment": 0,
+        "entry_size": 0
+      },
+      {
+        "index": 5,
+        "name": ".text",
+        "type": 1,
+        "flags": 6,
+        "offset": 240,
+        "size": 20,
+        "link": 0,
+        "info": 0,
+        "alignment": 4,
+        "entry_size": 0
+      }
+    ],
+    "symbols": [
+      {
+        "name": "",
+        "value": 0,
+        "size": 0,
+        "binding": 0,
+        "type": 0,
+        "other": 0,
+        "section_index": 0
+      },
+      {
+        "name": "$a",
+        "value": 0,
+        "size": 0,
+        "binding": 0,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      },
+      {
+        "name": "arm7_low_store_trial",
+        "value": 0,
+        "size": 20,
+        "binding": 1,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      }
+    ],
+    "trial_symbol": {
+      "name": "arm7_low_store_trial",
+      "value": 0,
+      "size": 20,
+      "binding": 1,
+      "type": 2,
+      "other": 0,
+      "section_index": 5
+    },
+    "mode": "Arm",
+    "mode_evidence": [
+      {
+        "name": "$a",
+        "value": 0,
+        "size": 0,
+        "binding": 0,
+        "type": 2,
+        "other": 0,
+        "section_index": 5
+      }
+    ],
+    "text_hex": "0001a0e1270680e2ff0a80e2a01d80e51eff2fe1",
+    "text_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+    "instruction_bytes": 20,
+    "pool_bytes": 0,
+    "relocations": []
+  },
+  "originals": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "stored_image_offset": 20660,
+      "program_offset": 2183348,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801da0",
+        "0xe12fff1e"
+      ],
+      "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+      "llvm_command": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "llvm_stdout_sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "stored_image_offset": 20660,
+      "program_offset": 1993396,
+      "words": [
+        "0xe1a00100",
+        "0xe2800627",
+        "0xe2800aff",
+        "0xe5801da0",
+        "0xe12fff1e"
+      ],
+      "code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+      "llvm_command": [
+        "/opt/homebrew/opt/llvm/bin/llvm-mc",
+        "--disassemble",
+        "--triple=armv4t-none-eabi"
+      ],
+      "llvm_stdout_sha256": "7368941f6e46507a16b0d71a384c1c3389df0f0e5c55777c21e42dc842c0d667"
+    }
+  ],
+  "programs": [
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "parent"
+        },
+        "program_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27"
+      },
+      "opaque_ranges": {
+        "prefix_bytes": 20228,
+        "candidate_bytes": 20,
+        "suffix_bytes": 45872
+      },
+      "input_sha256": {
+        "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+        "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+        "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+        "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+        "compiled.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+        "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+      },
+      "opaque_parts_sha256": {
+        "startup": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+        "table": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "autoload1": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+        "prefix": "37711ce0f3d43858869fcab0ff8ff3f3bd39219f79bc7232124ddc6517cf7264",
+        "suffix": "8ba90764759956a934c5acc9ee1596f0f00d3eae33c691f37ef37101abb534df"
+      },
+      "assembly_commands": [
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "prefix.s",
+            "-o",
+            "prefix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "suffix.s",
+            "-o",
+            "suffix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "bss0.s",
+            "-o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "positive": {
+        "linked_elf_sha256": "2f67289e8e24014bfd32a0e06fa91d5334553cd1124b21b269756eaf42e13bb9",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 166744
+        },
+        "sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "offset": 244,
+            "size": 432,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "offset": 676,
+            "size": 24,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "offset": 700,
+            "size": 98976,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "offset": 99676,
+            "size": 6504,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "offset": 99676,
+            "size": 66120,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "offset": 165796,
+            "size": 14920,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          }
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "map_row": " 37fcf04  23850b4       14     4         compiled.o:(.text)",
+        "map_vma": 58707716,
+        "map_lma": 37245108,
+        "map_bytes": 20,
+        "function": {
+          "name": "arm7_low_store_trial",
+          "vma": 58707716,
+          "size": 20,
+          "section": 5
+        },
+        "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "positive.ld",
+            "-Map",
+            "positive.map",
+            "-o",
+            "positive.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "compiled.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "compiled.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__candidate_start == 58707716, \"candidate start\")\nASSERT(__candidate_end == 58707736, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 20, \"candidate size\")\n",
+          "linker_script_sha256": "ddc70ea2af5382528f1f09a50c37a3948a3a19531b6b201bf19f371c933b0690"
+        },
+        "map_sha256": "0e5f869e067156ab4843bdab4f1dfbf3456e23b8b797a01be354c6cd9e02a5d2"
+      },
+      "omitted_object": {
+        "argv": [
+          "/opt/homebrew/bin/ld.lld",
+          "-m",
+          "armelf",
+          "--nmagic",
+          "-T",
+          "omitted_object.ld",
+          "-Map",
+          "omitted_object.map",
+          "-o",
+          "omitted_object.elf",
+          "startup.o",
+          "table.o",
+          "autoload1.o",
+          "prefix.o",
+          "suffix.o",
+          "bss0.o"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "ld.lld: error: section size\nld.lld: error: candidate end\nld.lld: error: candidate size\n",
+        "input_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__candidate_start == 58707716, \"candidate start\")\nASSERT(__candidate_end == 58707736, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 20, \"candidate size\")\n",
+        "linker_script_sha256": "ddc70ea2af5382528f1f09a50c37a3948a3a19531b6b201bf19f371c933b0690"
+      },
+      "wrong_placement": {
+        "argv": [
+          "/opt/homebrew/bin/ld.lld",
+          "-m",
+          "armelf",
+          "--nmagic",
+          "-T",
+          "wrong_placement.ld",
+          "-Map",
+          "wrong_placement.map",
+          "-o",
+          "wrong_placement.elf",
+          "startup.o",
+          "table.o",
+          "autoload1.o",
+          "prefix.o",
+          "compiled.o",
+          "suffix.o",
+          "bss0.o"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "ld.lld: error: section size\nld.lld: error: candidate start\nld.lld: error: candidate end\nld.lld: error: section .arm7.autoload0 virtual address range overlaps with .arm7.bss.autoload0\n>>> .arm7.autoload0 range is [0x37F8000, 0x380824B]\n>>> .arm7.bss.autoload0 range is [0x3808248, 0x380BC8F]\n\nld.lld: error: section .arm7.autoload0 load address range overlaps with .arm7.autoload1\n>>> .arm7.autoload0 range is [0x23801B0, 0x23903FB]\n>>> .arm7.autoload1 range is [0x23903F8, 0x23A8697]\n",
+        "input_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "compiled.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) . += 4; __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__candidate_start == 58707716, \"candidate start\")\nASSERT(__candidate_end == 58707736, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 20, \"candidate size\")\n",
+        "linker_script_sha256": "f0fcdac124250c9d04b9edf2ffa4e53921b33ee2d8aa1c7faffc4db2662b193a"
+      },
+      "malformed_load": {
+        "rejected": true,
+        "old_offset": 244,
+        "wrong_offset": 248,
+        "elf_sha256": "23b7bc70e7831abc7e4b1ebc3d9fa65b63cf08c62f0c52618637c93b6e195516"
+      }
+    },
+    {
+      "identity": {
+        "parent_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+        "program": {
+          "kind": "nitro_fs",
+          "path": "ChildRom/JSS2Child.srl"
+        },
+        "program_sha256": "1f68f8a95818ca23e359aa24ab21b7353b6e3515964957f0f519caaaa6ec4986"
+      },
+      "opaque_ranges": {
+        "prefix_bytes": 20228,
+        "candidate_bytes": 20,
+        "suffix_bytes": 45872
+      },
+      "input_sha256": {
+        "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+        "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+        "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+        "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+        "compiled.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+        "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+      },
+      "opaque_parts_sha256": {
+        "startup": "b9f89a65608eeb161a5bef01b8c1cb8fd1c613950efba614386ca982fb0def35",
+        "table": "43bedd33d998a1473ee2dc87eb859f5f75eb9939892c87978c1349700bd57a7f",
+        "autoload1": "3a12b41817347928e8cf299612f8767a501762137eab74d45ece51c6bad56217",
+        "prefix": "37711ce0f3d43858869fcab0ff8ff3f3bd39219f79bc7232124ddc6517cf7264",
+        "suffix": "8ba90764759956a934c5acc9ee1596f0f00d3eae33c691f37ef37101abb534df"
+      },
+      "assembly_commands": [
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "startup.s",
+            "-o",
+            "startup.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "table.s",
+            "-o",
+            "table.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "autoload1.s",
+            "-o",
+            "autoload1.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "prefix.s",
+            "-o",
+            "prefix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "suffix.s",
+            "-o",
+            "suffix.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/llvm/bin/clang",
+            "--target=arm-none-eabi",
+            "-mcpu=arm7tdmi",
+            "-c",
+            "bss0.s",
+            "-o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "positive": {
+        "linked_elf_sha256": "2f67289e8e24014bfd32a0e06fa91d5334553cd1124b21b269756eaf42e13bb9",
+        "elf_header": {
+          "entry": 37224448,
+          "flags": 83886592,
+          "bytes": 166744
+        },
+        "sections": [
+          {
+            "name": ".arm7.startup",
+            "type": 1,
+            "flags": 2,
+            "vma": 37224448,
+            "offset": 244,
+            "size": 432,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.table",
+            "type": 1,
+            "flags": 2,
+            "vma": 37389976,
+            "offset": 676,
+            "size": 24,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload1",
+            "type": 1,
+            "flags": 2,
+            "vma": 41811968,
+            "offset": 700,
+            "size": 98976,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload1",
+            "type": 8,
+            "flags": 3,
+            "vma": 41910944,
+            "offset": 99676,
+            "size": 6504,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.autoload0",
+            "type": 1,
+            "flags": 6,
+            "vma": 58687488,
+            "offset": 99676,
+            "size": 66120,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          },
+          {
+            "name": ".arm7.bss.autoload0",
+            "type": 8,
+            "flags": 3,
+            "vma": 58753608,
+            "offset": 165796,
+            "size": 14920,
+            "link": 0,
+            "entry_size": 0,
+            "align": 4
+          }
+        ],
+        "segments": [
+          {
+            "type": 1,
+            "offset": 244,
+            "vma": 37224448,
+            "lma": 37224448,
+            "file_bytes": 432,
+            "memory_bytes": 432,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 676,
+            "vma": 37389976,
+            "lma": 37389976,
+            "file_bytes": 24,
+            "memory_bytes": 24,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 700,
+            "vma": 41811968,
+            "lma": 37291000,
+            "file_bytes": 98976,
+            "memory_bytes": 98976,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 41910944,
+            "lma": 41910944,
+            "file_bytes": 0,
+            "memory_bytes": 6504,
+            "flags": 6,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 99676,
+            "vma": 58687488,
+            "lma": 37224880,
+            "file_bytes": 66120,
+            "memory_bytes": 66120,
+            "flags": 4,
+            "align": 4
+          },
+          {
+            "type": 1,
+            "offset": 165796,
+            "vma": 58753608,
+            "lma": 58753608,
+            "file_bytes": 0,
+            "memory_bytes": 14920,
+            "flags": 6,
+            "align": 4
+          }
+        ],
+        "map_row": " 37fcf04  23850b4       14     4         compiled.o:(.text)",
+        "map_vma": 58707716,
+        "map_lma": 37245108,
+        "map_bytes": 20,
+        "function": {
+          "name": "arm7_low_store_trial",
+          "vma": 58707716,
+          "size": 20,
+          "section": 5
+        },
+        "actual_input_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+        "linked_bytes_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+        "image_bytes": 165552,
+        "image_sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+        "BSS_bytes": 21424,
+        "noncandidate_bytes_unchanged": true,
+        "linked_relocation_sections": 0,
+        "native_command": {
+          "argv": [
+            "/opt/homebrew/bin/ld.lld",
+            "-m",
+            "armelf",
+            "--nmagic",
+            "-T",
+            "positive.ld",
+            "-Map",
+            "positive.map",
+            "-o",
+            "positive.elf",
+            "startup.o",
+            "table.o",
+            "autoload1.o",
+            "prefix.o",
+            "compiled.o",
+            "suffix.o",
+            "bss0.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "input_sha256": {
+            "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+            "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+            "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+            "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+            "compiled.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+            "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+            "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+          },
+          "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__candidate_start == 58707716, \"candidate start\")\nASSERT(__candidate_end == 58707736, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 20, \"candidate size\")\n",
+          "linker_script_sha256": "ddc70ea2af5382528f1f09a50c37a3948a3a19531b6b201bf19f371c933b0690"
+        },
+        "map_sha256": "0e5f869e067156ab4843bdab4f1dfbf3456e23b8b797a01be354c6cd9e02a5d2"
+      },
+      "omitted_object": {
+        "argv": [
+          "/opt/homebrew/bin/ld.lld",
+          "-m",
+          "armelf",
+          "--nmagic",
+          "-T",
+          "omitted_object.ld",
+          "-Map",
+          "omitted_object.map",
+          "-o",
+          "omitted_object.elf",
+          "startup.o",
+          "table.o",
+          "autoload1.o",
+          "prefix.o",
+          "suffix.o",
+          "bss0.o"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "ld.lld: error: section size\nld.lld: error: candidate end\nld.lld: error: candidate size\n",
+        "input_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__candidate_start == 58707716, \"candidate start\")\nASSERT(__candidate_end == 58707736, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 20, \"candidate size\")\n",
+        "linker_script_sha256": "ddc70ea2af5382528f1f09a50c37a3948a3a19531b6b201bf19f371c933b0690"
+      },
+      "wrong_placement": {
+        "argv": [
+          "/opt/homebrew/bin/ld.lld",
+          "-m",
+          "armelf",
+          "--nmagic",
+          "-T",
+          "wrong_placement.ld",
+          "-Map",
+          "wrong_placement.map",
+          "-o",
+          "wrong_placement.elf",
+          "startup.o",
+          "table.o",
+          "autoload1.o",
+          "prefix.o",
+          "compiled.o",
+          "suffix.o",
+          "bss0.o"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "ld.lld: error: section size\nld.lld: error: candidate start\nld.lld: error: candidate end\nld.lld: error: section .arm7.autoload0 virtual address range overlaps with .arm7.bss.autoload0\n>>> .arm7.autoload0 range is [0x37F8000, 0x380824B]\n>>> .arm7.bss.autoload0 range is [0x3808248, 0x380BC8F]\n\nld.lld: error: section .arm7.autoload0 load address range overlaps with .arm7.autoload1\n>>> .arm7.autoload0 range is [0x23801B0, 0x23903FB]\n>>> .arm7.autoload1 range is [0x23903F8, 0x23A8697]\n",
+        "input_sha256": {
+          "startup.o": "975a56f195fdceedc408e8022590f7e0094841cd506daac80a67587cb276a601",
+          "table.o": "f4f878413ac277f448c355708372c587ef2d3a36282dda3254d8cf078456d325",
+          "autoload1.o": "773185b0917536da35329d3f3bd78a641c48ffdf1da610637fdf3baf7e3bbb6d",
+          "prefix.o": "f739a6ef0d9fa75fa3a8413e43be729dec25dc689a4a75a5d971ca7d06d6322b",
+          "compiled.o": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+          "suffix.o": "9bfc788f1fd586464d067fd2ad9586889d402afa862ca49f1a5e7684d3e80748",
+          "bss0.o": "795b320871a67553c7df029c75af6dda22de86a605a14391fbdaab2e6268377d"
+        },
+        "linker_script": "ARM7_HEADER_ENTRY = 37224448;\nENTRY(ARM7_HEADER_ENTRY)\nPHDRS {\np0 PT_LOAD FLAGS(4);\np1 PT_LOAD FLAGS(4);\np2 PT_LOAD FLAGS(4);\np3 PT_LOAD FLAGS(6);\np4 PT_LOAD FLAGS(4);\np5 PT_LOAD FLAGS(6);\n}\nSECTIONS {\n.arm7.startup 37224448  : AT(37224448) { startup.o(.arm7.startup) } :p0\nASSERT(SIZEOF(.arm7.startup) == 432, \"section size\")\n.arm7.table 37389976  : AT(37389976) { table.o(.arm7.table) } :p1\nASSERT(SIZEOF(.arm7.table) == 24, \"section size\")\n.arm7.autoload1 41811968  : AT(37291000) { autoload1.o(.arm7.autoload1) } :p2\nASSERT(SIZEOF(.arm7.autoload1) == 98976, \"section size\")\n.arm7.bss.autoload1 41910944 (NOLOAD) : AT(41910944) { autoload1.o(.arm7.bss.autoload1) } :p3\nASSERT(SIZEOF(.arm7.bss.autoload1) == 6504, \"section size\")\n.arm7.autoload0 58687488  : AT(37224880) { prefix.o(.arm7.autoload0.prefix) . += 4; __candidate_start = .; compiled.o(.text) __candidate_end = .; suffix.o(.arm7.autoload0.suffix) } :p4\nASSERT(SIZEOF(.arm7.autoload0) == 66120, \"section size\")\n.arm7.bss.autoload0 58753608 (NOLOAD) : AT(58753608) { bss0.o(.arm7.bss.autoload0) } :p5\nASSERT(SIZEOF(.arm7.bss.autoload0) == 14920, \"section size\")\n}\nASSERT(__candidate_start == 58707716, \"candidate start\")\nASSERT(__candidate_end == 58707736, \"candidate end\")\nASSERT(__candidate_end - __candidate_start == 20, \"candidate size\")\n",
+        "linker_script_sha256": "f0fcdac124250c9d04b9edf2ffa4e53921b33ee2d8aa1c7faffc4db2662b193a"
+      },
+      "malformed_load": {
+        "rejected": true,
+        "old_offset": 244,
+        "wrong_offset": 248,
+        "elf_sha256": "23b7bc70e7831abc7e4b1ebc3d9fa65b63cf08c62f0c52618637c93b6e195516"
+      }
+    }
+  ],
+  "native_link_attempted": true,
+  "input_sha256": {
+    "reproduce.py": "011a6ba768cbcef0d885d8c3394abe2b4d7280264514073c33261db136f26161",
+    "store.py": "e7372618fb0db69fae0724d919d2fd2f11029291c704f616f4c03cd61bc2cd76",
+    "low_store_trial.c": "1db6873b1ce806d32c2edffedce7a9d657418bd29a65269fd0ebb4f9dafe8362",
+    "checked-layouts.json": "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+    "original-manifest.json": "66683ae99da40a86c08f6f10960dfcd8ae0d963e302b9458b78430a01a2dc123",
+    "recipe.json": "c4bc23d280213371df265485cd12f486a1528363ba93adc3a71dd221d56c18d8"
+  },
+  "tool_sha256": {
+    "/private/tmp/jus-track-a/tools/wibo/wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/mwccarm.exe": "a0db9f5dd49ceb619dbc64993660b39f96cca10821a698a9859824e2d4ae2a81",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "/private/tmp/jus-track-a/tools/mwccarm/1.2/sp2p3/lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9",
+    "/opt/homebrew/opt/llvm/bin/llvm-readobj": "cf8c2b665ea0a064bad08c2fe3f6ba3a21fd3fd368ea5643f0c35e12fcac5540",
+    "/opt/homebrew/opt/llvm/bin/llvm-mc": "76de9d4a660f3e1f6dc8175c5d443197f953eaa4df2871406a19d789b1a34ba0",
+    "/opt/homebrew/opt/llvm/bin/clang": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+    "/opt/homebrew/bin/ld.lld": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54"
+  },
+  "inputs_unchanged": true,
+  "source_credit_bytes": 0,
+  "original_names_types_ABI_extent_version_ownership_established": false
+}

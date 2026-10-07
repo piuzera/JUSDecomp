@@ -1,0 +1,28 @@
+{
+  "result": "No flags",
+  "reviewed_capsule_commit": "4e9f6b72aff3a461f5c440b722398d024fed5f3a",
+  "scope": "Separate analyzer and codec tool approval only; no canonical/link/source completion",
+  "upstream_commit": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+  "upstream_tree": "1d0ccf3e5ccc8f6530fb6181dd526b698eeb99bc",
+  "codec_sha256": "5c04f2668aec35d969036499fd7065ea8c9fe9c6bda457b7042f74f4ff7b6064",
+  "analyzer_sha256": "3f18db59e173ca17e14d29755ac51ce36682896d4df5ca500abcd619f4fd52c1",
+  "local_files_verified": 113,
+  "registry_packages_verified": 116,
+  "registry_files_verified": 6352,
+  "analyzer_tracked_files_verified": 154,
+  "analyzer_accepted_artifacts_verified": 16,
+  "invented_tests_passed": 1,
+  "build_profile": "release-fast",
+  "rustflags": "--remap-path-prefix=/private/tmp/jus-child-codec-review-source=/codec-source --remap-path-prefix=/private/tmp/jus-child-codec-review-proof/cargo-home=/cargo-home",
+  "source_audit_before_and_after_build": true,
+  "license_ds_rom_sha256": "6868b9ef46509224c823cc2f80d2d0bbd37086f89bb3ce2a570c0b04f0bb4a7b",
+  "source_bytes": 0,
+  "T10_complete": false,
+  "proof_files": {
+    "source-review.json": "dae522b97034c5b40548480a73c490b8bc286f191cbdd0a0ed613d249f1b6a52",
+    "analyzer-review.json": "00573e61f4d3651a9f74ad539a4245beb08bbdaea0ce0a50b833d28b6a93e40d",
+    "tests.log": "8b7e4a3e23da6e33ea8f6d79502f22d6dbf15532f8ce2886061b54c86ed9db5f",
+    "build.log": "24a4348fa0f0bfcc81d76fee9cfbe91a001691df9309be266908140b16ffbdc4",
+    "review_sources.py": "7da372f8b39d20c7a73e5cecceae689d8bb3ff31147a7a48f415c20344f017f1"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "prior_canonical_producer": "4d84b69a9e3109cbcf75643572a3a98c76e1cacd",
+  "original_source_hashes": 72,
+  "unchanged_source_hashes": 70,
+  "intentional_script_changes": {
+    "tools/scripts/verify.py": {
+      "prior": "4aa420001e345c1befeffe0f3892e191482fce40ca31bb037ef317204bd2a246",
+      "current": "a62b7754aa69a82a44c49ebe7d402de6e509a8cb3cbdbd0a0c1a3c8da421afaa"
+    },
+    "tools/scripts/rom_roundtrip.py": {
+      "prior": "c3d84bd29758ef96e57ac0c052562ce8ecf0949174740cf51d7430615927f262",
+      "current": "eed2dc2614c5ba9ba5ac8eca26c50feca371fc5202e4c195d22ee9050e6fbb01"
+    }
+  },
+  "new_optional_inputs": {
+    "decomp/matching-notes/other-cpus/arm7-physical-baseline/approval.json": "4deb3610dadfdea50e54034e96c7c930c665c8fdd23edb809fc881d14e93401e",
+    "tools/scripts/arm7_native_baseline.py": "d92a2436ca05ad6d38a79c75c17374354aeea56177155555abf58424ff4dcaf7",
+    "tools/scripts/other_executables.py": "a074eb07419b44ad3bcec2b319774430b2ec893c195d839314ad7dc4aae907b4"
+  },
+  "production_lock_unchanged": true
+}

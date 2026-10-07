@@ -1,0 +1,62 @@
+{
+  "status": "worker_verified_pending_independent_review",
+  "base": "7b3513f05adc88a1cca8b0365d3a3607a50a1b25",
+  "source_commit": "71e766e562c78d4b0ec404b3b4edbe242a8d1b0f",
+  "source_tree": "75215439eec429f6dd82df8a9f49bba054a16839",
+  "worktree_clean": true,
+  "source_artifacts": {
+    "lib/examples/arm7_reachable_probe.rs": "902be8f85b965197bdbf39873cc03d22aae75ff4ac4e08c15adb3388cf336603",
+    "lib/src/analysis/arm7_reachable.rs": "c0bd55c63c378757091fc9231082ec2e37d67f4e5950e0f1fb1e9281586a4dd3",
+    "lib/src/analysis/mod.rs": "a015c0c17ad2788b5639424e69470bf698dc2f69354f3bc769a684d9e04d497d",
+    "lib/tests/arm7_reachable.rs": "adb5100fe12443b4a9df8fd310b7ae27937bdaf19576c890c8cd74a237e882db"
+  },
+  "patch_sha256": "d7dbcdf25bd8b099af650db2738b38cf773da3513f7e00936c5b9c012cf1cef7",
+  "producers": {
+    "/private/tmp/jus-arm7-reachable-worker-cache/target/release/dsd": "0e63e31cd3d3a6b7fc5e551c12ad31e7c86156a30c854497645b5106bb5a4ab0",
+    "/private/tmp/jus-arm7-reachable-worker-cache/target/release/examples/arm7_physical_baseline": "e7843875fcf159eb680183d663a99e9338d2a76a1fb5dbebcd91ac3f332f1ba6",
+    "/private/tmp/jus-arm7-reachable-worker-cache/target/release/examples/arm7_reachable_probe": "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff"
+  },
+  "tests": {
+    "accepted_library_and_examples": 80,
+    "new_public_graph": 17,
+    "no_deserialization_doc": 1,
+    "extra_cli_unit": 1,
+    "ignored": 0,
+    "failed": 0,
+    "preparation": 10,
+    "probe_rejections": 12
+  },
+  "strict_clippy": "passed; existing chunks_exact_to_as_chunks allowance",
+  "actual_invocations": [
+    [
+      "/private/tmp/jus-arm7-reachable-worker-cache/target/release/examples/arm7_reachable_probe",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+      "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+      "/private/tmp/jus-arm7-reachable-worker-proof/calls-requests.json",
+      "c0fe04f52216c5bf7bec0ce2943665450f51261e5894995f3246bad569293e15",
+      "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff"
+    ],
+    [
+      "/private/tmp/jus-arm7-reachable-worker-cache/target/release/examples/arm7_reachable_probe",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/arm7-checked-layouts.json",
+      "8a518abf785a1c24756d5485ee669f64e304af20a69b0d02a889fb60410d9fcc",
+      "/private/tmp/jus-arm7-reachable-worker-proof/startup-requests.json",
+      "27102b24cc0711bcf04a6855278f5a567916f913065b5959293bef03e556605e",
+      "28e47852e593d3636d66c797c67963f5c052840c7e0e171ea7dd0dd1bda497ff"
+    ]
+  ],
+  "artifacts": {
+    "calls-requests.json": "c0fe04f52216c5bf7bec0ce2943665450f51261e5894995f3246bad569293e15",
+    "startup-requests.json": "27102b24cc0711bcf04a6855278f5a567916f913065b5959293bef03e556605e",
+    "calls-report.json": "2246012aa174df7769943102e2ae94fc5944cba99f5e6892c76bf1e063a1d129",
+    "startup-report.json": "369dbbf7678a99b8d3dc7b25972148fa97525fed4dc0dc33780b5af3f1e77f0b",
+    "probe-rejections.json": "ec01e66aabe01e93156ca32dc494e29897b95011006e7ad82af33af36cdde5fd"
+  },
+  "source_bytes": 0,
+  "function_extents_established": false,
+  "executable_coverage_established": false,
+  "original_relocations_established": false,
+  "legacy_binary_hashes_match_accepted": false
+}
