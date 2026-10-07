@@ -1,0 +1,17 @@
+test_declared_checkout_bytes_match_git_blobs (test_rom.CheckoutPins.test_declared_checkout_bytes_match_git_blobs) ... ok
+test_actual_fixture_pack_and_parent_outputs (test_rom.LiveControls.test_actual_fixture_pack_and_parent_outputs) ... ok
+test_changed_actual_trial_artifacts_and_tool (test_rom.LiveControls.test_changed_actual_trial_artifacts_and_tool) ... ok
+test_conflicting_writes_and_non_target_rom_change (test_rom.LiveControls.test_conflicting_writes_and_non_target_rom_change) ... ok
+test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) ... ok
+test_malformed_flags_and_identity_readback (test_rom.LiveControls.test_malformed_flags_and_identity_readback) ... ok
+test_missing_stale_symlink_and_escaped_artifacts (test_rom.LiveControls.test_missing_stale_symlink_and_escaped_artifacts) ... ok
+test_mutation_after_consumption_is_rejected (test_rom.LiveControls.test_mutation_after_consumption_is_rejected) ... ok
+test_mutation_at_publication_is_rejected (test_rom.LiveControls.test_mutation_at_publication_is_rejected) ... ok
+test_saved_json_and_missing_trial_stage_have_no_authority (test_rom.LiveControls.test_saved_json_and_missing_trial_stage_have_no_authority) ... ok
+test_actual_public_replay (test_rom.PublicReplay.test_actual_public_replay) ... ok
+test_optimized_python_rejects_before_output (test_rom.PublicReplay.test_optimized_python_rejects_before_output) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 173.405s
+
+OK

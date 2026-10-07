@@ -1,0 +1,13 @@
+F
+======================================================================
+FAIL: test_both_original_programs_have_only_fixed_high_code_and_five_data_words (__main__.FrozenHighOriginalTests.test_both_original_programs_have_only_fixed_high_code_and_five_data_words)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-high-getter-trial-worker-proof/test_original.py", line 11, in test_both_original_programs_have_only_fixed_high_code_and_five_data_words
+    self.assertTrue(script.is_file(),'bounded high original reader not implemented')
+AssertionError: False is not true : bounded high original reader not implemented
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

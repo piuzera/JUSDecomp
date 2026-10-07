@@ -1,0 +1,91 @@
+   Compiling proc-macro2 v1.0.106
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.45
+   Compiling cfg-if v1.0.4
+   Compiling version_check v0.9.5
+   Compiling libc v0.2.182
+   Compiling typenum v1.19.0
+   Compiling memchr v2.8.0
+   Compiling simd-adler32 v0.3.8
+   Compiling adler2 v2.0.1
+   Compiling autocfg v1.5.0
+   Compiling miniz_oxide v0.8.9
+   Compiling serde_core v1.0.228
+   Compiling crc32fast v1.5.0
+   Compiling generic-array v0.14.7
+   Compiling num-traits v0.2.19
+   Compiling zerocopy v0.8.40
+   Compiling thiserror v2.0.18
+   Compiling zmij v1.0.21
+   Compiling getrandom v0.3.4
+   Compiling object v0.37.3
+   Compiling syn v2.0.117
+   Compiling aho-corasick v1.1.4
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling ahash v0.8.12
+   Compiling regex-syntax v0.8.10
+   Compiling heck v0.5.0
+   Compiling unicode-segmentation v1.13.3
+   Compiling serde v1.0.228
+   Compiling gimli v0.32.3
+   Compiling convert_case v0.10.0
+   Compiling digest v0.10.7
+   Compiling cpufeatures v0.2.17
+   Compiling flate2 v1.1.9
+   Compiling fdeflate v0.3.7
+   Compiling encoding_rs v0.8.35
+   Compiling once_cell v1.21.3
+   Compiling smallvec v1.15.1
+   Compiling regex-automata v0.4.14
+   Compiling bitflags v2.13.1
+   Compiling unicode-width v0.2.2
+   Compiling anstyle v1.0.13
+   Compiling rustc-demangle v0.1.27
+   Compiling unicode-xid v0.2.6
+   Compiling arraydeque v0.5.1
+   Compiling pxfm v0.1.28
+   Compiling annotate-snippets v0.12.13
+   Compiling addr2line v0.25.1
+   Compiling encoding_rs_io v0.1.7
+   Compiling png v0.18.1
+   Compiling crc-catalog v2.4.0
+   Compiling base64 v0.22.1
+   Compiling nohash-hasher v0.2.0
+   Compiling byteorder-lite v0.1.0
+   Compiling thiserror-impl v2.0.18
+   Compiling serde_derive v1.0.228
+   Compiling bytemuck_derive v1.10.2
+   Compiling regex v1.12.3
+   Compiling derive_more-impl v2.1.1
+   Compiling snafu-derive v0.8.9
+   Compiling backtrace v0.3.76
+   Compiling bitfield-struct v0.12.1
+   Compiling moxcms v0.7.11
+   Compiling bytemuck v1.25.0
+   Compiling crc v3.4.0
+   Compiling derive_more v2.1.1
+   Compiling sha1 v0.10.6
+   Compiling saphyr-parser-bw v0.0.608
+   Compiling rust-bitwriter v0.0.1
+   Compiling bitreader v0.3.11
+   Compiling log v0.4.29
+   Compiling serde_json v1.0.149
+   Compiling strum_macros v0.28.0
+   Compiling sha2 v0.10.9
+   Compiling itoa v1.0.17
+   Compiling unarm v1.9.2 (/dsd-source/local-deps/unarm/disasm)
+   Compiling strum v0.28.0
+   Compiling snafu v0.8.9
+   Compiling serde-saphyr v0.0.21
+   Compiling image v0.25.9
+   Compiling ds-rom v0.8.0
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+error[E0432]: unresolved import `ds_decomp::rom::arm7_physical_baseline`
+ --> lib/tests/arm7_physical_baseline.rs:2:21
+  |
+2 | use ds_decomp::rom::arm7_physical_baseline::{build, NativePins, NativeToolPin};
+  |                     ^^^^^^^^^^^^^^^^^^^^^^ could not find `arm7_physical_baseline` in `rom`
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `ds-decomp` (test "arm7_physical_baseline") due to 1 previous error

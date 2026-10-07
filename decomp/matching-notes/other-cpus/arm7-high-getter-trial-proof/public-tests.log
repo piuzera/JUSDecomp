@@ -1,0 +1,10 @@
+test_actual_high_object_native_three_symbol_link_and_original_negatives (test_native.ActualHighNativeTests.test_actual_high_object_native_three_symbol_link_and_original_negatives) ... ok
+test_both_original_programs_have_only_fixed_high_code_and_five_data_words (test_original.FrozenHighOriginalTests.test_both_original_programs_have_only_fixed_high_code_and_five_data_words) ... ok
+test_fresh_public_inputs_compile_and_native_link_actual_high_object (test_reproduce.PublicReplayTests.test_fresh_public_inputs_compile_and_native_link_actual_high_object) ... ok
+test_actual_mapping_marker_and_all_three_real_symbolic_pool_operands (test_verify.ActualObjectReadbackTests.test_actual_mapping_marker_and_all_three_real_symbolic_pool_operands) ... ok
+test_actual_pool_includes_constants_and_rejects_wrong_irq_binding (test_verify.ActualObjectReadbackTests.test_actual_pool_includes_constants_and_rejects_wrong_irq_binding) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.501s
+
+OK

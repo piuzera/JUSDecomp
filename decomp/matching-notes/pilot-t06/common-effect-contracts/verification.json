@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "read-only metadata verification, no source gate",
+  "checks": {
+    "target_extents_and_sha256": 2,
+    "original_outgoing_relocation_slots": 53,
+    "final_blx_register_sites": 26,
+    "vtable_entries_with_mode_and_parent": 76,
+    "parent_override_slots": [
+      "0x0",
+      "0x4",
+      "0x18",
+      "0x124"
+    ],
+    "pinned_private_artifact_sha256": 2
+  },
+  "source_credit_added": 0,
+  "canonical_source_checkpoint_bytes": 104,
+  "tests_required": "No executable or source change. README reproducer passed; additional direct ELF metadata checks passed; git diff --check passed."
+}

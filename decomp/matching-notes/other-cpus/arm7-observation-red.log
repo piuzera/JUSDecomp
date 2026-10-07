@@ -1,0 +1,160 @@
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling cfg-if v1.0.4
+   Compiling version_check v0.9.5
+   Compiling libc v0.2.182
+   Compiling memchr v2.8.0
+   Compiling typenum v1.19.0
+   Compiling simd-adler32 v0.3.8
+   Compiling autocfg v1.5.0
+   Compiling adler2 v2.0.1
+   Compiling miniz_oxide v0.8.9
+   Compiling crc32fast v1.5.0
+   Compiling serde_core v1.0.228
+   Compiling generic-array v0.14.7
+   Compiling num-traits v0.2.19
+   Compiling thiserror v2.0.18
+   Compiling zerocopy v0.8.40
+   Compiling object v0.37.3
+   Compiling getrandom v0.3.4
+   Compiling zmij v1.0.21
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling aho-corasick v1.1.4
+   Compiling ahash v0.8.12
+   Compiling unicode-segmentation v1.13.3
+   Compiling syn v2.0.117
+   Compiling gimli v0.32.3
+   Compiling heck v0.5.0
+   Compiling serde v1.0.228
+   Compiling regex-syntax v0.8.10
+   Compiling cpufeatures v0.2.17
+   Compiling convert_case v0.10.0
+   Compiling flate2 v1.1.9
+   Compiling digest v0.10.7
+   Compiling fdeflate v0.3.7
+   Compiling encoding_rs v0.8.35
+   Compiling arraydeque v0.5.1
+   Compiling anstyle v1.0.13
+   Compiling once_cell v1.21.3
+   Compiling bitflags v2.13.1
+   Compiling unicode-xid v0.2.6
+   Compiling smallvec v1.15.1
+   Compiling unicode-width v0.2.2
+   Compiling pxfm v0.1.28
+   Compiling regex-automata v0.4.14
+   Compiling rustc-demangle v0.1.27
+   Compiling annotate-snippets v0.12.13
+   Compiling addr2line v0.25.1
+   Compiling encoding_rs_io v0.1.7
+   Compiling png v0.18.1
+   Compiling base64 v0.22.1
+   Compiling crc-catalog v2.4.0
+   Compiling nohash-hasher v0.2.0
+   Compiling byteorder-lite v0.1.0
+   Compiling crc v3.4.0
+   Compiling sha1 v0.10.6
+   Compiling rust-bitwriter v0.0.1
+   Compiling backtrace v0.3.76
+   Compiling bitreader v0.3.11
+   Compiling log v0.4.29
+   Compiling serde_json v1.0.149
+   Compiling regex v1.12.3
+   Compiling moxcms v0.7.11
+   Compiling sha2 v0.10.9
+   Compiling unarm v1.9.2
+   Compiling strum v0.28.0
+   Compiling itoa v1.0.17
+   Compiling thiserror-impl v2.0.18
+   Compiling serde_derive v1.0.228
+   Compiling bytemuck_derive v1.10.2
+   Compiling derive_more-impl v2.1.1
+   Compiling snafu-derive v0.8.9
+   Compiling bitfield-struct v0.12.1
+   Compiling strum_macros v0.28.0
+   Compiling bytemuck v1.25.0
+   Compiling saphyr-parser-bw v0.0.608
+   Compiling derive_more v2.1.1
+   Compiling snafu v0.8.9
+   Compiling serde-saphyr v0.0.21
+   Compiling image v0.25.9
+   Compiling ds-rom v0.8.0
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-analysis-design-bounded/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 23.51s
+     Running tests/arm7_observation.rs (target/debug/deps/arm7_observation-1456a410174b4427)
+
+running 9 tests
+test invalid_selections_fail_without_panics ... FAILED
+test indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode ... FAILED
+test b_and_bl_share_mapping_including_arm7_autoload_range ... FAILED
+test branch_offsets_wrap_without_double_pipeline_bias ... FAILED
+test conditional_calls_separate_untaken_and_returned_paths ... FAILED
+test observations_store_complete_span_text_identity_and_fixed_policy ... FAILED
+test isa_rejection_and_truncated_thumb_bl_are_atomic ... FAILED
+test thumb_bl_width_and_interior_destinations_remain_explicit ... FAILED
+test exact_program_identity_rejects_foreign_context_and_preserves_child_paths ... FAILED
+
+failures:
+
+---- invalid_selections_fail_without_panics stdout ----
+
+thread 'invalid_selections_fail_without_panics' (250206372) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode stdout ----
+
+thread 'indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode' (250206371) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+---- b_and_bl_share_mapping_including_arm7_autoload_range stdout ----
+
+thread 'b_and_bl_share_mapping_including_arm7_autoload_range' (250206367) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+---- branch_offsets_wrap_without_double_pipeline_bias stdout ----
+
+thread 'branch_offsets_wrap_without_double_pipeline_bias' (250206368) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+---- conditional_calls_separate_untaken_and_returned_paths stdout ----
+
+thread 'conditional_calls_separate_untaken_and_returned_paths' (250206369) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+---- observations_store_complete_span_text_identity_and_fixed_policy stdout ----
+
+thread 'observations_store_complete_span_text_identity_and_fixed_policy' (250206374) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+---- isa_rejection_and_truncated_thumb_bl_are_atomic stdout ----
+
+thread 'isa_rejection_and_truncated_thumb_bl_are_atomic' (250206373) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+---- thumb_bl_width_and_interior_destinations_remain_explicit stdout ----
+
+thread 'thumb_bl_width_and_interior_destinations_remain_explicit' (250206375) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+---- exact_program_identity_rejects_foreign_context_and_preserves_child_paths stdout ----
+
+thread 'exact_program_identity_rejects_foreign_context_and_preserves_child_paths' (250206370) panicked at lib/src/analysis/arm7_observation.rs:48:5:
+not implemented: bounded ARM7 observation
+
+
+failures:
+    b_and_bl_share_mapping_including_arm7_autoload_range
+    branch_offsets_wrap_without_double_pipeline_bias
+    conditional_calls_separate_untaken_and_returned_paths
+    exact_program_identity_rejects_foreign_context_and_preserves_child_paths
+    indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode
+    invalid_selections_fail_without_panics
+    isa_rejection_and_truncated_thumb_bl_are_atomic
+    observations_store_complete_span_text_identity_and_fixed_policy
+    thumb_bl_width_and_interior_destinations_remain_explicit
+
+test result: FAILED. 0 passed; 9 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p ds-decomp --test arm7_observation`

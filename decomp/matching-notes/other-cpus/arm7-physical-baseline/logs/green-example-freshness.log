@@ -1,0 +1,11 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.74s
+     Running unittests examples/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/examples/arm7_physical_baseline-632963176be198ff)
+
+running 4 tests
+test tests::duplicate_selected_identity_rejects_before_artifact_creation ... ok
+test tests::changed_sidecar_or_wrong_digest_rejects_before_artifact_creation ... ok
+test tests::original_file_changed_after_snapshot_rejects_native_success ... ok
+test tests::example_consumes_pinned_bytes_and_retains_per_program_identity_and_pin ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.53s

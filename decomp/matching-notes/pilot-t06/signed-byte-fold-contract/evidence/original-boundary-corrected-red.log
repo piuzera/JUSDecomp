@@ -1,0 +1,47 @@
+test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) ... 
+  test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='instruction') ... FAIL
+  test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='extent40') ... FAIL
+  test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='incoming_addend') ... FAIL
+  test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='incoming_target') ... FAIL
+test_fresh_original_inventory_passes (__main__.OriginalControls.test_fresh_original_inventory_passes) ... ok
+
+======================================================================
+FAIL: test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='instruction')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-hash-helper-grounding/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/test_original.py", line 51, in test_actual_changed_original_objects_reject
+    with self.assertRaises(ValueError): gate(paths)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='extent40')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-hash-helper-grounding/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/test_original.py", line 51, in test_actual_changed_original_objects_reject
+    with self.assertRaises(ValueError): gate(paths)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='incoming_addend')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-hash-helper-grounding/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/test_original.py", line 51, in test_actual_changed_original_objects_reject
+    with self.assertRaises(ValueError): gate(paths)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_actual_changed_original_objects_reject (__main__.OriginalControls.test_actual_changed_original_objects_reject) (change='incoming_target')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-hash-helper-grounding/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/test_original.py", line 51, in test_actual_changed_original_objects_reject
+    with self.assertRaises(ValueError): gate(paths)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.034s
+
+FAILED (failures=4)

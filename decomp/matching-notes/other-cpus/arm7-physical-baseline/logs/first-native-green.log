@@ -1,0 +1,10 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.80s
+     Running tests/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/deps/arm7_physical_baseline-af6a7e4b2a3cc3c0)
+
+running 3 tests
+test native_fixture_preserves_loader_order_with_distinct_vmas_lmas_and_bss ... ok
+test checked_metadata_and_entry_survive_original_layout_mutation ... ok
+test valid_child_view_builds_its_own_identity_report ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s

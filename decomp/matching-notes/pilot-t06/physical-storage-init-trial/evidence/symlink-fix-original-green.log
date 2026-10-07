@@ -1,0 +1,7 @@
+test_original_copy_is_supported (__main__.OriginalBoundaryTests.test_original_copy_is_supported) ... ok
+test_selfconsistent_wrong_reference_is_rejected (__main__.OriginalBoundaryTests.test_selfconsistent_wrong_reference_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.398s
+
+OK

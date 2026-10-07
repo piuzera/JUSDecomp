@@ -1,0 +1,28 @@
+{
+  "reviewer_model": "gpt-6-astra",
+  "producer_commit": "c7c61f2fc3252cf825478862686e39b3ccc27143",
+  "proof_commit": "a65cd23",
+  "status": "cleared",
+  "flags": [],
+  "verified": {
+    "stages": 19,
+    "tests": 206,
+    "test_skips": 0,
+    "live_relocation_slots": 87493,
+    "artifact_hashes": 198,
+    "source_hashes": 69,
+    "matched_source_bytes": 104,
+    "game_source_bytes": 72,
+    "sdk_source_bytes": 32,
+    "whole_rom_exact": true,
+    "payload_bytes_unchanged": true,
+    "negative_trials_publish_no_overrides": true
+  },
+  "limits": [
+    "T06 remains open: five published class targets remain fallback",
+    "ABI reproduction does not assert native ownership",
+    "T10 remains open: no child or ARM7 source credit",
+    "Global source percentage remains unknown"
+  ],
+  "audit": "Own transcript, decision trail, live proof and canonical byte snapshot agree; one checkout line-ending mismatch was corrected under the existing .gitattributes policy."
+}

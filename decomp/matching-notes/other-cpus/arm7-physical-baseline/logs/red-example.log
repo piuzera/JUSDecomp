@@ -1,0 +1,36 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+warning: unused import: `super::*`
+ --> lib/examples/arm7_physical_baseline.rs:5:9
+  |
+5 |     use super::*;
+  |         ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0425]: cannot find function `execute` in this scope
+  --> lib/examples/arm7_physical_baseline.rs:22:42
+   |
+22 |         let args=setup(false);let result=execute(&args).unwrap();
+   |                                          ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `execute` in this scope
+  --> lib/examples/arm7_physical_baseline.rs:30:38
+   |
+30 |         let args=setup(true);assert!(execute(&args).is_err());assert!(!std::path::Path::new(&args[5]).exists());
+   |                                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `execute` in this scope
+  --> lib/examples/arm7_physical_baseline.rs:34:90
+   |
+34 | ...   for index in [2,4] {let mut args=setup(false);args[index]="0".repeat(64);assert!(execute(&args).is_err());assert!(!std::path::...
+   |                                                                                        ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `execute` in this scope
+  --> lib/examples/arm7_physical_baseline.rs:35:74
+   |
+35 | ...   let args=setup(false);fs::write(&args[1],b"[]").unwrap();assert!(execute(&args).is_err());assert!(!std::path::Path::new(&args[...
+   |                                                                        ^^^^^^^ not found in this scope
+
+For more information about this error, try `rustc --explain E0425`.
+warning: `ds-decomp` (example "arm7_physical_baseline" test) generated 1 warning
+error: could not compile `ds-decomp` (example "arm7_physical_baseline" test) due to 4 previous errors; 1 warning emitted

@@ -1,0 +1,13 @@
+F
+======================================================================
+FAIL: test_actual_high_object_native_three_symbol_link_and_original_negatives (__main__.ActualHighNativeTests.test_actual_high_object_native_three_symbol_link_and_original_negatives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-high-getter-trial-worker-proof/test_native.py", line 13, in test_actual_high_object_native_three_symbol_link_and_original_negatives
+    self.assertIsNotNone(native,'bounded128 high native relocation proof not implemented')
+AssertionError: unexpectedly None : bounded128 high native relocation proof not implemented
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

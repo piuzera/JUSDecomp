@@ -1,0 +1,112 @@
+[
+  {
+    "path": "delinks/_dsd_gap@dtcm_1.o",
+    "size": 6212,
+    "sha256": "5ccb7fe8a9752f702d8c64ab1af13e3408c6c89c356436b53cb9a47fe2a89026"
+  },
+  {
+    "path": "delinks/_dsd_gap@itcm_0.o",
+    "size": 61720,
+    "sha256": "52051c163374bfc0e472d7e7da565c5dc9cb1c06b88dbb565a954845a1106a84"
+  },
+  {
+    "path": "delinks/_dsd_gap@main_5.o",
+    "size": 2077160,
+    "sha256": "248e6844754b8c07c9d8b037ca7c01600dfc7566ec61a168aab69c8d238696c3"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov000_4.o",
+    "size": 224576,
+    "sha256": "ad54a864f72c73bad6b74181d0ab99e924b6497221643c27584edd44720b86b2"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov001_5.o",
+    "size": 431516,
+    "sha256": "81d2df74fef7ae7cdfe08caecfe9ba8c0544d63762bbf70a9792c97d68fed3d7"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov002_5.o",
+    "size": 176036,
+    "sha256": "bbf679310a2e1f97ce8bc6db763f71ac528f8acc9b20e2af1e07dc6d7f9fc7bb"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov003_5.o",
+    "size": 191852,
+    "sha256": "e342b3afd351e946b447988e50807cc59beb50396c559a0a0f0849012df6b628"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov004_5.o",
+    "size": 235728,
+    "sha256": "8de2c7ce1bd974aaa288eb43d93face104cb8cac2181b22ff85d0886ba85f543"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov005_5.o",
+    "size": 411792,
+    "sha256": "b78de161984f5a7fd2f98ef503c4e6a6900d1bfed19915d52e761f401436c01b"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov006_5.o",
+    "size": 428424,
+    "sha256": "9056f0313d862cf6d9636db3f534786bb84534fa4b32f82240c82cefce25652d"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov007_5.o",
+    "size": 404640,
+    "sha256": "ff27de96f31f6cf90329ecd38a7a31bbef49d96c9fab028c8d694e3e4d84ba26"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov008_3.o",
+    "size": 560492,
+    "sha256": "f3f5cf8d3452224b928391694f7bcf616a398c86e65a125cea82ff09a4d8a36b"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov010_3.o",
+    "size": 885432,
+    "sha256": "b184f31ba190d6331ab8c3304cd5fb5c9f8a4f627b350e08f9b89004ac0f8748"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov011_5.o",
+    "size": 156564,
+    "sha256": "08327138e749b877a2e8ec7a4e636c01a6c50429a98a19a8dba1a860ce536ee2"
+  },
+  {
+    "path": "delinks/_dsd_gap@ov012_5.o",
+    "size": 624084,
+    "sha256": "63c39a8f03c8aa20b35a5a3e81096bb4b076aa044b9f4557a7a0be3601c82375"
+  },
+  {
+    "path": "linked/arm9.lcf",
+    "size": 16570,
+    "sha256": "690f1577ac6f5aa2c79faabc923fc587b8846b80ad6505df08ef5ef07951a7c8"
+  },
+  {
+    "path": "linked/objects.txt",
+    "size": 1092,
+    "sha256": "06d2aa5eece977277a4c1382d6cec6b67cd20e2aa1d073612731269cefd93d05"
+  },
+  {
+    "path": "logs/check-modules.log",
+    "size": 737,
+    "sha256": "690d189eb603c87ed1f75d10af565f83b8350ef10133f5f2913b8dc69443a77e"
+  },
+  {
+    "path": "logs/delink.log",
+    "size": 191,
+    "sha256": "760ef88c3602c9a55c7f07c8349bc64437e074e67c88718ef7ea5a2d9ed38f8b"
+  },
+  {
+    "path": "logs/extract.log",
+    "size": 138,
+    "sha256": "2dda19017776593dd8b2bafb897133a295b5c3c1b90a88c31e2c9dffea3f287a"
+  },
+  {
+    "path": "logs/lcf.log",
+    "size": 99,
+    "sha256": "1a47c3905f508b2473a610b6cbe5c951712c3ee895c82bc18bd283cc7f64d04a"
+  },
+  {
+    "path": "logs/objdiff.log",
+    "size": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

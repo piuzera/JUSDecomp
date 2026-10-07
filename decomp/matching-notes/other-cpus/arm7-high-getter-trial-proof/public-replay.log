@@ -1,0 +1,2 @@
+Both exact identities, frozen instruction ownership, separate literal words/PC arithmetic, checked mapping, and LLVM pass.
+Exact 108 instructions, five pool words with three native symbolic operands, both full original images; wrong binding and malformed load rejected. Source credit 0.

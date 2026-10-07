@@ -1,0 +1,57 @@
+{
+  "status": "accepted",
+  "findings": [],
+  "reviewed_commit": "d949b416ac8218516de4b2590697906f36d66e57",
+  "public_changed_git_blobs_sha256": {
+    "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/acceptance.json": "802c3087767671ff71115295c386643d3bee1762f33875ba3b050e96d7fa5f91",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/acceptance.json": "131eff1a0829975bcbc9f117653a4abff88ec8a1969446d93243e9538183b45a",
+    "decomp/matching-notes/test_verify_evidence_pins.py": "f757aaba422bf9fc23d87db05a5add3a5a564f890738613ee0ee107116b3d1c2",
+    "decomp/matching-notes/verify-evidence-pins.py": "086c1c4b783c3a2dd7b749df30536f4276160600307116d8d29c9cba0c974a07"
+  },
+  "changed_files": [
+    "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/acceptance.json",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/acceptance.json",
+    "decomp/matching-notes/test_verify_evidence_pins.py",
+    "decomp/matching-notes/verify-evidence-pins.py"
+  ],
+  "verified_public_pin_count": 139,
+  "capsule_pin_counts": {
+    "arm7-sdk-arena-proof": 21,
+    "arm7-arena-getter-proof": 38,
+    "arm7-arena-caller-tail-proof": 27,
+    "arm7-low-getter-trial-proof": 27,
+    "arm7-low-getter-order-proof": 26
+  },
+  "independent_verified_pins_sha256": "b021d2ff42ea3f2c1781379d275404bf9a244346eb2475d8e43352e1d408ca64",
+  "removed_non_git_cache_pins": [
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/test_reproduce.cpython-314.pyc",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/test_verify.cpython-314.pyc",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/verify.cpython-314.pyc",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/test_replay.cpython-314.pyc",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/test_verify.cpython-314.pyc",
+    "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/verify.cpython-314.pyc"
+  ],
+  "actual_previous_manifest_rejection": {
+    "argv": [
+      "python3",
+      "/private/tmp/jus-evidence-pin-independent/decomp/matching-notes/verify-evidence-pins.py",
+      "/private/tmp/jus-evidence-pin-independent-proof/old-acceptance-0.json",
+      "/private/tmp/jus-evidence-pin-independent-proof/old-acceptance-1.json"
+    ],
+    "exit_code": 1,
+    "stderr_sha256": "b5e64fd2bb3d167d435f4e74840dcc332b14107cf2c5036ae1db4fb3c81f41b8",
+    "only_rejections": [
+      "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/test_reproduce.cpython-314.pyc",
+      "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/test_verify.cpython-314.pyc",
+      "decomp/matching-notes/other-cpus/arm7-low-getter-trial-proof/__pycache__/verify.cpython-314.pyc",
+      "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/test_replay.cpython-314.pyc",
+      "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/test_verify.cpython-314.pyc",
+      "decomp/matching-notes/other-cpus/arm7-low-getter-order-proof/__pycache__/verify.cpython-314.pyc"
+    ]
+  },
+  "fixture_test_results_sha256": "9ae2187f9b588229b67b4376b3c507ee5c160206496053edb9fa49db026c5754",
+  "cli_original_139_pin_command_exit_code": 0,
+  "working_tree_clean": true,
+  "scope_review": "Exactly two acceptance maps lose their three non-Git cache entries, preserving all retained hashes and every other manifest field; only CLI and its four real Git-fixture tests are added. Git-object hashes and worktree bytes independently verified for all139 pins. No original/compiler/source/tool/experimental/older-capsule changes. CLI requires each evidence path at actual HEAD, validates its committed bytes, then validates working file bytes. All four fixture checks exercise the actual subprocess CLI and Git repo; actual pre-fix acceptance manifests also reject only the six historical ignored cache pins.",
+  "independent_script_sha256": "4f912330e833a5b4bb319171b9092ce832f10099512a067592be1606986bda33"
+}

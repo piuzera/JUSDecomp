@@ -1,0 +1,87 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-observation-root-check/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.94s
+     Running unittests src/lib.rs (/private/tmp/jus-dsd-arm7-root-check/target/debug/deps/ds_decomp-d2a80234fa190631)
+
+running 5 tests
+test config::test_iter_comma_separated ... ok
+test analysis::functions::tests::adjacent_swi_wrappers_each_produce_a_function ... ok
+test analysis::functions::tests::startup_swi_scan_is_bounded_to_actual_module_bytes ... ok
+test analysis::functions::tests::startup_swi_prefix_includes_halfword_aligned_wrapper_before_entry ... ok
+test analysis::functions::tests::arm_self_loop_ends_function ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/arm7_checked_view.rs (/private/tmp/jus-dsd-arm7-root-check/target/debug/deps/arm7_checked_view-399b3a4745fd8185)
+
+running 24 tests
+test identical_image_cannot_authorize_other_program ... ok
+test arm9_cpu_isa_and_processor_reject ... ok
+test changed_region_hash_rejects ... ok
+test image_out_of_bounds_and_short_header_reject_without_panics ... ok
+test missing_or_ambiguous_nitrofs_path_rejects ... ok
+test main_entry_outside_startup_and_bad_bss_reject ... ok
+test header_and_parameter_hash_domains_are_pinned ... ok
+test omitted_target_fields_do_not_default_to_arm9 ... ok
+test parameter_block_outside_startup_rejects ... ok
+test nitrofs_valid_overlay_reservation_remains_selectable ... ok
+test nitrofs_valid_shift_jis_name_remains_selectable ... ok
+test nitrofs_overlay_reserved_file_id_rejects_without_panic ... ok
+test parent_and_child_views_use_distinct_program_identity ... ok
+test nitrofs_decoding_errors_and_decoded_sibling_aliases_reject ... ok
+test malformed_nitrofs_extents_reject_without_panics ... ok
+test unaligned_and_overflowing_runtime_extent_reject ... ok
+test nitrofs_duplicate_names_and_cycles_reject ... ok
+test wrong_parent_program_and_image_pins_reject ... ok
+test runtime_initialized_or_bss_overlap_reject ... ok
+test region_gap_overlap_order_missing_and_table_tail_reject ... ok
+test nitrofs_overlay_extent_and_count_arithmetic_rejects ... ok
+test changed_header_rejects_even_after_program_repinned ... ok
+test record_destination_size_bss_and_table_hash_reject ... ok
+test changed_parameter_tuple_rejects_after_image_repinned ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/arm7_module_inputs.rs (/private/tmp/jus-dsd-arm7-root-check/target/debug/deps/arm7_module_inputs-b5608b852f9cbe26)
+
+running 12 tests
+test locked_parser_distinguishes_v4t_and_explicit_legacy_v5te ... ok
+test existing_function_parser_keeps_explicit_v5te_and_blx_support ... ok
+test combined_thumb_bl_consumes_four_bytes_and_preserves_next_address ... ok
+test checked_descriptors_preserve_physical_ranges_and_exclude_table ... ok
+test returned_target_copy_cannot_change_internal_isa_policy ... ok
+test wrong_arm9_intake_and_runtime_overflow_cannot_create_module_inputs ... ok
+test span_alignment_bounds_order_and_table_reject_without_panics ... ok
+test equal_payloads_keep_parent_child_and_exact_path_identities_distinct ... ok
+test trailing_thumb_bl_reports_first_unobserved_byte_without_partial_success ... ok
+test v5_only_instructions_reject_atomically_even_after_valid_prefix ... ok
+test explicit_arm_and_thumb_spans_decode_v4t_including_thumb_halfword_alignment ... ok
+test trailing_thumb_bl_and_wrong_second_half_do_not_publish_partial_observation ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/arm7_observation.rs (/private/tmp/jus-dsd-arm7-root-check/target/debug/deps/arm7_observation-1456a410174b4427)
+
+running 14 tests
+test observations_store_complete_span_text_identity_and_fixed_policy ... ok
+test invalid_selections_fail_without_panics ... ok
+test exact_program_identity_rejects_foreign_context_and_preserves_child_paths ... ok
+test readonly_accessors_match_serialized_observations_without_redecoding ... ok
+test thumb_bl_width_and_interior_destinations_remain_explicit ... ok
+test branch_offsets_wrap_without_double_pipeline_bias ... ok
+test conditional_calls_separate_untaken_and_returned_paths ... ok
+test thumb_halfword_selection_and_conditional_branch_keep_thumb_mode ... ok
+test b_and_bl_share_mapping_including_arm7_autoload_range ... ok
+test isa_rejection_and_truncated_thumb_bl_are_atomic ... ok
+test thumb_bl_signed_boundary_adds_pipeline_bias_after_sign_extension ... ok
+test indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode ... ok
+test thumb_short_branches_use_signed_payload_then_pc_bias ... ok
+test raw_arm_imm24_sign_boundaries_and_formatted_offsets_agree ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.34s
+
+   Doc-tests ds_decomp
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

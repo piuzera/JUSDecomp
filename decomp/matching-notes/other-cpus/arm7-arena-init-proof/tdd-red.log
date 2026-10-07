@@ -1,0 +1,15 @@
+test_finite_split_calls_and_separate_bss_literal (test_init.OriginalGrounding.test_finite_split_calls_and_separate_bss_literal) ... FAIL
+
+======================================================================
+FAIL: test_finite_split_calls_and_separate_bss_literal (test_init.OriginalGrounding.test_finite_split_calls_and_separate_bss_literal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-init-trial/decomp/matching-notes/other-cpus/arm7-arena-init-proof/test_init.py", line 11, in test_finite_split_calls_and_separate_bss_literal
+    self.assertTrue((HERE / "init.py").exists(), "finite original reader is missing")
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : finite original reader is missing
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

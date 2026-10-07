@@ -1,0 +1,37 @@
+{
+  "reviewer": "gpt-6-astra",
+  "source_commit": "7eda78cc7d28bde753ea0bceb8e4e0c6d10763e3",
+  "scope": "Current header-free source TU and strict source pipeline, real positive/negative artifacts and decision trail",
+  "flags": [],
+  "verified": {
+    "stages": 17,
+    "modules": 17,
+    "relocations": 87493,
+    "failed": 0,
+    "unresolved": 0,
+    "public_tests": 79,
+    "source_hashes": 64,
+    "artifact_hashes": 182,
+    "source_bytes": 24,
+    "instructions": 20,
+    "literals": 4,
+    "functions": 1,
+    "typed_binary_fallback": 2141352,
+    "generated_padding": 352,
+    "arm9_initialized_total": 2141728
+  },
+  "mutation": {
+    "compiled_object_changed": true,
+    "whole_module_references_unchanged": 15,
+    "split_tu_reference_unchanged": true,
+    "failed_stage": "source_build",
+    "credited_bytes": 0
+  },
+  "limitations": [
+    "ARM7 and embedded executable source reconstruction unfinished",
+    "Global source percentage unspecified",
+    "Compiler pin applies to current TU only",
+    "Current header-free TU does not prove implicit quoted-header dependency tracking"
+  ],
+  "decision_trail": "Inspected against actual root transcript and artifacts; no flags"
+}

@@ -1,0 +1,851 @@
+{
+  "schema_version": 1,
+  "status": "ordinary_source_blocked",
+  "source_credit": 0,
+  "source_candidate_count": 0,
+  "compiler_trial_count": 0,
+  "base_commit": "6450c79933a987933e76a310a10930eda4802718",
+  "production_coverage_bytes_unchanged": 304,
+  "scope": "Read-only original-code evidence and bounded interface decision; no implementation/canonical/metadata activation.",
+  "provenance": {
+    "original_source_revision": "6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b",
+    "published_contracts_path": "decomp/matching-notes/pilot-t06/common-effect-contracts/contracts.json",
+    "published_contracts_sha256": "51091302737e4ba290aac0dcab1e7a811577ae294e5f22035c1eb81b1264defb",
+    "current_canonical_report": "../class/clone/root-canonical-report.json",
+    "linked_elf_private_path": "/private/tmp/jus-track-a-clone-proof/build/clone-root-proof/native-link/linked.elf",
+    "linked_elf_sha256": "81aba4870039f28413f97cce9f3c7b9f1016e8d5a31033174aad6f785ae2b747",
+    "target_reference_private_path": "/private/tmp/jus-track-a-clone-proof/build/clone-root-proof/candidate-delinks/_dsd_gap@main_3.o",
+    "target_reference_sha256": "3102ef086f0c8773a59b991ed16428d33a2439bd4b48535dbdc0c65c44045831",
+    "graph_limit": "Target snippet50lines, no call edges; bounded original ASM and raw ELF used after graph discovery."
+  },
+  "functions": {
+    "func_0206ca8c": {
+      "address": "0x0206ca8c",
+      "extent_bytes": 1016,
+      "mode": "ARM",
+      "payload_sha256": "c819f1db4782c70cf9b168e735dd7b795ccd02b83ed5c208051e6ab72aeeca13"
+    },
+    "func_02010adc": {
+      "address": "0x02010adc",
+      "extent_bytes": 216,
+      "mode": "ARM",
+      "payload_sha256": "32668a6d95730d74243955cb3415947b780e3881dc1d29247da07680a8fb4a02"
+    },
+    "func_02011b38": {
+      "address": "0x02011b38",
+      "extent_bytes": 40,
+      "mode": "ARM",
+      "payload_sha256": "f53e97316d9f454170b570233884dda15a858da34776b40ef810fa78ab660de4"
+    },
+    "func_0204b0ec": {
+      "address": "0x0204b0ec",
+      "extent_bytes": 28,
+      "mode": "ARM",
+      "payload_sha256": "427fa6899b39fe711fec5ea0a6bc2e7e49199c71fd41fdea0a530d8133460a78"
+    },
+    "func_0203b404": {
+      "address": "0x0203b404",
+      "extent_bytes": 16,
+      "mode": "ARM",
+      "payload_sha256": "dda9c3a9c9712f2d0c7121585c3e1430e1a8d86542e55ab86409e4fd059dd7ab"
+    },
+    "func_0206c498": {
+      "address": "0x0206c498",
+      "extent_bytes": 60,
+      "mode": "ARM",
+      "payload_sha256": "18ec66c22f054c30755a1a3d19b7203cfaee61e8e5bfe1a0553e51fede764039"
+    },
+    "func_02010644": {
+      "address": "0x02010644",
+      "extent_bytes": 212,
+      "mode": "Thumb",
+      "payload_sha256": "6636b414078a31bedfc25b6507b247b14876900934027cbee9f6104e5894dbda"
+    },
+    "func_02011990": {
+      "address": "0x02011990",
+      "extent_bytes": 12,
+      "mode": "Thumb",
+      "payload_sha256": "959255869c7249c5a3733406ee391394067e8a328dda665a079f270b4c453369"
+    }
+  },
+  "target": {
+    "identity": "func_0206ca8c",
+    "instruction_bytes": 1004,
+    "literal_pool_bytes": 12,
+    "vtable_identity": "data_0209e114",
+    "vtable_slot": "0x124",
+    "vtable_reference_address": "0x0209e238",
+    "relocations": [
+      {
+        "address": "0x0206cab4",
+        "type": 1,
+        "symbol": "func_0203b404",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cabc",
+        "type": 1,
+        "symbol": "func_0206c498",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cac8",
+        "type": 1,
+        "symbol": "func_02010adc",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cad8",
+        "type": 1,
+        "symbol": "func_02011b38",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cb44",
+        "type": 1,
+        "symbol": "func_02024d44",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cb64",
+        "type": 1,
+        "symbol": "func_02024d54",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cb88",
+        "type": 1,
+        "symbol": "func_02023894",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cc00",
+        "type": 1,
+        "symbol": "func_0206ca28",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cc34",
+        "type": 1,
+        "symbol": "func_02028384",
+        "addend": -8
+      },
+      {
+        "address": "0x0206ccc0",
+        "type": 1,
+        "symbol": "func_0206ca28",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cd04",
+        "type": 1,
+        "symbol": "func_02024d54",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cd20",
+        "type": 1,
+        "symbol": "func_02024d44",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cd40",
+        "type": 1,
+        "symbol": "func_0206ca28",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cd58",
+        "type": 1,
+        "symbol": "func_02011990",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cd88",
+        "type": 1,
+        "symbol": "func_02011990",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cda0",
+        "type": 1,
+        "symbol": "func_02011990",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cdc8",
+        "type": 1,
+        "symbol": "func_0206ce84",
+        "addend": -8
+      },
+      {
+        "address": "0x0206cde0",
+        "type": 1,
+        "symbol": "func_0206ce84",
+        "addend": -8
+      },
+      {
+        "address": "0x0206ce14",
+        "type": 1,
+        "symbol": "func_02011990",
+        "addend": -8
+      },
+      {
+        "address": "0x0206ce68",
+        "type": 1,
+        "symbol": "func_0206c54c",
+        "addend": -8
+      },
+      {
+        "address": "0x0206ce78",
+        "type": 2,
+        "symbol": "data_020afc40",
+        "addend": 0
+      },
+      {
+        "address": "0x0206ce80",
+        "type": 2,
+        "symbol": "func_0206ceac",
+        "addend": 0
+      }
+    ],
+    "virtual_calls": [
+      {
+        "address": "0x0206cb00",
+        "receiver": "created",
+        "slot": "0x94",
+        "prepared_r1": "related.field_3c &0x7fffffff",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cb14",
+        "receiver": "created",
+        "slot": "0xb0",
+        "prepared_r1": "0x31305053",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cb30",
+        "receiver": "self",
+        "slot": "0xb4",
+        "prepared_r1": "created",
+        "proved_target": "func_020161d8",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cbc0",
+        "receiver": "configured.field_64",
+        "slot": "0x5c",
+        "prepared_r1": "related.field_64.byte_48",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cbe0",
+        "receiver": "configured",
+        "slot": "0xd4",
+        "prepared_r1": "related",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cc1c",
+        "receiver": "configured",
+        "slot": "0xa0",
+        "prepared_r1": "&word_8c000",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cc44",
+        "receiver": "related.field_68",
+        "slot": "0xd0",
+        "prepared_r1": "none explicitly prepared",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cc60",
+        "receiver": "related.field_68",
+        "slot": "0x14c",
+        "prepared_r1": "none explicitly prepared",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cc74",
+        "receiver": "result of related.field_68 vcall_d0",
+        "slot": "0x20",
+        "prepared_r1": "result of vcall_14c",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cc88",
+        "receiver": "configured",
+        "slot": "0x24",
+        "prepared_r1": "result of preceding vcall_20 or0",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cce8",
+        "receiver": "configured",
+        "slot": "0xd4",
+        "prepared_r1": "global.field_04.field_04",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206ccf8",
+        "receiver": "configured",
+        "slot": "0xd4",
+        "prepared_r1": "related",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cd7c",
+        "receiver": "configured.field_64",
+        "slot": "0x10",
+        "prepared_r1": "&adjusted_word",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cdbc",
+        "receiver": "configured.field_64",
+        "slot": "0x10",
+        "prepared_r1": "&unadjusted_word",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206cdf4",
+        "receiver": "configured",
+        "slot": "0xf8",
+        "prepared_r1": "&func_0206ce84 result",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206ce08",
+        "receiver": "created",
+        "slot": "0xdc",
+        "prepared_r1": "-1",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206ce40",
+        "receiver": "created.field_68",
+        "slot": "0x10",
+        "prepared_r1": "&rounded_word",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206ce50",
+        "receiver": "created.field_68",
+        "slot": "0x6c",
+        "prepared_r1": "none explicitly prepared",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      },
+      {
+        "address": "0x0206ce64",
+        "receiver": "configured",
+        "slot": "0xd8",
+        "prepared_r1": "1",
+        "proved_target": "unknown",
+        "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+      }
+    ],
+    "direct_call_registers": [
+      {
+        "address": "0x0206cab4",
+        "symbol": "func_0203b404",
+        "known_r0": "zero after global-byte test",
+        "known_r1_and_other_explicit_preparation": "none newly prepared",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cabc",
+        "symbol": "func_0206c498",
+        "known_r0": "[context owner+0x88]",
+        "known_r1_and_other_explicit_preparation": "none newly prepared",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cac8",
+        "symbol": "func_02010adc",
+        "known_r0": "zero",
+        "known_r1_and_other_explicit_preparation": "incoming selector",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cad8",
+        "symbol": "func_02011b38",
+        "known_r0": "nonzero lookup result",
+        "known_r1_and_other_explicit_preparation": "none newly prepared",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cb44",
+        "symbol": "func_02024d44",
+        "known_r0": "&stack+0x4c",
+        "known_r1_and_other_explicit_preparation": "self",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cb64",
+        "symbol": "func_02024d54",
+        "known_r0": "&stack+0x48",
+        "known_r1_and_other_explicit_preparation": "self",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cb88",
+        "symbol": "func_02023894",
+        "known_r0": "created",
+        "known_r1_and_other_explicit_preparation": "selector; r2 explicitly zero",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cc00",
+        "symbol": "func_0206ca28",
+        "known_r0": "configured",
+        "known_r1_and_other_explicit_preparation": "&stack+0x44; r2=&stack+0x40",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cc34",
+        "symbol": "func_02028384",
+        "known_r0": "configured",
+        "known_r1_and_other_explicit_preparation": "original code-address func_0206ceac",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206ccc0",
+        "symbol": "func_0206ca28",
+        "known_r0": "configured",
+        "known_r1_and_other_explicit_preparation": "&stack+0x38; r2=&stack+0x34",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cd04",
+        "symbol": "func_02024d54",
+        "known_r0": "&stack+0x24",
+        "known_r1_and_other_explicit_preparation": "related",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cd20",
+        "symbol": "func_02024d44",
+        "known_r0": "&stack+0x2c",
+        "known_r1_and_other_explicit_preparation": "related",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cd40",
+        "symbol": "func_0206ca28",
+        "known_r0": "configured",
+        "known_r1_and_other_explicit_preparation": "&stack+0x30; r2=&stack+0x28",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cd58",
+        "symbol": "func_02011990",
+        "known_r0": "&stack+0x20",
+        "known_r1_and_other_explicit_preparation": "self.field_64",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cd88",
+        "symbol": "func_02011990",
+        "known_r0": "&stack+0x1c",
+        "known_r1_and_other_explicit_preparation": "self.field_64",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cda0",
+        "symbol": "func_02011990",
+        "known_r0": "&stack+0x18",
+        "known_r1_and_other_explicit_preparation": "self.field_64",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cdc8",
+        "symbol": "func_0206ce84",
+        "known_r0": "&stack+0x14",
+        "known_r1_and_other_explicit_preparation": "self",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206cde0",
+        "symbol": "func_0206ce84",
+        "known_r0": "&stack+0x10",
+        "known_r1_and_other_explicit_preparation": "self",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206ce14",
+        "symbol": "func_02011990",
+        "known_r0": "&stack+0x0c",
+        "known_r1_and_other_explicit_preparation": "related.field_68",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      },
+      {
+        "address": "0x0206ce68",
+        "symbol": "func_0206c54c",
+        "known_r0": "prior virtual-call result; helper replaces it",
+        "known_r1_and_other_explicit_preparation": "none newly prepared",
+        "other_register_arguments": "unresolved; no full callee signature inferred"
+      }
+    ],
+    "direct_relocation_modes": [
+      {
+        "call_address": "0x0206cab4",
+        "identity": "func_0203b404",
+        "native_symbol_value": "0x0203b404",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cabc",
+        "identity": "func_0206c498",
+        "native_symbol_value": "0x0206c498",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cac8",
+        "identity": "func_02010adc",
+        "native_symbol_value": "0x02010adc",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cad8",
+        "identity": "func_02011b38",
+        "native_symbol_value": "0x02011b38",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cb44",
+        "identity": "func_02024d44",
+        "native_symbol_value": "0x02024d44",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cb64",
+        "identity": "func_02024d54",
+        "native_symbol_value": "0x02024d54",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cb88",
+        "identity": "func_02023894",
+        "native_symbol_value": "0x02023894",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cc00",
+        "identity": "func_0206ca28",
+        "native_symbol_value": "0x0206ca28",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cc34",
+        "identity": "func_02028384",
+        "native_symbol_value": "0x02028384",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206ccc0",
+        "identity": "func_0206ca28",
+        "native_symbol_value": "0x0206ca28",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cd04",
+        "identity": "func_02024d54",
+        "native_symbol_value": "0x02024d54",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cd20",
+        "identity": "func_02024d44",
+        "native_symbol_value": "0x02024d44",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cd40",
+        "identity": "func_0206ca28",
+        "native_symbol_value": "0x0206ca28",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cd58",
+        "identity": "func_02011990",
+        "native_symbol_value": "0x02011991",
+        "mode": "Thumb",
+        "linked_transfer": "BLX immediate"
+      },
+      {
+        "call_address": "0x0206cd88",
+        "identity": "func_02011990",
+        "native_symbol_value": "0x02011991",
+        "mode": "Thumb",
+        "linked_transfer": "BLX immediate"
+      },
+      {
+        "call_address": "0x0206cda0",
+        "identity": "func_02011990",
+        "native_symbol_value": "0x02011991",
+        "mode": "Thumb",
+        "linked_transfer": "BLX immediate"
+      },
+      {
+        "call_address": "0x0206cdc8",
+        "identity": "func_0206ce84",
+        "native_symbol_value": "0x0206ce84",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206cde0",
+        "identity": "func_0206ce84",
+        "native_symbol_value": "0x0206ce84",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      },
+      {
+        "call_address": "0x0206ce14",
+        "identity": "func_02011990",
+        "native_symbol_value": "0x02011991",
+        "mode": "Thumb",
+        "linked_transfer": "BLX immediate"
+      },
+      {
+        "call_address": "0x0206ce68",
+        "identity": "func_0206c54c",
+        "native_symbol_value": "0x0206c54c",
+        "mode": "ARM",
+        "linked_transfer": "BL immediate"
+      }
+    ]
+  },
+  "physical_fields": [
+    {
+      "base": "self",
+      "offset": "0x00",
+      "observed_access": "vptr"
+    },
+    {
+      "base": "self",
+      "offset": "0x44",
+      "observed_access": "related pointer"
+    },
+    {
+      "base": "self",
+      "offset": "0x50",
+      "observed_access": "coordinate component pointer accessed by helpers"
+    },
+    {
+      "base": "self",
+      "offset": "0x64",
+      "observed_access": "component pointer"
+    },
+    {
+      "base": "self",
+      "offset": "0x78",
+      "observed_access": "byte branch selector"
+    },
+    {
+      "base": "self",
+      "offset": "0x80",
+      "observed_access": "halfword flags"
+    },
+    {
+      "base": "related",
+      "offset": "0x3c",
+      "observed_access": "word masked by 0x7fffffff"
+    },
+    {
+      "base": "related",
+      "offset": "0x64",
+      "observed_access": "component pointer"
+    },
+    {
+      "base": "related",
+      "offset": "0x68",
+      "observed_access": "virtual component pointer"
+    },
+    {
+      "base": "wrapper",
+      "offset": "0x04",
+      "observed_access": "created pointer"
+    },
+    {
+      "base": "created/configured",
+      "offset": "0x00",
+      "observed_access": "vptr"
+    },
+    {
+      "base": "created/configured",
+      "offset": "0x64",
+      "observed_access": "virtual component pointer"
+    },
+    {
+      "base": "created/configured",
+      "offset": "0x68",
+      "observed_access": "virtual component pointer"
+    },
+    {
+      "base": "related component",
+      "offset": "0x48",
+      "observed_access": "byte copied into saved r5"
+    },
+    {
+      "base": "coordinate component",
+      "offset": "0x0c",
+      "observed_access": "first coordinate word through func_02024d44"
+    },
+    {
+      "base": "coordinate component",
+      "offset": "0x10",
+      "observed_access": "second coordinate word through func_02024d54"
+    },
+    {
+      "base": "component for func_02011990",
+      "offset": "0x06",
+      "observed_access": "unsigned halfword shifted left4"
+    },
+    {
+      "base": "component for func_0206ce84",
+      "offset": "0x26",
+      "observed_access": "unsigned halfword consumed by original helper"
+    }
+  ],
+  "initial_scalars": [
+    {
+      "base_identity": "data_020a1534",
+      "offset": "0x10",
+      "address": "0x020a1544",
+      "width_bytes": 2,
+      "initial_value": 0,
+      "field_bytes_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "observed_role": "registered numeric-range count"
+    },
+    {
+      "base_identity": "data_020a1c34",
+      "offset": "0x1cc",
+      "address": "0x020a1e00",
+      "width_bytes": 4,
+      "initial_value": 0,
+      "field_bytes_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "observed_role": "fallback search-chain head"
+    },
+    {
+      "base_identity": "data_020a0c34",
+      "offset": "0x2ec",
+      "address": "0x020a0f20",
+      "width_bytes": 4,
+      "initial_value": 0,
+      "field_bytes_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "observed_role": "context-owner pointer returned by func_0203b404"
+    }
+  ],
+  "candidate_interface": {
+    "entry": "original func_0206ca8c identity",
+    "r0": "opaque self pointer",
+    "r1": "numeric selector word",
+    "return_r0": "opaque configured pointer or zero on observed global guard",
+    "extra_arguments": "none established",
+    "physical_views": "offset-named partial records only; no inheritance/ownership or complete semantic types",
+    "virtual_lowering": "declaration-only slot views may be tested after full entry behavior is representable; no ABI signature inferred for calls lacking explicit argument preparation"
+  },
+  "blocker": {
+    "lookup_zero_paths": [
+      "func_02010adc: fallback func_02010644 returns0 -> conditional return at0x02010b74/0x02010b78",
+      "func_02011b38: returned field+0x18 at0x02011b58 can be0; no success check in helper"
+    ],
+    "first_merge": {
+      "addresses": [
+        "0x0206cad4",
+        "0x0206cadc",
+        "0x0206cae0",
+        "0x0206cae4",
+        "0x0206cae8"
+      ],
+      "zero_lookup_effect": "conditional load into r4 is skipped; cmp consumes saved incoming r4",
+      "nonzero_r4_effect": "created virtual-call path uses saved incoming r4 as receiver even though lookup is0",
+      "zero_r4_effect": "branch reaches0x0206cb8c without assigning r5/r6/r7/r8"
+    },
+    "later_saved_reads": [
+      {
+        "register": "r5",
+        "address": "0x0206cb98",
+        "effect": "tested unless self.flags mask0x01 is set"
+      },
+      {
+        "register": "r8",
+        "address": "0x0206cbb0",
+        "effect": "used as configured pointer unless self.flags mask0x02 is set"
+      },
+      {
+        "register": "r7",
+        "address": "0x0206cbe4",
+        "effect": "used as second coordinate when self.byte78 !=0; alternate paths also consume it"
+      },
+      {
+        "register": "r6",
+        "address": "0x0206cbe8",
+        "effect": "used as first coordinate when self.byte78 !=0; alternate paths also consume it"
+      },
+      {
+        "register": "r4",
+        "address": "0x0206cdf8",
+        "effect": "used unconditionally as created receiver in the tail"
+      },
+      {
+        "register": "r8",
+        "address": "0x0206ce6c",
+        "effect": "copied to result on normal context-restored return"
+      }
+    ],
+    "ordinary_source_limit": "Two ordinary arguments cannot provide arbitrary incoming callee-saved values. Reading uninitialized source locals is not a defined representation; initializing or adding an early return changes this machine path. No evidence for a special incoming saved-register convention or universal lookup/created success.",
+    "live_reachability": "Static branches and nullable helper outcomes are concrete. No live call selecting this derived vtable on a zero-lookup state is proved. Initial zero registry/head does not prove such a call; context-owner initial value is also zero.",
+    "next_required_fact": "A proven reachable-caller invariant excluding every problematic outcome, or newly established actual entry convention; preserve reference code meanwhile.",
+    "additional_zero_case": "Even a nonzero lookup plus nonzero wrapper does not suffice: wrapper.field_04==0 assigns r4=0, skips the setup block, and reaches the same tail with unassigned r5/r6/r7/r8; later created uses also consume zero r4."
+  },
+  "abi_reference": {
+    "url": "https://github.com/ARM-software/abi-aa/blob/2025Q1/aapcs32/aapcs32.rst#611core-registers",
+    "scope": "Conventional register roles only; not identification of original compiler or exact historical ABI variant."
+  },
+  "verification": {
+    "status": "passed",
+    "target_digest_matches_publication": true,
+    "current_reference_relocations_match_published_contract": 22,
+    "actual_linked_targets_checked": 22,
+    "direct_ARM_calls": 16,
+    "direct_Thumb_calls": 4,
+    "critical_conditional_load_cmp_branch_decoded": true,
+    "initial_scalars_checked": 3,
+    "runtime_execution_performed": false,
+    "compiler_execution_performed": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "promotion_status": "candidate_only",
+  "source_artifact": "decomp/matching-notes/pilot-t06/class/common_effect_destroy_bridge.cpp",
+  "source_sha256": "322b2be2482c0ea9d9305cfe598b9b96ef6b304bf4ea7b17ee17b394547f3791",
+  "translation_units": [
+    {
+      "module": "main",
+      "object": "src/main/common_effect_destroy.o",
+      "functions": [
+        "func_0206d010"
+      ],
+      "category": "game",
+      "cpu": "arm946e",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2"
+      ],
+      "include_paths": [],
+      "headers": {},
+      "compiler": {
+        "package": "2.0/base",
+        "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+        "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+        "selection_scope": "this explicit ABI member only"
+      },
+      "abi": {
+        "language": "C++",
+        "instruction_mode": "arm",
+        "endianness": "little",
+        "pointer_bits": 32,
+        "settings": "pinned compiler defaults"
+      },
+      "source": "decomp/src/main/common_effect_destroy.cpp",
+      "experimental_overrides": []
+    }
+  ],
+  "canonical_source_path_if_promoted": "decomp/src/main/common_effect_destroy.cpp",
+  "canonical_delink_if_promoted": "src/main/common_effect_destroy.cpp:\n    complete\n    .text start:0x0206d010 end:0x0206d024",
+  "metadata_symbol_rename_required": false,
+  "experimental_overrides": []
+}

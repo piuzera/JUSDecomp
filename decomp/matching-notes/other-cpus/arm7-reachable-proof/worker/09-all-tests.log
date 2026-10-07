@@ -1,0 +1,143 @@
+   Compiling ds-decomp v0.12.0 (/private/tmp/jus-arm7-reachable-dsd/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.93s
+     Running unittests src/lib.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/ds_decomp-9b4206eb6a221353)
+
+running 10 tests
+test analysis::functions::tests::arm_self_loop_ends_function ... ok
+test analysis::functions::tests::startup_swi_prefix_includes_halfword_aligned_wrapper_before_entry ... ok
+test config::test_iter_comma_separated ... ok
+test analysis::functions::tests::adjacent_swi_wrappers_each_produce_a_function ... ok
+test analysis::functions::tests::startup_swi_scan_is_bounded_to_actual_module_bytes ... ok
+test rom::arm7_physical_baseline::tests::actual_linked_elf_header_section_segment_and_byte_mutations_reject_without_panics ... ok
+test rom::arm7_physical_baseline::tests::actual_linked_elf_attribute_mutation_rejects_with_original_inputs_unchanged ... ok
+test rom::arm7_physical_baseline::tests::actual_elf_section_directory_and_entry_anchor_mutations_reject ... ok
+test rom::arm7_physical_baseline::tests::actual_linked_elf_function_symbol_mutation_rejects ... ok
+test rom::arm7_physical_baseline::tests::actual_omitted_or_swapped_object_fails_normal_native_link_checks ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.82s
+
+     Running tests/arm7_checked_view.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/arm7_checked_view-d0e71216979873ef)
+
+running 24 tests
+test image_out_of_bounds_and_short_header_reject_without_panics ... ok
+test identical_image_cannot_authorize_other_program ... ok
+test arm9_cpu_isa_and_processor_reject ... ok
+test main_entry_outside_startup_and_bad_bss_reject ... ok
+test header_and_parameter_hash_domains_are_pinned ... ok
+test missing_or_ambiguous_nitrofs_path_rejects ... ok
+test changed_region_hash_rejects ... ok
+test omitted_target_fields_do_not_default_to_arm9 ... ok
+test nitrofs_valid_overlay_reservation_remains_selectable ... ok
+test nitrofs_decoding_errors_and_decoded_sibling_aliases_reject ... ok
+test nitrofs_valid_shift_jis_name_remains_selectable ... ok
+test nitrofs_duplicate_names_and_cycles_reject ... ok
+test nitrofs_overlay_reserved_file_id_rejects_without_panic ... ok
+test parameter_block_outside_startup_rejects ... ok
+test parent_and_child_views_use_distinct_program_identity ... ok
+test changed_header_rejects_even_after_program_repinned ... ok
+test wrong_parent_program_and_image_pins_reject ... ok
+test malformed_nitrofs_extents_reject_without_panics ... ok
+test unaligned_and_overflowing_runtime_extent_reject ... ok
+test changed_parameter_tuple_rejects_after_image_repinned ... ok
+test region_gap_overlap_order_missing_and_table_tail_reject ... ok
+test runtime_initialized_or_bss_overlap_reject ... ok
+test nitrofs_overlay_extent_and_count_arithmetic_rejects ... ok
+test record_destination_size_bss_and_table_hash_reject ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/arm7_module_inputs.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/arm7_module_inputs-72f4d6ebe4fa6c3e)
+
+running 12 tests
+test locked_parser_distinguishes_v4t_and_explicit_legacy_v5te ... ok
+test existing_function_parser_keeps_explicit_v5te_and_blx_support ... ok
+test returned_target_copy_cannot_change_internal_isa_policy ... ok
+test span_alignment_bounds_order_and_table_reject_without_panics ... ok
+test combined_thumb_bl_consumes_four_bytes_and_preserves_next_address ... ok
+test checked_descriptors_preserve_physical_ranges_and_exclude_table ... ok
+test equal_payloads_keep_parent_child_and_exact_path_identities_distinct ... ok
+test wrong_arm9_intake_and_runtime_overflow_cannot_create_module_inputs ... ok
+test trailing_thumb_bl_reports_first_unobserved_byte_without_partial_success ... ok
+test v5_only_instructions_reject_atomically_even_after_valid_prefix ... ok
+test explicit_arm_and_thumb_spans_decode_v4t_including_thumb_halfword_alignment ... ok
+test trailing_thumb_bl_and_wrong_second_half_do_not_publish_partial_observation ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+     Running tests/arm7_observation.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/arm7_observation-dd015fc47db17a46)
+
+running 14 tests
+test invalid_selections_fail_without_panics ... ok
+test readonly_accessors_match_serialized_observations_without_redecoding ... ok
+test observations_store_complete_span_text_identity_and_fixed_policy ... ok
+test exact_program_identity_rejects_foreign_context_and_preserves_child_paths ... ok
+test branch_offsets_wrap_without_double_pipeline_bias ... ok
+test thumb_bl_width_and_interior_destinations_remain_explicit ... ok
+test thumb_halfword_selection_and_conditional_branch_keep_thumb_mode ... ok
+test conditional_calls_separate_untaken_and_returned_paths ... ok
+test b_and_bl_share_mapping_including_arm7_autoload_range ... ok
+test isa_rejection_and_truncated_thumb_bl_are_atomic ... ok
+test thumb_bl_signed_boundary_adds_pipeline_bias_after_sign_extension ... ok
+test indirect_pc_writes_and_exceptions_have_no_invented_fallthrough_or_mode ... ok
+test thumb_short_branches_use_signed_payload_then_pc_bias ... ok
+test raw_arm_imm24_sign_boundaries_and_formatted_offsets_agree ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+
+     Running tests/arm7_physical_baseline.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/arm7_physical_baseline-5b2a79ea2aaae765)
+
+running 7 tests
+test wrong_native_pin_or_nonempty_output_does_not_publish_success ... ok
+test checked_metadata_and_entry_survive_original_layout_mutation ... ok
+test valid_child_view_builds_its_own_identity_report ... ok
+test native_fixture_preserves_loader_order_with_distinct_vmas_lmas_and_bss ... ok
+test reported_provenance_includes_original_regions_and_actual_native_invocations ... ok
+test assembler_input_changed_after_compilation_rejects_success ... ok
+test validated_elf_and_reconstructed_image_cannot_be_replaced_before_publication ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 20.56s
+
+     Running tests/arm7_reachable.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/arm7_reachable-a3ba8b202a421675)
+
+running 17 tests
+test direct_call_joins_separately_selected_checked_span ... ok
+test empty_inputs_and_roots_reject ... ok
+test local_interior_is_not_promoted_by_opposite_mode_start ... ok
+test complete_thumb_bl_interior_is_not_a_selected_start ... ok
+test conflicting_root_has_empty_witness_and_zero_work ... ok
+test conditional_call_preserves_all_guards_source_condition_and_original_mapping ... ok
+test cross_selection_thumb_interior_does_not_join ... ok
+test finite_cycle_retains_back_edge_counts_and_deterministic_scope ... ok
+test equal_bytes_in_foreign_programs_do_not_join ... ok
+test omitted_mapping_cannot_be_repaired_by_another_observation ... ok
+test root_requires_exact_borrowed_membership_start_assumption_and_uniqueness ... ok
+test witness_views_keep_guarded_terminal_edge_and_bounded_counts ... ok
+test opposite_mode_overlap_quarantines_whole_instruction_and_root ... ok
+test target_selected_only_in_opposite_mode_is_frontier ... ok
+test same_mode_duplicate_and_partial_overlap_reject ... ok
+test same_child_payload_under_distinct_nitrofs_paths_is_foreign ... ok
+test bss_unmapped_and_indirect_pc_writes_stay_frontiers ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/branch_boundaries.rs (/private/tmp/jus-arm7-reachable-worker-cache/target/debug/deps/branch_boundaries-dd3ea2c46374b67e)
+
+running 8 tests
+test v4t_rejects_arm_and_thumb_blx ... ok
+test thumb_bl_keeps_halfword_aligned_pc_llvm ... ok
+test thumb_blx_halfword_aligned_pc_llvm ... ok
+test thumb_bl_llvm_boundaries ... ok
+test thumb_blx_llvm_boundaries ... ok
+test arm_blx_llvm_boundaries ... ok
+test arm_b_bl_llvm_boundaries ... ok
+test thumb_short_llvm_boundaries ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ds_decomp
+
+running 1 test
+test lib/src/analysis/arm7_reachable.rs - analysis::arm7_reachable::CandidateGraph (line 58) - compile fail ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+

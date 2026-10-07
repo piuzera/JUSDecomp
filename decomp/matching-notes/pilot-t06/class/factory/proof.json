@@ -1,0 +1,409 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.6",
+  "status": "passed",
+  "scope": "one additional CommonEffect factory ABI entry, not a complete virtual class",
+  "source_commit": "fcec3aa0e7ba1c34499a46c649e5fd9c8c5a750c",
+  "private_full_report_sha256": "d08872231cc8a3a6a102ce90d8feb7588817a2f8d4867f9e2cb3ee884328a597",
+  "identity": {
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "cpu": "arm9",
+    "module": "main",
+    "section": ".text",
+    "address": "0x0206c57c",
+    "mode": "arm",
+    "extent_bytes": 56,
+    "instruction_bytes": 44,
+    "literal_bytes": 12,
+    "original_name": "func_0206c57c",
+    "generated_name": "func_0206c57c",
+    "new_aliases": []
+  },
+  "source": {
+    "path": "decomp/src/main/common_effect_factory.cpp",
+    "sha256": "0490e2dd224e479792b3b04e6e14297ebb4588039c998d2bb56ca4606b82dd18",
+    "flags": [
+      "-proc",
+      "arm946e",
+      "-Cpp_exceptions",
+      "off",
+      "-nostdinc",
+      "-O2"
+    ],
+    "abi": {
+      "language": "C++",
+      "instruction_mode": "arm",
+      "endianness": "little",
+      "pointer_bits": 32,
+      "settings": "pinned compiler defaults"
+    },
+    "headers": {},
+    "opaque_contract": "Forward-declared CommonEffectAbi and 32-bit opaque address token; no class definition, header seam or member layout added.",
+    "allocation_call": {
+      "size": 132,
+      "arg1_symbol": "data_0209e000",
+      "arg2_symbol": "data_0209dfd0",
+      "arg3_word": 149
+    },
+    "call_return_contract": "Allocator result zero is returned without construction; otherwise constructor receives storage and callback address, and its r0 result is returned. No constructor-return-self or ownership rule is assumed.",
+    "callback_contract": "Only func_02024a30 address is consumed here; callback is not invoked by this entry. Opaque pointer ABI declaration matches observed one-word input/result body but does not recover original C++ types."
+  },
+  "object": {
+    "raw_sha256": "8abd54e43f7bcc9419fa64995b1a78edb2777e4368853e03ec859c1fff5118d7",
+    "reference_sha256": "e4e5abd2f6ef4b4f0912804afdd7a4151f830b5ba9bcac4e968f3f1f0d792661",
+    "normalized_sha256": "161e58820f139a8e239ce935601d94629eb11737b928b4d20e6bfa002d94fedf",
+    "actual_link_kind": "source",
+    "filename": "common_effect_factory.o",
+    "checks": {
+      "status": "passed",
+      "sections": [
+        {
+          "name": ".text",
+          "size": 56,
+          "flags": 6,
+          "kind": "initialized"
+        }
+      ],
+      "functions": [
+        {
+          "name": "func_0206c57c",
+          "offset": 0,
+          "size": 56,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ],
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 20,
+          "type": 1,
+          "symbol": "func_0201a21c",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 36,
+          "type": 1,
+          "symbol": "func_0206ca4c",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 44,
+          "type": 2,
+          "symbol": "data_0209e000",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 48,
+          "type": 2,
+          "symbol": "data_0209dfd0",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 52,
+          "type": 2,
+          "symbol": "func_02024a30",
+          "addend": 0
+        }
+      ]
+    }
+  },
+  "tools": {
+    "dsd": {
+      "sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+      "version": "0.12.0"
+    },
+    "lld": {
+      "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54",
+      "version": "23.1.2"
+    },
+    "clang": {
+      "sha256": "d64d1ee59d8aff01397eb88adea263e490ac65766faefc8b5323b4a06d0438e5",
+      "version": "23.1.2"
+    },
+    "source_compiler": {
+      "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "version": "3.0 build 114"
+    },
+    "compiler_runner": {
+      "sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "version": "1.2.0"
+    }
+  },
+  "compiler_dll_hashes": {
+    "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "negative_trials": {
+    "wrong_callback": {
+      "status": "failed",
+      "accepted_units": 0,
+      "published_override_count": 0,
+      "failure": "relocation identities/offsets/types/symbols/addends differ",
+      "flags": [
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2",
+        "-Dfunc_02024a30=func_02024a68"
+      ],
+      "reference_sha256": "e4e5abd2f6ef4b4f0912804afdd7a4151f830b5ba9bcac4e968f3f1f0d792661",
+      "compiled_sha256": "8aaf468383e6acdfb76046ee7abbc684cb78066d29f8280f37ae5d75822c4269",
+      "reference_unchanged": true,
+      "functions": [
+        {
+          "name": "func_0206c57c",
+          "offset": 0,
+          "size": 56,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ]
+    },
+    "default_context": {
+      "status": "failed",
+      "accepted_units": 0,
+      "published_override_count": 0,
+      "failure": "function identities/extents/modes differ from declared reference TU",
+      "flags": [
+        "-proc",
+        "arm946e",
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc"
+      ],
+      "reference_sha256": "e4e5abd2f6ef4b4f0912804afdd7a4151f830b5ba9bcac4e968f3f1f0d792661",
+      "compiled_sha256": "b56801b2f8a7003fcc12e55ce9980a70b3436ad0b119984de659334dfa25516b",
+      "reference_unchanged": true,
+      "functions": [
+        {
+          "name": "func_0206c57c",
+          "offset": 0,
+          "size": 72,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ]
+    }
+  },
+  "stages": [
+    {
+      "name": "intake",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "tool_versions",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "prepare_config",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "extract",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "delink",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_config",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_delink",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_build",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "lcf",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "native_link",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "link_inputs",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "check_modules",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "check_symbols",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "direct_comparison",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "relocation_check",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "source_ownership",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "freshness",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "rom_roundtrip",
+      "status": "passed",
+      "exit_status": 0
+    },
+    {
+      "name": "rom_freshness",
+      "status": "passed",
+      "exit_status": 0
+    }
+  ],
+  "direct_comparison": {
+    "status": "passed",
+    "modules": 17,
+    "initialized_bytes": 2141728,
+    "bss_bytes": 928544
+  },
+  "original_relocations": {
+    "status": "passed",
+    "counts": {
+      "total": 87493,
+      "validated": 87493,
+      "failed": 0,
+      "unresolved": 0
+    },
+    "relocation_types": {
+      "2": 32552,
+      "1": 31038,
+      "10": 23903
+    }
+  },
+  "ownership": {
+    "status": "passed",
+    "intervals": [
+      {
+        "module": "ARM9",
+        "section": ".text",
+        "start": 33998204,
+        "end": 33998248,
+        "category": "instructions",
+        "implementation_category": "game"
+      },
+      {
+        "module": "ARM9",
+        "section": ".text",
+        "start": 33998248,
+        "end": 33998252,
+        "category": "literals",
+        "implementation_category": "game"
+      },
+      {
+        "module": "ARM9",
+        "section": ".text",
+        "start": 33998252,
+        "end": 33998256,
+        "category": "literals",
+        "implementation_category": "game"
+      },
+      {
+        "module": "ARM9",
+        "section": ".text",
+        "start": 33998256,
+        "end": 33998260,
+        "category": "literals",
+        "implementation_category": "game"
+      }
+    ],
+    "function": {
+      "module": "ARM9",
+      "name": "func_0206c57c",
+      "start": 33998204,
+      "end": 33998260,
+      "mode": "a",
+      "implementation_category": "game"
+    }
+  },
+  "rom_roundtrip": {
+    "status": "passed",
+    "rom": {
+      "sha1": "ba58e20ee60eb81c33dcd4934a21271baa9f954a",
+      "sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+      "size_bytes": 67108864
+    },
+    "arm9_modules_checked": 17,
+    "preserved_arm7_source_bytes": 0,
+    "preserved_asset_source_bytes": 0
+  },
+  "source_coverage": {
+    "status": "credited",
+    "matched_source_bytes": 160,
+    "matched_instruction_bytes": 136,
+    "matched_literal_bytes": 24,
+    "matched_functions": 5,
+    "implementation_categories": {
+      "game": {
+        "matched_source_bytes": 128,
+        "matched_functions": 4
+      },
+      "sdk": {
+        "matched_source_bytes": 32,
+        "matched_functions": 1
+      },
+      "unknown": {
+        "matched_source_bytes": 0,
+        "matched_functions": 0
+      }
+    },
+    "global_percent": null,
+    "added_function_instruction_bytes": 44,
+    "added_function_literal_bytes": 12
+  },
+  "effort": {
+    "bounded_compiler_contexts": 2,
+    "default_context_result": "rejected",
+    "accepted_context": "2.0/base with -O2, this TU only",
+    "source_body_revision_loops": 1,
+    "fresh_full_pipeline_attempts": 1,
+    "pipeline_elapsed_seconds": 4.953,
+    "human_minutes": "not independently timed"
+  },
+  "remaining_unknowns": [
+    "Native virtual-class declaration and ownership semantics",
+    "Constructor and clone source matching",
+    "Initializer and virtual object-configuration method source matching",
+    "Original callback C++ types and call contracts elsewhere",
+    "Runtime behavior checks queued for T07; no emulator work performed"
+  ]
+}

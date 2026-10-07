@@ -1,0 +1,27 @@
+   Compiling ds-decomp v0.12.0 (/dsd-source/lib)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.39s
+     Running unittests src/lib.rs (target/physical-baseline/cargo-target/debug/deps/ds_decomp-b124f285909ba1e8)
+
+running 9 tests
+test config::test_iter_comma_separated ... ok
+test analysis::functions::tests::startup_swi_scan_is_bounded_to_actual_module_bytes ... ok
+test analysis::functions::tests::adjacent_swi_wrappers_each_produce_a_function ... ok
+test analysis::functions::tests::startup_swi_prefix_includes_halfword_aligned_wrapper_before_entry ... ok
+test analysis::functions::tests::arm_self_loop_ends_function ... ok
+test rom::arm7_physical_baseline::tests::actual_linked_elf_header_section_segment_and_byte_mutations_reject_without_panics ... ok
+test rom::arm7_physical_baseline::tests::actual_linked_elf_attribute_mutation_rejects_with_original_inputs_unchanged ... ok
+test rom::arm7_physical_baseline::tests::actual_linked_elf_function_symbol_mutation_rejects ... ok
+test rom::arm7_physical_baseline::tests::actual_omitted_or_swapped_object_fails_normal_native_link_checks ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+     Running tests/arm7_physical_baseline.rs (target/physical-baseline/cargo-target/debug/deps/arm7_physical_baseline-af6a7e4b2a3cc3c0)
+
+running 5 tests
+test wrong_native_pin_or_nonempty_output_does_not_publish_success ... ok
+test valid_child_view_builds_its_own_identity_report ... ok
+test checked_metadata_and_entry_survive_original_layout_mutation ... ok
+test native_fixture_preserves_loader_order_with_distinct_vmas_lmas_and_bss ... ok
+test reported_provenance_includes_original_regions_and_actual_native_invocations ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s

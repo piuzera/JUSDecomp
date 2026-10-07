@@ -1,0 +1,27 @@
+{
+  "status": "accepted_no_flags",
+  "public_worker_commit": "b83f95736b2058f0e9bf5b50a005f08381d3156d",
+  "independent_cherry_commit": "dbdcfa9a4e6c046342ee1d66537e1fe407daeaea",
+  "new_git_blobs": 20,
+  "git_head_pins": 19,
+  "public_replay_receipt_sha256": "ec2455e7356368ee91f67fb43251513f35e225b12b2fec2075e4ce98c7dcce63",
+  "public_published_receipt_sha256": "9d111ca13daec1a9f003f4c35979ed126938d5044ec0bf6e7d87ef4cf29b0e7b",
+  "independent_native_receipt_sha256": "c987a206ebe5f58dce0b3e282491c0fe64072fd27dbfae751ff873ad983f7e8a",
+  "object_sha256": "b0bd6f1c84e3710fc704f75a614a3c90532b44d1f274d236747cc0b752772af7",
+  "original_code_sha256": "b1f95073bcc84916809b86a81bc8d2b6246515a3c4646a1f9ac171214a389488",
+  "programs": [
+    {
+      "program": 0,
+      "public_elf_sha256": "2f67289e8e24014bfd32a0e06fa91d5334553cd1124b21b269756eaf42e13bb9",
+      "independent_elf_sha256": "6d056704dd5ae9cda37c630a936d1c467bfc85dfca1df59c649960c7819d222d",
+      "metadata_difference": "public __candidate_start/end versus independent __store_start/end; allocated sections, segment records, entry, flags, linked image equal"
+    },
+    {
+      "program": 1,
+      "public_elf_sha256": "2f67289e8e24014bfd32a0e06fa91d5334553cd1124b21b269756eaf42e13bb9",
+      "independent_elf_sha256": "6d056704dd5ae9cda37c630a936d1c467bfc85dfca1df59c649960c7819d222d",
+      "metadata_difference": "public __candidate_start/end versus independent __store_start/end; allocated sections, segment records, entry, flags, linked image equal"
+    }
+  ],
+  "scope": "finite C/materialization and direct native proof only; source credit zero; original ABI, name, extent, ownership unresolved"
+}

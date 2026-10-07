@@ -1,0 +1,16 @@
+test_copied_original_stored_arm9_is_not_fresh_normalized_encoding (test_child_rom_roundtrip.ChildRoundtripTests.test_copied_original_stored_arm9_is_not_fresh_normalized_encoding) ... ok
+test_encoder_mutation_and_missing_output_reject (test_child_rom_roundtrip.ChildRoundtripTests.test_encoder_mutation_and_missing_output_reject) ... ok
+test_existing_output_is_never_overwritten (test_child_rom_roundtrip.ChildRoundtripTests.test_existing_output_is_never_overwritten) ... ok
+test_expanded_layout_gap_or_overlap_rejects (test_child_rom_roundtrip.ChildRoundtripTests.test_expanded_layout_gap_or_overlap_rejects) ... ok
+test_fresh_encoder_output_rebuilds_all_native_modules_exactly (test_child_rom_roundtrip.ChildRoundtripTests.test_fresh_encoder_output_rebuilds_all_native_modules_exactly) ... ok
+test_live_native_file_change_during_encoding_rejects (test_child_rom_roundtrip.ChildRoundtripTests.test_live_native_file_change_during_encoding_rejects) ... ok
+test_native_module_mutation_rejects_before_encoding (test_child_rom_roundtrip.ChildRoundtripTests.test_native_module_mutation_rejects_before_encoding) ... ok
+test_omitted_module_rejects (test_child_rom_roundtrip.ChildRoundtripTests.test_omitted_module_rejects) ... ok
+test_original_header_or_preserved_arm7_mutation_rejects (test_child_rom_roundtrip.ChildRoundtripTests.test_original_header_or_preserved_arm7_mutation_rejects) ... ok
+test_valid_alternative_encoding_still_rejects_size_mismatch (test_child_rom_roundtrip.ChildRoundtripTests.test_valid_alternative_encoding_still_rejects_size_mismatch) ... ok
+test_wrong_encoder_pin_rejects (test_child_rom_roundtrip.ChildRoundtripTests.test_wrong_encoder_pin_rejects) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.625s
+
+OK

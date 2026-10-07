@@ -1,0 +1,13 @@
+F
+======================================================================
+FAIL: test_replays_single_recipe_and_stops_before_native_link (__main__.PublicReplayTests.test_replays_single_recipe_and_stops_before_native_link)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-low-getter-worker-proof/test_reproduce.py", line 12, in test_replays_single_recipe_and_stops_before_native_link
+    self.assertTrue(script.exists(), 'public single-candidate replay is not implemented')
+AssertionError: False is not true : public single-candidate replay is not implemented
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

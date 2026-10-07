@@ -5,3 +5,27 @@
     .ctor       start:0x02092eb0 end:0x02092ec0 kind:rodata align:4
     .data       start:0x02092ee0 end:0x020a05c0 kind:data align:32
     .bss        start:0x020a05c0 end:0x0214cd20 kind:bss align:32
+
+src/runtime/find_exception_table.c:
+    complete
+    .text start:0x0200f57c end:0x0200f59c
+
+src/main/common_effect_destroy.cpp:
+    complete
+    .text start:0x0206d010 end:0x0206d024
+
+src/main/common_effect_deleting_destroy.cpp:
+    complete
+    .text start:0x0206cfa4 end:0x0206cfc0
+
+src/main/common_effect_factory.cpp:
+    complete
+    .text start:0x0206c57c end:0x0206c5b4
+
+src/main/common_effect_construct.cpp:
+    complete
+    .text start:0x0206ca4c end:0x0206ca8c
+
+src/main/common_effect_clone.cpp:
+    complete
+    .text start:0x0206cfc0 end:0x0206d010

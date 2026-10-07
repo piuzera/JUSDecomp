@@ -1,0 +1,36 @@
+test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) ...
+  test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) (target='research.nds') ... FAIL
+  test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) (target='module-checkpoint.json') ... FAIL
+  test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) (target='trial-proof.json') ... FAIL
+
+======================================================================
+FAIL: test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) (target='research.nds')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-rom-trial/decomp/matching-notes/other-cpus/arm7-arena-rom-proof/test_rom.py", line 153, in test_final_receipt_publication_rechecks_all_outputs
+    with self.assertRaises(ValueError): self.runner.replay(self.context.output)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) (target='module-checkpoint.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-rom-trial/decomp/matching-notes/other-cpus/arm7-arena-rom-proof/test_rom.py", line 153, in test_final_receipt_publication_rechecks_all_outputs
+    with self.assertRaises(ValueError): self.runner.replay(self.context.output)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_receipt_publication_rechecks_all_outputs (test_rom.LiveControls.test_final_receipt_publication_rechecks_all_outputs) (target='trial-proof.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/jus-arm7-arena-rom-trial/decomp/matching-notes/other-cpus/arm7-arena-rom-proof/test_rom.py", line 153, in test_final_receipt_publication_rechecks_all_outputs
+    with self.assertRaises(ValueError): self.runner.replay(self.context.output)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 89.292s
+
+FAILED (failures=3)
