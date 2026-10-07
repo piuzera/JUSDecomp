@@ -21,6 +21,8 @@ extract/
 tools/dsd/
 # Metrowerks CodeWarrior toolchain — see decomp/docs/NITROSDK.md
 tools/mwccarm/
+tools/mwccarm.zip
+tools/wibo/
 # JUSToolkit reference clone — re-clone from https://github.com/priverop/JUSToolkit
 tools/JUSToolkit/
 # ndsrecomp runtime/compiler + SM64DS title template — see decomp/docs/NDSRECOMP.md

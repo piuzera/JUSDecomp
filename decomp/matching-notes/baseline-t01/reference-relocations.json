@@ -1,0 +1,31 @@
+{
+  "objects": 15,
+  "format": "ELF32 little-endian ARM RELA",
+  "method": "Iterate SHT_RELA using sh_offset, sh_size and 12-byte entries. Read type from r_info low byte and signed r_addend.",
+  "relocations": [
+    {
+      "type": 1,
+      "name": "R_ARM_PC24",
+      "count": 31038,
+      "addends": [
+        -8
+      ]
+    },
+    {
+      "type": 2,
+      "name": "R_ARM_ABS32",
+      "count": 32552,
+      "addends": [
+        0
+      ]
+    },
+    {
+      "type": 10,
+      "name": "R_ARM_THM_PC22",
+      "count": 23903,
+      "addends": [
+        -4
+      ]
+    }
+  ]
+}

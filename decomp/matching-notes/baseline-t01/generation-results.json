@@ -1,0 +1,34 @@
+[
+  {
+    "stage": "delink",
+    "command": [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "delink",
+      "-c",
+      "/private/tmp/jus-track-a/build/baseline-t01/config/config.yaml"
+    ],
+    "returncode": 0
+  },
+  {
+    "stage": "lcf",
+    "command": [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "lcf",
+      "-c",
+      "/private/tmp/jus-track-a/build/baseline-t01/config/config.yaml"
+    ],
+    "returncode": 0
+  },
+  {
+    "stage": "objdiff",
+    "command": [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "objdiff",
+      "-c",
+      "/private/tmp/jus-track-a/build/baseline-t01/config/config.yaml",
+      "-o",
+      "/private/tmp/jus-track-a/build/baseline-t01/objdiff"
+    ],
+    "returncode": 0
+  }
+]

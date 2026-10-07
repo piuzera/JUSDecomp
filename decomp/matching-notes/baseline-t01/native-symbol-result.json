@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "check",
+    "symbols",
+    "-c",
+    "/private/tmp/jus-track-a/build/baseline-t01/native-config/config.yaml",
+    "-e",
+    "/private/tmp/jus-track-a/build/baseline-t01/native-link/linked.elf",
+    "-f"
+  ],
+  "returncode": 1
+}

@@ -1,0 +1,22 @@
+{
+  "reviewer": "gpt-6-astra",
+  "producer_commit": "9495e76e86908510e8f6ddb11be63500404ae5c4",
+  "status": "cleared",
+  "attention_flags": [],
+  "source_stages": 19,
+  "reference_stages": 15,
+  "source_artifact_hashes_verified": 183,
+  "reference_artifact_hashes_verified": 111,
+  "tests": 124,
+  "skips": 0,
+  "compiler_trials": 288,
+  "exact_experiment_matches": 0,
+  "source_bytes": 24,
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "limitations": [
+    "ARM7 and embedded programs preserved with zero source credit",
+    "Header-bearing source requires compiler dependency capture",
+    "T07 boot and scene smoke checks queued; no runtime captures",
+    "Full-project coverage unknown pending complete executable scope"
+  ]
+}
