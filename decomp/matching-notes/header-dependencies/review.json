@@ -1,0 +1,23 @@
+{
+  "reviewer": "gpt-6-astra",
+  "producer_commit": "a2ffe1df8a3da44084978f6d481110bdb3049900",
+  "status": "cleared",
+  "attention_flags": [],
+  "source_stages": 19,
+  "source_artifact_hashes_verified": 183,
+  "tests": 159,
+  "skips": 0,
+  "source_bytes": 24,
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "review_scope": [
+    "T13 declared dependency gate and actual synthetic header fixture",
+    "T14 pinned Git symbol provenance",
+    "T10 preserved CPU inventory, fresh extraction and compiler probes"
+  ],
+  "limitations": [
+    "ARM7 and child program instances have no linked source baseline",
+    "Child strict initialization fails at BIOS CpuSet wrapper discovery; repair is in progress",
+    "Full-project coverage remains unknown",
+    "Runtime boot and scene checks remain queued under T07"
+  ]
+}

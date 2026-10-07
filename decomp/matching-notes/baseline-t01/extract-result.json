@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "rom",
+    "extract",
+    "-r",
+    "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "-o",
+    "/private/tmp/jus-track-a/build/baseline-t01/extract"
+  ],
+  "returncode": 0
+}

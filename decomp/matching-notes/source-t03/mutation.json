@@ -1,0 +1,93 @@
+{
+  "source_commit": "7eda78cc7d28bde753ea0bceb8e4e0c6d10763e3",
+  "mutation": {
+    "old_call_target": "data_020a0e18",
+    "new_call_target": "data_020a0e1c"
+  },
+  "positive_source_sha256": "f638c8bf21f22951a6111db463d804ac8fc61b261369f0927f13a93bfd064982",
+  "negative_source_sha256": "5ed6f14e1400846c6ca7440fe9e06fb3251e45b60ed535ff6ded3a7a27405da0",
+  "positive_compiled_sha256": "9bbeff924c067e61d03021ddf7ee2953dd385da6d82a00f2021c1027f3deb323",
+  "negative_compiled_sha256": "b21c14fa476eceab52f11ed6e62029351ed367ac42022579516c77438e6b40e9",
+  "tu_reference_sha256": "1fca855358e76ed7268ca339f1b8b6e0b0137e26f1c54f512536e52ea546d4a3",
+  "reference_objects": [
+    {
+      "filename": "_dsd_gap@dtcm_1.o",
+      "sha256": "5ccb7fe8a9752f702d8c64ab1af13e3408c6c89c356436b53cb9a47fe2a89026",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@itcm_0.o",
+      "sha256": "52051c163374bfc0e472d7e7da565c5dc9cb1c06b88dbb565a954845a1106a84",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@main_5.o",
+      "sha256": "248e6844754b8c07c9d8b037ca7c01600dfc7566ec61a168aab69c8d238696c3",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov000_4.o",
+      "sha256": "ad54a864f72c73bad6b74181d0ab99e924b6497221643c27584edd44720b86b2",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov001_5.o",
+      "sha256": "81d2df74fef7ae7cdfe08caecfe9ba8c0544d63762bbf70a9792c97d68fed3d7",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov002_5.o",
+      "sha256": "bbf679310a2e1f97ce8bc6db763f71ac528f8acc9b20e2af1e07dc6d7f9fc7bb",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov003_5.o",
+      "sha256": "e342b3afd351e946b447988e50807cc59beb50396c559a0a0f0849012df6b628",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov004_5.o",
+      "sha256": "8de2c7ce1bd974aaa288eb43d93face104cb8cac2181b22ff85d0886ba85f543",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov005_5.o",
+      "sha256": "b78de161984f5a7fd2f98ef503c4e6a6900d1bfed19915d52e761f401436c01b",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov006_5.o",
+      "sha256": "9056f0313d862cf6d9636db3f534786bb84534fa4b32f82240c82cefce25652d",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov007_5.o",
+      "sha256": "ff27de96f31f6cf90329ecd38a7a31bbef49d96c9fab028c8d694e3e4d84ba26",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov008_3.o",
+      "sha256": "f3f5cf8d3452224b928391694f7bcf616a398c86e65a125cea82ff09a4d8a36b",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov010_3.o",
+      "sha256": "b184f31ba190d6331ab8c3304cd5fb5c9f8a4f627b350e08f9b89004ac0f8748",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov011_5.o",
+      "sha256": "08327138e749b877a2e8ec7a4e636c01a6c50429a98a19a8dba1a860ce536ee2",
+      "unchanged": true
+    },
+    {
+      "filename": "_dsd_gap@ov012_5.o",
+      "sha256": "63c39a8f03c8aa20b35a5a3e81096bb4b076aa044b9f4557a7a0be3601c82375",
+      "unchanged": true
+    }
+  ],
+  "negative_status": "failed",
+  "failed_stage": "source_build",
+  "failure": "relocation identities/offsets/types/symbols/addends differ",
+  "credited_source_bytes": 0
+}
