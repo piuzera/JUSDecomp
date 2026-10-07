@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.6",
+  "status": "targets_published_before_source",
+  "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "cpu": "arm9",
+  "module": "main",
+  "section": ".text",
+  "mode": "arm",
+  "source_credit": 0,
+  "source_implementation_started": false,
+  "symbols_sha256": "d73d18a6183b55ac8d7ee009c81003f6fa273ee674ee4b66a776027fb4a88566",
+  "linked_elf_sha256": "c3af16faa0f70bc806a1b48ce17bdc683ad12b6ee258e6d76443bc32142a7726",
+  "targets": [
+    {
+      "symbol": "func_0206c244",
+      "address": "0x206c244",
+      "extent_bytes": 596,
+      "instruction_bytes": 532,
+      "literal_pool_bytes": 64,
+      "role_hypothesis": "explicit initializer",
+      "category_if_verified": "game",
+      "payload_sha256": "c11efb830d6e8467c37b044646381c6481bf35e05860b259dcdb792cb0dc396f",
+      "compiler_context": "unresolved; select and pin per function from experiments"
+    },
+    {
+      "symbol": "func_0206c57c",
+      "address": "0x206c57c",
+      "extent_bytes": 56,
+      "instruction_bytes": 44,
+      "literal_pool_bytes": 12,
+      "role_hypothesis": "factory",
+      "category_if_verified": "game",
+      "payload_sha256": "7f1664f2821bba726f6f95b1e54125b018dd576f758bd667267d0be0bc981583",
+      "compiler_context": "unresolved; select and pin per function from experiments"
+    },
+    {
+      "symbol": "func_0206ca4c",
+      "address": "0x206ca4c",
+      "extent_bytes": 64,
+      "instruction_bytes": 56,
+      "literal_pool_bytes": 8,
+      "role_hypothesis": "constructor",
+      "category_if_verified": "game",
+      "payload_sha256": "3d05bcf0b0dea2d68f65a52ba2f9202f29535ed01dff64b563d3369812cf73a8",
+      "compiler_context": "unresolved; select and pin per function from experiments"
+    },
+    {
+      "symbol": "func_0206ca8c",
+      "address": "0x206ca8c",
+      "extent_bytes": 1016,
+      "instruction_bytes": 1004,
+      "literal_pool_bytes": 12,
+      "role_hypothesis": "virtual configuration of a looked-up object through indirect calls",
+      "category_if_verified": "game",
+      "payload_sha256": "c819f1db4782c70cf9b168e735dd7b795ccd02b83ed5c208051e6ab72aeeca13",
+      "compiler_context": "unresolved; select and pin per function from experiments",
+      "role_correction": "Original callback-installer hypothesis is refuted by complete original-code review; one explicit callback literal func_0206ceac is passed under flag 0x10."
+    },
+    {
+      "symbol": "func_0206cfa4",
+      "address": "0x206cfa4",
+      "extent_bytes": 28,
+      "instruction_bytes": 28,
+      "literal_pool_bytes": 0,
+      "role_hypothesis": "deleting destructor",
+      "category_if_verified": "game",
+      "payload_sha256": "80539d6f4d290d64640c065cd0abb13239c6b5a815a9b60b080c755960d5fd32",
+      "compiler_context": "unresolved; select and pin per function from experiments"
+    },
+    {
+      "symbol": "func_0206cfc0",
+      "address": "0x206cfc0",
+      "extent_bytes": 80,
+      "instruction_bytes": 68,
+      "literal_pool_bytes": 12,
+      "role_hypothesis": "clone",
+      "category_if_verified": "game",
+      "payload_sha256": "533480ce2bde1f3b67a77220446cb50766ccf2014703a9fc8674a6169ee51847",
+      "compiler_context": "unresolved; select and pin per function from experiments"
+    },
+    {
+      "symbol": "func_0206d010",
+      "address": "0x206d010",
+      "extent_bytes": 20,
+      "instruction_bytes": 20,
+      "literal_pool_bytes": 0,
+      "role_hypothesis": "destructor",
+      "category_if_verified": "game",
+      "payload_sha256": "ebbfc4ccb0fcedf9292c2688c563d0c29e4c1d544d702a179f729685310a21d4",
+      "compiler_context": "unresolved; select and pin per function from experiments"
+    },
+    {
+      "symbol": "__FindExceptionTable",
+      "address": "0x200f57c",
+      "extent_bytes": 32,
+      "instruction_bytes": 24,
+      "literal_pool_bytes": 8,
+      "role_hypothesis": "compiler-runtime exception table lookup",
+      "category_if_verified": "sdk",
+      "payload_sha256": "4afa4c1d8f84b5d12c37d1c0de58caa9910498eb9f47d6ce04312c8be2371eff",
+      "compiler_context": "unresolved; select and pin per function from experiments"
+    }
+  ],
+  "class_evidence": {
+    "allocation_bytes": 132,
+    "base_extent_hypothesis": 128,
+    "observed_halfword_offset": 128,
+    "derived_vtable_address": "0x0209e114",
+    "parent_vtable_address": "0x0209c30c",
+    "entries": 76,
+    "overrides": {
+      "0": "0x0206d010",
+      "4": "0x0206cfa4",
+      "0x18": "0x0206cfc0",
+      "0x124": "0x0206ca8c"
+    },
+    "derived_vtable_sha256": "03602953bd8947e704110675ac42232405634ee57ab3d9ee61c56ca9c6fa3ccf",
+    "parent_vtable_sha256": "028eab4abf12a0f7df7d0e1bd1d301a490b933275719a34a8eb6223ebecb4dd7",
+    "base_layout_and_callback_types": "unresolved"
+  },
+  "runtime_evidence": {
+    "recognizer_source": "ds-decomp/lib/src/analysis/exception.rs",
+    "recognizer_revision": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+    "pattern_match_unique": true,
+    "literal_addresses": [
+      "0x0200f594",
+      "0x0200f598"
+    ],
+    "literal_values": [
+      "0x0208c5e4",
+      "0x0208c5e4"
+    ],
+    "required_metadata_migration": "None. Current canonical metadata and original ELF already contain both R_ARM_ABS32 link-time pool relocations with addend zero. Private dry fix changes no semantic records. Verify existing reference ROM before source experiments.",
+    "exact_original_compiler_version": "unresolved",
+    "relocation_count_before_source": 87493,
+    "preparation_correction": "Earlier read-only report missed existing typed relocation records; raw original ELF and canonical metadata refute that claim."
+  }
+}

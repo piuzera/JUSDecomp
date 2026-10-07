@@ -1,11 +1,11 @@
 # Other executable bootstrap: T10 remains open
 
-This bootstrap verifies preserved original bytes and fresh extraction. It establishes no linked baseline or source promotion for these programs. `residual-executables.json` imports the exact T01 inventory and records its SHA256. Source credit is zero, and the global coverage percentage remains unknown.
+This bootstrap verifies preserved original bytes and fresh extraction. The preserved-scope verifier grants no linked baseline or source promotion; the separate candidate experiments below establish child ARM9 binary evidence. `residual-executables.json` imports the exact T01 inventory and records its SHA256. Source credit is zero, and the global coverage percentage remains unknown.
 
 | Program | CPU | Stored bytes | Remaining source work |
 | --- | --- | ---: | --- |
 | Parent ROM | ARM7 | 165,552 | Entire executable; sections, functions, relocations and ABI unresolved |
-| `ChildRom/JSS2Child.srl` | ARM9 | 1,955,956 | Entire compressed executable; strict analysis fails |
+| `ChildRom/JSS2Child.srl` | ARM9 | 1,955,956 | Entire executable; candidate native baseline and binary roundtrip only |
 | `ChildRom/JSS2Child.srl` | ARM7 | 165,552 | Entire executable; sections, functions, relocations and ABI unresolved |
 
 The two ARM7 payloads are byte-identical. They remain separate program instances with separate program hashes and CPU identities. ARM7 stored ranges are recorded as offsets within the executable, without inferring expanded RAM sections or BSS.
@@ -16,7 +16,7 @@ Fresh pinned dsd extraction reproduces both ARM7 hashes and the child ARM9 modul
 
 The original pinned dsd revision `9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe` supports ARM7 ROM extraction, but its analysis and delink model supports only ARM9. Its `ModuleKind` has no ARM7 variant, and its function parser fixes the ISA to ARMv5TE. Exact source files and line references are in the ledger. Original strict child ARM9 initialization fails: the call at `0x020ae19e` targets `0x02000822`, where no function was found. No relaxed unknown-call analysis was used.
 
-The candidate [dsd repair](dsd-child-swi.patch) passes strict child initialization and establishes a [child ARM9 native reference baseline](child-arm9-native-baseline.json). All three initialized images, load bases, BSS boundaries, symbols and 35,092 relocations pass. [Reproduction instructions](child-baseline.md) describe this separate patched-tool experiment. Production tool pins remain unchanged. The child compression roundtrip and both ARM7 baselines remain unresolved, and every executable in this scope still has zero source credit.
+The candidate [dsd repair](dsd-child-swi.patch) passes strict child initialization and establishes a [child ARM9 native reference baseline](child-arm9-native-baseline.json). All three initialized images, load bases, BSS boundaries, symbols and 35,092 relocations pass. [Reproduction instructions](child-baseline.md) describe this separate patched-tool experiment. Production tool pins remain unchanged. The candidate [child compression roundtrip](child-rom-roundtrip.json) now reproduces every original stored ARM9 byte and the whole child hash from the three native reference images. [Reproduction instructions](child-roundtrip.md) distinguish this preserved-layout packer from the generic ROM builder, which fails on the empty filesystem. Both ARM7 baselines remain unresolved, and every executable in this scope still has zero source credit.
 
 `cpu-policy-probes.json` records independent selection of `arm7tdmi` and ARMv4T with the pinned compiler and runner. The invented `public_cpu_probe.c` compiles in both explicit ARM and Thumb modes. This proves compiler target support, with zero original source credit. Original ARM7 compiler, ABI, SDK signatures and link metadata remain unresolved.
 
@@ -40,3 +40,17 @@ The root repeated extraction and CPU probes at producer `a2ffe1df8a3da44084978f6
 `fresh-scope.json`, `fresh-extraction-checks.json`, `fresh-cpu-probes.json`
 and `strict-child-init.log` record these runs. The independent review is
 in `../header-dependencies/review.json`. T10 remains open.
+
+`arm7-autoload-scope.json` recovers physical ARM7 placement from the actual
+startup loader. The 432-byte startup copies 66,120 and 98,976 initialized bytes
+to `0x037f8000` and `0x027e0000`, then clears 14,920 and 6,504 BSS bytes.
+The 24-byte table completes the original 165,552-byte stored image.
+Function modes and code/data boundaries remain unresolved; this inventory
+earns zero source or linked-baseline credit.
+
+The observed ARM7 entry seed is `0x037f8468` in autoload0, reached by an
+ARM-state startup branch. Autoload1 mappings and all code/data partitions remain
+unresolved. Startup also copies 352 bytes from `0x023fe940` to `0x027ffa80` and
+32 bytes from `0x023fe904` to `0x027ffbe0`. These sources lie outside the stored
+image; their contents and executable status are unresolved RAM dependencies.
+They grant no autoload or source credit.

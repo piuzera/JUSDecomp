@@ -49,6 +49,38 @@ def fixture():
     return bytes(data)
 
 
+def branch_fixture(mode='arm', target=None, definition='destination', binding=1,
+                   target_binding=1, mapping=True):
+    """Invented split-object calls and return bodies, with legacy NOTYPE labels."""
+    strings=bytearray(b'\0')
+    def name(value):
+        offset=len(strings);strings.extend(value.encode()+b'\0');return offset
+    symbols=[(0,0,0,0,0,0)]
+    if mapping:symbols.append((name('$a' if mode=='arm' else '$t'),0,0,0,0,1))
+    if target:
+        symbols.append((name('caller'),0,4,0x12,0,1))
+        ident=len(symbols);symbols.append((name(target),0,0,target_binding<<4,0,0))
+        text=struct.pack('<I',0xEB000000) if mode=='arm' else struct.pack('<HH',0xF000,0xF800)
+        rela=struct.pack('<IIi',0,(ident<<8)|(1 if mode=='arm' else 10),-8 if mode=='arm' else -4)
+    else:
+        symbols.append((name(definition),0,4,binding<<4,0,1))
+        text=struct.pack('<I',0xE12FFF1E) if mode=='arm' else struct.pack('<HH',0x4770,0x46C0)
+        rela=b''
+    contents=[b'',text,b''.join(struct.pack('<IIIBBH',*s) for s in symbols),bytes(strings),rela,b'']
+    specs=[('',0,0,0,0,0),('.text',1,6,0,0,4),('.symtab',2,0,3,len(symbols),16),
+           ('.strtab',3,0,0,0,1),('.rela.text',4,0,2,1,12),('.shstrtab',3,0,0,0,1)]
+    names=bytearray(b'\0');offsets=[]
+    for spec in specs:offsets.append(len(names));names.extend(spec[0].encode()+b'\0')
+    contents[5]=bytes(names);data=bytearray(52);headers=[]
+    for offset,content,spec in zip(offsets,contents,specs):
+        data+=bytes((-len(data))%4);_,kind,flags,link,info,entry=spec
+        headers.append((offset,kind,flags,0,len(data),len(content),link,info,4,entry));data+=content
+    shoff=len(data)
+    for header in headers:data+=struct.pack('<10I',*header)
+    struct.pack_into('<16sHHIIIIIHHHHHH',data,0,b'\x7fELF\x01\x01\x01'+bytes(9),1,40,1,0,0,shoff,0,52,0,0,40,len(headers),5)
+    return bytes(data)
+
+
 class NativeLinkTests(unittest.TestCase):
     def setUp(self):
         self.assertTrue(SCRIPT.exists(), 'native linker adapter missing')
@@ -66,6 +98,115 @@ class NativeLinkTests(unittest.TestCase):
                          (0, (3 << 8) | 2, 0))
         self.assertEqual(struct.unpack_from('<IIi', normalized, elf.sections[7][4]),
                          (0, (3 << 8) | 28, -8))
+
+    def split_trial(self, root, caller_mode, target_mode, *, overrides=False, local=False, unused=False,
+                    definition_override=False, weak=False):
+        lld=shutil.which('ld.lld');clang='/opt/homebrew/opt/llvm/bin/clang'
+        if not lld or not Path(clang).is_file():self.skipTest('native LLVM ARM tools unavailable')
+        objects=root/'objects';objects.mkdir()
+        caller=branch_fixture(caller_mode,target='destination',target_binding=2 if weak else 1)
+        (objects/'caller.o').write_bytes(branch_fixture('arm',target='stale_reference') if overrides else caller)
+        definition=branch_fixture(target_mode,binding=2 if weak else 1)
+        (objects/'destination.o').write_bytes(branch_fixture('thumb') if definition_override else definition)
+        selected=['caller.o(.text)','destination.o(.text)']
+        if local:
+            (objects/'local.o').write_bytes(branch_fixture('thumb',binding=0));selected.append('local.o(.text)')
+        if unused:(objects/'unused.o').write_bytes(b'not an ELF; unselected input')
+        lcf=root/'test.lcf';lcf.write_text('MEMORY {\n ARM9 : ORIGIN = 0x02000000 > build/arm9.bin\n}\nSECTIONS {\n .arm9 : { ARM9_TEXT_START = .; '+ ' '.join(selected)+' ARM9_BSS_START = .; } > ARM9\n}\n')
+        args=[sys.executable,str(SCRIPT),'--lcf',str(lcf),'--objects',str(objects),'--output',str(root/'out'),'--lld',lld,'--clang',clang]
+        replacements={}
+        if overrides:
+            compiled=root/'compiled.o';compiled.write_bytes(caller);replacements['caller.o']=str(compiled)
+        if definition_override:
+            compiled=root/'compiled-definition.o';compiled.write_bytes(definition);replacements['destination.o']=str(compiled)
+        if replacements:
+            mapping=root/'overrides.json';mapping.write_text(json.dumps(replacements));args+=['--source-objects',str(mapping)]
+        return subprocess.run(args,capture_output=True,text=True),caller
+
+    def test_actual_split_thumb_caller_to_arm_notype_definition(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);result,_=self.split_trial(root,'thumb','arm')
+            self.assertEqual(result.returncode,0,result.stderr)
+            sys.path.insert(0,str(SCRIPT.parent))
+            try:from relocation_check import _decode_branch
+            finally:sys.path.pop(0)
+            target,mode,call=_decode_branch(10,(root/'out/arm9.bin').read_bytes()[:4],0x02000000)
+            self.assertEqual((target,mode,call),(0x02000004,'a',True))
+            tool=module()
+            for name,raw in [('caller.o',branch_fixture('thumb',target='destination')),
+                             ('destination.o',branch_fixture('arm'))]:
+                normalized=tool.Elf32((root/'out/objects'/name).read_bytes());original=tool.Elf32(raw)
+                self.assertEqual(normalized.content(normalized.sections[1]),original.content(original.sections[1]))
+
+    def test_actual_split_arm_caller_to_thumb_notype_definition(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);result,_=self.split_trial(root,'arm','thumb')
+            self.assertEqual(result.returncode,0,result.stderr)
+            sys.path.insert(0,str(SCRIPT.parent))
+            try:from relocation_check import _decode_branch
+            finally:sys.path.pop(0)
+            target,mode,call=_decode_branch(1,(root/'out/arm9.bin').read_bytes()[:4],0x02000000)
+            self.assertEqual((target,mode,call),(0x02000004,'t',True))
+
+    def test_external_typing_does_not_leak_to_same_named_local(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);result,_=self.split_trial(root,'thumb','arm',local=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            tool=module();global_elf=tool.Elf32((root/'out/objects/destination.o').read_bytes())
+            local_elf=tool.Elf32((root/'out/objects/local.o').read_bytes())
+            global_symbol=next(s for s in global_elf.symbols() if global_elf.symbol_name(s)=='destination')
+            local_symbol=next(s for s in local_elf.symbols() if local_elf.symbol_name(s)=='destination')
+            self.assertEqual(global_symbol[3]&15,2)
+            self.assertEqual((local_symbol[3]&15,local_symbol[1]),(0,0))
+
+    def test_cross_typing_inventory_uses_override_bytes_and_excludes_unused_refs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);result,caller=self.split_trial(root,'thumb','arm',overrides=True,unused=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            tool=module();elf=tool.Elf32((root/'out/objects/destination.o').read_bytes())
+            symbol=next(s for s in elf.symbols() if elf.symbol_name(s)=='destination')
+            self.assertEqual(symbol[3]&15,2)
+            record=json.loads((root/'out/link-inputs.json').read_text())
+            self.assertEqual([r['filename'] for r in record['objects']],['caller.o','destination.o'])
+            self.assertEqual(record['objects'][0]['compiled_sha256'],hashlib.sha256(caller).hexdigest())
+
+    def test_external_definition_mode_comes_from_selected_source_override(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);result,_=self.split_trial(root,'thumb','arm',definition_override=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            tool=module();elf=tool.Elf32((root/'out/objects/destination.o').read_bytes())
+            symbol=next(s for s in elf.symbols() if elf.symbol_name(s)=='destination')
+            self.assertEqual((symbol[3]&15,symbol[1]),(2,0))
+            record=json.loads((root/'out/link-inputs.json').read_text())['objects'][1]
+            self.assertEqual(record['kind'],'source')
+            self.assertEqual(record['compiled_sha256'],hashlib.sha256(branch_fixture('arm')).hexdigest())
+
+    def test_weak_external_branch_and_weak_notype_definition_are_supported(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);result,_=self.split_trial(root,'thumb','arm',weak=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            tool=module();elf=tool.Elf32((root/'out/objects/destination.o').read_bytes())
+            symbol=next(s for s in elf.symbols() if elf.symbol_name(s)=='destination')
+            self.assertEqual((symbol[3]>>4,symbol[3]&15,symbol[1]),(2,2,0))
+
+    def test_ambiguous_external_definition_is_rejected_before_guessing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);references=root/'refs';references.mkdir();output=root/'out';output.mkdir()
+            for name,value in {'caller.o':branch_fixture('thumb',target='destination'),
+                               'a.o':branch_fixture('arm'),'b.o':branch_fixture('thumb',binding=2)}.items():
+                (references/name).write_bytes(value)
+            with self.assertRaisesRegex(ValueError,'ambiguous'):
+                module().prepare_objects('caller.o(.text) a.o(.text) b.o(.text)',references,output,{})
+            self.assertEqual(list(output.iterdir()),[])
+
+    def test_external_notype_definition_requires_known_instruction_mapping(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);references=root/'refs';references.mkdir();output=root/'out';output.mkdir()
+            (references/'caller.o').write_bytes(branch_fixture('thumb',target='destination'))
+            (references/'destination.o').write_bytes(branch_fixture('arm',mapping=False))
+            with self.assertRaisesRegex(ValueError,'mode'):
+                module().prepare_objects('caller.o(.text) destination.o(.text)',references,output,{})
+            self.assertEqual(list(output.iterdir()),[])
 
     def test_translates_after_as_max_end_with_bss_and_distinct_overlays(self):
         lcf = '''MEMORY {

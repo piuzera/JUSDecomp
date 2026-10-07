@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "task": "jus-bjry.6",
+  "scope": "first CommonEffect destructor-entry experiment, not complete class/family",
+  "promotion_status": "pending_canonical_full_pipeline_and_review",
+  "source_credit": 0,
+  "identity": {
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "cpu": "arm9",
+    "module": "main",
+    "section": ".text",
+    "address": "0x0206d010",
+    "mode": "arm",
+    "extent_bytes": 20,
+    "original_name": "func_0206d010",
+    "preferred_generated_name": "func_0206d010"
+  },
+  "tools": {
+    "mwccarm.exe": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+    "wibo-macos": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+    "ELFIO.dll": "25c6e63e127cc6461fee88eb08c189a09ed698ed7e86e7e76831914ca8eec4d2",
+    "MSL_All-DLL80_x86.dll": "11a6d47c8d076eb6eee9a21573e49d371886a5d4ac00ee3619ff0b0e25c45af1",
+    "lmgr8c.dll": "5e675fab488177d5e285d2033d09db9e144f5a50cfb78aed176c5b1715e5afd9"
+  },
+  "probes": [
+    {
+      "name": "shape-default",
+      "flags": [],
+      "source_sha256": "ad316326e630168a85beb26688ffb7b02f90804f506388f32f4a88787da01cbe",
+      "object_sha256": "f8da4a082a7f166a971f04374c908d528be285559b0bfcd745bc30be3d22f591",
+      "allocated_section_sizes_by_physical_index": {
+        "5": {
+          "name": ".text",
+          "bytes": 52
+        },
+        "7": {
+          "name": ".text",
+          "bytes": 52
+        },
+        "9": {
+          "name": ".text",
+          "bytes": 36
+        },
+        "11": {
+          "name": ".text",
+          "bytes": 44
+        },
+        "13": {
+          "name": ".text",
+          "bytes": 36
+        },
+        "15": {
+          "name": ".text",
+          "bytes": 72
+        },
+        "17": {
+          "name": ".text",
+          "bytes": 72
+        },
+        "19": {
+          "name": ".text",
+          "bytes": 36
+        },
+        "21": {
+          "name": ".text",
+          "bytes": 44
+        },
+        "23": {
+          "name": ".text",
+          "bytes": 36
+        },
+        "25": {
+          "name": ".data",
+          "bytes": 52
+        },
+        "27": {
+          "name": ".data",
+          "bytes": 16
+        },
+        "28": {
+          "name": ".data",
+          "bytes": 13
+        }
+      },
+      "defined_function_sizes": {
+        "_ZN10PublicBaseC2EPv": 52,
+        "_ZN10PublicBaseC1EPv": 52,
+        "_ZN10PublicBaseD1Ev": 36,
+        "_ZN10PublicBaseD0Ev": 44,
+        "_ZN10PublicBaseD2Ev": 36,
+        "_ZN13PublicDerivedC2EPv": 72,
+        "_ZN13PublicDerivedC1EPv": 72,
+        "_ZN13PublicDerivedD1Ev": 36,
+        "_ZN13PublicDerivedD0Ev": 44,
+        "_ZN13PublicDerivedD2Ev": 36
+      },
+      "undefined_symbols": [
+        "public_base_construct",
+        "public_base_destroy",
+        "_ZdlPv",
+        "_ZTVN10__cxxabiv120__si_class_type_infoE",
+        "_ZTVN10__cxxabiv117__class_type_infoE"
+      ],
+      "relocation_count": 35,
+      "relocation_types": {
+        "1": 12,
+        "2": 23
+      },
+      "source_gate_shape": {
+        "status": "rejected",
+        "reason": "duplicate allocated section: .text"
+      }
+    },
+    {
+      "name": "shape-O2-noRTTI-inlineoff",
+      "flags": [
+        "-O2",
+        "-RTTI",
+        "off",
+        "-inline",
+        "off"
+      ],
+      "source_sha256": "ad316326e630168a85beb26688ffb7b02f90804f506388f32f4a88787da01cbe",
+      "object_sha256": "23da4d8357d9b27e78d82d54871c26f8210683d7b63a547acbc430af1b314783",
+      "allocated_section_sizes_by_physical_index": {
+        "5": {
+          "name": ".text",
+          "bytes": 32
+        },
+        "7": {
+          "name": ".text",
+          "bytes": 32
+        },
+        "9": {
+          "name": ".text",
+          "bytes": 32
+        },
+        "11": {
+          "name": ".text",
+          "bytes": 40
+        },
+        "13": {
+          "name": ".text",
+          "bytes": 32
+        },
+        "15": {
+          "name": ".text",
+          "bytes": 40
+        },
+        "17": {
+          "name": ".text",
+          "bytes": 40
+        },
+        "19": {
+          "name": ".text",
+          "bytes": 20
+        },
+        "21": {
+          "name": ".text",
+          "bytes": 28
+        },
+        "23": {
+          "name": ".text",
+          "bytes": 20
+        },
+        "25": {
+          "name": ".data",
+          "bytes": 32
+        }
+      },
+      "defined_function_sizes": {
+        "_ZN10PublicBaseC2EPv": 32,
+        "_ZN10PublicBaseC1EPv": 32,
+        "_ZN10PublicBaseD1Ev": 32,
+        "_ZN10PublicBaseD0Ev": 40,
+        "_ZN10PublicBaseD2Ev": 32,
+        "_ZN13PublicDerivedC2EPv": 40,
+        "_ZN13PublicDerivedC1EPv": 40,
+        "_ZN13PublicDerivedD1Ev": 20,
+        "_ZN13PublicDerivedD0Ev": 28,
+        "_ZN13PublicDerivedD2Ev": 20
+      },
+      "undefined_symbols": [
+        "public_base_construct",
+        "public_base_destroy",
+        "_ZdlPv"
+      ],
+      "relocation_count": 23,
+      "relocation_types": {
+        "1": 12,
+        "2": 11
+      },
+      "source_gate_shape": {
+        "status": "rejected",
+        "reason": "duplicate allocated section: .text"
+      }
+    },
+    {
+      "name": "single-member-default",
+      "flags": [],
+      "source_sha256": "8c1f94245920cae5f207812838154e29c5317923da53f38f6b55b68d60a343d3",
+      "object_sha256": "acbcaf4622fd3159eed902275360312c2b95a934140ecb4e8929348d5c821bd7",
+      "allocated_section_sizes_by_physical_index": {
+        "5": {
+          "name": ".text",
+          "bytes": 24
+        }
+      },
+      "defined_function_sizes": {
+        "_ZN9PublicAbi7DestroyEv": 24
+      },
+      "undefined_symbols": [
+        "public_base_destroy"
+      ],
+      "relocation_count": 1,
+      "relocation_types": {
+        "1": 1
+      },
+      "source_gate_shape": {
+        "status": "supported_shape"
+      }
+    },
+    {
+      "name": "single-member-O2",
+      "flags": [
+        "-O2"
+      ],
+      "source_sha256": "8c1f94245920cae5f207812838154e29c5317923da53f38f6b55b68d60a343d3",
+      "object_sha256": "672dcf7be8bedacc38670d33032ded4d0c2583fa1fe0a7296f67f87b7bd6040c",
+      "allocated_section_sizes_by_physical_index": {
+        "5": {
+          "name": ".text",
+          "bytes": 20
+        }
+      },
+      "defined_function_sizes": {
+        "_ZN9PublicAbi7DestroyEv": 20
+      },
+      "undefined_symbols": [
+        "public_base_destroy"
+      ],
+      "relocation_count": 1,
+      "relocation_types": {
+        "1": 1
+      },
+      "source_gate_shape": {
+        "status": "supported_shape"
+      }
+    }
+  ],
+  "object_trials": {
+    "original_name": {
+      "status": "failed",
+      "accepted_units": 0,
+      "failure": "function identities/extents/modes differ from declared reference TU",
+      "source_sha256": "862345a7182c2e24333fdea192c6526d8d8058f4460f48cfc4f7b4ac280e06d7",
+      "reference_sha256": "89f9553b2fee1f8622c75bc22a49d2e8838f48d8ec9439c90d937903998e646e",
+      "compiled_sha256": "9e1e20f54625d97cd15c60efcdb5451cd9e4a9730dbcd113d282685974b80c81",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2"
+      ],
+      "checks": null
+    },
+    "wrong_extent": {
+      "status": "failed",
+      "accepted_units": 0,
+      "failure": "function identities/extents/modes differ from declared reference TU",
+      "source_sha256": "862345a7182c2e24333fdea192c6526d8d8058f4460f48cfc4f7b4ac280e06d7",
+      "reference_sha256": "e0b3df001afe70f9ccb83e61985ddec4d8c61c7afb9b8363102fd72fb52c67f1",
+      "compiled_sha256": "08e362fda881d7b6a5e02b51cfb61282ee47703e1b9f0544951a6249079f54b0",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc"
+      ],
+      "checks": null
+    },
+    "matched": {
+      "status": "passed",
+      "accepted_units": 1,
+      "failure": null,
+      "source_sha256": "862345a7182c2e24333fdea192c6526d8d8058f4460f48cfc4f7b4ac280e06d7",
+      "reference_sha256": "e0b3df001afe70f9ccb83e61985ddec4d8c61c7afb9b8363102fd72fb52c67f1",
+      "compiled_sha256": "9e1e20f54625d97cd15c60efcdb5451cd9e4a9730dbcd113d282685974b80c81",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2"
+      ],
+      "checks": {
+        "status": "passed",
+        "sections": [
+          {
+            "name": ".text",
+            "size": 20,
+            "flags": 6,
+            "kind": "initialized"
+          }
+        ],
+        "functions": [
+          {
+            "name": "_ZN15CommonEffectAbi7DestroyEv",
+            "offset": 0,
+            "size": 20,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 8,
+            "type": 1,
+            "symbol": "func_02015ed8",
+            "addend": -8
+          }
+        ]
+      }
+    },
+    "changed_call": {
+      "status": "failed",
+      "accepted_units": 0,
+      "failure": "relocation identities/offsets/types/symbols/addends differ",
+      "source_sha256": "862345a7182c2e24333fdea192c6526d8d8058f4460f48cfc4f7b4ac280e06d7",
+      "reference_sha256": "e0b3df001afe70f9ccb83e61985ddec4d8c61c7afb9b8363102fd72fb52c67f1",
+      "compiled_sha256": "ef83bee25e608aa17a807d4f23e2026c44781fa710cf2cd8a5eb81e109a94aaf",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2",
+        "-Dfunc_02015ed8=func_02015ed14"
+      ],
+      "checks": null
+    },
+    "bridge": {
+      "status": "passed",
+      "accepted_units": 1,
+      "failure": null,
+      "source_sha256": "322b2be2482c0ea9d9305cfe598b9b96ef6b304bf4ea7b17ee17b394547f3791",
+      "reference_sha256": "89f9553b2fee1f8622c75bc22a49d2e8838f48d8ec9439c90d937903998e646e",
+      "compiled_sha256": "aeab724db361811c3d45a5fab36d814523670d3159649b216397a7213e21fc04",
+      "flags": [
+        "-Cpp_exceptions",
+        "off",
+        "-nostdinc",
+        "-O2"
+      ],
+      "checks": {
+        "status": "passed",
+        "sections": [
+          {
+            "name": ".text",
+            "size": 20,
+            "flags": 6,
+            "kind": "initialized"
+          }
+        ],
+        "functions": [
+          {
+            "name": "func_0206d010",
+            "offset": 0,
+            "size": 20,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 8,
+            "type": 1,
+            "symbol": "func_02015ed8",
+            "addend": -8
+          }
+        ]
+      }
+    }
+  },
+  "private_module_experiment": {
+    "status": "passed",
+    "modules": 17,
+    "module_payloads_equal_prior_verified_baseline": true,
+    "initialized_bytes": 2141728,
+    "dsd_modules": "passed",
+    "dsd_symbols": "passed",
+    "original_reference_relocations": {
+      "total": 87493,
+      "validated": 87493,
+      "failed": 0,
+      "unresolved": 0
+    },
+    "raw_source_object_unchanged": true,
+    "fresh_canonical_rom_pipeline": "not_run"
+  },
+  "alternate_mangled_binding": {
+    "status": "passed",
+    "objects": 17,
+    "relocations": 87493,
+    "defined_in": [
+      "src/main/common_effect_destroy.o"
+    ],
+    "renamed_references": [
+      {
+        "object": "_dsd_gap@main_6.o",
+        "section": ".data",
+        "offset": 45620,
+        "type": 2,
+        "addend": 0,
+        "old_name": "func_0206d010",
+        "new_name": "_ZN15CommonEffectAbi7DestroyEv"
+      }
+    ],
+    "section_payloads_identical": true,
+    "addresses_modes_extents_identical": true,
+    "source_credit": 0
+  },
+  "unresolved": [
+    "Complete native virtual class declaration and generated destructor variants",
+    "Base member types and precise ownership contracts",
+    "Remaining six published CommonEffect targets",
+    "Exact original compiler/version beyond this member context",
+    "Combined runtime-plus-class main split propagation fix",
+    "Canonical fresh full-ROM promotion pipeline"
+  ]
+}

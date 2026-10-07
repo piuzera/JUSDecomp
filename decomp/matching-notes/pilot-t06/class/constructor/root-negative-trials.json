@@ -1,0 +1,53 @@
+{
+  "wrong_offset": {
+    "status": "failed",
+    "accepted_units": 0,
+    "published_override_count": 0,
+    "failure": "source compilation failed or produced no fresh object",
+    "flags": [
+      "-Cpp_exceptions",
+      "off",
+      "-nostdinc",
+      "-O2"
+    ],
+    "mutation": "Physical opaque span changed from 0x7c to 0x7a in temporary source copy",
+    "mutant_source_sha256": "74aee0a7a93fd56adfe97b12cbfe2116770337731efbeb6cefb480355815192d",
+    "reference_sha256": "d7da4586375e7902aec6748d6e68149ebc36a7dc237dbb58b95706e6ae2a83e1",
+    "reference_unchanged": true,
+    "compiled_sha256": null
+  },
+  "wrong_base_callee": {
+    "status": "failed",
+    "accepted_units": 0,
+    "published_override_count": 0,
+    "failure": "relocation identities/offsets/types/symbols/addends differ",
+    "flags": [
+      "-Cpp_exceptions",
+      "off",
+      "-nostdinc",
+      "-O2",
+      "-Dfunc_02015d0c=func_02015d70"
+    ],
+    "mutation": null,
+    "mutant_source_sha256": "f7acf168c832ca304e8a6c10742ede2da6c35d1c6b088dcc5de18007fd5b8e28",
+    "reference_sha256": "d7da4586375e7902aec6748d6e68149ebc36a7dc237dbb58b95706e6ae2a83e1",
+    "reference_unchanged": true,
+    "compiled_sha256": "6520d784897ab37550a2df37343d317dd22154a2da2667377170689914e8d772"
+  },
+  "default_context": {
+    "status": "failed",
+    "accepted_units": 0,
+    "published_override_count": 0,
+    "failure": "function identities/extents/modes differ from declared reference TU",
+    "flags": [
+      "-Cpp_exceptions",
+      "off",
+      "-nostdinc"
+    ],
+    "mutation": null,
+    "mutant_source_sha256": "f7acf168c832ca304e8a6c10742ede2da6c35d1c6b088dcc5de18007fd5b8e28",
+    "reference_sha256": "d7da4586375e7902aec6748d6e68149ebc36a7dc237dbb58b95706e6ae2a83e1",
+    "reference_unchanged": true,
+    "compiled_sha256": "6a56bb6a81aea74d6c6ec0b83396d41796732ea89a934a085eb75e2598229b45"
+  }
+}

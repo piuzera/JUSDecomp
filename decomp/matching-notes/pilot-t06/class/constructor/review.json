@@ -1,0 +1,28 @@
+{
+  "reviewer_model": "gpt-6-astra",
+  "producer_commit": "1a89d19",
+  "proof_commit": "dc776f1",
+  "status": "cleared",
+  "flags": [],
+  "verified": {
+    "stages": 19,
+    "tests": 214,
+    "test_skips": 0,
+    "live_relocation_slots": 87493,
+    "artifact_hashes": 208,
+    "source_hashes": 71,
+    "matched_source_bytes": 224,
+    "game_source_bytes": 192,
+    "sdk_source_bytes": 32,
+    "whole_rom_exact": true,
+    "raw_object_unchanged_after_macro_cleanup": true,
+    "negative_trials_publish_no_overrides": true
+  },
+  "limits": [
+    "T06 remains open: clone, initializer and virtual object-configuration method remain fallback",
+    "Initializer 56-trial near misses earn zero source credit",
+    "Class ownership and runtime behavior checks remain open",
+    "T10 and global source percentage remain unresolved"
+  ],
+  "audit": "Live artifact/source hashes, real source-copy mutation, selected input provenance, own transcript and decision trail agree."
+}

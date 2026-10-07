@@ -50,10 +50,16 @@ class Elf32:
         return self.string(self.strings, symbol[0])
 
 
-def normalize_object(data):
+def normalize_object(data, external_branch_modes=None):
     """Repair dsd symbol partition/mode and its three baseline RELA types."""
     elf = Elf32(data)
     symbols = [list(s) for s in elf.symbols()]
+    for symbol in symbols:
+        name = elf.symbol_name(symbol)
+        if (external_branch_modes and name in external_branch_modes and symbol[5]
+                and symbol[3] >> 4 in (1, 2) and symbol[3] & 15 == 0):
+            symbol[3] = (symbol[3] & 0xF0) | 2
+            symbol[1] = (symbol[1] & ~1) | (external_branch_modes[name] == 't')
     # dsd's interior branch labels are NOTYPE; lld needs function/mode metadata
     # on every call target to perform the original ARM/Thumb interworking.
     for section in elf.sections:
@@ -103,6 +109,49 @@ def normalize_object(data):
                 kind = 28 if opcode == 0xEB else 29
             struct.pack_into('<IIi', out, position, offset, (indices[ident] << 8) | kind, addend)
     return bytes(out)
+
+
+def external_branch_modes(selected):
+    """Resolve external branch labels only among actual selected raw inputs.
+
+    A global name never types an unrelated local symbol. Multiple global/weak
+    definitions are unsupported even if a linker's precedence rule could choose
+    one. NOTYPE definitions require executable mapping evidence before any write.
+    """
+    definitions, referenced = {}, set()
+    for filename, data in selected.items():
+        elf = Elf32(data); symbols = elf.symbols()
+        for symbol in symbols:
+            if symbol[5] and symbol[3] >> 4 in (1, 2):
+                definitions.setdefault(elf.symbol_name(symbol), []).append((filename, elf, symbol))
+        for section in elf.sections:
+            if section[1] != 4: continue
+            for _, info, _ in struct.iter_unpack('<IIi', elf.content(section)):
+                if info & 255 not in (1, 10): continue
+                if info >> 8 >= len(symbols): raise ValueError('branch symbol outside symbol table')
+                symbol = symbols[info >> 8]
+                if not symbol[5] and symbol[3] >> 4 in (1, 2):
+                    referenced.add(elf.symbol_name(symbol))
+    modes = {}
+    for name in sorted(referenced):
+        matches = definitions.get(name, [])
+        if not matches: raise ValueError(f'external branch target has no selected definition: {name}')
+        if len(matches) != 1: raise ValueError(f'ambiguous selected branch target definitions: {name}')
+        filename, elf, symbol = matches[0]
+        if symbol[3] & 15 != 0: continue
+        index, address = symbol[5], symbol[1] & ~1
+        if not 0 < index < len(elf.sections):
+            raise ValueError(f'unknown definition mode for {name} in {filename}')
+        section = elf.sections[index]
+        mappings = sorted((s[1] & ~1, elf.symbol_name(s)[1]) for s in elf.symbols()
+                          if s[5] == index and re.fullmatch(r'\$[atd](?:\..*)?', elf.symbol_name(s)))
+        before = bisect.bisect_right(mappings, (address, 'z')) - 1
+        mode = mappings[before][1] if before >= 0 else None
+        if (not section[2] & 4 or address >= section[5] or mode not in ('a', 't')
+                or (mode == 'a' and symbol[1] % 4)):
+            raise ValueError(f'unknown definition mode for {name} in {filename}')
+        modes[name] = mode
+    return modes
 
 
 def translate_lcf(lcf, object_dir):
@@ -180,7 +229,7 @@ def prepare_objects(lcf, reference_dir, object_dir, overrides):
     candidates = {}
     for path in reference_dir.rglob('*.o'):
         candidates.setdefault(path.name, []).append(path)
-    records = []
+    selected_inputs = {}
     for name in names:
         if Path(name).name != name:
             raise ValueError(f'unsupported LCF object path: {name}')
@@ -191,7 +240,11 @@ def prepare_objects(lcf, reference_dir, object_dir, overrides):
         source = overrides.get(name, reference).resolve()
         original = reference.read_bytes()
         selected = source.read_bytes()
-        normalized = normalize_object(selected)
+        selected_inputs[name] = (reference, source, original, selected)
+    modes = external_branch_modes({name: values[3] for name, values in selected_inputs.items()})
+    records = []
+    for name, (reference, source, original, selected) in selected_inputs.items():
+        normalized = normalize_object(selected, modes)
         destination = object_dir / name
         destination.write_bytes(normalized)
         record = {'filename': name, 'kind': 'source' if name in overrides else 'reference',

@@ -5,7 +5,7 @@
   "source_complete": false,
   "source_bytes": 0,
   "source_functions": 0,
-  "child_rom_roundtrip": "not_verified",
+  "child_rom_roundtrip": "candidate_binary_verified; see child-rom-roundtrip.json",
   "modules": [
     {
       "module": "ARM9",
@@ -106,7 +106,7 @@
   "strict_dsd_symbol_checks": "passed",
   "actual_link_input_provenance": "passed",
   "arm7_baseline": false,
-  "compression_encoder_match": "unresolved",
+  "compression_encoder_match": "exact_original_stored_bytes; see child-rom-roundtrip.json",
   "schema_version": 1,
   "task": "jus-bjry.10",
   "tools": {

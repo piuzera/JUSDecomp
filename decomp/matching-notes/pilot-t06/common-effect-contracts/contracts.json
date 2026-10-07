@@ -1,0 +1,1344 @@
+{
+  "schema_version": 1,
+  "kind": "read_only_contract_evidence",
+  "notes_base_commit": "6bd4981fe9cce435a9a5bddc9f0d376483b37e72",
+  "canonical_source_checkpoint": {
+    "bytes": 104,
+    "game_bytes": 72,
+    "sdk_bytes": 32,
+    "new_source_credit_from_notes": 0,
+    "reference": "../README.md#current-verified-source-coverage"
+  },
+  "provenance": {
+    "original_repository_commit": "6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b",
+    "dsd_version": "0.12.0",
+    "reference_object_private_path": "/private/tmp/jus-track-a/build/verify-t04-t08-final-source/delinks/_dsd_gap@main_5.o",
+    "reference_object_sha256": "248e6844754b8c07c9d8b037ca7c01600dfc7566ec61a168aab69c8d238696c3",
+    "linked_elf_private_path": "/private/tmp/jus-track-a/build/pilot-canonical-final/native-link/linked.elf",
+    "linked_elf_sha256": "339e504eb878975e437e59b5e78f445d6a7561d45827b563b782fa07834c87f6",
+    "linked_elf_scope": "earlier76-byte checkpoint; researched targets remain reference inputs at104-byte checkpoint",
+    "target_publication": "../targets.json",
+    "code_discovery": "MCP graph snippets truncated at50lines; no call edges; bounded ASM/ELF fallback"
+  },
+  "functions": {
+    "func_0206c244": {
+      "address": "0x0206c244",
+      "mode": "ARM",
+      "extent_bytes": 596,
+      "instruction_bytes": 532,
+      "literal_pool_bytes": 64,
+      "payload_sha256": "c11efb830d6e8467c37b044646381c6481bf35e05860b259dcdb792cb0dc396f",
+      "relocations": [
+        {
+          "address": "0x0206c26c",
+          "type": 1,
+          "symbol": "func_02010238",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c27c",
+          "type": 1,
+          "symbol": "func_0201024c",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c280",
+          "type": 1,
+          "symbol": "func_0203b404",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c288",
+          "type": 1,
+          "symbol": "func_0206c498",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c294",
+          "type": 1,
+          "symbol": "func_02035e88",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c2d8",
+          "type": 1,
+          "symbol": "func_02032a4c",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c2dc",
+          "type": 1,
+          "symbol": "func_02011b38",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c2fc",
+          "type": 1,
+          "symbol": "func_02023894",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c328",
+          "type": 1,
+          "symbol": "func_0206c4d4",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c370",
+          "type": 1,
+          "symbol": "func_0206c514",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c384",
+          "type": 1,
+          "symbol": "func_020107f4",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c388",
+          "type": 1,
+          "symbol": "func_0206c54c",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c3b8",
+          "type": 1,
+          "symbol": "func_02023cd0",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c3cc",
+          "type": 1,
+          "symbol": "func_0201a21c",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c3dc",
+          "type": 1,
+          "symbol": "func_0202f8a4",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c3f8",
+          "type": 1,
+          "symbol": "func_0201a21c",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c40c",
+          "type": 1,
+          "symbol": "func_0202c4ac",
+          "addend": -8
+        },
+        {
+          "address": "0x0206c458",
+          "type": 2,
+          "symbol": "data_020afc40",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c45c",
+          "type": 2,
+          "symbol": "data_020afc4c",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c464",
+          "type": 2,
+          "symbol": "data_0209e050",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c468",
+          "type": 2,
+          "symbol": "data_020923b4",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c46c",
+          "type": 2,
+          "symbol": "func_02074540",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c474",
+          "type": 2,
+          "symbol": "func_0206c57c",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c478",
+          "type": 2,
+          "symbol": "data_0209dff0",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c47c",
+          "type": 2,
+          "symbol": "data_0209dfbc",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c480",
+          "type": 2,
+          "symbol": "data_0209e258",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c484",
+          "type": 2,
+          "symbol": "data_0209e244",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c488",
+          "type": 2,
+          "symbol": "data_0209e26c",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c48c",
+          "type": 2,
+          "symbol": "data_0209e280",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c490",
+          "type": 2,
+          "symbol": "data_0209e068",
+          "addend": 0
+        },
+        {
+          "address": "0x0206c494",
+          "type": 2,
+          "symbol": "data_02099640",
+          "addend": 0
+        }
+      ],
+      "virtual_calls": [
+        {
+          "address": "0x0206c2b0",
+          "receiver": "resource returned by02035e88",
+          "slot": "0x14",
+          "prepared_r1": "none explicitly prepared",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206c2cc",
+          "receiver": "record.first.field_04",
+          "slot": "0x50",
+          "prepared_r1": "1",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206c314",
+          "receiver": "record.wrapper.field_04.field_68",
+          "slot": "0xdc",
+          "prepared_r1": "none explicitly prepared",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206c340",
+          "receiver": "record.wrapper.field_04",
+          "slot": "0xdc",
+          "prepared_r1": "-1",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206c358",
+          "receiver": "record.wrapper.field_04",
+          "slot": "0x94",
+          "prepared_r1": "0x100",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206c39c",
+          "receiver": "record.archive.field_08",
+          "slot": "0x50",
+          "prepared_r1": "none explicitly prepared",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206c450",
+          "receiver": "global.field_08",
+          "slot": "0x3c",
+          "prepared_r1": "allocation_28 or0",
+          "proved_target": "func_020300e0",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        }
+      ]
+    },
+    "func_0206ca8c": {
+      "address": "0x0206ca8c",
+      "mode": "ARM",
+      "extent_bytes": 1016,
+      "instruction_bytes": 1004,
+      "literal_pool_bytes": 12,
+      "payload_sha256": "c819f1db4782c70cf9b168e735dd7b795ccd02b83ed5c208051e6ab72aeeca13",
+      "relocations": [
+        {
+          "address": "0x0206cab4",
+          "type": 1,
+          "symbol": "func_0203b404",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cabc",
+          "type": 1,
+          "symbol": "func_0206c498",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cac8",
+          "type": 1,
+          "symbol": "func_02010adc",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cad8",
+          "type": 1,
+          "symbol": "func_02011b38",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cb44",
+          "type": 1,
+          "symbol": "func_02024d44",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cb64",
+          "type": 1,
+          "symbol": "func_02024d54",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cb88",
+          "type": 1,
+          "symbol": "func_02023894",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cc00",
+          "type": 1,
+          "symbol": "func_0206ca28",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cc34",
+          "type": 1,
+          "symbol": "func_02028384",
+          "addend": -8
+        },
+        {
+          "address": "0x0206ccc0",
+          "type": 1,
+          "symbol": "func_0206ca28",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cd04",
+          "type": 1,
+          "symbol": "func_02024d54",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cd20",
+          "type": 1,
+          "symbol": "func_02024d44",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cd40",
+          "type": 1,
+          "symbol": "func_0206ca28",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cd58",
+          "type": 1,
+          "symbol": "func_02011990",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cd88",
+          "type": 1,
+          "symbol": "func_02011990",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cda0",
+          "type": 1,
+          "symbol": "func_02011990",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cdc8",
+          "type": 1,
+          "symbol": "func_0206ce84",
+          "addend": -8
+        },
+        {
+          "address": "0x0206cde0",
+          "type": 1,
+          "symbol": "func_0206ce84",
+          "addend": -8
+        },
+        {
+          "address": "0x0206ce14",
+          "type": 1,
+          "symbol": "func_02011990",
+          "addend": -8
+        },
+        {
+          "address": "0x0206ce68",
+          "type": 1,
+          "symbol": "func_0206c54c",
+          "addend": -8
+        },
+        {
+          "address": "0x0206ce78",
+          "type": 2,
+          "symbol": "data_020afc40",
+          "addend": 0
+        },
+        {
+          "address": "0x0206ce80",
+          "type": 2,
+          "symbol": "func_0206ceac",
+          "addend": 0
+        }
+      ],
+      "virtual_calls": [
+        {
+          "address": "0x0206cb00",
+          "receiver": "created",
+          "slot": "0x94",
+          "prepared_r1": "related.field_3c &0x7fffffff",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cb14",
+          "receiver": "created",
+          "slot": "0xb0",
+          "prepared_r1": "0x31305053",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cb30",
+          "receiver": "self",
+          "slot": "0xb4",
+          "prepared_r1": "created",
+          "proved_target": "func_020161d8",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cbc0",
+          "receiver": "configured.field_64",
+          "slot": "0x5c",
+          "prepared_r1": "related.field_64.byte_48",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cbe0",
+          "receiver": "configured",
+          "slot": "0xd4",
+          "prepared_r1": "related",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cc1c",
+          "receiver": "configured",
+          "slot": "0xa0",
+          "prepared_r1": "&word_8c000",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cc44",
+          "receiver": "related.field_68",
+          "slot": "0xd0",
+          "prepared_r1": "none explicitly prepared",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cc60",
+          "receiver": "related.field_68",
+          "slot": "0x14c",
+          "prepared_r1": "none explicitly prepared",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cc74",
+          "receiver": "result of related.field_68 vcall_d0",
+          "slot": "0x20",
+          "prepared_r1": "result of vcall_14c",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cc88",
+          "receiver": "configured",
+          "slot": "0x24",
+          "prepared_r1": "result of preceding vcall_20 or0",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cce8",
+          "receiver": "configured",
+          "slot": "0xd4",
+          "prepared_r1": "global.field_04.field_04",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206ccf8",
+          "receiver": "configured",
+          "slot": "0xd4",
+          "prepared_r1": "related",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cd7c",
+          "receiver": "configured.field_64",
+          "slot": "0x10",
+          "prepared_r1": "&adjusted_word",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cdbc",
+          "receiver": "configured.field_64",
+          "slot": "0x10",
+          "prepared_r1": "&unadjusted_word",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206cdf4",
+          "receiver": "configured",
+          "slot": "0xf8",
+          "prepared_r1": "&func_0206ce84 result",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206ce08",
+          "receiver": "created",
+          "slot": "0xdc",
+          "prepared_r1": "-1",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206ce40",
+          "receiver": "created.field_68",
+          "slot": "0x10",
+          "prepared_r1": "&rounded_word",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206ce50",
+          "receiver": "created.field_68",
+          "slot": "0x6c",
+          "prepared_r1": "none explicitly prepared",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        },
+        {
+          "address": "0x0206ce64",
+          "receiver": "configured",
+          "slot": "0xd8",
+          "prepared_r1": "1",
+          "proved_target": "unknown",
+          "other_argument_registers": "unresolved; lack of preparation does not prove absence"
+        }
+      ]
+    }
+  },
+  "inbound_relocations": [
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".data",
+      "input_section_offset": "0xb358",
+      "target": "func_0206ca8c",
+      "type": 2,
+      "addend": 0,
+      "address": "0x0209e238",
+      "container": "data_0209e114",
+      "slot": "0x124"
+    },
+    {
+      "object": "_dsd_gap@ov000_4.o",
+      "input_section": ".text",
+      "input_section_offset": "0x90d4",
+      "target": "func_0206c244",
+      "type": 1,
+      "addend": -8,
+      "caller": "func_ov000_02155cb4",
+      "address": "0x02155df4"
+    },
+    {
+      "object": "_dsd_gap@ov000_4.o",
+      "input_section": ".text",
+      "input_section_offset": "0xe9dc",
+      "target": "func_0206c244",
+      "type": 1,
+      "addend": -8,
+      "caller": "func_ov000_0215b084",
+      "address": "0x0215b6fc"
+    },
+    {
+      "object": "_dsd_gap@ov001_5.o",
+      "input_section": ".text",
+      "input_section_offset": "0x19d50",
+      "target": "func_0206c244",
+      "type": 10,
+      "addend": -4,
+      "caller": "func_ov001_02166778",
+      "address": "0x02166a70"
+    },
+    {
+      "object": "_dsd_gap@ov001_5.o",
+      "input_section": ".text",
+      "input_section_offset": "0x1ad80",
+      "target": "func_0206c244",
+      "type": 10,
+      "addend": -4,
+      "caller": "func_ov001_02167724",
+      "address": "0x02167aa0"
+    },
+    {
+      "object": "_dsd_gap@ov006_5.o",
+      "input_section": ".text",
+      "input_section_offset": "0x6d8",
+      "target": "func_0206c244",
+      "type": 10,
+      "addend": -4,
+      "caller": "func_ov006_0214cd20",
+      "address": "0x0214d3f8"
+    }
+  ],
+  "vtable": {
+    "symbol": "data_0209e114",
+    "address": "0x0209e114",
+    "extent_bytes": 304,
+    "entry_count": 76,
+    "parent_symbol": "data_0209c30c",
+    "parent_address": "0x0209c30c",
+    "entries": [
+      {
+        "slot": "0x0",
+        "symbol": "func_0206d010",
+        "address": "0x0206d010",
+        "mode": "ARM",
+        "parent_symbol": "func_02015e54",
+        "differs_from_parent": true
+      },
+      {
+        "slot": "0x4",
+        "symbol": "func_0206cfa4",
+        "address": "0x0206cfa4",
+        "mode": "ARM",
+        "parent_symbol": "func_02015e88",
+        "differs_from_parent": true
+      },
+      {
+        "slot": "0x8",
+        "symbol": "func_020102d0",
+        "address": "0x020102d0",
+        "mode": "Thumb",
+        "parent_symbol": "func_020102d0",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xc",
+        "symbol": "func_0202771c",
+        "address": "0x0202771c",
+        "mode": "ARM",
+        "parent_symbol": "func_0202771c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x10",
+        "symbol": "func_020119e4",
+        "address": "0x020119e4",
+        "mode": "Thumb",
+        "parent_symbol": "func_020119e4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x14",
+        "symbol": "func_020160c8",
+        "address": "0x020160c8",
+        "mode": "ARM",
+        "parent_symbol": "func_020160c8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x18",
+        "symbol": "func_0206cfc0",
+        "address": "0x0206cfc0",
+        "mode": "ARM",
+        "parent_symbol": "func_0204b0c8",
+        "differs_from_parent": true
+      },
+      {
+        "slot": "0x1c",
+        "symbol": "func_0202f668",
+        "address": "0x0202f668",
+        "mode": "ARM",
+        "parent_symbol": "func_0202f668",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x20",
+        "symbol": "func_0201c74c",
+        "address": "0x0201c74c",
+        "mode": "ARM",
+        "parent_symbol": "func_0201c74c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x24",
+        "symbol": "func_02020af4",
+        "address": "0x02020af4",
+        "mode": "ARM",
+        "parent_symbol": "func_02020af4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x28",
+        "symbol": "func_0204933c",
+        "address": "0x0204933c",
+        "mode": "ARM",
+        "parent_symbol": "func_0204933c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x2c",
+        "symbol": "func_020492a4",
+        "address": "0x020492a4",
+        "mode": "ARM",
+        "parent_symbol": "func_020492a4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x30",
+        "symbol": "func_0201379c",
+        "address": "0x0201379c",
+        "mode": "ARM",
+        "parent_symbol": "func_0201379c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x34",
+        "symbol": "func_020223ec",
+        "address": "0x020223ec",
+        "mode": "ARM",
+        "parent_symbol": "func_020223ec",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x38",
+        "symbol": "func_0202246c",
+        "address": "0x0202246c",
+        "mode": "ARM",
+        "parent_symbol": "func_0202246c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x3c",
+        "symbol": "func_02022540",
+        "address": "0x02022540",
+        "mode": "ARM",
+        "parent_symbol": "func_02022540",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x40",
+        "symbol": "func_020225e0",
+        "address": "0x020225e0",
+        "mode": "ARM",
+        "parent_symbol": "func_020225e0",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x44",
+        "symbol": "func_02022a74",
+        "address": "0x02022a74",
+        "mode": "ARM",
+        "parent_symbol": "func_02022a74",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x48",
+        "symbol": "func_02022e30",
+        "address": "0x02022e30",
+        "mode": "ARM",
+        "parent_symbol": "func_02022e30",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x4c",
+        "symbol": "func_020234a8",
+        "address": "0x020234a8",
+        "mode": "ARM",
+        "parent_symbol": "func_020234a8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x50",
+        "symbol": "func_020275d4",
+        "address": "0x020275d4",
+        "mode": "ARM",
+        "parent_symbol": "func_020275d4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x54",
+        "symbol": "func_02028230",
+        "address": "0x02028230",
+        "mode": "ARM",
+        "parent_symbol": "func_02028230",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x58",
+        "symbol": "func_020277a0",
+        "address": "0x020277a0",
+        "mode": "ARM",
+        "parent_symbol": "func_020277a0",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x5c",
+        "symbol": "func_020277d4",
+        "address": "0x020277d4",
+        "mode": "ARM",
+        "parent_symbol": "func_020277d4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x60",
+        "symbol": "func_02027978",
+        "address": "0x02027978",
+        "mode": "ARM",
+        "parent_symbol": "func_02027978",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x64",
+        "symbol": "func_02015f0c",
+        "address": "0x02015f0c",
+        "mode": "ARM",
+        "parent_symbol": "func_02015f0c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x68",
+        "symbol": "func_020222cc",
+        "address": "0x020222cc",
+        "mode": "ARM",
+        "parent_symbol": "func_020222cc",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x6c",
+        "symbol": "func_02027a58",
+        "address": "0x02027a58",
+        "mode": "ARM",
+        "parent_symbol": "func_02027a58",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x70",
+        "symbol": "func_02027a9c",
+        "address": "0x02027a9c",
+        "mode": "ARM",
+        "parent_symbol": "func_02027a9c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x74",
+        "symbol": "func_02027ad8",
+        "address": "0x02027ad8",
+        "mode": "ARM",
+        "parent_symbol": "func_02027ad8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x78",
+        "symbol": "func_02027b14",
+        "address": "0x02027b14",
+        "mode": "ARM",
+        "parent_symbol": "func_02027b14",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x7c",
+        "symbol": "func_02027b50",
+        "address": "0x02027b50",
+        "mode": "ARM",
+        "parent_symbol": "func_02027b50",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x80",
+        "symbol": "func_02027b94",
+        "address": "0x02027b94",
+        "mode": "ARM",
+        "parent_symbol": "func_02027b94",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x84",
+        "symbol": "func_02027be4",
+        "address": "0x02027be4",
+        "mode": "ARM",
+        "parent_symbol": "func_02027be4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x88",
+        "symbol": "func_02027c34",
+        "address": "0x02027c34",
+        "mode": "ARM",
+        "parent_symbol": "func_02027c34",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x8c",
+        "symbol": "func_02027c70",
+        "address": "0x02027c70",
+        "mode": "ARM",
+        "parent_symbol": "func_02027c70",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x90",
+        "symbol": "func_02027ce0",
+        "address": "0x02027ce0",
+        "mode": "ARM",
+        "parent_symbol": "func_02027ce0",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x94",
+        "symbol": "func_020249d0",
+        "address": "0x020249d0",
+        "mode": "ARM",
+        "parent_symbol": "func_020249d0",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x98",
+        "symbol": "func_02023854",
+        "address": "0x02023854",
+        "mode": "ARM",
+        "parent_symbol": "func_02023854",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x9c",
+        "symbol": "func_0204b0bc",
+        "address": "0x0204b0bc",
+        "mode": "ARM",
+        "parent_symbol": "func_0204b0bc",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xa0",
+        "symbol": "func_02012964",
+        "address": "0x02012964",
+        "mode": "ARM",
+        "parent_symbol": "func_02012964",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xa4",
+        "symbol": "func_020242dc",
+        "address": "0x020242dc",
+        "mode": "ARM",
+        "parent_symbol": "func_020242dc",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xa8",
+        "symbol": "func_0204ac0c",
+        "address": "0x0204ac0c",
+        "mode": "ARM",
+        "parent_symbol": "func_0204ac0c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xac",
+        "symbol": "func_0201542c",
+        "address": "0x0201542c",
+        "mode": "ARM",
+        "parent_symbol": "func_0201542c",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xb0",
+        "symbol": "func_02024558",
+        "address": "0x02024558",
+        "mode": "ARM",
+        "parent_symbol": "func_02024558",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xb4",
+        "symbol": "func_020161d8",
+        "address": "0x020161d8",
+        "mode": "ARM",
+        "parent_symbol": "func_020161d8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xb8",
+        "symbol": "func_020247b8",
+        "address": "0x020247b8",
+        "mode": "ARM",
+        "parent_symbol": "func_020247b8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xbc",
+        "symbol": "func_02024868",
+        "address": "0x02024868",
+        "mode": "ARM",
+        "parent_symbol": "func_02024868",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xc0",
+        "symbol": "func_02015410",
+        "address": "0x02015410",
+        "mode": "ARM",
+        "parent_symbol": "func_02015410",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xc4",
+        "symbol": "func_02024918",
+        "address": "0x02024918",
+        "mode": "ARM",
+        "parent_symbol": "func_02024918",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xc8",
+        "symbol": "func_020245f8",
+        "address": "0x020245f8",
+        "mode": "ARM",
+        "parent_symbol": "func_020245f8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xcc",
+        "symbol": "func_02024664",
+        "address": "0x02024664",
+        "mode": "ARM",
+        "parent_symbol": "func_02024664",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xd0",
+        "symbol": "func_02015780",
+        "address": "0x02015780",
+        "mode": "ARM",
+        "parent_symbol": "func_02015780",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xd4",
+        "symbol": "func_02022060",
+        "address": "0x02022060",
+        "mode": "ARM",
+        "parent_symbol": "func_02022060",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xd8",
+        "symbol": "func_02022208",
+        "address": "0x02022208",
+        "mode": "ARM",
+        "parent_symbol": "func_02022208",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xdc",
+        "symbol": "func_02025278",
+        "address": "0x02025278",
+        "mode": "ARM",
+        "parent_symbol": "func_02025278",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xe0",
+        "symbol": "func_02014f28",
+        "address": "0x02014f28",
+        "mode": "ARM",
+        "parent_symbol": "func_02014f28",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xe4",
+        "symbol": "func_02022270",
+        "address": "0x02022270",
+        "mode": "ARM",
+        "parent_symbol": "func_02022270",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xe8",
+        "symbol": "func_02024bb4",
+        "address": "0x02024bb4",
+        "mode": "ARM",
+        "parent_symbol": "func_02024bb4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xec",
+        "symbol": "func_02023560",
+        "address": "0x02023560",
+        "mode": "ARM",
+        "parent_symbol": "func_02023560",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xf0",
+        "symbol": "func_020237ac",
+        "address": "0x020237ac",
+        "mode": "ARM",
+        "parent_symbol": "func_020237ac",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xf4",
+        "symbol": "func_020237d4",
+        "address": "0x020237d4",
+        "mode": "ARM",
+        "parent_symbol": "func_020237d4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xf8",
+        "symbol": "func_020239dc",
+        "address": "0x020239dc",
+        "mode": "ARM",
+        "parent_symbol": "func_020239dc",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0xfc",
+        "symbol": "func_02023a70",
+        "address": "0x02023a70",
+        "mode": "ARM",
+        "parent_symbol": "func_02023a70",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x100",
+        "symbol": "func_02023b14",
+        "address": "0x02023b14",
+        "mode": "ARM",
+        "parent_symbol": "func_02023b14",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x104",
+        "symbol": "func_02023bd8",
+        "address": "0x02023bd8",
+        "mode": "ARM",
+        "parent_symbol": "func_02023bd8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x108",
+        "symbol": "func_020254c8",
+        "address": "0x020254c8",
+        "mode": "ARM",
+        "parent_symbol": "func_020254c8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x10c",
+        "symbol": "func_02025468",
+        "address": "0x02025468",
+        "mode": "ARM",
+        "parent_symbol": "func_02025468",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x110",
+        "symbol": "func_02049300",
+        "address": "0x02049300",
+        "mode": "ARM",
+        "parent_symbol": "func_02049300",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x114",
+        "symbol": "func_020492c4",
+        "address": "0x020492c4",
+        "mode": "ARM",
+        "parent_symbol": "func_020492c4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x118",
+        "symbol": "func_0202b2b8",
+        "address": "0x0202b2b8",
+        "mode": "ARM",
+        "parent_symbol": "func_0202b2b8",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x11c",
+        "symbol": "func_02025524",
+        "address": "0x02025524",
+        "mode": "ARM",
+        "parent_symbol": "func_02025524",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x120",
+        "symbol": "func_02024ad4",
+        "address": "0x02024ad4",
+        "mode": "ARM",
+        "parent_symbol": "func_02024ad4",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x124",
+        "symbol": "func_0206ca8c",
+        "address": "0x0206ca8c",
+        "mode": "ARM",
+        "parent_symbol": "func_02015fb0",
+        "differs_from_parent": true
+      },
+      {
+        "slot": "0x128",
+        "symbol": "func_02016030",
+        "address": "0x02016030",
+        "mode": "ARM",
+        "parent_symbol": "func_02016030",
+        "differs_from_parent": false
+      },
+      {
+        "slot": "0x12c",
+        "symbol": "func_020160b8",
+        "address": "0x020160b8",
+        "mode": "ARM",
+        "parent_symbol": "func_020160b8",
+        "differs_from_parent": false
+      }
+    ],
+    "sha256": "03602953bd8947e704110675ac42232405634ee57ab3d9ee61c56ca9c6fa3ccf",
+    "parent_sha256": "028eab4abf12a0f7df7d0e1bd1d301a490b933275719a34a8eb6223ebecb4dd7"
+  },
+  "explicit_callbacks": [
+    {
+      "caller": "func_0206c244",
+      "call_address": "0x0206c384",
+      "registration_function": "func_020107f4",
+      "callback": "func_02074540",
+      "literal_address": "0x0206c46c"
+    },
+    {
+      "caller": "func_0206c244",
+      "call_address": "0x0206c3b8",
+      "registration_function": "func_02023cd0",
+      "callback": "func_0206c57c",
+      "literal_address": "0x0206c474"
+    },
+    {
+      "caller": "func_0206ca8c",
+      "call_address": "0x0206cc34",
+      "registration_function": "func_02028384",
+      "callback": "func_0206ceac",
+      "literal_address": "0x0206ce80",
+      "condition": "self.byte_78!=0 and halfword_80 bit0x10set"
+    }
+  ],
+  "transitive_callback": {
+    "call_address": "0x0206cb30",
+    "self_vtable_slot": "0xb4",
+    "proved_target": "func_020161d8",
+    "registration_function": "func_0202788c",
+    "callback": "func_020160f0",
+    "registration_address": "0x020161f4",
+    "arguments": [
+      "created",
+      "1",
+      "func_020160f0",
+      "0"
+    ],
+    "followed_by": "func_020246c8(self,created)",
+    "literal_address": "0x02016208",
+    "following_call_address": "0x02016200"
+  },
+  "pool_constants": {
+    "func_0206c244": [
+      {
+        "address": "0x0206c460",
+        "value": "0x31305053"
+      },
+      {
+        "address": "0x0206c470",
+        "value": "0x20204e47"
+      }
+    ],
+    "func_0206ca8c": [
+      {
+        "address": "0x0206ce7c",
+        "value": "0x31305053"
+      }
+    ]
+  },
+  "archive_names": [
+    {
+      "symbol": "data_0209e010",
+      "value": "efc/comm_a.aar"
+    },
+    {
+      "symbol": "data_0209e020",
+      "value": "efc/comm_b.aar"
+    },
+    {
+      "symbol": "data_0209e030",
+      "value": "efc/comm_c.aar"
+    },
+    {
+      "symbol": "data_0209dfe0",
+      "value": "efc/comm_g.aar"
+    }
+  ],
+  "identifier_table": {
+    "symbol": "data_020923b4",
+    "entries": [
+      "0x210000",
+      "0x220000",
+      "0x230000",
+      "0x240000"
+    ]
+  }
+}
