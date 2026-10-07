@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "independent_original_only_passed",
+  "publisher_head": "2e7be731c894043b81b8db492e172cb4b17e80cc",
+  "writer_frozen_commit": "47b04132290261aa94695300ae4a212305dbdaa9",
+  "public_cli_output": "/private/tmp/jus-38-independent/fresh-public-final",
+  "readback_sha256": "89d19e087bdecaf973e3f93433c8edcc9dd2b456230841797cbc1c15b23ebfa3",
+  "checker_sha256": "fff857a21ff72c38e1a04e38e7718df082fc6c9e2b65bf2d8dcc212cf8970c29",
+  "contract_sha256": "29a0b37e813ab9f7cdda7499d69af8873b4e496c1cf14ce5b38c06a3b7b48eeb",
+  "source_pin_count": 57,
+  "owned_runtime_pin_count": 2,
+  "git_working_relations": {
+    "git_lf_checkout_crlf": 47,
+    "raw_equal": 10
+  },
+  "input_and_artifact_count_rehashed": 539,
+  "output_artifact_count_rehashed": 477,
+  "exact_output_inventory": true,
+  "ordinary_nonsymlink_output_paths": true,
+  "original_object_count": 15,
+  "incoming_sites": 62,
+  "region_qualified_callers": 42,
+  "branch_types": {
+    "R_ARM_PC24_addend_minus8": 59,
+    "R_ARM_THM_PC22_addend_minus4": 3
+  },
+  "original_loaded44_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+  "independent_bit_form_cases": 66300,
+  "static_prediction_vectors": 10,
+  "predictions_only": true,
+  "original_object_tests": "2 passed, including four actual ELF mutations",
+  "cli_input_controls_sha256": "05e6dcf0d20ed03ab817b2ab6cf6fa126f8f484ea4483e0d58604fbbbef3bb67",
+  "cli_input_controls_count": 9,
+  "no_target_compiler_or_original_runtime": true,
+  "canonical_source_credit_change": 0,
+  "arm7_source_credit_change": 0,
+  "global_readiness": "unknown"
+}

@@ -1,0 +1,68 @@
+{
+  "status": "fix_required",
+  "reviewer_model": "gpt-6-astra",
+  "reviewed_commit": "22d6285c1f0359745f18a9254da6474f91761110",
+  "scope": "Frozen task37 source, actual root replay artifacts, prior design/review history and manually selected task37 excerpt; not complete transcript; publication not yet reviewed",
+  "reviewed_files_sha256": {
+    "replay.py": "e8aa30e19c3782eec8fb61a73cad13215baa43b319bc19d0b327a5692aede54d",
+    "physical_initializer.c": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+    "recipe.json": "f37d79d0b0e3cb466dd3b8909d53164fbc0fecee561c7367697e2727e5d053dd",
+    "pins.json": "ccb58e5d7e9e6b4ddb58dcc4e0b373305276f739a70aff206ebd8c73c7d8343d",
+    "test_replay.py": "1900cc85e27c671b57614927b742fe9c4fb46691b9ec82509b170863163c5486",
+    "test_boundaries.py": "2f43e612a7ac0aec40c6b0450d48b0e46634695316335d84f30358ae7c2bfe3f"
+  },
+  "verified_rejection": {
+    "receipt_sha256": "61199d775eb4253ceef6c07c461734f0dbf40e235ce3b7215cd825c6025f0fc3",
+    "artifacts_checked": 2566,
+    "inputs_checked": 157,
+    "source_units": 1,
+    "accepted_units": 0,
+    "stopped_stage": "source_build",
+    "masked_difference_positions": [
+      20,
+      22,
+      23,
+      24,
+      26,
+      27,
+      28,
+      29,
+      31,
+      33
+    ],
+    "compiled_sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+    "reference_sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099"
+  },
+  "existing_tests": {
+    "passed": 8,
+    "seconds": 0.386,
+    "target_compiler_invocations_by_this_review": 0
+  },
+  "findings": [
+    {
+      "decision": "fix",
+      "severity": "acceptance_blocker",
+      "location": "replay.py:publish_receipt",
+      "finding": "Post-publication checks accept symlink replacement of receipt or captured artifact when the linked bytes are unchanged, including a target outside output.",
+      "evidence": [
+        "receipt-symlink-probe.json",
+        "artifact-symlink-probe.json"
+      ],
+      "actual_result": "Both private probes returned success after replacing the actual just-written receipt or snapshot artifact with an outside-output symlink.",
+      "cause": "Publication reads bytes and enumerates files but never repeats produced-path no-symlink/containment checks; receipt is excluded from inventory.",
+      "required_fix": "After publication verify receipt and produced artifact path ownership/no-symlink/containment and retain exact-byte/hash checks. Add real post-write symlink regressions. Keep external tool aliases distinct from produced paths. No source/recipe/compiler change is needed."
+    }
+  ],
+  "limits": [
+    "Independent final replay was pending at assignment; its result was not inspected in this review.",
+    "Native/link/module/ROM branches are not exercised because the strict source mismatch intentionally stops before them.",
+    "Final Git provenance packaging and publication have not been reviewed."
+  ],
+  "source_claims": {
+    "accepted_units": 0,
+    "canonical_bytes": 304,
+    "arm7_bytes": 0,
+    "new_source_credit": 0,
+    "no_second_model_or_flags": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "decomp/matching-notes",
+    "-p",
+    "test_verify_evidence_pins.py",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "tests_passed": 4,
+  "failures": 0,
+  "actual_git_cases": [
+    "committed original bytes accepted",
+    "ignored cache with matching hash rejected",
+    "wrong committed digest rejected",
+    "modified working file rejected"
+  ]
+}

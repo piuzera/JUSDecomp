@@ -1,0 +1,125 @@
+[
+  {
+    "control": "wrong_rom",
+    "command": [
+      "/Users/djdjo/.local/share/mise/installs/python/3.12/bin/python3",
+      "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py",
+      "--rom",
+      "/private/tmp/jus-38-independent/cli-controls/wrong.nds",
+      "--dsd",
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "--output",
+      "/private/tmp/jus-38-independent/cli-controls/wrong-rom-output"
+    ],
+    "exit_status": 1,
+    "stderr": "blocked: changed/missing/nonordinary pinned file: /private/tmp/jus-38-independent/cli-controls/wrong.nds\n",
+    "output_absent": true
+  },
+  {
+    "control": "wrong_dsd",
+    "command": [
+      "/Users/djdjo/.local/share/mise/installs/python/3.12/bin/python3",
+      "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py",
+      "--rom",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "--dsd",
+      "/private/tmp/jus-38-independent/cli-controls/wrong-dsd",
+      "--output",
+      "/private/tmp/jus-38-independent/cli-controls/wrong-dsd-output"
+    ],
+    "exit_status": 1,
+    "stderr": "blocked: changed/missing/nonordinary pinned file: /private/tmp/jus-38-independent/cli-controls/wrong-dsd\n",
+    "output_absent": true
+  },
+  {
+    "control": "-O",
+    "command": [
+      "/Users/djdjo/.local/share/mise/installs/python/3.12/bin/python3",
+      "-O",
+      "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py",
+      "--rom",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "--dsd",
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "--output",
+      "/private/tmp/jus-38-independent/cli-controls/optimized-O"
+    ],
+    "exit_status": 1,
+    "stderr": "Run without -O or -OO; optimized Python disables verification assertions.\n",
+    "output_absent": true
+  },
+  {
+    "control": "-OO",
+    "command": [
+      "/Users/djdjo/.local/share/mise/installs/python/3.12/bin/python3",
+      "-OO",
+      "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py",
+      "--rom",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "--dsd",
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "--output",
+      "/private/tmp/jus-38-independent/cli-controls/optimized-OO"
+    ],
+    "exit_status": 1,
+    "stderr": "Run without -O or -OO; optimized Python disables verification assertions.\n",
+    "output_absent": true
+  },
+  {
+    "control": "existing_output",
+    "command": [
+      "/Users/djdjo/.local/share/mise/installs/python/3.12/bin/python3",
+      "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py",
+      "--rom",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "--dsd",
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "--output",
+      "/private/tmp/jus-38-independent/cli-controls/existing"
+    ],
+    "exit_status": 1,
+    "stderr": "blocked: output exists; use a fresh directory\n",
+    "marker_preserved": true,
+    "symlink_preserved": true,
+    "target_absent": true
+  },
+  {
+    "control": "broken_output_symlink",
+    "command": [
+      "/Users/djdjo/.local/share/mise/installs/python/3.12/bin/python3",
+      "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py",
+      "--rom",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "--dsd",
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "--output",
+      "/private/tmp/jus-38-independent/cli-controls/broken-link"
+    ],
+    "exit_status": 1,
+    "stderr": "blocked: output exists; use a fresh directory\n",
+    "marker_preserved": true,
+    "symlink_preserved": true,
+    "target_absent": true
+  },
+  {
+    "control": "wrong_expected_pin",
+    "input_class": "owned_checker",
+    "actual_sha256": "fff857a21ff72c38e1a04e38e7718df082fc6c9e2b65bf2d8dcc212cf8970c29",
+    "rejected": true,
+    "diagnostic": "changed/missing/nonordinary pinned file: /private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py"
+  },
+  {
+    "control": "wrong_expected_pin",
+    "input_class": "repository_helper",
+    "actual_sha256": "93698934ce644a0fee6b4ac12e80e68c5adf5199bf69c0954bbd108ed02ebfb3",
+    "rejected": true,
+    "diagnostic": "changed/missing/nonordinary pinned file: /private/tmp/jus-track-a-publish/tools/scripts/native_link.py"
+  },
+  {
+    "control": "wrong_expected_pin",
+    "input_class": "external_dsd",
+    "actual_sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+    "rejected": true,
+    "diagnostic": "changed/missing/nonordinary pinned file: /private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64"
+  }
+]

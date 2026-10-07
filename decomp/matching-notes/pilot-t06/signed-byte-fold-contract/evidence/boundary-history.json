@@ -1,0 +1,15 @@
+{
+  "initial_red": "original-boundary-red.log",
+  "initial_caveat": "incoming_addend hardcoded -4 on first Thumb/-4 record did not change bytes; that initial case is not a mutation red",
+  "corrected_red": "original-boundary-corrected-red.log",
+  "correction": "read original addend and add4; assert actual changed bytes in every case before testing rejection",
+  "corrected_red_exit_status": 1,
+  "actual_changed_controls": [
+    "instruction byte",
+    "full extent44 to40",
+    "incoming RELA addend changed",
+    "incoming RELA target changed"
+  ],
+  "green": "original-boundary-green.log",
+  "register_wording": "Initial draft no additional incoming register consumed superseded: LR supplies return target; only additional data argument/stack consumption is absent"
+}

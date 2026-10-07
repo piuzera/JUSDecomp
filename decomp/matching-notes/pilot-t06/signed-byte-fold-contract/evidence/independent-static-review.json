@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "scope": "Task38 independent original-only static recurrence review",
+  "new_vs_inherited": "Exact OR/XOR recurrence, precheck/re-read order, low16 truncation and zero-extended return are new; full44/signed-byte/NUL/no-call/no-null-guard inherited from accepted36.",
+  "saved_evidence_read": [
+    "scripts/analysis/loop-state-atlas.json (no exact 020326b0 recurrence)",
+    "scripts/analysis/query.py func 0x020326b0 (arm9 size44 mode arm callers17/callees0)",
+    "scripts/analysis/query.py disasm 0x020326b0 11 (11 verbatim instruction words)",
+    "accepted36 constructor-storage-contract/README.md and contract.json (only signed-byte loop and 16-bit accumulator)"
+  ],
+  "original_sources": {
+    "rom": "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "dsd": "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+    "dsd_sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+    "query_cli": "/Users/djdjo/Documents/mine/jus_re/scripts/analysis/query.py",
+    "query_cli_sha256": "7d04c907086c25e12986b6c208680738f714d0694a54d98c3b63653b60a0b9af",
+    "publisher_symbols_sha256": "d73d18a6183b55ac8d7ee009c81003f6fa273ee674ee4b66a776027fb4a88566",
+    "inherited_contract_sha256": "a1398492742c6ceb365169ace4c6da688cf2dcd294dfe67c679018c05d908994"
+  },
+  "fresh_commands": [
+    [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "rom",
+      "extract",
+      "-r",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "-o",
+      "/private/tmp/jus-38-independent/fresh-original/extract"
+    ],
+    [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "delink",
+      "-c",
+      "/private/tmp/jus-38-independent/fresh-original/config/config.yaml"
+    ]
+  ],
+  "fresh_object": {
+    "path": "/private/tmp/jus-38-independent/fresh-original/delinks/_dsd_gap@main_5.o",
+    "elf_sha256": "248e6844754b8c07c9d8b037ca7c01600dfc7566ec61a168aab69c8d238696c3",
+    "defined_symbol": "func_020326b0",
+    "section": ".text",
+    "section_index": 10,
+    "section_offset": 206512,
+    "full_extent_bytes": 44,
+    "rom_stored_offset": "0x366b0",
+    "raw_and_rom_full44_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+    "raw_equals_loaded": true,
+    "allocated_section_inventory": [
+      {
+        "index": 1,
+        "name": ".bss",
+        "type": 8,
+        "flags": 3,
+        "bytes": 706400
+      },
+      {
+        "index": 2,
+        "name": ".data",
+        "type": 1,
+        "flags": 3,
+        "bytes": 55008
+      },
+      {
+        "index": 4,
+        "name": ".ctor",
+        "type": 1,
+        "flags": 2,
+        "bytes": 16
+      },
+      {
+        "index": 6,
+        "name": ".rodata",
+        "type": 1,
+        "flags": 2,
+        "bytes": 23196
+      },
+      {
+        "index": 8,
+        "name": ".init",
+        "type": 1,
+        "flags": 6,
+        "bytes": 3632
+      },
+      {
+        "index": 10,
+        "name": ".text",
+        "type": 1,
+        "flags": 6,
+        "bytes": 574948
+      }
+    ],
+    "relocations_inside_full44": [],
+    "little_endian_words": [
+      "e3a02000",
+      "ea000003",
+      "e0d010d1",
+      "e1811082",
+      "e1a01801",
+      "e0222821",
+      "e1d010d0",
+      "e3510000",
+      "1afffff8",
+      "e1a00002",
+      "e12fff1e"
+    ]
+  },
+  "static_contract": {
+    "stable_input_recurrence": "h0=0; for each nonzero byte b: h_next = h XOR ((sign_extend_32(b) OR (h << 1)) AND 0xffff); h remains 0..65535; return r0=h zero-extended.",
+    "read_order": "At +0x18, signed-byte precheck at current r0; if nonzero, at +0x08 signed-byte re-read at same address with post-increment; update at +0x0c..+0x14; repeat precheck. NUL is not updated.",
+    "mask_mechanism": "LSL #16 then logical LSR #16 drops all but low 16 bits of the OR term before EOR; r2 starts zero and stays zero-extended 16-bit.",
+    "no_identity_claim": "Saved names are numeric func_020326b0 only; no SDK/name/original C or C++ type conclusion."
+  },
+  "derived_static_predictions_not_original_runtime": {
+    "empty": {
+      "input_hex": "",
+      "result": 0,
+      "trace": []
+    },
+    "nul": {
+      "input_hex": "00",
+      "result": 0,
+      "trace": []
+    },
+    "A": {
+      "input_hex": "4100",
+      "result": 65,
+      "trace": [
+        {
+          "byte": 65,
+          "signed_byte": 65,
+          "before": 0,
+          "term_low16": 65,
+          "after": 65
+        }
+      ]
+    },
+    "AB": {
+      "input_hex": "414200",
+      "result": 131,
+      "trace": [
+        {
+          "byte": 65,
+          "signed_byte": 65,
+          "before": 0,
+          "term_low16": 65,
+          "after": 65
+        },
+        {
+          "byte": 66,
+          "signed_byte": 66,
+          "before": 65,
+          "term_low16": 194,
+          "after": 131
+        }
+      ]
+    },
+    "A_NUL_B": {
+      "input_hex": "410042",
+      "result": 65,
+      "trace": [
+        {
+          "byte": 65,
+          "signed_byte": 65,
+          "before": 0,
+          "term_low16": 65,
+          "after": 65
+        }
+      ]
+    },
+    "high_80": {
+      "input_hex": "8000",
+      "result": 65408,
+      "trace": [
+        {
+          "byte": 128,
+          "signed_byte": -128,
+          "before": 0,
+          "term_low16": 65408,
+          "after": 65408
+        }
+      ]
+    },
+    "high_ff": {
+      "input_hex": "ff00",
+      "result": 65535,
+      "trace": [
+        {
+          "byte": 255,
+          "signed_byte": -1,
+          "before": 0,
+          "term_low16": 65535,
+          "after": 65535
+        }
+      ]
+    },
+    "high_80_A": {
+      "input_hex": "804100",
+      "result": 193,
+      "trace": [
+        {
+          "byte": 128,
+          "signed_byte": -128,
+          "before": 0,
+          "term_low16": 65408,
+          "after": 65408
+        },
+        {
+          "byte": 65,
+          "signed_byte": 65,
+          "before": 65408,
+          "term_low16": 65345,
+          "after": 193
+        }
+      ]
+    },
+    "high_ff_A": {
+      "input_hex": "ff4100",
+      "result": 0,
+      "trace": [
+        {
+          "byte": 255,
+          "signed_byte": -1,
+          "before": 0,
+          "term_low16": 65535,
+          "after": 65535
+        },
+        {
+          "byte": 65,
+          "signed_byte": 65,
+          "before": 65535,
+          "term_low16": 65535,
+          "after": 0
+        }
+      ]
+    }
+  },
+  "static_refutations": {
+    "unsigned_high_byte_model": "For input 80 00, unsigned-byte variant predicts 0x0080; signed LDRSB recurrence predicts 0xff80.",
+    "xor_instead_of_or_model": "For 41 42 00, XORing b with 2h inside the update predicts 0x0081; actual OR-then-EOR recurrence predicts 0x0083.",
+    "terminator_included_model": "For 41 00 42, including suffix after NUL would differ, but precheck branches to return; prediction is 0x0041."
+  },
+  "limits": "No original runtime execution, emulator, interpreter, target source, compiler or SDK identity was used. Predictions assume stable readable NUL-terminated bytes; no null pointer or concurrent-mutation behavior is claimed."
+}

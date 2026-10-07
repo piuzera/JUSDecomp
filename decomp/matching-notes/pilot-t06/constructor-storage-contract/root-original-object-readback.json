@@ -1,0 +1,132 @@
+{
+  "status": "root_fresh_original_object_verified",
+  "original_rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+  "objects": 15,
+  "function": {
+    "object": "_dsd_gap@main_5.o",
+    "object_sha256": "248e6844754b8c07c9d8b037ca7c01600dfc7566ec61a168aab69c8d238696c3",
+    "symbol_offset": 181420,
+    "extent": 92,
+    "payload_sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+  },
+  "target_relocations": [
+    {
+      "offset": 40,
+      "target": "func_020326b0",
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "offset": 52,
+      "target": "func_020326b0",
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "offset": 84,
+      "target": "data_02098708",
+      "kind": 2,
+      "addend": 0
+    },
+    {
+      "offset": 88,
+      "target": "data_020a0c34",
+      "kind": 2,
+      "addend": 0
+    }
+  ],
+  "inbound_call_relocations": [
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 73348,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 73444,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 77468,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 77888,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 135296,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 136204,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 136944,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 443404,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@main_5.o",
+      "input_section": ".text",
+      "offset": 501044,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "input_section": ".text",
+      "offset": 17634,
+      "kind": 10,
+      "addend": -4
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "input_section": ".text",
+      "offset": 17794,
+      "kind": 10,
+      "addend": -4
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "input_section": ".text",
+      "offset": 18088,
+      "kind": 1,
+      "addend": -8
+    },
+    {
+      "object": "_dsd_gap@ov012_5.o",
+      "input_section": ".text",
+      "offset": 18164,
+      "kind": 1,
+      "addend": -8
+    }
+  ],
+  "source_credit_changed": false
+}

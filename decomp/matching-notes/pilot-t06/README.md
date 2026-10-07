@@ -91,7 +91,7 @@ to zero before its base-constructor call, as recorded in the tracker.
 record the remaining call, field, table and control-flow evidence without
 source credit. Global source coverage remains unknown.
 
-## Current verified source coverage
+## Constructor promotion checkpoint
 
 Producer `1a89d19` adds the 64-byte constructor `func_0206ca4c` with literal
 physical layout assertions and no production test knob. Its
@@ -107,3 +107,23 @@ compiled 56 trials with zero exact passes. Its closest result has three masked
 byte differences and two swapped ABS32 pool identities; its source remains
 unregistered and earns no credit. T06 remains open, as do class ownership and
 runtime verification. Global source coverage remains unknown.
+
+## Current verified source coverage
+
+Producer `4d84b69` adds the 80-byte clone `func_0206cfc0`. Its
+[fresh root report](class/clone/root-canonical-report.json) passes all 19
+stages and exact whole-ROM comparison with seven selected source units.
+Coverage is 304 bytes: 272 game and 32 SDK, comprising 260 instruction bytes
+and 44 literal bytes. All 216 tests pass without skips.
+
+Two published class targets remain exact fallback: the initializer and virtual
+object-configuration method. Class ownership and runtime verification remain
+unresolved; T06 stays open. Global source coverage remains unknown.
+
+[Base lifecycle observations](class/base-contracts/README.md) record the
+verified field operations and storage release boundaries while leaving
+semantic ownership unresolved. The
+[configuration entry-state blocker](virtual-config-blocker/README.md)
+records static failure paths that consume incoming saved-register state;
+actual live failure and a universal success invariant remain unproved.
+Both notes earn zero source credit.

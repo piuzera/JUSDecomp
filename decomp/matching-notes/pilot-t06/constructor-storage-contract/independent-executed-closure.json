@@ -1,0 +1,10 @@
+{
+  "executed_local_python_files": [
+    "decomp/matching-notes/pilot-t06/constructor-storage-contract/check_original.py",
+    "tools/scripts/native_link.py",
+    "tools/scripts/verify.py"
+  ],
+  "not_source_pinned": [
+    "decomp/matching-notes/pilot-t06/constructor-storage-contract/check_original.py"
+  ]
+}

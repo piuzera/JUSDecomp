@@ -1,0 +1,11 @@
+{
+  "reviewer": "gpt-6-astra",
+  "checkpoint": "9085c92842d275d8df65ad267581ccac05124cc0",
+  "result": "No flags",
+  "root_tests": 225,
+  "skips": 0,
+  "source_bytes": 304,
+  "canonical_source_hashes_unchanged": 72,
+  "accepted_initializer_contexts": 0,
+  "scope": "member bridge experiment and root evidence/trail; no ARM7 planner or external constructor acceptance"
+}

@@ -51,6 +51,13 @@ def require_unchanged(snapshot):
             raise ValueError(f'input/tool changed during build: {path.name}')
 
 
+def merge_snapshot(snapshot, operation_inputs):
+    for name, digest in operation_inputs.items():
+        if name in snapshot and snapshot[name] != digest:
+            raise ValueError(f'input/source changed between producer operations: {name}')
+    snapshot.update(operation_inputs)
+
+
 def source_context_files(root, unit):
     root = Path(root).resolve()
     def inside(name):
@@ -82,12 +89,25 @@ def require_stage_sequence(stages, required):
         raise ValueError('verification stage order differs from required pipeline')
 
 
-def require_stages(stages, source_enabled=False):
-    require_stage_sequence(stages, SOURCE_STAGES if source_enabled else REQUIRED_STAGES)
+def required_stages(source_enabled=False, arm7_enabled=False, child_enabled=False):
+    if child_enabled and not arm7_enabled:
+        raise ValueError("child mode requires independent ARM7 mode")
+    stages = SOURCE_STAGES if source_enabled else REQUIRED_STAGES
+    if arm7_enabled:
+        index = stages.index('freshness')
+        stages = (*stages[:index], 'arm7_native_baselines', *stages[index:])
+    if child_enabled:
+        index = stages.index('freshness')
+        stages = (*stages[:index], 'child_arm9_native_roundtrip', *stages[index:])
+    return stages
 
 
-def verified_module_checkpoint(report, source_enabled=False):
-    required = SOURCE_MODULE_STAGES if source_enabled else MODULE_STAGES
+def require_stages(stages, source_enabled=False, arm7_enabled=False, child_enabled=False):
+    require_stage_sequence(stages, required_stages(source_enabled, arm7_enabled, child_enabled))
+
+
+def verified_module_checkpoint(report, source_enabled=False, arm7_enabled=False, child_enabled=False):
+    required = required_stages(source_enabled, arm7_enabled, child_enabled)[:-2]
     require_stage_sequence(report['stages'], required)
     checkpoint = copy.deepcopy(report)
     checkpoint['status'] = 'passed'
@@ -364,7 +384,9 @@ def direct_comparison(rom, output, expected):
 
 
 def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
-           source_manifest=None, source_compiler=None, compiler_runner=None):
+           source_manifest=None, source_compiler=None, compiler_runner=None,
+           arm7_native_manifest=None, arm7_native_producer=None,
+           child_analyzer=None, child_analyzer_approval=None, child_encoder=None, child_codec_approval=None):
     output = output.resolve()
     report = {'schema_version': 1, 'build_id': str(uuid.uuid4()), 'status': 'failed',
               'started_ns': time.time_ns(), 'stages': [],
@@ -377,12 +399,26 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
             report_path = output.parent / f'{output.name}.rejected-{report["build_id"]}.json'
             raise ValueError('output already exists; supply a fresh build directory')
         output.mkdir(parents=True)
+        if bool(arm7_native_manifest) != bool(arm7_native_producer):
+            raise ValueError('ARM7 native integration needs both approved manifest and producer')
+        child_options = (child_analyzer, child_analyzer_approval, child_encoder, child_codec_approval)
+        child_enabled = any(child_options)
+        if child_enabled and (not all(child_options) or not arm7_native_manifest):
+            raise ValueError('child mode needs analyzer, codec, both approvals and independent ARM7 mode')
         sources = [root / 'tools/scripts' / name for name in
                    ('verify.py', 'baseline_intake.py', 'native_link.py', 'rom_roundtrip.py')]
         sources += [root / 'decomp/toolchain.lock.json', root / 'decomp/rom-manifest.json',
                     root / 'decomp/matching-notes/baseline-t01/executable-regions.json',
                     root / 'decomp/matching-notes/baseline-t01/reference-relocations.json']
         sources += sorted((root / 'decomp/arm9').rglob('*'))
+        if arm7_native_manifest:
+            sources += [arm7_native_manifest, root / 'tools/scripts/arm7_native_baseline.py',
+                        root / 'tools/scripts/other_executables.py']
+        if child_enabled:
+            sources += [root / 'tools/scripts/child_native_baseline.py',
+                        root / 'tools/scripts/child_rom_roundtrip.py',
+                        child_analyzer_approval, child_codec_approval,
+                        root / 'decomp/matching-notes/other-cpus/child-arm9-native-baseline.json']
         sources = [p for p in sources if p.is_file()]
         checker_path = root / 'tools/scripts/relocation_check.py'
         if checker_path.is_file():
@@ -525,11 +561,41 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
                 output / 'native-link/link.map', output / 'native-link/linked.elf', config.parent))
             report['source_ownership'] = ownership
 
+        arm7_operation = None
+        if arm7_native_manifest:
+            arm7 = load_script(root / 'tools/scripts/arm7_native_baseline.py', 'arm7_native_verify')
+            def build_arm7():
+                nonlocal arm7_operation
+                arm7_operation = arm7.build_baselines(rom, output / 'arm7-native', arm7_native_manifest,
+                    arm7_native_producer, root, report['build_id'], report['started_ns'])
+                return arm7_operation.report
+            report['arm7_baselines'] = record_stage(report, 'arm7_native_baselines', build_arm7)
+            merge_snapshot(snapshot, report['arm7_baselines']['snapshot'])
+
+        child_operation = None
+        if child_enabled:
+            from child_native_baseline import build_child
+            def build_child_stage():
+                nonlocal child_operation
+                child_operation = build_child(original=rom, output=output/'child-arm9', root=root,
+                    build_id=report['build_id'], started_ns=report['started_ns'], native_tools=report['tools'],
+                    analyzer=child_analyzer, analyzer_approval=child_analyzer_approval,
+                    encoder=child_encoder, codec_approval=child_codec_approval)
+                return child_operation.report
+            report['child_arm9'] = record_stage(report, 'child_arm9_native_roundtrip', build_child_stage)
+            merge_snapshot(snapshot, report['child_arm9']['snapshot'])
+
         def freshness():
             require_unchanged(snapshot)
             directories = ('config', 'delinks', 'linked', 'native-link')
             if manifest:
                 directories += ('candidate-config', 'candidate-delinks', 'source-build')
+            if arm7_native_manifest:
+                directories += ('arm7-native',)
+            if child_enabled:
+                child_operation.recheck(report['child_arm9'], output, rom.read_bytes(),
+                                        report['build_id'], report['started_ns'])
+                directories += ('child-arm9',)
             artifacts = sorted(p for directory in directories
                                for p in (output / directory).rglob('*') if p.is_file())
             for path in artifacts:
@@ -539,14 +605,15 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
             return {'artifact_count': len(artifacts), 'inputs_unchanged': True}
 
         record_stage(report, 'freshness', freshness)
-        checkpoint = verified_module_checkpoint(report, source_enabled=bool(manifest))
+        checkpoint = verified_module_checkpoint(report, source_enabled=bool(manifest),
+                                                 arm7_enabled=bool(arm7_native_manifest), child_enabled=child_enabled)
         packer = load_script(root / 'tools/scripts/rom_roundtrip.py', 'rom_roundtrip_verify')
         rebuilt_rom = output / 'rebuilt.nds'
         report['rom_roundtrip'] = record_stage(report, 'rom_roundtrip', lambda: packer.roundtrip_rom(
-            rom, output, regions, checkpoint, rebuilt_rom))
+            rom, output, regions, checkpoint, rebuilt_rom, arm7_operation=arm7_operation, child_operation=child_operation))
         record_stage(report, 'rom_freshness', lambda: require_rom_freshness(
             snapshot, report, output, rebuilt_rom, report['rom']['sha256']))
-        require_stages(report['stages'], source_enabled=bool(manifest))
+        require_stages(report['stages'], source_enabled=bool(manifest), arm7_enabled=bool(arm7_native_manifest), child_enabled=child_enabled)
         if manifest:
             report['source_coverage'] = accounting.summarize_coverage(ownership, config.parent,
                                                                      verification_passed=True)
@@ -563,14 +630,22 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('rom', 'output', 'dsd', 'lld', 'clang'):
         parser.add_argument('--' + name, required=True, type=Path)
-    for name in ('source-manifest', 'source-compiler', 'compiler-runner'):
+    for name in ('source-manifest', 'source-compiler', 'compiler-runner',
+                 'arm7-native-manifest', 'arm7-native-producer', 'child-analyzer',
+                 'child-analyzer-approval', 'child-encoder', 'child-codec-approval'):
         parser.add_argument('--' + name, type=Path)
     args = parser.parse_args()
     report, path = verify(args.rom.resolve(), args.output, tool_argument(args.dsd),
                           tool_argument(args.lld), tool_argument(args.clang),
                           source_manifest=args.source_manifest.resolve() if args.source_manifest else None,
                           source_compiler=tool_argument(args.source_compiler) if args.source_compiler else None,
-                          compiler_runner=tool_argument(args.compiler_runner) if args.compiler_runner else None)
+                          compiler_runner=tool_argument(args.compiler_runner) if args.compiler_runner else None,
+                          arm7_native_manifest=args.arm7_native_manifest.resolve() if args.arm7_native_manifest else None,
+                          arm7_native_producer=tool_argument(args.arm7_native_producer) if args.arm7_native_producer else None,
+                          child_analyzer=tool_argument(args.child_analyzer) if args.child_analyzer else None,
+                          child_analyzer_approval=args.child_analyzer_approval.resolve() if args.child_analyzer_approval else None,
+                          child_encoder=tool_argument(args.child_encoder) if args.child_encoder else None,
+                          child_codec_approval=args.child_codec_approval.resolve() if args.child_codec_approval else None)
     print(json.dumps({'status': report['status'], 'report': str(path)}))
     return 0 if report['status'] == 'passed' else 1
 

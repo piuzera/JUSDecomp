@@ -1,0 +1,108 @@
+{
+  "status": "No flags",
+  "reviewer_model": "gpt-6-astra, parent-assigned cross-family reviewer",
+  "source_commit": "2e7be731c894043b81b8db492e172cb4b17e80cc",
+  "writer_commit": "47b04132290261aa94695300ae4a212305dbdaa9",
+  "scope": "Bounded frozen13-file original-only capsule, checker, contract, controls, committed file scope and root fresh receipt; no full transcript or future acceptance metadata/publication claim. No emulator, instruction interpreter or target compiler used.",
+  "reviewed_hashes": {
+    "check_original.py": "fff857a21ff72c38e1a04e38e7718df082fc6c9e2b65bf2d8dcc212cf8970c29",
+    "contract.json": "29a0b37e813ab9f7cdda7499d69af8873b4e496c1cf14ce5b38c06a3b7b48eeb",
+    "test_original.py": "543d044c137018a3b00b36b83ac7f4575bf8dcae4dacdec5ddcb986531118d89",
+    "README.md": "9e3c50004f881b2d1e0c9b9e806939bdfb3df963f9f1b756b68e1882949b1005",
+    "evidence/boundary-history.json": "5fd56c4ec37ef151df1d749f3931e618aa5a5c6e2e1d9d55be68486f1e835b9c",
+    "evidence/original-boundary-corrected-red.log": "330e37596d49d2df87d54fbe32e1c0c4333a62dbed55a7cfaa91c88548f30837",
+    "evidence/independent-incoming-review.json": "8bfffb943168c5fc9cd7e69449b6851ac3427f990033ff385cba449a92b13a02"
+  },
+  "LR_finding": {
+    "decision": "fix validated",
+    "prior_review_sha256": "3971e1fdd5f1e7dbbbfbd6d90611285265658fc1330b459e3eec1965c0e1918f",
+    "current": "incoming data arguments distinguished from LR return target; normal-return LR precondition explicit",
+    "machine_basis": "Original+40 e12fff1e BX lr, exact44 hashf307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0"
+  },
+  "original_boundary": {
+    "invalid_initial_addend_red_disclosed": true,
+    "corrected_mutation": "read old addend then add4; every control asserts changed bytes",
+    "independent_actual_corrected_parser_baseline": "4 expected assertion failures, zero errors",
+    "independent_current_green": "2 tests including4 mutation subcases passed0.150s",
+    "positive": "fresh15-object inventory accepted",
+    "logs": [
+      "final-controls/corrected-parser-red.log",
+      "final-controls/green.log"
+    ]
+  },
+  "runtime_review": "Finite source/owned pins checked before repository imports; original15-object hash inventory then actual ELF target and incoming record comparison; originalROM full44 and loaded branch bytes checked; static predictions labeled as predictions; actual exclusive regular-file receipt and snapshot recheck. Existing/broken-leaf and optimized-Python checks retained.",
+  "actual_verification": {
+    "green_exit": 0,
+    "corrected_parser_baseline_failures": 4,
+    "parser_baseline_errors": 0,
+    "root_receipt_sha256": "f2194831ff4d28c9edabe50338fc3b54269f4b70e72a54d85963b72117c0e56a",
+    "verified_hashes": 539,
+    "ordinary_output_count": 478,
+    "exact_output_inventory": true
+  },
+  "actual_cli_and_provenance": {
+    "controls": [
+      {
+        "control": "wrong_rom",
+        "exit": 1,
+        "stderr": "blocked: changed/missing/nonordinary pinned file: /private/tmp/jus-38-static-contract-review/final-controls/wrong\n"
+      },
+      {
+        "control": "wrong_dsd",
+        "exit": 1,
+        "stderr": "blocked: changed/missing/nonordinary pinned file: /private/tmp/jus-38-static-contract-review/final-controls/wrong\n"
+      },
+      {
+        "control": "-O",
+        "exit": 1,
+        "stderr": "Run without -O or -OO; optimized Python disables verification assertions.\n"
+      },
+      {
+        "control": "-OO",
+        "exit": 1,
+        "stderr": "Run without -O or -OO; optimized Python disables verification assertions.\n"
+      },
+      {
+        "control": "existing",
+        "exit": 1,
+        "stderr": "blocked: output exists; use a fresh directory\n"
+      },
+      {
+        "control": "broken_leaf",
+        "exit": 1,
+        "stderr": "blocked: output exists; use a fresh directory\n"
+      },
+      {
+        "control": "wrong_actual_input_pin",
+        "path": "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py",
+        "rejected": true,
+        "diagnostic": "changed/missing/nonordinary pinned file: /private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/check_original.py"
+      },
+      {
+        "control": "wrong_actual_input_pin",
+        "path": "/private/tmp/jus-track-a-publish/tools/scripts/native_link.py",
+        "rejected": true,
+        "diagnostic": "changed/missing/nonordinary pinned file: /private/tmp/jus-track-a-publish/tools/scripts/native_link.py"
+      },
+      {
+        "control": "wrong_actual_input_pin",
+        "path": "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "rejected": true,
+        "diagnostic": "changed/missing/nonordinary pinned file: /private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64"
+      }
+    ],
+    "source_pins": 57,
+    "raw": 10,
+    "typed_LF_CRLF": 47,
+    "old_catalog_exact_subset": true,
+    "scope": "13 added capsule files only",
+    "Git_working_equal": true
+  },
+  "denominator_scope": "Read frozen contract62sites/42owners and independent incoming review; root actual receipt agrees. Separate incoming reviewer owns fresh independent denominator derivation; this reviewer did not independently redo its all-region extraction.",
+  "source_limits": "13 new capsule files only; no canonical or old-capsule modifications. Static grounding adds no accepted source bytes; ARM9 304, ARM7 zero, global denominator unknown.",
+  "remaining_flags": [],
+  "unreviewed": [
+    "Independent final CLI-reader result still active at assignment.",
+    "Future acceptance packaging, final committed Gate, tracker closure and publication are outside this frozen runtime review."
+  ]
+}

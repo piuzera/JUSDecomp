@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_checker_integrity_controls",
+  "base_commit": "5e9c3cb",
+  "original_checker_sha256": "357939706788cc556bda4a387915d4f219e3a137d4462da61c71578f1e1c86d9",
+  "fixed_checker_sha256": "6ea86d2a643a60ee615a93e1807b06a38f1454eb59843fab9396fa79ca641b1d",
+  "historical_red": {
+    "source": "Root actual optimized run; original readback reopened here",
+    "private_readback_path": "/private/tmp/jus-36-root-optimized-red/readback.json",
+    "readback_sha256": "daf5a6d2f75c401f51fd7ec0c2edc1f5716412c4b474b91b3a03b3d81e551bb3",
+    "observed_readback": {
+      "status": "passed",
+      "scope": "original machine contract; no source trial",
+      "original_objects": 15,
+      "caller_functions": 11,
+      "main_call_sites": 9,
+      "ov012_call_sites": 4,
+      "instruction_bytes": 84,
+      "literal_bytes": 8,
+      "rom_payload_sha256": "3b9caafec617800aa88608cf74a33b764525fa947907e2654a85867ede6a55ba",
+      "object_inventory_sha256": "d7cc571d4b53dacca5657d9a0c6180464d81d744ea87c7076382f1db077473ee",
+      "source_pin_count": 56,
+      "commands": [
+        [
+          "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+          "rom",
+          "extract",
+          "-r",
+          "/Users/djdjo/Documents/mine/rom/jus.nds",
+          "-o",
+          "/private/tmp/jus-36-root-optimized-red/extract"
+        ],
+        [
+          "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+          "delink",
+          "-c",
+          "/private/tmp/jus-36-root-optimized-red/config/config.yaml"
+        ]
+      ]
+    },
+    "meaning": "All assertion gates disabled under -O; status passed is rejected as integrity evidence"
+  },
+  "controls": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-O",
+        "/private/tmp/jus-ctor-0202c4ac-grounding/decomp/matching-notes/pilot-t06/constructor-storage-contract/check_original.py",
+        "--rom",
+        "/Users/djdjo/Documents/mine/rom/jus.nds",
+        "--dsd",
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "--output",
+        "/private/tmp/jus-36-guard-control-optimized-01"
+      ],
+      "exit_code": 1,
+      "output_created": false,
+      "stdout": "",
+      "stderr": "Optimized Python disables verification assertions; run without -O or -OO.\n"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-OO",
+        "/private/tmp/jus-ctor-0202c4ac-grounding/decomp/matching-notes/pilot-t06/constructor-storage-contract/check_original.py",
+        "--rom",
+        "/Users/djdjo/Documents/mine/rom/jus.nds",
+        "--dsd",
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "--output",
+        "/private/tmp/jus-36-guard-control-double-optimized-01"
+      ],
+      "exit_code": 1,
+      "output_created": false,
+      "stdout": "",
+      "stderr": "Optimized Python disables verification assertions; run without -O or -OO.\n"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/private/tmp/jus-ctor-0202c4ac-grounding/decomp/matching-notes/pilot-t06/constructor-storage-contract/check_original.py",
+        "--rom",
+        "/Users/djdjo/Documents/mine/rom/jus.nds",
+        "--dsd",
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "--output",
+        "/private/tmp/jus-36-guard-control-normal-01"
+      ],
+      "exit_code": 0,
+      "output_created": true,
+      "stdout": "{\n  \"status\": \"passed\",\n  \"scope\": \"original machine contract; no source trial\",\n  \"original_objects\": 15,\n  \"caller_functions\": 11,\n  \"main_call_sites\": 9,\n  \"ov012_call_sites\": 4,\n  \"instruction_bytes\": 84,\n  \"literal_bytes\": 8,\n  \"rom_payload_sha256\": \"3b9caafec617800aa88608cf74a33b764525fa947907e2654a85867ede6a55ba\",\n  \"object_inventory_sha256\": \"d7cc571d4b53dacca5657d9a0c6180464d81d744ea87c7076382f1db077473ee\",\n  \"source_pin_count\": 56\n}\n",
+      "stderr": "",
+      "readback": {
+        "status": "passed",
+        "scope": "original machine contract; no source trial",
+        "original_objects": 15,
+        "caller_functions": 11,
+        "main_call_sites": 9,
+        "ov012_call_sites": 4,
+        "instruction_bytes": 84,
+        "literal_bytes": 8,
+        "rom_payload_sha256": "3b9caafec617800aa88608cf74a33b764525fa947907e2654a85867ede6a55ba",
+        "object_inventory_sha256": "d7cc571d4b53dacca5657d9a0c6180464d81d744ea87c7076382f1db077473ee",
+        "source_pin_count": 56,
+        "commands": [
+          [
+            "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+            "rom",
+            "extract",
+            "-r",
+            "/Users/djdjo/Documents/mine/rom/jus.nds",
+            "-o",
+            "/private/tmp/jus-36-guard-control-normal-01/extract"
+          ],
+          [
+            "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+            "delink",
+            "-c",
+            "/private/tmp/jus-36-guard-control-normal-01/config/config.yaml"
+          ]
+        ]
+      },
+      "readback_sha256": "0653e32f9daf407122ca4304504698daa4b604a7cbd2198935a41590c34b98ea"
+    }
+  ],
+  "helper_closure": {
+    "repository_imports": [
+      "tools/scripts/native_link.py",
+      "tools/scripts/verify.py"
+    ],
+    "top_level_imports": {
+      "tools/scripts/verify.py": [
+        "import argparse",
+        "import copy",
+        "import hashlib",
+        "import importlib.util",
+        "import json",
+        "import re",
+        "import shutil",
+        "import subprocess",
+        "import sys",
+        "import time",
+        "import uuid",
+        "from pathlib import Path"
+      ],
+      "tools/scripts/native_link.py": [
+        "import argparse",
+        "import bisect",
+        "import hashlib",
+        "import json",
+        "import re",
+        "import shutil",
+        "import struct",
+        "import subprocess",
+        "from pathlib import Path"
+      ]
+    },
+    "source_pin_count": 56,
+    "dynamic_import_note": "verify.load_script is defined but never invoked by expected_modules or prepare_config; no other repository helper is consumed. Root independent runtime import observation agreed."
+  },
+  "late_writer_history": {
+    "observed_worktree_diff_private_path": "/private/tmp/jus-36-late-generator.diff",
+    "diff_sha256": "7877061b8fb2c337f7ecf02f5131a784e8b25086f075126f4ac90b703d43fb4a",
+    "original_contract_restored_from": "5e9c3cb",
+    "cleanup": "Stopped known still-running generator session with Ctrl-C; native libproc process inventory then found only the audit Python process. All original generator processes had finished before this correction."
+  },
+  "scope": "Checker integrity and one wrapper wording correction only; source credit and trial gate unchanged"
+}

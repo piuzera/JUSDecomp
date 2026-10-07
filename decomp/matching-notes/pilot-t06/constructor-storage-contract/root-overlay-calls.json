@@ -1,0 +1,34 @@
+[
+  {
+    "region": "ov012",
+    "module_base": "0x21ac1c0",
+    "address": "0x21b06a2",
+    "bytes": "7bf604ef",
+    "mode": "thumb_blx_to_arm",
+    "decoded_target": "0x202c4ac"
+  },
+  {
+    "region": "ov012",
+    "module_base": "0x21ac1c0",
+    "address": "0x21b0742",
+    "bytes": "7bf6b4ee",
+    "mode": "thumb_blx_to_arm",
+    "decoded_target": "0x202c4ac"
+  },
+  {
+    "region": "ov012",
+    "module_base": "0x21ac1c0",
+    "address": "0x21b0868",
+    "bytes": "0feff9eb",
+    "mode": "arm_bl",
+    "decoded_target": "0x202c4ac"
+  },
+  {
+    "region": "ov012",
+    "module_base": "0x21ac1c0",
+    "address": "0x21b08b4",
+    "bytes": "fceef9eb",
+    "mode": "arm_bl",
+    "decoded_target": "0x202c4ac"
+  }
+]

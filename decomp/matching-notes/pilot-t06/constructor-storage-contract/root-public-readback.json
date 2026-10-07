@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scope": "original machine contract; no source trial",
+  "original_objects": 15,
+  "caller_functions": 11,
+  "main_call_sites": 9,
+  "ov012_call_sites": 4,
+  "instruction_bytes": 84,
+  "literal_bytes": 8,
+  "rom_payload_sha256": "3b9caafec617800aa88608cf74a33b764525fa947907e2654a85867ede6a55ba",
+  "object_inventory_sha256": "d7cc571d4b53dacca5657d9a0c6180464d81d744ea87c7076382f1db077473ee",
+  "source_pin_count": 56,
+  "commands": [
+    [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "rom",
+      "extract",
+      "-r",
+      "/Users/djdjo/Documents/mine/rom/jus.nds",
+      "-o",
+      "/private/tmp/jus-36-root-public-fresh/extract"
+    ],
+    [
+      "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+      "delink",
+      "-c",
+      "/private/tmp/jus-36-root-public-fresh/config/config.yaml"
+    ]
+  ]
+}

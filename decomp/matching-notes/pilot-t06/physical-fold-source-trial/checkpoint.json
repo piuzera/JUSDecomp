@@ -1,0 +1,35 @@
+{
+  "status": "owner_requested_stop_partial_grounding",
+  "scope_bead": "jus-bjry.39",
+  "grounding_source_base": "1ebd198793b46934372ae7667971073f6437e7d1",
+  "phase": "Ground partial; next controls/pins then two designs",
+  "source_body_written": false,
+  "target_compiler_invoked": false,
+  "native_or_whole_ROM_verification_run_for_39": false,
+  "fresh_original_selected44_and_LCF_preflight_passed": true,
+  "root_actual_selected44_self_compare_passed": true,
+  "selected_original_elf_sha256": "8065e478fcf8b98a3f590db0df6904a8c4b97671dd35d068306b8082d281c50e",
+  "remaining": [
+    "Actual changed-original controls",
+    "Frozen finite input/tool/research derivation pins",
+    "Two distinct unimplemented designs",
+    "Independent cross-review, root synthesis and published release",
+    "One frozen source model/recipe and conditional actual full pipeline after release"
+  ],
+  "source_credit": {
+    "canonical": 304,
+    "arm7": 0,
+    "added": 0,
+    "global_percent": null
+  },
+  "artifact_sha256": {
+    "decomp/matching-notes/pilot-t06/physical-fold-source-trial/design/grounding.md": "cb6738b88712e538f833965a165e54c226841b451b7a274a141ce0a5ac7462e5",
+    "decomp/matching-notes/pilot-t06/physical-fold-source-trial/design/README.md": "dda031536d10823c1f9b7da75b2cfdd915f6430ef9ef4c749666c9e275f1b361",
+    "decomp/matching-notes/pilot-t06/physical-fold-source-trial/design/phase-todo.md": "a90ac7f096aea4cdd15c2bbae18e8c28184ac4599e191f8f1861f7f2b3c9e6e7",
+    "decomp/matching-notes/pilot-t06/physical-fold-source-trial/design/independent-grounding.json": "bfa837705537945a7634817d08a6766f78af201140042b42ad8491bef933bd88",
+    "decomp/matching-notes/verify-evidence-pins.py": "086c1c4b783c3a2dd7b749df30536f4276160600307116d8d29c9cba0c974a07",
+    "decomp/matching-notes/pilot-t06/signed-byte-fold-contract/contract.json": "29a0b37e813ab9f7cdda7499d69af8873b4e496c1cf14ce5b38c06a3b7b48eeb",
+    "decomp/matching-notes/pilot-t06/physical-storage-init-trial/recipe.json": "f37d79d0b0e3cb466dd3b8909d53164fbc0fecee561c7367697e2727e5d053dd",
+    "decomp/matching-notes/pilot-t06/physical-fold-source-trial/design/scope.md": "29545192070add9f5c0be5fb7f075ba8a6854f730393fa04adadf895ea8ad437"
+  }
+}

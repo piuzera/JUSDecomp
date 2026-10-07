@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "authority": "root fresh final released68cf wrapper; earlier receipts historical guard versions",
+  "source_publisher_commit": "37f8817",
+  "wrapper_sha256": "68cf243364dd69c45332ff698e17eb7eb1101f0a76dd7669a80ecefae256d687",
+  "receipt": "/private/tmp/jus-37-root-released-final-replay/receipt.json",
+  "receipt_sha256": "8b1f693d6f3b526d9ad3929b2a389b0436e0ef889ad836dde809745d0e615b64",
+  "output_artifacts": 2566,
+  "actual_inputs": 157,
+  "receipt_regular_owned_path": true,
+  "all_artifacts_regular_exact_inventory": true,
+  "verify_invocations": 1,
+  "target_compiler_executions": 1,
+  "source_trial_result": "measured_rejection",
+  "compiled_sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+  "masked_mismatch_offsets": {
+    ".text": {
+      "reference_size": 92,
+      "compiled_size": 92,
+      "positions": [
+        20,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        31,
+        33
+      ]
+    }
+  },
+  "accepted_units": 0,
+  "native_or_rom_stages_run": false,
+  "research_derivation": {
+    "base_commit": "94690c10d5f733565156e3519b73a906aa793083",
+    "delinks_before_sha256": "23b2e570f703bf03d90045a0f3becd4b7649b6fe0762102fef5132a83430dd3c",
+    "modified": {
+      "decomp/arm9/delinks.txt": "6e4eaa1c45d4e044d8c9c3ee6b9dc044a43613fcd679c1984e8a7300d5ba44ee",
+      "decomp/src/main/physical_initializer.c": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+      "task37-source-manifest.json": "53b503e7589e64ef1b5c696685db23ee7f82ee36eb476961fb13908757701141"
+    },
+    "git_status": " M decomp/arm9/delinks.txt\n?? decomp/src/main/physical_initializer.c\n?? task37-source-manifest.json\n"
+  },
+  "canonical_source_bytes": 304,
+  "arm7_source_bytes": 0,
+  "added_source_bytes": 0,
+  "global_percent": null,
+  "public_returns_path": true,
+  "current_tests_passed": 11
+}

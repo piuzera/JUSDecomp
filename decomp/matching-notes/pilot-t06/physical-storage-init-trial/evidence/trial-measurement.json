@@ -1,0 +1,497 @@
+{
+  "schema_version": 1,
+  "status": "measured_rejection",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--shared",
+        "--no-checkout",
+        "/private/tmp/jus-header-initializer-trial",
+        "/private/tmp/jus-37-trial-02/research-root"
+      ],
+      "cwd": "/private/tmp/jus-header-initializer-trial",
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "Cloning into '/private/tmp/jus-37-trial-02/research-root'...\ndone.\n"
+    },
+    {
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "94690c10d5f733565156e3519b73a906aa793083"
+      ],
+      "cwd": "/private/tmp/jus-37-trial-02/research-root",
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "HEAD is now at 94690c1 Record independent constructor publication audit\n"
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short",
+        "--untracked-files=all"
+      ],
+      "cwd": "/private/tmp/jus-37-trial-02/research-root",
+      "exit_status": 0,
+      "stdout": " M decomp/arm9/delinks.txt\n?? decomp/src/main/physical_initializer.c\n?? task37-source-manifest.json\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "rom",
+        "extract",
+        "-r",
+        "/Users/djdjo/Documents/mine/rom/jus.nds",
+        "-o",
+        "/private/tmp/jus-37-trial-02/original-preflight/extract"
+      ],
+      "cwd": "/private/tmp/jus-37-trial-02/research-root",
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "[INFO ] Extracting from JUS\n[INFO ] Saving ROM to directory /private/tmp/jus-37-trial-02/original-preflight/extract\n[INFO ] Saving ROM assets\n"
+    },
+    {
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "delink",
+        "-c",
+        "/private/tmp/jus-37-trial-02/original-preflight/config/config.yaml"
+      ],
+      "cwd": "/private/tmp/jus-37-trial-02/research-root",
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "[INFO ] Loading ROM from /private/tmp/jus-37-trial-02/original-preflight/config/../extract/config.yaml\n[INFO ] Function at 0x0205046c was adjusted to include pre-code constant pool at 0x02050458\n"
+    },
+    {
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "delink",
+        "-c",
+        "/private/tmp/jus-37-trial-02/original-preflight/candidate-config/config.yaml"
+      ],
+      "cwd": "/private/tmp/jus-37-trial-02/research-root",
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "[INFO ] Loading ROM from /private/tmp/jus-37-trial-02/original-preflight/candidate-config/../extract/config.yaml\n[INFO ] Function at 0x0205046c was adjusted to include pre-code constant pool at 0x02050458\n"
+    }
+  ],
+  "research_derivation": {
+    "base_commit": "94690c10d5f733565156e3519b73a906aa793083",
+    "delinks_before_sha256": "23b2e570f703bf03d90045a0f3becd4b7649b6fe0762102fef5132a83430dd3c",
+    "modified": {
+      "decomp/arm9/delinks.txt": "6e4eaa1c45d4e044d8c9c3ee6b9dc044a43613fcd679c1984e8a7300d5ba44ee",
+      "decomp/src/main/physical_initializer.c": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+      "task37-source-manifest.json": "53b503e7589e64ef1b5c696685db23ee7f82ee36eb476961fb13908757701141"
+    },
+    "git_status": " M decomp/arm9/delinks.txt\n?? decomp/src/main/physical_initializer.c\n?? task37-source-manifest.json\n"
+  },
+  "original_reference": {
+    "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+    "functions": [
+      {
+        "name": "func_0202c4ac",
+        "offset": 0,
+        "size": 92,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".text",
+        "offset": 40,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 52,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 84,
+        "type": 2,
+        "symbol": "data_02098708",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 88,
+        "type": 2,
+        "symbol": "data_020a0c34",
+        "addend": 0
+      }
+    ],
+    "sections": [
+      {
+        "name": ".text",
+        "size": 92,
+        "flags": 6,
+        "sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+      }
+    ]
+  },
+  "loaded_original": {
+    "rom_offset": 197804,
+    "arm9_load_address": 33554432,
+    "arm9_size": 692568,
+    "loaded92_sha256": "3b9caafec617800aa88608cf74a33b764525fa947907e2654a85867ede6a55ba"
+  },
+  "original_controls": [
+    {
+      "name": "exact_copy",
+      "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+      "comparator_passed": true,
+      "original_boundary_passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "extent84",
+      "sha256": "64647aa4d2151996280f7db97fc8b114ea25b6c0322157fc9c1aaf46b8285db9",
+      "comparator_passed": false,
+      "original_boundary_passed": false,
+      "diagnostic": "function identities/extents/modes differ from declared reference TU"
+    },
+    {
+      "name": "thumb_mode",
+      "sha256": "48b73ae08b221bc79a4c982eb0637cb3c0b97b4938a75cd0bff8f023af51cee2",
+      "comparator_passed": false,
+      "original_boundary_passed": false,
+      "diagnostic": "function identities/extents/modes differ from declared reference TU"
+    },
+    {
+      "name": "instruction",
+      "sha256": "f446bf2bbd8bc54ab839aae819f1b93a208209262e6f78ebbdc0f6137fc58ab2",
+      "comparator_passed": false,
+      "original_boundary_passed": false,
+      "diagnostic": "initialized section bytes differ: .text"
+    },
+    {
+      "name": "pool_extent",
+      "sha256": "4df5a32b49917783cccb732cba7434985617fc42849b54510144153e8a572076",
+      "comparator_passed": false,
+      "original_boundary_passed": false,
+      "diagnostic": "section type/flags/size differ: .text"
+    },
+    {
+      "name": "helper_symbol",
+      "sha256": "e35d335806876ba62888f2f8a983c25a9f4396a7f414d591727b5a26b03b32e3",
+      "comparator_passed": false,
+      "original_boundary_passed": false,
+      "diagnostic": "relocation identities/offsets/types/symbols/addends differ"
+    },
+    {
+      "name": "helper_addend",
+      "sha256": "cb64d636058fd26a2ea310dd132328334a0c1d97b21a0cc38ec7d83e3cfe2607",
+      "comparator_passed": false,
+      "original_boundary_passed": false,
+      "diagnostic": "relocation identities/offsets/types/symbols/addends differ"
+    },
+    {
+      "name": "pool_placeholder",
+      "sha256": "353ebc876a3fd93699ad9306f6d73e42208fd72766bd9f8528d676372e3a1b15",
+      "comparator_passed": true,
+      "original_boundary_passed": false,
+      "diagnostic": null
+    },
+    {
+      "name": "extra_allocated",
+      "sha256": "2757da6ff29a3d2079aef89393800b41b9cdcb5af804422f7b68c24714368073",
+      "comparator_passed": false,
+      "original_boundary_passed": false,
+      "diagnostic": "allocated section inventory differs; unexpected BSS/extra sections"
+    }
+  ],
+  "precompiler_gates": [
+    {
+      "boundary": "completed_actual_source_delink_before_source_build",
+      "command": [
+        "/private/tmp/jus-track-a/tools/dsd/dsd-macos-arm64",
+        "delink",
+        "-c",
+        "/private/tmp/jus-37-trial-02/verify/candidate-config/config.yaml"
+      ],
+      "reference": "/private/tmp/jus-37-trial-02/verify/candidate-delinks/src/main/physical_initializer.o",
+      "shape": {
+        "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+        "functions": [
+          {
+            "name": "func_0202c4ac",
+            "offset": 0,
+            "size": 92,
+            "mode": "arm",
+            "section": ".text"
+          }
+        ],
+        "relocations": [
+          {
+            "section": ".text",
+            "offset": 40,
+            "type": 1,
+            "symbol": "func_020326b0",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 52,
+            "type": 1,
+            "symbol": "func_020326b0",
+            "addend": -8
+          },
+          {
+            "section": ".text",
+            "offset": 84,
+            "type": 2,
+            "symbol": "data_02098708",
+            "addend": 0
+          },
+          {
+            "section": ".text",
+            "offset": 88,
+            "type": 2,
+            "symbol": "data_020a0c34",
+            "addend": 0
+          }
+        ],
+        "sections": [
+          {
+            "name": ".text",
+            "size": 92,
+            "flags": 6,
+            "sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": {
+    "reference": {
+      "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+      "functions": [
+        {
+          "name": "func_0202c4ac",
+          "offset": 0,
+          "size": 92,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ],
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 40,
+          "type": 1,
+          "symbol": "func_020326b0",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 52,
+          "type": 1,
+          "symbol": "func_020326b0",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 84,
+          "type": 2,
+          "symbol": "data_02098708",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 88,
+          "type": 2,
+          "symbol": "data_020a0c34",
+          "addend": 0
+        }
+      ],
+      "sections": [
+        {
+          "name": ".text",
+          "size": 92,
+          "flags": 6,
+          "sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+        }
+      ]
+    },
+    "compiled": {
+      "sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+      "functions": [
+        {
+          "name": "func_0202c4ac",
+          "offset": 0,
+          "size": 92,
+          "mode": "arm",
+          "section": ".text"
+        }
+      ],
+      "relocations": [
+        {
+          "section": ".text",
+          "offset": 40,
+          "type": 1,
+          "symbol": "func_020326b0",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 52,
+          "type": 1,
+          "symbol": "func_020326b0",
+          "addend": -8
+        },
+        {
+          "section": ".text",
+          "offset": 84,
+          "type": 2,
+          "symbol": "data_02098708",
+          "addend": 0
+        },
+        {
+          "section": ".text",
+          "offset": 88,
+          "type": 2,
+          "symbol": "data_020a0c34",
+          "addend": 0
+        }
+      ],
+      "sections": [
+        {
+          "name": ".text",
+          "size": 92,
+          "flags": 6,
+          "sha256": "83d946231500c1023f86ed504c44052e00ae7447c50785de2a343b4dacd7dcfa"
+        }
+      ]
+    },
+    "masked_mismatch_offsets": {
+      ".text": {
+        "reference_size": 92,
+        "compiled_size": 92,
+        "positions": [
+          20,
+          22,
+          23,
+          24,
+          26,
+          27,
+          28,
+          29,
+          31,
+          33
+        ]
+      }
+    },
+    "source_build_result": {
+      "status": "failed",
+      "accepted_units": 0,
+      "objects": {},
+      "units": [
+        {
+          "module": "main",
+          "object": "src/main/physical_initializer.o",
+          "source": "decomp/src/main/physical_initializer.c",
+          "functions": [
+            "func_0202c4ac"
+          ],
+          "category": "game",
+          "cpu": "arm946e",
+          "flags": [
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc",
+            "-O2"
+          ],
+          "include_paths": [],
+          "compiler": {
+            "package": "2.0/base",
+            "sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+            "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+            "selection_scope": "task37 single physical storage initializer model only"
+          },
+          "abi": {
+            "language": "C",
+            "instruction_mode": "arm",
+            "endianness": "little",
+            "pointer_bits": 32,
+            "settings": "pinned compiler defaults"
+          },
+          "headers": {},
+          "experimental_overrides": [],
+          "link_name": "physical_initializer.o",
+          "status": "failed",
+          "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+          "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+          "source_sha256": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+          "reference": {
+            "path": "/private/tmp/jus-37-trial-02/verify/candidate-delinks/src/main/physical_initializer.o",
+            "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099"
+          },
+          "include_hashes": {},
+          "cpu_flags": [
+            "-proc",
+            "arm946e",
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc",
+            "-O2"
+          ],
+          "command": [
+            "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+            "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+            "-c",
+            "-proc",
+            "arm946e",
+            "-Cpp_exceptions",
+            "off",
+            "-nostdinc",
+            "-O2",
+            "-o",
+            "/private/tmp/jus-37-trial-02/verify/source-build/src/main/physical_initializer.o",
+            "/private/tmp/jus-37-trial-02/research-root/decomp/src/main/physical_initializer.c"
+          ],
+          "dependencies": {
+            "schema_version": 1,
+            "policy": "header_free",
+            "status": "passed",
+            "ordered_dependencies": [
+              "decomp/src/main/physical_initializer.c"
+            ],
+            "headers": {},
+            "include_paths": [],
+            "forced_headers": [],
+            "source_credit": 0
+          },
+          "stdout": "",
+          "stderr": "",
+          "exit_status": 0,
+          "compiled": {
+            "path": "/private/tmp/jus-37-trial-02/verify/source-build/src/main/physical_initializer.o",
+            "sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763"
+          }
+        }
+      ],
+      "failure": "initialized section bytes differ: .text"
+    }
+  },
+  "raw_verifier_report": "verify/report.json",
+  "verify_invocations": 1,
+  "canonical_changed": false,
+  "source_model_sha256": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+  "recipe_sha256": "f37d79d0b0e3cb466dd3b8909d53164fbc0fecee561c7367697e2727e5d053dd",
+  "historical_receipt_sha256": "3b21d875933437ced8daeaa7d154da922cd7b6eeff9c93600fd64caf444e1b30",
+  "artifact_inventory_sha256": "296b77b3ef5266329a052c327c803648097cde9be3cd586f5440d156fdad92c5",
+  "artifact_count": 2564,
+  "historical_wrapper_sha256": "52423b8e9ff8ed4cbba5c3aef096e8abb1175d24de6005d5e7f46634509b4769",
+  "note": "Historical successful diagnostic publication before final finite research-input/recorded-object hardening; raw verifier report unchanged. Final public replay regenerates fresh artifacts; no second source compile in this worker."
+}

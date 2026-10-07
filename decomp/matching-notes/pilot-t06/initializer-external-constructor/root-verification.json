@@ -1,0 +1,30 @@
+{
+  "status": "verified_unmatched",
+  "contexts": 2,
+  "raw_object_sha256": "d730f56d3e0343ced55e646826d8d3c2b77e585a96529dc40427b87e59fc6f",
+  "independent_root_report": "/private/tmp/jus-track-a-clone-proof/build/external-constructor-root-rerun/report.json",
+  "masked_comparison_matches_saved": true,
+  "original_extent": 596,
+  "compiled_extent": 604,
+  "masked_differences": 107,
+  "accepted_units": 0,
+  "objects": {},
+  "source_credit_bytes": 0,
+  "canonical_source_bytes": 304,
+  "tests": {
+    "passed": 229,
+    "skipped": 0,
+    "new_actual_tool_checks": 4
+  },
+  "canonical_manifest_and_source_unchanged_from": "4d84b69",
+  "no_initializer_full_rom_attempt": true,
+  "failed_root_setup": "Initial root invocation named a nonexistent class-binding initializer reference; corrected to original initializer-trial reference after reading saved provenance.",
+  "post_call_store_comparison": {
+    "instruction_words_checked": 7,
+    "original_first_offset": 460,
+    "candidate_first_offset": 468,
+    "byte_identical": true,
+    "vptr_register": "r1",
+    "zero_register": "r0"
+  }
+}

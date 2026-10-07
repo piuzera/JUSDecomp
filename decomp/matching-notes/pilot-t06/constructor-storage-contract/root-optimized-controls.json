@@ -1,0 +1,14 @@
+[
+  {
+    "option": "-O",
+    "exit_status": 1,
+    "output_created": false,
+    "stderr": "Optimized Python disables verification assertions; run without -O or -OO.\n"
+  },
+  {
+    "option": "-OO",
+    "exit_status": 1,
+    "output_created": false,
+    "stderr": "Optimized Python disables verification assertions; run without -O or -OO.\n"
+  }
+]

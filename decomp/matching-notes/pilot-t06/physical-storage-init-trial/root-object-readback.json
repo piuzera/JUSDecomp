@@ -1,0 +1,57 @@
+{
+  "status": "root_actual_object_readback_passed",
+  "compiled_sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+  "full_extent": 92,
+  "masked_mismatch_offsets": {
+    ".text": {
+      "reference_size": 92,
+      "compiled_size": 92,
+      "positions": [
+        20,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        31,
+        33
+      ]
+    }
+  },
+  "different_words": [
+    {
+      "offset": 20,
+      "original": "e9840003",
+      "compiled": "e3520000"
+    },
+    {
+      "offset": 24,
+      "original": "e3520000",
+      "compiled": "e9840003"
+    },
+    {
+      "offset": 28,
+      "original": "11a01002",
+      "compiled": "01a02001"
+    },
+    {
+      "offset": 32,
+      "original": "e584100c",
+      "compiled": "e584200c"
+    },
+    {
+      "offset": 40,
+      "original": "ebfffffe",
+      "compiled": "eb000000"
+    },
+    {
+      "offset": 52,
+      "original": "ebfffffe",
+      "compiled": "eb000000"
+    }
+  ],
+  "source_trial_result": "measured_rejection",
+  "added_source_bytes": 0
+}

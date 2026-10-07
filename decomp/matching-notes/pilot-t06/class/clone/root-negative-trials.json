@@ -1,0 +1,29 @@
+[
+  {
+    "case": "wrong-offset",
+    "status": "failed",
+    "accepted_units": 0,
+    "objects": {},
+    "failure": "source compilation failed or produced no fresh object",
+    "reference_sha256": "599e748e3ac3cb41ee235da12728fe16a3969e749ce73f7c64a6c029721a9c28",
+    "reference_unchanged": true
+  },
+  {
+    "case": "wrong-base-callee",
+    "status": "failed",
+    "accepted_units": 0,
+    "objects": {},
+    "failure": "relocation identities/offsets/types/symbols/addends differ",
+    "reference_sha256": "599e748e3ac3cb41ee235da12728fe16a3969e749ce73f7c64a6c029721a9c28",
+    "reference_unchanged": true
+  },
+  {
+    "case": "default-context",
+    "status": "failed",
+    "accepted_units": 0,
+    "objects": {},
+    "failure": "function identities/extents/modes differ from declared reference TU",
+    "reference_sha256": "599e748e3ac3cb41ee235da12728fe16a3969e749ce73f7c64a6c029721a9c28",
+    "reference_unchanged": true
+  }
+]

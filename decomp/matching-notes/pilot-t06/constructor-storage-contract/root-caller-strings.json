@@ -1,0 +1,62 @@
+[
+  {
+    "module": "main",
+    "address": "0x209d544",
+    "bytes_hex": "3244506f73",
+    "shift_jis_text": "2DPos"
+  },
+  {
+    "module": "main",
+    "address": "0x209d564",
+    "bytes_hex": "436f6c6f72",
+    "shift_jis_text": "Color"
+  },
+  {
+    "module": "main",
+    "address": "0x209d5a4",
+    "bytes_hex": "324488ca9275",
+    "shift_jis_text": "2D位置"
+  },
+  {
+    "module": "main",
+    "address": "0x209d47c",
+    "bytes_hex": "9046",
+    "shift_jis_text": "色"
+  },
+  {
+    "module": "main",
+    "address": "0x209e280",
+    "bytes_hex": "456666656374466c616773",
+    "shift_jis_text": "EffectFlags"
+  },
+  {
+    "module": "main",
+    "address": "0x209e26c",
+    "bytes_hex": "834783748346834e836783748389834f",
+    "shift_jis_text": "エフェクトフラグ"
+  },
+  {
+    "module": "ov012",
+    "address": "0x21d25fc",
+    "bytes_hex": "436f6c6c6973696f6e",
+    "shift_jis_text": "Collision"
+  },
+  {
+    "module": "ov012",
+    "address": "0x21d1898",
+    "bytes_hex": "506f736974696f6e",
+    "shift_jis_text": "Position"
+  },
+  {
+    "module": "ov012",
+    "address": "0x21d25f0",
+    "bytes_hex": "8fd593cb94bb92e8",
+    "shift_jis_text": "衝突判定"
+  },
+  {
+    "module": "ov012",
+    "address": "0x21d1838",
+    "bytes_hex": "88ca9275",
+    "shift_jis_text": "位置"
+  }
+]

@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "status": "independent_released_final_actual",
+  "historical_pre_fix_review": "/private/tmp/jus-37-independent-final/independent-final-review.json",
+  "prior_guard_fixed_review": "/private/tmp/jus-37-independent-fixed-final/independent-fixed-final-review.json",
+  "source_publisher_head": "37f8817105839617d2f714044577bec49755a744",
+  "frozen_writer_commit": "d7c022c2adca6f2c7531ad962ad6d304f2e66442",
+  "wrapper_sha256": "68cf243364dd69c45332ff698e17eb7eb1101f0a76dd7669a80ecefae256d687",
+  "source_model_sha256": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+  "recipe_sha256": "f37d79d0b0e3cb466dd3b8909d53164fbc0fecee561c7367697e2727e5d053dd",
+  "public_replay_path": "/private/tmp/jus-37-independent-released-final/replay",
+  "receipt_sha256": "bdabb4ead720e101a554428c1386db7b979ab6d9f125a964f5582a042b5cba32",
+  "outcome": "measured_rejection",
+  "tests": "11 passed (2 actual reference, 9 file boundaries)",
+  "actual_default_cli_control": {
+    "command": [
+      "/Users/djdjo/.local/share/mise/installs/python/3.12/bin/python3",
+      "/private/tmp/jus-track-a-publish/decomp/matching-notes/pilot-t06/physical-storage-init-trial/replay.py",
+      "--output",
+      "/private/tmp/jus-37-independent-released-final/cli-control/output-link"
+    ],
+    "environment": "inherited default, no Git override",
+    "exit_status": 1,
+    "stdout": "",
+    "stderr": "blocked: output already exists; supply a fresh directory\n",
+    "link_preserved": true,
+    "target_created": false,
+    "verify_created": false
+  },
+  "actual_default_cli_control_sha256": "5e396f7f92db560144288b1816db40a1d0faa4e50374fdcb8733eba2e6c7edfc",
+  "input_count_rehashed": 157,
+  "artifact_count_rehashed": 2566,
+  "output_inventory_exact": true,
+  "all_owned_output_paths_regular": true,
+  "lld_pinned_symlink_positive": {
+    "alias": "/opt/homebrew/bin/ld.lld",
+    "target": "/opt/homebrew/Cellar/lld/23.1.2/bin/lld",
+    "sha256": "3c9298dbaf1389f490e72bc055e9595cfe5f125e078deff9bedb4c54ceb15a54"
+  },
+  "research_base_commit": "94690c10d5f733565156e3519b73a906aa793083",
+  "research_git_status": " M decomp/arm9/delinks.txt\n?? decomp/src/main/physical_initializer.c\n?? task37-source-manifest.json\n",
+  "research_modified": {
+    "decomp/arm9/delinks.txt": "6e4eaa1c45d4e044d8c9c3ee6b9dc044a43613fcd679c1984e8a7300d5ba44ee",
+    "decomp/src/main/physical_initializer.c": "0a631f087499a0c0bd495d34bce990205b2e85e1c267e4380fe1127f9a6ae770",
+    "task37-source-manifest.json": "53b503e7589e64ef1b5c696685db23ee7f82ee36eb476961fb13908757701141"
+  },
+  "reference_elf_sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+  "compiled_elf_sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+  "reference_shape": {
+    "sha256": "618a433046e66e4628b4e7f0f88e160197c340ae8575bf55e6e1d6505b68a099",
+    "functions": [
+      {
+        "name": "func_0202c4ac",
+        "offset": 0,
+        "size": 92,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".text",
+        "offset": 40,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 52,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 84,
+        "type": 2,
+        "symbol": "data_02098708",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 88,
+        "type": 2,
+        "symbol": "data_020a0c34",
+        "addend": 0
+      }
+    ],
+    "sections": [
+      {
+        "name": ".text",
+        "size": 92,
+        "flags": 6,
+        "sha256": "99a2e3de6812ecf0366223735c539fbfad732b6b63c7eab8708047d4c361660b"
+      }
+    ]
+  },
+  "compiled_shape": {
+    "sha256": "5c157378079a1fb72711a11fadc05fd1a88e7abf644c6a7d2da68d0d736b1763",
+    "functions": [
+      {
+        "name": "func_0202c4ac",
+        "offset": 0,
+        "size": 92,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "relocations": [
+      {
+        "section": ".text",
+        "offset": 40,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 52,
+        "type": 1,
+        "symbol": "func_020326b0",
+        "addend": -8
+      },
+      {
+        "section": ".text",
+        "offset": 84,
+        "type": 2,
+        "symbol": "data_02098708",
+        "addend": 0
+      },
+      {
+        "section": ".text",
+        "offset": 88,
+        "type": 2,
+        "symbol": "data_020a0c34",
+        "addend": 0
+      }
+    ],
+    "sections": [
+      {
+        "name": ".text",
+        "size": 92,
+        "flags": 6,
+        "sha256": "83d946231500c1023f86ed504c44052e00ae7447c50785de2a343b4dacd7dcfa"
+      }
+    ]
+  },
+  "masked_mismatch_offsets": {
+    ".text": {
+      "reference_size": 92,
+      "compiled_size": 92,
+      "positions": [
+        20,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        31,
+        33
+      ]
+    }
+  },
+  "source_build_status": "failed",
+  "accepted_units": 0,
+  "compiler_exit_status": 0,
+  "verifier_status": "failed",
+  "stage_names": [
+    "intake",
+    "tool_versions",
+    "prepare_config",
+    "extract",
+    "delink",
+    "source_config",
+    "source_delink",
+    "source_build"
+  ],
+  "native_and_rom_not_run": true,
+  "rechecked_comparison_failure": "initialized section bytes differ: .text",
+  "executed_repository_script_closure": [
+    "tools/scripts/verify.py",
+    "tools/scripts/compiler_experiments.py",
+    "tools/scripts/source_build.py",
+    "tools/scripts/relocation_check.py",
+    "tools/scripts/native_link.py",
+    "tools/scripts/header_dependencies.py",
+    "tools/scripts/baseline_intake.py"
+  ],
+  "executed_owned_code": [
+    "replay.py",
+    "test_replay.py"
+  ],
+  "canonical_source_credit_change": 0,
+  "arm7_source_credit_change": 0,
+  "global_readiness": "unknown"
+}

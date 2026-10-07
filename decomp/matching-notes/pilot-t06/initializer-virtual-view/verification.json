@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "base_commit": "b7a3edc",
+  "target": "func_0206c244",
+  "source_credit": 0,
+  "promotion_status": "not_activated",
+  "strict_trials": 60,
+  "exact_trials": 0,
+  "reports": [
+    {
+      "report": "virtual-view-report.json",
+      "trials": 42,
+      "exact": 0,
+      "sha256": "5d6e999dc6b152a368bbf7b835534658ef8f46ecf8ebb43c0ce2cbe244a3677c"
+    },
+    {
+      "report": "constructor-report.json",
+      "trials": 14,
+      "exact": 0,
+      "sha256": "4d81b0699ce48174a46c3bff8dd3924b2c5aed18502e97b6a8e8807fe271e291"
+    },
+    {
+      "report": "constructor-inline-report.json",
+      "trials": 4,
+      "exact": 0,
+      "sha256": "68fc42880810e53298082ac5d9d35a89662d6b3ae778a39ab3043ffb8dfeb5d9"
+    }
+  ],
+  "preliminary_compiles": [
+    {
+      "context": "O2",
+      "source": "flags_constructor.cpp",
+      "purpose": "inspect emitted constructor after actual negative test",
+      "compiled_sha256": "b919c3f56577d51c8ffc12e89612547e8aee86a7db8b38de7b5763917f13c7b2"
+    },
+    {
+      "status": "reporter_aborted_after_one_completed_compile",
+      "context": "default",
+      "reason": "summarize_object rejects duplicate allocated .text; fixed metadata-only fallback for complete sweep",
+      "compiled_sha256": "6e315e6006a70339f08065a2e33f64783a3c90a965676321f69ea32dd0f70f8c"
+    },
+    {
+      "context": "O2",
+      "source": "resource_view.cpp",
+      "purpose": "inspect native virtual-call and address-encoding near miss before full sweep",
+      "compiled_sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+    },
+    {
+      "context": "O2",
+      "source": "word_addresses.cpp",
+      "purpose": "inspect native virtual-call and address-encoding near miss before full sweep",
+      "compiled_sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+    },
+    {
+      "context": "O2",
+      "source": "opaque_addresses.cpp",
+      "purpose": "inspect native virtual-call and address-encoding near miss before full sweep",
+      "compiled_sha256": "59f122ce4465797a7872bdf98b77d9ea461ab91af553e12dcd6e41d0110577a7"
+    }
+  ],
+  "red_first": {
+    "virtual_view_tests": {
+      "failures": 4,
+      "reason": "candidate absent"
+    },
+    "constructor_tests": {
+      "failures": 2,
+      "reason": "candidate absent"
+    }
+  },
+  "focused_actual_tests": {
+    "count": 6,
+    "status": "passed",
+    "environment": [
+      "JUS_INIT_MWCC",
+      "JUS_INIT_WIBO"
+    ]
+  },
+  "scope": "Saved candidate/context experiments; no canonical source, delink metadata, coverage, tracker, or production pipeline changes.",
+  "reference_provenance": {
+    "original_source_revision": "6a061e3897f10a8800bf7ec9afde82fa8c9dbe1b",
+    "dsd_release": "v0.12.0",
+    "dsd_source_revision": "9f6c1b11c8f4b384ffcdc75b2c6d863cd371dcfe",
+    "dsd_macos_arm64_sha256": "2225874387adb0a5b2b4c4912337786efd736aca93b9f92617c95abba61d04f5",
+    "target_bytes_sha256": "c11efb830d6e8467c37b044646381c6481bf35e05860b259dcdb792cb0dc396f",
+    "complete_reference_object_sha256": "d60cee80415aa0f15843da8b1fdcc7a51b5265fc57e58f9634cce02d8508a4c9",
+    "generation": "Original ROM and dsd-generated exact TU; saved context manifests record split DSL. No original binary payload committed."
+  },
+  "full_matching_suite": {
+    "tests": 220,
+    "skipped": 11,
+    "status": "passed",
+    "environment": [
+      "JUS_INIT_MWCC",
+      "JUS_INIT_WIBO"
+    ],
+    "command": "python3 -m unittest discover -s tests/matching -v"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "verified_static_entry_state_blocker",
+  "reviewer": "gpt-6-astra",
+  "notes_source_commit": "1d5b86958b06d73bec5edd3299221c78ced9e491",
+  "original_function_hashes_and_modes_verified": 8,
+  "reference_and_linked_relocations_verified": 22,
+  "initial_fields_verified": 3,
+  "virtual_call_records_verified": 19,
+  "root_documented_read_only_recheck": "passed",
+  "decisive_conditional_instructions": "verified",
+  "live_failure_execution": "unproved",
+  "universal_success_invariant": "unproved",
+  "source_candidates": 0,
+  "compiler_trials": 0,
+  "source_credit_added": 0,
+  "canonical_source_bytes": 304,
+  "task_complete": false
+}

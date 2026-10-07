@@ -1,0 +1,62 @@
+{
+  "status": "one wording fix",
+  "reviewer_model": "gpt-6-astra, parent-assigned cross-family reviewer",
+  "scope": "Bounded current static machine contract only; no full transcript, incoming-reference denominator, unfinished owned pins/predictions or replay framework review. No emulator, instruction interpreter, target compiler or original execution.",
+  "contract_path": "/private/tmp/jus-hash-helper-grounding/decomp/matching-notes/pilot-t06/signed-byte-fold-contract/contract.json",
+  "contract_snapshot_sha256": "68b516010218bf088e656635c9bff963d62d71770776e1b7d0bfe17a1b61a4e6",
+  "original": {
+    "rom_path": "/Users/djdjo/Documents/mine/rom/jus.nds",
+    "rom_sha256": "a9c9bf89e6d99548b7c87e822b217c3fb74ef25186535b06193a6fb73d0d6d27",
+    "stored_offset": "0x366b0",
+    "address": "0x020326b0",
+    "bytes": 44,
+    "payload_sha256": "f307aadf611ab3217668d354c5250bed2ec4ca914b6cee852afbcbd62cc638c0",
+    "words": [
+      "e3a02000",
+      "ea000003",
+      "e0d010d1",
+      "e1811082",
+      "e1a01801",
+      "e0222821",
+      "e1d010d0",
+      "e3510000",
+      "1afffff8",
+      "e1a00002",
+      "e12fff1e"
+    ],
+    "manual_static_decode": [
+      "MOV r2,#0",
+      "B +0x18",
+      "LDRSB r1,[r0],#1",
+      "ORR r1,r1,r2,LSL #1",
+      "MOV r1,r1,LSL #16",
+      "EOR r2,r2,r1,LSR #16",
+      "LDRSB r1,[r0]",
+      "CMP r1,#0",
+      "BNE +0x08",
+      "MOV r0,r2",
+      "BX lr"
+    ]
+  },
+  "confirmed": {
+    "recurrence": "h_next = h XOR ((sign_extend_32(b) OR (h << 1)) & 0xffff), h0=0",
+    "derivation": "ORR uses old r2 LSL1; MOV LSL16 and EOR operand LSR16 retain only low16 of OR term. Seed0 and XOR of two16-bit operands keep r2 zero-extended16.",
+    "read_order": "Initial B reaches precheck at+24. Nonzero CMP/BNE reaches body+8, rereads same address with postincrement1, then returns to precheck. Stable n nonzero bytes require2n+1 loads; terminal zero is read once and never folded.",
+    "return": "r0=r2=h, r1=0 at normal return, including empty string h=0.",
+    "registers_and_memory": "Only r0,r1,r2 and NZCV written before return; no memory stores or stack access; r3..r12,sp,lr unchanged. BX lr uses LR as control input.",
+    "NZCV": "Final CMP 0,#0 gives N0 Z1 C1 V0; following MOV has S=0 and BX does not change NZCV. Incoming NZCV not consumed before CMP.",
+    "preconditions": "Stable readable bytes through reachable NUL justify sequence recurrence and load count; return additionally assumes valid LR/control context. No pointer-null test or input ownership/type inference."
+  },
+  "findings": [
+    {
+      "decision": "fix",
+      "location": "contract.json:new_contract.incoming",
+      "evidence": "0x020326d8 / +40 word e12fff1e is BX lr.",
+      "claim": "no additional incoming register/stack value consumed",
+      "correction": "No additional incoming data argument or stack value consumed; incoming LR supplies the return target. Qualify normal-return context accordingly.",
+      "impact": "Precision of machine input contract; arithmetic and stored-memory preconditions unchanged."
+    }
+  ],
+  "supporting_review_sha256": "f229161f22e7617c46693f8439970975f4c4bf073b0bb0aa319c781495480544",
+  "root_static_readback_sha256": "af756c7bac77f79367b3d03223e46cfcb2ba7fc3a1f79524d9135f46e185bcde"
+}
