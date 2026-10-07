@@ -1,0 +1,82 @@
+[
+  {
+    "status": "cpu_target_supported",
+    "policy": {
+      "cpu": "arm7",
+      "processor": "arm7tdmi",
+      "isa": "armv4t",
+      "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "original_match_status": "unresolved",
+      "selection_scope": "public fixture CPU support only"
+    },
+    "instruction_mode": "arm",
+    "source_sha256": "b7f14116197fdd354ba479219347b4608166bdbda3ca2d1463fbe854358a7b1f",
+    "compiled_sha256": "01f04c45327a50ede4bea53dbf1a99b16bd39e9c8eefeed5059cfbadfcec7502",
+    "functions": [
+      {
+        "name": "public_add",
+        "offset": 0,
+        "size": 20,
+        "mode": "arm",
+        "section": ".text"
+      }
+    ],
+    "command": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-nothumb",
+      "-interworking",
+      "-nostdinc",
+      "-c",
+      "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/public_cpu_probe.c",
+      "-o",
+      "/private/tmp/jus-track-a/build/other-cpus-final/probe-arm.o"
+    ],
+    "original_compiler_match_verified": false,
+    "matched_source_bytes": 0,
+    "matched_source_functions": 0
+  },
+  {
+    "status": "cpu_target_supported",
+    "policy": {
+      "cpu": "arm7",
+      "processor": "arm7tdmi",
+      "isa": "armv4t",
+      "compiler_sha256": "7150fa4fe4cb6db6867ac530ec1a0754f6ca4df92868d963a7875196f9222880",
+      "runner_sha256": "2b3000ef6a7a490c24ccd71967735ae0005e218922e51806cca1b8d77fd3cf7c",
+      "original_match_status": "unresolved",
+      "selection_scope": "public fixture CPU support only"
+    },
+    "instruction_mode": "thumb",
+    "source_sha256": "b7f14116197fdd354ba479219347b4608166bdbda3ca2d1463fbe854358a7b1f",
+    "compiled_sha256": "4f08bcd2a7ad8cf62e2ccf6d02470c117974c10227f30ef6b58729087640a7f4",
+    "functions": [
+      {
+        "name": "public_add",
+        "offset": 0,
+        "size": 10,
+        "mode": "thumb",
+        "section": ".text"
+      }
+    ],
+    "command": [
+      "/private/tmp/jus-track-a/tools/wibo/wibo-macos",
+      "/private/tmp/jus-track-a/tools/mwccarm/2.0/base/mwccarm.exe",
+      "-proc",
+      "arm7tdmi",
+      "-thumb",
+      "-interworking",
+      "-nostdinc",
+      "-c",
+      "/private/tmp/jus-track-a/decomp/matching-notes/other-cpus/public_cpu_probe.c",
+      "-o",
+      "/private/tmp/jus-track-a/build/other-cpus-final/probe-thumb.o"
+    ],
+    "original_compiler_match_verified": false,
+    "matched_source_bytes": 0,
+    "matched_source_functions": 0
+  }
+]

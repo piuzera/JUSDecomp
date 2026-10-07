@@ -199,7 +199,7 @@ class SourceBuildTests(unittest.TestCase):
             result=tool.build_sources({'schema_version':1,'translation_units':[unit]},self.root,
                                       self.root/'out',refs,compiler,runner)
         self.assertEqual(result['status'],'failed')
-        self.assertIn('changed during build',result['failure'])
+        self.assertIn('declared compiler/ABI/header context',result['failure'])
         self.assertEqual(result['accepted_units'],0)
         self.assertEqual(result['objects'],{})
 

@@ -14,6 +14,7 @@ _scripts = str(Path(__file__).resolve().parent)
 sys.path.insert(0, _scripts)
 try:
     from relocation_check import _checked_elf
+    from header_dependencies import capture_and_compile, validate_context
 finally:
     sys.path.pop(0)
 
@@ -33,7 +34,10 @@ def require_unit_context(unit, compiler_hash, runner_hash, source):
             or abi.get('endianness') != 'little' or abi.get('pointer_bits') != 32
             or abi.get('settings') != 'pinned compiler defaults'):
         raise ValueError('TU ABI context missing or unsupported')
-    require_header_free(source, unit.get('flags', []), unit.get('headers'), unit.get('include_paths'))
+    if unit.get('headers') or unit.get('include_paths') or unit.get('forced_headers'):
+        validate_context(unit)
+    else:
+        require_header_free(source, unit.get('flags', []), unit.get('headers'), unit.get('include_paths'))
 
 
 def require_header_free(source, flags, headers, include_paths):
@@ -240,6 +244,9 @@ def build_sources(manifest, root, output, reference_dir, compiler, runner):
                 raise ValueError('declared reference TU missing')
             unit['source_sha256'] = sha256(source)
             unit['reference'] = {'path': str(reference), 'sha256': sha256(reference)}
+            header_bearing = bool(specification.get('headers') or specification.get('include_paths') or specification.get('forced_headers'))
+            if header_bearing and 'compiler' not in specification:
+                raise ValueError('header-bearing TU requires declared compiler/ABI/header context')
             if 'compiler' in specification:
                 require_unit_context(specification, compiler_hash, runner_hash, source)
             includes = [_inside(root, name) for name in specification['include_paths']]
@@ -251,20 +258,33 @@ def build_sources(manifest, root, output, reference_dir, compiler, runner):
                                  str(reference): unit['reference']['sha256']})
             input_hashes.update({str(root / name): digest for name, digest in unit['include_hashes'].items()})
             unit['cpu_flags'] = ['-proc', specification['cpu'], *specification['flags']]
-            command = [str(runner), str(compiler), '-c', *unit['cpu_flags']]
-            for directory in includes:
-                command += ['-I', str(directory)]
-            command += ['-o', str(destination), str(source)]
-            unit['command'] = command
             destination.parent.mkdir(parents=True, exist_ok=True)
             environment = {key: value for key, value in os.environ.items()
                            if not key.upper().startswith(('MWC', 'MWARM'))}
-            completed = subprocess.run(command, cwd=root, env=environment, capture_output=True, text=True)
-            unit.update(stdout=completed.stdout, stderr=completed.stderr, exit_status=completed.returncode)
-            if destination.is_file():
-                unit['compiled'] = {'path': str(destination), 'sha256': sha256(destination)}
-            if completed.returncode or not destination.is_file() or destination.is_symlink():
-                raise ValueError('source compilation failed or produced no fresh object')
+            if header_bearing:
+                evidence = capture_and_compile(specification, root, source, destination, compiler, runner, environment)
+                unit['dependencies'] = evidence
+                if evidence['stages']:
+                    last = evidence['stages'][-1]
+                    unit.update(command=last['command'], stdout=last['stdout'], stderr=last['stderr'], exit_status=last['returncode'])
+                if destination.is_file():
+                    unit['compiled'] = {'path': str(destination), 'sha256': sha256(destination)}
+                if evidence['status'] != 'passed':
+                    raise ValueError(evidence.get('failure', 'compiler dependency capture failed'))
+                input_hashes.update(evidence['input_hashes'])
+            else:
+                command = [str(runner), str(compiler), '-c', *unit['cpu_flags'], '-o', str(destination), str(source)]
+                unit['command'] = command
+                unit['dependencies'] = {'schema_version': 1, 'policy': 'header_free', 'status': 'passed',
+                                        'ordered_dependencies': [str(source.relative_to(root))],
+                                        'headers': {}, 'include_paths': [], 'forced_headers': [], 'source_credit': 0}
+                completed = subprocess.run(command, cwd=root, env=environment, capture_output=True, text=True)
+                unit.update(stdout=completed.stdout, stderr=completed.stderr, exit_status=completed.returncode)
+                if destination.is_file():
+                    unit['compiled'] = {'path': str(destination), 'sha256': sha256(destination)}
+                if completed.returncode or not destination.is_file() or destination.is_symlink():
+                    unit['dependencies']['status'] = 'failed'
+                    raise ValueError('source compilation failed or produced no fresh object')
             if sha256(source) != unit['source_sha256'] or sha256(reference) != unit['reference']['sha256']:
                 raise ValueError('source/reference changed during compilation')
             unit['checks'] = compare_objects(reference, destination, specification['functions'])

@@ -108,6 +108,26 @@ class VerificationTests(unittest.TestCase):
             self.assertIn('per-TU', report['failure'])
             self.assertEqual(report['source_coverage']['matched_source_bytes'], 0)
 
+    def test_source_snapshot_includes_explicit_headers_outside_include_directories(self):
+        tool = module()
+        self.assertTrue(hasattr(tool, 'source_context_files'), 'declared header snapshot missing')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
+            (root / 'include').mkdir()
+            for name in ('public.c', 'local.h', 'forced.h', 'include/common.h'):
+                (root / name).write_text('public context fixture')
+            unit = {'source': 'public.c', 'include_paths': ['include'],
+                    'headers': {'local.h': 'a' * 64, 'forced.h': 'b' * 64},
+                    'forced_headers': ['forced.h']}
+            paths = tool.source_context_files(root, unit)
+            self.assertEqual({p.relative_to(root).as_posix() for p in paths},
+                             {'public.c', 'local.h', 'forced.h', 'include/common.h'})
+            with tempfile.TemporaryDirectory() as external:
+                (root / 'escape.h').symlink_to(Path(external) / 'hidden.h')
+                unit['headers']['escape.h'] = 'c' * 64
+                with self.assertRaisesRegex(ValueError, 'inside repository'):
+                    tool.source_context_files(root, unit)
+
     def test_existing_output_is_rejected_without_touching_stale_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / 'stale'

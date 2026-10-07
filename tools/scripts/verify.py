@@ -51,6 +51,27 @@ def require_unchanged(snapshot):
             raise ValueError(f'input/tool changed during build: {path.name}')
 
 
+def source_context_files(root, unit):
+    root = Path(root).resolve()
+    def inside(name):
+        path = Path(name)
+        if path.is_absolute() or '..' in path.parts:
+            raise ValueError('source/header context must stay inside repository')
+        resolved = (root / path).resolve()
+        if not resolved.is_relative_to(root):
+            raise ValueError('source/header context must stay inside repository')
+        return resolved
+    files = {inside(unit['source'])}
+    files.update(inside(name) for name in unit['headers'])
+    files.update(inside(name) for name in unit.get('forced_headers', []))
+    for name in unit['include_paths']:
+        directory = inside(name)
+        for path in directory.rglob('*'):
+            if path.is_file():
+                files.add(inside(path.relative_to(root)))
+    return sorted(files)
+
+
 def require_stage_sequence(stages, required):
     names = [stage['name'] for stage in stages]
     for name in required:
@@ -375,19 +396,10 @@ def verify(rom, output, dsd, lld, clang, root=ROOT, stage_runner=run_command,
                    for unit in manifest['translation_units']):
                 raise ValueError('source manifest needs per-TU compiler, ABI, headers, and experiment context')
             sources += [source_manifest, root / 'tools/scripts/source_build.py',
-                        root / 'tools/scripts/source_accounting.py']
+                        root / 'tools/scripts/source_accounting.py',
+                        root / 'tools/scripts/header_dependencies.py']
             for unit in manifest['translation_units']:
-                source = Path(unit['source'])
-                if source.is_absolute() or '..' in source.parts:
-                    raise ValueError('source path must stay inside repository')
-                if not (root / source).resolve().is_relative_to(root.resolve()):
-                    raise ValueError('source file must stay inside repository')
-                sources.append(root / source)
-                for include in unit['include_paths']:
-                    path = (root / include).resolve()
-                    if not path.is_relative_to(root.resolve()):
-                        raise ValueError('include context must stay inside repository')
-                    sources.extend(p for p in path.rglob('*') if p.is_file())
+                sources.extend(source_context_files(root, unit))
         snapshot = {str(p): sha256(p) for p in sources}
         report['source_hashes'] = {str(p.relative_to(root)): snapshot[str(p)] for p in sources}
         commit = stage_runner(['git', 'rev-parse', 'HEAD'], root)

@@ -1,0 +1,40 @@
+{
+  "parent_arm7": {
+    "status": "passed",
+    "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+    "bytes": 165552,
+    "matched_source_bytes": 0
+  },
+  "child_arm7": {
+    "status": "passed",
+    "sha256": "0540bd6fba14f886c542b3bfa15b1c0391b23dd4eaa3688367e1813cbc021139",
+    "bytes": 165552,
+    "matched_source_bytes": 0
+  },
+  "child_arm9": {
+    "main": {
+      "status": "passed",
+      "bytes": 2624320,
+      "raw_extracted_sha256": "50598daa262a3e1f174b46b76fc24024a020f562e55a00318a674c116290452d",
+      "compared_sha256": "617bec5f0664ca87113abeaf5511433d3be6b42c711f2b936c28d3420f1f6db3",
+      "hash_domain": "original pointer restored from pinned metadata",
+      "matched_source_bytes": 0
+    },
+    "ITCM": {
+      "status": "passed",
+      "bytes": 3968,
+      "raw_extracted_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "compared_sha256": "9b8615a39e6662c498fe6c25237d1c0dc4a046034aad51cf8a2655389759124e",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    },
+    "DTCM": {
+      "status": "passed",
+      "bytes": 96,
+      "raw_extracted_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "compared_sha256": "05eceac916bd67037e750ce442ef2b4ec41013a3d5eddfe20c2e1fbcec85becf",
+      "hash_domain": "original expanded module bytes",
+      "matched_source_bytes": 0
+    }
+  }
+}
